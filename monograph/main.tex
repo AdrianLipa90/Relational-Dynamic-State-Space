@@ -383,6 +383,32 @@ B_L^+=B_R^+=B_L^{\lambda}=B_R^{\lambda}=0.
 The general relational product may leave this subclass, in which case the
 departure is recorded rather than hidden.
 
+\subsection{Indexed tensor gate}
+
+The abstract contraction interface does not by itself determine contraction
+identities on tensor products. The reference element currently records total
+rank and flat components, but not an ordered slot signature, slot dimensions,
+or a canonical pairing between upper and lower indices.
+
+Therefore expressions such as
+\[
+\operatorname{Contr}(X\otimes Y)
+\]
+remain realization-dependent until an indexed tensor model supplies
+\[
+\boxed{
+\text{slot signature}
++
+\text{pairing rule}
++
+\text{component shape}
++
+\text{contraction evaluator}.
+}
+\]
+This is an explicit gate, not a missing axiom. Rank \((p,q)\) alone cannot
+select which index pair is to be contracted.
+
 \section{Semantic scales}
 
 Semantic scale is not assumed to be a single real parameter. Let
