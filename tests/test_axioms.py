@@ -70,11 +70,12 @@ def test_relational_holonomy_is_derived_from_typed_transport():
     )
 
 
-def test_winding_is_zero_axis_phase_representation_of_holonomy():
+def test_winding_depends_on_explicit_holonomy_phase_representation():
     claims = claim_map()
     assert claims["DER_WINDING"].kind is ClaimKind.DERIVED
     assert dependency_closure("DER_WINDING") == frozenset(
         {
+            "REF_HOLONOMY_PHASE",
             "ZA_BRIDGE",
             "DER_HOLONOMY",
             "PRIM_TRANSPORT",
