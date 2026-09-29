@@ -8,6 +8,9 @@ from rdss.operations import (
     RelationTransport,
     RelationalProductRule,
     TransportPath,
+    orbital_composition_residual,
+    orbital_inverse_residual,
+    product_bilinearity_residuals,
     reference_tensor_product,
     relative_moire_action,
     transport_composition_residual,
@@ -216,3 +219,87 @@ def test_transport_composition_residual_measures_functoriality_defect():
     assert transport_composition_residual(
         direct_defect, first, second, x
     ) == pytest.approx(1.0)
+
+
+
+def test_exact_bilinear_product_has_zero_residuals():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+
+    def scalar_product(a, b):
+        return TensorScalarElement(
+            (a.components[0] * b.components[0],),
+            a.rank,
+            a.carrier,
+            a.scale,
+        )
+
+    product = RelationalProductRule("bilinear", scalar_product)
+    x = elem(2.0, carrier=p, scale=scale)
+    y = elem(3.0, carrier=p, scale=scale)
+    z = elem(5.0, carrier=p, scale=scale)
+
+    residuals = product_bilinearity_residuals(product, x, y, z, 7.0)
+    assert all(value == pytest.approx(0.0) for value in residuals.values())
+
+
+def test_nonlinear_product_exposes_bilinearity_defect():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+
+    product = RelationalProductRule(
+        "nonlinear",
+        lambda a, b: TensorScalarElement(
+            (a.components[0] ** 2 + b.components[0],),
+            a.rank,
+            a.carrier,
+            a.scale,
+        ),
+    )
+    x = elem(2.0, carrier=p, scale=scale)
+    y = elem(3.0, carrier=p, scale=scale)
+    z = elem(5.0, carrier=p, scale=scale)
+
+    residuals = product_bilinearity_residuals(product, x, y, z, 2.0)
+    assert any(value > 0.0 for value in residuals.values())
+
+
+def test_orbital_inverse_residual_checks_supplied_inverse():
+    x = elem(1.0)
+
+    def scale_by(k):
+        return lambda z: TensorScalarElement(
+            tuple(k * c for c in z.components),
+            z.rank,
+            z.carrier,
+            z.scale,
+        )
+
+    exact = OrbitalAction("U2", scale_by(2.0), scale_by(0.5))
+    broken = OrbitalAction("U2-bad", scale_by(2.0), scale_by(1.0 / 3.0))
+
+    assert orbital_inverse_residual(exact, x) == pytest.approx(0.0)
+    assert orbital_inverse_residual(broken, x) > 0.0
+
+
+def test_orbital_composition_residual_checks_action_law_on_sample():
+    x = elem(1.0)
+
+    def scale_action(name, factor):
+        return OrbitalAction(
+            name,
+            lambda z: TensorScalarElement(
+                tuple(factor * c for c in z.components),
+                z.rank,
+                z.carrier,
+                z.scale,
+            ),
+        )
+
+    u2 = scale_action("U2", 2.0)
+    u3 = scale_action("U3", 3.0)
+    u6 = scale_action("U6", 6.0)
+    u5 = scale_action("U5", 5.0)
+
+    assert orbital_composition_residual(u6, u2, u3, x) == pytest.approx(0.0)
+    assert orbital_composition_residual(u5, u2, u3, x) == pytest.approx(1.0)
