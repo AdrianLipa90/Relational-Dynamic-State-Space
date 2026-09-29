@@ -349,13 +349,13 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "REF_HOLONOMY_U1",
         ClaimKind.REFERENCE_REALIZATION,
-        "A concrete realization may supply a U(1) representation of closed relational holonomy.",
+        "A concrete realization may supply a U(1) representation of closed value-level relational holonomy.",
         ("DER_HOLONOMY",),
     ),
     Claim(
         "DER_WINDING",
         ClaimKind.DERIVED,
-        "Topological winding is derived only after a closed relational holonomy has an explicit U(1) phase representation.",
+        "Topological winding is derived only after a closed value-level relational holonomy has an explicit U(1) phase representation.",
         ("REF_HOLONOMY_U1",),
     ),
     Claim(
