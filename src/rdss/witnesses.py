@@ -38,10 +38,30 @@ class FiniteRelationModel:
         return self.admitted <= sources
 
     def satisfies_rr1(self) -> bool:
-        """RR1 witness semantics: every primitive relation endpoint can refine."""
-        endpoints = {x for edge in self.relations for x in edge}
-        refined = {parent for parent, _, _ in self.refinements}
-        return endpoints <= refined
+        """RR1 witness semantics: refinement closes recursively on reachable descendants.
+
+        Starting from every primitive relation endpoint, each reachable
+        refinement occurrence must itself have a non-degenerate refinement.
+        Finite cyclic presentations are allowed; recursion is about closure of
+        occurrences, not ontic novelty of carrier labels.
+        """
+        refinement_map = {
+            parent: (left, right)
+            for parent, left, right in self.refinements
+        }
+        frontier = list({x for edge in self.relations for x in edge})
+        seen: set[str] = set()
+
+        while frontier:
+            current = frontier.pop()
+            if current in seen:
+                continue
+            if current not in refinement_map:
+                return False
+            left, right = refinement_map[current]
+            seen.add(current)
+            frontier.extend((left, right))
+        return True
 
 
 def witness_ra0_not_rr1() -> FiniteRelationModel:
@@ -55,26 +75,26 @@ def witness_ra0_not_rr1() -> FiniteRelationModel:
 
 
 def witness_rr1_not_ra0() -> FiniteRelationModel:
-    """RR1 holds on relation endpoints while an admitted isolated point breaks RA0."""
+    """Recursive RR1 holds while an admitted isolated point breaks RA0."""
     return FiniteRelationModel(
-        points=frozenset({"a", "b", "q", "a-", "a+", "b-", "b+"}),
+        points=frozenset({"a", "b", "q"}),
         admitted=frozenset({"a", "b", "q"}),
         relations=frozenset({("a", "b"), ("b", "a")}),
         refinements=(
-            ("a", "a-", "a+"),
-            ("b", "b-", "b+"),
+            ("a", "a", "b"),
+            ("b", "a", "b"),
         ),
     )
 
 
 def witness_ra0_rr1_without_cp1() -> FiniteRelationModel:
-    """A discrete relational/refinement model with no complex projective layer."""
+    """A recursive cyclic relational/refinement model with no CP1 layer."""
     return FiniteRelationModel(
-        points=frozenset({"a", "b", "a-", "a+", "b-", "b+"}),
+        points=frozenset({"a", "b"}),
         admitted=frozenset({"a", "b"}),
         relations=frozenset({("a", "b"), ("b", "a")}),
         refinements=(
-            ("a", "a-", "a+"),
-            ("b", "b-", "b+"),
+            ("a", "a", "b"),
+            ("b", "a", "b"),
         ),
     )
