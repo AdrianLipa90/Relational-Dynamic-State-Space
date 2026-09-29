@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Mapping
 
+from .algebra import RelationalPoint, TypedRelation
+
 
 @dataclass(frozen=True)
 class BinaryDistinction:
@@ -37,6 +39,20 @@ class BranchRelationOccurrence:
             raise ValueError("relation label must be non-empty")
         if not self.source or not self.target:
             raise ValueError("relation occurrence endpoints must be non-empty")
+
+    def as_typed_relation(
+        self,
+        carriers: Mapping[str, RelationalPoint],
+    ) -> TypedRelation:
+        """Forget occurrence slot while materializing the core relation value."""
+        try:
+            source = carriers[self.source]
+            target = carriers[self.target]
+        except KeyError as exc:
+            raise KeyError(
+                f"missing carrier mapping for relation occurrence endpoint {exc.args[0]!r}"
+            ) from exc
+        return TypedRelation(source, target, self.relation_label)
 
 
 @dataclass(frozen=True)
