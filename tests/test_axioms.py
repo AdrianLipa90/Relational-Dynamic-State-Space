@@ -96,3 +96,16 @@ def test_ra0_star_is_candidate_not_silent_replacement():
 def test_current_canonical_axioms_remain_ra0_and_rr1_until_promotion():
     ids = {claim.id for claim in foundational_axioms()}
     assert ids == {"RA0", "RR1"}
+
+
+
+def test_bilinearity_residual_has_only_product_and_module_dependencies():
+    assert dependency_closure("DEF_BILINEARITY_RESIDUAL") == frozenset(
+        {"PRIM_PRODUCT", "PRIM_MODULE"}
+    )
+
+
+def test_orbital_coherence_residual_has_only_orbit_and_module_dependencies():
+    assert dependency_closure("DEF_ORBITAL_COHERENCE") == frozenset(
+        {"PRIM_ORBIT", "PRIM_MODULE"}
+    )
