@@ -469,6 +469,91 @@ must be admitted by the semantic scale graph, consume an element at its source
 scale, and return an element at its declared target scale while preserving the
 carrier and tensor rank in the reference realization.
 
+\section{Relational deformation potential}
+
+The semantic scale label \(\sigma\) does not by itself determine a scalar
+deformation. A concrete semantic weighting profile is supplied separately.
+Let a fixed named residual signature be
+
+\[
+D(X)=\{d_i(X)\}_{i\in I},
+\qquad
+d_i(X)\ge 0,
+\]
+
+and let the semantic profile at \(\sigma\) assign explicit non-negative
+weights
+
+\[
+W_\sigma=\{w_{\sigma i}\}_{i\in I},
+\qquad
+w_{\sigma i}\ge0,
+\]
+
+with at least one positive weight. The weighting law is structural input; it
+is not inferred from the string or label used to name \(\sigma\).
+
+For \(p\ge1\), define the relational deformation potential
+
+\[
+\boxed{
+V_R^{(p)}(X\mid\sigma)
+=
+\left(
+\sum_{i\in I}
+w_{\sigma i}\,d_i(X)^p
+\right)^{1/p}.
+}
+\]
+
+The residual signature is part of the type contract. A potential profile is
+not allowed to silently add or omit a residual component.
+
+If the residual vector \(D(X)\) is held fixed while only the semantic
+weighting changes, then
+
+\[
+\boxed{
+\Delta_{\sigma\to\tau}V_R(X)
+=
+V_R^{(p)}(X\mid\tau)
+-
+V_R^{(p)}(X\mid\sigma)
+}
+\]
+
+isolates a semantic scalar deformation. Hence two evaluations can share the
+same represented algebraic state and the same numerical residuals while
+having different scalar relational potential because the supplied semantic
+weighting differs.
+
+For a finite admissible candidate set \(\mathcal C\), define the relational
+attractor set
+
+\[
+\boxed{
+\operatorname{Attr}_R(\mathcal C)
+=
+\operatorname*{arg\,min}_{c\in\mathcal C}
+V_R(c).
+}
+\]
+
+Ties are preserved rather than resolved arbitrarily.
+
+This construction is a scalar diagnostic of relational deformation. It is
+not identified by the general algebra with energy, mass, gravity, or metric
+curvature. A geometric realization may later supply a separate map such as
+
+\[
+\mathcal G:
+V_R
+\longmapsto
+\delta g,
+\]
+
+but that map is an additional realization/bridge and is not assumed here.
+
 \section{Orbital action and relative Moir\'e structure}
 
 Let \(G\) index admissible orbital operators
