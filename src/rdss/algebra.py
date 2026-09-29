@@ -35,6 +35,25 @@ class RelationalPoint:
             raise ValueError("refinement words use only -1/+1")
         return RelationalPoint(self.address + tuple(word))
 
+    def is_prefix_of(self, other: "RelationalPoint") -> bool:
+        """Return whether this occurrence address is an ancestor prefix."""
+        n = len(self.address)
+        return other.address[:n] == self.address
+
+    def meet(self, other: "RelationalPoint") -> "RelationalPoint":
+        """Longest common prefix in the occurrence-address tree."""
+        common: list[int] = []
+        for left, right in zip(self.address, other.address):
+            if left != right:
+                break
+            common.append(left)
+        return RelationalPoint(tuple(common))
+
+    def tree_distance(self, other: "RelationalPoint") -> int:
+        """Canonical combinatorial tree metric on occurrence addresses."""
+        ancestor = self.meet(other)
+        return self.level + other.level - 2 * ancestor.level
+
     def refine(self) -> tuple["RelationalPoint", "RelationalPoint"]:
         return (
             self.advance((-1,)),
