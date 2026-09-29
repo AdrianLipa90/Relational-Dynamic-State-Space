@@ -288,6 +288,34 @@ a_{--},b_{-+},a_{+-},b_{++},
 
 Thus recursive relational structure does not require infinitely many distinct carrier labels.
 
+## Ideal boundary of the occurrence tree
+
+The actual occurrence addresses generated at finite depth form the countable set
+
+\[
+B^{<\omega}=\{-1,+1\}^{<\omega}.
+\]
+
+Its ideal boundary is defined separately as
+
+\[
+\boxed{
+\partial V=B^\omega=\{-1,+1\}^{\mathbb N}.
+}
+\]
+
+At depth \(n\), there are exactly \(2^n\) prefix cylinders. The boundary is in bijection with \(\mathcal P(\mathbb N)\), hence
+
+\[
+\boxed{
+|\partial V|=2^{\aleph_0}.
+}
+\]
+
+RR1 realizes every finite prefix of every \(\xi\in\partial V\), producing a coherent prefix chain. It does not assert convergence of that chain to an admitted infinite-address carrier.
+
+Therefore the uncountability of \(\partial V\) is a property of the ideal path boundary, not a theorem that the carrier domain is uncountable.
+
 ## Novelty is a separate property
 
 If the intended theory requires every refinement occurrence to introduce an ontically new carrier, then RA0* is still insufficient.
