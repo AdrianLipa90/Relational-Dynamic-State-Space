@@ -23,6 +23,7 @@ from .axioms import (
 )
 from .closure import (
     BinaryDistinction,
+    BranchRelationOccurrence,
     GenerativeRelationModel,
     RelationalBinaryDistinction,
     RelationalGenerativeModel,
@@ -106,6 +107,7 @@ __all__ = [
     "formation_rules",
     "validate_dependency_dag",
     "BinaryDistinction",
+    "BranchRelationOccurrence",
     "GenerativeRelationModel",
     "RelationalBinaryDistinction",
     "RelationalGenerativeModel",
