@@ -528,3 +528,35 @@ def test_binary_occurrence_growth_and_countability_theorems():
             "DEF_BINARY_DISTINCTION",
         }
     )
+
+
+
+def test_relation_value_cardinality_minimality():
+    claims = claim_map()
+
+    base = frozenset(
+        {
+            "META0",
+            "RA0_REL_STAR",
+            "DEF_POINT",
+            "DEF_RELATIONAL_DISTINCTION",
+            "DEF_BINARY_DISTINCTION",
+            "DEF_RELATION_OCCURRENCE",
+            "DEF_BINARY_REL",
+        }
+    )
+
+    assert claims["THM_RELATION_VALUE_CARDINALITY_LOWER_BOUND"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_RELATION_VALUE_CARDINALITY_LOWER_BOUND") == base
+
+    assert claims["REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert dependency_closure("REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL") == base
+
+    assert claims["THM_SINGLE_RELATION_VALUE_MINIMALITY"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_SINGLE_RELATION_VALUE_MINIMALITY") == frozenset(
+        {
+            "THM_RELATION_VALUE_CARDINALITY_LOWER_BOUND",
+            "REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL",
+            *base,
+        }
+    )
