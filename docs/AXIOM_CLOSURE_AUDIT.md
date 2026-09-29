@@ -45,6 +45,44 @@ with the closure clause
 
 The words "binary", "non-degenerate", "host", and "endpoint occurrence" are part of the formal content and must not be silently omitted.
 
+## Occurrence-level non-degeneracy
+
+The word **non-degenerate** refers to the two branch occurrences, not to inequality of carrier labels.
+
+For a hosted occurrence \(p_\omega\), the binary distinction supplies two child slots
+
+\[
+p_{\omega-},
+\qquad
+p_{\omega+},
+\]
+
+with distinct path addresses
+
+\[
+\omega-\neq\omega+.
+\]
+
+It is therefore possible that
+
+\[
+\operatorname{carrier}(p_{\omega-})
+=
+\operatorname{carrier}(p_{\omega+})
+\]
+
+while the distinction remains binary at the occurrence level.
+
+The minimal singleton presentation
+
+\[
+D(a)=(a,a)
+\]
+
+is consequently admissible as a binary occurrence distinction: the underlying carrier label repeats, but the left and right branch occurrences are different.
+
+This is stronger than merely allowing cyclic presentations. It shows directly that recursive relational structure does not require two ontically distinct carrier labels at the first branching step.
+
 RA0* does not require uniqueness of the distinction hosted by a carrier. A carrier may admit several valid binary distinctions. For a finite unfolding one may select one admissible witness at each occurrence; the executable reference kernel uses a deterministic lexicographic selector only so that repeated runs produce the same tree. That selector is an implementation convention, not additional axiomatic content.
 
 ## Closure theorem
@@ -92,11 +130,42 @@ RR1 can therefore be demoted to a theorem **only if RA0*** is promoted as the in
 
 RA0* is genuinely stronger than RA0. It adds three pieces of content:
 
-1. the relation hosted by an admitted carrier is a non-degenerate distinction;
+1. the admitted carrier hosts a non-degenerate binary distinction at the occurrence/slot level;
 2. the primitive distinction is binary;
 3. selected endpoint occurrences remain admitted carriers.
 
 The closure theorem is valid because these clauses are explicit. Calling them "implicit" would hide assumptions.
+
+## Singleton occurrence witness
+
+An even smaller witness uses one carrier label:
+
+\[
+D(a)=(a,a).
+\]
+
+The unfolding begins
+
+\[
+a_{\varnothing},
+\qquad
+a_{-},a_{+},
+\qquad
+a_{--},a_{-+},a_{+-},a_{++},
+\quad\ldots
+\]
+
+Every node carries the same underlying label \(a\), but every path-labelled occurrence is distinct.
+
+Thus
+
+\[
+\boxed{
+\text{binary occurrence structure}
+\not\Rightarrow
+\text{binary carrier-label multiplicity}.
+}
+\]
 
 ## Cycles do not break recursive refinement
 
