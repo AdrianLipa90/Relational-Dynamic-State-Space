@@ -20,6 +20,7 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 | PRIM_CONTRACTION | STRUCTURAL PRIMITIVE | A typed contraction lowers one covariant and one contravariant rank when a contraction rule is supplied. | PRIM_MODULE |
 | DEF_BILINEARITY_RESIDUAL | DEFINITION | Bilinearity residuals measure failure of product additivity and scalar-linearity. | PRIM_PRODUCT, PRIM_MODULE |
 | DEF_TENSOR_MAP_COHERENCE | DEFINITION | Measures monoidality of a supplied typed map with respect to tensor product. | PRIM_TENSOR_PRODUCT, PRIM_MODULE |
+| DEF_TENSOR_MONOIDAL_COHERENCE | DEFINITION | Tests strict associativity, explicit unit, and supplied braiding by residuals. | PRIM_TENSOR_PRODUCT, PRIM_MODULE |
 | DEF_CONTRACTION_MAP_COHERENCE | DEFINITION | Measures contraction naturality under a supplied typed map. | PRIM_CONTRACTION, PRIM_MODULE |
 | PRIM_SCALE | STRUCTURAL PRIMITIVE | Semantic scale is a typed partial-order/category-like structure. | — |
 | PRIM_TRANSPORT | STRUCTURAL PRIMITIVE | Typed transports T_r act along composable binary relations between carrier sectors. | DEF_BINARY_REL, PRIM_MODULE |
@@ -189,3 +190,20 @@ The first-order map-to-map naturality layer is now closed for the currently admi
 - arbitrary typed maps versus contraction.
 
 These are still diagnostics, not universal equations. A realization belongs to the corresponding exact subclass only when its residual vanishes on the stated domain.
+
+
+## Tensor coherence boundary
+
+The reference tensor sector now checks:
+
+[
+Delta_{alpha}^{otimes},
+qquad
+Delta_{mathbf 1}^{otimes},
+qquad
+Delta_{eta}^{otimes},
+]
+
+for strict associativity, explicitly supplied left/right units, and a supplied braiding rule. These are diagnostics; they do not force every tensor realization to be strict or symmetric.
+
+Full non-strict monoidal coherence, including explicit associator and braiding isomorphisms with pentagon/hexagon laws, remains OPEN.
