@@ -180,6 +180,7 @@ __all__ = [
     "CP1RelationalUnfolding",
     "reference_cp1_unfolding",
     "reference_maximal_cp1_tree",
+    "reference_point_from_occurrence",
     "lift_value_phase_to_occurrence",
     "ZeroAxisPoint",
     "finite_zero_axis_lift",
