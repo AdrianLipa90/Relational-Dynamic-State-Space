@@ -254,8 +254,8 @@ def audit_monograph() -> dict[str, int]:
     if balance != 0:
         raise AuditFailure(f"LaTeX brace balance is {balance}")
 
-    display_open = len(re.findall(r"\\\[", clean))
-    display_close = len(re.findall(r"\\\]", clean))
+    display_open = len(re.findall(r"(?<!\\)\\\[", clean))
+    display_close = len(re.findall(r"(?<!\\)\\\]", clean))
     if display_open != display_close:
         raise AuditFailure(
             f"display math mismatch: open={display_open}, close={display_close}"
