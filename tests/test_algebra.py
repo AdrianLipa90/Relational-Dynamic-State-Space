@@ -183,3 +183,14 @@ def test_relational_point_generators_match_binary_refinement():
 def test_relational_point_advance_fails_closed_on_invalid_word():
     with pytest.raises(ValueError):
         RelationalPoint().advance((0,))
+
+
+
+def test_refinement_level_is_free_monoid_length_grading():
+    p = RelationalPoint((-1, 1))
+    u = (1, -1, 1)
+    v = (-1, -1)
+
+    assert p.advance(u).level == p.level + len(u)
+    assert len(u + v) == len(u) + len(v)
+    assert p.advance(u + v).level == p.level + len(u) + len(v)
