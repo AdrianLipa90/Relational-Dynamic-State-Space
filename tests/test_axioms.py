@@ -156,3 +156,43 @@ def test_tensor_and_contraction_coherence_dependencies():
     assert dependency_closure("DEF_CONTRACTION_MAP_COHERENCE") == frozenset(
         {"PRIM_CONTRACTION", "PRIM_MODULE"}
     )
+
+
+
+def test_remaining_first_order_naturality_dependencies():
+    assert dependency_closure("DEF_SCALE_TRANSPORT_COHERENCE") == frozenset(
+        {
+            "PRIM_SCALE",
+            "PRIM_TRANSPORT",
+            "DEF_BINARY_REL",
+            "PRIM_MODULE",
+        }
+    )
+    assert dependency_closure("DEF_ORBIT_TRANSPORT_COHERENCE") == frozenset(
+        {
+            "PRIM_ORBIT",
+            "PRIM_TRANSPORT",
+            "DEF_BINARY_REL",
+            "PRIM_MODULE",
+        }
+    )
+    assert dependency_closure("DEF_REFINEMENT_SCALE_COHERENCE") == frozenset(
+        {
+            "PRIM_REFINEMENT_MAP",
+            "RR1",
+            "DEF_POINT",
+            "DEF_BINARY_REL",
+            "PRIM_SCALE",
+            "PRIM_MODULE",
+        }
+    )
+    assert dependency_closure("DEF_REFINEMENT_ORBIT_COHERENCE") == frozenset(
+        {
+            "PRIM_REFINEMENT_MAP",
+            "RR1",
+            "DEF_POINT",
+            "DEF_BINARY_REL",
+            "PRIM_ORBIT",
+            "PRIM_MODULE",
+        }
+    )
