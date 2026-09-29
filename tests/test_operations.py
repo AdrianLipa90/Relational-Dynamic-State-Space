@@ -1,6 +1,6 @@
 import pytest
 
-from rdss import RelationalPoint, SemanticScale, SemanticScaleGraph, TensorScalarElement, TypedRelation
+from rdss import OccurrenceAddress, RelationalPoint, SemanticScale, SemanticScaleGraph, TensorScalarElement, TypedRelation
 from rdss.operations import (
     BranchRefinementMap,
     ContractionRule,
@@ -211,6 +211,19 @@ def test_open_relation_path_rejects_holonomy_claim():
     assert not path.relation_path.closed
     with pytest.raises(ValueError):
         path.holonomy_residual(elem(1.0, carrier=a))
+
+
+def test_relation_occurrence_normalizes_addresses_to_occurrence_type():
+    a = RelationalPoint()
+    relation = TypedRelation(a, a, "r")
+    occurrence = RelationOccurrence(relation, (), (-1,))
+
+    assert isinstance(occurrence.source_occurrence, OccurrenceAddress)
+    assert isinstance(occurrence.target_occurrence, OccurrenceAddress)
+    assert occurrence.source_occurrence == ()
+    assert occurrence.target_occurrence == (-1,)
+    assert occurrence.relation.source is a
+    assert occurrence.relation.target is a
 
 
 def test_carrier_closed_path_can_remain_occurrence_open():
