@@ -5,7 +5,6 @@ from .cosmic import (
     CosmicRelationalStep,
     InfoHolonomicCoordinate,
     MinkowskiMoirePoint,
-    PlanetaryRelationalLoad,
     accumulated_holonomic_phase,
     minkowski_interval_sq,
 )
@@ -27,7 +26,6 @@ __all__ = [
     "CosmicRelationalStep",
     "InfoHolonomicCoordinate",
     "MinkowskiMoirePoint",
-    "PlanetaryRelationalLoad",
     "ExperienceHolonomy",
     "DynamicState",
     "HilbertMoireSpace",
