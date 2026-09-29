@@ -131,6 +131,20 @@ class GenerativeRelationModel:
         return True
 
 
+def singleton_ra0_star_model() -> GenerativeRelationModel:
+    """Single carrier with two distinct branch-occurrence slots.
+
+    Both left and right slots carry the same carrier label a. The
+    distinction is nevertheless binary because the path addresses - and +
+    are distinct occurrences.
+    """
+    return GenerativeRelationModel(
+        admitted=frozenset({"a"}),
+        distinctions=(
+            BinaryDistinction("a", "a", "a"),
+        ),
+    )
+
 def two_cycle_ra0_star_model() -> GenerativeRelationModel:
     """Small cyclic presentation whose unfolding is still a binary tree.
 
