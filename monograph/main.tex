@@ -381,6 +381,68 @@ For a relative Moir\'e operator this specializes schematically to
 A non-zero value is therefore a legitimate observable of the algebra rather
 than an implementation error.
 
+\section{Cross-operation coherence}
+
+The structural maps need not preserve one another automatically. RTOFA
+therefore records naturality and homomorphism defects instead of silently
+assuming them to vanish.
+
+For transport and relational product,
+\[
+\boxed{
+\Delta_{T,\star}(X,Y)
+=
+\left\|
+T_r(X\star Y)
+-
+T_r(X)\star' T_r(Y)
+\right\|.
+}
+\]
+
+For semantic coarse-graining and product,
+\[
+\boxed{
+\Delta_{S,\star}(X,Y)
+=
+\left\|
+S(X\star Y)
+-
+S(X)\star' S(Y)
+\right\|.
+}
+\]
+
+For orbital action and product,
+\[
+\boxed{
+\Delta_{U,\star}(X,Y)
+=
+\left\|
+U(X\star Y)
+-
+U(X)\star' U(Y)
+\right\|.
+}
+\]
+
+Finally, for parent transport, child transport, and a selected refinement
+branch, the naturality square has residual
+\[
+\boxed{
+\Delta_{F,T}(X)
+=
+\left\|
+F_{\rm target}(T_{\rm parent}X)
+-
+T_{\rm child}(F_{\rm source}X)
+\right\|.
+}
+\]
+
+Zero residual defines the corresponding structure-preserving subclass.
+Non-zero residual remains explicit deformation data.
+
 \section{Relational transport and abstract holonomy}
 
 Let
@@ -618,9 +680,8 @@ The core relational algebra is
 \operatorname{Contr},
 T_r,
 U_g,
-M_{ij},
 S_{\sigma\to\tau},
-F
+F_{-},F_{+}
 \right).
 }
 \]
@@ -647,6 +708,11 @@ Derived diagnostics and structures include
 \operatorname{Orb},\quad
 \mathcal H_{\gamma},\quad
 \Delta_T,\quad
+\Delta_{T,\star},\quad
+\Delta_{S,\star},\quad
+\Delta_{U,\star},\quad
+\Delta_{F,T},\quad
+M_{ij},\quad
 W,\quad
 \varepsilon,\quad
 \Delta_F,\quad
