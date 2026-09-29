@@ -45,6 +45,8 @@ with the closure clause
 
 The words "binary", "non-degenerate", "host", and "endpoint occurrence" are part of the formal content and must not be silently omitted.
 
+RA0* does not require uniqueness of the distinction hosted by a carrier. A carrier may admit several valid binary distinctions. For a finite unfolding one may select one admissible witness at each occurrence; the executable reference kernel uses a deterministic lexicographic selector only so that repeated runs produce the same tree. That selector is an implementation convention, not additional axiomatic content.
+
 ## Closure theorem
 
 Let \(p_{\omega}\) be a path-labelled relational occurrence with address
