@@ -220,6 +220,13 @@ class RelationOccurrence:
         )
 
 
+def forget_relation_occurrence(
+    occurrence: RelationOccurrence,
+) -> TypedRelation:
+    """Forget occurrence addresses and retain the underlying relation value."""
+    return occurrence.relation
+
+
 @dataclass(frozen=True)
 class OccurrenceRelationPath:
     """Composable path preserving both relation values and occurrence identity."""
@@ -281,6 +288,13 @@ class OccurrenceRelationPath:
     def closed(self) -> bool:
         """True only when both carrier value and occurrence address close."""
         return self.carrier_closed and self.occurrence_closed
+
+
+def forget_occurrence_path(
+    path: OccurrenceRelationPath,
+) -> RelationPath:
+    """Project an occurrence-aware path to its relation-value path."""
+    return path.relation_path
 
 
 @dataclass(frozen=True)
