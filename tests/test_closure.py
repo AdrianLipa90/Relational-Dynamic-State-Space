@@ -245,3 +245,14 @@ def test_singleton_relational_candidate_achieves_meta0_cardinality_lower_bound()
     assert model.is_admissible_rtofa_model()
     assert model.satisfies_ra0_rel_star()
     assert not empty.is_admissible_rtofa_model()
+
+
+
+def test_relational_candidate_forgets_to_plain_ra0_star_model():
+    relational = singleton_ra0_rel_star_model()
+    plain = relational.as_ra0_star_model()
+
+    assert relational.satisfies_ra0_rel_star()
+    assert plain.satisfies_ra0_star()
+    assert relational.admitted == plain.admitted
+    assert relational.unfold("a", 4) == plain.unfold("a", 4)
