@@ -32,6 +32,10 @@ class FiniteRelationModel:
             if left == right:
                 raise ValueError("a distinction requires two distinct descendants")
 
+    def satisfies_ex0(self) -> bool:
+        """EX0 witness semantics: at least one relational carrier is admitted."""
+        return bool(self.admitted)
+
     def satisfies_ra0(self) -> bool:
         """RA0 witness semantics: every admitted point has an outgoing relation."""
         sources = {source for source, _ in self.relations}
@@ -97,4 +101,15 @@ def witness_ra0_rr1_without_cp1() -> FiniteRelationModel:
             ("a", "a", "b"),
             ("b", "a", "b"),
         ),
+    )
+
+
+
+def witness_ra0_rr1_without_ex0() -> FiniteRelationModel:
+    """Empty countermodel: RA0 and RR1 hold vacuously while EX0 fails."""
+    return FiniteRelationModel(
+        points=frozenset(),
+        admitted=frozenset(),
+        relations=frozenset(),
+        refinements=(),
     )
