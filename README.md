@@ -40,7 +40,7 @@ An admitted observable is not defined independently of relation.
 
 **RR1 — recursive relational closure**
 
-A selected relational point may itself carry a further distinction. This is the explicit extra assumption that generates the fractal/refinement tower; it is not silently claimed to follow from RA0.
+At every admitted path-labelled occurrence, a selected relational point may itself carry a further non-degenerate binary distinction, and the same rule re-applies at every finite refinement depth. This is the explicit extra assumption that generates the fractal/refinement tower; it is not silently claimed to follow from RA0.
 
 The minimal algebraic carrier is an unscaled point \(p\). Algebraic zero is not identified with absence of relation.
 
