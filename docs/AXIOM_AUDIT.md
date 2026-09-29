@@ -84,6 +84,7 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 13. **Zero Axis is an independent imported bridge.** Its finite inverse projective lift is optional and occurs only after a U(1) phase has already been supplied.
 14. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
 15. **RA0_REL_STAR is a stronger one-object-level-axiom candidate.** It differs from RA0* by explicitly binding binary distinction slots to primitive relation occurrences; only this stronger candidate currently carries explicit theorems to both RA0 and RR1.
+16. **Carrier cardinality and occurrence cardinality are independent scales.** A singleton carrier presentation can generate \(2^{N+1}-1\) distinct path-labelled occurrences through depth \(N\), and the full finite-word address space is countably infinite.
 
 ## Canonical foundational stratification
 
