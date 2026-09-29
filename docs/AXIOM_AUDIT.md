@@ -42,8 +42,9 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 | DEF_REFINEMENT_SCALE_COHERENCE | DEFINITION | Measures refinement/coarse-graining naturality. | PRIM_REFINEMENT_MAP, PRIM_SCALE, PRIM_MODULE |
 | DEF_REFINEMENT_ORBIT_COHERENCE | DEFINITION | Measures refinement/orbital equivariance. | PRIM_REFINEMENT_MAP, PRIM_ORBIT, PRIM_MODULE |
 | ZA_BRIDGE | BRIDGE | The companion Zero Axis model supplies Omega(s)=s/(1-s) and the critical-axis/unit-circle equivalence. | — |
-| REF_HOLONOMY_PHASE | REFERENCE REALIZATION | A concrete realization supplies a U(1) representation of closed relational holonomy and finite lift through Omega^{-1}. | DER_HOLONOMY, ZA_BRIDGE |
-| DER_WINDING | DERIVED | Topological winding is derived only from a closed phase path with a continuous lift. | ZA_BRIDGE |
+| REF_HOLONOMY_U1 | REFERENCE REALIZATION | A concrete realization supplies a U(1) representation of closed relational holonomy. | DER_HOLONOMY |
+| DER_WINDING | DERIVED | Topological winding is derived only after a closed relational holonomy has an explicit U(1) phase representation. | REF_HOLONOMY_U1 |
+| REF_HOLONOMY_ZERO_AXIS | REFERENCE REALIZATION | A verified finite U(1) holonomy phase may be lifted through Omega^{-1} to the companion Zero Axis. | REF_HOLONOMY_U1, ZA_BRIDGE |
 
 ## Audit conclusions
 
@@ -53,15 +54,16 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 4. **The additive K-module structure, tensor-scalar grading, semantic scale, typed transport, orbital action and relational product are signature choices/structural primitives.** They are not derived from RA0. The additive module is required before differences such as commutators, associators and refinement residuals are meaningful.
 5. **Moiré is derived once invertible orbital actions are present.**
 6. **Refinement residual requires both recursive refinement and a relational product.**
-7. **Zero Axis is imported from the companion model.** It is not an axiom of the general algebra.
-8. **A nonzero phase residual means the path is not closed.** A topological winding integer is asserted only after an explicit closure check.
-9. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
+7. **A U(1) representation of relational holonomy is a reference realization, not a core theorem.**
+8. **Topological winding depends on that U(1) representation and an explicit closure check, not on Zero Axis.**
+9. **Zero Axis is an independent imported bridge.** Its finite inverse projective lift is optional and occurs only after a U(1) phase has already been supplied.
+10. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
 
 ## Minimal foundational axiom set
 
-[
-oxed{mathrm{RA0}+mathrm{RR1}}
-]
+\[
+\boxed{\mathrm{RA0}+\mathrm{RR1}}
+\]
 
 This is a deliberately small axiom set. It does **not** mean that the rest of the signature follows from these two axioms; it means those other ingredients are typed definitions, independent structural primitives, realizations, derivations, or bridges.
 
@@ -121,8 +123,13 @@ The transport-composition defect
 
 measures local failure of functorial transport.
 
-Relational holonomy is therefore more general than its phase realization. The Zero Axis bridge supplies the projective \(U(1)\) sector in which selected closed holonomies admit a phase and topological winding.
+Relational holonomy is more general than any phase representation. A concrete realization may separately provide
 
+\[
+\chi:\mathcal H_\gamma\to U(1).
+\]
+
+Only after such a representation exists do phase residual and topological winding become available. Zero Axis is not required for this step. Its projective map is a later optional bridge from an already verified \(U(1)\) phase.
 
 ## Algebra and orbit coherence
 
@@ -133,52 +140,51 @@ Exact K-bilinearity and exact group action are therefore promoted only as zero-d
 
 ## Cross-operation coherence
 
-The principal maps are not assumed to preserve one another automatically. The kernel records four first-order compatibility defects:
+The principal maps are not assumed to preserve one another automatically. The kernel records first-order compatibility defects:
 
-[
-Delta_{T,star}(X,Y)
+\[
+\Delta_{T,\star}(X,Y)
 =
-left|
-T_r(Xstar Y)
+\left\|
+T_r(X\star Y)
 -
-T_r(X)star' T_r(Y)
-ight|,
-]
+T_r(X)\star' T_r(Y)
+\right\|,
+\]
 
-[
-Delta_{S,star}(X,Y)
+\[
+\Delta_{S,\star}(X,Y)
 =
-left|
-S(Xstar Y)
+\left\|
+S(X\star Y)
 -
-S(X)star' S(Y)
-ight|,
-]
+S(X)\star' S(Y)
+\right\|,
+\]
 
-[
-Delta_{U,star}(X,Y)
+\[
+\Delta_{U,\star}(X,Y)
 =
-left|
-U(Xstar Y)
+\left\|
+U(X\star Y)
 -
-U(X)star' U(Y)
-ight|,
-]
+U(X)\star' U(Y)
+\right\|,
+\]
 
 and the refinement/transport naturality defect
 
-[
-Delta_{F,T}(X)
+\[
+\Delta_{F,T}(X)
 =
-left|
-F_{mathrm{target}}(T_{mathrm{parent}}X)
+\left\|
+F_{\mathrm{target}}(T_{\mathrm{parent}}X)
 -
-T_{mathrm{child}}(F_{mathrm{source}}X)
-ight|.
-]
+T_{\mathrm{child}}(F_{\mathrm{source}}X)
+\right\|.
+\]
 
 Vanishing defects define structure-preserving subclasses. Non-zero defects are retained as relational deformation data.
-
 
 ## First-order naturality closure
 
@@ -196,20 +202,19 @@ These are still diagnostics, not universal equations. A realization belongs to t
 
 ## Tensor coherence boundary
 
-The reference tensor sector now checks:
+The reference tensor sector checks
 
-[
-Delta_{alpha}^{otimes},
-qquad
-Delta_{mathbf 1}^{otimes},
-qquad
-Delta_{eta}^{otimes},
-]
+\[
+\Delta_{\alpha}^{\otimes},
+\qquad
+\Delta_{\mathbf 1}^{\otimes},
+\qquad
+\Delta_{\beta}^{\otimes},
+\]
 
 for strict associativity, explicitly supplied left/right units, and a supplied braiding rule. These are diagnostics; they do not force every tensor realization to be strict or symmetric.
 
 Full non-strict monoidal coherence, including explicit associator and braiding isomorphisms with pentagon/hexagon laws, remains OPEN.
-
 
 ## CP1 refinement realization boundary
 
@@ -228,20 +233,27 @@ This closes the implementation gate for a recursive CP1/Fubini-Study **reference
 \]
 
 
-## Holonomy phase bridge boundary
+## Holonomy phase and Zero-Axis boundaries
 
-The kernel now contains an explicit reference interface
+The first reference interface is independent of Zero Axis:
 
 \[
-\chi:\mathcal H_\gamma\to U(1)
+\chi:\mathcal H_\gamma\to U(1).
 \]
 
-for realizations that can represent a closed relational holonomy by a unit-modulus phase. Once such a phase is supplied, the finite inverse projective lift
+It exists only for realizations that can represent a closed relational holonomy by a unit-modulus phase. This interface is the dependency needed by winding.
+
+The companion Zero Axis is a separate optional bridge. Given an already verified finite phase \(u\in U(1)\),
 
 \[
 \Omega^{-1}(u)=\frac{u}{1+u}
 \]
 
-returns a point on the Zero Axis for \(u\neq-1\); \(u=-1\) is treated as the compactified point at infinity.
+returns a finite point on the Zero Axis for \(u\neq-1\); \(u=-1\) is the compactified point at infinity.
 
-This is a reference interface, not a universal theorem. The existence criterion for \(\chi\) remains an open bridge problem.
+Thus two different open questions remain distinguishable:
+
+1. when a general RTOFA holonomy admits a \(U(1)\) representation \(\chi\);
+2. whether and why a chosen application should additionally bind that phase to the companion Zero Axis.
+
+Neither statement is promoted to a universal theorem of the core algebra.
