@@ -1,6 +1,6 @@
 import pytest
 
-from rdss import RelationalPoint, SemanticScale, TensorScalarElement, TypedRelation
+from rdss import RelationalPoint, SemanticScale, SemanticScaleGraph, TensorScalarElement, TypedRelation
 from rdss.operations import (
     ContractionRule,
     OrbitalAction,
