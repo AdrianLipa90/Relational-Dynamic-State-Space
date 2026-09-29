@@ -1,11 +1,82 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from math import isfinite, pi
+from math import acos, isfinite, pi
 from typing import Callable
 
-from .algebra import CP1State, MinimalDistinction, RelationalPoint, TensorScalarElement, ZeroAxisPoint
+from .algebra import RelationalPoint, TensorScalarElement, wrap_phase
+from .zero_axis import ZeroAxisPoint
 from .operations import TransportPath
+
+
+@dataclass(frozen=True)
+class CP1State:
+    """Normalized representative of one point in the CP1 reference realization."""
+
+    alpha: complex
+    beta: complex
+
+    def __post_init__(self) -> None:
+        a = complex(self.alpha)
+        b = complex(self.beta)
+        if not (
+            isfinite(a.real)
+            and isfinite(a.imag)
+            and isfinite(b.real)
+            and isfinite(b.imag)
+        ):
+            raise ValueError("CP1 amplitudes must be finite")
+        norm2 = abs(a) ** 2 + abs(b) ** 2
+        if norm2 <= 0.0:
+            raise ValueError("the zero vector does not define a CP1 point")
+        norm = norm2 ** 0.5
+        object.__setattr__(self, "alpha", a / norm)
+        object.__setattr__(self, "beta", b / norm)
+
+    def overlap_abs(self, other: "CP1State") -> float:
+        inner = self.alpha.conjugate() * other.alpha + self.beta.conjugate() * other.beta
+        return min(1.0, max(0.0, abs(inner)))
+
+    def fubini_study_distance(self, other: "CP1State") -> float:
+        return acos(self.overlap_abs(other))
+
+    def orthogonal_partner(self) -> "CP1State":
+        return CP1State(-self.beta.conjugate(), self.alpha.conjugate())
+
+
+@dataclass(frozen=True)
+class MinimalDistinction:
+    """Reference relation selecting two projective states over one carrier."""
+
+    carrier: RelationalPoint
+    left: CP1State
+    right: CP1State
+    label: str = "distinction"
+
+    @property
+    def separation(self) -> float:
+        return self.left.fubini_study_distance(self.right)
+
+    def is_maximal(self, tolerance: float = 1e-12) -> bool:
+        if tolerance <= 0 or not isfinite(tolerance):
+            raise ValueError("tolerance must be positive and finite")
+        return abs(self.separation - (pi / 2.0)) <= tolerance
+
+
+@dataclass(frozen=True)
+class MoireRotation:
+    """Scalar-angle reference realization of a relative orbital rotation."""
+
+    theta_i: float
+    theta_j: float
+
+    def __post_init__(self) -> None:
+        if not (isfinite(self.theta_i) and isfinite(self.theta_j)):
+            raise ValueError("rotation angles must be finite")
+
+    @property
+    def delta(self) -> float:
+        return wrap_phase(self.theta_i - self.theta_j)
 
 
 @dataclass(frozen=True)
