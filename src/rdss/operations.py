@@ -480,9 +480,7 @@ class BranchRefinementMap:
         result = self.mapping(element)
         if not isinstance(result, TensorScalarElement):
             raise TypeError("refinement map must return TensorScalarElement")
-        expected_carrier = type(element.carrier)(
-            element.carrier.address + (self.branch,)
-        )
+        expected_carrier = element.carrier.advance((self.branch,))
         if result.carrier != expected_carrier:
             raise ValueError("refinement result is not on the selected child carrier")
         if result.rank != element.rank:
