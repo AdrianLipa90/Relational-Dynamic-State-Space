@@ -13,6 +13,7 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 | RA0_STAR | CANDIDATE AXIOM | Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_BINARY_REL |
 | THM_RR1_FROM_RA0_STAR | THEOREM | RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences. | RA0_STAR |
 | REF_CP1 | REFERENCE REALIZATION | A minimal complex binary distinction may be represented by CP1 with Fubini-Study metric. | DEF_POINT, DEF_BINARY_REL |
+| REF_CP1_REFINEMENT | REFERENCE REALIZATION | Recursive refinement is realized as a tree of local CP1/FS fibres indexed by relational carriers. | REF_CP1, RR1 |
 | PRIM_MODULE | STRUCTURAL PRIMITIVE | Each typed tensor-scalar sector carries an additive K-module structure; the reference kernel uses complex components. | — |
 | DEF_TS | DEFINITION | Tensor-scalar grading uses rank (p,q); scalars are rank (0,0). | PRIM_MODULE |
 | PRIM_PRODUCT | STRUCTURAL PRIMITIVE | A typed relational product star_R may be supplied without assuming associativity or commutativity. | — |
@@ -207,3 +208,20 @@ Delta_{eta}^{otimes},
 for strict associativity, explicitly supplied left/right units, and a supplied braiding rule. These are diagnostics; they do not force every tensor realization to be strict or symmetric.
 
 Full non-strict monoidal coherence, including explicit associator and braiding isomorphisms with pentagon/hexagon laws, remains OPEN.
+
+
+## CP1 refinement realization boundary
+
+The CP1 refinement realization is fibre-local:
+
+\[
+\mathcal F_\omega\simeq CP^1.
+\]
+
+A selected projective state in the parent fibre indexes a child relational carrier, which may then own a new local CP1 fibre. The parent state is not identified with the coordinate system of the child fibre.
+
+This closes the implementation gate for a recursive CP1/Fubini-Study **reference realization**, while preserving the earlier independence result
+
+\[
+\mathrm{RA0}+\mathrm{RR1}\not\Rightarrow CP^1.
+\]
