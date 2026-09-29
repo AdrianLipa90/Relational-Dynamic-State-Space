@@ -2,6 +2,7 @@ import pytest
 
 from rdss.closure import (
     BinaryDistinction,
+    BranchRelationOccurrence,
     GenerativeRelationModel,
     RelationalBinaryDistinction,
     RelationalGenerativeModel,
@@ -163,9 +164,11 @@ def test_relational_ra0_star_keeps_two_branch_relation_occurrences():
 
     left, right = model.branch_relations_at("a")
 
-    assert left == (-1, "r-", "a", "a")
-    assert right == (1, "r+", "a", "a")
+    assert left == BranchRelationOccurrence(-1, "r-", "a", "a")
+    assert right == BranchRelationOccurrence(1, "r+", "a", "a")
     assert left != right
+    assert left.branch == -1
+    assert right.branch == 1
 
 
 def test_relational_ra0_star_requires_every_admitted_host_to_bind_relations():
@@ -217,8 +220,8 @@ def test_relational_distinction_occurrence_identity_does_not_require_distinct_re
 
     left, right = distinction.branch_relation_occurrences
 
-    assert left == (-1, "r", "a", "a")
-    assert right == (1, "r", "a", "a")
+    assert left == BranchRelationOccurrence(-1, "r", "a", "a")
+    assert right == BranchRelationOccurrence(1, "r", "a", "a")
     assert left != right
 
 
@@ -256,3 +259,17 @@ def test_relational_candidate_forgets_to_plain_ra0_star_model():
     assert plain.satisfies_ra0_star()
     assert relational.admitted == plain.admitted
     assert relational.unfold("a", 4) == plain.unfold("a", 4)
+
+
+
+def test_branch_relation_occurrence_rejects_invalid_branch():
+    with pytest.raises(ValueError):
+        BranchRelationOccurrence(0, "r", "a", "a")
+
+
+def test_branch_relation_occurrence_rejects_empty_endpoint_or_label():
+    with pytest.raises(ValueError):
+        BranchRelationOccurrence(-1, "", "a", "a")
+
+    with pytest.raises(ValueError):
+        BranchRelationOccurrence(1, "r", "", "a")
