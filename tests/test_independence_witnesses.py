@@ -1,5 +1,6 @@
 from rdss.witnesses import (
     FiniteRelationModel,
+    witness_meta0_not_ra0,
     witness_ra0_not_rr1,
     witness_ra0_rr1_without_cp1,
     witness_ra0_rr1_without_ex0,
@@ -58,9 +59,18 @@ def test_rr1_not_ra0_witness_is_recursively_closed():
 
 
 
-def test_ra0_plus_rr1_do_not_force_existence():
+def test_ra0_plus_rr1_do_not_force_existence_on_raw_presentations():
     model = witness_ra0_rr1_without_ex0()
 
     assert model.satisfies_ra0()
     assert model.satisfies_rr1()
     assert not model.satisfies_ex0()
+    assert not model.is_admissible_rtofa_model()
+
+
+def test_meta0_nonvacuity_does_not_force_ra0_when_adm_is_primitive():
+    model = witness_meta0_not_ra0()
+
+    assert model.is_admissible_rtofa_model()
+    assert model.satisfies_ex0()
+    assert not model.satisfies_ra0()
