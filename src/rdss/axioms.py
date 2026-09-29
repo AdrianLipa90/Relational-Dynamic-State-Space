@@ -60,7 +60,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "DEF_RELATIONAL_DISTINCTION",
         ClaimKind.DEFINITION,
-        "A relationally bound binary distinction consists of two branch-relation occurrences from the host occurrence to the left/right endpoint occurrences; endpoint carrier labels may coincide.",
+        "A relationally bound binary distinction consists of two branch-relation occurrences from the host occurrence to the left/right endpoint occurrences; occurrence identity includes the branch slot, so endpoint carrier labels and even underlying relation values may coincide.",
         ("DEF_BINARY_DISTINCTION", "DEF_BINARY_REL"),
     ),
     Claim(
