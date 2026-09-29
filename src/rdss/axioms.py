@@ -127,10 +127,16 @@ CLAIMS: tuple[Claim, ...] = (
         "Semantic scale is a typed partial-order/category-like structure, not necessarily a real scalar.",
     ),
     Claim(
+        "PRIM_SEMANTIC_WEIGHTING",
+        ClaimKind.STRUCTURAL_PRIMITIVE,
+        "A semantic profile may assign explicit non-negative weights to a fixed named residual signature; the weights are supplied rather than inferred from a scale label.",
+        ("PRIM_SCALE",),
+    ),
+    Claim(
         "DEF_RELATIONAL_POTENTIAL",
         ClaimKind.DEFINITION,
-        "A relational deformation potential is a non-negative semantic weighting of an explicit fixed residual signature.",
-        ("PRIM_SCALE",),
+        "A relational deformation potential is the weighted p-functional induced by a supplied semantic weighting on an explicit fixed residual signature.",
+        ("PRIM_SEMANTIC_WEIGHTING",),
     ),
     Claim(
         "DER_SEMANTIC_POTENTIAL_SHIFT",
