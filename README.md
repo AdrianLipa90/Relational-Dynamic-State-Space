@@ -28,6 +28,8 @@ The current minimal axiom set is
 
 **RA0 — relational admissibility**
 
+The motivating intuition is that an absolute absence supplies no admitted terms and therefore no admitted relation or observation. The executable algebra does not formalize “nothing” as an object; it formalizes only the relational consequence:
+
 \[
 \operatorname{Adm}(x)
 \Longrightarrow
