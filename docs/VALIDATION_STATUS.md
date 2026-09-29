@@ -17,7 +17,7 @@ Observed public definitions:
 - relational potential: 3;
 - reference realizations: 6;
 - Zero Axis bridge: 2;
-- package-root public exports: 76.
+- package-root public exports: 77.
 
 Static checks found:
 
@@ -31,7 +31,7 @@ Static checks found:
 The current claim ledger contains:
 
 \[
-58
+60
 \]
 
 unique claim IDs.
@@ -63,21 +63,21 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 162 Python test functions:
+The current repository contains 166 Python test functions:
 
 | File | Test functions |
 |---|---:|
 | \`tests/test_algebra.py\` | 12 |
-| \`tests/test_axioms.py\` | 34 |
+| \`tests/test_axioms.py\` | 35 |
 | \`tests/test_closure.py\` | 25 |
 | \`tests/test_independence_witnesses.py\` | 10 |
 | \`tests/test_layering.py\` | 3 |
 | \`tests/test_operations.py\` | 43 |
 | \`tests/test_phase.py\` | 3 |
 | \`tests/test_potential.py\` | 13 |
-| \`tests/test_realizations.py\` | 15 |
+| \`tests/test_realizations.py\` | 18 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **162** |
+| **Total** | **166** |
 
 This is an inventory count, not a runtime result.
 
@@ -191,6 +191,28 @@ projects to the carrier self-relation \(a\to a\), providing the executable count
 
 Occurrence-aware holonomy therefore requires closure in both carrier value and occurrence address. The public API now exposes \`RelationOccurrence\`, \`OccurrenceRelationPath\`, and \`OccurrenceTransportPath\`.
 
+### Occurrence-phase representation audit
+
+Value-level and occurrence-level phase representations are now separate executable interfaces.
+
+\[
+\mathcal H^{\mathrm{val}}_\gamma
+\longrightarrow
+U(1)
+\]
+
+is represented by \`HolonomyPhaseRepresentation\`, while
+
+\[
+\mathcal H^{\mathrm{occ}}_{\widetilde\gamma}
+\longrightarrow
+U(1)
+\]
+
+is represented by \`OccurrenceHolonomyPhaseRepresentation\`.
+
+The occurrence interface rejects carrier-closed but occurrence-open pseudo-loops before phase evaluation. Neither interface is promoted to a universal existence theorem.
+
 ### Singleton-cardinality audit
 
 The exact minimum-cardinality statement is split into two steps:
@@ -263,7 +285,7 @@ The following are intentionally open rather than silently assumed:
 2. **Non-strict monoidal coherence gate** — requires parenthesized tensor objects plus explicit associator/braiding isomorphisms before pentagon/hexagon can be tested.
 3. **Semantic weighting derivation gate** — the kernel evaluates supplied semantic weights but does not derive \(W_\sigma\) from a semantic graph/context.
 4. **Value-holonomy-to-\(U(1)\) existence theorem** — the executable value-level interface exists, but no universal theorem says every RTOFA value holonomy admits such a representation.
-5. **Occurrence-holonomy-to-\(U(1)\) bridge** — occurrence-aware holonomy is implemented, but an occurrence-preserving phase representation remains separate from the current value-level interface.
+5. **Occurrence-holonomy-to-\(U(1)\) existence theorem** — an explicit occurrence-preserving reference interface is now implemented, but no universal theorem says every occurrence-aware holonomy admits such a representation.
 6. **Relational-admissibility reduction gate** — RA0 may be demoted only if \(\operatorname{Adm}\) is explicitly redefined by relational incidence; META0 alone does not imply RA0.
 7. **Relational distinction binding promotion** — RA0_REL_STAR implies RA0_STAR, RA0, and RR1 only because it explicitly binds distinction slots to primitive branch-relation occurrences; this extra content remains unpromoted.
 8. **RA0* promotion** — \(\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}\) is tracked under the strengthened candidate statement; the canonical object-level pair remains \(\mathrm{RA0}+\mathrm{RR1}\) under META0.
