@@ -1,0 +1,137 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Mapping
+
+
+@dataclass(frozen=True)
+class BinaryDistinction:
+    """One admitted non-degenerate distinction hosted by a carrier."""
+
+    host: str
+    left: str
+    right: str
+
+    def __post_init__(self) -> None:
+        if not self.host or not self.left or not self.right:
+            raise ValueError("distinction labels must be non-empty")
+        if self.left == self.right:
+            raise ValueError("a distinction requires two distinct endpoint occurrences")
+
+
+@dataclass(frozen=True)
+class GenerativeRelationModel:
+    """Finite presentation of the strengthened one-axiom candidate RA0*.
+
+    RA0*:
+        Every admitted carrier hosts at least one admitted non-degenerate
+        binary distinction, and the selected endpoint occurrences are
+        themselves admitted carriers.
+
+    The underlying presentation may be finite and cyclic. Recursive
+    refinement is defined on path-labelled occurrences, so cycles in the
+    presentation do not collapse distinct refinement occurrences.
+    """
+
+    admitted: frozenset[str]
+    distinctions: tuple[BinaryDistinction, ...]
+
+    def __post_init__(self) -> None:
+        by_host: dict[str, list[BinaryDistinction]] = {}
+        for d in self.distinctions:
+            by_host.setdefault(d.host, []).append(d)
+        if any(host not in self.admitted for host in by_host):
+            raise ValueError("every distinction host must be admitted")
+        endpoints = {x for d in self.distinctions for x in (d.left, d.right)}
+        if not endpoints <= self.admitted:
+            raise ValueError("distinction endpoints must themselves be admitted")
+
+    @property
+    def distinction_by_host(self) -> Mapping[str, BinaryDistinction]:
+        out: dict[str, BinaryDistinction] = {}
+        for d in self.distinctions:
+            if d.host in out:
+                raise ValueError("reference model allows one distinction per host")
+            out[d.host] = d
+        return out
+
+    def satisfies_ra0_star(self) -> bool:
+        """Every admitted carrier has a non-degenerate admitted distinction."""
+        try:
+            by_host = self.distinction_by_host
+        except ValueError:
+            return False
+        return self.admitted <= set(by_host)
+
+    def unfold(self, root: str, depth: int) -> dict[tuple[int, ...], str]:
+        """Unfold the recursive relation into path-labelled binary occurrences.
+
+        Addresses use -1 for left and +1 for right. The same carrier label may
+        reappear at different addresses; those are distinct relational
+        occurrences in the unfolding.
+        """
+        if root not in self.admitted:
+            raise ValueError("root must be admitted")
+        if depth < 0:
+            raise ValueError("depth must be non-negative")
+        if not self.satisfies_ra0_star():
+            raise ValueError("model does not satisfy RA0*")
+
+        by_host = self.distinction_by_host
+        level: dict[tuple[int, ...], str] = {(): root}
+        all_nodes = dict(level)
+
+        for _ in range(depth):
+            next_level: dict[tuple[int, ...], str] = {}
+            for address, carrier in level.items():
+                distinction = by_host[carrier]
+                next_level[address + (-1,)] = distinction.left
+                next_level[address + (1,)] = distinction.right
+            all_nodes.update(next_level)
+            level = next_level
+        return all_nodes
+
+    def rr1_holds_through_depth(self, root: str, depth: int) -> bool:
+        """Check recursive binary refinement on all occurrences up to depth."""
+        if depth < 0:
+            raise ValueError("depth must be non-negative")
+        if not self.satisfies_ra0_star():
+            return False
+        tree = self.unfold(root, depth + 1)
+        for address in tuple(tree):
+            if len(address) > depth:
+                continue
+            if address + (-1,) not in tree or address + (1,) not in tree:
+                return False
+        return True
+
+
+def two_cycle_ra0_star_model() -> GenerativeRelationModel:
+    """Small cyclic presentation whose unfolding is still a binary tree.
+
+    Underlying labels repeat, but path-labelled occurrences remain distinct.
+    This separates recursive relational structure from ontic novelty.
+    """
+    return GenerativeRelationModel(
+        admitted=frozenset({"a", "b"}),
+        distinctions=(
+            BinaryDistinction("a", "a", "b"),
+            BinaryDistinction("b", "a", "b"),
+        ),
+    )
+
+
+def requires_novelty(
+    model: GenerativeRelationModel,
+    root: str,
+    depth: int,
+) -> bool:
+    """Check the stronger, optional property that every occurrence has a new carrier label.
+
+    This is deliberately *not* part of RA0*. It is provided to show that
+    ontic novelty would require an additional assumption beyond relational
+    recursion.
+    """
+    tree = model.unfold(root, depth)
+    labels = list(tree.values())
+    return len(labels) == len(set(labels))
