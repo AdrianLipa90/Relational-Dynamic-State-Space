@@ -596,3 +596,17 @@ def test_occurrence_address_free_monoid_and_refinement_action_dependencies():
             "DEF_POINT",
         }
     )
+
+
+
+def test_refinement_level_grading_theorem():
+    claims = claim_map()
+
+    assert claims["THM_REFINEMENT_LEVEL_GRADING"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_REFINEMENT_LEVEL_GRADING") == frozenset(
+        {
+            "THM_REFINEMENT_RIGHT_ACTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+        }
+    )
