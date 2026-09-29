@@ -291,3 +291,28 @@ class OccurrenceHolonomyPhaseRepresentation:
         if modulus == 0.0:
             raise ValueError("zero cannot represent a U(1) occurrence phase")
         return value / modulus
+
+
+
+def lift_value_phase_to_occurrence(
+    representation: HolonomyPhaseRepresentation,
+    *,
+    name: str | None = None,
+) -> OccurrenceHolonomyPhaseRepresentation:
+    """Compose a value-level U(1) representation with occurrence forgetting.
+
+    The induced occurrence representation is branch-blind: it depends only on
+    the projected value-level transport path.
+    """
+
+    def phase_map(
+        path: OccurrenceTransportPath,
+        element: TensorScalarElement,
+    ) -> complex:
+        return representation.phase(path.value_transport_path, element)
+
+    return OccurrenceHolonomyPhaseRepresentation(
+        name or f"occurrence-lift:{representation.name}",
+        phase_map,
+        representation.tolerance,
+    )
