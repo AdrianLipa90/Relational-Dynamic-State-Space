@@ -1319,6 +1319,44 @@ a\xrightarrow{r_+}a.
 The two branch-relation occurrences remain distinct by branch slot although
 their source and target carrier labels coincide.
 
+\subsection{Singleton cardinality minimality}
+
+The singleton conclusion separates a lower bound from its attainment.
+
+META0 gives, for every admissible RTOFA model,
+\[
+\boxed{
+|\operatorname{Adm}^{\mathfrak M}|\ge1.
+}
+\]
+This is the cardinality lower bound.
+
+The explicit singleton relational model
+\[
+a\xrightarrow{r_-}a,
+\qquad
+a\xrightarrow{r_+}a
+\]
+satisfies META0 and \(\mathrm{RA0}^{\mathrm{rel}*}\) with
+\[
+|\operatorname{Adm}|=1.
+\]
+Hence the lower bound is attained and
+\[
+\boxed{
+\min_{\mathfrak M\models
+\mathrm{META0}+\mathrm{RA0}^{\mathrm{rel}*}}
+|\operatorname{Adm}^{\mathfrak M}|
+=
+1.
+}
+\]
+
+The claim ledger records the lower bound, the explicit singleton witness, and
+the resulting exact-minimum theorem separately. This is a statement about the
+formal model class, not a physical assertion about how many physical objects
+constitute a universe.
+
 This is a genuine strengthening: it adds distinction-to-relation binding.
 It is executable and theorem-tested but is not promoted as canonical.
 
