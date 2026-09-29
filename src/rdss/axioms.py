@@ -64,9 +64,15 @@ CLAIMS: tuple[Claim, ...] = (
         ("RA0_STAR",),
     ),
     Claim(
+        "PRIM_MODULE",
+        ClaimKind.STRUCTURAL_PRIMITIVE,
+        "Each typed tensor-scalar sector carries an additive K-module structure; the reference kernel uses complex components.",
+    ),
+    Claim(
         "DEF_TS",
         ClaimKind.DEFINITION,
         "Tensor-scalar grading uses A^(p,q) with scalars in rank (0,0).",
+        ("PRIM_MODULE",),
     ),
     Claim(
         "PRIM_PRODUCT",
@@ -93,7 +99,7 @@ CLAIMS: tuple[Claim, ...] = (
         "DEF_REFINEMENT_RESIDUAL",
         ClaimKind.DEFINITION,
         "Delta_F measures failure of exact product preservation under refinement.",
-        ("RR1", "PRIM_PRODUCT"),
+        ("RR1", "PRIM_PRODUCT", "PRIM_MODULE"),
     ),
     Claim(
         "ZA_BRIDGE",
