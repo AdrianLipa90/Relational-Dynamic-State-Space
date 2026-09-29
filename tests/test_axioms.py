@@ -70,13 +70,12 @@ def test_relational_holonomy_is_derived_from_typed_transport():
     )
 
 
-def test_winding_depends_on_explicit_holonomy_phase_representation():
+def test_winding_depends_on_explicit_holonomy_u1_representation():
     claims = claim_map()
     assert claims["DER_WINDING"].kind is ClaimKind.DERIVED
     assert dependency_closure("DER_WINDING") == frozenset(
         {
-            "REF_HOLONOMY_PHASE",
-            "ZA_BRIDGE",
+            "REF_HOLONOMY_U1",
             "DER_HOLONOMY",
             "PRIM_TRANSPORT",
             "DEF_BINARY_REL",
@@ -216,11 +215,25 @@ def test_cp1_recursive_realization_is_reference_layer():
 
 
 
-def test_holonomy_phase_bridge_is_reference_realization():
+def test_holonomy_u1_representation_is_independent_of_zero_axis():
     claims = claim_map()
-    assert claims["REF_HOLONOMY_PHASE"].kind is ClaimKind.REFERENCE_REALIZATION
-    assert dependency_closure("REF_HOLONOMY_PHASE") == frozenset(
+    assert claims["REF_HOLONOMY_U1"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert dependency_closure("REF_HOLONOMY_U1") == frozenset(
         {
+            "DER_HOLONOMY",
+            "PRIM_TRANSPORT",
+            "DEF_BINARY_REL",
+            "PRIM_MODULE",
+        }
+    )
+
+
+def test_zero_axis_lift_is_separate_reference_bridge():
+    claims = claim_map()
+    assert claims["REF_HOLONOMY_ZERO_AXIS"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert dependency_closure("REF_HOLONOMY_ZERO_AXIS") == frozenset(
+        {
+            "REF_HOLONOMY_U1",
             "DER_HOLONOMY",
             "PRIM_TRANSPORT",
             "DEF_BINARY_REL",
