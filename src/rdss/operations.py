@@ -441,3 +441,57 @@ def contraction_map_residual(
     map_then_contract = target_contraction(high_rank_map(element))
     contract_then_map = low_rank_map(source_contraction(element))
     return abs(map_then_contract - contract_then_map)
+
+
+
+def semantic_transport_residual(
+    source_transport: RelationTransport,
+    target_transport: RelationTransport,
+    source_scale_map: SemanticScaleMap,
+    target_scale_map: SemanticScaleMap,
+    element: TensorScalarElement,
+) -> float:
+    """Measure semantic-scale/transport naturality.
+
+    Compares S_target(T_source X) with T_target(S_source X).
+    """
+    transport_then_scale = target_scale_map(source_transport(element))
+    scale_then_transport = target_transport(source_scale_map(element))
+    return abs(transport_then_scale - scale_then_transport)
+
+
+def orbital_transport_residual(
+    transport: RelationTransport,
+    source_orbital: OrbitalAction,
+    target_orbital: OrbitalAction,
+    element: TensorScalarElement,
+) -> float:
+    """Measure transport equivariance under carrier-preserving orbital actions."""
+    transport_then_orbit = target_orbital.act(transport(element))
+    orbit_then_transport = transport(source_orbital.act(element))
+    return abs(transport_then_orbit - orbit_then_transport)
+
+
+def refinement_semantic_residual(
+    source_refinement: BranchRefinementMap,
+    target_refinement: BranchRefinementMap,
+    parent_scale_map: SemanticScaleMap,
+    child_scale_map: SemanticScaleMap,
+    element: TensorScalarElement,
+) -> float:
+    """Measure refinement/semantic-scale naturality."""
+    scale_then_refine = target_refinement(parent_scale_map(element))
+    refine_then_scale = child_scale_map(source_refinement(element))
+    return abs(scale_then_refine - refine_then_scale)
+
+
+def refinement_orbital_residual(
+    refinement: BranchRefinementMap,
+    parent_orbital: OrbitalAction,
+    child_orbital: OrbitalAction,
+    element: TensorScalarElement,
+) -> float:
+    """Measure refinement/orbital equivariance."""
+    orbit_then_refine = refinement(parent_orbital.act(element))
+    refine_then_orbit = child_orbital.act(refinement(element))
+    return abs(orbit_then_refine - refine_then_orbit)
