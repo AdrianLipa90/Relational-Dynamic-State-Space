@@ -5,6 +5,7 @@ from math import acos, isfinite, pi
 from typing import Callable
 
 from .algebra import RelationalPoint, TensorScalarElement
+from .closure import GenerativeRelationModel, RelationalGenerativeModel
 from .phase import wrap_phase
 from .operations import OccurrenceTransportPath, TransportPath
 
@@ -203,6 +204,66 @@ def reference_maximal_cp1_tree(
         raise AssertionError("reference CP1 tree must be maximally distinguished")
     return realization
 
+
+
+
+@dataclass(frozen=True)
+class CP1RelationalUnfolding:
+    """Finite occurrence unfolding paired with local CP1 reference fibres.
+
+    The same underlying carrier label may occur at many distinct path-labelled
+    RelationalPoint addresses. CP1 fibres are indexed by those occurrence
+    addresses, not by the carrier label quotient.
+    """
+
+    occurrence_labels: tuple[tuple[RelationalPoint, str], ...]
+    fibres: CP1RefinementRealization
+
+    def __post_init__(self) -> None:
+        points = [point for point, _ in self.occurrence_labels]
+        if len(points) != len(set(points)):
+            raise ValueError("occurrence addresses must be unique")
+        if set(points) != set(self.fibres.by_carrier):
+            raise ValueError(
+                "occurrence labels and CP1 fibres must use the same address set"
+            )
+        if any(not label for _, label in self.occurrence_labels):
+            raise ValueError("underlying carrier labels must be non-empty")
+
+    @property
+    def label_by_address(self) -> dict[tuple[int, ...], str]:
+        return {
+            point.address: label
+            for point, label in self.occurrence_labels
+        }
+
+    @property
+    def addresses(self) -> frozenset[tuple[int, ...]]:
+        return frozenset(self.label_by_address)
+
+
+def reference_cp1_unfolding(
+    model: GenerativeRelationModel | RelationalGenerativeModel,
+    root: str,
+    depth: int,
+) -> CP1RelationalUnfolding:
+    """Pair one finite recursive unfolding with a local maximal CP1 fibre tree."""
+    if depth < 0:
+        raise ValueError("depth must be non-negative")
+
+    labels = model.unfold(root, depth)
+    root_point = RelationalPoint()
+    fibres = reference_maximal_cp1_tree(depth, root=root_point)
+    occurrence_labels = tuple(
+        sorted(
+            (
+                (RelationalPoint(address), label)
+                for address, label in labels.items()
+            ),
+            key=lambda item: item[0].address,
+        )
+    )
+    return CP1RelationalUnfolding(occurrence_labels, fibres)
 
 
 PhaseMap = Callable[[TransportPath, TensorScalarElement], complex]
