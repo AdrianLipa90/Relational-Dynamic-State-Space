@@ -163,17 +163,26 @@ p\to\{p_-,p_+\}
 \]
 
 Fractality means compatibility across refinement levels, not a requirement of
-perfect geometric self-similarity. If
-\[
-F:\mathcal A_{\sigma,n}^{p,q}
-\to
-\mathcal A_{S(\sigma),n+1}^{p,q}
-\]
-is a refinement map and \(\star\) a relational product, define
+perfect geometric self-similarity. For a branch
+\(\epsilon\in\{-1,+1\}\), use the typed refinement
 \[
 \boxed{
-\Delta_F(X,Y)
-=F(X\star Y)-F(X)\star F(Y).
+F_{\epsilon}:
+\mathcal A_{\sigma,n}^{p,q}(p_{\omega})
+\to
+\mathcal A_{\tau,n+1}^{p,q}(p_{\omega\epsilon}).
+}
+\]
+The target semantic scale \(\tau\) is explicit; the reference realization
+preserves tensor rank and advances the relational carrier by exactly one
+branch. For a relational product \(\star\), define
+\[
+\boxed{
+\Delta_{F_{\epsilon}}(X,Y)
+=
+F_{\epsilon}(X\star Y)
+-
+F_{\epsilon}(X)\star F_{\epsilon}(Y).
 }
 \]
 Exact self-similarity is the special case \(\Delta_F=0\). Non-zero residuals
