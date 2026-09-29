@@ -25,7 +25,8 @@ This matrix records which compatibility laws are implemented as exact checks, re
 | tensor product ↔ strict associativity/unit/supplied braiding | residual diagnostics | IMPLEMENTED |
 | tensor product ↔ non-strict associator/braiding | pentagon/hexagon coherence | OPEN |
 | contraction ↔ tensor product | contraction/tensor identities | OPEN |
-| Zero Axis phase ↔ abstract holonomy | representation/bridge theorem | OPEN |
+| Zero Axis phase ↔ abstract holonomy | explicit U(1) representation interface + finite Omega^{-1} lift | REFERENCE IMPLEMENTED |
+| Zero Axis phase ↔ abstract holonomy | universal/existence bridge theorem | OPEN |
 | CP1/FS realization ↔ recursive refinement | local-fibre tree realization | REFERENCE IMPLEMENTED |
 
 ## Interpretation
