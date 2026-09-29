@@ -165,6 +165,53 @@ The main structural maps are not assumed to preserve one another. The kernel mea
 
 These test, respectively, transport/product compatibility, semantic-scale/product compatibility, orbital/product compatibility, and the refinement/transport naturality square. Vanishing residuals define structure-preserving subclasses; non-zero values remain deformation data.
 
+## Relational deformation potential
+
+A selected set of non-negative residual diagnostics may be collected into a fixed signature
+
+\[
+d(X)=\{d_i(X)\}_{i\in I}.
+\]
+
+A semantic profile assigns non-negative weights \(w_{\sigma i}\) to that same signature. The reference scalar potential is
+
+\[
+\boxed{
+V_R^{(p)}(X\mid\sigma)
+=
+\left(
+\sum_{i\in I}
+w_{\sigma i}\,d_i(X)^p
+\right)^{1/p},
+\qquad
+p\ge 1.
+}
+\]
+
+This is a derived relational deformation scalar, not physical energy.
+
+Holding the residual signature fixed isolates a purely semantic shift:
+
+\[
+\boxed{
+\Delta_{\sigma\to\tau}V_R(X)
+=
+V_R(X\mid\tau)-V_R(X\mid\sigma).
+}
+\]
+
+Therefore the represented algebraic residuals may remain numerically unchanged while semantic weighting changes the scalar relational potential.
+
+For a finite admissible candidate set, the relational attractor set is
+
+\[
+\operatorname{Attr}_R(X)
+=
+\arg\min_T V_R(TX),
+\]
+
+with ties retained rather than broken arbitrarily.
+
 ## Relational transport and abstract holonomy
 
 For a composable relation path
