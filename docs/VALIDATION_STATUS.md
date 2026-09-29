@@ -63,21 +63,21 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 143 Python test functions:
+The current repository contains 146 Python test functions:
 
 | File | Test functions |
 |---|---:|
 | \`tests/test_algebra.py\` | 12 |
 | \`tests/test_axioms.py\` | 31 |
-| \`tests/test_closure.py\` | 16 |
-| \`tests/test_independence_witnesses.py\` | 9 |
+| \`tests/test_closure.py\` | 18 |
+| \`tests/test_independence_witnesses.py\` | 10 |
 | \`tests/test_layering.py\` | 3 |
 | \`tests/test_operations.py\` | 37 |
 | \`tests/test_phase.py\` | 3 |
 | \`tests/test_potential.py\` | 13 |
 | \`tests/test_realizations.py\` | 15 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **143** |
+| **Total** | **146** |
 
 This is an inventory count, not a runtime result.
 
@@ -144,6 +144,14 @@ Thus
 \]
 
 This candidate is executable but remains unpromoted.
+
+The finite non-empty countermodel with one carrier, no primitive relations, and refinement \(a\mapsto(a,a)\) establishes
+
+\[
+\mathrm{RA0}^{*}\not\Rightarrow\mathrm{RA0}.
+\]
+
+Thus RA0* without primitive relation incidence is strictly weaker than RA0_REL_STAR.
 
 ### Typed-zero audit
 
