@@ -11,8 +11,10 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | RA0 | AXIOM | Every admitted observable is incident to at least one primitive relation, as source or target. | — |
 | DEF_POINT | DEFINITION | The minimal algebraic carrier is an unscaled point. | — |
 | DEF_BINARY_REL | DEFINITION | A primitive typed relation is binary: r:a->b. Higher arity is constructed separately. | — |
+| DEF_RELATION_OCCURRENCE | DEFINITION | A relation occurrence is a typed relation value together with source/target occurrence addresses; distinct occurrences may project to the same relation value. | DEF_POINT, DEF_BINARY_REL |
+| DEF_OCCURRENCE_PATH | DEFINITION | An occurrence-aware path is composable in both carrier value and occurrence address, with one carrier consistently assigned to each occurrence address. | DEF_RELATION_OCCURRENCE |
 | DEF_BINARY_DISTINCTION | DEFINITION | A hosted binary distinction has two distinct branch-occurrence slots (-,+); non-degeneracy is occurrence/address-level and does not require different carrier labels. | DEF_POINT |
-| DEF_RELATIONAL_DISTINCTION | DEFINITION | A relationally bound distinction equips the two branch-occurrence slots with explicit primitive branch-relation occurrences; occurrence identity includes the branch slot, so the underlying relation values may coincide. | DEF_BINARY_DISTINCTION, DEF_BINARY_REL |
+| DEF_RELATIONAL_DISTINCTION | DEFINITION | A relationally bound distinction equips the two branch-occurrence slots with explicit primitive branch-relation occurrences; occurrence identity includes the branch slot, so the underlying relation values may coincide. | DEF_BINARY_DISTINCTION, DEF_RELATION_OCCURRENCE |
 | RR1 | AXIOM | At every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction; the rule re-applies at every finite refinement depth. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | RA0_STAR | CANDIDATE AXIOM | Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | RA0_REL_STAR | CANDIDATE AXIOM | Every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_RELATIONAL_DISTINCTION |
@@ -41,7 +43,8 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | DER_SEMANTIC_POTENTIAL_SHIFT | DERIVED | Difference of two semantic potential profiles evaluated on the same residual signature. | DEF_RELATIONAL_POTENTIAL |
 | DER_RELATIONAL_ATTRACTOR | DERIVED | Set of admissible candidates attaining minimum relational potential. | DEF_RELATIONAL_POTENTIAL |
 | PRIM_TRANSPORT | STRUCTURAL PRIMITIVE | Typed transports T_r act along composable binary relations between carrier sectors. | DEF_BINARY_REL, PRIM_MODULE |
-| DER_HOLONOMY | DERIVED | Relational holonomy is transport around a closed composable relation path, measured against the initial state. | PRIM_TRANSPORT |
+| DER_HOLONOMY | DERIVED | Value-level relational holonomy is transport around a carrier-closed composable relation-value path, measured against the initial state. | PRIM_TRANSPORT |
+| DER_OCCURRENCE_HOLONOMY | DERIVED | Occurrence-aware holonomy requires a path closed in both carrier value and occurrence address; carrier closure alone is insufficient. | PRIM_TRANSPORT, DEF_OCCURRENCE_PATH |
 | DEF_TRANSPORT_RESIDUAL | DEFINITION | Delta_T measures failure of direct transport to equal sequential transport. | PRIM_TRANSPORT |
 | DEF_TRANSPORT_PRODUCT_COHERENCE | DEFINITION | Measures failure of T_r(X star Y)=T_r(X) star' T_r(Y). | PRIM_TRANSPORT, PRIM_PRODUCT, PRIM_MODULE |
 | DEF_SCALE_TRANSPORT_COHERENCE | DEFINITION | Measures failure of semantic-scale/transport naturality. | PRIM_SCALE, PRIM_TRANSPORT, PRIM_MODULE |
@@ -58,8 +61,8 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | DEF_REFINEMENT_SCALE_COHERENCE | DEFINITION | Measures refinement/coarse-graining naturality. | PRIM_REFINEMENT_MAP, PRIM_SCALE, PRIM_MODULE |
 | DEF_REFINEMENT_ORBIT_COHERENCE | DEFINITION | Measures refinement/orbital equivariance. | PRIM_REFINEMENT_MAP, PRIM_ORBIT, PRIM_MODULE |
 | ZA_BRIDGE | BRIDGE | The companion Zero Axis model supplies Omega(s)=s/(1-s) and the critical-axis/unit-circle equivalence. | — |
-| REF_HOLONOMY_U1 | REFERENCE REALIZATION | A concrete realization supplies a U(1) representation of closed relational holonomy. | DER_HOLONOMY |
-| DER_WINDING | DERIVED | Topological winding is derived only after a closed relational holonomy has an explicit U(1) phase representation. | REF_HOLONOMY_U1 |
+| REF_HOLONOMY_U1 | REFERENCE REALIZATION | A concrete realization supplies a U(1) representation of closed value-level relational holonomy. | DER_HOLONOMY |
+| DER_WINDING | DERIVED | Topological winding is derived only after a closed value-level relational holonomy has an explicit U(1) phase representation. | REF_HOLONOMY_U1 |
 | REF_HOLONOMY_ZERO_AXIS | REFERENCE REALIZATION | A verified finite U(1) holonomy phase may be lifted through Omega^{-1} to the companion Zero Axis. | REF_HOLONOMY_U1, ZA_BRIDGE |
 
 ## Audit conclusions
@@ -73,11 +76,12 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 7. **The additive K-module structure, tensor-scalar grading, semantic scale, supplied semantic weighting, typed transport, orbital action and relational product are signature choices/structural primitives.** They are not derived from RA0. The additive module is required before differences such as commutators, associators and refinement residuals are meaningful.
 8. **Moiré is derived once invertible orbital actions are present.**
 9. **Refinement residual requires both recursive refinement and a relational product.**
-10. **A U(1) representation of relational holonomy is a reference realization, not a core theorem.**
-11. **Topological winding depends on that U(1) representation and an explicit closure check, not on Zero Axis.**
-12. **Zero Axis is an independent imported bridge.** Its finite inverse projective lift is optional and occurs only after a U(1) phase has already been supplied.
-13. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
-14. **RA0_REL_STAR is a stronger one-object-level-axiom candidate.** It differs from RA0* by explicitly binding binary distinction slots to primitive relation occurrences; only this stronger candidate currently carries explicit theorems to both RA0 and RR1.
+10. **Carrier closure and occurrence closure are distinct.** A self-relation on a repeated carrier label can be carrier-closed while still moving to a different path-labelled occurrence. Branch-aware holonomy therefore requires occurrence closure.
+11. **A U(1) representation of value-level relational holonomy is a reference realization, not a core theorem.**
+12. **Topological winding depends on that U(1) representation and an explicit closure check, not on Zero Axis.**
+13. **Zero Axis is an independent imported bridge.** Its finite inverse projective lift is optional and occurs only after a U(1) phase has already been supplied.
+14. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
+15. **RA0_REL_STAR is a stronger one-object-level-axiom candidate.** It differs from RA0* by explicitly binding binary distinction slots to primitive relation occurrences; only this stronger candidate currently carries explicit theorems to both RA0 and RR1.
 
 ## Canonical foundational stratification
 
