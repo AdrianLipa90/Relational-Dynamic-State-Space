@@ -116,7 +116,7 @@ with
 |\Omega(s)|=1.
 \]
 
-This is an imported **bridge**, not an axiom of the general algebra. Winding and phase residual are derived from phase paths and are not primitive state coordinates.
+This is an imported **bridge**, not an axiom of the general algebra. Phase turn-count and residual are derived from phase paths. A topological winding number is asserted only after the path is explicitly verified closed.
 
 ## Non-assumptions
 
@@ -132,7 +132,7 @@ The kernel does **not** assume:
 - Zero Axis as an axiom of the general algebra;
 - any physical identification without a separate bridge theorem.
 
-See `docs/AXIOM_AUDIT.md` for the typed dependency ledger.
+See `docs/AXIOM_AUDIT.md` for the typed dependency ledger and `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels establishing the current non-implications.
 
 ## Development invariant
 
