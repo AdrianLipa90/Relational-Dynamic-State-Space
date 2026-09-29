@@ -225,6 +225,17 @@ class RelationalGenerativeModel:
     def is_admissible_rtofa_model(self) -> bool:
         return bool(self.admitted)
 
+    def as_ra0_star_model(self) -> GenerativeRelationModel:
+        """Forget explicit branch-relation binding and retain binary distinction.
+
+        This is the executable projection witnessing
+        RA0_REL_STAR => RA0_STAR.
+        """
+        return GenerativeRelationModel(
+            admitted=self.admitted,
+            distinctions=tuple(d.binary for d in self.distinctions),
+        )
+
     def unfold(self, root: str, depth: int) -> dict[tuple[int, ...], str]:
         if root not in self.admitted:
             raise ValueError("root must be admitted")
