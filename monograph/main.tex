@@ -321,8 +321,30 @@ For a supplied braiding \(\beta_{X,Y}\),
 }
 \]
 The zero-defect reference subclass is strict with respect to these checks.
-A non-strict monoidal formulation with explicit associator/braiding
-isomorphisms and pentagon/hexagon laws remains an open extension.
+
+\subsection{Non-strict monoidal coherence gate}
+
+A full non-strict monoidal realization requires more structure than the
+current flattened tensor element stores. In particular, one must retain
+parenthesized tensor objects and explicit isomorphisms
+\[
+\alpha_{X,Y,Z}:
+(X\otimes Y)\otimes Z
+\longrightarrow
+X\otimes(Y\otimes Z),
+\]
+together with
+\[
+\beta_{X,Y}:
+X\otimes Y
+\longrightarrow
+Y\otimes X.
+\]
+Only after these source and target objects are represented explicitly can the
+pentagon and hexagon diagrams be evaluated without ambiguity. The present
+reference kernel therefore does not promote those coherence laws; it records
+strict residuals only. This is an explicit representation gate, not an
+assumption that pentagon or hexagon coherence fails.
 
 A typed relation is written
 \[
