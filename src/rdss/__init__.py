@@ -129,10 +129,12 @@ __all__ = [
     "tensor_braiding_residual",
     "CP1RefinementRealization",
     "reference_maximal_cp1_tree",
+    "HolonomyPhaseRepresentation",
 ]
 
 
 from .realizations import (
     CP1RefinementRealization,
+    HolonomyPhaseRepresentation,
     reference_maximal_cp1_tree,
 )
