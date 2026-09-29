@@ -295,6 +295,11 @@ class OccurrenceTransportPath:
             if transport.relation != occurrence.relation:
                 raise ValueError("transport relation does not match relation occurrence")
 
+    @property
+    def value_transport_path(self) -> TransportPath:
+        """Forget occurrence addresses while retaining the same transports."""
+        return TransportPath(self.transports)
+
     def apply(self, element: TensorScalarElement) -> TensorScalarElement:
         if element.carrier != self.occurrence_path.source:
             raise ValueError("element is not on the occurrence path source carrier")
