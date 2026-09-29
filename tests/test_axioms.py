@@ -203,3 +203,12 @@ def test_tensor_monoidal_coherence_dependencies():
     assert dependency_closure("DEF_TENSOR_MONOIDAL_COHERENCE") == frozenset(
         {"PRIM_TENSOR_PRODUCT", "PRIM_MODULE"}
     )
+
+
+
+def test_cp1_recursive_realization_is_reference_layer():
+    claims = claim_map()
+    assert claims["REF_CP1_REFINEMENT"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert dependency_closure("REF_CP1_REFINEMENT") == frozenset(
+        {"REF_CP1", "RR1", "DEF_POINT", "DEF_BINARY_REL"}
+    )
