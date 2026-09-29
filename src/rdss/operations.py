@@ -527,3 +527,89 @@ def refinement_orbital_residual(
     orbit_then_refine = refinement(parent_orbital.act(element))
     refine_then_orbit = child_orbital.act(refinement(element))
     return abs(orbit_then_refine - refine_then_orbit)
+
+
+
+@dataclass(frozen=True)
+class TensorBraidingRule:
+    """Explicit braiding candidate beta_(X,Y): X tensor Y -> Y tensor X."""
+
+    name: str
+    rule: BinaryElementMap
+
+    def __post_init__(self) -> None:
+        if not self.name.strip():
+            raise ValueError("tensor braiding rule name must be non-empty")
+
+    def __call__(
+        self,
+        left: TensorScalarElement,
+        right: TensorScalarElement,
+    ) -> TensorScalarElement:
+        result = self.rule(left, right)
+        if not isinstance(result, TensorScalarElement):
+            raise TypeError("tensor braiding must return TensorScalarElement")
+        expected_rank = (
+            left.rank[0] + right.rank[0],
+            left.rank[1] + right.rank[1],
+        )
+        if result.rank != expected_rank:
+            raise ValueError("tensor braiding must preserve total tensor rank")
+        return result
+
+
+def reference_tensor_flip(
+    left: TensorScalarElement,
+    right: TensorScalarElement,
+) -> TensorScalarElement:
+    """Reference flip of the flattened Kronecker realization."""
+    xy = reference_tensor_product(left, right)
+    nx = len(left.components)
+    ny = len(right.components)
+    components = tuple(
+        xy.components[i * ny + j]
+        for j in range(ny)
+        for i in range(nx)
+    )
+    return TensorScalarElement(
+        components,
+        xy.rank,
+        xy.carrier,
+        xy.scale,
+    )
+
+
+def tensor_associator_residual(
+    tensor_product: BinaryElementMap,
+    x: TensorScalarElement,
+    y: TensorScalarElement,
+    z: TensorScalarElement,
+) -> float:
+    """Measure strict tensor associativity defect."""
+    left = tensor_product(tensor_product(x, y), z)
+    right = tensor_product(x, tensor_product(y, z))
+    return abs(left - right)
+
+
+def tensor_unit_residual(
+    tensor_product: BinaryElementMap,
+    left_unit: TensorScalarElement,
+    right_unit: TensorScalarElement,
+    element: TensorScalarElement,
+) -> float:
+    """Measure left and right unit defects for explicitly supplied units."""
+    left_defect = tensor_product(left_unit, element) - element
+    right_defect = tensor_product(element, right_unit) - element
+    return max(abs(left_defect), abs(right_defect))
+
+
+def tensor_braiding_residual(
+    tensor_product: BinaryElementMap,
+    braiding: TensorBraidingRule,
+    left: TensorScalarElement,
+    right: TensorScalarElement,
+) -> float:
+    """Measure beta_(X,Y)(X tensor Y) against Y tensor X."""
+    braided = braiding(left, right)
+    reversed_tensor = tensor_product(right, left)
+    return abs(braided - reversed_tensor)
