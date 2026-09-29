@@ -4,10 +4,13 @@ from rdss import RelationalPoint, SemanticScale, TensorScalarElement, TypedRelat
 from rdss.operations import (
     ContractionRule,
     OrbitalAction,
+    RelationPath,
     RelationTransport,
     RelationalProductRule,
+    TransportPath,
     reference_tensor_product,
     relative_moire_action,
+    transport_composition_residual,
 )
 
 
@@ -110,3 +113,106 @@ def test_relational_product_rule_has_no_hidden_associativity_requirement():
     right = product(a, product(b, c))
 
     assert left.components != right.components
+
+
+
+def test_closed_relational_path_has_abstract_holonomy_residual():
+    a = RelationalPoint((-1,))
+    b = RelationalPoint((1,))
+    scale = SemanticScale("object")
+    x = elem(1.0, carrier=a, scale=scale)
+
+    rab = TypedRelation(a, b, "ab")
+    rba = TypedRelation(b, a, "ba")
+
+    def move_to(target, factor):
+        def mapping(z):
+            return TensorScalarElement(
+                tuple(factor * c for c in z.components),
+                z.rank,
+                target,
+                z.scale,
+            )
+        return mapping
+
+    path = TransportPath(
+        (
+            RelationTransport(rab, move_to(b, 1j)),
+            RelationTransport(rba, move_to(a, 1j)),
+        )
+    )
+
+    assert path.relation_path.closed
+    assert path.apply(x).components == (-1.0 + 0j,)
+    assert path.holonomy_residual(x) == pytest.approx(2.0)
+
+
+def test_trivial_closed_transport_has_zero_holonomy_residual():
+    a = RelationalPoint((-1,))
+    b = RelationalPoint((1,))
+    x = elem(2.0, carrier=a)
+
+    rab = TypedRelation(a, b, "ab")
+    rba = TypedRelation(b, a, "ba")
+
+    def relocate(target):
+        return lambda z: TensorScalarElement(z.components, z.rank, target, z.scale)
+
+    path = TransportPath(
+        (
+            RelationTransport(rab, relocate(b)),
+            RelationTransport(rba, relocate(a)),
+        )
+    )
+
+    assert path.holonomy_residual(x) == pytest.approx(0.0)
+
+
+def test_open_relation_path_rejects_holonomy_claim():
+    a = RelationalPoint((-1,))
+    b = RelationalPoint((1,))
+    rab = TypedRelation(a, b, "ab")
+    path = TransportPath(
+        (
+            RelationTransport(
+                rab,
+                lambda z: TensorScalarElement(z.components, z.rank, b, z.scale),
+            ),
+        )
+    )
+
+    assert not path.relation_path.closed
+    with pytest.raises(ValueError):
+        path.holonomy_residual(elem(1.0, carrier=a))
+
+
+def test_transport_composition_residual_measures_functoriality_defect():
+    a = RelationalPoint((-1,))
+    b = RelationalPoint((1,))
+    c = RelationalPoint((-1, -1))
+    scale = SemanticScale("object")
+    x = elem(1.0, carrier=a, scale=scale)
+
+    rab = TypedRelation(a, b, "ab")
+    rbc = TypedRelation(b, c, "bc")
+    rac = TypedRelation(a, c, "ac")
+
+    def move(target, factor):
+        return lambda z: TensorScalarElement(
+            tuple(factor * v for v in z.components),
+            z.rank,
+            target,
+            z.scale,
+        )
+
+    first = RelationTransport(rab, move(b, 2.0))
+    second = RelationTransport(rbc, move(c, 3.0))
+    direct_exact = RelationTransport(rac, move(c, 6.0))
+    direct_defect = RelationTransport(rac, move(c, 5.0))
+
+    assert transport_composition_residual(
+        direct_exact, first, second, x
+    ) == pytest.approx(0.0)
+    assert transport_composition_residual(
+        direct_defect, first, second, x
+    ) == pytest.approx(1.0)
