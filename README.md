@@ -66,6 +66,15 @@ p_\omega\longmapsto\{p_{\omega-},p_{\omega+}\},
 \omega\in\{-1,+1\}^n.
 \]
 
+For each branch \(\epsilon\in\{-1,+1\}\), the executable algebra refinement is typed as
+
+\[
+F_{\epsilon}:
+\mathcal A_{\sigma,n}^{p,q}(p_\omega)
+\to
+\mathcal A_{\tau,n+1}^{p,q}(p_{\omega\epsilon}).
+\]
+
 Exact self-similarity is not assumed. Its failure is measured by
 
 \[
