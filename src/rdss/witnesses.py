@@ -8,7 +8,8 @@ class FiniteRelationModel:
     """Finite witness model for RA0/RR1 dependency checks.
 
     relations are directed primitive relations (source, target).
-    refinements map a relational endpoint to two distinct descendant points.
+    refinements map a relational endpoint to two distinct branch occurrences.
+    The two occurrences may carry the same underlying point label.
     """
 
     points: frozenset[str]
@@ -29,8 +30,6 @@ class FiniteRelationModel:
             seen.add(parent)
             if parent not in self.points or left not in self.points or right not in self.points:
                 raise ValueError("refinement points must belong to the carrier")
-            if left == right:
-                raise ValueError("a distinction requires two distinct descendants")
 
     def satisfies_ex0(self) -> bool:
         """EX0 witness semantics: at least one relational carrier is admitted."""
