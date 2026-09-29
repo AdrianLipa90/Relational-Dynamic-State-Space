@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "relational-dynamic-state-space"
-version = "0.1.0"
-description = "Reference kernel for Relational Dynamic State Space (RDSS)"
+version = "0.2.0"
+description = "General relational tensor-scalar orbital-fractal algebra reference kernel"
 requires-python = ">=3.11"
 authors = [{name = "Adrian Lipa"}]
 license = {text = "See LICENSE.md"}
