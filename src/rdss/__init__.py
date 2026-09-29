@@ -34,6 +34,9 @@ from .operations import (
     RelationTransport,
     RelationalProductRule,
     TransportPath,
+    orbital_composition_residual,
+    orbital_inverse_residual,
+    product_bilinearity_residuals,
     reference_tensor_product,
     relative_moire_action,
     transport_composition_residual,
@@ -82,4 +85,7 @@ __all__ = [
     "GenerativeRelationModel",
     "requires_novelty",
     "two_cycle_ra0_star_model",
+    "orbital_composition_residual",
+    "orbital_inverse_residual",
+    "product_bilinearity_residuals",
 ]
