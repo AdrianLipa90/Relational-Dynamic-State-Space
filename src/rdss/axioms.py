@@ -42,7 +42,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "RR1",
         ClaimKind.AXIOM,
-        "Recursive relational closure: a selected relational endpoint may itself carry a further distinction.",
+        "Recursive relational closure: at every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction, so the rule re-applies at each finite refinement depth.",
         ("DEF_POINT", "DEF_BINARY_REL"),
     ),
     Claim(
