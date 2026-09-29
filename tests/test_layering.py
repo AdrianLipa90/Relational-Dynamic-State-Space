@@ -14,6 +14,7 @@ def test_algebra_core_is_representation_free():
         "wrap_phase",
         "winding_and_residual",
         "closed_path_winding",
+        "finite_zero_axis_lift",
     )
     for name in forbidden:
         assert not hasattr(core, name)
