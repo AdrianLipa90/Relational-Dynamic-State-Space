@@ -30,10 +30,13 @@ from .axioms import (
 from .operations import (
     ContractionRule,
     OrbitalAction,
+    RelationPath,
     RelationTransport,
     RelationalProductRule,
+    TransportPath,
     reference_tensor_product,
     relative_moire_action,
+    transport_composition_residual,
 )
 from .closure import (
     BinaryDistinction,
@@ -76,4 +79,5 @@ __all__ = [
     "GenerativeRelationModel",
     "requires_novelty",
     "two_cycle_ra0_star_model",
+    "RelationPath",
 ]
