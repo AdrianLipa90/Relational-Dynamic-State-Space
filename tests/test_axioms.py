@@ -138,6 +138,9 @@ def test_ra0_rel_star_is_candidate_with_two_explicit_theorems():
         }
     )
 
+    assert claims["THM_RA0_STAR_FROM_RA0_REL_STAR"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_RA0_STAR_FROM_RA0_REL_STAR") == base
+
     assert claims["THM_RA0_FROM_RA0_REL_STAR"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_RA0_FROM_RA0_REL_STAR") == base
 
