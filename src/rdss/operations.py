@@ -138,3 +138,82 @@ def relative_moire_action(
 ) -> TensorScalarElement:
     """Apply M_ij = U_i U_j^{-1} when U_j^{-1} is explicitly available."""
     return left.act(right.invert(element))
+
+
+
+@dataclass(frozen=True)
+class RelationPath:
+    """Composable ordered path of typed binary relations."""
+
+    relations: tuple[TypedRelation, ...]
+
+    def __post_init__(self) -> None:
+        if not self.relations:
+            raise ValueError("relation path must contain at least one relation")
+        for left, right in zip(self.relations, self.relations[1:]):
+            if left.target != right.source:
+                raise ValueError("relation path is not composable")
+
+    @property
+    def source(self):
+        return self.relations[0].source
+
+    @property
+    def target(self):
+        return self.relations[-1].target
+
+    @property
+    def closed(self) -> bool:
+        return self.source == self.target
+
+
+@dataclass(frozen=True)
+class TransportPath:
+    """A relation path together with one transport for each edge."""
+
+    transports: tuple[RelationTransport, ...]
+
+    def __post_init__(self) -> None:
+        if not self.transports:
+            raise ValueError("transport path must contain at least one transport")
+        relations = tuple(t.relation for t in self.transports)
+        RelationPath(relations)
+
+    @property
+    def relation_path(self) -> RelationPath:
+        return RelationPath(tuple(t.relation for t in self.transports))
+
+    def apply(self, element: TensorScalarElement) -> TensorScalarElement:
+        if element.carrier != self.relation_path.source:
+            raise ValueError("element is not on the path source")
+        current = element
+        for transport in self.transports:
+            current = transport(current)
+        return current
+
+    def holonomy_residual(self, element: TensorScalarElement) -> float:
+        """Norm of T_gamma(X)-X for a closed relational path."""
+        path = self.relation_path
+        if not path.closed:
+            raise ValueError("holonomy residual requires a closed relation path")
+        final = self.apply(element)
+        return abs(final - element)
+
+
+def transport_composition_residual(
+    direct: RelationTransport,
+    first: RelationTransport,
+    second: RelationTransport,
+    element: TensorScalarElement,
+) -> float:
+    """Measure failure of direct transport to equal sequential transport."""
+    if first.relation.target != second.relation.source:
+        raise ValueError("sequential transports are not composable")
+    if direct.relation.source != first.relation.source:
+        raise ValueError("direct and sequential transports have different sources")
+    if direct.relation.target != second.relation.target:
+        raise ValueError("direct and sequential transports have different targets")
+
+    direct_value = direct(element)
+    sequential_value = second(first(element))
+    return abs(direct_value - sequential_value)
