@@ -3,6 +3,7 @@ from rdss.axioms import (
     claim_map,
     dependency_closure,
     foundational_axioms,
+    formation_rules,
     validate_dependency_dag,
 )
 
@@ -290,8 +291,15 @@ def test_typed_zero_depends_on_exact_sector_primitives():
 
 
 
-def test_ex0_is_nonvacuity_candidate_not_silently_promoted():
+def test_meta0_is_model_formation_rule_not_object_level_nothing():
     claims = claim_map()
-    assert claims["EX0"].kind is ClaimKind.CANDIDATE_AXIOM
-    assert dependency_closure("EX0") == frozenset({"DEF_POINT"})
+    assert claims["META0"].kind is ClaimKind.FORMATION_RULE
+    assert claims["META0"].depends_on == ()
+    assert tuple(claim.id for claim in formation_rules()) == ("META0",)
+
+
+def test_ex0_is_theorem_of_model_formation_not_extra_object_axiom():
+    claims = claim_map()
+    assert claims["EX0"].kind is ClaimKind.THEOREM
+    assert dependency_closure("EX0") == frozenset({"META0"})
     assert "EX0" not in {claim.id for claim in foundational_axioms()}
