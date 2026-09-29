@@ -63,21 +63,21 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 120 Python test functions:
+The current repository contains 124 Python test functions:
 
 | File | Test functions |
 |---|---:|
 | \`tests/test_algebra.py\` | 12 |
 | \`tests/test_axioms.py\` | 26 |
-| \`tests/test_closure.py\` | 6 |
-| \`tests/test_independence_witnesses.py\` | 3 |
+| \`tests/test_closure.py\` | 8 |
+| \`tests/test_independence_witnesses.py\` | 5 |
 | \`tests/test_layering.py\` | 3 |
 | \`tests/test_operations.py\` | 37 |
 | \`tests/test_phase.py\` | 3 |
 | \`tests/test_potential.py\` | 13 |
 | \`tests/test_realizations.py\` | 13 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **120** |
+| **Total** | **124** |
 
 This is an inventory count, not a runtime result.
 
@@ -107,7 +107,7 @@ The potential remains a scalar relational diagnostic. No potential-to-geometry o
 
 ### Documentation integrity
 
-Static markdown audit found no remaining control-character corruption or bare math delimiters in the audited architecture, coherence, indexed-tensor, relational-potential, semantic-weighting-gate, axiom-audit, and README documents after the raw-string repair.
+Static markdown audit found no remaining control-character corruption or bare math delimiters in the audited architecture, coherence, indexed-tensor, relational-potential, semantic-weighting-gate, independence-witness, axiom-audit, and README documents after the raw-string repair.
 
 ## RUNTIME NOT RUN ON CURRENT HEAD
 
