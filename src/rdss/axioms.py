@@ -52,16 +52,22 @@ CLAIMS: tuple[Claim, ...] = (
         "A primitive typed relation is binary: r:a->b. Higher arity is constructed separately.",
     ),
     Claim(
+        "DEF_BINARY_DISTINCTION",
+        ClaimKind.DEFINITION,
+        "A hosted binary distinction has two ordered branch occurrence slots (-,+). Non-degeneracy is occurrence-level and does not require different carrier labels in the two slots.",
+        ("DEF_POINT",),
+    ),
+    Claim(
         "RR1",
         ClaimKind.AXIOM,
         "Recursive relational closure: at every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction, so the rule re-applies at each finite refinement depth.",
-        ("DEF_POINT", "DEF_BINARY_REL"),
+        ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "REF_CP1",
         ClaimKind.REFERENCE_REALIZATION,
         "A minimal complex binary distinction may be represented by CP^1 with Fubini-Study metric.",
-        ("DEF_POINT", "DEF_BINARY_REL"),
+        ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "REF_CP1_REFINEMENT",
@@ -73,7 +79,7 @@ CLAIMS: tuple[Claim, ...] = (
         "RA0_STAR",
         ClaimKind.CANDIDATE_AXIOM,
         "Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers.",
-        ("DEF_POINT", "DEF_BINARY_REL"),
+        ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "THM_RR1_FROM_RA0_STAR",
