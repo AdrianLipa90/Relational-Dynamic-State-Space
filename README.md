@@ -324,7 +324,7 @@ The kernel does **not** assume:
 - Zero Axis as an axiom of the general algebra;
 - any physical identification without a separate bridge theorem.
 
-See `docs/ARCHITECTURE.md` for module layering, `docs/FOUNDATIONAL_NONVACUITY_GATE.md` for META0/non-vacuity semantics, `docs/RELATIONAL_ADMISSIBILITY_REDUCTION_GATE.md` for the RA0 definitional-reduction question, `docs/RELATIONAL_POTENTIAL.md` for the semantic deformation scalar, `docs/SEMANTIC_WEIGHTING_GATE.md` for the open weight-derivation problem, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary, and `docs/VALIDATION_STATUS.md` for current verification status.
+See `docs/ARCHITECTURE.md` for module layering, `docs/FOUNDATIONAL_NONVACUITY_GATE.md` for META0/non-vacuity semantics, `docs/RELATIONAL_ADMISSIBILITY_REDUCTION_GATE.md` for the RA0 definitional-reduction question, `docs/RELATIONAL_DISTINCTION_BINDING_GATE.md` for the one-object-level-axiom candidate, `docs/RELATIONAL_POTENTIAL.md` for the semantic deformation scalar, `docs/SEMANTIC_WEIGHTING_GATE.md` for the open weight-derivation problem, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary, and `docs/VALIDATION_STATUS.md` for current verification status.
 
 ## Layer architecture
 
@@ -434,4 +434,50 @@ This does **not** mean old RA0 implied RR1. RA0* explicitly adds occurrence-leve
 \mathrm{RA0}^{*}\not\Rightarrow\mathrm{NOVELTY}.
 \]
 
-See `docs/AXIOM_CLOSURE_AUDIT.md`. A separate reduction gate for possibly defining admissibility relationally is in `docs/RELATIONAL_ADMISSIBILITY_REDUCTION_GATE.md`.
+A still stronger executable candidate binds the two distinction slots to explicit primitive branch-relation occurrences:
+
+\[
+r_-:p_\omega\to p_{\omega-},
+\qquad
+r_+:p_\omega\to p_{\omega+}.
+\]
+
+In the ledger this candidate is `RA0_REL_STAR`, written schematically as
+
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}.
+}
+\]
+
+It satisfies two explicit theorem claims:
+
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}\Rightarrow\mathrm{RA0},
+\qquad
+\mathrm{RA0}^{\mathrm{rel}*}\Rightarrow\mathrm{RR1}.
+}
+\]
+
+Hence
+
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}+\mathrm{RR1}.
+}
+\]
+
+Under META0 this is the current executable **one-object-level-axiom candidate**,
+
+\[
+\mathrm{META0}
+\triangleright
+\mathrm{RA0}^{\mathrm{rel}*},
+\]
+
+but it is not promoted: distinction-to-relation binding is additional formal content.
+
+See `docs/AXIOM_CLOSURE_AUDIT.md`. The distinction-to-relation reduction is isolated in `docs/RELATIONAL_DISTINCTION_BINDING_GATE.md`; the separate question of defining admissibility relationally is in `docs/RELATIONAL_ADMISSIBILITY_REDUCTION_GATE.md`.
