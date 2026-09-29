@@ -4,10 +4,21 @@ from dataclasses import dataclass
 from math import acos, isfinite, pi
 from typing import Callable
 
-from .algebra import RelationalPoint, TensorScalarElement
+from .algebra import OccurrenceAddress, RelationalPoint, TensorScalarElement
 from .closure import GenerativeRelationModel, RelationalGenerativeModel
 from .phase import wrap_phase
 from .operations import OccurrenceTransportPath, TransportPath
+
+
+def reference_point_from_occurrence(
+    address: OccurrenceAddress | tuple[int, ...],
+) -> RelationalPoint:
+    """Reference embedding of occurrence addresses into binary point coordinates.
+
+    This is an injective realization map, not an identity of semantic sorts.
+    """
+    occurrence = OccurrenceAddress(address)
+    return RelationalPoint(tuple(occurrence))
 
 
 @dataclass(frozen=True)
@@ -252,12 +263,12 @@ def reference_cp1_unfolding(
         raise ValueError("depth must be non-negative")
 
     labels = model.unfold(root, depth)
-    root_point = RelationalPoint()
+    root_point = reference_point_from_occurrence(OccurrenceAddress())
     fibres = reference_maximal_cp1_tree(depth, root=root_point)
     occurrence_labels = tuple(
         sorted(
             (
-                (RelationalPoint(address), label)
+                (reference_point_from_occurrence(OccurrenceAddress(address)), label)
                 for address, label in labels.items()
             ),
             key=lambda item: item[0].address,
