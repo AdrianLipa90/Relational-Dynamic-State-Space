@@ -113,6 +113,50 @@ The endpoint occurrences are required to carry admitted carrier labels.
 
 This is stronger than the current RA0* because it adds an explicit binding from distinction structure to primitive relational incidence.
 
+## Forgetful projection to RA0*
+
+A relationally bound distinction contains strictly more data than a plain
+binary occurrence distinction. Forgetting only the explicit branch-relation
+binding gives
+
+\[
+U:
+\mathrm{RA0}^{\mathrm{rel}*}\text{-models}
+\longrightarrow
+\mathrm{RA0}^{*}\text{-models}.
+\]
+
+Concretely,
+
+\[
+U(r_-,r_+,p_\omega,p_{\omega-},p_{\omega+})
+=
+(p_\omega,p_{\omega-},p_{\omega+}),
+\]
+
+while preserving the admitted carrier set and the \((-),(+)\) occurrence
+addresses.
+
+The executable model implements this as \`as_ra0_star_model()\`.
+
+Therefore
+
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}^{*}.
+}
+\]
+
+Combined with the existing closure theorem,
+
+\[
+\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1},
+\]
+
+this gives an independent factorization of the RR1 implication.
+
 ## RA0 theorem
 
 Let \(p_\omega\) be admitted.
