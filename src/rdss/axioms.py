@@ -241,8 +241,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "DER_WINDING",
         ClaimKind.DERIVED,
-        "Topological winding is derived only for a closed phase path with a continuous phase lift.",
-        ("ZA_BRIDGE", "DER_HOLONOMY"),
+        "Topological winding is derived only after a closed relational holonomy has an explicit U(1) phase representation.",
+        ("REF_HOLONOMY_PHASE",),
     ),
 )
 
