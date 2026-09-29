@@ -263,3 +263,12 @@ def orbital_composition_residual(
     direct = composed.act(element)
     sequential = left.act(right.act(element))
     return abs(direct - sequential)
+
+
+
+def orbital_identity_residual(
+    identity: OrbitalAction,
+    element: TensorScalarElement,
+) -> float:
+    """Measure U_e X - X for a supplied identity representative."""
+    return abs(identity.act(element) - element)
