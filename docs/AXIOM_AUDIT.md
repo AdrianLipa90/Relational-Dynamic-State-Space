@@ -10,12 +10,16 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | EX0 | THEOREM | Every admissible RTOFA model contains at least one admitted relational carrier. | META0 |
 | RA0 | AXIOM | Every admitted observable is incident to at least one primitive relation, as source or target. | — |
 | DEF_POINT | DEFINITION | The minimal algebraic carrier is an unscaled point. | — |
+| DEF_OCCURRENCE_ADDRESS_SPACE | DEFINITION | Occurrence addresses are finite words over {-1,+1}, with concatenation and the empty word. | DEF_POINT |
+| THM_OCCURRENCE_ADDRESS_FREE_MONOID | THEOREM | The finite binary address space is the free monoid on generators -1 and +1 under concatenation. | DEF_OCCURRENCE_ADDRESS_SPACE |
+| THM_REFINEMENT_RIGHT_ACTION | THEOREM | Appending finite binary words to RelationalPoint addresses defines a right action of the address monoid. | DEF_POINT, DEF_OCCURRENCE_ADDRESS_SPACE |
 | DEF_BINARY_REL | DEFINITION | A primitive typed relation is binary: r:a->b. Higher arity is constructed separately. | — |
 | DEF_RELATION_OCCURRENCE | DEFINITION | A relation occurrence is a typed relation value together with source/target occurrence addresses; distinct occurrences may project to the same relation value. | DEF_POINT, DEF_BINARY_REL |
 | DEF_OCCURRENCE_PATH | DEFINITION | An occurrence-aware path is composable in both carrier value and occurrence address, with one carrier consistently assigned to each occurrence address. | DEF_RELATION_OCCURRENCE |
 | DEF_BINARY_DISTINCTION | DEFINITION | A hosted binary distinction has two distinct branch-occurrence slots (-,+); non-degeneracy is occurrence/address-level and does not require different carrier labels. | DEF_POINT |
 | DEF_RELATIONAL_DISTINCTION | DEFINITION | A relationally bound distinction equips the two branch-occurrence slots with explicit primitive branch-relation occurrences; occurrence identity includes the branch slot, so the underlying relation values may coincide. | DEF_BINARY_DISTINCTION, DEF_RELATION_OCCURRENCE |
 | RR1 | AXIOM | At every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction; the rule re-applies at every finite refinement depth. | DEF_POINT, DEF_BINARY_DISTINCTION |
+| THM_RR1_REALIZES_FINITE_WORDS | THEOREM | Under RR1 every finite binary address word from an admitted root is realized by a path-labelled occurrence. | RR1, DEF_OCCURRENCE_ADDRESS_SPACE |
 | RA0_STAR | CANDIDATE AXIOM | Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | RA0_REL_STAR | CANDIDATE AXIOM | Every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_RELATIONAL_DISTINCTION |
 | THM_RA0_STAR_FROM_RA0_REL_STAR | THEOREM | Forgetting explicit branch-relation binding from an RA0_REL_STAR model yields an RA0_STAR model with the same admitted carriers and branch-occurrence structure. | RA0_REL_STAR |
@@ -89,6 +93,7 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 15. **RA0_REL_STAR is a stronger one-object-level-axiom candidate.** It differs from RA0* by explicitly binding binary distinction slots to primitive relation occurrences; only this stronger candidate currently carries explicit theorems to both RA0 and RR1.
 16. **Carrier cardinality and occurrence cardinality are independent scales.** A singleton carrier presentation can generate \(2^{N+1}-1\) distinct path-labelled occurrences through depth \(N\), and the full finite-word address space is countably infinite.
 17. **Underlying relation-value cardinality can also be minimal.** Two distinct branch occurrences may project to one self-relation value, so the minimal singleton RA0_REL_STAR model simultaneously attains \(|\operatorname{Adm}|=1\) and \(|\operatorname{RelVal}|=1\).
+18. **Occurrence addresses form a free monoid.** The finite words \(\{-1,+1\}^{*}\) compose by concatenation with the empty word as identity; refinement is the corresponding right action, and RR1 realizes every finite word from an admitted root.
 
 ## Canonical foundational stratification
 
