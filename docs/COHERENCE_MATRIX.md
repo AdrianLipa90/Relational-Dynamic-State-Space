@@ -26,11 +26,11 @@ This matrix records which compatibility laws are implemented as exact checks, re
 | tensor product ↔ non-strict associator/braiding | pentagon/hexagon coherence | OPEN |
 | contraction ↔ tensor product | contraction/tensor identities | OPEN |
 | Zero Axis phase ↔ abstract holonomy | representation/bridge theorem | OPEN |
-| CP1/FS realization ↔ recursive refinement | realization compatibility | OPEN |
+| CP1/FS realization ↔ recursive refinement | local-fibre tree realization | REFERENCE IMPLEMENTED |
 
 ## Interpretation
 
-An IMPLEMENTED row does not mean the corresponding law is imposed universally. It means the kernel can measure its defect and recognize the zero-defect subclass.
+An IMPLEMENTED row does not mean the corresponding law is imposed universally. It means the kernel can measure its defect and recognize the zero-defect subclass. REFERENCE IMPLEMENTED means a concrete realization exists and is tested, but it is not promoted to a theorem of the general algebra.
 
 The general principle is
 
