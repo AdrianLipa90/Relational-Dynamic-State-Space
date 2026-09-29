@@ -1,21 +1,15 @@
 """General relational tensor-scalar orbital-fractal algebra reference kernel."""
 
 from .algebra import (
-    CP1State,
-    MinimalDistinction,
-    MoireRotation,
     RelationalPoint,
     SemanticScale,
     SemanticScaleGraph,
     TensorScalarElement,
     TypedRelation,
     TypedZero,
-    ZeroAxisPoint,
     associator,
-    closed_path_winding,
     commutator,
     refinement_residual,
-    winding_and_residual,
     wrap_phase,
 )
 from .axioms import (
@@ -137,7 +131,15 @@ __all__ = [
 
 
 from .realizations import (
+    CP1State,
+    MinimalDistinction,
+    MoireRotation,
     CP1RefinementRealization,
     HolonomyPhaseRepresentation,
     reference_maximal_cp1_tree,
+)
+from .zero_axis import (
+    ZeroAxisPoint,
+    closed_path_winding,
+    winding_and_residual,
 )
