@@ -51,7 +51,7 @@ Contains the scalar diagnostic layer built from explicit residual signatures and
 - \`semantic_potential_shift\`;
 - \`relational_attractor_set\`.
 
-The weighting profile is structural input. It is not inferred automatically from a semantic scale label.
+The weighting profile is structural input. It is not inferred automatically from a semantic scale label. Automatic derivation of weights from a semantic graph/context remains the explicit gate documented in `docs/SEMANTIC_WEIGHTING_GATE.md`.
 
 The core statement is
 
