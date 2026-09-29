@@ -203,3 +203,31 @@ def test_relational_ra0_star_endpoints_must_be_admitted():
                 ),
             ),
         )
+
+
+
+def test_relational_distinction_occurrence_identity_does_not_require_distinct_relation_labels():
+    distinction = RelationalBinaryDistinction(
+        host="a",
+        left="a",
+        right="a",
+        left_relation="r",
+        right_relation="r",
+    )
+
+    left, right = distinction.branch_relation_occurrences
+
+    assert left == (-1, "r", "a", "a")
+    assert right == (1, "r", "a", "a")
+    assert left != right
+
+
+def test_relational_distinction_rejects_empty_relation_label():
+    with pytest.raises(ValueError):
+        RelationalBinaryDistinction(
+            host="a",
+            left="a",
+            right="a",
+            left_relation="",
+            right_relation="r+",
+        )
