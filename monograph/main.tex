@@ -1164,9 +1164,14 @@ dependency is silently promoted to a theorem.
 
 \section{One-axiom closure candidate}
 
-The current canonical foundation uses two explicit axioms,
+The current canonical object-level foundation uses two explicit axioms under
+the prior model-formation rule META0:
 \[
-\boxed{\mathrm{RA0}+\mathrm{RR1}.}
+\boxed{
+\mathrm{META0}
+\;\triangleright\;
+(\mathrm{RA0}+\mathrm{RR1}).
+}
 \]
 The finite independence witnesses show that the original RA0 is too weak to
 force recursive refinement:
@@ -1225,6 +1230,77 @@ is generated. Hence
 }
 \]
 in the path-labelled occurrence semantics.
+
+\subsection{Relationally bound reduction candidate}
+
+The candidate RA0* above supplies recursive distinction structure but does not
+by itself identify a hosted distinction with primitive relation incidence.
+Therefore it proves RR1 but not RA0 in the current language.
+
+Define a stronger relationally bound distinction by equipping the two branch
+occurrence slots with explicit primitive relation occurrences
+\[
+r_-:p_\omega\to p_{\omega-},
+\qquad
+r_+:p_\omega\to p_{\omega+}.
+\]
+
+The corresponding stronger candidate is denoted
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+}
+\]
+and is represented in the executable claim ledger by
+\texttt{RA0\_REL\_STAR}.
+
+Every admitted host now has primitive relational incidence. Therefore
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}.
+}
+\]
+
+The same endpoint-admissibility and finite-depth induction used above gives
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RR1}.
+}
+\]
+
+Consequently
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}+\mathrm{RR1}.
+}
+\]
+
+Together with META0 this yields the candidate reduced stratification
+\[
+\boxed{
+\mathrm{META0}
+\;\triangleright\;
+\mathrm{RA0}^{\mathrm{rel}*}.
+}
+\]
+
+The singleton executable witness is
+\[
+a\xrightarrow{r_-}a,
+\qquad
+a\xrightarrow{r_+}a.
+\]
+The two branch-relation occurrences remain distinct by branch slot although
+their source and target carrier labels coincide.
+
+This is a genuine strengthening: it adds distinction-to-relation binding.
+It is executable and theorem-tested but is not promoted as canonical.
 
 This is a genuine strengthening of RA0, not a proof from its old wording.
 RA0* explicitly adds binary non-degeneracy and endpoint admissibility. Those
