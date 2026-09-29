@@ -375,6 +375,62 @@ The claim ledger separates these steps as:
 
 This is a metatheoretic cardinality statement about the model class, not a claim that one physical object is sufficient for a physical universe.
 
+## Strictness countermodel for RA0 + RR1
+
+The converse implication also fails.
+
+Take one admitted carrier label
+
+\[
+P=\{a\},
+\qquad
+\operatorname{Adm}=\{a\},
+\]
+
+with primitive self-relation
+
+\[
+R=\{(a,a)\}
+\]
+
+and recursive binary occurrence refinement
+
+\[
+D(a)=(a,a).
+\]
+
+This model satisfies META0 non-vacuity, orientation-neutral RA0, RA0*, and recursive RR1.
+
+Now leave the branch slots unbound: there is no declared assignment
+
+\[
+(-)\mapsto o_-,
+\qquad
+(+)\mapsto o_+
+\]
+
+from the distinction slots to primitive relation occurrences.
+
+Then RA0_REL_STAR fails even though RA0 and RR1 hold. Therefore
+
+\[
+\boxed{
+\mathrm{RA0}+\mathrm{RR1}
+\not\Rightarrow
+\mathrm{RA0}^{\mathrm{rel}*}.
+}
+\]
+
+Together with the forward implication,
+
+\[
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}+\mathrm{RR1},
+\]
+
+this proves that the one-object-level-axiom candidate is a genuine strengthening in the expanded language. The reduction in axiom count is purchased by explicit distinction-to-relation binding.
+
 ## Promotion condition
 
 RA0_REL_STAR may replace the current pair RA0+RR1 only if the project explicitly accepts the following semantic identification:
