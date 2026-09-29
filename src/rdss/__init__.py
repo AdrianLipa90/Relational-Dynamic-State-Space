@@ -18,6 +18,29 @@ from .algebra import (
     winding_and_residual,
     wrap_phase,
 )
+from .axioms import (
+    CLAIMS,
+    Claim,
+    ClaimKind,
+    claim_map,
+    dependency_closure,
+    foundational_axioms,
+    validate_dependency_dag,
+)
+from .operations import (
+    ContractionRule,
+    OrbitalAction,
+    RelationTransport,
+    RelationalProductRule,
+    reference_tensor_product,
+    relative_moire_action,
+)
+from .closure import (
+    BinaryDistinction,
+    GenerativeRelationModel,
+    requires_novelty,
+    two_cycle_ra0_star_model,
+)
 
 __all__ = [
     "CP1State",
@@ -44,33 +67,13 @@ __all__ = [
     "foundational_axioms",
     "validate_dependency_dag",
     "ContractionRule",
+    "OrbitalAction",
+    "RelationTransport",
+    "RelationalProductRule",
+    "reference_tensor_product",
+    "relative_moire_action",
+    "BinaryDistinction",
+    "GenerativeRelationModel",
+    "requires_novelty",
+    "two_cycle_ra0_star_model",
 ]
-
-
-from .axioms import (
-    CLAIMS,
-    Claim,
-    ClaimKind,
-    claim_map,
-    dependency_closure,
-    foundational_axioms,
-    validate_dependency_dag,
-)
-
-
-from .operations import (
-    ContractionRule,
-    OrbitalAction,
-    RelationTransport,
-    RelationalProductRule,
-    reference_tensor_product,
-    relative_moire_action,
-)
-
-
-from .closure import (
-    BinaryDistinction,
-    GenerativeRelationModel,
-    requires_novelty,
-    two_cycle_ra0_star_model,
-)
