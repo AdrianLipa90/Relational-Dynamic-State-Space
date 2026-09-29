@@ -226,6 +226,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_RELATION_VALUE_CARDINALITY_LOWER_BOUND", "REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL"),
     ),
     Claim(
+        "THM_RELATION_OCCURRENCE_CARDINALITY_LOWER_BOUND",
+        ClaimKind.THEOREM,
+        "META0 plus RA0_REL_STAR imply at least two branch-relation occurrences.",
+        ("META0", "RA0_REL_STAR"),
+    ),
+    Claim(
         "THM_BINARY_OCCURRENCE_COUNT",
         ClaimKind.THEOREM,
         "A complete binary occurrence unfolding through finite depth N contains exactly 2^(N+1)-1 path-labelled occurrences.",
