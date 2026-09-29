@@ -8,6 +8,7 @@ from rdss.closure import (
     binary_occurrence_count_through_depth,
     finite_word_rank,
     finite_word_unrank,
+    minimal_singleton_ra0_rel_star_model,
     RelationalBinaryDistinction,
     RelationalGenerativeModel,
     requires_novelty,
@@ -353,3 +354,41 @@ def test_finite_word_rank_and_count_fail_closed():
 
     with pytest.raises(ValueError):
         finite_word_unrank(-1)
+
+
+
+def test_minimal_singleton_relation_value_cardinality_is_one():
+    model = minimal_singleton_ra0_rel_star_model()
+
+    assert model.is_admissible_rtofa_model()
+    assert model.satisfies_ra0_rel_star()
+    assert len(model.admitted) == 1
+    assert model.relation_values == frozenset({("a", "a", "r")})
+    assert len(model.relation_values) == 1
+
+
+def test_minimal_singleton_keeps_two_occurrences_over_one_relation_value():
+    model = minimal_singleton_ra0_rel_star_model()
+    left, right = model.branch_relations_at("a")
+
+    assert left != right
+    assert left.branch == -1
+    assert right.branch == 1
+    assert (
+        left.source,
+        left.target,
+        left.relation_label,
+    ) == (
+        right.source,
+        right.target,
+        right.relation_label,
+    ) == ("a", "a", "r")
+    assert len(model.relation_values) == 1
+
+
+def test_nonempty_ra0_rel_star_has_at_least_one_relation_value():
+    model = minimal_singleton_ra0_rel_star_model()
+
+    assert model.admitted
+    assert model.satisfies_ra0_rel_star()
+    assert len(model.relation_values) >= 1
