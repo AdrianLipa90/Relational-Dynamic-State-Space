@@ -24,6 +24,29 @@ def test_binary_distinction_is_occurrence_level_not_label_inequality():
     assert claims["DEF_BINARY_DISTINCTION"].depends_on == ("DEF_POINT",)
 
 
+def test_relation_occurrence_and_occurrence_path_are_explicit_definitions():
+    claims = claim_map()
+
+    assert claims["DEF_RELATION_OCCURRENCE"].kind is ClaimKind.DEFINITION
+    assert set(claims["DEF_RELATION_OCCURRENCE"].depends_on) == {
+        "DEF_POINT",
+        "DEF_BINARY_REL",
+    }
+
+    assert claims["DEF_OCCURRENCE_PATH"].kind is ClaimKind.DEFINITION
+    assert claims["DEF_OCCURRENCE_PATH"].depends_on == (
+        "DEF_RELATION_OCCURRENCE",
+    )
+
+    assert dependency_closure("DEF_OCCURRENCE_PATH") == frozenset(
+        {
+            "DEF_RELATION_OCCURRENCE",
+            "DEF_POINT",
+            "DEF_BINARY_REL",
+        }
+    )
+
+
 def test_cp1_is_not_mislabeled_as_foundational_axiom():
     claims = claim_map()
     assert claims["REF_CP1"].kind is ClaimKind.REFERENCE_REALIZATION
@@ -35,10 +58,15 @@ def test_relationally_bound_distinction_is_explicit_definition():
     assert claims["DEF_RELATIONAL_DISTINCTION"].kind is ClaimKind.DEFINITION
     assert set(claims["DEF_RELATIONAL_DISTINCTION"].depends_on) == {
         "DEF_BINARY_DISTINCTION",
-        "DEF_BINARY_REL",
+        "DEF_RELATION_OCCURRENCE",
     }
     assert dependency_closure("DEF_RELATIONAL_DISTINCTION") == frozenset(
-        {"DEF_BINARY_DISTINCTION", "DEF_BINARY_REL", "DEF_POINT"}
+        {
+            "DEF_BINARY_DISTINCTION",
+            "DEF_RELATION_OCCURRENCE",
+            "DEF_BINARY_REL",
+            "DEF_POINT",
+        }
     )
 
 
@@ -89,6 +117,21 @@ def test_relational_holonomy_is_derived_from_typed_transport():
     )
 
 
+def test_occurrence_holonomy_requires_occurrence_path_semantics():
+    claims = claim_map()
+    assert claims["DER_OCCURRENCE_HOLONOMY"].kind is ClaimKind.DERIVED
+    assert dependency_closure("DER_OCCURRENCE_HOLONOMY") == frozenset(
+        {
+            "PRIM_TRANSPORT",
+            "PRIM_MODULE",
+            "DEF_BINARY_REL",
+            "DEF_OCCURRENCE_PATH",
+            "DEF_RELATION_OCCURRENCE",
+            "DEF_POINT",
+        }
+    )
+
+
 def test_winding_depends_on_explicit_holonomy_u1_representation():
     claims = claim_map()
     assert claims["DER_WINDING"].kind is ClaimKind.DERIVED
@@ -133,6 +176,7 @@ def test_ra0_rel_star_is_candidate_with_two_explicit_theorems():
             "RA0_REL_STAR",
             "DEF_RELATIONAL_DISTINCTION",
             "DEF_BINARY_DISTINCTION",
+            "DEF_RELATION_OCCURRENCE",
             "DEF_BINARY_REL",
             "DEF_POINT",
         }
