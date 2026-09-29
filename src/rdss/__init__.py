@@ -43,8 +43,12 @@ from .operations import (
     reference_tensor_product,
     relative_moire_action,
     semantic_orbital_commutator_residual,
+    semantic_product_residual,
     transport_composition_residual,
+    transport_product_residual,
     typed_refinement_residual,
+    refinement_transport_residual,
+    orbital_product_residual,
 )
 from .closure import (
     BinaryDistinction,
@@ -98,4 +102,8 @@ __all__ = [
     "semantic_orbital_commutator_residual",
     "BranchRefinementMap",
     "typed_refinement_residual",
+    "transport_product_residual",
+    "semantic_product_residual",
+    "orbital_product_residual",
+    "refinement_transport_residual",
 ]
