@@ -145,6 +145,22 @@ def test_ra0_rel_star_is_candidate_with_two_explicit_theorems():
     assert dependency_closure("THM_RR1_FROM_RA0_REL_STAR") == base
 
 
+def test_singleton_foundation_minimality_is_explicit_theorem():
+    claims = claim_map()
+
+    assert claims["THM_SINGLETON_FOUNDATION_MINIMALITY"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_SINGLETON_FOUNDATION_MINIMALITY") == frozenset(
+        {
+            "META0",
+            "RA0_REL_STAR",
+            "DEF_POINT",
+            "DEF_RELATIONAL_DISTINCTION",
+            "DEF_BINARY_DISTINCTION",
+            "DEF_BINARY_REL",
+        }
+    )
+
+
 def test_current_canonical_axioms_remain_ra0_and_rr1_until_promotion():
     ids = {claim.id for claim in foundational_axioms()}
     assert ids == {"RA0", "RR1"}
