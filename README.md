@@ -74,6 +74,16 @@ Exact self-similarity is not assumed. Its failure is measured by
 F(X\star Y)-F(X)\star F(Y).
 \]
 
+## Additive tensor-scalar sectors
+
+Each typed sector carries an additive module structure over a scalar domain \(\mathbb K\):
+
+\[
+(\mathcal A_{\sigma,n}^{p,q},+,0,-,\mathbb K\curvearrowright\mathcal A_{\sigma,n}^{p,q}).
+\]
+
+The abstract algebra does not fix \(\mathbb K=\mathbb C\). The reference kernel uses complex components. This structure is required before commutators, associators, and refinement residuals can be interpreted as differences.
+
 ## Semantic scales
 
 Semantic scale is not assumed to be one real number. It lives in a typed scale structure \(\Sigma\), represented in the reference kernel by an acyclic coarse-graining graph.
