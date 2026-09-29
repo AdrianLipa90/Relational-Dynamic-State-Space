@@ -30,6 +30,7 @@ AUDITED_DOCS = (
     ROOT / "docs" / "INDEPENDENCE_WITNESSES.md",
     ROOT / "docs" / "INDEXED_TENSOR_GATE.md",
     ROOT / "docs" / "MONOIDAL_COHERENCE_GATE.md",
+    ROOT / "docs" / "RELATIONAL_ADMISSIBILITY_REDUCTION_GATE.md",
     ROOT / "docs" / "RELATIONAL_POTENTIAL.md",
     ROOT / "docs" / "SEMANTIC_WEIGHTING_GATE.md",
     ROOT / "docs" / "VALIDATION_STATUS.md",
