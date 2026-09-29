@@ -1556,6 +1556,70 @@ the resulting exact-minimum theorem separately. This is a statement about the
 formal model class, not a physical assertion about how many physical objects
 constitute a universe.
 
+\subsection{Occurrence growth from a singleton carrier}
+
+Carrier cardinality and occurrence cardinality are distinct invariants. Under
+binary recursive refinement, the number of path-labelled occurrences at
+exact depth \(n\) is
+\[
+|V_n|=2^n,
+\qquad
+V_n=\{-1,+1\}^{n}.
+\]
+Hence the total number of occurrences through depth \(N\) is
+\[
+\boxed{
+|V_{\le N}|
+=
+\sum_{n=0}^{N}2^n
+=
+2^{N+1}-1.
+}
+\]
+
+The executable kernel exposes the same formula as
+\texttt{binary\_occurrence\_count\_through\_depth}.
+
+The full address set over all finite depths is
+\[
+V_{<\omega}
+=
+\{-1,+1\}^{<\omega}.
+\]
+It is countably infinite. A constructive bijection with \(\mathbb N\) is
+obtained by encoding \(-1\mapsto0\), \(+1\mapsto1\) and setting
+\[
+\boxed{
+\rho(\omega)
+=
+2^{|\omega|}-1
++
+\operatorname{bin}(\omega).
+}
+\]
+Words are therefore ordered first by length and then by binary index. The
+inverse map is also explicit; the reference kernel implements the pair
+\texttt{finite\_word\_rank}/\texttt{finite\_word\_unrank}.
+
+Thus a singleton carrier model can satisfy
+\[
+|\operatorname{Adm}|=1
+\]
+while its relational occurrence structure grows without bound:
+\[
+\boxed{
+|\operatorname{Adm}|=1
+\quad\not\Rightarrow\quad
+|V_{<\omega}|=1.
+}
+\]
+More precisely,
+\[
+|V_{<\omega}|=\aleph_0.
+\]
+This is a combinatorial statement about path-labelled relational occurrences,
+not a physical infinity claim.
+
 This is a genuine strengthening: it adds distinction-to-relation binding.
 It is executable and theorem-tested but is not promoted as canonical.
 
