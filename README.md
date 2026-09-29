@@ -172,9 +172,52 @@ RR1 realizes every finite prefix of every ideal boundary sequence. It does **not
 }
 \]
 
+### Carrier values and occurrence addresses
+
+RTOFA now keeps two sorts explicit:
+
+\[
+\boxed{
+\text{carrier value }a
+\neq
+\text{occurrence address }\omega.
+}
+\]
+
+A primitive relation value is typed on carriers,
+
+\[
+r:a\to b,
+\]
+
+while branch-aware identity is carried independently by
+
+\[
+\omega\in B^*
+=
+\{-1,+1\}^{*}.
+\]
+
+The same carrier value may therefore occur at many addresses:
+
+\[
+\operatorname{carrier}(\omega_1)
+=
+\operatorname{carrier}(\omega_2)
+=
+a,
+\qquad
+\omega_1\neq\omega_2.
+\]
+
+This is why a self-relation may be closed as a relation value while remaining
+open as a branch occurrence.
+
+See `docs/CARRIER_OCCURRENCE_SEPARATION.md`.
+
 ### Occurrence address monoid
 
-The finite address words form
+The finite occurrence-address words form
 
 \[
 B^*=\{-1,+1\}^{*},
@@ -183,45 +226,41 @@ B^*=\{-1,+1\}^{*},
 the free monoid on the two branch generators under concatenation, with the
 empty word \(\varnothing\) as identity.
 
-For a relational carrier \(p_\omega\), the reference kernel implements
+For \(\omega,u\in B^*\), define
 
 \[
-p_\omega\cdot u
-=
-p_{\omega u}.
+\boxed{
+\omega\cdot u=\omega u.
+}
 \]
 
 Therefore
 
 \[
-p\cdot\varnothing=p,
+\omega\cdot\varnothing=\omega,
 \qquad
-(p\cdot u)\cdot v=p\cdot(uv).
-\]
-
-`RelationalPoint.advance` is this right action. `BranchRefinementMap` is the
-one-generator case. The refinement level is the natural monoid grading:
-
-\[
-\ell(u)=|u|,
-\qquad
-\ell(uv)=\ell(u)+\ell(v),
-\]
-
-and therefore
-
-\[
-\operatorname{level}(p\cdot u)
+(\omega\cdot u)\cdot v
 =
-\operatorname{level}(p)+|u|.
+\omega\cdot(uv).
 \]
 
-RR1 is separate: it asserts that every finite word in this address monoid is
-actually realized by a relational occurrence from an admitted root.
+`OccurrenceAddress.advance` implements this right action and
+`OccurrenceAddress.refine` is the one-generator binary refinement.
+
+The word-length map is the natural grading:
+
+\[
+\ell(\omega)=|\omega|,
+\qquad
+\ell(\omega u)=\ell(\omega)+|u|.
+\]
+
+RR1 is separate: it asserts that every finite address word is actually
+realized by a relational occurrence from an admitted root.
 
 ### Canonical occurrence-tree geometry
 
-The free-word addresses also carry a canonical prefix structure:
+The address monoid carries the prefix order
 
 \[
 u\preceq v
@@ -229,13 +268,13 @@ u\preceq v
 \exists w:\ v=uw.
 \]
 
-The meet is the longest common prefix
+The meet is the longest common prefix,
 
 \[
 u\wedge v=\operatorname{LCP}(u,v),
 \]
 
-and the induced tree distance is
+and the canonical tree distance is
 
 \[
 \boxed{
@@ -245,13 +284,47 @@ d_T(u,v)
 }
 \]
 
-`RelationalPoint.is_prefix_of`, `.meet`, and `.tree_distance` implement these
-objects directly. The finite address set is therefore a rooted
-meet-semilattice equipped with its canonical combinatorial tree metric.
+`OccurrenceAddress.is_prefix_of`, `.meet`, and `.tree_distance`
+implement these objects. Thus the finite occurrence-address space is a rooted
+meet-semilattice with its canonical combinatorial tree metric.
 
 This metric belongs to the occurrence-address layer. It is not a physical
 distance and is not identified with Fubini--Study, Hilbert-space, Minkowski,
 or any later geometric realization.
+
+### Reference embedding into binary point coordinates
+
+Existing projective/refinement realizations retain a binary coordinate on
+`RelationalPoint`. The relation to canonical occurrence addresses is made
+explicit by the reference injection
+
+\[
+\boxed{
+\iota:
+B^*
+\hookrightarrow
+P_{\rm ref},
+\qquad
+\iota(\omega)=p_\omega.
+}
+\]
+
+In code this is `reference_point_from_occurrence`.
+
+This is a realization map, not an identity of types:
+
+\[
+\boxed{
+\operatorname{OccurrenceAddress}
+\not\equiv
+\operatorname{RelationalPoint}.
+}
+\]
+
+`RelationalPoint.advance` and its binary-coordinate helpers are retained for
+reference-realization compatibility, but they are not the canonical source of
+branch-occurrence identity.
+
 ### Minimal underlying relation value
 
 The two branch occurrences do not need two distinct underlying relation
