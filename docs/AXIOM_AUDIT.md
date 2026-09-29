@@ -62,6 +62,8 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | DEF_REFINEMENT_ORBIT_COHERENCE | DEFINITION | Measures refinement/orbital equivariance. | PRIM_REFINEMENT_MAP, PRIM_ORBIT, PRIM_MODULE |
 | ZA_BRIDGE | BRIDGE | The companion Zero Axis model supplies Omega(s)=s/(1-s) and the critical-axis/unit-circle equivalence. | — |
 | REF_HOLONOMY_U1 | REFERENCE REALIZATION | A concrete realization supplies a U(1) representation of closed value-level relational holonomy. | DER_HOLONOMY |
+| REF_OCCURRENCE_HOLONOMY_U1 | REFERENCE REALIZATION | A concrete realization separately supplies a U(1) representation of occurrence-closed relational holonomy. | DER_OCCURRENCE_HOLONOMY |
+| DER_OCCURRENCE_WINDING | DERIVED | Occurrence-level topological winding is derived only after occurrence-closed holonomy has an explicit U(1) phase representation. | REF_OCCURRENCE_HOLONOMY_U1 |
 | DER_WINDING | DERIVED | Topological winding is derived only after a closed value-level relational holonomy has an explicit U(1) phase representation. | REF_HOLONOMY_U1 |
 | REF_HOLONOMY_ZERO_AXIS | REFERENCE REALIZATION | A verified finite U(1) holonomy phase may be lifted through Omega^{-1} to the companion Zero Axis. | REF_HOLONOMY_U1, ZA_BRIDGE |
 
@@ -77,7 +79,7 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 8. **Moiré is derived once invertible orbital actions are present.**
 9. **Refinement residual requires both recursive refinement and a relational product.**
 10. **Carrier closure and occurrence closure are distinct.** A self-relation on a repeated carrier label can be carrier-closed while still moving to a different path-labelled occurrence. Branch-aware holonomy therefore requires occurrence closure.
-11. **A U(1) representation of value-level relational holonomy is a reference realization, not a core theorem.**
+11. **Value-level and occurrence-level U(1) representations are separate reference realizations.** Neither is a universal theorem of the core algebra.
 12. **Topological winding depends on that U(1) representation and an explicit closure check, not on Zero Axis.**
 13. **Zero Axis is an independent imported bridge.** Its finite inverse projective lift is optional and occurs only after a U(1) phase has already been supplied.
 14. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
