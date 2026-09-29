@@ -137,7 +137,7 @@ These are finite model witnesses for the current formal statements only. They do
 If RA0 or RR1 is strengthened later, the witness set must be rerun against the new statement.
 
 
-## W4: RA0 + RR1 without EX0
+## W4: formula-level RA0 + RR1 without EX0
 
 Take the empty finite presentation
 
@@ -169,4 +169,35 @@ Therefore
 }
 \]
 
-This witness isolates non-vacuity from relational admissibility and recursive closure.
+This witness isolates formula-level non-vacuity from relational admissibility and recursive closure. Under META0, this empty presentation is **not** an admissible RTOFA model; it is retained only as a metamathematical vacuity witness.
+
+
+## W5: META0 non-vacuity without RA0
+
+Take
+
+\[
+P=\{a\},
+\qquad
+\operatorname{Adm}=\{a\},
+\qquad
+R=\varnothing.
+\]
+
+The admitted carrier domain is non-empty. Hence the executable non-vacuity component of META0 is satisfied.
+
+However \(a\) is incident to no primitive relation, so RA0 fails.
+
+Therefore, while \(\operatorname{Adm}\) remains a primitive predicate,
+
+\[
+\boxed{
+\mathrm{META0}
+\not\Rightarrow
+\mathrm{RA0}.
+}
+\]
+
+This is why non-vacuity and relational admissibility remain separate layers in the canonical foundation.
+
+If admissibility is later **defined** relationally rather than treated as primitive, this witness no longer applies because the language itself has changed. That possible reduction is documented in \`docs/RELATIONAL_ADMISSIBILITY_REDUCTION_GATE.md\`.
