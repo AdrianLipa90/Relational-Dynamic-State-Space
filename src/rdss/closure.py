@@ -21,6 +21,24 @@ class BinaryDistinction:
             raise ValueError("distinction labels must be non-empty")
 
 
+@dataclass(frozen=True, order=True)
+class BranchRelationOccurrence:
+    """One primitive relation occurrence bound to a binary branch slot."""
+
+    branch: int
+    relation_label: str
+    source: str
+    target: str
+
+    def __post_init__(self) -> None:
+        if self.branch not in (-1, 1):
+            raise ValueError("branch must be -1 or +1")
+        if not self.relation_label.strip():
+            raise ValueError("relation label must be non-empty")
+        if not self.source or not self.target:
+            raise ValueError("relation occurrence endpoints must be non-empty")
+
+
 @dataclass(frozen=True)
 class RelationalBinaryDistinction:
     """Binary occurrence distinction with explicit branch-relation labels."""
@@ -40,11 +58,21 @@ class RelationalBinaryDistinction:
     @property
     def branch_relation_occurrences(
         self,
-    ) -> tuple[tuple[int, str, str, str], tuple[int, str, str, str]]:
-        """Return (branch, relation-label, source, target) occurrence records."""
+    ) -> tuple[BranchRelationOccurrence, BranchRelationOccurrence]:
+        """Return the two typed branch-relation occurrence records."""
         return (
-            (-1, self.left_relation, self.host, self.left),
-            (1, self.right_relation, self.host, self.right),
+            BranchRelationOccurrence(
+                -1,
+                self.left_relation,
+                self.host,
+                self.left,
+            ),
+            BranchRelationOccurrence(
+                1,
+                self.right_relation,
+                self.host,
+                self.right,
+            ),
         )
 
     @property
@@ -273,7 +301,7 @@ class RelationalGenerativeModel:
     def branch_relations_at(
         self,
         host: str,
-    ) -> tuple[tuple[int, str, str, str], tuple[int, str, str, str]]:
+    ) -> tuple[BranchRelationOccurrence, BranchRelationOccurrence]:
         try:
             distinction = self.selected_distinction_by_host[host]
         except KeyError as exc:
