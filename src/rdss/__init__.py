@@ -24,7 +24,10 @@ from .axioms import (
 from .closure import (
     BinaryDistinction,
     GenerativeRelationModel,
+    RelationalBinaryDistinction,
+    RelationalGenerativeModel,
     requires_novelty,
+    singleton_ra0_rel_star_model,
     singleton_ra0_star_model,
     two_cycle_ra0_star_model,
 )
@@ -104,7 +107,10 @@ __all__ = [
     "validate_dependency_dag",
     "BinaryDistinction",
     "GenerativeRelationModel",
+    "RelationalBinaryDistinction",
+    "RelationalGenerativeModel",
     "requires_novelty",
+    "singleton_ra0_rel_star_model",
     "singleton_ra0_star_model",
     "two_cycle_ra0_star_model",
     "BranchRefinementMap",
