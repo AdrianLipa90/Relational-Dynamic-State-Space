@@ -407,3 +407,37 @@ def refinement_transport_residual(
     via_parent_then_refine = target_refinement(parent_transport(element))
     via_refine_then_child = child_transport(source_refinement(element))
     return abs(via_parent_then_refine - via_refine_then_child)
+
+
+
+def tensor_map_residual(
+    mapping: ElementMap,
+    source_tensor_product: BinaryElementMap,
+    target_tensor_product: BinaryElementMap,
+    x: TensorScalarElement,
+    y: TensorScalarElement,
+) -> float:
+    """Measure Phi(X tensor Y) - Phi(X) tensor' Phi(Y).
+
+    The supplied mapping may be a transport, semantic scale map, refinement
+    map, orbital map adapter, or another typed unary morphism.
+    """
+    direct = mapping(source_tensor_product(x, y))
+    mapped_tensor = target_tensor_product(mapping(x), mapping(y))
+    return abs(direct - mapped_tensor)
+
+
+def contraction_map_residual(
+    high_rank_map: ElementMap,
+    low_rank_map: ElementMap,
+    source_contraction: ContractionRule,
+    target_contraction: ContractionRule,
+    element: TensorScalarElement,
+) -> float:
+    """Measure naturality of contraction under a supplied typed map.
+
+    Compares C_target(Phi_high X) with Phi_low(C_source X).
+    """
+    map_then_contract = target_contraction(high_rank_map(element))
+    contract_then_map = low_rank_map(source_contraction(element))
+    return abs(map_then_contract - contract_then_map)
