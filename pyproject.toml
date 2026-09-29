@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "relational-dynamic-state-space"
+version = "0.1.0"
+description = "Reference kernel for Relational Dynamic State Space (RDSS)"
+requires-python = ">=3.11"
+authors = [{name = "Adrian Lipa"}]
+license = {text = "See LICENSE.md"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
