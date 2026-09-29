@@ -8,7 +8,8 @@ The repository is intentionally split so that the general relational algebra is 
 
 Contains only representation-independent algebraic objects and diagnostics:
 
-- \`RelationalPoint\`;
+- \`RelationalPoint\` for carrier/reference-coordinate values;
+- \`OccurrenceAddress\` for canonical path-labelled occurrence identity;
 - \`SemanticScale\` and \`SemanticScaleGraph\`;
 - \`TensorScalarElement\`;
 - \`TypedZero\`;
@@ -16,6 +17,8 @@ Contains only representation-independent algebraic objects and diagnostics:
 - commutator, associator, and generic refinement residual.
 
 The core contains no CP1 state, Bloch/Fubini-Study object, scalar-angle Moiré coordinate, U(1) winding, Zero Axis coordinate, spacetime, or physical law.
+
+Carrier values and occurrence addresses are separate semantic sorts. `RelationalPoint` may retain a binary reference coordinate for compatibility, but branch-aware occurrence identity is carried by `OccurrenceAddress`. See `docs/CARRIER_OCCURRENCE_SEPARATION.md`.
 
 ## Layer 1 — Structural operators and coherence
 
@@ -79,10 +82,12 @@ V_R.
 
 Separates axioms, definitions, structural primitives, derived constructions, reference realizations, bridges, candidate axioms, and theorems.
 
-The current canonical foundational set is
+The current canonical foundational stratification is
 
 \[
-\mathrm{RA0}+\mathrm{RR1}.
+\mathrm{META0}
+\;\triangleright\;
+(\mathrm{RA0}+\mathrm{RR1}).
 \]
 
 \(\mathrm{RA0}^{*}\) remains a stronger candidate closure statement.
