@@ -24,6 +24,10 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 | DEF_TENSOR_MONOIDAL_COHERENCE | DEFINITION | Tests strict associativity, explicit unit, and supplied braiding by residuals. | PRIM_TENSOR_PRODUCT, PRIM_MODULE |
 | DEF_CONTRACTION_MAP_COHERENCE | DEFINITION | Measures contraction naturality under a supplied typed map. | PRIM_CONTRACTION, PRIM_MODULE |
 | PRIM_SCALE | STRUCTURAL PRIMITIVE | Semantic scale is a typed partial-order/category-like structure. | — |
+| PRIM_SEMANTIC_WEIGHTING | STRUCTURAL PRIMITIVE | A supplied semantic profile assigns non-negative weights to a fixed named residual signature. | PRIM_SCALE |
+| DEF_RELATIONAL_POTENTIAL | DEFINITION | The relational deformation potential is the weighted p-functional induced by that profile. | PRIM_SEMANTIC_WEIGHTING |
+| DER_SEMANTIC_POTENTIAL_SHIFT | DERIVED | Difference of two semantic potential profiles evaluated on the same residual signature. | DEF_RELATIONAL_POTENTIAL |
+| DER_RELATIONAL_ATTRACTOR | DERIVED | Set of admissible candidates attaining minimum relational potential. | DEF_RELATIONAL_POTENTIAL |
 | PRIM_TRANSPORT | STRUCTURAL PRIMITIVE | Typed transports T_r act along composable binary relations between carrier sectors. | DEF_BINARY_REL, PRIM_MODULE |
 | DER_HOLONOMY | DERIVED | Relational holonomy is transport around a closed composable relation path, measured against the initial state. | PRIM_TRANSPORT |
 | DEF_TRANSPORT_RESIDUAL | DEFINITION | Delta_T measures failure of direct transport to equal sequential transport. | PRIM_TRANSPORT |
@@ -51,7 +55,7 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 1. **RA0 and RR1 are independent foundational assumptions in the current kernel.** RA0 requires relational admissibility; it does not force recursive refinement.
 2. **Binary relation typing is explicit.** It is part of the signature rather than a hidden consequence of RA0.
 3. **CP1 is not an axiom.** It is the chosen minimal complex binary projective realization. A non-CP1 model can still satisfy RA0 and RR1.
-4. **The additive K-module structure, tensor-scalar grading, semantic scale, typed transport, orbital action and relational product are signature choices/structural primitives.** They are not derived from RA0. The additive module is required before differences such as commutators, associators and refinement residuals are meaningful.
+4. **The additive K-module structure, tensor-scalar grading, semantic scale, supplied semantic weighting, typed transport, orbital action and relational product are signature choices/structural primitives.** They are not derived from RA0. The additive module is required before differences such as commutators, associators and refinement residuals are meaningful.
 5. **Moiré is derived once invertible orbital actions are present.**
 6. **Refinement residual requires both recursive refinement and a relational product.**
 7. **A U(1) representation of relational holonomy is a reference realization, not a core theorem.**
@@ -257,3 +261,53 @@ Thus two different open questions remain distinguishable:
 2. whether and why a chosen application should additionally bind that phase to the companion Zero Axis.
 
 Neither statement is promoted to a universal theorem of the core algebra.
+
+
+## Relational deformation potential boundary
+
+Let
+
+\[
+D(X)=\{d_i(X)\}_{i\in I},
+\qquad
+d_i(X)\ge 0
+\]
+
+be an explicit named residual signature. A semantic weighting profile supplies
+
+\[
+W_\sigma=\{w_{\sigma i}\}_{i\in I},
+\qquad
+w_{\sigma i}\ge 0.
+\]
+
+The current kernel does **not** infer \(W_\sigma\) from the label \(\sigma\). The weighting law is explicit structural input.
+
+For \(p\ge1\),
+
+\[
+V_R^{(p)}(X\mid\sigma)
+=
+\left(
+\sum_{i\in I}
+w_{\sigma i}d_i(X)^p
+\right)^{1/p}.
+\]
+
+Holding \(D(X)\) fixed while changing only the supplied weighting defines the semantic potential shift
+
+\[
+\Delta_{\sigma\to\tau}V_R(X)
+=
+V_R(X\mid\tau)-V_R(X\mid\sigma).
+\]
+
+For a finite admissible candidate set \(\mathcal C\),
+
+\[
+\operatorname{Attr}_R(\mathcal C)
+=
+\operatorname*{arg\,min}_{c\in\mathcal C}V_R(c).
+\]
+
+This construction is a relational scalar diagnostic. It is not identified with energy, mass, gravity, or metric curvature by the general algebra. A potential-to-geometry map would be a separate realization/bridge.
