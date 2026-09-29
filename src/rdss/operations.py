@@ -10,6 +10,38 @@ ElementMap = Callable[[TensorScalarElement], TensorScalarElement]
 BinaryElementMap = Callable[[TensorScalarElement, TensorScalarElement], TensorScalarElement]
 
 
+@dataclass(frozen=True)
+class TensorProductRule:
+    """Typed tensor product rule.
+
+    Concrete rules choose carrier/semantic output typing, but tensor rank must
+    add as (p,q)+(r,s)=(p+r,q+s).
+    """
+
+    name: str
+    rule: BinaryElementMap
+
+    def __post_init__(self) -> None:
+        if not self.name.strip():
+            raise ValueError("tensor product rule name must be non-empty")
+
+    def __call__(
+        self,
+        left: TensorScalarElement,
+        right: TensorScalarElement,
+    ) -> TensorScalarElement:
+        result = self.rule(left, right)
+        if not isinstance(result, TensorScalarElement):
+            raise TypeError("tensor product must return TensorScalarElement")
+        expected_rank = (
+            left.rank[0] + right.rank[0],
+            left.rank[1] + right.rank[1],
+        )
+        if result.rank != expected_rank:
+            raise ValueError("tensor product must add tensor ranks")
+        return result
+
+
 def reference_tensor_product(
     left: TensorScalarElement,
     right: TensorScalarElement,
