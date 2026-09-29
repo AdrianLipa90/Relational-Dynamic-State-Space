@@ -504,3 +504,27 @@ def test_ra0_rr1_do_not_imply_ra0_rel_star():
             "DEF_BINARY_DISTINCTION",
         }
     )
+
+
+
+def test_binary_occurrence_growth_and_countability_theorems():
+    claims = claim_map()
+
+    assert claims["THM_BINARY_OCCURRENCE_COUNT"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_BINARY_OCCURRENCE_COUNT") == frozenset(
+        {
+            "RR1",
+            "DEF_POINT",
+            "DEF_BINARY_DISTINCTION",
+        }
+    )
+
+    assert claims["THM_FINITE_WORD_OCCURRENCE_COUNTABILITY"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_FINITE_WORD_OCCURRENCE_COUNTABILITY") == frozenset(
+        {
+            "THM_BINARY_OCCURRENCE_COUNT",
+            "RR1",
+            "DEF_POINT",
+            "DEF_BINARY_DISTINCTION",
+        }
+    )
