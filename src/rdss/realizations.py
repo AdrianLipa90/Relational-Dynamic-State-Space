@@ -227,6 +227,8 @@ class HolonomyPhaseRepresentation:
     ) -> complex:
         if not path.relation_path.closed:
             raise ValueError("phase representation requires closed relational holonomy")
+        if element.carrier != path.relation_path.source:
+            raise ValueError("phase representation element is not on the path source")
         value = complex(self.phase_map(path, element))
         if not (isfinite(value.real) and isfinite(value.imag)):
             raise ValueError("phase representation must be finite")
