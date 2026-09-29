@@ -375,6 +375,54 @@ The claim ledger separates these steps as:
 
 This is a metatheoretic cardinality statement about the model class, not a claim that one physical object is sufficient for a physical universe.
 
+## Minimal relation-occurrence cardinality
+
+META0 plus RA0_REL_STAR imply that at least one admitted host exists. Every hosted relationally bound binary distinction contains the two branch slots
+
+\[
+(-),(+),
+\]
+
+so every such model has at least two branch-relation occurrences:
+
+\[
+\boxed{
+|\operatorname{RelOcc}|\ge 2.
+}
+\]
+
+The minimal singleton model attains that bound with
+
+\[
+o_-=(-,r,a,a),
+\qquad
+o_+=(+,r,a,a).
+\]
+
+Hence
+
+\[
+\boxed{
+\min |\operatorname{RelOcc}|=2.
+}
+\]
+
+Combining the exact carrier, relation-value, and relation-occurrence minima gives
+
+\[
+\boxed{
+\left(
+|\operatorname{Adm}|,
+|\operatorname{RelVal}|,
+|\operatorname{RelOcc}|
+\right)
+=
+(1,1,2).
+}
+\]
+
+This is a metatheoretic minimality statement for the candidate model class, not a physical particle claim.
+
 ## Strictness countermodel for RA0 + RR1
 
 The converse implication also fails.
