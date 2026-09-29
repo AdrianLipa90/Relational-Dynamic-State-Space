@@ -156,6 +156,26 @@ def test_occurrence_u1_representation_and_winding_dependencies():
     assert dependency_closure("DER_OCCURRENCE_WINDING") == occurrence_base
 
 
+def test_branch_blind_occurrence_phase_lift_dependencies():
+    claims = claim_map()
+
+    assert claims["DER_BRANCH_BLIND_OCCURRENCE_PHASE"].kind is ClaimKind.DERIVED
+    assert dependency_closure("DER_BRANCH_BLIND_OCCURRENCE_PHASE") == frozenset(
+        {
+            "REF_HOLONOMY_U1",
+            "DER_HOLONOMY",
+            "REF_OCCURRENCE_HOLONOMY_U1",
+            "DER_OCCURRENCE_HOLONOMY",
+            "PRIM_TRANSPORT",
+            "PRIM_MODULE",
+            "DEF_BINARY_REL",
+            "DEF_OCCURRENCE_PATH",
+            "DEF_RELATION_OCCURRENCE",
+            "DEF_POINT",
+        }
+    )
+
+
 def test_winding_depends_on_explicit_holonomy_u1_representation():
     claims = claim_map()
     assert claims["DER_WINDING"].kind is ClaimKind.DERIVED
