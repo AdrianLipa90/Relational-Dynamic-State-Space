@@ -154,9 +154,24 @@ p\cdot\varnothing=p,
 \]
 
 `RelationalPoint.advance` is this right action. `BranchRefinementMap` is the
-one-generator case. RR1 is separate: it asserts that every finite word in
-this address monoid is actually realized by a relational occurrence from an
-admitted root.
+one-generator case. The refinement level is the natural monoid grading:
+
+\[
+\ell(u)=|u|,
+\qquad
+\ell(uv)=\ell(u)+\ell(v),
+\]
+
+and therefore
+
+\[
+\operatorname{level}(p\cdot u)
+=
+\operatorname{level}(p)+|u|.
+\]
+
+RR1 is separate: it asserts that every finite word in this address monoid is
+actually realized by a relational occurrence from an admitted root.
 ### Minimal underlying relation value
 
 The two branch occurrences do not need two distinct underlying relation
