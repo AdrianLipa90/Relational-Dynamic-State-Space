@@ -1,77 +1,137 @@
 # Finite independence witnesses
 
-The dependency ledger is supplemented by explicit finite models.
+The dependency ledger is supplemented by explicit finite models. These witnesses use finite cyclic presentations when necessary so recursive closure does not get confused with ontically new carrier labels.
 
 ## W1: RA0 without RR1
 
 Carrier:
-[
-{a,b}.
-]
+
+\[
+\{a,b\}.
+\]
 
 Admitted points:
-[
-{a,b}.
-]
+
+\[
+\{a,b\}.
+\]
 
 Primitive relations:
-[
-a	o b,qquad b	o a.
-]
 
-No refinement map is supplied.
+\[
+a\to b,
+\qquad
+b\to a.
+\]
 
-Therefore every admitted point participates as the source of a relation, so RA0 holds, while recursive relational closure RR1 fails.
+No refinement rule is supplied.
+
+Therefore every admitted point is the source of a relation, so RA0 holds, while recursive relational closure RR1 fails immediately.
 
 Hence, in the current formal language,
 
-[
-oxed{mathrm{RA0}
-otRightarrowmathrm{RR1}}.
-]
+\[
+\boxed{
+\mathrm{RA0}\not\Rightarrow\mathrm{RR1}.
+}
+\]
 
 ## W2: RR1 without RA0
 
-Carrier:
-[
-{a,b,q,a_-,a_+,b_-,b_+}.
-]
+Use the finite carrier
 
-Relations:
-[
-a	o b,qquad b	o a.
-]
+\[
+\{a,b,q\},
+\]
 
-Refinements:
-[
-amapsto(a_-,a_+),qquad
-bmapsto(b_-,b_+).
-]
+with all three points admitted.
 
-The additional admitted point (q) has no outgoing relation. Therefore RR1 holds on every primitive relation endpoint, while RA0 fails at (q).
+Primitive relations are
 
-Thus
+\[
+a\to b,
+\qquad
+b\to a.
+\]
 
-[
-oxed{mathrm{RR1}
-otRightarrowmathrm{RA0}}.
-]
+Recursive refinements are given cyclically by
+
+\[
+a\mapsto(a,b),
+\qquad
+b\mapsto(a,b).
+\]
+
+Starting from either primitive relation endpoint, every reachable refinement descendant is again \(a\) or \(b\), and both have a supplied non-degenerate refinement. Thus RR1 is recursively closed.
+
+The admitted point \(q\), however, has no outgoing primitive relation. Therefore RA0 fails at \(q\).
+
+Hence
+
+\[
+\boxed{
+\mathrm{RR1}\not\Rightarrow\mathrm{RA0}.
+}
+\]
+
+The cyclic presentation is deliberate: RR1 concerns recursive relational closure, not novelty of carrier labels.
 
 ## W3: RA0 + RR1 without CP1
 
-Take the same finite binary relation/refinement structure but provide no complex amplitudes, no projective quotient, and no Fubini-Study metric.
+Use the finite carrier
 
-Both RA0 and RR1 hold. The CP1 layer is absent.
+\[
+\{a,b\},
+\]
+
+with primitive relations
+
+\[
+a\to b,
+\qquad
+b\to a,
+\]
+
+and cyclic refinements
+
+\[
+a\mapsto(a,b),
+\qquad
+b\mapsto(a,b).
+\]
+
+Both RA0 and recursively closed RR1 hold.
+
+Now provide no complex amplitudes, no projective quotient, no CP1 state, and no Fubini--Study metric. The projective realization is absent while the relational axioms still hold.
 
 Therefore
 
-[
-oxed{mathrm{RA0}+mathrm{RR1}
-otRightarrow CP^1}.
-]
+\[
+\boxed{
+\mathrm{RA0}+\mathrm{RR1}
+\not\Rightarrow
+CP^1.
+}
+\]
 
 This establishes why CP1 is classified as a **reference realization**, not as a foundational axiom or a theorem of RA0+RR1.
 
+## One-level refinement is not RR1
+
+A model in which
+
+\[
+a\mapsto(a_-,a_+),
+\qquad
+b\mapsto(b_-,b_+)
+\]
+
+but none of \(a_-,a_+,b_-,b_+\) can refine does **not** satisfy recursive RR1 under the current witness semantics.
+
+This regression case is tested explicitly.
+
 ## Scope of these witnesses
 
-These are finite model witnesses for the current formal statements only. They do not prove independence from every possible stronger reformulation of the relational axiom. If RA0 is strengthened later, the witness set must be rerun against the new statement.
+These are finite model witnesses for the current formal statements only. They do not prove independence from every possible stronger reformulation of the relational axiom.
+
+If RA0 or RR1 is strengthened later, the witness set must be rerun against the new statement.
