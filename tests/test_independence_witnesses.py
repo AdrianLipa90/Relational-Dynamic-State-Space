@@ -74,3 +74,14 @@ def test_meta0_nonvacuity_does_not_force_ra0_when_adm_is_primitive():
     assert model.is_admissible_rtofa_model()
     assert model.satisfies_ex0()
     assert not model.satisfies_ra0()
+
+
+
+def test_ra0_accepts_target_only_relational_incidence():
+    model = FiniteRelationModel(
+        points=frozenset({"a", "b"}),
+        admitted=frozenset({"b"}),
+        relations=frozenset({("a", "b")}),
+    )
+
+    assert model.satisfies_ra0()
