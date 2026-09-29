@@ -274,3 +274,16 @@ def test_semantic_potential_shift_and_attractor_are_derived():
             "PRIM_SCALE",
         }
     )
+
+
+
+def test_typed_zero_depends_on_exact_sector_primitives():
+    claims = claim_map()
+    assert claims["DEF_TYPED_ZERO"].kind is ClaimKind.DEFINITION
+    assert dependency_closure("DEF_TYPED_ZERO") == frozenset(
+        {
+            "PRIM_MODULE",
+            "DEF_POINT",
+            "PRIM_SCALE",
+        }
+    )
