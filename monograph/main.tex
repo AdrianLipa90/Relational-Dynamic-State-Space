@@ -305,6 +305,68 @@ Semantic scaling and Moir\'e action need not commute. The mixed residual
 \]
 is therefore a legitimate observable of the algebra rather than an error.
 
+\section{Relational transport and abstract holonomy}
+
+Let
+\[
+\gamma=(r_1,\ldots,r_m)
+\]
+be a composable path of typed relations
+\[
+r_k:a_{k-1}\to a_k.
+\]
+The corresponding path transport is
+\[
+\boxed{
+T_{\gamma}
+=
+T_{r_m}\circ\cdots\circ T_{r_1}.
+}
+\]
+This definition requires no metric geometry and no phase group.
+
+If the relation path is closed,
+\[
+a_m=a_0,
+\]
+then the relational holonomy operator is the return transport
+\[
+\boxed{
+\mathcal H_{\gamma}:=T_{\gamma}.
+}
+\]
+Its state-dependent residual in an additive normed reference sector is
+\[
+\boxed{
+\varepsilon_{\gamma}(X)
+=
+\|\mathcal H_{\gamma}X-X\|.
+}
+\]
+Thus a closed relation path may return to the same carrier while changing the
+transported algebraic state.
+
+When both a direct transport and a two-step transport are available, define
+the composition defect
+\[
+\boxed{
+\Delta_T(r_2,r_1;X)
+=
+\left\|
+T_{r_2\circ r_1}X
+-
+T_{r_2}\bigl(T_{r_1}X\bigr)
+\right\|.
+}
+\]
+The zero-defect case is functorial transport on that composition. A non-zero
+value records path/composition dependence rather than being discarded as an
+implementation error.
+
+This abstract holonomy is part of the relational core. A phase or
+\(U(1)\) holonomy is a later representation of this more general transport
+structure.
+
 \section{Zero Axis and the phase realization}
 
 The companion Zero Axis model supplies the projective coordinate
@@ -505,6 +567,8 @@ Derived diagnostics and structures include
 \[
 \boxed{
 \operatorname{Orb},\quad
+\mathcal H_{\gamma},\quad
+\Delta_T,\quad
 W,\quad
 \varepsilon,\quad
 \Delta_F,\quad
