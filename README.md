@@ -215,7 +215,7 @@ The kernel does **not** assume:
 - Zero Axis as an axiom of the general algebra;
 - any physical identification without a separate bridge theorem.
 
-See `docs/AXIOM_AUDIT.md` for the typed dependency ledger and `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels establishing the current non-implications.
+See `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, and `docs/COHERENCE_MATRIX.md` for implemented and open compatibility laws.
 
 ## Development invariant
 
