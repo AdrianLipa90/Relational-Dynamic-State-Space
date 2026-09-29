@@ -36,6 +36,7 @@ from .operations import (
     RelationTransport,
     RelationalProductRule,
     SemanticScaleMap,
+    TensorProductRule,
     TransportPath,
     orbital_composition_residual,
     orbital_identity_residual,
@@ -118,4 +119,5 @@ __all__ = [
     "orbital_transport_residual",
     "refinement_semantic_residual",
     "refinement_orbital_residual",
+    "TensorProductRule",
 ]
