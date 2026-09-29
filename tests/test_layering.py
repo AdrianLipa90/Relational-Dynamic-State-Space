@@ -27,6 +27,7 @@ def test_representation_ownership_is_explicit():
     assert hasattr(phase, "winding_and_residual")
     assert hasattr(phase, "closed_path_winding")
     assert hasattr(zero_axis, "ZeroAxisPoint")
+    assert hasattr(zero_axis, "finite_zero_axis_lift")
 
 
 def test_public_api_reexports_without_changing_layer_ownership():
@@ -37,3 +38,4 @@ def test_public_api_reexports_without_changing_layer_ownership():
     assert rdss.winding_and_residual is phase.winding_and_residual
     assert rdss.closed_path_winding is phase.closed_path_winding
     assert rdss.ZeroAxisPoint is zero_axis.ZeroAxisPoint
+    assert rdss.finite_zero_axis_lift is zero_axis.finite_zero_axis_lift
