@@ -114,6 +114,12 @@ CLAIMS: tuple[Claim, ...] = (
         "Admissible orbital actions U_g may act on algebra elements.",
     ),
     Claim(
+        "DEF_SCALE_ORBIT_RESIDUAL",
+        ClaimKind.DEFINITION,
+        "The semantic-scale/orbital commutator residual measures order dependence of coarse-graining and orbital action.",
+        ("PRIM_SCALE", "PRIM_ORBIT", "PRIM_MODULE"),
+    ),
+    Claim(
         "DEF_ORBITAL_COHERENCE",
         ClaimKind.DEFINITION,
         "Orbital inverse and composition residuals diagnose exact inverse and action-law coherence.",
