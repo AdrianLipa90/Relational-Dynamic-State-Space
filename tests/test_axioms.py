@@ -146,3 +146,13 @@ def test_cross_operation_coherence_dependencies_are_explicit():
             "PRIM_MODULE",
         }
     )
+
+
+
+def test_tensor_and_contraction_coherence_dependencies():
+    assert dependency_closure("DEF_TENSOR_MAP_COHERENCE") == frozenset(
+        {"PRIM_TENSOR_PRODUCT", "PRIM_MODULE"}
+    )
+    assert dependency_closure("DEF_CONTRACTION_MAP_COHERENCE") == frozenset(
+        {"PRIM_CONTRACTION", "PRIM_MODULE"}
+    )
