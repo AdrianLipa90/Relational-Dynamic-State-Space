@@ -52,6 +52,18 @@ CLAIMS: tuple[Claim, ...] = (
         "A primitive typed relation is binary: r:a->b. Higher arity is constructed separately.",
     ),
     Claim(
+        "DEF_RELATION_OCCURRENCE",
+        ClaimKind.DEFINITION,
+        "A relation occurrence is a typed relation value together with source and target occurrence addresses; distinct occurrences may project to the same relation value.",
+        ("DEF_POINT", "DEF_BINARY_REL"),
+    ),
+    Claim(
+        "DEF_OCCURRENCE_PATH",
+        ClaimKind.DEFINITION,
+        "An occurrence-aware relation path is composable in both carrier value and occurrence address, with a consistent carrier assigned to each occurrence address.",
+        ("DEF_RELATION_OCCURRENCE",),
+    ),
+    Claim(
         "DEF_BINARY_DISTINCTION",
         ClaimKind.DEFINITION,
         "A hosted binary distinction has two ordered branch occurrence slots (-,+). Non-degeneracy is occurrence-level and does not require different carrier labels in the two slots.",
@@ -61,7 +73,7 @@ CLAIMS: tuple[Claim, ...] = (
         "DEF_RELATIONAL_DISTINCTION",
         ClaimKind.DEFINITION,
         "A relationally bound binary distinction consists of two branch-relation occurrences from the host occurrence to the left/right endpoint occurrences; occurrence identity includes the branch slot, so endpoint carrier labels and even underlying relation values may coincide.",
-        ("DEF_BINARY_DISTINCTION", "DEF_BINARY_REL"),
+        ("DEF_BINARY_DISTINCTION", "DEF_RELATION_OCCURRENCE"),
     ),
     Claim(
         "RR1",
@@ -231,8 +243,14 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "DER_HOLONOMY",
         ClaimKind.DERIVED,
-        "Relational holonomy is transport around a closed composable relation path, measured against the starting state.",
+        "Value-level relational holonomy is transport around a carrier-closed composable relation-value path, measured against the starting state.",
         ("PRIM_TRANSPORT",),
+    ),
+    Claim(
+        "DER_OCCURRENCE_HOLONOMY",
+        ClaimKind.DERIVED,
+        "Occurrence-aware holonomy requires a transport path that is closed in both carrier value and occurrence address; carrier closure alone is insufficient.",
+        ("PRIM_TRANSPORT", "DEF_OCCURRENCE_PATH"),
     ),
     Claim(
         "DEF_TRANSPORT_RESIDUAL",
