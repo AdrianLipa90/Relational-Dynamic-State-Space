@@ -389,6 +389,26 @@ def test_cp1_recursive_realization_is_reference_layer():
 
 
 
+
+def test_singleton_cp1_occurrence_realization_dependencies():
+    claims = claim_map()
+    assert claims["REF_SINGLETON_CP1_OCCURRENCE_REALIZATION"].kind is ClaimKind.REFERENCE_REALIZATION
+    closure = dependency_closure("REF_SINGLETON_CP1_OCCURRENCE_REALIZATION")
+    assert {
+        "REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL",
+        "REF_CP1_REFINEMENT",
+        "META0",
+        "RA0_REL_STAR",
+        "RR1",
+        "REF_CP1",
+        "DEF_POINT",
+        "DEF_BINARY_DISTINCTION",
+        "DEF_RELATIONAL_DISTINCTION",
+        "DEF_RELATION_OCCURRENCE",
+        "DEF_BINARY_REL",
+    } <= closure
+
+
 def test_holonomy_u1_representation_is_independent_of_zero_axis():
     claims = claim_map()
     assert claims["REF_HOLONOMY_U1"].kind is ClaimKind.REFERENCE_REALIZATION
