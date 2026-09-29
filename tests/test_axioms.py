@@ -209,6 +209,7 @@ def test_singleton_foundation_minimality_splits_lower_bound_and_attainability():
             "DEF_POINT",
             "DEF_RELATIONAL_DISTINCTION",
             "DEF_BINARY_DISTINCTION",
+            "DEF_RELATION_OCCURRENCE",
             "DEF_BINARY_REL",
         }
     )
@@ -223,6 +224,7 @@ def test_singleton_foundation_minimality_splits_lower_bound_and_attainability():
             "DEF_POINT",
             "DEF_RELATIONAL_DISTINCTION",
             "DEF_BINARY_DISTINCTION",
+            "DEF_RELATION_OCCURRENCE",
             "DEF_BINARY_REL",
         }
     )
