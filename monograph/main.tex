@@ -1235,7 +1235,27 @@ in the path-labelled occurrence semantics.
 
 The candidate RA0* above supplies recursive distinction structure but does not
 by itself identify a hosted distinction with primitive relation incidence.
-Therefore it proves RR1 but not RA0 in the current language.
+This separation is witnessed explicitly by
+\[
+P=\{a\},
+\qquad
+\operatorname{Adm}=\{a\},
+\qquad
+R=\varnothing,
+\qquad
+a\mapsto(a,a).
+\]
+The admitted carrier hosts the required binary occurrence distinction, so the
+current RA0* condition holds, but \(a\) is incident to no primitive relation.
+Hence
+\[
+\boxed{
+\mathrm{RA0}^{*}\not\Rightarrow\mathrm{RA0}.
+}
+\]
+The witness is non-empty, so the failure is not due to vacuous truth.
+
+Therefore RA0* proves RR1 but not RA0 in the current language.
 
 Define a stronger relationally bound distinction by equipping the two branch
 occurrence slots with explicit primitive relation occurrences
