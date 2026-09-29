@@ -301,6 +301,11 @@ A common semantic quotient of two types exists only when there is a common
 admissible upper scale. Thus semantic compatibility is part of the algebraic
 type system rather than an after-the-fact annotation.
 
+The reference kernel implements these as executable typed maps. A scale map
+must be admitted by the semantic scale graph, consume an element at its source
+scale, and return an element at its declared target scale while preserving the
+carrier and tensor rank in the reference realization.
+
 \section{Orbital action and relative Moir\'e structure}
 
 Let \(G\) index admissible orbital operators
@@ -351,13 +356,21 @@ In a scalar-angle realization this reduces to the wrapped relative angle
 =\operatorname{wrap}_{2\pi}(\theta_i-\theta_j).
 \]
 
-Semantic scaling and Moir\'e action need not commute. The mixed residual
+Semantic scaling and orbital action need not commute. The executable mixed
+residual is
 \[
 \boxed{
-[M,S]=MS-SM
+\Delta_{S,U}(X)
+=
+\|U(SX)-S(UX)\|.
 }
 \]
-is therefore a legitimate observable of the algebra rather than an error.
+For a relative Moir\'e operator this specializes schematically to
+\[
+[M,S]=MS-SM.
+\]
+A non-zero value is therefore a legitimate observable of the algebra rather
+than an implementation error.
 
 \section{Relational transport and abstract holonomy}
 
