@@ -563,6 +563,41 @@ def test_relation_value_cardinality_minimality():
 
 
 
+def test_relation_occurrence_cardinality_minimality():
+    claims = claim_map()
+
+    base = frozenset(
+        {
+            "META0",
+            "RA0_REL_STAR",
+            "DEF_POINT",
+            "DEF_RELATIONAL_DISTINCTION",
+            "DEF_BINARY_DISTINCTION",
+            "DEF_RELATION_OCCURRENCE",
+            "DEF_BINARY_REL",
+        }
+    )
+
+    assert claims["THM_RELATION_OCCURRENCE_CARDINALITY_LOWER_BOUND"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_RELATION_OCCURRENCE_CARDINALITY_LOWER_BOUND") == base
+
+    assert claims["THM_TWO_RELATION_OCCURRENCE_MINIMALITY"].kind is ClaimKind.THEOREM
+    occurrence_min_closure = dependency_closure("THM_TWO_RELATION_OCCURRENCE_MINIMALITY")
+    assert {
+        "THM_RELATION_OCCURRENCE_CARDINALITY_LOWER_BOUND",
+        "REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL",
+        *base,
+    } <= occurrence_min_closure
+
+    assert claims["THM_MINIMAL_RELATIONAL_ATOM_SIGNATURE"].kind is ClaimKind.THEOREM
+    atom_closure = dependency_closure("THM_MINIMAL_RELATIONAL_ATOM_SIGNATURE")
+    assert {
+        "THM_SINGLETON_FOUNDATION_MINIMALITY",
+        "THM_SINGLE_RELATION_VALUE_MINIMALITY",
+        "THM_TWO_RELATION_OCCURRENCE_MINIMALITY",
+    } <= atom_closure
+
+
 def test_occurrence_address_free_monoid_and_refinement_action_dependencies():
     claims = claim_map()
 
