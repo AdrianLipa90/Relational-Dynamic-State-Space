@@ -71,7 +71,7 @@ The reference implementation fails closed if:
 
 ## Pure semantic deformation
 
-If the numerical residual signature \(D(X)\) is held fixed while the semantic profile changes from \(\sigma\) to \(\tau\), define
+If the numerical residual signature \(D(X)\) and the potential order \(p\) are held fixed while the semantic profile changes from \(\sigma\) to \(\tau\), define
 
 \[
 \boxed{
@@ -85,7 +85,7 @@ V_R^{(p)}(X\mid\sigma).
 
 Thus the same represented algebraic state and the same measured residuals can acquire a different scalar diagnostic solely because the supplied semantic weighting changed.
 
-This is the formal version of a semantic scalar deformation.
+Changing \(p\) is not classified as a pure semantic shift.\n\nThis is the formal version of a semantic scalar deformation.
 
 ## Relational attractor set
 
