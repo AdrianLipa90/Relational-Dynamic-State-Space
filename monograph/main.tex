@@ -952,17 +952,17 @@ Likewise contraction naturality is measured by
 Zero residual defines the corresponding structure-preserving subclass.
 Non-zero residual remains explicit deformation data.
 
-\section{Relational transport and abstract holonomy}
+\section{Relational transport and two closure notions}
 
 Let
 \[
 \gamma=(r_1,\ldots,r_m)
 \]
-be a composable path of typed relations
+be a composable path of typed relation values
 \[
 r_k:a_{k-1}\to a_k.
 \]
-The corresponding path transport is
+The corresponding transport is
 \[
 \boxed{
 T_{\gamma}
@@ -970,31 +970,121 @@ T_{\gamma}
 T_{r_m}\circ\cdots\circ T_{r_1}.
 }
 \]
-This definition requires no metric geometry and no phase group.
 
-If the relation path is closed,
-\[
-a_m=a_0,
-\]
-then the relational holonomy operator is the return transport
+\subsection{Value-level closure}
+
+The relation-value path is carrier-closed when
 \[
 \boxed{
-\mathcal H_{\gamma}:=T_{\gamma}.
+a_m=a_0.
 }
 \]
-Its state-dependent residual in an additive normed reference sector is
+For such a path define the value-level return transport
 \[
 \boxed{
-\varepsilon_{\gamma}(X)
+\mathcal H^{\mathrm{val}}_{\gamma}:=T_{\gamma}
+}
+\]
+and the state-dependent residual
+\[
+\boxed{
+\varepsilon^{\mathrm{val}}_{\gamma}(X)
 =
-\|\mathcal H_{\gamma}X-X\|.
+\left\|
+\mathcal H^{\mathrm{val}}_{\gamma}X-X
+\right\|.
 }
 \]
-Thus a closed relation path may return to the same carrier while changing the
-transported algebraic state.
+
+This closure notion forgets path-labelled occurrence identity. It is therefore
+sufficient for ordinary relation-value holonomy, but not for branch-aware
+refinement holonomy.
+
+\subsection{Occurrence-level closure}
+
+An occurrence-aware relation step carries both the relation value and its
+source/target occurrence addresses:
+\[
+\tilde r_k
+=
+\bigl(
+r_k,
+\omega_{k-1},
+\omega_k
+\bigr).
+\]
+The occurrence-aware path is
+\[
+\widetilde\gamma
+=
+(\tilde r_1,\ldots,\tilde r_m),
+\]
+with carrier composability and occurrence composability required
+simultaneously.
+
+Occurrence closure is
+\[
+\boxed{
+\omega_m=\omega_0.
+}
+\]
+With a consistent occurrence-to-carrier assignment, this implies carrier
+closure. The converse is false.
+
+The minimal counterexample is the singleton refinement step
+\[
+a_{\varnothing}
+\xrightarrow{r}
+a_{-}.
+\]
+After forgetting occurrence address, its relation value is
+\[
+r:a\to a,
+\]
+so the value path is carrier-closed. But
+\[
+\varnothing\neq(-),
+\]
+hence the occurrence path is open.
+
+Therefore
+\[
+\boxed{
+\text{carrier-closed}
+\not\Rightarrow
+\text{occurrence-closed}.
+}
+\]
+
+Only when both close do we define branch-aware occurrence holonomy:
+\[
+\boxed{
+\mathcal H^{\mathrm{occ}}_{\widetilde\gamma}
+:=
+T_{\widetilde\gamma},
+\qquad
+\omega_m=\omega_0.
+}
+\]
+Its residual is
+\[
+\boxed{
+\varepsilon^{\mathrm{occ}}_{\widetilde\gamma}(X)
+=
+\left\|
+\mathcal H^{\mathrm{occ}}_{\widetilde\gamma}X-X
+\right\|.
+}
+\]
+
+The executable kernel represents these two levels separately:
+\texttt{RelationPath}/\texttt{TransportPath} at value level, and
+\texttt{RelationOccurrence}/\texttt{OccurrenceRelationPath}/
+\texttt{OccurrenceTransportPath} at occurrence level.
+
+\subsection{Transport composition defect}
 
 When both a direct transport and a two-step transport are available, define
-the composition defect
 \[
 \boxed{
 \Delta_T(r_2,r_1;X)
@@ -1010,28 +1100,24 @@ The zero-defect case is functorial transport on that composition. A non-zero
 value records path/composition dependence rather than being discarded as an
 implementation error.
 
-This abstract holonomy is part of the relational core. A phase or
-\(U(1)\) holonomy is a later representation of this more general transport
-structure.
-
 \section{Phase representation of relational holonomy}
 
-Abstract relational holonomy is part of the relational core, but it need not
-be a phase. A concrete realization may supply an explicit representation
+The current reference phase interface is attached to value-level,
+carrier-closed holonomy:
 \[
 \boxed{
 \chi:
-\mathcal H_{\gamma}
+\mathcal H^{\mathrm{val}}_{\gamma}
 \longmapsto
 u_{\gamma}\in U(1).
 }
 \]
-The existence of \(\chi\) is an additional realization statement; it is not
-a theorem of the core algebra.
+The existence of \(\chi\) is an additional realization statement; it is not a
+theorem of the core algebra.
 
-Once a closed relational path has a verified \(U(1)\) representative, phase
-quantities are derived in that representation. For a closed phase loop
-\(\widetilde\gamma\subset U(1)\),
+Once a closed value-level holonomy has a verified \(U(1)\) representative,
+phase quantities may be derived in that representation. For a closed phase
+loop \(\widetilde\gamma\subset U(1)\),
 \[
 \boxed{
 W(\widetilde\gamma)
@@ -1040,20 +1126,26 @@ W(\widetilde\gamma)
 \oint_{\widetilde\gamma}u^{-1}\,du.
 }
 \]
-Likewise a phase residual may be computed from an accumulated phase lift.
 Neither winding nor phase residual is stored as an independent coordinate of
 the base algebra element.
 
-Thus the first reference chain is only
+The implemented reference chain is therefore
 \[
 \boxed{
-\text{closed relational holonomy}
+\text{carrier-closed value holonomy}
 \xrightarrow{\ \chi\ }
 U(1).
 }
 \]
-What remains open is a universal or existence theorem specifying when a
-general RTOFA holonomy necessarily admits such a \(U(1)\) representation.
+
+A phase representation that preserves occurrence identity,
+\[
+\mathcal H^{\mathrm{occ}}_{\widetilde\gamma}
+\longrightarrow
+U(1),
+\]
+is a separate open binding problem. It must not be inferred merely from the
+existing value-level phase representation.
 
 \section{Zero Axis bridge}
 
