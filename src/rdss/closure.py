@@ -315,6 +315,19 @@ class RelationalGenerativeModel:
         return True
 
     @property
+    def relation_occurrences(self) -> tuple[BranchRelationOccurrence, ...]:
+        """All explicit branch-relation occurrences in the presentation.
+
+        Occurrence identity includes the branch slot, so two occurrences may
+        project to the same underlying relation value.
+        """
+        return tuple(
+            occurrence
+            for distinction in self.distinctions
+            for occurrence in distinction.branch_relation_occurrences
+        )
+
+    @property
     def relation_values(self) -> frozenset[tuple[str, str, str]]:
         """Underlying primitive relation values after forgetting branch slots."""
         return frozenset(
