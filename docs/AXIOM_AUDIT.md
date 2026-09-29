@@ -39,6 +39,12 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | THM_RELATION_OCCURRENCE_CARDINALITY_LOWER_BOUND | THEOREM | META0 plus RA0_REL_STAR force at least two branch-relation occurrences. | META0, RA0_REL_STAR |
 | THM_TWO_RELATION_OCCURRENCE_MINIMALITY | THEOREM | The minimal singleton witness attains the branch-occurrence lower bound, so the exact minimum is 2. | THM_RELATION_OCCURRENCE_CARDINALITY_LOWER_BOUND, REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL |
 | THM_MINIMAL_RELATIONAL_ATOM_SIGNATURE | THEOREM | The exact minimal cardinality triple is one admitted carrier, one underlying relation value, and two branch-relation occurrences. | THM_SINGLETON_FOUNDATION_MINIMALITY, THM_SINGLE_RELATION_VALUE_MINIMALITY, THM_TWO_RELATION_OCCURRENCE_MINIMALITY |
+| THM_BINARY_OCCURRENCE_COUNT | THEOREM | A complete binary occurrence unfolding through finite depth N contains exactly 2^(N+1)-1 path-labelled occurrences. | RR1, DEF_BINARY_DISTINCTION |
+| THM_FINITE_WORD_OCCURRENCE_COUNTABILITY | THEOREM | The full finite-word occurrence address space {-1,+1}^{<omega} is countably infinite. | THM_BINARY_OCCURRENCE_COUNT |
+| DEF_OCCURRENCE_BOUNDARY | DEFINITION | The ideal occurrence boundary is {-1,+1}^N; its elements are infinite branch sequences, not additional finite carriers. | DEF_OCCURRENCE_ADDRESS_SPACE |
+| THM_BOUNDARY_CYLINDER_COUNT | THEOREM | At prefix depth n, the ideal boundary decomposes into exactly 2^n prefix cylinders. | DEF_OCCURRENCE_BOUNDARY |
+| THM_OCCURRENCE_BOUNDARY_CONTINUUM | THEOREM | The ideal occurrence boundary has cardinality 2^aleph_0 via its bijection with P(N). | DEF_OCCURRENCE_BOUNDARY |
+| THM_RR1_REALIZES_BOUNDARY_PREFIX_CHAINS | THEOREM | RR1 realizes every finite prefix of every ideal boundary path but does not assert an infinite-address limit carrier. | RR1, DEF_OCCURRENCE_BOUNDARY |
 | THM_RR1_FROM_RA0_STAR | THEOREM | RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences. | RA0_STAR |
 | REF_CP1 | REFERENCE REALIZATION | A minimal complex binary distinction may be represented by two projectively distinct CP1 states with Fubini-Study metric. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | REF_CP1_REFINEMENT | REFERENCE REALIZATION | Recursive refinement is realized as a tree of local CP1/FS fibres indexed by relational carriers. | REF_CP1, RR1 |
