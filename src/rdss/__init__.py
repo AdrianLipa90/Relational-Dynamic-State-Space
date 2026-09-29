@@ -1,6 +1,7 @@
 """General relational tensor-scalar orbital-fractal algebra reference kernel."""
 
 from .algebra import (
+    OccurrenceAddress,
     RelationalPoint,
     SemanticScale,
     SemanticScaleGraph,
@@ -100,6 +101,7 @@ from .realizations import (
 from .zero_axis import ZeroAxisPoint, finite_zero_axis_lift
 
 __all__ = [
+    "OccurrenceAddress",
     "RelationalPoint",
     "SemanticScale",
     "SemanticScaleGraph",
