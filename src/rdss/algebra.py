@@ -188,6 +188,51 @@ class TensorScalarElement:
     def is_scalar(self) -> bool:
         return self.rank == (0, 0)
 
+    def _require_same_sector(self, other: "TensorScalarElement") -> None:
+        if not isinstance(other, TensorScalarElement):
+            raise TypeError("operation requires TensorScalarElement")
+        if (
+            self.rank != other.rank
+            or self.carrier != other.carrier
+            or self.scale != other.scale
+        ):
+            raise ValueError("additive operations require the same typed sector")
+        if len(self.components) != len(other.components):
+            raise ValueError("additive operations require equal component dimensions")
+
+    def __add__(self, other: "TensorScalarElement") -> "TensorScalarElement":
+        self._require_same_sector(other)
+        return TensorScalarElement(
+            tuple(a + b for a, b in zip(self.components, other.components)),
+            self.rank,
+            self.carrier,
+            self.scale,
+        )
+
+    def __sub__(self, other: "TensorScalarElement") -> "TensorScalarElement":
+        self._require_same_sector(other)
+        return TensorScalarElement(
+            tuple(a - b for a, b in zip(self.components, other.components)),
+            self.rank,
+            self.carrier,
+            self.scale,
+        )
+
+    def scale_by(self, scalar: complex) -> "TensorScalarElement":
+        scalar = complex(scalar)
+        if not _finite_complex(scalar):
+            raise ValueError("scalar must be finite")
+        return TensorScalarElement(
+            tuple(scalar * value for value in self.components),
+            self.rank,
+            self.carrier,
+            self.scale,
+        )
+
+    @property
+    def additive_norm(self) -> float:
+        return sum(abs(value) ** 2 for value in self.components) ** 0.5
+
 
 @dataclass(frozen=True)
 class TypedZero:
