@@ -93,6 +93,8 @@ def semantic_potential_shift(
     """
     if source.labels != target.labels:
         raise ValueError("semantic potential shift requires the same residual signature")
+    if source.p != target.p:
+        raise ValueError("semantic potential shift requires the same potential order p")
     return target.evaluate(residuals) - source.evaluate(residuals)
 
 
