@@ -13,6 +13,7 @@ class ClaimKind(str, Enum):
     BRIDGE = "bridge"
     CANDIDATE_AXIOM = "candidate_axiom"
     THEOREM = "theorem"
+    FORMATION_RULE = "formation_rule"
 
 
 @dataclass(frozen=True)
@@ -25,15 +26,20 @@ class Claim:
 
 CLAIMS: tuple[Claim, ...] = (
     Claim(
-        "RA0",
-        ClaimKind.AXIOM,
-        "Relational admissibility: an admitted observable is not independent of relation.",
+        "META0",
+        ClaimKind.FORMATION_RULE,
+        "Non-reification/non-vacuity rule: absolute nothingness has no denotation in the RTOFA object language, and admissible RTOFA models have a non-empty admitted carrier domain.",
     ),
     Claim(
         "EX0",
-        ClaimKind.CANDIDATE_AXIOM,
-        "Non-vacuity candidate: at least one relational carrier is admitted.",
-        ("DEF_POINT",),
+        ClaimKind.THEOREM,
+        "Model non-vacuity: every admissible RTOFA model contains at least one admitted relational carrier.",
+        ("META0",),
+    ),
+    Claim(
+        "RA0",
+        ClaimKind.AXIOM,
+        "Relational admissibility: an admitted observable is not independent of relation.",
     ),
     Claim(
         "DEF_POINT",
@@ -338,3 +344,10 @@ def validate_dependency_dag() -> None:
 
 def foundational_axioms() -> tuple[Claim, ...]:
     return tuple(claim for claim in CLAIMS if claim.kind is ClaimKind.AXIOM)
+
+
+
+def formation_rules() -> tuple[Claim, ...]:
+    return tuple(
+        claim for claim in CLAIMS if claim.kind is ClaimKind.FORMATION_RULE
+    )
