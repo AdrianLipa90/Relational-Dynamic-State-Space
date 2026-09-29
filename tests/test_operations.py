@@ -2,6 +2,7 @@ import pytest
 
 from rdss import RelationalPoint, SemanticScale, SemanticScaleGraph, TensorScalarElement, TypedRelation
 from rdss.operations import (
+    BranchRefinementMap,
     ContractionRule,
     OrbitalAction,
     RelationPath,
@@ -17,6 +18,7 @@ from rdss.operations import (
     relative_moire_action,
     semantic_orbital_commutator_residual,
     transport_composition_residual,
+    typed_refinement_residual,
 )
 
 
@@ -402,3 +404,82 @@ def test_semantic_orbital_commutator_detects_order_dependence():
     assert semantic_orbital_commutator_residual(
         shifted, orbital, x
     ) == pytest.approx(1.0)
+
+
+
+def test_typed_branch_refinement_advances_exactly_one_level():
+    root = RelationalPoint()
+    scale = SemanticScale("object")
+    x = elem(2.0, carrier=root, scale=scale)
+
+    refine_plus = BranchRefinementMap(
+        1,
+        scale,
+        lambda z: TensorScalarElement(
+            z.components,
+            z.rank,
+            RelationalPoint(z.carrier.address + (1,)),
+            scale,
+        ),
+    )
+
+    out = refine_plus(x)
+    assert out.carrier.address == (1,)
+    assert out.carrier.level == x.carrier.level + 1
+    assert out.rank == x.rank
+
+
+def test_typed_refinement_residual_detects_exact_and_broken_branch_maps():
+    root = RelationalPoint()
+    scale = SemanticScale("object")
+    x = elem(2.0, carrier=root, scale=scale)
+    y = elem(3.0, carrier=root, scale=scale)
+
+    product = RelationalProductRule(
+        "add",
+        lambda a, b: a + b,
+    )
+
+    exact = BranchRefinementMap(
+        -1,
+        scale,
+        lambda z: TensorScalarElement(
+            tuple(2.0 * c for c in z.components),
+            z.rank,
+            RelationalPoint(z.carrier.address + (-1,)),
+            scale,
+        ),
+    )
+    broken = BranchRefinementMap(
+        -1,
+        scale,
+        lambda z: TensorScalarElement(
+            tuple(c * c for c in z.components),
+            z.rank,
+            RelationalPoint(z.carrier.address + (-1,)),
+            scale,
+        ),
+    )
+
+    assert typed_refinement_residual(exact, product, x, y) == pytest.approx(0.0)
+    assert typed_refinement_residual(broken, product, x, y) > 0.0
+
+
+def test_refinement_map_rejects_wrong_child_carrier():
+    root = RelationalPoint()
+    scale = SemanticScale("object")
+    x = elem(1.0, carrier=root, scale=scale)
+
+    bad = BranchRefinementMap(
+        1,
+        scale,
+        lambda z: TensorScalarElement(
+            z.components,
+            z.rank,
+            RelationalPoint(z.carrier.address + (-1,)),
+            scale,
+        ),
+    )
+
+    with pytest.raises(ValueError):
+        bad(x)
