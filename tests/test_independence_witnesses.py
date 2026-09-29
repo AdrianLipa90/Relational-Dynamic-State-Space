@@ -2,6 +2,7 @@ from rdss.witnesses import (
     FiniteRelationModel,
     witness_meta0_not_ra0,
     witness_ra0_not_rr1,
+    witness_ra0_star_not_ra0,
     witness_ra0_rr1_without_cp1,
     witness_ra0_rr1_without_ex0,
     witness_rr1_not_ra0,
@@ -101,3 +102,12 @@ def test_singleton_self_relation_and_same_label_refinement_satisfy_ra0_rr1():
     assert model.is_admissible_rtofa_model()
     assert model.satisfies_ra0()
     assert model.satisfies_rr1()
+
+
+
+def test_ra0_star_without_relation_binding_does_not_force_ra0():
+    model = witness_ra0_star_not_ra0()
+
+    assert model.is_admissible_rtofa_model()
+    assert model.satisfies_ra0_star()
+    assert not model.satisfies_ra0()
