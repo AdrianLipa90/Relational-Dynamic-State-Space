@@ -147,18 +147,22 @@ A novelty requirement would need a separate axiom or a later theorem from additi
 
 ## Status recommendation
 
-Current canonical status:
+Current canonical stratification:
 
 \[
 \boxed{
-\mathrm{RA0}+\mathrm{RR1}
+\mathrm{META0}
+\;\triangleright\;
+(\mathrm{RA0}+\mathrm{RR1})
 }
 \]
 
-Candidate reduced status:
+Candidate reduced object-level status:
 
 \[
 \boxed{
+\mathrm{META0}
+\;\triangleright\;
 \mathrm{RA0}^{*}
 }
 \]
@@ -174,24 +178,35 @@ with
 Do not promote RA0* merely because it is shorter. Promotion is justified only if its stronger wording is accepted as the intended meaning of the foundational relational principle.
 
 
-## Non-vacuity caveat
+## Non-vacuity semantics after META0
 
-Both the canonical pair and the strengthened closure candidate are compatible with the empty admitted presentation unless a separate existence condition is added:
+The closure formulas remain compatible with an empty **raw presentation**:
 
 \[
-\mathrm{RA0}+\mathrm{RR1}\not\Rightarrow\mathrm{EX0},
+\mathrm{RA0}+\mathrm{RR1}\not\vdash\mathrm{EX0},
 \qquad
-\mathrm{RA0}^{*}\not\Rightarrow\mathrm{EX0}.
+\mathrm{RA0}^{*}\not\vdash\mathrm{EX0}.
 \]
 
-Thus RA0* may collapse recursive closure into one stronger relational rule, but it does not by itself guarantee that there is an admitted root from which an unfolding can start.
+This is a formula-level vacuity fact and remains useful for independence auditing.
 
-The candidate non-vacuity statement is
+It no longer means that the empty presentation belongs to the intended RTOFA model class. META0 imposes
 
 \[
-\mathrm{EX0}:
-\exists p\,\operatorname{Adm}(p).
+\mathfrak M\in\operatorname{Mod}(\mathrm{RTOFA})
+\Longrightarrow
+\operatorname{Adm}^{\mathfrak M}\neq\varnothing,
 \]
 
-Its promotion is intentionally left open.
+so within the admissible model semantics
+
+\[
+\boxed{
+\mathrm{META0}\models\mathrm{EX0}.
+}
+\]
+
+Thus RA0* may collapse the object-level recursive closure assumption into one stronger relational rule, while META0 remains prior as a model-formation condition.
+
+The empty raw presentation is retained only as a mathematical vacuity witness; it is not identified with absolute nothingness and is not an admissible RTOFA model.
 
