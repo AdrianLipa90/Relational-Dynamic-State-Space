@@ -6,7 +6,7 @@
 
 RTOFA already has:
 
-- tensor rank ((p,q));
+- tensor rank \((p,q)\);
 - a typed tensor-product interface;
 - an explicit contraction-rule interface;
 - tensor-map monoidality diagnostics;
@@ -27,9 +27,9 @@ A concrete indexed tensor realization needs, at minimum:
 
 Rank alone,
 
-[
+\[
 (p,q),
-]
+\]
 
 does not determine these data.
 
@@ -37,36 +37,36 @@ does not determine these data.
 
 Without slot metadata, a statement such as
 
-[
-operatorname{Contr}(Xotimes Y)
-]
+\[
+\operatorname{Contr}(X\otimes Y)
+\]
 
-does not specify which index of (X) is paired with which index of (Y), nor which evaluation map performs the pairing. Any automatic formula would therefore smuggle a realization-specific choice into the general algebra.
+does not specify which index of \(X\) is paired with which index of \(Y\), nor which evaluation map performs the pairing. Any automatic formula would therefore smuggle a realization-specific choice into the general algebra.
 
 RTOFA consequently keeps contraction abstract:
 
-[
-operatorname{Contr}_{c}:
-mathcal A^{p,q}	omathcal A^{p-1,q-1},
-]
+\[
+\operatorname{Contr}_{c}:
+\mathcal A^{p,q}\to\mathcal A^{p-1,q-1},
+\]
 
-where (c) denotes an explicitly supplied contraction rule.
+where \(c\) denotes an explicitly supplied contraction rule.
 
 ## Promotion condition
 
 The contraction/tensor coherence row may be promoted from OPEN only after an indexed realization provides:
 
-[
-	ext{slot signature}
+\[
+\text{slot signature}
 +
-	ext{pairing}
+\text{pairing}
 +
-	ext{component shape}
+\text{component shape}
 +
-	ext{contraction evaluator}
+\text{contraction evaluator}
 +
-	ext{tests}.
-]
+\text{tests}.
+\]
 
 At that point one can test identities such as contraction naturality, contractions internal to one tensor factor, and cross-factor contractions without ambiguity.
 
