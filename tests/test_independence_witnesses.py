@@ -2,6 +2,7 @@ from rdss.witnesses import (
     FiniteRelationModel,
     witness_ra0_not_rr1,
     witness_ra0_rr1_without_cp1,
+    witness_ra0_rr1_without_ex0,
     witness_rr1_not_ra0,
 )
 
@@ -54,3 +55,12 @@ def test_rr1_not_ra0_witness_is_recursively_closed():
     }
     assert refinement_map["a"] == ("a", "b")
     assert refinement_map["b"] == ("a", "b")
+
+
+
+def test_ra0_plus_rr1_do_not_force_existence():
+    model = witness_ra0_rr1_without_ex0()
+
+    assert model.satisfies_ra0()
+    assert model.satisfies_rr1()
+    assert not model.satisfies_ex0()
