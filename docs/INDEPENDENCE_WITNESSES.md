@@ -135,3 +135,38 @@ This regression case is tested explicitly.
 These are finite model witnesses for the current formal statements only. They do not prove independence from every possible stronger reformulation of the relational axiom.
 
 If RA0 or RR1 is strengthened later, the witness set must be rerun against the new statement.
+
+
+## W4: RA0 + RR1 without EX0
+
+Take the empty finite presentation
+
+\[
+P=\varnothing,
+\qquad
+\operatorname{Adm}=\varnothing,
+\qquad
+R=\varnothing,
+\qquad
+F=\varnothing.
+\]
+
+RA0 is satisfied vacuously because there is no admitted carrier that violates relational admissibility. RR1 is likewise satisfied vacuously because there is no relational occurrence that fails to refine.
+
+EX0 fails:
+
+\[
+\neg\exists p\,\operatorname{Adm}(p).
+\]
+
+Therefore
+
+\[
+\boxed{
+\mathrm{RA0}+\mathrm{RR1}
+\not\Rightarrow
+\mathrm{EX0}.
+}
+\]
+
+This witness isolates non-vacuity from relational admissibility and recursive closure.
