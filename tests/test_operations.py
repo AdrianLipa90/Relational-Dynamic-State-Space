@@ -25,6 +25,10 @@ from rdss.operations import (
     transport_product_residual,
     typed_refinement_residual,
     refinement_transport_residual,
+    semantic_transport_residual,
+    orbital_transport_residual,
+    refinement_semantic_residual,
+    refinement_orbital_residual,
 )
 
 
@@ -755,4 +759,199 @@ def test_contraction_map_residual_checks_naturality():
         contraction,
         contraction,
         x,
+    ) > 0.0
+
+
+
+def test_semantic_transport_residual_checks_naturality():
+    a = RelationalPoint((-1,))
+    b = RelationalPoint((1,))
+    apple = SemanticScale("apple")
+    fruit = SemanticScale("fruit")
+    graph = SemanticScaleGraph((("apple", "fruit"),))
+    x = elem(2.0, carrier=a, scale=apple)
+    relation = TypedRelation(a, b, "ab")
+
+    source_transport = RelationTransport(
+        relation,
+        lambda z: TensorScalarElement(z.components, z.rank, b, apple),
+    )
+    target_transport = RelationTransport(
+        relation,
+        lambda z: TensorScalarElement(z.components, z.rank, b, fruit),
+    )
+    broken_target_transport = RelationTransport(
+        relation,
+        lambda z: TensorScalarElement(
+            tuple(2.0 * c for c in z.components), z.rank, b, fruit
+        ),
+    )
+
+    source_scale = SemanticScaleMap(
+        graph,
+        apple,
+        fruit,
+        lambda z: TensorScalarElement(z.components, z.rank, z.carrier, fruit),
+    )
+    target_scale = SemanticScaleMap(
+        graph,
+        apple,
+        fruit,
+        lambda z: TensorScalarElement(z.components, z.rank, z.carrier, fruit),
+    )
+
+    assert semantic_transport_residual(
+        source_transport,
+        target_transport,
+        source_scale,
+        target_scale,
+        x,
+    ) == pytest.approx(0.0)
+
+    assert semantic_transport_residual(
+        source_transport,
+        broken_target_transport,
+        source_scale,
+        target_scale,
+        x,
+    ) > 0.0
+
+
+def test_orbital_transport_residual_checks_equivariance():
+    a = RelationalPoint((-1,))
+    b = RelationalPoint((1,))
+    x = elem(2.0, carrier=a)
+    relation = TypedRelation(a, b, "ab")
+    transport = RelationTransport(
+        relation,
+        lambda z: TensorScalarElement(z.components, z.rank, b, z.scale),
+    )
+
+    def scale_action(name, factor):
+        return OrbitalAction(
+            name,
+            lambda z: TensorScalarElement(
+                tuple(factor * c for c in z.components),
+                z.rank,
+                z.carrier,
+                z.scale,
+            ),
+        )
+
+    source_orbit = scale_action("Ua", 2.0)
+    target_orbit = scale_action("Ub", 2.0)
+    broken_target = scale_action("Ub-broken", 3.0)
+
+    assert orbital_transport_residual(
+        transport, source_orbit, target_orbit, x
+    ) == pytest.approx(0.0)
+    assert orbital_transport_residual(
+        transport, source_orbit, broken_target, x
+    ) > 0.0
+
+
+def test_refinement_semantic_residual_checks_commuting_square():
+    root = RelationalPoint()
+    apple = SemanticScale("apple")
+    fruit = SemanticScale("fruit")
+    graph = SemanticScaleGraph((("apple", "fruit"),))
+    x = elem(2.0, carrier=root, scale=apple)
+
+    source_refine = BranchRefinementMap(
+        1,
+        apple,
+        lambda z: TensorScalarElement(
+            z.components,
+            z.rank,
+            RelationalPoint(z.carrier.address + (1,)),
+            apple,
+        ),
+    )
+    target_refine = BranchRefinementMap(
+        1,
+        fruit,
+        lambda z: TensorScalarElement(
+            z.components,
+            z.rank,
+            RelationalPoint(z.carrier.address + (1,)),
+            fruit,
+        ),
+    )
+
+    parent_scale = SemanticScaleMap(
+        graph,
+        apple,
+        fruit,
+        lambda z: TensorScalarElement(z.components, z.rank, z.carrier, fruit),
+    )
+    child_scale = SemanticScaleMap(
+        graph,
+        apple,
+        fruit,
+        lambda z: TensorScalarElement(z.components, z.rank, z.carrier, fruit),
+    )
+    broken_child_scale = SemanticScaleMap(
+        graph,
+        apple,
+        fruit,
+        lambda z: TensorScalarElement(
+            tuple(c + 1.0 for c in z.components),
+            z.rank,
+            z.carrier,
+            fruit,
+        ),
+    )
+
+    assert refinement_semantic_residual(
+        source_refine,
+        target_refine,
+        parent_scale,
+        child_scale,
+        x,
+    ) == pytest.approx(0.0)
+    assert refinement_semantic_residual(
+        source_refine,
+        target_refine,
+        parent_scale,
+        broken_child_scale,
+        x,
+    ) > 0.0
+
+
+def test_refinement_orbital_residual_checks_equivariance():
+    root = RelationalPoint()
+    scale = SemanticScale("object")
+    x = elem(2.0, carrier=root, scale=scale)
+
+    refinement = BranchRefinementMap(
+        -1,
+        scale,
+        lambda z: TensorScalarElement(
+            z.components,
+            z.rank,
+            RelationalPoint(z.carrier.address + (-1,)),
+            scale,
+        ),
+    )
+
+    def scale_action(name, factor):
+        return OrbitalAction(
+            name,
+            lambda z: TensorScalarElement(
+                tuple(factor * c for c in z.components),
+                z.rank,
+                z.carrier,
+                z.scale,
+            ),
+        )
+
+    parent_orbit = scale_action("Up", 2.0)
+    child_orbit = scale_action("Uc", 2.0)
+    broken_child = scale_action("Uc-broken", 3.0)
+
+    assert refinement_orbital_residual(
+        refinement, parent_orbit, child_orbit, x
+    ) == pytest.approx(0.0)
+    assert refinement_orbital_residual(
+        refinement, parent_orbit, broken_child, x
     ) > 0.0
