@@ -1352,6 +1352,43 @@ a\xrightarrow{r_+}a.
 The two branch-relation occurrences remain distinct by branch slot although
 their source and target carrier labels coincide.
 
+\subsection{Relation occurrences versus relation values}
+
+A branch-relation occurrence carries the binary branch slot as part of its
+identity:
+\[
+o=(\epsilon,r,s,t),
+\qquad
+\epsilon\in\{-1,+1\}.
+\]
+Forgetting only that occurrence slot yields the underlying typed relation
+value:
+\[
+\boxed{
+\pi_{\mathrm{rel}}(\epsilon,r,s,t)
+=
+(s,t,r).
+}
+\]
+The projection need not be injective. In particular,
+\[
+o_-=(-,r,a,a),
+\qquad
+o_+=(+,r,a,a)
+\]
+satisfy
+\[
+o_-\neq o_+,
+\qquad
+\pi_{\mathrm{rel}}(o_-)
+=
+\pi_{\mathrm{rel}}(o_+).
+\]
+Thus branch identity belongs to the occurrence layer rather than to the
+underlying relation value itself. The executable kernel preserves this
+distinction and can materialize the projected value as a core
+\texttt{TypedRelation}.
+
 \subsection{Singleton cardinality minimality}
 
 The singleton conclusion separates a lower bound from its attainment.
