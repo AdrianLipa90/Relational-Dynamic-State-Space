@@ -406,3 +406,21 @@ def test_rr1_unfolding_realizes_every_finite_binary_word_through_depth():
             for rank in range(count)
         }
         assert set(tree) == expected_addresses
+
+
+
+def test_minimal_singleton_relation_occurrence_cardinality_is_two():
+    model = minimal_singleton_ra0_rel_star_model()
+
+    assert model.is_admissible_rtofa_model()
+    assert model.satisfies_ra0_rel_star()
+    assert len(model.relation_occurrences) == 2
+    assert {occ.branch for occ in model.relation_occurrences} == {-1, 1}
+
+
+def test_nonempty_ra0_rel_star_has_at_least_two_relation_occurrences():
+    model = minimal_singleton_ra0_rel_star_model()
+
+    assert model.admitted
+    assert model.satisfies_ra0_rel_star()
+    assert len(model.relation_occurrences) >= 2
