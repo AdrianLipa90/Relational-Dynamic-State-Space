@@ -248,6 +248,37 @@ Their failures are measured, not hidden:
 Commutative or associative subclasses are recovered when the corresponding
 residual vanishes.
 
+Bilinearity is also not silently assumed. Define the additive defects
+\[
+B_L^+(X,Y;Z)
+=
+(X+Y)\star Z-X\star Z-Y\star Z,
+\]
+\[
+B_R^+(X;Y,Z)
+=
+X\star(Y+Z)-X\star Y-X\star Z,
+\]
+and scalar-linearity defects
+\[
+B_L^{\lambda}(X;Y)
+=
+(\lambda X)\star Y-\lambda(X\star Y),
+\]
+\[
+B_R^{\lambda}(X;Y)
+=
+X\star(\lambda Y)-\lambda(X\star Y).
+\]
+Exact \(\mathbb K\)-bilinearity is therefore a zero-defect subclass:
+\[
+\boxed{
+B_L^+=B_R^+=B_L^{\lambda}=B_R^{\lambda}=0.
+}
+\]
+The general relational product may leave this subclass, in which case the
+departure is recorded rather than hidden.
+
 \section{Semantic scales}
 
 Semantic scale is not assumed to be a single real parameter. Let
@@ -272,10 +303,33 @@ type system rather than an after-the-fact annotation.
 
 \section{Orbital action and relative Moir\'e structure}
 
-Let \(G\) act on admissible algebra elements through
+Let \(G\) index admissible orbital operators
 \[
 U_g:\mathcal A\to\mathcal A.
 \]
+Calling this family an exact group action requires additional coherence.
+For a supplied identity representative, inverse, and product representative,
+define
+\[
+\Delta_e(X)=\|U_eX-X\|,
+\]
+\[
+\Delta_{\rm inv}(g;X)
+=
+\max\left(
+\|U_g^{-1}U_gX-X\|,
+\|U_gU_g^{-1}X-X\|
+\right),
+\]
+and
+\[
+\Delta_G(g,h;X)
+=
+\|U_{gh}X-U_g(U_hX)\|.
+\]
+An exact group-action sector is obtained when these residuals vanish on the
+domain of interest.
+
 An orbit is derived:
 \[
 \boxed{
@@ -284,7 +338,7 @@ An orbit is derived:
 \]
 It is not an independent coordinate carried by \(X\).
 
-Moir\'e structure is intrinsically relational. For two local orbital actions,
+Moir\'e structure is intrinsically relational. For two local orbital operators with a verified inverse,
 \[
 \boxed{
 M_{ij}=U_iU_j^{-1}.
