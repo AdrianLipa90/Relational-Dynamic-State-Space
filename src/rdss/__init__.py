@@ -34,4 +34,22 @@ __all__ = [
     "refinement_residual",
     "winding_and_residual",
     "wrap_phase",
+    "CLAIMS",
+    "Claim",
+    "ClaimKind",
+    "claim_map",
+    "dependency_closure",
+    "foundational_axioms",
+    "validate_dependency_dag",
 ]
+
+
+from .axioms import (
+    CLAIMS,
+    Claim,
+    ClaimKind,
+    claim_map,
+    dependency_closure,
+    foundational_axioms,
+    validate_dependency_dag,
+)
