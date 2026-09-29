@@ -41,7 +41,31 @@ The rule is:
 \boxed{\text{structure preservation is measured, not presumed}.}
 \]
 
-## Layer 2 — Foundational logic
+## Layer 2 — Relational potential diagnostics
+
+\`src/rdss/potential.py\`
+
+Contains the scalar diagnostic layer built from explicit residual signatures and supplied semantic weighting profiles:
+
+- \`RelationalPotentialProfile\`;
+- \`semantic_potential_shift\`;
+- \`relational_attractor_set\`.
+
+The weighting profile is structural input. It is not inferred automatically from a semantic scale label.
+
+The core statement is
+
+\[
+\text{residual signature}
++
+\text{supplied semantic weighting}
+\longrightarrow
+V_R.
+\]
+
+\(V_R\) is not identified with energy or curvature. A map from \(V_R\) into a geometric deformation belongs to a later realization/bridge.
+
+## Layer 3 — Foundational logic
 
 \`src/rdss/axioms.py\`, \`src/rdss/closure.py\`, \`src/rdss/witnesses.py\`
 
@@ -55,7 +79,7 @@ The current canonical foundational set is
 
 \(\mathrm{RA0}^{*}\) remains a stronger candidate closure statement.
 
-## Layer 3 — Generic phase representation
+## Layer 4 — Generic phase representation
 
 \`src/rdss/phase.py\`
 
@@ -67,7 +91,7 @@ Contains representation-level U(1) utilities:
 
 These are not coordinates of the core algebra.
 
-## Layer 4 — Reference realizations
+## Layer 5 — Reference realizations
 
 \`src/rdss/realizations.py\`
 
@@ -81,7 +105,7 @@ Contains concrete realizations that may represent parts of the core:
 
 A reference realization is executable and tested but is not thereby a theorem forced by the core axioms.
 
-## Layer 5 — Zero Axis bridge
+## Layer 6 — Zero Axis bridge
 
 \`src/rdss/zero_axis.py\`
 
