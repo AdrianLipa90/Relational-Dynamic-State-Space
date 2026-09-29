@@ -136,6 +136,18 @@ CLAIMS: tuple[Claim, ...] = (
         ("META0", "RA0_REL_STAR"),
     ),
     Claim(
+        "REF_RA0_RR1_UNBOUND_MODEL",
+        ClaimKind.REFERENCE_REALIZATION,
+        "A singleton self-relational model can satisfy META0, RA0, and recursive RR1 while carrying no explicit branch-slot to primitive-relation binding.",
+        ("META0", "RA0", "RR1"),
+    ),
+    Claim(
+        "THM_RA0_RR1_NOT_RA0_REL_STAR",
+        ClaimKind.THEOREM,
+        "The explicit unbound singleton countermodel shows that RA0 plus RR1 does not imply RA0_REL_STAR.",
+        ("REF_RA0_RR1_UNBOUND_MODEL",),
+    ),
+    Claim(
         "THM_SINGLETON_FOUNDATION_MINIMALITY",
         ClaimKind.THEOREM,
         "Combining the META0 lower bound with the explicit singleton RA0_REL_STAR model shows that the minimum admitted-carrier cardinality is exactly one.",
