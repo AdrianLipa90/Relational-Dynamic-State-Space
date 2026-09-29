@@ -12,7 +12,7 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | DEF_POINT | DEFINITION | The minimal algebraic carrier is an unscaled point. | — |
 | DEF_BINARY_REL | DEFINITION | A primitive typed relation is binary: r:a->b. Higher arity is constructed separately. | — |
 | DEF_BINARY_DISTINCTION | DEFINITION | A hosted binary distinction has two distinct branch-occurrence slots (-,+); non-degeneracy is occurrence/address-level and does not require different carrier labels. | DEF_POINT |
-| DEF_RELATIONAL_DISTINCTION | DEFINITION | A relationally bound distinction equips the two branch-occurrence slots with explicit primitive branch-relation occurrences. | DEF_BINARY_DISTINCTION, DEF_BINARY_REL |
+| DEF_RELATIONAL_DISTINCTION | DEFINITION | A relationally bound distinction equips the two branch-occurrence slots with explicit primitive branch-relation occurrences; occurrence identity includes the branch slot, so the underlying relation values may coincide. | DEF_BINARY_DISTINCTION, DEF_BINARY_REL |
 | RR1 | AXIOM | At every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction; the rule re-applies at every finite refinement depth. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | RA0_STAR | CANDIDATE AXIOM | Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | RA0_REL_STAR | CANDIDATE AXIOM | Every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_RELATIONAL_DISTINCTION |
