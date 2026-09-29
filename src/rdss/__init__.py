@@ -66,3 +66,11 @@ from .operations import (
     reference_tensor_product,
     relative_moire_action,
 )
+
+
+from .closure import (
+    BinaryDistinction,
+    GenerativeRelationModel,
+    requires_novelty,
+    two_cycle_ra0_star_model,
+)
