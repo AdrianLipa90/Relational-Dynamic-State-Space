@@ -199,3 +199,18 @@ def test_minus_one_is_a_valid_u1_holonomy_phase():
     rep = HolonomyPhaseRepresentation("minus-one", scalar_ratio_phase)
 
     assert rep.phase(path, x) == pytest.approx(-1.0 + 0.0j)
+
+
+
+def test_phase_representation_rejects_element_on_wrong_source():
+    path, _ = closed_phase_path(0.4)
+    wrong = TensorScalarElement(
+        (1.0,),
+        (0, 0),
+        RelationalPoint((1,)),
+        SemanticScale("object"),
+    )
+    rep = HolonomyPhaseRepresentation("scalar-ratio", scalar_ratio_phase)
+
+    with pytest.raises(ValueError):
+        rep.phase(path, wrong)
