@@ -84,6 +84,14 @@ For every typed sector there may be a zero element
 0_{\sigma,n}^{p,q}\in\mathcal A_{\sigma,n}^{p,q},
 \]
 while ``no relation'' is a separate condition.
+In the additive reference sector this zero is executable as the identity
+\[
+X+0_X=X,
+\qquad
+X-X=0_X.
+\]
+The executable reference zero of an element preserves its rank, carrier,
+semantic scale, and component dimension.
 
 \section{Minimal carrier and minimal distinction}
 
@@ -336,6 +344,44 @@ Likewise the phase residual is derived from accumulated holonomy. Neither
 winding nor residual is stored as an independent coordinate of the base
 algebra element.
 
+\section{Axiom and dependency audit}
+
+The formal dependency audit separates the following claim classes:
+\[
+\boxed{
+\text{axiom},\quad
+\text{candidate axiom},\quad
+\text{theorem},\quad
+\text{definition},\quad
+\text{structural primitive},\quad
+\text{reference realization},\quad
+\text{derived construction},\quad
+\text{bridge}.
+}
+\]
+
+The current canonical foundational set is
+\[
+\boxed{\mathrm{RA0}+\mathrm{RR1}.}
+\]
+The additive \(\mathbb K\)-module structure, relational product, semantic
+scale, and orbital action are independent structural ingredients of the
+algebraic signature rather than consequences of RA0. The complex
+\(\CP\)/Fubini--Study layer is a reference realization, and Zero Axis is an
+imported bridge.
+
+Finite witness models establish, in the current formal language,
+\[
+\boxed{
+\mathrm{RA0}\not\Rightarrow\mathrm{RR1},
+\qquad
+\mathrm{RR1}\not\Rightarrow\mathrm{RA0},
+\qquad
+\mathrm{RA0}+\mathrm{RR1}\not\Rightarrow\CP.
+}
+\]
+Thus no dependency is silently promoted to a theorem.
+
 \section{One-axiom closure candidate}
 
 The current canonical foundation uses two explicit axioms,
@@ -493,7 +539,7 @@ A promoted primitive must remain synchronized across four layers:
 +\text{LaTeX statement}.
 }
 \]
-The initial executable kernel therefore tests the axiom dependency DAG and finite independence witnesses, typed operation interfaces, recursive point refinement,
+The initial executable kernel therefore tests the axiom dependency DAG, finite independence witnesses, RA0* closure witnesses, typed additive zero, typed operation interfaces, recursive point refinement,
 \(\CP\) normalization, Fubini--Study separation, rank-zero scalar typing,
 typed algebraic zero, semantic coarse-graining, relative Moir\'e rotation,
 Zero-Axis unit-circle projection, derived winding, associator/commutator
