@@ -531,6 +531,43 @@ def test_binary_occurrence_growth_and_countability_theorems():
 
 
 
+def test_ideal_occurrence_boundary_claims():
+    claims = claim_map()
+
+    assert claims["DEF_OCCURRENCE_BOUNDARY"].kind is ClaimKind.DEFINITION
+    assert dependency_closure("DEF_OCCURRENCE_BOUNDARY") == frozenset(
+        {
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+        }
+    )
+
+    boundary_base = frozenset(
+        {
+            "DEF_OCCURRENCE_BOUNDARY",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+        }
+    )
+
+    assert claims["THM_BOUNDARY_CYLINDER_COUNT"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_BOUNDARY_CYLINDER_COUNT") == boundary_base
+
+    assert claims["THM_OCCURRENCE_BOUNDARY_CONTINUUM"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_OCCURRENCE_BOUNDARY_CONTINUUM") == boundary_base
+
+    assert claims["THM_RR1_REALIZES_BOUNDARY_PREFIX_CHAINS"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_RR1_REALIZES_BOUNDARY_PREFIX_CHAINS") == frozenset(
+        {
+            "RR1",
+            "DEF_BINARY_DISTINCTION",
+            "DEF_POINT",
+            "DEF_OCCURRENCE_BOUNDARY",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+        }
+    )
+
+
 def test_relation_value_cardinality_minimality():
     claims = claim_map()
 
