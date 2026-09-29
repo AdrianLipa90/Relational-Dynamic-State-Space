@@ -12,8 +12,12 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | DEF_POINT | DEFINITION | The minimal algebraic carrier is an unscaled point. | — |
 | DEF_BINARY_REL | DEFINITION | A primitive typed relation is binary: r:a->b. Higher arity is constructed separately. | — |
 | DEF_BINARY_DISTINCTION | DEFINITION | A hosted binary distinction has two distinct branch-occurrence slots (-,+); non-degeneracy is occurrence/address-level and does not require different carrier labels. | DEF_POINT |
+| DEF_RELATIONAL_DISTINCTION | DEFINITION | A relationally bound distinction equips the two branch-occurrence slots with explicit primitive branch-relation occurrences. | DEF_BINARY_DISTINCTION, DEF_BINARY_REL |
 | RR1 | AXIOM | At every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction; the rule re-applies at every finite refinement depth. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | RA0_STAR | CANDIDATE AXIOM | Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_BINARY_DISTINCTION |
+| RA0_REL_STAR | CANDIDATE AXIOM | Every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_RELATIONAL_DISTINCTION |
+| THM_RA0_FROM_RA0_REL_STAR | THEOREM | RA0_REL_STAR implies relational admissibility because each admitted host has branch-relation incidence. | RA0_REL_STAR |
+| THM_RR1_FROM_RA0_REL_STAR | THEOREM | RA0_REL_STAR generates recursive binary refinement to arbitrary finite depth. | RA0_REL_STAR |
 | THM_RR1_FROM_RA0_STAR | THEOREM | RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences. | RA0_STAR |
 | REF_CP1 | REFERENCE REALIZATION | A minimal complex binary distinction may be represented by two projectively distinct CP1 states with Fubini-Study metric. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | REF_CP1_REFINEMENT | REFERENCE REALIZATION | Recursive refinement is realized as a tree of local CP1/FS fibres indexed by relational carriers. | REF_CP1, RR1 |
@@ -69,6 +73,7 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 11. **Topological winding depends on that U(1) representation and an explicit closure check, not on Zero Axis.**
 12. **Zero Axis is an independent imported bridge.** Its finite inverse projective lift is optional and occurs only after a U(1) phase has already been supplied.
 13. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
+14. **RA0_REL_STAR is a stronger one-object-level-axiom candidate.** It differs from RA0* by explicitly binding binary distinction slots to primitive relation occurrences; only this stronger candidate currently carries explicit theorems to both RA0 and RR1.
 
 ## Canonical foundational stratification
 
@@ -101,6 +106,18 @@ Second, recursive closure may be reduced through the stronger candidate RA0*:
 \[
 \mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}.
 \]
+
+Third, if hosted distinction is explicitly bound to primitive branch-relation occurrences, the stronger candidate RA0_REL_STAR satisfies
+
+\[
+\boxed{
+\mathrm{RA0\_REL\_STAR}
+\Rightarrow
+\mathrm{RA0}+\mathrm{RR1}.
+}
+\]
+
+This is the current executable one-object-level-axiom candidate under META0. It remains unpromoted because the distinction-to-relation binding is additional formal content.
 
 Neither reduction is performed by rhetoric; each requires an explicit change of formal status.
 
