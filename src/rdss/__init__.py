@@ -28,6 +28,7 @@ from .axioms import (
     validate_dependency_dag,
 )
 from .operations import (
+    BranchRefinementMap,
     ContractionRule,
     OrbitalAction,
     RelationPath,
@@ -43,6 +44,7 @@ from .operations import (
     relative_moire_action,
     semantic_orbital_commutator_residual,
     transport_composition_residual,
+    typed_refinement_residual,
 )
 from .closure import (
     BinaryDistinction,
@@ -94,4 +96,6 @@ __all__ = [
     "orbital_identity_residual",
     "SemanticScaleMap",
     "semantic_orbital_commutator_residual",
+    "BranchRefinementMap",
+    "typed_refinement_residual",
 ]
