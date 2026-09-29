@@ -26,6 +26,8 @@ from rdss.operations import (
     semantic_product_residual,
     tensor_map_residual,
     contraction_map_residual,
+    forget_occurrence_path,
+    forget_relation_occurrence,
     transport_composition_residual,
     transport_product_residual,
     typed_refinement_residual,
@@ -224,6 +226,37 @@ def test_relation_occurrence_normalizes_addresses_to_occurrence_type():
     assert occurrence.target_occurrence == (-1,)
     assert occurrence.relation.source is a
     assert occurrence.relation.target is a
+
+
+def test_occurrence_forgetful_projection_preserves_relation_values():
+    a = RelationalPoint()
+    relation = TypedRelation(a, a, "r")
+    occurrence = RelationOccurrence(relation, (), (-1,))
+
+    assert forget_relation_occurrence(occurrence) is relation
+
+    occurrence_path = OccurrenceRelationPath((occurrence,))
+    value_path = forget_occurrence_path(occurrence_path)
+
+    assert value_path.relations == (relation,)
+    assert value_path.closed
+    assert not occurrence_path.closed
+
+
+def test_occurrence_closed_path_projects_to_carrier_closed_value_path():
+    a = RelationalPoint()
+    down = TypedRelation(a, a, "down")
+    up = TypedRelation(a, a, "up")
+    occurrence_path = OccurrenceRelationPath(
+        (
+            RelationOccurrence(down, (), (-1,)),
+            RelationOccurrence(up, (-1,), ()),
+        )
+    )
+
+    assert occurrence_path.closed
+    projected = forget_occurrence_path(occurrence_path)
+    assert projected.closed
 
 
 def test_carrier_closed_path_can_remain_occurrence_open():
