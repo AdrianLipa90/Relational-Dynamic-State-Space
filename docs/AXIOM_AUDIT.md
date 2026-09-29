@@ -16,16 +16,23 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 | PRIM_MODULE | STRUCTURAL PRIMITIVE | Each typed tensor-scalar sector carries an additive K-module structure; the reference kernel uses complex components. | — |
 | DEF_TS | DEFINITION | Tensor-scalar grading uses rank (p,q); scalars are rank (0,0). | PRIM_MODULE |
 | PRIM_PRODUCT | STRUCTURAL PRIMITIVE | A typed relational product star_R may be supplied without assuming associativity or commutativity. | — |
+| PRIM_TENSOR_PRODUCT | STRUCTURAL PRIMITIVE | A typed tensor product combines compatible tensor-scalar sectors; component formulas belong to realizations. | PRIM_MODULE |
+| PRIM_CONTRACTION | STRUCTURAL PRIMITIVE | A typed contraction lowers one covariant and one contravariant rank when a contraction rule is supplied. | PRIM_MODULE |
 | DEF_BILINEARITY_RESIDUAL | DEFINITION | Bilinearity residuals measure failure of product additivity and scalar-linearity. | PRIM_PRODUCT, PRIM_MODULE |
 | PRIM_SCALE | STRUCTURAL PRIMITIVE | Semantic scale is a typed partial-order/category-like structure. | — |
 | PRIM_TRANSPORT | STRUCTURAL PRIMITIVE | Typed transports T_r act along composable binary relations between carrier sectors. | DEF_BINARY_REL, PRIM_MODULE |
 | DER_HOLONOMY | DERIVED | Relational holonomy is transport around a closed composable relation path, measured against the initial state. | PRIM_TRANSPORT |
 | DEF_TRANSPORT_RESIDUAL | DEFINITION | Delta_T measures failure of direct transport to equal sequential transport. | PRIM_TRANSPORT |
+| DEF_TRANSPORT_PRODUCT_COHERENCE | DEFINITION | Measures failure of T_r(X star Y)=T_r(X) star' T_r(Y). | PRIM_TRANSPORT, PRIM_PRODUCT, PRIM_MODULE |
 | PRIM_ORBIT | STRUCTURAL PRIMITIVE | Admissible orbital actions U_g may act on algebra elements. | — |
 | DEF_SCALE_ORBIT_RESIDUAL | DEFINITION | Delta_(S,U) measures order dependence of semantic coarse-graining and orbital action. | PRIM_SCALE, PRIM_ORBIT, PRIM_MODULE |
+| DEF_SCALE_PRODUCT_COHERENCE | DEFINITION | Measures failure of S(X star Y)=S(X) star' S(Y). | PRIM_SCALE, PRIM_PRODUCT, PRIM_MODULE |
 | DEF_ORBITAL_COHERENCE | DEFINITION | Identity, inverse and composition residuals diagnose exact group-action coherence. | PRIM_ORBIT, PRIM_MODULE |
+| DEF_ORBIT_PRODUCT_COHERENCE | DEFINITION | Measures failure of U(X star Y)=U(X) star' U(Y). | PRIM_ORBIT, PRIM_PRODUCT, PRIM_MODULE |
 | DER_MOIRE | DERIVED | Relative Moiré action is M_ij = U_i U_j^{-1} where a supplied inverse is coherent. | PRIM_ORBIT |
-| PRIM_REFINEMENT_MAP | STRUCTURAL PRIMITIVE | Typed branch maps F_-/F_+ advance a selected relational carrier by one refinement level. | RR1, PRIM_MODULE |\n| DEF_REFINEMENT_RESIDUAL | DEFINITION | Delta_F measures failure of exact product preservation under refinement. | PRIM_REFINEMENT_MAP, PRIM_PRODUCT, PRIM_MODULE |
+| PRIM_REFINEMENT_MAP | STRUCTURAL PRIMITIVE | Typed branch maps F_-/F_+ advance a selected relational carrier by one refinement level. | RR1, PRIM_MODULE |
+| DEF_REFINEMENT_RESIDUAL | DEFINITION | Delta_F measures failure of exact product preservation under refinement. | PRIM_REFINEMENT_MAP, PRIM_PRODUCT, PRIM_MODULE |
+| DEF_REFINEMENT_TRANSPORT_COHERENCE | DEFINITION | Measures failure of the refinement/transport naturality square. | PRIM_REFINEMENT_MAP, PRIM_TRANSPORT, PRIM_MODULE |
 | ZA_BRIDGE | BRIDGE | The companion Zero Axis model supplies Omega(s)=s/(1-s) and the critical-axis/unit-circle equivalence. | — |
 | DER_WINDING | DERIVED | Topological winding is derived only from a closed phase path with a continuous lift. | ZA_BRIDGE |
 
@@ -113,3 +120,52 @@ Relational holonomy is therefore more general than its phase realization. The Ze
 The word "algebra" does not silently impose bilinearity on the context-dependent relational product. The kernel measures left/right additivity and scalar-linearity residuals. Likewise, an indexed orbital operator family is not called an exact group action merely by notation; identity, inverse, and composition residuals are checked explicitly.
 
 Exact K-bilinearity and exact group action are therefore promoted only as zero-defect subclasses of the more general relational operator structure.
+
+
+## Cross-operation coherence
+
+The principal maps are not assumed to preserve one another automatically. The kernel records four first-order compatibility defects:
+
+[
+Delta_{T,star}(X,Y)
+=
+left|
+T_r(Xstar Y)
+-
+T_r(X)star' T_r(Y)
+ight|,
+]
+
+[
+Delta_{S,star}(X,Y)
+=
+left|
+S(Xstar Y)
+-
+S(X)star' S(Y)
+ight|,
+]
+
+[
+Delta_{U,star}(X,Y)
+=
+left|
+U(Xstar Y)
+-
+U(X)star' U(Y)
+ight|,
+]
+
+and the refinement/transport naturality defect
+
+[
+Delta_{F,T}(X)
+=
+left|
+F_{mathrm{target}}(T_{mathrm{parent}}X)
+-
+T_{mathrm{child}}(F_{mathrm{source}}X)
+ight|.
+]
+
+Vanishing defects define structure-preserving subclasses. Non-zero defects are retained as relational deformation data.
