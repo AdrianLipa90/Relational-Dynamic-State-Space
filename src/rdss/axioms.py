@@ -98,6 +98,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("PRIM_TENSOR_PRODUCT", "PRIM_MODULE"),
     ),
     Claim(
+        "DEF_TENSOR_MONOIDAL_COHERENCE",
+        ClaimKind.DEFINITION,
+        "Strict tensor associativity, explicit unit, and supplied braiding are tested by residuals rather than assumed.",
+        ("PRIM_TENSOR_PRODUCT", "PRIM_MODULE"),
+    ),
+    Claim(
         "DEF_CONTRACTION_MAP_COHERENCE",
         ClaimKind.DEFINITION,
         "Contraction-map residual measures failure of contraction naturality under a supplied typed map.",
