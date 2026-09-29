@@ -260,6 +260,30 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_BINARY_OCCURRENCE_COUNT",),
     ),
     Claim(
+        "DEF_OCCURRENCE_BOUNDARY",
+        ClaimKind.DEFINITION,
+        "The ideal occurrence boundary is the set {-1,+1}^N of infinite binary branch sequences; boundary points are ideal paths, not additional finite occurrence carriers.",
+        ("DEF_OCCURRENCE_ADDRESS_SPACE",),
+    ),
+    Claim(
+        "THM_BOUNDARY_CYLINDER_COUNT",
+        ClaimKind.THEOREM,
+        "At prefix depth n, the ideal occurrence boundary decomposes into exactly 2^n binary prefix cylinders.",
+        ("DEF_OCCURRENCE_BOUNDARY",),
+    ),
+    Claim(
+        "THM_OCCURRENCE_BOUNDARY_CONTINUUM",
+        ClaimKind.THEOREM,
+        "The ideal occurrence boundary {-1,+1}^N has cardinality 2^aleph_0, equivalently the cardinality of the power set of N.",
+        ("DEF_OCCURRENCE_BOUNDARY",),
+    ),
+    Claim(
+        "THM_RR1_REALIZES_BOUNDARY_PREFIX_CHAINS",
+        ClaimKind.THEOREM,
+        "Under RR1, every infinite binary boundary sequence determines a coherent chain whose every finite prefix is realized by a path-labelled occurrence; no limit carrier is thereby asserted.",
+        ("RR1", "DEF_OCCURRENCE_BOUNDARY"),
+    ),
+    Claim(
         "THM_RR1_FROM_RA0_STAR",
         ClaimKind.THEOREM,
         "RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences.",
