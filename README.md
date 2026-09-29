@@ -320,6 +320,12 @@ The repository includes a local validator that does not use GitHub Actions:
 python scripts/validate.py
 ```
 
+Static audit alone:
+
+```text
+python scripts/static_audit.py
+```
+
 Useful modes:
 
 ```text
@@ -328,7 +334,7 @@ python scripts/validate.py --latex-only
 python scripts/validate.py --require-latex
 ```
 
-The default run executes pytest and then compiles the monograph when `latexmk` or `pdflatex` is installed. `--require-latex` converts a missing LaTeX toolchain from SKIP to FAIL.
+The default run executes `scripts/static_audit.py` first, then pytest, and then compiles the monograph when `latexmk` or `pdflatex` is installed. The static stage audits Python syntax/import surfaces, layer ownership, the claim DAG, test inventory, Markdown integrity, and structural LaTeX balance. `--require-latex` converts a missing LaTeX toolchain from SKIP to FAIL.
 
 See `docs/VALIDATION_STATUS.md` for the latest distinction between static checks and runtime execution.
 
