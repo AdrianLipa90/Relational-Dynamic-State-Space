@@ -36,6 +36,10 @@ class FiniteRelationModel:
         """EX0 witness semantics: at least one relational carrier is admitted."""
         return bool(self.admitted)
 
+    def is_admissible_rtofa_model(self) -> bool:
+        """Executable non-vacuity component of META0 for finite witnesses."""
+        return self.satisfies_ex0()
+
     def satisfies_ra0(self) -> bool:
         """RA0 witness semantics: every admitted point has an outgoing relation."""
         sources = {source for source, _ in self.relations}
@@ -110,6 +114,21 @@ def witness_ra0_rr1_without_ex0() -> FiniteRelationModel:
     return FiniteRelationModel(
         points=frozenset(),
         admitted=frozenset(),
+        relations=frozenset(),
+        refinements=(),
+    )
+
+
+
+def witness_meta0_not_ra0() -> FiniteRelationModel:
+    """Non-empty admitted carrier domain without relational admissibility.
+
+    This witness shows that model non-vacuity alone does not imply RA0 when
+    Adm is treated as a primitive predicate.
+    """
+    return FiniteRelationModel(
+        points=frozenset({"a"}),
+        admitted=frozenset({"a"}),
         relations=frozenset(),
         refinements=(),
     )
