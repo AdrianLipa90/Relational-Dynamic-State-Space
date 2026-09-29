@@ -126,7 +126,7 @@ a\mapsto(a_-,a_+),
 b\mapsto(b_-,b_+)
 \]
 
-but none of \(a_-,a_+,b_-,b_+\) can refine does **not** satisfy recursive RR1 under the current witness semantics.
+but none of the descendant occurrences can refine does **not** satisfy recursive RR1 under the current witness semantics. The carrier labels attached to the two branch occurrences need not be different; failure here is failure of recursive continuation, not label equality.
 
 This regression case is tested explicitly.
 
@@ -201,3 +201,53 @@ Therefore, while \(\operatorname{Adm}\) remains a primitive predicate,
 This is why non-vacuity and relational admissibility remain separate layers in the canonical foundation.
 
 If admissibility is later **defined** relationally rather than treated as primitive, this witness no longer applies because the language itself has changed. That possible reduction is documented in \`docs/RELATIONAL_ADMISSIBILITY_REDUCTION_GATE.md\`.
+
+
+## W6: singleton occurrence recursion
+
+Take one carrier label
+
+\[
+P=\{a\},
+\qquad
+\operatorname{Adm}=\{a\},
+\]
+
+with the self-relation
+
+\[
+a\to a
+\]
+
+and recursive refinement
+
+\[
+a\mapsto(a,a).
+\]
+
+The two entries on the right are the left and right **occurrence slots**. Their path addresses are distinct even though both carry the same label \(a\).
+
+Hence the unfolding is
+
+\[
+a_{\varnothing},
+\qquad
+a_-,a_+,
+\qquad
+a_{--},a_{-+},a_{+-},a_{++},
+\quad\ldots
+\]
+
+The model satisfies META0 non-vacuity, RA0 relational incidence, and recursive RR1.
+
+Therefore
+
+\[
+\boxed{
+\text{recursive binary occurrence structure}
+\not\Rightarrow
+\text{two distinct carrier labels}.
+}
+\]
+
+This witness is the finite discrete analogue of the distinction between one underlying carrier and two relational/polar slots.
