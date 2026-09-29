@@ -14,7 +14,7 @@ be reduced to one axiom without hiding RR1 inside a change of wording?
 
 No. The current RA0 is too weak.
 
-RA0 says that an admitted observable is not independent of relation. The finite witness W1 already shows
+RA0 says that an admitted observable is incident to at least one primitive relation, irrespective of arrow orientation. The finite witness W1 already shows
 
 \[
 \boxed{\mathrm{RA0}\not\Rightarrow\mathrm{RR1}}.
