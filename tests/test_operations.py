@@ -5,6 +5,9 @@ from rdss.operations import (
     BranchRefinementMap,
     ContractionRule,
     OrbitalAction,
+    OccurrenceRelationPath,
+    OccurrenceTransportPath,
+    RelationOccurrence,
     RelationPath,
     RelationTransport,
     RelationalProductRule,
@@ -208,6 +211,116 @@ def test_open_relation_path_rejects_holonomy_claim():
     assert not path.relation_path.closed
     with pytest.raises(ValueError):
         path.holonomy_residual(elem(1.0, carrier=a))
+
+
+def test_carrier_closed_path_can_remain_occurrence_open():
+    a = RelationalPoint()
+    relation = TypedRelation(a, a, "r")
+    occurrence = RelationOccurrence(
+        relation,
+        (),
+        (-1,),
+    )
+
+    value_path = RelationPath((relation,))
+    occurrence_path = OccurrenceRelationPath((occurrence,))
+
+    assert value_path.closed
+    assert occurrence_path.carrier_closed
+    assert not occurrence_path.occurrence_closed
+    assert not occurrence_path.closed
+
+
+def test_occurrence_holonomy_rejects_singleton_refinement_pseudo_loop():
+    a = RelationalPoint()
+    relation = TypedRelation(a, a, "r")
+    occurrence_path = OccurrenceRelationPath(
+        (
+            RelationOccurrence(
+                relation,
+                (),
+                (-1,),
+            ),
+        )
+    )
+    transport = RelationTransport(relation, lambda z: z)
+    path = OccurrenceTransportPath(
+        occurrence_path,
+        (transport,),
+    )
+
+    with pytest.raises(ValueError):
+        path.holonomy_residual(elem(1.0, carrier=a))
+
+
+def test_occurrence_closed_loop_allows_holonomy():
+    a = RelationalPoint()
+    down = TypedRelation(a, a, "down")
+    up = TypedRelation(a, a, "up")
+    occurrence_path = OccurrenceRelationPath(
+        (
+            RelationOccurrence(down, (), (-1,)),
+            RelationOccurrence(up, (-1,), ()),
+        )
+    )
+    path = OccurrenceTransportPath(
+        occurrence_path,
+        (
+            RelationTransport(down, lambda z: z),
+            RelationTransport(up, lambda z: z),
+        ),
+    )
+
+    assert occurrence_path.carrier_closed
+    assert occurrence_path.occurrence_closed
+    assert occurrence_path.closed
+    assert path.holonomy_residual(elem(2.0, carrier=a)) == pytest.approx(0.0)
+
+
+def test_occurrence_path_rejects_address_discontinuity_even_when_carriers_compose():
+    a = RelationalPoint()
+    first = TypedRelation(a, a, "first")
+    second = TypedRelation(a, a, "second")
+
+    with pytest.raises(ValueError):
+        OccurrenceRelationPath(
+            (
+                RelationOccurrence(first, (), (-1,)),
+                RelationOccurrence(second, (1,), ()),
+            )
+        )
+
+
+def test_occurrence_address_cannot_denote_multiple_carriers():
+    a = RelationalPoint()
+    b = RelationalPoint((1,))
+    first = TypedRelation(a, b, "ab")
+    second = TypedRelation(b, a, "ba")
+
+    with pytest.raises(ValueError):
+        OccurrenceRelationPath(
+            (
+                RelationOccurrence(first, (), (-1,)),
+                RelationOccurrence(second, (-1,), (-1,)),
+            )
+        )
+
+
+def test_occurrence_transport_requires_relation_alignment():
+    a = RelationalPoint()
+    r1 = TypedRelation(a, a, "r1")
+    r2 = TypedRelation(a, a, "r2")
+    occurrence_path = OccurrenceRelationPath(
+        (
+            RelationOccurrence(r1, (), ()),
+        )
+    )
+
+    with pytest.raises(ValueError):
+        OccurrenceTransportPath(
+            occurrence_path,
+            (RelationTransport(r2, lambda z: z),),
+        )
 
 
 def test_transport_composition_residual_measures_functoriality_defect():
