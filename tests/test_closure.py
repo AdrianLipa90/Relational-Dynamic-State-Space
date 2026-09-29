@@ -5,6 +5,9 @@ from rdss.closure import (
     BinaryDistinction,
     BranchRelationOccurrence,
     GenerativeRelationModel,
+    binary_occurrence_count_through_depth,
+    finite_word_rank,
+    finite_word_unrank,
     RelationalBinaryDistinction,
     RelationalGenerativeModel,
     requires_novelty,
@@ -307,3 +310,46 @@ def test_branch_relation_materialization_fails_on_missing_carrier_mapping():
 
     with pytest.raises(KeyError):
         occurrence.as_typed_relation({"a": RelationalPoint()})
+
+
+
+def test_binary_occurrence_count_matches_complete_unfolding():
+    model = singleton_ra0_star_model()
+
+    for depth in range(10):
+        tree = model.unfold("a", depth)
+        assert len(tree) == binary_occurrence_count_through_depth(depth)
+        assert binary_occurrence_count_through_depth(depth) == (2 ** (depth + 1)) - 1
+
+
+def test_finite_word_rank_unrank_is_bijection_on_initial_segment():
+    seen = set()
+
+    for rank in range(512):
+        address = finite_word_unrank(rank)
+        assert finite_word_rank(address) == rank
+        assert address not in seen
+        seen.add(address)
+
+    assert len(seen) == 512
+
+
+def test_finite_word_rank_orders_words_by_level_then_binary_index():
+    assert finite_word_rank(()) == 0
+    assert finite_word_rank((-1,)) == 1
+    assert finite_word_rank((1,)) == 2
+    assert finite_word_rank((-1, -1)) == 3
+    assert finite_word_rank((-1, 1)) == 4
+    assert finite_word_rank((1, -1)) == 5
+    assert finite_word_rank((1, 1)) == 6
+
+
+def test_finite_word_rank_and_count_fail_closed():
+    with pytest.raises(ValueError):
+        binary_occurrence_count_through_depth(-1)
+
+    with pytest.raises(ValueError):
+        finite_word_rank((0,))
+
+    with pytest.raises(ValueError):
+        finite_word_unrank(-1)
