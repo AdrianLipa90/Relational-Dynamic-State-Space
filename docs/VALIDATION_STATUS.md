@@ -31,7 +31,7 @@ Static checks found:
 The current claim ledger contains:
 
 \[
-43
+44
 \]
 
 unique claim IDs.
@@ -63,12 +63,12 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 117 Python test functions:
+The current repository contains 120 Python test functions:
 
 | File | Test functions |
 |---|---:|
-| \`tests/test_algebra.py\` | 10 |
-| \`tests/test_axioms.py\` | 25 |
+| \`tests/test_algebra.py\` | 12 |
+| \`tests/test_axioms.py\` | 26 |
 | \`tests/test_closure.py\` | 6 |
 | \`tests/test_independence_witnesses.py\` | 3 |
 | \`tests/test_layering.py\` | 3 |
@@ -77,9 +77,19 @@ The current repository contains 117 Python test functions:
 | \`tests/test_potential.py\` | 13 |
 | \`tests/test_realizations.py\` | 13 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **117** |
+| **Total** | **120** |
 
 This is an inventory count, not a runtime result.
+
+### Typed-zero audit
+
+The additive zero is now typed by the exact additive sector:
+
+\[
+(\text{rank},\text{carrier},\text{semantic scale},\text{component dimension}).
+\]
+
+Refinement level is derived from the carrier and is not sufficient to identify the zero sector. Two carriers at the same level therefore have distinct typed zeros.
 
 ### Relational potential audit
 
