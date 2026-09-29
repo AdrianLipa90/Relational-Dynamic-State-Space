@@ -238,6 +238,16 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_RELATION_OCCURRENCE_CARDINALITY_LOWER_BOUND", "REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL"),
     ),
     Claim(
+        "THM_MINIMAL_RELATIONAL_ATOM_SIGNATURE",
+        ClaimKind.THEOREM,
+        "Under META0 plus RA0_REL_STAR, the minimal cardinality signature is one admitted carrier, one underlying primitive relation value, and two branch-relation occurrences.",
+        (
+            "THM_SINGLETON_FOUNDATION_MINIMALITY",
+            "THM_SINGLE_RELATION_VALUE_MINIMALITY",
+            "THM_TWO_RELATION_OCCURRENCE_MINIMALITY",
+        ),
+    ),
+    Claim(
         "THM_BINARY_OCCURRENCE_COUNT",
         ClaimKind.THEOREM,
         "A complete binary occurrence unfolding through finite depth N contains exactly 2^(N+1)-1 path-labelled occurrences.",
