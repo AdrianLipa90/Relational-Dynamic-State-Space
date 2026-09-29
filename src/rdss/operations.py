@@ -217,3 +217,49 @@ def transport_composition_residual(
     direct_value = direct(element)
     sequential_value = second(first(element))
     return abs(direct_value - sequential_value)
+
+
+
+def product_bilinearity_residuals(
+    product: RelationalProductRule,
+    x: TensorScalarElement,
+    y: TensorScalarElement,
+    z: TensorScalarElement,
+    scalar: complex,
+) -> dict[str, float]:
+    """Measure additivity and scalar-linearity defects of the relational product.
+
+    Exact K-bilinearity is the special case where all four residuals vanish.
+    """
+    left_add = product(x + y, z) - (product(x, z) + product(y, z))
+    right_add = product(x, y + z) - (product(x, y) + product(x, z))
+    left_scalar = product(x.scale_by(scalar), y) - product(x, y).scale_by(scalar)
+    right_scalar = product(x, y.scale_by(scalar)) - product(x, y).scale_by(scalar)
+    return {
+        "left_additivity": abs(left_add),
+        "right_additivity": abs(right_add),
+        "left_scalar": abs(left_scalar),
+        "right_scalar": abs(right_scalar),
+    }
+
+
+def orbital_inverse_residual(
+    action: OrbitalAction,
+    element: TensorScalarElement,
+) -> float:
+    """Check supplied inverse in both orders on one reference element."""
+    forward_back = action.invert(action.act(element)) - element
+    back_forward = action.act(action.invert(element)) - element
+    return max(abs(forward_back), abs(back_forward))
+
+
+def orbital_composition_residual(
+    composed: OrbitalAction,
+    left: OrbitalAction,
+    right: OrbitalAction,
+    element: TensorScalarElement,
+) -> float:
+    """Measure U_(gh) X - U_g(U_h X) for a supplied composition representative."""
+    direct = composed.act(element)
+    sequential = left.act(right.act(element))
+    return abs(direct - sequential)
