@@ -6,7 +6,11 @@ from typing import Mapping
 
 @dataclass(frozen=True)
 class BinaryDistinction:
-    """One admitted non-degenerate distinction hosted by a carrier."""
+    """One hosted binary distinction with distinct left/right occurrence slots.
+
+    Non-degeneracy is occurrence-level: the - and + branch positions are
+    distinct even when both positions carry the same underlying carrier label.
+    """
 
     host: str
     left: str
@@ -15,8 +19,6 @@ class BinaryDistinction:
     def __post_init__(self) -> None:
         if not self.host or not self.left or not self.right:
             raise ValueError("distinction labels must be non-empty")
-        if self.left == self.right:
-            raise ValueError("a distinction requires two distinct endpoint occurrences")
 
 
 @dataclass(frozen=True)
