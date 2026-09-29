@@ -200,6 +200,106 @@ class RelationPath:
 
 
 @dataclass(frozen=True)
+class RelationOccurrence:
+    """One typed relation value attached to source/target occurrence addresses."""
+
+    relation: TypedRelation
+    source_occurrence: tuple[int, ...]
+    target_occurrence: tuple[int, ...]
+
+    def __post_init__(self) -> None:
+        for address in (self.source_occurrence, self.target_occurrence):
+            if any(branch not in (-1, 1) for branch in address):
+                raise ValueError("occurrence addresses use only -1/+1 branches")
+
+
+@dataclass(frozen=True)
+class OccurrenceRelationPath:
+    """Composable path preserving both relation values and occurrence identity."""
+
+    occurrences: tuple[RelationOccurrence, ...]
+
+    def __post_init__(self) -> None:
+        if not self.occurrences:
+            raise ValueError("occurrence relation path must contain at least one occurrence")
+        for left, right in zip(self.occurrences, self.occurrences[1:]):
+            if left.relation.target != right.relation.source:
+                raise ValueError("occurrence relation path is not carrier-composable")
+            if left.target_occurrence != right.source_occurrence:
+                raise ValueError("occurrence relation path is not occurrence-composable")
+
+    @property
+    def relation_path(self) -> RelationPath:
+        return RelationPath(tuple(item.relation for item in self.occurrences))
+
+    @property
+    def source(self):
+        return self.occurrences[0].relation.source
+
+    @property
+    def target(self):
+        return self.occurrences[-1].relation.target
+
+    @property
+    def source_occurrence(self) -> tuple[int, ...]:
+        return self.occurrences[0].source_occurrence
+
+    @property
+    def target_occurrence(self) -> tuple[int, ...]:
+        return self.occurrences[-1].target_occurrence
+
+    @property
+    def carrier_closed(self) -> bool:
+        return self.source == self.target
+
+    @property
+    def occurrence_closed(self) -> bool:
+        return self.source_occurrence == self.target_occurrence
+
+    @property
+    def closed(self) -> bool:
+        """Occurrence-level closure; stricter than carrier closure."""
+        return self.occurrence_closed
+
+
+@dataclass(frozen=True)
+class OccurrenceTransportPath:
+    """Transport path whose holonomy closure is checked at occurrence level."""
+
+    occurrence_path: OccurrenceRelationPath
+    transports: tuple[RelationTransport, ...]
+
+    def __post_init__(self) -> None:
+        if len(self.transports) != len(self.occurrence_path.occurrences):
+            raise ValueError("one transport is required for each relation occurrence")
+        if not self.transports:
+            raise ValueError("occurrence transport path must contain at least one transport")
+        for occurrence, transport in zip(
+            self.occurrence_path.occurrences,
+            self.transports,
+        ):
+            if transport.relation != occurrence.relation:
+                raise ValueError("transport relation does not match relation occurrence")
+
+    def apply(self, element: TensorScalarElement) -> TensorScalarElement:
+        if element.carrier != self.occurrence_path.source:
+            raise ValueError("element is not on the occurrence path source carrier")
+        current = element
+        for transport in self.transports:
+            current = transport(current)
+        return current
+
+    def holonomy_residual(self, element: TensorScalarElement) -> float:
+        """Norm of transported state minus start for an occurrence-closed path."""
+        if not self.occurrence_path.occurrence_closed:
+            raise ValueError(
+                "occurrence holonomy requires return to the same occurrence address"
+            )
+        final = self.apply(element)
+        return abs(final - element)
+
+
+@dataclass(frozen=True)
 class TransportPath:
     """A relation path together with one transport for each edge."""
 
