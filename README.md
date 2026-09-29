@@ -227,7 +227,27 @@ The kernel does **not** assume:
 - Zero Axis as an axiom of the general algebra;
 - any physical identification without a separate bridge theorem.
 
-See `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, and `docs/INDEXED_TENSOR_GATE.md` for the explicit contraction/tensor realization boundary.
+See `docs/ARCHITECTURE.md` for module layering, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, and `docs/INDEXED_TENSOR_GATE.md` for the explicit contraction/tensor realization boundary.
+
+## Layer architecture
+
+The implementation is deliberately stratified:
+
+[
+oxed{
+	ext{core algebra}
+	o
+	ext{structural operators}
+	o
+	ext{phase/reference realizations}
+	o
+	ext{optional bridges}
+}
+]
+
+`src/rdss/algebra.py` is representation-free. CP1/Fubini--Study and scalar-angle Moiré live in `realizations.py`; generic U(1) utilities live in `phase.py`; Zero Axis lives in `zero_axis.py`. The package root re-exports these names for convenience without changing their epistemic layer.
+
+See `docs/ARCHITECTURE.md` for the exact module ownership and promotion rules.
 
 ## Development invariant
 
