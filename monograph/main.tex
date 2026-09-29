@@ -218,6 +218,46 @@ Tensor product and contraction have the schematic types
 \]
 whenever the relevant type and relation constraints are satisfied.
 
+The tensor product itself is supplied as a typed rule; the reference
+Kronecker-style implementation is only one realization. Strict monoidal
+properties are tested rather than assumed. Define
+\[
+\boxed{
+\Delta_{\alpha}^{\otimes}(X,Y,Z)
+=
+\left\|
+(X\otimes Y)\otimes Z
+-
+X\otimes(Y\otimes Z)
+\right\|
+}
+\]
+for strict associativity. For explicitly supplied left and right unit
+candidates \(\mathbf 1_L,\mathbf 1_R\),
+\[
+\boxed{
+\Delta_{\mathbf 1}^{\otimes}(X)
+=
+\max\left(
+\|\mathbf 1_L\otimes X-X\|,
+\|X\otimes\mathbf 1_R-X\|
+\right).
+}
+\]
+For a supplied braiding \(\beta_{X,Y}\),
+\[
+\boxed{
+\Delta_{\beta}^{\otimes}(X,Y)
+=
+\left\|
+\beta_{X,Y}(X\otimes Y)-Y\otimes X
+\right\|.
+}
+\]
+The zero-defect reference subclass is strict with respect to these checks.
+A non-strict monoidal formulation with explicit associator/braiding
+isomorphisms and pentagon/hexagon laws remains an open extension.
+
 A typed relation is written
 \[
 r:a\to b
