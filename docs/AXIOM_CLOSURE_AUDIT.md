@@ -172,3 +172,26 @@ with
 \]
 
 Do not promote RA0* merely because it is shorter. Promotion is justified only if its stronger wording is accepted as the intended meaning of the foundational relational principle.
+
+
+## Non-vacuity caveat
+
+Both the canonical pair and the strengthened closure candidate are compatible with the empty admitted presentation unless a separate existence condition is added:
+
+\[
+\mathrm{RA0}+\mathrm{RR1}\not\Rightarrow\mathrm{EX0},
+\qquad
+\mathrm{RA0}^{*}\not\Rightarrow\mathrm{EX0}.
+\]
+
+Thus RA0* may collapse recursive closure into one stronger relational rule, but it does not by itself guarantee that there is an admitted root from which an unfolding can start.
+
+The candidate non-vacuity statement is
+
+\[
+\mathrm{EX0}:
+\exists p\,\operatorname{Adm}(p).
+\]
+
+Its promotion is intentionally left open.
+
