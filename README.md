@@ -126,6 +126,37 @@ is countably infinite. The reference kernel implements the explicit bijection
 with \(-1\mapsto0\), \(+1\mapsto1\), through
 `finite_word_rank` / `finite_word_unrank`.
 
+### Occurrence address monoid
+
+The finite address words form
+
+\[
+B^*=\{-1,+1\}^{*},
+\]
+
+the free monoid on the two branch generators under concatenation, with the
+empty word \(\varnothing\) as identity.
+
+For a relational carrier \(p_\omega\), the reference kernel implements
+
+\[
+p_\omega\cdot u
+=
+p_{\omega u}.
+\]
+
+Therefore
+
+\[
+p\cdot\varnothing=p,
+\qquad
+(p\cdot u)\cdot v=p\cdot(uv).
+\]
+
+`RelationalPoint.advance` is this right action. `BranchRefinementMap` is the
+one-generator case. RR1 is separate: it asserts that every finite word in
+this address monoid is actually realized by a relational occurrence from an
+admitted root.
 ### Minimal underlying relation value
 
 The two branch occurrences do not need two distinct underlying relation
