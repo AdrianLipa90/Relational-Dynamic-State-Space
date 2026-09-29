@@ -610,3 +610,50 @@ def test_refinement_level_grading_theorem():
             "DEF_POINT",
         }
     )
+
+
+
+def test_occurrence_prefix_meet_and_tree_metric_dependencies():
+    claims = claim_map()
+
+    assert claims["DEF_OCCURRENCE_PREFIX_ORDER"].kind is ClaimKind.DEFINITION
+    assert dependency_closure("DEF_OCCURRENCE_PREFIX_ORDER") == frozenset(
+        {
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+        }
+    )
+
+    assert claims["THM_OCCURRENCE_MEET_SEMILATTICE"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_OCCURRENCE_MEET_SEMILATTICE") == frozenset(
+        {
+            "DEF_OCCURRENCE_PREFIX_ORDER",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+        }
+    )
+
+    assert claims["DEF_OCCURRENCE_TREE_DISTANCE"].kind is ClaimKind.DEFINITION
+    assert dependency_closure("DEF_OCCURRENCE_TREE_DISTANCE") == frozenset(
+        {
+            "THM_OCCURRENCE_MEET_SEMILATTICE",
+            "DEF_OCCURRENCE_PREFIX_ORDER",
+            "THM_REFINEMENT_LEVEL_GRADING",
+            "THM_REFINEMENT_RIGHT_ACTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+        }
+    )
+
+    assert claims["THM_OCCURRENCE_TREE_METRIC"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_OCCURRENCE_TREE_METRIC") == frozenset(
+        {
+            "DEF_OCCURRENCE_TREE_DISTANCE",
+            "THM_OCCURRENCE_MEET_SEMILATTICE",
+            "DEF_OCCURRENCE_PREFIX_ORDER",
+            "THM_REFINEMENT_LEVEL_GRADING",
+            "THM_REFINEMENT_RIGHT_ACTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+        }
+    )
