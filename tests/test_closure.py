@@ -5,7 +5,9 @@ from rdss.closure import (
     BinaryDistinction,
     BranchRelationOccurrence,
     GenerativeRelationModel,
+    binary_boundary_cylinder_count,
     binary_occurrence_count_through_depth,
+    binary_words_at_depth,
     finite_word_rank,
     finite_word_unrank,
     minimal_singleton_ra0_rel_star_model,
@@ -424,3 +426,33 @@ def test_nonempty_ra0_rel_star_has_at_least_two_relation_occurrences():
     assert model.admitted
     assert model.satisfies_ra0_rel_star()
     assert len(model.relation_occurrences) >= 2
+
+
+
+def test_binary_boundary_prefix_basis_has_exact_cylinder_count():
+    for depth in range(9):
+        words = binary_words_at_depth(depth)
+
+        assert len(words) == 2 ** depth
+        assert len(words) == binary_boundary_cylinder_count(depth)
+        assert all(len(word) == depth for word in words)
+        assert len(set(words)) == len(words)
+
+
+def test_binary_boundary_prefix_basis_matches_finite_word_ranking_block():
+    for depth in range(7):
+        words = binary_words_at_depth(depth)
+        expected_start = (1 << depth) - 1
+        expected = tuple(
+            finite_word_unrank(expected_start + i)
+            for i in range(1 << depth)
+        )
+        assert words == expected
+
+
+def test_binary_boundary_prefix_helpers_fail_closed():
+    with pytest.raises(ValueError):
+        binary_words_at_depth(-1)
+
+    with pytest.raises(ValueError):
+        binary_boundary_cylinder_count(-1)
