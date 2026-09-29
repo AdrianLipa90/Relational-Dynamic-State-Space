@@ -65,6 +65,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_POINT", "DEF_OCCURRENCE_ADDRESS_SPACE"),
     ),
     Claim(
+        "THM_REFINEMENT_LEVEL_GRADING",
+        ClaimKind.THEOREM,
+        "The word-length map grades the occurrence-address monoid and the carrier action: |uv|=|u|+|v| and level(p·u)=level(p)+|u|.",
+        ("THM_REFINEMENT_RIGHT_ACTION",),
+    ),
+    Claim(
         "DEF_BINARY_REL",
         ClaimKind.DEFINITION,
         "A primitive typed relation is binary: r:a->b. Higher arity is constructed separately.",
