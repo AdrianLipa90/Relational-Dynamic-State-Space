@@ -716,6 +716,57 @@ Likewise the phase residual is derived from accumulated holonomy. Neither
 winding nor residual is stored as an independent coordinate of the base
 algebra element.
 
+\subsection{Explicit phase representation of relational holonomy}
+
+Abstract relational holonomy need not be a phase. A concrete realization may,
+however, supply an explicit representation
+\[
+\boxed{
+\chi:
+\mathcal H_{\gamma}
+\longmapsto
+u_{\gamma}\in U(1).
+}
+\]
+The existence of \(\chi\) is an additional realization statement; it is not
+a theorem of the core algebra.
+
+Once a closed holonomy has a verified unit-modulus representative
+\(u_{\gamma}\), the companion Zero Axis bridge gives the finite inverse
+projective lift
+\[
+\boxed{
+s_{\gamma}
+=
+\Omega^{-1}(u_{\gamma})
+=
+\frac{u_{\gamma}}{1+u_{\gamma}},
+}
+\]
+whenever \(u_{\gamma}\neq-1\). The lifted point satisfies
+\[
+\Re s_{\gamma}=\frac12.
+\]
+The exceptional phase
+\[
+u_{\gamma}=-1
+\]
+is the compactified point at infinity of the Zero Axis rather than a finite
+\(s\)-coordinate.
+
+Thus the implemented reference chain is
+\[
+\boxed{
+\text{closed relational holonomy}
+\xrightarrow{\ \chi\ }
+U(1)
+\xrightarrow{\ \Omega^{-1}\ }
+\widehat{\Zaxis}.
+}
+\]
+What remains open is a universal or existence theorem specifying when a
+general RTOFA holonomy necessarily admits such a \(U(1)\) representation.
+
 \section{Axiom and dependency audit}
 
 The formal dependency audit separates eight claim classes:
