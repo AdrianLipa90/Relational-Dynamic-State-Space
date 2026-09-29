@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Callable
 
-from .algebra import TensorScalarElement, TypedRelation
+from .algebra import SemanticScale, SemanticScaleGraph, TensorScalarElement, TypedRelation
 
 
 ElementMap = Callable[[TensorScalarElement], TensorScalarElement]
@@ -272,3 +272,41 @@ def orbital_identity_residual(
 ) -> float:
     """Measure U_e X - X for a supplied identity representative."""
     return abs(identity.act(element) - element)
+
+
+
+@dataclass(frozen=True)
+class SemanticScaleMap:
+    """Executable coarse-graining morphism S_(sigma->tau)."""
+
+    graph: SemanticScaleGraph
+    source: SemanticScale
+    target: SemanticScale
+    mapping: ElementMap
+
+    def __post_init__(self) -> None:
+        if not self.graph.can_coarsen(self.source.label, self.target.label):
+            raise ValueError("semantic scale graph does not admit this coarse-graining")
+
+    def __call__(self, element: TensorScalarElement) -> TensorScalarElement:
+        if element.scale != self.source:
+            raise ValueError("semantic scale map input has the wrong source scale")
+        result = self.mapping(element)
+        if not isinstance(result, TensorScalarElement):
+            raise TypeError("semantic scale map must return TensorScalarElement")
+        if result.scale != self.target:
+            raise ValueError("semantic scale map result has the wrong target scale")
+        if result.carrier != element.carrier or result.rank != element.rank:
+            raise ValueError("reference semantic scale map preserves carrier and tensor rank")
+        return result
+
+
+def semantic_orbital_commutator_residual(
+    scale_map: SemanticScaleMap,
+    orbital: OrbitalAction,
+    element: TensorScalarElement,
+) -> float:
+    """Measure U S X - S U X for a semantic-scale/orbital pair."""
+    orbital_after_scale = orbital.act(scale_map(element))
+    scale_after_orbital = scale_map(orbital.act(element))
+    return abs(orbital_after_scale - scale_after_orbital)
