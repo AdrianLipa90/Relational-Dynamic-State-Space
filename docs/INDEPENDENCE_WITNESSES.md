@@ -26,7 +26,7 @@ b\to a.
 
 No refinement rule is supplied.
 
-Therefore every admitted point is the source of a relation, so RA0 holds, while recursive relational closure RR1 fails immediately.
+Therefore every admitted point is incident to a primitive relation, so RA0 holds, while recursive relational closure RR1 fails immediately.
 
 Hence, in the current formal language,
 
@@ -64,7 +64,7 @@ b\mapsto(a,b).
 
 Starting from either primitive relation endpoint, every reachable refinement descendant is again \(a\) or \(b\), and both have a supplied non-degenerate refinement. Thus RR1 is recursively closed.
 
-The admitted point \(q\), however, has no outgoing primitive relation. Therefore RA0 fails at \(q\).
+The admitted point \(q\), however, is incident to no primitive relation. Therefore RA0 fails at \(q\).
 
 Hence
 
