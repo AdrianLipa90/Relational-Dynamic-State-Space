@@ -88,6 +88,7 @@ from .operations import (
 )
 from .realizations import (
     CP1RefinementRealization,
+    CP1RelationalUnfolding,
     CP1State,
     HolonomyPhaseRepresentation,
     OccurrenceHolonomyPhaseRepresentation,
@@ -174,6 +175,8 @@ __all__ = [
     "OccurrenceHolonomyPhaseRepresentation",
     "MinimalDistinction",
     "MoireRotation",
+    "CP1RelationalUnfolding",
+    "reference_cp1_unfolding",
     "reference_maximal_cp1_tree",
     "lift_value_phase_to_occurrence",
     "ZeroAxisPoint",
