@@ -66,7 +66,12 @@ Once a carrier is admitted, it is not defined as an observable independently of 
 \[
 \operatorname{Adm}(x)
 \Longrightarrow
-\exists\,y,r:\operatorname{Rel}_r(x,y).
+\exists\,y,r:
+\bigl(
+\operatorname{Rel}_r(x,y)
+\lor
+\operatorname{Rel}_r(y,x)
+\bigr).
 \]
 
 **RR1 — recursive relational closure**
