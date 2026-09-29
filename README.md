@@ -76,11 +76,21 @@ Once a carrier is admitted, it is not defined as an observable independently of 
 
 **RR1 — recursive relational closure**
 
-At every admitted path-labelled occurrence, a selected relational point may itself carry a further non-degenerate binary distinction, and the same rule re-applies at every finite refinement depth. This is the explicit extra assumption that generates the fractal/refinement tower; it is not silently claimed to follow from RA0.
+At every admitted path-labelled occurrence, a selected relational point may itself carry a further non-degenerate binary distinction, and the same rule re-applies at every finite refinement depth. Non-degeneracy is occurrence-level: the branch slots \((-),(+)\) are distinct even when both carry the same underlying carrier label. Thus a singleton witness \(D(a)=(a,a)\) is allowed. This is the explicit extra assumption that generates the fractal/refinement tower; it is not silently claimed to follow from RA0.
 
 The minimal algebraic carrier is an unscaled point \(p\). Algebraic zero is not identified with absence of relation.
 
 See \`docs/FOUNDATIONAL_NONVACUITY_GATE.md\` for the distinction between raw formula semantics and the intended non-empty model class.
+
+A singleton carrier can therefore unfold through distinct path-labelled occurrences:
+[
+a_arnothing
+	o
+{a_-,a_+}
+	o
+{a_{--},a_{-+},a_{+-},a_{++}}
+	ocdots.
+]
 
 ## Reference minimal distinction
 
@@ -408,7 +418,7 @@ A stronger candidate has now been isolated:
 }
 \]
 
-with the selected endpoint occurrences themselves admitted.
+with the selected endpoint occurrences themselves admitted. The left/right occurrence slots are distinct by address; their carrier labels need not differ.
 
 Under this stronger statement, recursive refinement follows by induction on path-labelled occurrences:
 
@@ -418,7 +428,7 @@ Under this stronger statement, recursive refinement follows by induction on path
 }
 \]
 
-This does **not** mean old RA0 implied RR1. RA0* explicitly adds binary non-degeneracy and endpoint admissibility. It also does not force ontically new carrier identities at each depth:
+This does **not** mean old RA0 implied RR1. RA0* explicitly adds occurrence-level binary non-degeneracy and endpoint admissibility. It does not require two different carrier labels at a branch and therefore does not force ontically new carrier identities at each depth:
 
 \[
 \mathrm{RA0}^{*}\not\Rightarrow\mathrm{NOVELTY}.
