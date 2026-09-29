@@ -31,6 +31,11 @@ from .phase import (
     winding_and_residual,
     wrap_phase,
 )
+from .potential import (
+    RelationalPotentialProfile,
+    relational_attractor_set,
+    semantic_potential_shift,
+)
 from .operations import (
     BranchRefinementMap,
     ContractionRule,
@@ -141,4 +146,7 @@ __all__ = [
     "finite_zero_axis_lift",
     "closed_path_winding",
     "winding_and_residual",
+    "RelationalPotentialProfile",
+    "relational_attractor_set",
+    "semantic_potential_shift",
 ]
