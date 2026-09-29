@@ -44,6 +44,29 @@ At every admitted path-labelled occurrence, a selected relational point may itse
 
 The minimal algebraic carrier is an unscaled point \(p\). Algebraic zero is not identified with absence of relation.
 
+### Non-vacuity gate
+
+The current formal RA0 and RR1 constrain admitted relational carriers, but they do not themselves assert that any admitted carrier exists. Hence the empty model satisfies both vacuously.
+
+The repository therefore tracks, without promoting it,
+
+\[
+\boxed{
+\mathrm{EX0}:
+\exists p\,\operatorname{Adm}(p).
+}
+\]
+
+Current status:
+
+\[
+\mathrm{RA0}+\mathrm{RR1}\not\Rightarrow\mathrm{EX0},
+\qquad
+\mathrm{RA0}^{*}\not\Rightarrow\mathrm{EX0}.
+\]
+
+See `docs/FOUNDATIONAL_NONVACUITY_GATE.md`.
+
 ## Reference minimal distinction
 
 A minimal complex binary distinction may be represented by
@@ -276,7 +299,7 @@ The kernel does **not** assume:
 - Zero Axis as an axiom of the general algebra;
 - any physical identification without a separate bridge theorem.
 
-See `docs/ARCHITECTURE.md` for module layering, `docs/RELATIONAL_POTENTIAL.md` for the semantic deformation scalar, `docs/SEMANTIC_WEIGHTING_GATE.md` for the open weight-derivation problem, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary, and `docs/VALIDATION_STATUS.md` for current verification status.
+See `docs/ARCHITECTURE.md` for module layering, `docs/FOUNDATIONAL_NONVACUITY_GATE.md` for the EX0 existence question, `docs/RELATIONAL_POTENTIAL.md` for the semantic deformation scalar, `docs/SEMANTIC_WEIGHTING_GATE.md` for the open weight-derivation problem, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary, and `docs/VALIDATION_STATUS.md` for current verification status.
 
 ## Layer architecture
 
