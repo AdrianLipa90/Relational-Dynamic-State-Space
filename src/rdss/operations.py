@@ -310,3 +310,44 @@ def semantic_orbital_commutator_residual(
     orbital_after_scale = orbital.act(scale_map(element))
     scale_after_orbital = scale_map(orbital.act(element))
     return abs(orbital_after_scale - scale_after_orbital)
+
+
+
+@dataclass(frozen=True)
+class BranchRefinementMap:
+    """Typed branch refinement F_-/F_+ from level n to level n+1."""
+
+    branch: int
+    target_scale: SemanticScale
+    mapping: ElementMap
+
+    def __post_init__(self) -> None:
+        if self.branch not in (-1, 1):
+            raise ValueError("refinement branch must be -1 or +1")
+
+    def __call__(self, element: TensorScalarElement) -> TensorScalarElement:
+        result = self.mapping(element)
+        if not isinstance(result, TensorScalarElement):
+            raise TypeError("refinement map must return TensorScalarElement")
+        expected_carrier = type(element.carrier)(
+            element.carrier.address + (self.branch,)
+        )
+        if result.carrier != expected_carrier:
+            raise ValueError("refinement result is not on the selected child carrier")
+        if result.rank != element.rank:
+            raise ValueError("reference refinement preserves tensor rank")
+        if result.scale != self.target_scale:
+            raise ValueError("refinement result has the wrong target semantic scale")
+        return result
+
+
+def typed_refinement_residual(
+    refinement: BranchRefinementMap,
+    product: RelationalProductRule,
+    x: TensorScalarElement,
+    y: TensorScalarElement,
+) -> float:
+    """Measure F(X star Y) - F(X) star F(Y) in one refinement branch."""
+    refined_product = refinement(product(x, y))
+    product_refined = product(refinement(x), refinement(y))
+    return abs(refined_product - product_refined)
