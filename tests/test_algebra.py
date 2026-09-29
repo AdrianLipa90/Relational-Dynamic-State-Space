@@ -194,3 +194,69 @@ def test_refinement_level_is_free_monoid_length_grading():
     assert p.advance(u).level == p.level + len(u)
     assert len(u + v) == len(u) + len(v)
     assert p.advance(u + v).level == p.level + len(u) + len(v)
+
+
+
+def test_occurrence_prefix_order_and_meet_semilattice():
+    root = RelationalPoint()
+    left = RelationalPoint((-1,))
+    left_right = RelationalPoint((-1, 1))
+    left_left = RelationalPoint((-1, -1, 1))
+    right = RelationalPoint((1,))
+
+    assert root.is_prefix_of(left_right)
+    assert left.is_prefix_of(left_right)
+    assert not right.is_prefix_of(left_right)
+
+    assert left_right.meet(left_left) == left
+    assert left_right.meet(left_left) == left_left.meet(left_right)
+    assert left_right.meet(left_right) == left_right
+
+
+def test_occurrence_prefix_order_is_antisymmetric_on_addresses():
+    points = [
+        RelationalPoint(),
+        RelationalPoint((-1,)),
+        RelationalPoint((1,)),
+        RelationalPoint((-1, 1)),
+    ]
+
+    for x in points:
+        for y in points:
+            if x.is_prefix_of(y) and y.is_prefix_of(x):
+                assert x == y
+
+
+def test_occurrence_tree_distance_has_expected_local_values():
+    root = RelationalPoint()
+    left = RelationalPoint((-1,))
+    right = RelationalPoint((1,))
+    left_right = RelationalPoint((-1, 1))
+
+    assert root.tree_distance(root) == 0
+    assert root.tree_distance(left) == 1
+    assert left.tree_distance(right) == 2
+    assert left.tree_distance(left_right) == 1
+    assert root.tree_distance(left_right) == left_right.level
+    assert left_right.tree_distance(right) == 3
+
+
+def test_occurrence_tree_distance_is_metric_on_sample():
+    points = [
+        RelationalPoint(),
+        RelationalPoint((-1,)),
+        RelationalPoint((1,)),
+        RelationalPoint((-1, -1)),
+        RelationalPoint((-1, 1)),
+        RelationalPoint((1, -1)),
+        RelationalPoint((1, 1)),
+    ]
+
+    for x in points:
+        for y in points:
+            dxy = x.tree_distance(y)
+            assert dxy >= 0
+            assert dxy == y.tree_distance(x)
+            assert (dxy == 0) == (x == y)
+            for z in points:
+                assert dxy <= x.tree_distance(z) + z.tree_distance(y)
