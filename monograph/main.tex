@@ -1729,6 +1729,103 @@ More precisely,
 This is a combinatorial statement about path-labelled relational occurrences,
 not a physical infinity claim.
 
+\subsection{Ideal boundary of infinite branch sequences}
+
+The finite occurrence-address set
+\[
+B^{<\omega}
+=
+\{-1,+1\}^{<\omega}
+\]
+is countably infinite. Its ideal path boundary is a different object:
+\[
+\boxed{
+\partial V
+=
+B^\omega
+=
+\{-1,+1\}^{\mathbb N}.
+}
+\]
+
+For a finite word \(u\in B^n\), define the prefix cylinder
+\[
+[u]
+=
+\{
+\xi\in B^\omega:
+u\preceq\xi
+\}.
+\]
+At exact prefix depth \(n\), the boundary is partitioned into
+\[
+\boxed{
+2^n
+}
+\]
+such cylinders. The executable helpers
+\texttt{binary\_words\_at\_depth} and
+\texttt{binary\_boundary\_cylinder\_count} audit this finite prefix basis.
+
+The map
+\[
+\xi=(\xi_0,\xi_1,\ldots)
+\longmapsto
+S_\xi
+=
+\{
+n\in\mathbb N:
+\xi_n=+1
+\}
+\]
+is a bijection between \(B^\omega\) and the power set
+\(\mathcal P(\mathbb N)\). Therefore
+\[
+\boxed{
+|\partial V|
+=
+2^{\aleph_0}.
+}
+\]
+
+This does not contradict the countability of finite occurrence addresses:
+\[
+|B^{<\omega}|=\aleph_0,
+\qquad
+|B^\omega|=2^{\aleph_0}.
+\]
+
+Under RR1, for every ideal sequence \(\xi\in\partial V\), every finite
+prefix
+\[
+\xi\!\upharpoonright_n
+\]
+is realized by a path-labelled occurrence. Thus each ideal boundary point
+determines a coherent chain
+\[
+p_{\varnothing},
+\quad
+p_{\xi\upharpoonright_1},
+\quad
+p_{\xi\upharpoonright_2},
+\quad\ldots
+\]
+of finite occurrences.
+
+RR1 does not, however, assert the existence of a limit carrier
+\[
+p_\xi
+\]
+for an infinite address. Such a completion would require additional
+topological or geometric structure. Consequently
+\[
+\boxed{
+\text{uncountable ideal boundary}
+\not\Rightarrow
+\text{uncountably many admitted carriers}.
+}
+\]
+
 \subsection{Free monoid of occurrence addresses}
 
 The finite address space
