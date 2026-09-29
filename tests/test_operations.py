@@ -9,6 +9,7 @@ from rdss.operations import (
     RelationalProductRule,
     TransportPath,
     orbital_composition_residual,
+    orbital_identity_residual,
     orbital_inverse_residual,
     product_bilinearity_residuals,
     reference_tensor_product,
@@ -303,3 +304,22 @@ def test_orbital_composition_residual_checks_action_law_on_sample():
 
     assert orbital_composition_residual(u6, u2, u3, x) == pytest.approx(0.0)
     assert orbital_composition_residual(u5, u2, u3, x) == pytest.approx(1.0)
+
+
+
+def test_orbital_identity_residual_checks_identity_representative():
+    x = elem(1.0)
+
+    identity = OrbitalAction("Ue", lambda z: z)
+    not_identity = OrbitalAction(
+        "bad-Ue",
+        lambda z: TensorScalarElement(
+            tuple(2.0 * c for c in z.components),
+            z.rank,
+            z.carrier,
+            z.scale,
+        ),
+    )
+
+    assert orbital_identity_residual(identity, x) == pytest.approx(0.0)
+    assert orbital_identity_residual(not_identity, x) == pytest.approx(1.0)
