@@ -93,6 +93,8 @@ Each typed sector carries an additive module structure over a scalar domain \(\m
 
 The abstract algebra does not fix \(\mathbb K=\mathbb C\). The reference kernel uses complex components. This structure is required before commutators, associators, and refinement residuals can be interpreted as differences. The executable zero of a reference element preserves its typed sector and satisfies \(X+0_X=X\) and \(X-X=0_X\).
 
+Strict tensor coherence is also tested rather than presumed: the kernel measures tensor associativity, explicit left/right unit, and supplied braiding residuals. Full non-strict pentagon/hexagon coherence remains open.
+
 ## Product and orbital coherence
 
 The relational product is not assumed bilinear. Additivity and scalar-linearity residuals are measured explicitly; exact \(\mathbb K\)-bilinearity is the zero-defect subclass.
