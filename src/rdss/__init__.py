@@ -51,6 +51,10 @@ from .operations import (
     typed_refinement_residual,
     refinement_transport_residual,
     orbital_product_residual,
+    semantic_transport_residual,
+    orbital_transport_residual,
+    refinement_semantic_residual,
+    refinement_orbital_residual,
 )
 from .closure import (
     BinaryDistinction,
@@ -110,4 +114,8 @@ __all__ = [
     "refinement_transport_residual",
     "contraction_map_residual",
     "tensor_map_residual",
+    "semantic_transport_residual",
+    "orbital_transport_residual",
+    "refinement_semantic_residual",
+    "refinement_orbital_residual",
 ]
