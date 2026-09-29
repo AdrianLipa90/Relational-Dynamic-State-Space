@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from math import pi
+from math import isfinite, pi
+from typing import Callable
 
-from .algebra import CP1State, MinimalDistinction, RelationalPoint
+from .algebra import CP1State, MinimalDistinction, RelationalPoint, TensorScalarElement, ZeroAxisPoint
+from .operations import TransportPath
 
 
 @dataclass(frozen=True)
@@ -123,3 +125,61 @@ def reference_maximal_cp1_tree(
     if any(abs(value - pi / 2.0) > 1e-12 for value in realization.fs_profile(root, depth).values()):
         raise AssertionError("reference CP1 tree must be maximally distinguished")
     return realization
+
+
+
+PhaseMap = Callable[[TransportPath, TensorScalarElement], complex]
+
+
+@dataclass(frozen=True)
+class HolonomyPhaseRepresentation:
+    """Explicit representation of closed relational holonomy in U(1).
+
+    The phase map is supplied by a concrete realization. RTOFA does not assume
+    that every abstract relational holonomy admits such a representation.
+    """
+
+    name: str
+    phase_map: PhaseMap
+    tolerance: float = 1e-10
+
+    def __post_init__(self) -> None:
+        if not self.name.strip():
+            raise ValueError("phase representation name must be non-empty")
+        if self.tolerance <= 0 or not isfinite(self.tolerance):
+            raise ValueError("tolerance must be positive and finite")
+
+    def phase(
+        self,
+        path: TransportPath,
+        element: TensorScalarElement,
+    ) -> complex:
+        if not path.relation_path.closed:
+            raise ValueError("phase representation requires closed relational holonomy")
+        value = complex(self.phase_map(path, element))
+        if not (isfinite(value.real) and isfinite(value.imag)):
+            raise ValueError("phase representation must be finite")
+        modulus = abs(value)
+        if abs(modulus - 1.0) > self.tolerance:
+            raise ValueError("phase representation does not lie on U(1)")
+        if modulus == 0.0:
+            raise ValueError("zero cannot represent a U(1) phase")
+        return value / modulus
+
+    def finite_zero_axis_point(
+        self,
+        path: TransportPath,
+        element: TensorScalarElement,
+    ) -> ZeroAxisPoint:
+        """Lift a finite U(1) phase through Omega^{-1}(u)=u/(1+u).
+
+        u=-1 is the compactified point at infinity and therefore has no finite
+        ZeroAxisPoint representation.
+        """
+        u = self.phase(path, element)
+        if abs(1.0 + u) <= self.tolerance:
+            raise ValueError("phase u=-1 corresponds to compactified Zero-Axis infinity")
+        s = u / (1.0 + u)
+        if abs(s.real - 0.5) > 10.0 * self.tolerance:
+            raise ValueError("inverse projective image left the Zero Axis")
+        return ZeroAxisPoint(float(s.imag))
