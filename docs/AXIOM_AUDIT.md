@@ -82,9 +82,25 @@ META0 belongs to model formation rather than the object language. RA0 and RR1 ar
 
 This deliberately small foundation does **not** mean that the rest of the signature follows from these statements; the remaining ingredients are typed definitions, independent structural primitives, realizations, derivations, or bridges.
 
-## Open reduction target
+## Open reduction targets
 
-A future theorem may show that a stronger formulation of relational admissibility forces recursive closure, in which case RR1 could be demoted from axiom to theorem. The current repository does not assume such a result.
+There are now two distinct reduction questions.
+
+First, with primitive \(\operatorname{Adm}\),
+
+\[
+\mathrm{META0}\not\Rightarrow\mathrm{RA0}.
+\]
+
+A one-carrier non-empty presentation with no relations is the executable countermodel. RA0 can be demoted only if admissibility itself is explicitly defined by orientation-neutral relational incidence. That definitional option is tracked in `docs/RELATIONAL_ADMISSIBILITY_REDUCTION_GATE.md`.
+
+Second, recursive closure may be reduced through the stronger candidate RA0*:
+
+\[
+\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}.
+\]
+
+Neither reduction is performed by rhetoric; each requires an explicit change of formal status.
 
 
 ## Closure-audit update
