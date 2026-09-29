@@ -7,6 +7,7 @@ from rdss.operations import (
     RelationPath,
     RelationTransport,
     RelationalProductRule,
+    SemanticScaleMap,
     TransportPath,
     orbital_composition_residual,
     orbital_identity_residual,
@@ -14,6 +15,7 @@ from rdss.operations import (
     product_bilinearity_residuals,
     reference_tensor_product,
     relative_moire_action,
+    semantic_orbital_commutator_residual,
     transport_composition_residual,
 )
 
@@ -323,3 +325,80 @@ def test_orbital_identity_residual_checks_identity_representative():
 
     assert orbital_identity_residual(identity, x) == pytest.approx(0.0)
     assert orbital_identity_residual(not_identity, x) == pytest.approx(1.0)
+
+
+
+def test_semantic_scale_map_is_executable_coarse_graining():
+    graph = SemanticScaleGraph((("apple", "fruit"), ("fruit", "food")))
+    source = SemanticScale("apple")
+    target = SemanticScale("food")
+    x = elem(2.0, scale=source)
+
+    scale_map = SemanticScaleMap(
+        graph,
+        source,
+        target,
+        lambda z: TensorScalarElement(
+            z.components,
+            z.rank,
+            z.carrier,
+            target,
+        ),
+    )
+
+    out = scale_map(x)
+    assert out.scale == target
+    assert out.components == x.components
+
+
+def test_semantic_scale_map_rejects_unavailable_coarse_graining():
+    graph = SemanticScaleGraph((("apple", "fruit"),))
+    with pytest.raises(ValueError):
+        SemanticScaleMap(
+            graph,
+            SemanticScale("fruit"),
+            SemanticScale("apple"),
+            lambda z: z,
+        )
+
+
+def test_semantic_orbital_commutator_detects_order_dependence():
+    graph = SemanticScaleGraph((("apple", "fruit"),))
+    source = SemanticScale("apple")
+    target = SemanticScale("fruit")
+    x = elem(2.0, scale=source)
+
+    orbital = OrbitalAction(
+        "double",
+        lambda z: TensorScalarElement(
+            tuple(2.0 * c for c in z.components),
+            z.rank,
+            z.carrier,
+            z.scale,
+        ),
+    )
+
+    pure_relabel = SemanticScaleMap(
+        graph,
+        source,
+        target,
+        lambda z: TensorScalarElement(z.components, z.rank, z.carrier, target),
+    )
+    shifted = SemanticScaleMap(
+        graph,
+        source,
+        target,
+        lambda z: TensorScalarElement(
+            tuple(c + 1.0 for c in z.components),
+            z.rank,
+            z.carrier,
+            target,
+        ),
+    )
+
+    assert semantic_orbital_commutator_residual(
+        pure_relabel, orbital, x
+    ) == pytest.approx(0.0)
+    assert semantic_orbital_commutator_residual(
+        shifted, orbital, x
+    ) == pytest.approx(1.0)
