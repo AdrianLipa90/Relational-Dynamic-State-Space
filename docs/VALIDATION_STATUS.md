@@ -12,10 +12,10 @@ This file distinguishes static verification from runtime execution. A static PAS
 Observed public definitions:
 
 - core algebra: 9;
-- structural operations: 33;
+- structural operations: 36;
 - generic phase: 3;
 - relational potential: 3;
-- reference realizations: 6;
+- reference realizations: 8;
 - Zero Axis bridge: 2;
 - package-root public exports: 82.
 
@@ -31,7 +31,7 @@ Static checks found:
 The current claim ledger contains:
 
 \[
-77
+80
 \]
 
 unique claim IDs.
@@ -63,21 +63,21 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 193 Python test functions:
+The current repository contains 196 Python test functions:
 
 | File | Test functions |
 |---|---:|
 | \`tests/test_algebra.py\` | 12 |
-| \`tests/test_axioms.py\` | 35 |
-| \`tests/test_closure.py\` | 25 |
-| \`tests/test_independence_witnesses.py\` | 10 |
+| \`tests/test_axioms.py\` | 43 |
+| \`tests/test_closure.py\` | 35 |
+| \`tests/test_independence_witnesses.py\` | 13 |
 | \`tests/test_layering.py\` | 3 |
 | \`tests/test_operations.py\` | 43 |
 | \`tests/test_phase.py\` | 3 |
 | \`tests/test_potential.py\` | 13 |
-| \`tests/test_realizations.py\` | 18 |
+| \`tests/test_realizations.py\` | 19 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **193** |
+| **Total** | **196** |
 
 This is an inventory count, not a runtime result.
 
@@ -261,6 +261,20 @@ Hence
 |\operatorname{BranchOcc}(a)|=2.
 }
 \]
+### Minimal relational atom audit
+
+Under META0 plus RA0_REL_STAR, the exact minimum cardinalities are
+
+\[
+|\operatorname{Adm}|=1,
+\qquad
+|\operatorname{RelVal}|=1,
+\qquad
+|\operatorname{RelOcc}|=2.
+\]
+
+The lower bounds and the explicit singleton one-relation witness are tracked separately in the claim ledger. The two relation occurrences may project to the same self-relation value because occurrence identity includes the branch slot.
+
 ### Occurrence tree-metric audit
 
 The finite occurrence addresses carry the canonical prefix order
@@ -409,7 +423,7 @@ The potential remains a scalar relational diagnostic. No potential-to-geometry o
 
 ### Documentation integrity
 
-Static markdown audit covers the architecture, foundational non-vacuity, relational-admissibility reduction, coherence, indexed-tensor, relational-potential, semantic-weighting, independence-witness, axiom-audit, and README documents.
+Static markdown audit covers the architecture, foundational non-vacuity, relational-admissibility reduction, relational-distinction binding, coherence, indexed-tensor, relational-potential, semantic-weighting, independence-witness, axiom-audit, and README documents. The LaTeX display-math check now distinguishes true `\\[` delimiters from line-break options such as `\\\\[1mm]`.
 
 ## RUNTIME NOT RUN ON CURRENT HEAD
 
