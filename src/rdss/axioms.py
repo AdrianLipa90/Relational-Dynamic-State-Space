@@ -30,6 +30,12 @@ CLAIMS: tuple[Claim, ...] = (
         "Relational admissibility: an admitted observable is not independent of relation.",
     ),
     Claim(
+        "EX0",
+        ClaimKind.CANDIDATE_AXIOM,
+        "Non-vacuity candidate: at least one relational carrier is admitted.",
+        ("DEF_POINT",),
+    ),
+    Claim(
         "DEF_POINT",
         ClaimKind.DEFINITION,
         "The minimal algebraic carrier is an unscaled point.",
