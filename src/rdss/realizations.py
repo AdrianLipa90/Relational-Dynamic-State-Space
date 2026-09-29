@@ -6,7 +6,7 @@ from typing import Callable
 
 from .algebra import RelationalPoint, TensorScalarElement
 from .phase import wrap_phase
-from .operations import TransportPath
+from .operations import OccurrenceTransportPath, TransportPath
 
 
 @dataclass(frozen=True)
@@ -243,4 +243,51 @@ class HolonomyPhaseRepresentation:
             raise ValueError("phase representation does not lie on U(1)")
         if modulus == 0.0:
             raise ValueError("zero cannot represent a U(1) phase")
+        return value / modulus
+
+
+
+OccurrencePhaseMap = Callable[[OccurrenceTransportPath, TensorScalarElement], complex]
+
+
+@dataclass(frozen=True)
+class OccurrenceHolonomyPhaseRepresentation:
+    """Explicit U(1) representation of occurrence-closed relational holonomy.
+
+    This is separate from value-level HolonomyPhaseRepresentation. Carrier
+    closure alone is insufficient: the occurrence path must return to the same
+    path-labelled occurrence address.
+    """
+
+    name: str
+    phase_map: OccurrencePhaseMap
+    tolerance: float = 1e-10
+
+    def __post_init__(self) -> None:
+        if not self.name.strip():
+            raise ValueError("occurrence phase representation name must be non-empty")
+        if self.tolerance <= 0 or not isfinite(self.tolerance):
+            raise ValueError("tolerance must be positive and finite")
+
+    def phase(
+        self,
+        path: OccurrenceTransportPath,
+        element: TensorScalarElement,
+    ) -> complex:
+        if not path.occurrence_path.closed:
+            raise ValueError(
+                "occurrence phase representation requires occurrence-closed holonomy"
+            )
+        if element.carrier != path.occurrence_path.source:
+            raise ValueError(
+                "occurrence phase representation element is not on the path source"
+            )
+        value = complex(self.phase_map(path, element))
+        if not (isfinite(value.real) and isfinite(value.imag)):
+            raise ValueError("occurrence phase representation must be finite")
+        modulus = abs(value)
+        if abs(modulus - 1.0) > self.tolerance:
+            raise ValueError("occurrence phase representation does not lie on U(1)")
+        if modulus == 0.0:
+            raise ValueError("zero cannot represent a U(1) occurrence phase")
         return value / modulus
