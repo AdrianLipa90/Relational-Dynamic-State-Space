@@ -53,6 +53,12 @@ class MinimalDistinction:
     right: CP1State
     label: str = "distinction"
 
+    def __post_init__(self) -> None:
+        if self.separation <= 1e-12:
+            raise ValueError(
+                "CP1 distinction requires two projectively distinct states"
+            )
+
     @property
     def separation(self) -> float:
         return self.left.fubini_study_distance(self.right)
