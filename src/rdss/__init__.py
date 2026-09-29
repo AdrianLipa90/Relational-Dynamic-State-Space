@@ -18,6 +18,7 @@ from .axioms import (
     claim_map,
     dependency_closure,
     foundational_axioms,
+    formation_rules,
     validate_dependency_dag,
 )
 from .closure import (
@@ -98,6 +99,7 @@ __all__ = [
     "claim_map",
     "dependency_closure",
     "foundational_axioms",
+    "formation_rules",
     "validate_dependency_dag",
     "BinaryDistinction",
     "GenerativeRelationModel",
