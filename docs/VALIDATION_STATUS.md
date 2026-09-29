@@ -17,7 +17,7 @@ Observed public definitions:
 - relational potential: 3;
 - reference realizations: 6;
 - Zero Axis bridge: 2;
-- package-root public exports: 81.
+- package-root public exports: 82.
 
 Static checks found:
 
@@ -31,7 +31,7 @@ Static checks found:
 The current claim ledger contains:
 
 \[
-65
+68
 \]
 
 unique claim IDs.
@@ -63,7 +63,7 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 177 Python test functions:
+The current repository contains 181 Python test functions:
 
 | File | Test functions |
 |---|---:|
@@ -77,7 +77,7 @@ The current repository contains 177 Python test functions:
 | \`tests/test_potential.py\` | 13 |
 | \`tests/test_realizations.py\` | 18 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **177** |
+| **Total** | **181** |
 
 This is an inventory count, not a runtime result.
 
@@ -224,6 +224,43 @@ is represented by \`OccurrenceHolonomyPhaseRepresentation\`.
 
 The occurrence interface rejects carrier-closed but occurrence-open pseudo-loops before phase evaluation. Neither interface is promoted to a universal existence theorem.
 
+### Underlying relation-value minimality audit
+
+The minimal relational quotient now separates relation values from branch occurrences.
+
+Under META0 plus RA0_REL_STAR, the admitted carrier domain is non-empty and every admitted carrier hosts at least one relationally bound distinction. Therefore at least one underlying primitive relation value exists:
+
+\[
+\boxed{
+|\operatorname{RelVal}|\ge1.
+}
+\]
+
+The explicit minimal singleton witness attains the lower bound with one self-relation value
+
+\[
+r:a\to a
+\]
+
+while its two branch occurrences remain distinct:
+
+\[
+o_-\neq o_+,
+\qquad
+\pi_{\rm rel}(o_-)=\pi_{\rm rel}(o_+)=(a,a,r).
+\]
+
+Hence
+
+\[
+\boxed{
+|\operatorname{Adm}|=1,
+\quad
+|\operatorname{RelVal}|=1,
+\quad
+|\operatorname{BranchOcc}(a)|=2.
+}
+\]
 ### Occurrence-growth audit
 
 Binary recursive refinement now has an executable exact-count theorem:
