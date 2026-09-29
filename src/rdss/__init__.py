@@ -43,6 +43,7 @@ __all__ = [
     "dependency_closure",
     "foundational_axioms",
     "validate_dependency_dag",
+    "ContractionRule",
 ]
 
 
@@ -54,4 +55,14 @@ from .axioms import (
     dependency_closure,
     foundational_axioms,
     validate_dependency_dag,
+)
+
+
+from .operations import (
+    ContractionRule,
+    OrbitalAction,
+    RelationTransport,
+    RelationalProductRule,
+    reference_tensor_product,
+    relative_moire_action,
 )
