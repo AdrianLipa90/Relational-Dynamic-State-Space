@@ -1610,12 +1610,60 @@ The minimal reference model therefore simultaneously realizes
 \qquad
 |\operatorname{RelVal}|=1,
 \qquad
-|\operatorname{BranchOcc}(a)|=2.
+|\operatorname{RelOcc}|=2.
 }
 \]
 The multiplicity required by binary distinction is located in the occurrence
 slots rather than in the cardinality of the underlying carrier or relation
 value sets.
+
+\subsection{Minimal branch-relation occurrence cardinality}
+
+META0 guarantees that an admissible model contains at least one admitted
+carrier. Under \(\mathrm{RA0}^{\mathrm{rel}*}\), that carrier hosts a
+relationally bound binary distinction with the two branch slots
+\[
+(-),(+).
+\]
+Therefore every model in the candidate class satisfies
+\[
+\boxed{
+|\operatorname{RelOcc}|\ge2.
+}
+\]
+
+The minimal singleton model attains this lower bound with
+\[
+o_-=(-,r,a,a),
+\qquad
+o_+=(+,r,a,a),
+\]
+so
+\[
+\boxed{
+\min_{\mathfrak M\models
+\mathrm{META0}+\mathrm{RA0}^{\mathrm{rel}*}}
+|\operatorname{RelOcc}^{\mathfrak M}|
+=
+2.
+}
+\]
+
+Combining the three exact minima gives the candidate-class cardinality
+signature
+\[
+\boxed{
+\left(
+|\operatorname{Adm}|,
+|\operatorname{RelVal}|,
+|\operatorname{RelOcc}|
+\right)
+=
+(1,1,2).
+}
+\]
+This is a metatheoretic statement about the relational signature, not a
+physical identification.
 
 \subsection{Occurrence growth from a singleton carrier}
 
