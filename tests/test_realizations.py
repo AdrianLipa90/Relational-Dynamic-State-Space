@@ -3,12 +3,39 @@ from math import pi
 
 import pytest
 
-from rdss import CP1State, MinimalDistinction, RelationalPoint, RelationTransport, SemanticScale, TensorScalarElement, TransportPath, TypedRelation
+from rdss import RelationalPoint, RelationTransport, SemanticScale, TensorScalarElement, TransportPath, TypedRelation
 from rdss.realizations import (
     CP1RefinementRealization,
+    CP1State,
     HolonomyPhaseRepresentation,
+    MinimalDistinction,
+    MoireRotation,
     reference_maximal_cp1_tree,
 )
+
+
+def test_cp1_fubini_study_maximal_distinction_is_pi_over_two():
+    p = CP1State(1.0, 0.0)
+    q = p.orthogonal_partner()
+    distinction = MinimalDistinction(RelationalPoint(), p, q)
+
+    assert distinction.separation == pytest.approx(pi / 2.0)
+    assert distinction.is_maximal()
+
+
+def test_cp1_nonmaximal_relation_has_smaller_fs_separation():
+    p = CP1State(1.0, 0.0)
+    q = CP1State(1.0, 1.0)
+
+    assert 0.0 < p.fubini_study_distance(q) < pi / 2.0
+
+
+def test_moire_scalar_angle_is_relative_not_absolute():
+    a = MoireRotation(theta_i=0.75, theta_j=0.25)
+    b = MoireRotation(theta_i=1.75, theta_j=1.25)
+
+    assert a.delta == pytest.approx(0.5)
+    assert b.delta == pytest.approx(0.5)
 
 
 def test_maximal_cp1_tree_realizes_recursive_fibres():
