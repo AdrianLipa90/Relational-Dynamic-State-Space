@@ -14,6 +14,10 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | THM_OCCURRENCE_ADDRESS_FREE_MONOID | THEOREM | The finite binary address space is the free monoid on generators -1 and +1 under concatenation. | DEF_OCCURRENCE_ADDRESS_SPACE |
 | THM_REFINEMENT_RIGHT_ACTION | THEOREM | Appending finite binary words to RelationalPoint addresses defines a right action of the address monoid. | DEF_POINT, DEF_OCCURRENCE_ADDRESS_SPACE |
 | THM_REFINEMENT_LEVEL_GRADING | THEOREM | Word length grades the occurrence-address monoid and satisfies level(p·u)=level(p)+|u|. | THM_REFINEMENT_RIGHT_ACTION |
+| DEF_OCCURRENCE_PREFIX_ORDER | DEFINITION | Prefix order is u<=v iff v=uw for some finite binary word w. | DEF_OCCURRENCE_ADDRESS_SPACE |
+| THM_OCCURRENCE_MEET_SEMILATTICE | THEOREM | Finite binary addresses form a rooted meet-semilattice under prefix order; meet is longest common prefix. | DEF_OCCURRENCE_PREFIX_ORDER |
+| DEF_OCCURRENCE_TREE_DISTANCE | DEFINITION | d_T(u,v)=|u|+|v|-2|u meet v|. | THM_OCCURRENCE_MEET_SEMILATTICE, THM_REFINEMENT_LEVEL_GRADING |
+| THM_OCCURRENCE_TREE_METRIC | THEOREM | The canonical occurrence-tree distance is a metric on finite path-labelled occurrence addresses. | DEF_OCCURRENCE_TREE_DISTANCE |
 | DEF_BINARY_REL | DEFINITION | A primitive typed relation is binary: r:a->b. Higher arity is constructed separately. | — |
 | DEF_RELATION_OCCURRENCE | DEFINITION | A relation occurrence is a typed relation value together with source/target occurrence addresses; distinct occurrences may project to the same relation value. | DEF_POINT, DEF_BINARY_REL |
 | DEF_OCCURRENCE_PATH | DEFINITION | An occurrence-aware path is composable in both carrier value and occurrence address, with one carrier consistently assigned to each occurrence address. | DEF_RELATION_OCCURRENCE |
@@ -96,6 +100,7 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 17. **Underlying relation-value cardinality can also be minimal.** Two distinct branch occurrences may project to one self-relation value, so the minimal singleton RA0_REL_STAR model simultaneously attains \(|\operatorname{Adm}|=1\) and \(|\operatorname{RelVal}|=1\).
 18. **Occurrence addresses form a free monoid.** The finite words \(\{-1,+1\}^{*}\) compose by concatenation with the empty word as identity; refinement is the corresponding right action, and RR1 realizes every finite word from an admitted root.
 19. **Refinement level is a monoid grading.** The level map is word length: \(\ell(uv)=\ell(u)+\ell(v)\) and \(\operatorname{level}(p\cdot u)=\operatorname{level}(p)+|u|\).
+20. **Occurrence addresses carry a canonical tree metric.** Prefix order gives longest-common-prefix meet, and \(d_T(u,v)=|u|+|v|-2|u\wedge v|\) is the induced combinatorial tree metric. This is address geometry, not a physical metric.
 
 ## Canonical foundational stratification
 
