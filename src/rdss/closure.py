@@ -47,20 +47,33 @@ class GenerativeRelationModel:
             raise ValueError("distinction endpoints must themselves be admitted")
 
     @property
-    def distinction_by_host(self) -> Mapping[str, BinaryDistinction]:
-        out: dict[str, BinaryDistinction] = {}
+    def distinctions_by_host(self) -> Mapping[str, tuple[BinaryDistinction, ...]]:
+        out: dict[str, list[BinaryDistinction]] = {}
         for d in self.distinctions:
-            if d.host in out:
-                raise ValueError("reference model allows one distinction per host")
-            out[d.host] = d
-        return out
+            out.setdefault(d.host, []).append(d)
+        return {
+            host: tuple(sorted(items, key=lambda x: (x.left, x.right)))
+            for host, items in out.items()
+        }
+
+    @property
+    def selected_distinction_by_host(self) -> Mapping[str, BinaryDistinction]:
+        """Canonical reference selector used only to build one unfolding.
+
+        RA0* requires existence of at least one distinction per admitted host,
+        not uniqueness. When several are available, the reference kernel
+        selects the lexicographically first endpoint pair so unfolding is
+        deterministic without strengthening the axiom.
+        """
+        return {
+            host: items[0]
+            for host, items in self.distinctions_by_host.items()
+            if items
+        }
 
     def satisfies_ra0_star(self) -> bool:
-        """Every admitted carrier has a non-degenerate admitted distinction."""
-        try:
-            by_host = self.distinction_by_host
-        except ValueError:
-            return False
+        """Every admitted carrier has at least one non-degenerate admitted distinction."""
+        by_host = self.distinctions_by_host
         return self.admitted <= set(by_host)
 
     def unfold(self, root: str, depth: int) -> dict[tuple[int, ...], str]:
@@ -77,7 +90,7 @@ class GenerativeRelationModel:
         if not self.satisfies_ra0_star():
             raise ValueError("model does not satisfy RA0*")
 
-        by_host = self.distinction_by_host
+        by_host = self.selected_distinction_by_host
         level: dict[tuple[int, ...], str] = {(): root}
         all_nodes = dict(level)
 
