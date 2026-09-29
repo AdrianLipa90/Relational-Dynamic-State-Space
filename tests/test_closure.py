@@ -3,7 +3,10 @@ import pytest
 from rdss.closure import (
     BinaryDistinction,
     GenerativeRelationModel,
+    RelationalBinaryDistinction,
+    RelationalGenerativeModel,
     requires_novelty,
+    singleton_ra0_rel_star_model,
     singleton_ra0_star_model,
     two_cycle_ra0_star_model,
 )
@@ -142,3 +145,61 @@ def test_singleton_occurrence_distinction_does_not_imply_novelty():
     model = singleton_ra0_star_model()
 
     assert not requires_novelty(model, "a", 1)
+
+
+
+def test_relational_ra0_star_singleton_implies_ra0_and_rr1():
+    model = singleton_ra0_rel_star_model()
+
+    assert model.is_admissible_rtofa_model()
+    assert model.satisfies_ra0_rel_star()
+    assert model.satisfies_ra0()
+    for depth in range(8):
+        assert model.rr1_holds_through_depth("a", depth)
+
+
+def test_relational_ra0_star_keeps_two_branch_relation_occurrences():
+    model = singleton_ra0_rel_star_model()
+
+    left, right = model.branch_relations_at("a")
+
+    assert left == (-1, "r-", "a", "a")
+    assert right == (1, "r+", "a", "a")
+    assert left != right
+
+
+def test_relational_ra0_star_requires_every_admitted_host_to_bind_relations():
+    model = RelationalGenerativeModel(
+        admitted=frozenset({"a", "b"}),
+        distinctions=(
+            RelationalBinaryDistinction(
+                host="a",
+                left="a",
+                right="b",
+                left_relation="r-",
+                right_relation="r+",
+            ),
+        ),
+    )
+
+    assert not model.satisfies_ra0_rel_star()
+    assert not model.satisfies_ra0()
+    assert not model.rr1_holds_through_depth("a", 1)
+    with pytest.raises(ValueError):
+        model.unfold("a", 1)
+
+
+def test_relational_ra0_star_endpoints_must_be_admitted():
+    with pytest.raises(ValueError):
+        RelationalGenerativeModel(
+            admitted=frozenset({"a"}),
+            distinctions=(
+                RelationalBinaryDistinction(
+                    host="a",
+                    left="a",
+                    right="b",
+                    left_relation="r-",
+                    right_relation="r+",
+                ),
+            ),
+        )
