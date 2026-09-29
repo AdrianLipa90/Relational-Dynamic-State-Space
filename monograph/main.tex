@@ -1828,7 +1828,7 @@ topological or geometric structure. Consequently
 
 \subsection{Free monoid of occurrence addresses}
 
-The finite address space
+The finite occurrence-address space
 \[
 B^*=\{-1,+1\}^{*}
 \]
@@ -1836,55 +1836,103 @@ has a canonical algebraic structure under word concatenation. With the empty
 word \(\varnothing\) as identity, \(B^*\) is the free monoid on the two
 branch generators \(-1\) and \(+1\).
 
-For a carrier occurrence \(p_\omega\), define the right action
+Carrier values and occurrence addresses are distinct sorts:
 \[
 \boxed{
-p_\omega\cdot u
+a\neq\omega
+\quad\text{as semantic types.}
+}
+\]
+The carrier value \(a\) identifies the underlying relational carrier,
+whereas \(\omega\in B^*\) identifies a path-labelled occurrence of such a
+value in a recursive unfolding.
+
+For \(\omega,u\in B^*\), define the regular right action
+\[
+\boxed{
+\omega\cdot u
 =
-p_{\omega u},
-\qquad
-u\in B^*.
+\omega u.
 }
 \]
 Then
 \[
-p\cdot\varnothing=p
+\omega\cdot\varnothing=\omega
 \]
 and
 \[
 \boxed{
-(p\cdot u)\cdot v
+(\omega\cdot u)\cdot v
 =
-p\cdot(uv).
+\omega\cdot(uv).
 }
 \]
 
-The executable kernel realizes this action through
-\texttt{RelationalPoint.advance}; the one-generator maps
-\(F_-\) and \(F_+\) are its elementary branch actions.
+The executable kernel represents this canonical address algebra through
+\texttt{OccurrenceAddress}. In particular,
+\texttt{OccurrenceAddress.advance} realizes concatenation and
+\texttt{OccurrenceAddress.refine} realizes the two one-generator extensions.
 
 The word-length map
 \[
 \ell:B^*\to\mathbb N,
 \qquad
-\ell(u)=|u|
+\ell(\omega)=|\omega|
 \]
 is additive:
 \[
 \boxed{
-\ell(uv)=\ell(u)+\ell(v).
+\ell(\omega u)
+=
+\ell(\omega)+|u|.
 }
 \]
-It therefore grades the carrier action:
+Thus the finite occurrence-address space is naturally \(\mathbb N\)-graded.
+
+RR1 is a separate closure statement: it says that, from an admitted root,
+every finite address word is represented by an actual path-labelled
+relational occurrence. Consequently
 \[
 \boxed{
-\operatorname{level}(p\cdot u)
-=
-\operatorname{level}(p)+|u|.
+\text{address algebra}
+\neq
+\text{admission/realization of every address}.
 }
 \]
-Thus the refinement level is not merely an implementation counter; it is the
-natural \(\mathbb N\)-grading induced by the free-monoid word length.
+
+\subsection{Reference embedding into binary point coordinates}
+
+Existing CP1/refinement realizations retain a binary reference coordinate on
+\texttt{RelationalPoint}. The relation between the two semantic sorts is
+therefore represented explicitly by an injective reference map
+\[
+\boxed{
+\iota:
+B^*
+\hookrightarrow
+P_{\rm ref},
+\qquad
+\iota(\omega)=p_\omega.
+}
+\]
+
+The executable function
+\[
+\texttt{reference\_point\_from\_occurrence}
+\]
+implements \(\iota\).
+
+This is a reference realization, not a type identity:
+\[
+\boxed{
+\operatorname{OccurrenceAddress}
+\not\equiv
+\operatorname{RelationalPoint}.
+}
+\]
+The fact that the reference point coordinate may numerically store the same
+binary tuple as \(\omega\) does not identify carrier/reference-coordinate
+values with branch-occurrence identity.
 
 \subsection{Prefix order, meet, and canonical tree metric}
 
@@ -1938,9 +1986,9 @@ and the triangle inequality holds. Thus
 \]
 
 The reference kernel implements the order, meet, and metric through
-\texttt{RelationalPoint.is\_prefix\_of},
-\texttt{RelationalPoint.meet}, and
-\texttt{RelationalPoint.tree\_distance}.
+\texttt{OccurrenceAddress.is\_prefix\_of},
+\texttt{OccurrenceAddress.meet}, and
+\texttt{OccurrenceAddress.tree\_distance}.
 
 This is a combinatorial metric forced by the occurrence-address structure.
 It is not identified with a physical distance, the Fubini--Study metric, a
