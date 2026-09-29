@@ -392,3 +392,17 @@ def test_nonempty_ra0_rel_star_has_at_least_one_relation_value():
     assert model.admitted
     assert model.satisfies_ra0_rel_star()
     assert len(model.relation_values) >= 1
+
+
+
+def test_rr1_unfolding_realizes_every_finite_binary_word_through_depth():
+    model = singleton_ra0_star_model()
+
+    for depth in range(8):
+        tree = model.unfold("a", depth)
+        count = binary_occurrence_count_through_depth(depth)
+        expected_addresses = {
+            finite_word_unrank(rank)
+            for rank in range(count)
+        }
+        assert set(tree) == expected_addresses
