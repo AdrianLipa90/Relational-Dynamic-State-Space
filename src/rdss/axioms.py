@@ -154,6 +154,24 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_META0_CARDINALITY_LOWER_BOUND", "REF_SINGLETON_RA0_REL_STAR_MODEL"),
     ),
     Claim(
+        "THM_RELATION_VALUE_CARDINALITY_LOWER_BOUND",
+        ClaimKind.THEOREM,
+        "META0 plus RA0_REL_STAR imply at least one underlying primitive relation value after forgetting branch-occurrence identity.",
+        ("META0", "RA0_REL_STAR"),
+    ),
+    Claim(
+        "REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The minimal singleton RA0_REL_STAR model uses one admitted carrier and one underlying self-relation value while retaining two distinct branch occurrences.",
+        ("META0", "RA0_REL_STAR"),
+    ),
+    Claim(
+        "THM_SINGLE_RELATION_VALUE_MINIMALITY",
+        ClaimKind.THEOREM,
+        "The lower bound and the explicit minimal singleton witness show that the minimum underlying relation-value cardinality under META0 plus RA0_REL_STAR is exactly one.",
+        ("THM_RELATION_VALUE_CARDINALITY_LOWER_BOUND", "REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL"),
+    ),
+    Claim(
         "THM_BINARY_OCCURRENCE_COUNT",
         ClaimKind.THEOREM,
         "A complete binary occurrence unfolding through finite depth N contains exactly 2^(N+1)-1 path-labelled occurrences.",
