@@ -233,6 +233,12 @@ CLAIMS: tuple[Claim, ...] = (
         "The companion Zero Axis model supplies Omega(s)=s/(1-s) and the critical-axis unit-circle equivalence.",
     ),
     Claim(
+        "REF_HOLONOMY_PHASE",
+        ClaimKind.REFERENCE_REALIZATION,
+        "A concrete realization may supply a U(1) representation of closed relational holonomy and lift finite phases to the Zero Axis.",
+        ("DER_HOLONOMY", "ZA_BRIDGE"),
+    ),
+    Claim(
         "DER_WINDING",
         ClaimKind.DERIVED,
         "Topological winding is derived only for a closed phase path with a continuous phase lift.",
