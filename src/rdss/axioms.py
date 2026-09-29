@@ -11,6 +11,8 @@ class ClaimKind(str, Enum):
     REFERENCE_REALIZATION = "reference_realization"
     DERIVED = "derived"
     BRIDGE = "bridge"
+    CANDIDATE_AXIOM = "candidate_axiom"
+    THEOREM = "theorem"
 
 
 @dataclass(frozen=True)
@@ -48,6 +50,18 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.REFERENCE_REALIZATION,
         "A minimal complex binary distinction may be represented by CP^1 with Fubini-Study metric.",
         ("DEF_POINT", "DEF_BINARY_REL"),
+    ),
+    Claim(
+        "RA0_STAR",
+        ClaimKind.CANDIDATE_AXIOM,
+        "Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers.",
+        ("DEF_POINT", "DEF_BINARY_REL"),
+    ),
+    Claim(
+        "THM_RR1_FROM_RA0_STAR",
+        ClaimKind.THEOREM,
+        "RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences.",
+        ("RA0_STAR",),
     ),
     Claim(
         "DEF_TS",
