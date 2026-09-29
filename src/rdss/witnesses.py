@@ -44,6 +44,25 @@ class FiniteRelationModel:
         incident = {point for edge in self.relations for point in edge}
         return self.admitted <= incident
 
+    def satisfies_ra0_star(self) -> bool:
+        """RA0* witness semantics without distinction-to-relation binding.
+
+        Every admitted carrier must have a binary refinement and both branch
+        carrier labels must themselves be admitted. Left/right occurrence
+        slots may carry the same label.
+        """
+        refinement_map = {
+            parent: (left, right)
+            for parent, left, right in self.refinements
+        }
+        if not self.admitted <= set(refinement_map):
+            return False
+        for parent in self.admitted:
+            left, right = refinement_map[parent]
+            if left not in self.admitted or right not in self.admitted:
+                return False
+        return True
+
     def satisfies_rr1(self) -> bool:
         """RR1 witness semantics: refinement closes recursively on reachable descendants.
 
@@ -130,4 +149,17 @@ def witness_meta0_not_ra0() -> FiniteRelationModel:
         admitted=frozenset({"a"}),
         relations=frozenset(),
         refinements=(),
+    )
+
+
+
+def witness_ra0_star_not_ra0() -> FiniteRelationModel:
+    """Singleton RA0* distinction structure with no primitive relation."""
+    return FiniteRelationModel(
+        points=frozenset({"a"}),
+        admitted=frozenset({"a"}),
+        relations=frozenset(),
+        refinements=(
+            ("a", "a", "a"),
+        ),
     )
