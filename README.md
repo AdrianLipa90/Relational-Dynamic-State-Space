@@ -83,14 +83,14 @@ The minimal algebraic carrier is an unscaled point \(p\). Algebraic zero is not 
 See \`docs/FOUNDATIONAL_NONVACUITY_GATE.md\` for the distinction between raw formula semantics and the intended non-empty model class.
 
 A singleton carrier can therefore unfold through distinct path-labelled occurrences:
-[
-a_arnothing
-	o
-{a_-,a_+}
-	o
-{a_{--},a_{-+},a_{+-},a_{++}}
-	ocdots.
-]
+\[
+a_{\varnothing}
+\to
+\{a_-,a_+\}
+\to
+\{a_{--},a_{-+},a_{+-},a_{++}\}
+\to\cdots.
+\]
 
 ## Reference minimal distinction
 
