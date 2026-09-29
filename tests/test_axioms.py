@@ -145,12 +145,32 @@ def test_ra0_rel_star_is_candidate_with_two_explicit_theorems():
     assert dependency_closure("THM_RR1_FROM_RA0_REL_STAR") == base
 
 
-def test_singleton_foundation_minimality_is_explicit_theorem():
+def test_singleton_foundation_minimality_splits_lower_bound_and_attainability():
     claims = claim_map()
+
+    assert claims["THM_META0_CARDINALITY_LOWER_BOUND"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_META0_CARDINALITY_LOWER_BOUND") == frozenset(
+        {"META0"}
+    )
+
+    assert claims["REF_SINGLETON_RA0_REL_STAR_MODEL"].kind is ClaimKind.REFERENCE_REALIZATION
+    witness_closure = dependency_closure("REF_SINGLETON_RA0_REL_STAR_MODEL")
+    assert witness_closure == frozenset(
+        {
+            "META0",
+            "RA0_REL_STAR",
+            "DEF_POINT",
+            "DEF_RELATIONAL_DISTINCTION",
+            "DEF_BINARY_DISTINCTION",
+            "DEF_BINARY_REL",
+        }
+    )
 
     assert claims["THM_SINGLETON_FOUNDATION_MINIMALITY"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_SINGLETON_FOUNDATION_MINIMALITY") == frozenset(
         {
+            "THM_META0_CARDINALITY_LOWER_BOUND",
+            "REF_SINGLETON_RA0_REL_STAR_MODEL",
             "META0",
             "RA0_REL_STAR",
             "DEF_POINT",
