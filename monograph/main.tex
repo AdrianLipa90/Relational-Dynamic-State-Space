@@ -1718,6 +1718,29 @@ The executable kernel realizes this action through
 \texttt{RelationalPoint.advance}; the one-generator maps
 \(F_-\) and \(F_+\) are its elementary branch actions.
 
+The word-length map
+\[
+\ell:B^*\to\mathbb N,
+\qquad
+\ell(u)=|u|
+\]
+is additive:
+\[
+\boxed{
+\ell(uv)=\ell(u)+\ell(v).
+}
+\]
+It therefore grades the carrier action:
+\[
+\boxed{
+\operatorname{level}(p\cdot u)
+=
+\operatorname{level}(p)+|u|.
+}
+\]
+Thus the refinement level is not merely an implementation counter; it is the
+natural \(\mathbb N\)-grading induced by the free-monoid word length.
+
 The algebraic address monoid exists independently of RR1. RR1 supplies the
 additional closure statement that, from an admitted root, every finite word
 \(u\in B^*\) is realized by an actual path-labelled relational occurrence.
