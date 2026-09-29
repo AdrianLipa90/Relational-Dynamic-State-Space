@@ -29,10 +29,16 @@ class RelationalPoint:
     def level(self) -> int:
         return len(self.address)
 
+    def advance(self, word: tuple[int, ...]) -> "RelationalPoint":
+        """Right action of a finite binary occurrence word on this carrier."""
+        if any(bit not in (-1, 1) for bit in word):
+            raise ValueError("refinement words use only -1/+1")
+        return RelationalPoint(self.address + tuple(word))
+
     def refine(self) -> tuple["RelationalPoint", "RelationalPoint"]:
         return (
-            RelationalPoint(self.address + (-1,)),
-            RelationalPoint(self.address + (1,)),
+            self.advance((-1,)),
+            self.advance((1,)),
         )
 
 
