@@ -1138,14 +1138,28 @@ U(1).
 }
 \]
 
-A phase representation that preserves occurrence identity,
+Occurrence-aware holonomy has a separate reference interface,
 \[
+\boxed{
+\widetilde\chi:
 \mathcal H^{\mathrm{occ}}_{\widetilde\gamma}
-\longrightarrow
-U(1),
+\longmapsto
+\widetilde u_{\widetilde\gamma}\in U(1).
+}
 \]
-is a separate open binding problem. It must not be inferred merely from the
-existing value-level phase representation.
+The executable kernel exposes this through
+\texttt{OccurrenceHolonomyPhaseRepresentation}. It first requires genuine
+occurrence closure and then validates that the supplied phase lies on
+\(U(1)\).
+
+Occurrence-level winding may then be computed from a closed phase loop exactly
+as in the value-level case. This does not identify the two phase
+representations: occurrence identity is additional data.
+
+What remains open is a universal or existence theorem saying that every
+occurrence-aware RTOFA holonomy necessarily admits such a
+\(U(1)\) representation. The reference interface is executable; the
+universality claim is not assumed.
 
 \section{Zero Axis bridge}
 
