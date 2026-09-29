@@ -365,6 +365,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("REF_OCCURRENCE_HOLONOMY_U1",),
     ),
     Claim(
+        "DER_BRANCH_BLIND_OCCURRENCE_PHASE",
+        ClaimKind.DERIVED,
+        "Composing a value-level U(1) holonomy representation with the occurrence-forgetful transport projection yields a branch-blind occurrence-level U(1) representation.",
+        ("REF_HOLONOMY_U1", "REF_OCCURRENCE_HOLONOMY_U1", "DEF_OCCURRENCE_PATH"),
+    ),
+    Claim(
         "DER_WINDING",
         ClaimKind.DERIVED,
         "Topological winding is derived only after a closed value-level relational holonomy has an explicit U(1) phase representation.",
