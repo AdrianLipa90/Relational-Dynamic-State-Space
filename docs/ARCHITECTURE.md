@@ -41,6 +41,14 @@ The rule is:
 \boxed{\text{structure preservation is measured, not presumed}.}
 \]
 
+Occurrence identity is preserved separately from relation values. The structural-operator layer therefore contains both value-level and occurrence-aware path types:
+
+- \`RelationPath\` / \`TransportPath\` for carrier/value paths;
+- \`RelationOccurrence\` / \`OccurrenceRelationPath\`;
+- \`OccurrenceTransportPath\` for holonomy that requires return to the same occurrence address.
+
+A carrier self-loop can be closed at the value level while remaining open at the occurrence level. Occurrence-aware holonomy is therefore strictly guarded against this information loss.
+
 ## Layer 2 — Relational potential diagnostics
 
 \`src/rdss/potential.py\`
