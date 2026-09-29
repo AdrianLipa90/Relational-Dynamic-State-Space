@@ -52,17 +52,19 @@ representations of this algebra, but they are not part of its definition.
 The typed algebraic family is written
 \[
 \boxed{
-\Arel=\left\{\mathcal A_{\sigma,n}^{p,q}\right\},
+\Arel=\left\{\mathcal A_{\sigma,\omega}^{p,q}\right\},
 }
 \]
-where \((p,q)\) is tensor rank, \(n\in\mathbb N_0\) is refinement level,
-and \(\sigma\in\Sigma\) is a semantic scale or context.
+where \((p,q)\) is tensor rank, \(\omega\in\{-1,+1\}^{*}\) is the exact
+path-labelled relational carrier address, and \(\sigma\in\Sigma\) is a semantic
+scale or context. The refinement level is derived as \(n=|\omega|\); two
+different addresses at the same level remain different typed sectors.
 
 The scalar sector is not a separate ontology. It is the tensor rank-zero
 sector:
 \[
 \boxed{
-\mathbb K_{\sigma,n}=\mathcal A_{\sigma,n}^{0,0}.
+\mathbb K_{\sigma,\omega}=\mathcal A_{\sigma,\omega}^{0,0}.
 }
 \]
 
@@ -99,7 +101,7 @@ relations or introduced by an explicit extension of the signature.
 The absence of an admitted relation is not identified with algebraic zero.
 For every typed sector there may be a zero element
 \[
-0_{\sigma,n}^{p,q}\in\mathcal A_{\sigma,n}^{p,q},
+0_{\sigma,\omega}^{p,q}\in\mathcal A_{\sigma,\omega}^{p,q},
 \]
 while ``no relation'' is a separate condition.
 In the additive reference sector this zero is executable as the identity
@@ -190,9 +192,9 @@ perfect geometric self-similarity. For a branch
 \[
 \boxed{
 F_{\epsilon}:
-\mathcal A_{\sigma,n}^{p,q}(p_{\omega})
+\mathcal A_{\sigma,\omega}^{p,q}
 \to
-\mathcal A_{\tau,n+1}^{p,q}(p_{\omega\epsilon}).
+\mathcal A_{\tau,\omega\epsilon}^{p,q}.
 }
 \]
 The target semantic scale \(\tau\) is explicit; the reference realization
@@ -270,28 +272,29 @@ axiom.
 Each typed sector carries an additive module structure over a scalar domain \(\mathbb K\):
 \[
 \boxed{
-(\mathcal A_{\sigma,n}^{p,q},+,0,-,\mathbb K\curvearrowright\mathcal A_{\sigma,n}^{p,q}).
+(\mathcal A_{\sigma,\omega}^{p,q},+,0,-,\mathbb K\curvearrowright\mathcal A_{\sigma,\omega}^{p,q}).
 }
 \]
 The abstract algebra does not fix \(\mathbb K=\mathbb C\); the reference kernel uses complex components. This additive structure is required before expressions such as commutators, associators, and refinement residuals can be formed as differences.
 
-Elements are typed by tensor rank, semantic scale, and refinement level:
+Elements are typed by tensor rank, semantic scale, and exact relational carrier address:
 \[
-X\in\mathcal A_{\sigma,n}^{p,q}.
+X\in\mathcal A_{\sigma,\omega}^{p,q}.
 \]
+The level \(n=|\omega|\) is derived metadata and is not sufficient to identify the additive sector.
 Tensor product and contraction have the schematic types
 \[
 \otimes:
-\mathcal A_{\sigma,n}^{p,q}\times
-\mathcal A_{\tau,m}^{r,s}
+\mathcal A_{\sigma,\omega}^{p,q}\times
+\mathcal A_{\tau,\eta}^{r,s}
 \to
-\mathcal A_{\upsilon,k}^{p+r,q+s},
+\mathcal A_{\upsilon,\zeta}^{p+r,q+s},
 \]
 \[
 \operatorname{Contr}:
-\mathcal A_{\sigma,n}^{p,q}
+\mathcal A_{\sigma,\omega}^{p,q}
 \to
-\mathcal A_{\sigma,n}^{p-1,q-1},
+\mathcal A_{\sigma,\omega}^{p-1,q-1},
 \]
 whenever the relevant type and relation constraints are satisfied.
 
@@ -463,9 +466,9 @@ where \(\Sigma\) is a typed partially ordered or categorical scale
 structure. A coarse-graining morphism is written
 \[
 S_{\sigma\to\tau}:
-\mathcal A_{\sigma,n}^{p,q}
+\mathcal A_{\sigma,\omega}^{p,q}
 \to
-\mathcal A_{\tau,n}^{p,q}.
+\mathcal A_{\tau,\omega}^{p,q}.
 \]
 Such a map is admissible only when the scale structure contains the required
 relation. This prevents unrelated semantic classes from being collapsed by
@@ -1070,7 +1073,7 @@ The core relational algebra is
 \Arel^{\rm core}=
 \left(
 \mathbb K,
-\{\mathcal A_{\sigma,n}^{p,q}\},
+\{\mathcal A_{\sigma,\omega}^{p,q}\},
 +,
 0,
 -,
