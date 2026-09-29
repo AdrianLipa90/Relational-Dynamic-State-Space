@@ -9,7 +9,7 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 | RA0 | AXIOM | An admitted observable is not independent of relation. | — |
 | DEF_POINT | DEFINITION | The minimal algebraic carrier is an unscaled point. | — |
 | DEF_BINARY_REL | DEFINITION | A primitive typed relation is binary: r:a->b. Higher arity is constructed separately. | — |
-| RR1 | AXIOM | A selected relational endpoint may itself carry a further distinction. | DEF_POINT, DEF_BINARY_REL |
+| RR1 | AXIOM | At every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction; the rule re-applies at every finite refinement depth. | DEF_POINT, DEF_BINARY_REL |
 | RA0_STAR | CANDIDATE AXIOM | Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_BINARY_REL |
 | THM_RR1_FROM_RA0_STAR | THEOREM | RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences. | RA0_STAR |
 | REF_CP1 | REFERENCE REALIZATION | A minimal complex binary distinction may be represented by CP1 with Fubini-Study metric. | DEF_POINT, DEF_BINARY_REL |
