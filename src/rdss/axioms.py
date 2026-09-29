@@ -47,6 +47,24 @@ CLAIMS: tuple[Claim, ...] = (
         "The minimal algebraic carrier is an unscaled point.",
     ),
     Claim(
+        "DEF_OCCURRENCE_ADDRESS_SPACE",
+        ClaimKind.DEFINITION,
+        "Occurrence addresses are finite words B* over the binary alphabet B={-1,+1}, with concatenation and the empty word.",
+        ("DEF_POINT",),
+    ),
+    Claim(
+        "THM_OCCURRENCE_ADDRESS_FREE_MONOID",
+        ClaimKind.THEOREM,
+        "The finite binary address space B* is the free monoid on generators -1 and +1 under concatenation, with the empty word as identity.",
+        ("DEF_OCCURRENCE_ADDRESS_SPACE",),
+    ),
+    Claim(
+        "THM_REFINEMENT_RIGHT_ACTION",
+        ClaimKind.THEOREM,
+        "Appending finite binary words to RelationalPoint addresses defines a right action of B*: p·empty=p and (p·u)·v=p·(uv).",
+        ("DEF_POINT", "DEF_OCCURRENCE_ADDRESS_SPACE"),
+    ),
+    Claim(
         "DEF_BINARY_REL",
         ClaimKind.DEFINITION,
         "A primitive typed relation is binary: r:a->b. Higher arity is constructed separately.",
@@ -80,6 +98,12 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.AXIOM,
         "Recursive relational closure: at every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction, so the rule re-applies at each finite refinement depth.",
         ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
+    ),
+    Claim(
+        "THM_RR1_REALIZES_FINITE_WORDS",
+        ClaimKind.THEOREM,
+        "Under RR1, every finite binary address word from an admitted root is realized by a path-labelled occurrence.",
+        ("RR1", "DEF_OCCURRENCE_ADDRESS_SPACE"),
     ),
     Claim(
         "REF_CP1",
