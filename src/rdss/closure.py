@@ -22,6 +22,37 @@ class BinaryDistinction:
 
 
 @dataclass(frozen=True)
+class RelationalBinaryDistinction:
+    """Binary occurrence distinction with explicit branch-relation labels."""
+
+    host: str
+    left: str
+    right: str
+    left_relation: str
+    right_relation: str
+
+    def __post_init__(self) -> None:
+        if not self.host or not self.left or not self.right:
+            raise ValueError("distinction labels must be non-empty")
+        if not self.left_relation.strip() or not self.right_relation.strip():
+            raise ValueError("branch relation labels must be non-empty")
+
+    @property
+    def branch_relation_occurrences(
+        self,
+    ) -> tuple[tuple[int, str, str, str], tuple[int, str, str, str]]:
+        """Return (branch, relation-label, source, target) occurrence records."""
+        return (
+            (-1, self.left_relation, self.host, self.left),
+            (1, self.right_relation, self.host, self.right),
+        )
+
+    @property
+    def binary(self) -> BinaryDistinction:
+        return BinaryDistinction(self.host, self.left, self.right)
+
+
+@dataclass(frozen=True)
 class GenerativeRelationModel:
     """Finite presentation of the strengthened one-axiom candidate RA0*.
 
@@ -131,6 +162,130 @@ class GenerativeRelationModel:
         return True
 
 
+@dataclass(frozen=True)
+class RelationalGenerativeModel:
+    """Finite presentation of the relationally bound candidate RA0_REL_STAR.
+
+    Every hosted distinction carries two explicit branch-relation occurrences.
+    This is stronger than GenerativeRelationModel/RA0*: it binds recursive
+    distinction structure to primitive relational incidence.
+    """
+
+    admitted: frozenset[str]
+    distinctions: tuple[RelationalBinaryDistinction, ...]
+
+    def __post_init__(self) -> None:
+        hosts = {d.host for d in self.distinctions}
+        if not hosts <= self.admitted:
+            raise ValueError("every relational distinction host must be admitted")
+        endpoints = {x for d in self.distinctions for x in (d.left, d.right)}
+        if not endpoints <= self.admitted:
+            raise ValueError("relational distinction endpoints must be admitted")
+
+    @property
+    def distinctions_by_host(
+        self,
+    ) -> Mapping[str, tuple[RelationalBinaryDistinction, ...]]:
+        out: dict[str, list[RelationalBinaryDistinction]] = {}
+        for d in self.distinctions:
+            out.setdefault(d.host, []).append(d)
+        return {
+            host: tuple(
+                sorted(
+                    items,
+                    key=lambda x: (
+                        x.left,
+                        x.right,
+                        x.left_relation,
+                        x.right_relation,
+                    ),
+                )
+            )
+            for host, items in out.items()
+        }
+
+    @property
+    def selected_distinction_by_host(
+        self,
+    ) -> Mapping[str, RelationalBinaryDistinction]:
+        return {
+            host: items[0]
+            for host, items in self.distinctions_by_host.items()
+            if items
+        }
+
+    def satisfies_ra0_rel_star(self) -> bool:
+        """Every admitted carrier hosts at least one relational distinction."""
+        return self.admitted <= set(self.distinctions_by_host)
+
+    def satisfies_ra0(self) -> bool:
+        """RA0 follows because every admitted host has branch-relation incidence."""
+        return self.satisfies_ra0_rel_star()
+
+    def is_admissible_rtofa_model(self) -> bool:
+        return bool(self.admitted)
+
+    def unfold(self, root: str, depth: int) -> dict[tuple[int, ...], str]:
+        if root not in self.admitted:
+            raise ValueError("root must be admitted")
+        if depth < 0:
+            raise ValueError("depth must be non-negative")
+        if not self.satisfies_ra0_rel_star():
+            raise ValueError("model does not satisfy RA0_REL_STAR")
+
+        by_host = self.selected_distinction_by_host
+        level: dict[tuple[int, ...], str] = {(): root}
+        all_nodes = dict(level)
+        for _ in range(depth):
+            next_level: dict[tuple[int, ...], str] = {}
+            for address, carrier in level.items():
+                distinction = by_host[carrier]
+                next_level[address + (-1,)] = distinction.left
+                next_level[address + (1,)] = distinction.right
+            all_nodes.update(next_level)
+            level = next_level
+        return all_nodes
+
+    def rr1_holds_through_depth(self, root: str, depth: int) -> bool:
+        if depth < 0:
+            raise ValueError("depth must be non-negative")
+        if not self.satisfies_ra0_rel_star():
+            return False
+        tree = self.unfold(root, depth + 1)
+        for address in tuple(tree):
+            if len(address) > depth:
+                continue
+            if address + (-1,) not in tree or address + (1,) not in tree:
+                return False
+        return True
+
+    def branch_relations_at(
+        self,
+        host: str,
+    ) -> tuple[tuple[int, str, str, str], tuple[int, str, str, str]]:
+        try:
+            distinction = self.selected_distinction_by_host[host]
+        except KeyError as exc:
+            raise KeyError(f"no relational distinction at host {host!r}") from exc
+        return distinction.branch_relation_occurrences
+
+
+def singleton_ra0_rel_star_model() -> RelationalGenerativeModel:
+    """One carrier, two branch-relation occurrence slots, recursive closure."""
+    return RelationalGenerativeModel(
+        admitted=frozenset({"a"}),
+        distinctions=(
+            RelationalBinaryDistinction(
+                host="a",
+                left="a",
+                right="a",
+                left_relation="r-",
+                right_relation="r+",
+            ),
+        ),
+    )
+
+
 def singleton_ra0_star_model() -> GenerativeRelationModel:
     """Single carrier with two distinct branch-occurrence slots.
 
@@ -144,6 +299,7 @@ def singleton_ra0_star_model() -> GenerativeRelationModel:
             BinaryDistinction("a", "a", "a"),
         ),
     )
+
 
 def two_cycle_ra0_star_model() -> GenerativeRelationModel:
     """Small cyclic presentation whose unfolding is still a binary tree.
