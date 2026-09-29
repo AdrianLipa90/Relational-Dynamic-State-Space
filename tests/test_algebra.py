@@ -13,6 +13,7 @@ from rdss import (
     TypedZero,
     ZeroAxisPoint,
     associator,
+    closed_path_winding,
     commutator,
     refinement_residual,
     winding_and_residual,
@@ -96,11 +97,18 @@ def test_zero_axis_projective_coordinate_lies_on_unit_circle():
     assert point.unit_circle_residual == pytest.approx(0.0, abs=1e-14)
 
 
-def test_winding_is_derived_from_phase_path():
-    winding, residual = winding_and_residual((pi, pi, 0.2))
+def test_phase_decomposition_keeps_nonzero_residual_for_open_path():
+    turn_count, residual = winding_and_residual((pi, pi, 0.2))
 
-    assert winding == 1
+    assert turn_count == 1
     assert residual == pytest.approx(0.2)
+
+
+def test_topological_winding_requires_phase_closure():
+    assert closed_path_winding((pi, pi)) == 1
+
+    with pytest.raises(ValueError):
+        closed_path_winding((pi, pi, 0.2))
 
 
 def test_commutator_and_associator_are_diagnostics_not_axioms():
