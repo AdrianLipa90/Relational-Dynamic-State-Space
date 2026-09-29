@@ -60,6 +60,44 @@ a
 a.
 \]
 
+## Explicit countermodel for old RA0*
+
+The distinction-to-relation binding is not cosmetic.
+
+Take
+
+\[
+P=\{a\},
+\qquad
+\operatorname{Adm}=\{a\},
+\qquad
+R=\varnothing,
+\]
+
+with hosted refinement
+
+\[
+a\mapsto(a,a).
+\]
+
+The current RA0* occurrence condition holds: the admitted carrier hosts a
+binary occurrence distinction and both branch carrier labels are admitted.
+
+But there is no primitive relation incident to \(a\). Therefore
+
+\[
+\boxed{
+\mathrm{RA0}^{*}
+\not\Rightarrow
+\mathrm{RA0}.
+}
+\]
+
+Because the admitted domain is non-empty, this is not a vacuity effect.
+
+The stronger RA0_REL_STAR candidate exists precisely to add the missing
+relation binding.
+
 ## Candidate axiom
 
 The candidate is:
