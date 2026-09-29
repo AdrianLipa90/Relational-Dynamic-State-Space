@@ -39,7 +39,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "RA0",
         ClaimKind.AXIOM,
-        "Relational admissibility: an admitted observable is not independent of relation.",
+        "Relational admissibility: every admitted observable is incident to at least one primitive relation, as source or target.",
     ),
     Claim(
         "DEF_POINT",
