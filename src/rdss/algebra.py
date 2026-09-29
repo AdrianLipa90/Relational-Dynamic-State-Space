@@ -233,6 +233,17 @@ class TensorScalarElement:
     def additive_norm(self) -> float:
         return sum(abs(value) ** 2 for value in self.components) ** 0.5
 
+    def __abs__(self) -> float:
+        return self.additive_norm
+
+    def zero_like(self) -> "TensorScalarElement":
+        return TensorScalarElement(
+            tuple(0j for _ in self.components),
+            self.rank,
+            self.carrier,
+            self.scale,
+        )
+
 
 @dataclass(frozen=True)
 class TypedZero:
