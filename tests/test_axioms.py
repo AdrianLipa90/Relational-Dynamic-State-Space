@@ -18,17 +18,23 @@ def test_binary_relation_is_explicit_signature_definition():
     assert claims["DEF_BINARY_REL"].depends_on == ()
 
 
+def test_binary_distinction_is_occurrence_level_not_label_inequality():
+    claims = claim_map()
+    assert claims["DEF_BINARY_DISTINCTION"].kind is ClaimKind.DEFINITION
+    assert claims["DEF_BINARY_DISTINCTION"].depends_on == ("DEF_POINT",)
+
+
 def test_cp1_is_not_mislabeled_as_foundational_axiom():
     claims = claim_map()
     assert claims["REF_CP1"].kind is ClaimKind.REFERENCE_REALIZATION
-    assert set(claims["REF_CP1"].depends_on) == {"DEF_POINT", "DEF_BINARY_REL"}
+    assert set(claims["REF_CP1"].depends_on) == {"DEF_POINT", "DEF_BINARY_DISTINCTION"}
 
 
 def test_recursive_refinement_is_independent_foundational_axiom():
     claims = claim_map()
     assert claims["RR1"].kind is ClaimKind.AXIOM
     assert "RA0" not in dependency_closure("RR1")
-    assert set(claims["RR1"].depends_on) == {"DEF_POINT", "DEF_BINARY_REL"}
+    assert set(claims["RR1"].depends_on) == {"DEF_POINT", "DEF_BINARY_DISTINCTION"}
 
 
 def test_structural_primitives_do_not_silently_depend_on_ra0():
@@ -50,7 +56,7 @@ def test_refinement_residual_depends_on_refinement_and_product():
             "PRIM_REFINEMENT_MAP",
             "RR1",
             "DEF_POINT",
-            "DEF_BINARY_REL",
+            "DEF_BINARY_DISTINCTION",
             "PRIM_PRODUCT",
             "PRIM_MODULE",
         }
@@ -94,10 +100,10 @@ def test_ra0_star_is_candidate_not_silent_replacement():
     claims = claim_map()
 
     assert claims["RA0_STAR"].kind is ClaimKind.CANDIDATE_AXIOM
-    assert set(claims["RA0_STAR"].depends_on) == {"DEF_POINT", "DEF_BINARY_REL"}
+    assert set(claims["RA0_STAR"].depends_on) == {"DEF_POINT", "DEF_BINARY_DISTINCTION"}
     assert claims["THM_RR1_FROM_RA0_STAR"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_RR1_FROM_RA0_STAR") == frozenset(
-        {"RA0_STAR", "DEF_POINT", "DEF_BINARY_REL"}
+        {"RA0_STAR", "DEF_POINT", "DEF_BINARY_DISTINCTION"}
     )
 
 
@@ -142,7 +148,7 @@ def test_cross_operation_coherence_dependencies_are_explicit():
             "PRIM_REFINEMENT_MAP",
             "RR1",
             "DEF_POINT",
-            "DEF_BINARY_REL",
+            "DEF_BINARY_DISTINCTION",
             "PRIM_TRANSPORT",
             "PRIM_MODULE",
         }
@@ -182,7 +188,7 @@ def test_remaining_first_order_naturality_dependencies():
             "PRIM_REFINEMENT_MAP",
             "RR1",
             "DEF_POINT",
-            "DEF_BINARY_REL",
+            "DEF_BINARY_DISTINCTION",
             "PRIM_SCALE",
             "PRIM_MODULE",
         }
@@ -192,7 +198,7 @@ def test_remaining_first_order_naturality_dependencies():
             "PRIM_REFINEMENT_MAP",
             "RR1",
             "DEF_POINT",
-            "DEF_BINARY_REL",
+            "DEF_BINARY_DISTINCTION",
             "PRIM_ORBIT",
             "PRIM_MODULE",
         }
@@ -211,7 +217,7 @@ def test_cp1_recursive_realization_is_reference_layer():
     claims = claim_map()
     assert claims["REF_CP1_REFINEMENT"].kind is ClaimKind.REFERENCE_REALIZATION
     assert dependency_closure("REF_CP1_REFINEMENT") == frozenset(
-        {"REF_CP1", "RR1", "DEF_POINT", "DEF_BINARY_REL"}
+        {"REF_CP1", "RR1", "DEF_POINT", "DEF_BINARY_DISTINCTION"}
     )
 
 
