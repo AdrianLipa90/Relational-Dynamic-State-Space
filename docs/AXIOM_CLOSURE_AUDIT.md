@@ -182,6 +182,31 @@ Therefore
 }
 \]
 
+This implication is strict in the expanded language. Take the singleton
+
+\[
+P=\{a\},
+\qquad
+R=\{(a,a)\},
+\qquad
+D(a)=(a,a),
+\]
+
+but supply no branch-slot-to-relation binding. Then META0, RA0, RA0*, and
+recursive RR1 hold, while RA0_REL_STAR fails. Hence
+
+\[
+\boxed{
+\mathrm{RA0}+\mathrm{RR1}
+\not\Rightarrow
+\mathrm{RA0}^{\mathrm{rel}*}.
+}
+\]
+
+The one-object-level-axiom candidate therefore compresses the old pair by
+adding genuine semantic structure; it is not equivalent to the old pair
+without that added binding.
+
 The singleton executable witness is
 
 \[
