@@ -91,6 +91,40 @@ a_{\varnothing}
 \{a_{--},a_{-+},a_{+-},a_{++}\}
 \to\cdots.
 \]
+### Occurrence growth versus carrier cardinality
+
+For complete binary refinement through depth \(N\),
+
+\[
+\boxed{
+|V_{\le N}|=2^{N+1}-1.
+}
+\]
+
+Thus a singleton carrier presentation can keep
+
+\[
+|\operatorname{Adm}|=1
+\]
+
+while the number of path-labelled relational occurrences grows without bound.
+
+The full finite-word address space
+
+\[
+V_{<\omega}=\{-1,+1\}^{<\omega}
+\]
+
+is countably infinite. The reference kernel implements the explicit bijection
+
+\[
+\rho(\omega)
+=
+2^{|\omega|}-1+\operatorname{bin}(\omega),
+\]
+
+with \(-1\mapsto0\), \(+1\mapsto1\), through
+`finite_word_rank` / `finite_word_unrank`.
 
 ## Reference minimal distinction
 
