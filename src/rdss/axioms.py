@@ -92,6 +92,18 @@ CLAIMS: tuple[Claim, ...] = (
         ("PRIM_MODULE",),
     ),
     Claim(
+        "DEF_TENSOR_MAP_COHERENCE",
+        ClaimKind.DEFINITION,
+        "Tensor-map residual measures failure of Phi(X tensor Y) = Phi(X) tensor' Phi(Y).",
+        ("PRIM_TENSOR_PRODUCT", "PRIM_MODULE"),
+    ),
+    Claim(
+        "DEF_CONTRACTION_MAP_COHERENCE",
+        ClaimKind.DEFINITION,
+        "Contraction-map residual measures failure of contraction naturality under a supplied typed map.",
+        ("PRIM_CONTRACTION", "PRIM_MODULE"),
+    ),
+    Claim(
         "DEF_BILINEARITY_RESIDUAL",
         ClaimKind.DEFINITION,
         "Bilinearity residuals measure failure of additivity and scalar-linearity of the relational product.",
