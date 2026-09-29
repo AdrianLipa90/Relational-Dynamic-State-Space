@@ -27,6 +27,18 @@ g' = e^{2\chi} g.
 
 This repository does **not** assume that the resulting attractors are physical mass or that relational deformation is physical gravity. Those are possible later interpretations only after independent mathematical and empirical gates.
 
+## Hilbert primacy
+
+RDSS has one canonical carrier: \(\mathcal H_{\mathrm{HM}}\). Bloch, Kähler/Fubini--Study, Minkowski/Lorentzian, Euclidean and other geometries are derived representations, projections, charts, quotients or induced metric structures of Hilbert--Moiré states. They are not independent foundational spaces.
+
+A generic representation is written
+
+\[
+\Pi_\alpha:\mathcal H_{\mathrm{HM}}\to\mathcal X_\alpha.
+\]
+
+The informational--holonomic coordinate \(\zeta=I+i\Theta\) is an internal Hilbert-state degree of freedom. Holonomy is defined along trajectories in Hilbert--Moiré state space; closure in a chosen representation does not imply closure of the full Hilbert state.
+
 ## Core vocabulary
 
 - **Relational attachment** \(\mathcal N_{\rm rel}\): map from explicit relational/semantic features to a scalar deformation parameter \(\chi\).
