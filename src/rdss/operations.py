@@ -222,6 +222,20 @@ class OccurrenceRelationPath:
     def __post_init__(self) -> None:
         if not self.occurrences:
             raise ValueError("occurrence relation path must contain at least one occurrence")
+
+        carrier_by_occurrence: dict[tuple[int, ...], object] = {}
+        for item in self.occurrences:
+            for address, carrier in (
+                (item.source_occurrence, item.relation.source),
+                (item.target_occurrence, item.relation.target),
+            ):
+                previous = carrier_by_occurrence.get(address)
+                if previous is not None and previous != carrier:
+                    raise ValueError(
+                        "one occurrence address cannot denote multiple carriers"
+                    )
+                carrier_by_occurrence[address] = carrier
+
         for left, right in zip(self.occurrences, self.occurrences[1:]):
             if left.relation.target != right.relation.source:
                 raise ValueError("occurrence relation path is not carrier-composable")
@@ -258,8 +272,8 @@ class OccurrenceRelationPath:
 
     @property
     def closed(self) -> bool:
-        """Occurrence-level closure; stricter than carrier closure."""
-        return self.occurrence_closed
+        """True only when both carrier value and occurrence address close."""
+        return self.carrier_closed and self.occurrence_closed
 
 
 @dataclass(frozen=True)
@@ -291,9 +305,9 @@ class OccurrenceTransportPath:
 
     def holonomy_residual(self, element: TensorScalarElement) -> float:
         """Norm of transported state minus start for an occurrence-closed path."""
-        if not self.occurrence_path.occurrence_closed:
+        if not self.occurrence_path.closed:
             raise ValueError(
-                "occurrence holonomy requires return to the same occurrence address"
+                "occurrence holonomy requires carrier- and occurrence-closed path"
             )
         final = self.apply(element)
         return abs(final - element)
