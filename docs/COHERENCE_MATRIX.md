@@ -22,7 +22,8 @@ This matrix records which compatibility laws are implemented as exact checks, re
 | orbital action ↔ transport | equivariance square | IMPLEMENTED |
 | refinement ↔ semantic scale | branch/coarse-graining coherence | IMPLEMENTED |
 | refinement ↔ orbital action | branch/orbit equivariance | IMPLEMENTED |
-| tensor product ↔ associator/symmetry/braiding | monoidal coherence | OPEN |
+| tensor product ↔ strict associativity/unit/supplied braiding | residual diagnostics | IMPLEMENTED |
+| tensor product ↔ non-strict associator/braiding | pentagon/hexagon coherence | OPEN |
 | contraction ↔ tensor product | contraction/tensor identities | OPEN |
 | Zero Axis phase ↔ abstract holonomy | representation/bridge theorem | OPEN |
 | CP1/FS realization ↔ recursive refinement | realization compatibility | OPEN |
