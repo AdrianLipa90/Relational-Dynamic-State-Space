@@ -6,6 +6,14 @@ import rdss.realizations as realizations
 import rdss.zero_axis as zero_axis
 
 
+def test_core_exposes_separate_carrier_and_occurrence_types():
+    assert hasattr(core, "OccurrenceAddress")
+    assert hasattr(core, "RelationalPoint")
+    assert rdss.OccurrenceAddress is core.OccurrenceAddress
+    assert rdss.RelationalPoint is core.RelationalPoint
+    assert rdss.OccurrenceAddress is not rdss.RelationalPoint
+
+
 def test_algebra_core_is_representation_free():
     forbidden = (
         "CP1State",
