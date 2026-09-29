@@ -186,168 +186,154 @@ and
 Periodic, quasiperiodic, and chaotic attractors are deliberately deferred.
 
 
-\section{Return without identity: experiential holonomy}
+\section{Hilbert primacy and derived representations}
 
-A return to the same spatial point does not imply a return to the same
-total RDSS state. Let the spatial projection be
+RDSS has one canonical carrier:
 \[
-\pi:E\longrightarrow \mathcal B,
+\boxed{\HHM.}
 \]
-where \(\mathcal B\) is the geometric base and the fibre of \(E\) carries
-relational/internal state. Consider a closed path
+No Bloch sphere, K\"ahler chart, Minkowski chart, Euclidean chart or other
+geometry is introduced as a second foundational space. Such geometries are
+derived representations of states already living in \(\HHM\).
+
+For each admissible representation label \(\alpha\), let
 \[
-\gamma:[0,1]\longrightarrow\mathcal B,
-\qquad
-\gamma(0)=\gamma(1)=x_{\mathrm{home}}.
+\boxed{
+\Pi_\alpha:\HHM\longrightarrow \mathcal X_\alpha
+}
 \]
-The base-space condition is therefore closed:
+be a projection, chart, quotient, embedding coordinate map, or other explicit
+representation morphism. The symbol \(\mathcal X_\alpha\) denotes the image
+or coordinate realization selected by \(\Pi_\alpha\); it carries no
+independent ontological status in RDSS.
+
+A metric or quadratic form belongs to a representation only after such a
+choice. If \(G_\alpha\) is the corresponding form, then for two Hilbert--Moir\'e
+states \(\Psi,\Phi\) one may define
 \[
-x_{\mathrm{final}}=x_{\mathrm{initial}}.
+Q_\alpha(\Psi,\Phi)
+=
+\left\langle
+\Pi_\alpha(\Psi-\Phi),
+G_\alpha\Pi_\alpha(\Psi-\Phi)
+\right\rangle.
 \]
-However, transport through a relational connection
-\(\mathcal A_{\mathrm{rel}}\) gives
+Thus a Lorentzian/Minkowski form, a Bloch representation, or a K\"ahler/
+Fubini--Study description is a choice of \((\Pi_\alpha,G_\alpha)\) inside the
+Hilbert framework, not a replacement for it.
+
+The informational--holonomic coordinate is likewise internal:
 \[
-U_\gamma
+\boxed{
+\zeta(\Psi)=I(\Psi)+i\Theta(\Psi).
+}
+\]
+It is a complex degree of freedom or functional of the Hilbert state. It is
+not postulated as an external spacetime axis.
+
+\section{Holonomy inside Hilbert--Moir\'e space}
+
+Let \(\Gamma\) be a trajectory in the Hilbert--Moir\'e state space (or its
+projective realization when global phase is quotiented). Relational transport
+is described by a connection \(\mathcal A_{\rm rel}\) and holonomy
+\[
+\boxed{
+U_\Gamma
 =
 \mathcal P\exp\!\left(
-i\oint_\gamma \mathcal A_{\mathrm{rel}}
-\right),
-\]
-so that the fibre state evolves as
-\[
-\psi_{\mathrm{final}}
-=
-U_\gamma\psi_{\mathrm{initial}}.
-\]
-In general,
-\[
-\boxed{
-\gamma(0)=\gamma(1)
-\quad\not\Rightarrow\quad
-\psi_{\mathrm{final}}=\psi_{\mathrm{initial}}.
+i\int_\Gamma \mathcal A_{\rm rel}
+\right).
 }
 \]
-RDSS calls the resulting path-dependent difference
-\emph{experiential holonomy}. A minimal residual is
+A representation may close even when the complete Hilbert state does not.
+For some representation \(\Pi_\alpha\), it is possible that
+\[
+\Pi_\alpha(\Psi_{\rm final})
+=
+\Pi_\alpha(\Psi_{\rm initial}),
+\]
+while simultaneously
 \[
 \boxed{
-\varepsilon_{\mathrm{exp}}(\gamma)
+\Psi_{\rm final}
 =
-d_{\mathcal F}
-\left(
-\psi_{\mathrm{initial}},
-U_\gamma\psi_{\mathrm{initial}}
-\right),
+U_\Gamma\Psi_{\rm initial}
+\neq
+\Psi_{\rm initial}.
 }
 \]
-where \(d_{\mathcal F}\) is a metric on the fibre.
+This is the precise RDSS version of returning to the same represented point
+while retaining path-dependent information. Closure therefore has to be
+qualified by representation:
+\[
+\boxed{
+\text{representation closure}
+\not\Rightarrow
+\text{Hilbert-state closure}.
+}
+\]
 
-For a scalar \(U(1)\) reference model,
+For a scalar \(U(1)\) reference transport,
 \[
-U_\gamma
+U_\Gamma
 =
 \exp\!\left(
-i\sum_{e\in\gamma}\phi_e
-\right)
+i\sum_{e\in\Gamma}\phi_e
+\right),
 \]
-and the residual phase is
+with winding and residual
 \[
-\varepsilon_\phi
+W_\Gamma
 =
-\operatorname{wrap}_{2\pi}
-\left(
-\sum_{e\in\gamma}\phi_e
+\operatorname{round}\!\left(
+\frac{1}{2\pi}\sum_{e\in\Gamma}\phi_e
+\right),
+\qquad
+\varepsilon_\Gamma
+=
+\operatorname{wrap}_{2\pi}\!\left(
+\sum_{e\in\Gamma}\phi_e
 \right).
 \]
-Thus a family may leave home, traverse a semantically non-trivial
-trajectory, and return to the same point on the geometric base while
-occupying a different point in the total state space. The accumulated
-difference is not encoded by location alone; it is carried by the fibre
-and depends on the path.
+Higher-dimensional and non-Abelian transports remain admissible extensions.
 
-This distinction motivates the RDSS principle
+\section{Representation-specific geometries are derived, not fundamental}
+
+The time algebra continues to act on the canonical carrier,
 \[
-\boxed{
-\text{closed spatial path}
-\neq
-\text{closed relational state path}.
-}
+\rho:\AT\longrightarrow\operatorname{End}(\HHM).
 \]
-The \(U(1)\) implementation is only the first executable reference case.
-Higher-dimensional and non-Abelian relational holonomies remain open
-extensions.
-
-\section{Cosmic extension: Minkowski--Moir\'e base and informational holonomy}
-
-The Earth-bound examples above are local semantic demonstrations. The
-cosmic RDSS extension uses a Lorentzian Hilbert--Moir\'e base with a separate
-informational--holonomic fibre. Schematically,
+Only after a representation \(\Pi_\alpha\) is selected does one obtain a
+representation-specific geometric description. Schematically,
 \[
 \boxed{
-\mathcal E_{\rm RDSS}
-\longrightarrow
-\mathcal M^{3,1}_{\rm HM},
+\HHM
+\xrightarrow{\ \Pi_\alpha\ }
+\mathcal X_\alpha,
 \qquad
-\mathcal F_{\rm IH}\simeq \mathbb C,
+\Psi\mapsto x_\alpha.
 }
 \]
-where the base carries the Minkowski signature
-\[
-\eta=\operatorname{diag}(-1,+1,+1,+1)
-\]
-and the fibre coordinate is written
-\[
-\boxed{\zeta=I+i\Theta.}
-\]
-Here \(I\) is an informational coordinate and \(\Theta\) is a holonomic
-coordinate. This complex coordinate is an internal RDSS degree of freedom;
-it is not, at this stage, asserted to be an additional physical spacetime
-dimension.
+A Lorentzian representation may therefore use a Minkowski form, while a
+qubit sector may be represented projectively on a Bloch sphere with its
+K\"ahler/Fubini--Study geometry. These are examples of derived descriptions
+of Hilbert states. RDSS does not promote any one of them to the universal
+carrier.
 
-The base interval is
+Semantic dependence may act directly on Hilbert operators, representation
+maps, representation metrics, or the relational connection. A generic form
+is
 \[
-ds^2_{\rm M}=-c^2dt^2+dx^2+dy^2+dz^2,
+\chi=\Nrel(\Psi,\mathcal R,C),
 \]
-while semantic and relational history enter through a connection on the
-fibre,
+followed by one or more deformations such as
 \[
-\mathcal A_{\rm rel}=A_\mu\,dx^\mu+A_{\rm IH}\,d\zeta.
+G_\alpha\longmapsto G_\alpha[\chi],
+\qquad
+\mathcal A_{\rm rel}\longmapsto\mathcal A_{\rm rel}[\chi].
 \]
-A trajectory \(\gamma\) therefore carries the holonomy
-\[
-\boxed{
-U_\gamma=
-\mathcal P\exp\!\left(i\int_\gamma \mathcal A_{\rm rel}\right).
-}
-\]
-Consequently a flat or unchanged base step does not imply an unchanged total
-state: two paths may share the same Minkowski displacement while accumulating
-different informational--holonomic phase because their relational semantics
-differ.
-
-At the foundational RDSS layer, gravity is not required as a primitive name
-or field. The primitive quantities are the base geometry, relational
-connection, holonomy and explicitly defined contextual contributions. Whether
-these reproduce phenomena conventionally described by gravitation is a
-separate validation question.
-
-The terrestrial examples used earlier are explanatory analogies only. Their
-objects, numerical values and environmental details are not RDSS parameters
-and are not promoted into the formalism. A generic total reference phase can
-be decomposed as
-\[
-\boxed{
-\Theta_\gamma
-=
-\Theta_{\rm base}
-+
-\Theta_{\rm sem}
-+
-\Theta_{\rm ctx}.
-}
-\]
-Every non-base contribution must be defined by an explicit model rather than
-inferred from an illustrative story.
+The representation can therefore retain the same symbolic form while the
+relational/holonomic content of the transformation changes.
 
 \section{Core object}
 
