@@ -94,6 +94,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_POINT", "DEF_RELATIONAL_DISTINCTION"),
     ),
     Claim(
+        "THM_RA0_STAR_FROM_RA0_REL_STAR",
+        ClaimKind.THEOREM,
+        "Forgetting explicit branch-relation binding from any RA0_REL_STAR model yields an RA0_STAR model with the same admitted carriers and branch occurrence structure.",
+        ("RA0_REL_STAR",),
+    ),
+    Claim(
         "THM_RA0_FROM_RA0_REL_STAR",
         ClaimKind.THEOREM,
         "RA0_REL_STAR implies orientation-neutral relational admissibility because each admitted host is the source of at least one branch-relation occurrence.",
