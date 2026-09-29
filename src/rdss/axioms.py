@@ -50,7 +50,18 @@ CLAIMS: tuple[Claim, ...] = (
         "DEF_OCCURRENCE_ADDRESS_SPACE",
         ClaimKind.DEFINITION,
         "Occurrence addresses are finite words B* over the binary alphabet B={-1,+1}, with concatenation and the empty word.",
-        ("DEF_POINT",),
+    ),
+    Claim(
+        "DEF_CARRIER_OCCURRENCE_SEPARATION",
+        ClaimKind.DEFINITION,
+        "Carrier values and occurrence addresses are distinct sorts: a relation value is typed on carriers, while branch-aware identity is carried separately by OccurrenceAddress.",
+        ("DEF_POINT", "DEF_OCCURRENCE_ADDRESS_SPACE"),
+    ),
+    Claim(
+        "REF_RELATIONAL_POINT_BINARY_COORDINATE",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The reference RelationalPoint implementation retains a binary coordinate for compatibility with existing realizations; that coordinate is not the canonical occurrence identity of occurrence-aware paths.",
+        ("DEF_POINT", "DEF_OCCURRENCE_ADDRESS_SPACE"),
     ),
     Claim(
         "THM_OCCURRENCE_ADDRESS_FREE_MONOID",
@@ -61,13 +72,13 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_REFINEMENT_RIGHT_ACTION",
         ClaimKind.THEOREM,
-        "Appending finite binary words to RelationalPoint addresses defines a right action of B*: p·empty=p and (p·u)·v=p·(uv).",
-        ("DEF_POINT", "DEF_OCCURRENCE_ADDRESS_SPACE"),
+        "Appending finite binary words to OccurrenceAddress values defines the regular right action of B*: omega·empty=omega and (omega·u)·v=omega·(uv).",
+        ("DEF_OCCURRENCE_ADDRESS_SPACE",),
     ),
     Claim(
         "THM_REFINEMENT_LEVEL_GRADING",
         ClaimKind.THEOREM,
-        "The word-length map grades the occurrence-address monoid and the carrier action: |uv|=|u|+|v| and level(p·u)=level(p)+|u|.",
+        "The word-length map grades the occurrence-address monoid: |uv|=|u|+|v| and level(omega·u)=level(omega)+|u|.",
         ("THM_REFINEMENT_RIGHT_ACTION",),
     ),
     Claim(
@@ -102,8 +113,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "DEF_RELATION_OCCURRENCE",
         ClaimKind.DEFINITION,
-        "A relation occurrence is a typed relation value together with source and target occurrence addresses; distinct occurrences may project to the same relation value.",
-        ("DEF_POINT", "DEF_BINARY_REL"),
+        "A relation occurrence is a typed relation value together with source and target OccurrenceAddress values; distinct occurrences may project to the same relation value.",
+        ("DEF_BINARY_REL", "DEF_CARRIER_OCCURRENCE_SEPARATION"),
     ),
     Claim(
         "DEF_OCCURRENCE_PATH",
@@ -115,7 +126,7 @@ CLAIMS: tuple[Claim, ...] = (
         "DEF_BINARY_DISTINCTION",
         ClaimKind.DEFINITION,
         "A hosted binary distinction has two ordered branch occurrence slots (-,+). Non-degeneracy is occurrence-level and does not require different carrier labels in the two slots.",
-        ("DEF_POINT",),
+        ("DEF_POINT", "DEF_OCCURRENCE_ADDRESS_SPACE"),
     ),
     Claim(
         "DEF_RELATIONAL_DISTINCTION",
