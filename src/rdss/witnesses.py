@@ -16,6 +16,7 @@ class FiniteRelationModel:
     admitted: frozenset[str]
     relations: frozenset[tuple[str, str]]
     refinements: tuple[tuple[str, str, str], ...] = ()
+    branch_relations: tuple[tuple[str, int, str, str], ...] = ()
 
     def __post_init__(self) -> None:
         if not self.admitted <= self.points:
@@ -30,6 +31,21 @@ class FiniteRelationModel:
             seen.add(parent)
             if parent not in self.points or left not in self.points or right not in self.points:
                 raise ValueError("refinement points must belong to the carrier")
+
+        bound_slots: set[tuple[str, int]] = set()
+        for parent, branch, source, target in self.branch_relations:
+            if branch not in (-1, 1):
+                raise ValueError("branch relation slot must be -1 or +1")
+            key = (parent, branch)
+            if key in bound_slots:
+                raise ValueError("each parent/branch slot has at most one reference binding")
+            bound_slots.add(key)
+            if (
+                parent not in self.points
+                or source not in self.points
+                or target not in self.points
+            ):
+                raise ValueError("branch relation points must belong to the carrier")
 
     def satisfies_ex0(self) -> bool:
         """EX0 witness semantics: at least one relational carrier is admitted."""
@@ -87,6 +103,39 @@ class FiniteRelationModel:
             left, right = refinement_map[current]
             seen.add(current)
             frontier.extend((left, right))
+        return True
+
+    def satisfies_ra0_rel_star(self) -> bool:
+        """Relationally bound strengthening of RA0*.
+
+        Each admitted parent must have both branch occurrence slots explicitly
+        bound to primitive relation values from that parent to the selected
+        left/right refinement carrier. The two slots may project to the same
+        underlying relation value.
+        """
+        if not self.satisfies_ra0_star():
+            return False
+
+        refinement_map = {
+            parent: (left, right)
+            for parent, left, right in self.refinements
+        }
+        binding_map = {
+            (parent, branch): (source, target)
+            for parent, branch, source, target in self.branch_relations
+        }
+
+        for parent in self.admitted:
+            left, right = refinement_map[parent]
+            for branch, expected_target in ((-1, left), (1, right)):
+                relation = binding_map.get((parent, branch))
+                if relation is None:
+                    return False
+                source, target = relation
+                if source != parent or target != expected_target:
+                    return False
+                if (source, target) not in self.relations:
+                    return False
         return True
 
 
@@ -161,5 +210,35 @@ def witness_ra0_star_not_ra0() -> FiniteRelationModel:
         relations=frozenset(),
         refinements=(
             ("a", "a", "a"),
+        ),
+    )
+
+
+
+def witness_ra0_rr1_without_relational_binding() -> FiniteRelationModel:
+    """RA0 and recursive RR1 hold, but branch slots are not relation-bound."""
+    return FiniteRelationModel(
+        points=frozenset({"a"}),
+        admitted=frozenset({"a"}),
+        relations=frozenset({("a", "a")}),
+        refinements=(
+            ("a", "a", "a"),
+        ),
+        branch_relations=(),
+    )
+
+
+def witness_ra0_rel_star_singleton() -> FiniteRelationModel:
+    """Singleton finite witness with explicit relation binding on both slots."""
+    return FiniteRelationModel(
+        points=frozenset({"a"}),
+        admitted=frozenset({"a"}),
+        relations=frozenset({("a", "a")}),
+        refinements=(
+            ("a", "a", "a"),
+        ),
+        branch_relations=(
+            ("a", -1, "a", "a"),
+            ("a", 1, "a", "a"),
         ),
     )
