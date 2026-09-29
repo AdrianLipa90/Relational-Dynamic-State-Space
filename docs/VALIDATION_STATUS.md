@@ -23,8 +23,8 @@ Static checks found:
 
 - no CP1, Moiré-angle, U(1) winding, or Zero-Axis symbols leaking into \`algebra.py\`;
 - no missing public re-exports among the audited layer symbols;
-- no stale references to the removed \`REF_HOLONOMY_PHASE\` claim;
-- no stale calls to the removed \`finite_zero_axis_point\` method.
+- no stale references to the superseded combined holonomy/phase claim;
+- no stale calls to the superseded combined holonomy-to-Zero-Axis helper.
 
 ### Claim graph
 
