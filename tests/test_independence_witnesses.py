@@ -2,6 +2,8 @@ from rdss.witnesses import (
     FiniteRelationModel,
     witness_meta0_not_ra0,
     witness_ra0_not_rr1,
+    witness_ra0_rel_star_singleton,
+    witness_ra0_rr1_without_relational_binding,
     witness_ra0_star_not_ra0,
     witness_ra0_rr1_without_cp1,
     witness_ra0_rr1_without_ex0,
@@ -111,3 +113,41 @@ def test_ra0_star_without_relation_binding_does_not_force_ra0():
     assert model.is_admissible_rtofa_model()
     assert model.satisfies_ra0_star()
     assert not model.satisfies_ra0()
+
+
+
+def test_ra0_plus_rr1_do_not_force_relational_binding():
+    model = witness_ra0_rr1_without_relational_binding()
+
+    assert model.is_admissible_rtofa_model()
+    assert model.satisfies_ra0()
+    assert model.satisfies_rr1()
+    assert model.satisfies_ra0_star()
+    assert not model.satisfies_ra0_rel_star()
+
+
+def test_relational_binding_upgrades_singleton_to_ra0_rel_star():
+    model = witness_ra0_rel_star_singleton()
+
+    assert model.is_admissible_rtofa_model()
+    assert model.satisfies_ra0()
+    assert model.satisfies_rr1()
+    assert model.satisfies_ra0_star()
+    assert model.satisfies_ra0_rel_star()
+
+
+def test_two_branch_occurrences_may_project_to_same_relation_value():
+    model = witness_ra0_rel_star_singleton()
+
+    left = next(
+        binding for binding in model.branch_relations
+        if binding[1] == -1
+    )
+    right = next(
+        binding for binding in model.branch_relations
+        if binding[1] == 1
+    )
+
+    assert left[2:] == ("a", "a")
+    assert right[2:] == ("a", "a")
+    assert left[1] != right[1]
