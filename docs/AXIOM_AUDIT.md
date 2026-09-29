@@ -16,6 +16,7 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | RR1 | AXIOM | At every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction; the rule re-applies at every finite refinement depth. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | RA0_STAR | CANDIDATE AXIOM | Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | RA0_REL_STAR | CANDIDATE AXIOM | Every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_RELATIONAL_DISTINCTION |
+| THM_RA0_STAR_FROM_RA0_REL_STAR | THEOREM | Forgetting explicit branch-relation binding from an RA0_REL_STAR model yields an RA0_STAR model with the same admitted carriers and branch-occurrence structure. | RA0_REL_STAR |
 | THM_RA0_FROM_RA0_REL_STAR | THEOREM | RA0_REL_STAR implies relational admissibility because each admitted host has branch-relation incidence. | RA0_REL_STAR |
 | THM_RR1_FROM_RA0_REL_STAR | THEOREM | RA0_REL_STAR generates recursive binary refinement to arbitrary finite depth. | RA0_REL_STAR |
 | THM_META0_CARDINALITY_LOWER_BOUND | THEOREM | META0 forces every admissible RTOFA model to satisfy |Adm| >= 1. | META0 |
