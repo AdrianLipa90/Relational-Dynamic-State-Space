@@ -123,6 +123,36 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_RELATION_OCCURRENCE",),
     ),
     Claim(
+        "DEF_OCCURRENCE_FORGETFUL_PROJECTION",
+        ClaimKind.DEFINITION,
+        "The forgetful projection pi_occ_to_val removes occurrence addresses from relation occurrences and occurrence-aware paths while retaining their typed relation values and order.",
+        ("DEF_OCCURRENCE_PATH",),
+    ),
+    Claim(
+        "THM_OCCURRENCE_COMPOSABILITY_PROJECTS",
+        ClaimKind.THEOREM,
+        "Every occurrence-composable relation path projects under pi_occ_to_val to a composable relation-value path.",
+        ("DEF_OCCURRENCE_FORGETFUL_PROJECTION",),
+    ),
+    Claim(
+        "THM_OCCURRENCE_CLOSED_IMPLIES_VALUE_CLOSED",
+        ClaimKind.THEOREM,
+        "For a consistent occurrence-to-carrier assignment, occurrence closure implies carrier/value closure after the forgetful projection.",
+        ("DEF_OCCURRENCE_FORGETFUL_PROJECTION",),
+    ),
+    Claim(
+        "REF_VALUE_CLOSED_OCCURRENCE_OPEN_COUNTERMODEL",
+        ClaimKind.REFERENCE_REALIZATION,
+        "A singleton self-relation step from the root occurrence to a child occurrence is value-closed but occurrence-open.",
+        ("DEF_OCCURRENCE_FORGETFUL_PROJECTION",),
+    ),
+    Claim(
+        "THM_VALUE_CLOSED_NOT_OCCURRENCE_CLOSED",
+        ClaimKind.THEOREM,
+        "The explicit singleton countermodel shows that carrier/value closure does not imply occurrence closure.",
+        ("REF_VALUE_CLOSED_OCCURRENCE_OPEN_COUNTERMODEL",),
+    ),
+    Claim(
         "DEF_BINARY_DISTINCTION",
         ClaimKind.DEFINITION,
         "A hosted binary distinction has two ordered branch occurrence slots (-,+). Non-degeneracy is occurrence-level and does not require different carrier labels in the two slots.",
