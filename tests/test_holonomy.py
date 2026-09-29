@@ -2,40 +2,50 @@ from math import pi
 
 import pytest
 
-from rdss import RelationalLoop, transport_experience
+from rdss import RelationalHolonomyPath, transport_holonomy
 
 
-def test_closed_base_loop_can_return_to_same_place_with_changed_fibre():
-    loop = RelationalLoop(
-        base_path=("home", "school", "park", "home"),
+def test_representation_can_close_while_total_state_changes():
+    path = RelationalHolonomyPath(
+        representation_name="home-chart",
+        projected_start=(0.0 + 0j,),
+        projected_end=(0.0 + 0j,),
         edge_phases=(0.20, 0.35, 0.10),
     )
 
-    result = transport_experience(loop)
+    result = transport_holonomy(path)
 
-    assert result.same_base_point
+    assert result.representation_closed
     assert not result.same_total_state
     assert result.residual_phase == pytest.approx(0.65)
-    assert result.end_fibre != result.start_fibre
+    assert result.end_internal != result.start_internal
 
 
-def test_trivial_holonomy_returns_same_total_state():
-    loop = RelationalLoop(
-        base_path=("home", "destination", "home"),
+def test_trivial_holonomy_can_close_total_state():
+    path = RelationalHolonomyPath(
+        representation_name="closed-chart",
+        projected_start=(1.0 + 0j,),
+        projected_end=(1.0 + 0j,),
         edge_phases=(pi, pi),
     )
 
-    result = transport_experience(loop)
+    result = transport_holonomy(path)
 
-    assert result.same_base_point
+    assert result.representation_closed
     assert result.same_total_state
     assert result.residual_phase == pytest.approx(0.0)
     assert result.winding == 1
 
 
-def test_open_path_is_rejected():
-    with pytest.raises(ValueError):
-        RelationalLoop(
-            base_path=("home", "destination"),
-            edge_phases=(0.4,),
-        )
+def test_open_representation_does_not_claim_total_closure():
+    path = RelationalHolonomyPath(
+        representation_name="open-chart",
+        projected_start=(0.0 + 0j,),
+        projected_end=(1.0 + 0j,),
+        edge_phases=(0.0,),
+    )
+
+    result = transport_holonomy(path)
+
+    assert not result.representation_closed
+    assert not result.same_total_state
