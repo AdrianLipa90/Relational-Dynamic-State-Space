@@ -385,3 +385,42 @@ def requires_novelty(
     tree = model.unfold(root, depth)
     labels = list(tree.values())
     return len(labels) == len(set(labels))
+
+
+
+def binary_occurrence_count_through_depth(depth: int) -> int:
+    """Number of binary path-labelled occurrences from level 0 through depth."""
+    if depth < 0:
+        raise ValueError("depth must be non-negative")
+    return (1 << (depth + 1)) - 1
+
+
+def finite_word_rank(address: tuple[int, ...]) -> int:
+    """Bijection from finite {-1,+1} words to non-negative integers.
+
+    Words are ordered first by length and then lexicographically after
+    encoding -1 as bit 0 and +1 as bit 1.
+    """
+    rank = (1 << len(address)) - 1
+    index = 0
+    for branch in address:
+        if branch not in (-1, 1):
+            raise ValueError("address branches must be -1 or +1")
+        index = (index << 1) | (1 if branch == 1 else 0)
+    return rank + index
+
+
+def finite_word_unrank(rank: int) -> tuple[int, ...]:
+    """Inverse of finite_word_rank on the non-negative integers."""
+    if rank < 0:
+        raise ValueError("rank must be non-negative")
+
+    length = (rank + 1).bit_length() - 1
+    start = (1 << length) - 1
+    index = rank - start
+
+    address: list[int] = []
+    for shift in range(length - 1, -1, -1):
+        bit = (index >> shift) & 1
+        address.append(1 if bit else -1)
+    return tuple(address)
