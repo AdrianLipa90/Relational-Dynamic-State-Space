@@ -1,3 +1,4 @@
+from rdss.algebra import RelationalPoint, TypedRelation
 import pytest
 
 from rdss.closure import (
@@ -273,3 +274,36 @@ def test_branch_relation_occurrence_rejects_empty_endpoint_or_label():
 
     with pytest.raises(ValueError):
         BranchRelationOccurrence(1, "r", "", "a")
+
+
+
+def test_branch_relation_occurrence_materializes_core_typed_relation():
+    occurrence = BranchRelationOccurrence(-1, "r", "a", "b")
+    carriers = {
+        "a": RelationalPoint(),
+        "b": RelationalPoint((1,)),
+    }
+
+    relation = occurrence.as_typed_relation(carriers)
+
+    assert relation == TypedRelation(
+        carriers["a"],
+        carriers["b"],
+        "r",
+    )
+
+
+def test_distinct_occurrences_may_share_same_relation_value():
+    carriers = {"a": RelationalPoint()}
+    left = BranchRelationOccurrence(-1, "r", "a", "a")
+    right = BranchRelationOccurrence(1, "r", "a", "a")
+
+    assert left != right
+    assert left.as_typed_relation(carriers) == right.as_typed_relation(carriers)
+
+
+def test_branch_relation_materialization_fails_on_missing_carrier_mapping():
+    occurrence = BranchRelationOccurrence(-1, "r", "a", "b")
+
+    with pytest.raises(KeyError):
+        occurrence.as_typed_relation({"a": RelationalPoint()})
