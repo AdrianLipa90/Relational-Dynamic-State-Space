@@ -160,3 +160,26 @@ def test_refinement_residual_operates_on_tensor_scalar_elements():
         return a.scale_by(2.0)
 
     assert refinement_residual(exact_refine, product, x, y) == pytest.approx(0.0)
+
+
+
+def test_relational_point_finite_word_action_is_monoid_action():
+    p = RelationalPoint((-1,))
+    u = (1, -1)
+    v = (-1, 1, 1)
+
+    assert p.advance(()) == p
+    assert p.advance(u).advance(v) == p.advance(u + v)
+
+
+def test_relational_point_generators_match_binary_refinement():
+    p = RelationalPoint((1,))
+    left, right = p.refine()
+
+    assert left == p.advance((-1,))
+    assert right == p.advance((1,))
+
+
+def test_relational_point_advance_fails_closed_on_invalid_word():
+    with pytest.raises(ValueError):
+        RelationalPoint().advance((0,))
