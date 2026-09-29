@@ -64,7 +64,7 @@ The foundational rule is stated as an admissibility condition:
 \Longrightarrow
 \exists\,y,r:\operatorname{Rel}_{r}(x,y).
 }
-\tag{A-1}
+\tag{RA0}
 \]
 An admissible observable is therefore not defined as an isolated object.
 The statement is intentionally weaker and cleaner than a physical claim: it
@@ -107,7 +107,7 @@ non-zero vector in \(\mathbb C^2\), modulo global phase:
 \boxed{
 \mathbb P(\mathbb C^2)=\CP\simeq S^2.
 }
-\tag{A1}
+\tag{REF-CP1}
 \]
 The natural projective metric is Fubini--Study:
 \[
@@ -144,7 +144,7 @@ For \(\omega\in V_n\), define the binary refinement
 p_\omega\longmapsto
 \{p_{\omega-},p_{\omega+}\}.
 }
-\tag{A2}
+\tag{RR1}
 \]
 RR1 is an explicit second foundational axiom: RA0 requires relation but does
 not by itself force recursive refinement. Thus the general construction contains a recursive relational tower
@@ -210,7 +210,7 @@ and may induce transport
 \boxed{
 T_r:\mathcal A_a\to\mathcal A_b.
 }
-\tag{A3}
+\tag{DEF-T}
 \]
 No universal transport law is imposed before the relation type is supplied.
 
@@ -281,7 +281,7 @@ Moir\'e structure is intrinsically relational. For two local orbital actions,
 \boxed{
 M_{ij}=U_iU_j^{-1}.
 }
-\tag{A4}
+\tag{DER-M}
 \]
 In a scalar-angle realization this reduces to the wrapped relative angle
 \[
@@ -316,7 +316,7 @@ one has the exact equivalence
 \Longleftrightarrow
 |\Omega(s)|=1.
 }
-\tag{A5}
+\tag{ZA-BRIDGE}
 \]
 Hence the compactified Zero Axis has a natural unit-circle realization. This
 identity is imported from the companion Zero Axis model as a bridge and is
@@ -417,13 +417,16 @@ promoted.
 
 \section{Minimal algebraic signature}
 
-The present foundation can be summarized as
+The core relational algebra is
 \[
 \boxed{
-\Arel=
+\Arel^{\rm core}=
 \left(
+\mathbb K,
 \{\mathcal A_{\sigma,n}^{p,q}\},
++,
 0,
+-,
 \star_R,
 \otimes,
 \operatorname{Contr},
@@ -431,12 +434,27 @@ T_r,
 U_g,
 M_{ij},
 S_{\sigma\to\tau},
-F,
+F
+\right).
+}
+\]
+
+The companion Zero-Axis extension is recorded separately:
+\[
+\boxed{
+\Arel^{\rm ZA}
+=
+\left(
+\Arel^{\rm core},
 \Zaxis,
 \Omega
 \right).
 }
 \]
+This separation is epistemic, not operational: Zero Axis remains available to
+RTOFA, but its projective critical-axis identity is imported from the
+companion Zero Axis model rather than derived from RA0/RR1.
+
 Derived diagnostics and structures include
 \[
 \boxed{
