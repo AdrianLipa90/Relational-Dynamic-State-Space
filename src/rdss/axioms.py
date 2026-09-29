@@ -80,6 +80,12 @@ CLAIMS: tuple[Claim, ...] = (
         "A typed relational product star_R may be supplied without assuming associativity or commutativity.",
     ),
     Claim(
+        "DEF_BILINEARITY_RESIDUAL",
+        ClaimKind.DEFINITION,
+        "Bilinearity residuals measure failure of additivity and scalar-linearity of the relational product.",
+        ("PRIM_PRODUCT", "PRIM_MODULE"),
+    ),
+    Claim(
         "PRIM_SCALE",
         ClaimKind.STRUCTURAL_PRIMITIVE,
         "Semantic scale is a typed partial-order/category-like structure, not necessarily a real scalar.",
@@ -106,6 +112,12 @@ CLAIMS: tuple[Claim, ...] = (
         "PRIM_ORBIT",
         ClaimKind.STRUCTURAL_PRIMITIVE,
         "Admissible orbital actions U_g may act on algebra elements.",
+    ),
+    Claim(
+        "DEF_ORBITAL_COHERENCE",
+        ClaimKind.DEFINITION,
+        "Orbital inverse and composition residuals diagnose exact inverse and action-law coherence.",
+        ("PRIM_ORBIT", "PRIM_MODULE"),
     ),
     Claim(
         "DER_MOIRE",
