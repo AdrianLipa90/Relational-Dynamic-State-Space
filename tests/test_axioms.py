@@ -241,3 +241,24 @@ def test_zero_axis_lift_is_separate_reference_bridge():
             "ZA_BRIDGE",
         }
     )
+
+
+
+def test_relational_potential_is_definition_not_physical_axiom():
+    claims = claim_map()
+    assert claims["DEF_RELATIONAL_POTENTIAL"].kind is ClaimKind.DEFINITION
+    assert dependency_closure("DEF_RELATIONAL_POTENTIAL") == frozenset(
+        {"PRIM_SCALE"}
+    )
+
+
+def test_semantic_potential_shift_and_attractor_are_derived():
+    claims = claim_map()
+    assert claims["DER_SEMANTIC_POTENTIAL_SHIFT"].kind is ClaimKind.DERIVED
+    assert claims["DER_RELATIONAL_ATTRACTOR"].kind is ClaimKind.DERIVED
+    assert dependency_closure("DER_SEMANTIC_POTENTIAL_SHIFT") == frozenset(
+        {"DEF_RELATIONAL_POTENTIAL", "PRIM_SCALE"}
+    )
+    assert dependency_closure("DER_RELATIONAL_ATTRACTOR") == frozenset(
+        {"DEF_RELATIONAL_POTENTIAL", "PRIM_SCALE"}
+    )
