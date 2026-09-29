@@ -32,7 +32,7 @@ def test_recursive_refinement_is_independent_foundational_axiom():
 
 def test_structural_primitives_do_not_silently_depend_on_ra0():
     claims = claim_map()
-    for claim_id in ("PRIM_MODULE", "PRIM_PRODUCT", "PRIM_TENSOR_PRODUCT", "PRIM_CONTRACTION", "PRIM_SCALE", "PRIM_TRANSPORT", "PRIM_REFINEMENT_MAP", "PRIM_ORBIT"):
+    for claim_id in ("PRIM_MODULE", "PRIM_PRODUCT", "PRIM_TENSOR_PRODUCT", "PRIM_CONTRACTION", "PRIM_SCALE", "PRIM_SEMANTIC_WEIGHTING", "PRIM_TRANSPORT", "PRIM_REFINEMENT_MAP", "PRIM_ORBIT"):
         assert claims[claim_id].kind is ClaimKind.STRUCTURAL_PRIMITIVE
         assert "RA0" not in dependency_closure(claim_id)
 
@@ -246,9 +246,13 @@ def test_zero_axis_lift_is_separate_reference_bridge():
 
 def test_relational_potential_is_definition_not_physical_axiom():
     claims = claim_map()
+    assert claims["PRIM_SEMANTIC_WEIGHTING"].kind is ClaimKind.STRUCTURAL_PRIMITIVE
     assert claims["DEF_RELATIONAL_POTENTIAL"].kind is ClaimKind.DEFINITION
-    assert dependency_closure("DEF_RELATIONAL_POTENTIAL") == frozenset(
+    assert dependency_closure("PRIM_SEMANTIC_WEIGHTING") == frozenset(
         {"PRIM_SCALE"}
+    )
+    assert dependency_closure("DEF_RELATIONAL_POTENTIAL") == frozenset(
+        {"PRIM_SEMANTIC_WEIGHTING", "PRIM_SCALE"}
     )
 
 
@@ -257,8 +261,16 @@ def test_semantic_potential_shift_and_attractor_are_derived():
     assert claims["DER_SEMANTIC_POTENTIAL_SHIFT"].kind is ClaimKind.DERIVED
     assert claims["DER_RELATIONAL_ATTRACTOR"].kind is ClaimKind.DERIVED
     assert dependency_closure("DER_SEMANTIC_POTENTIAL_SHIFT") == frozenset(
-        {"DEF_RELATIONAL_POTENTIAL", "PRIM_SCALE"}
+        {
+            "DEF_RELATIONAL_POTENTIAL",
+            "PRIM_SEMANTIC_WEIGHTING",
+            "PRIM_SCALE",
+        }
     )
     assert dependency_closure("DER_RELATIONAL_ATTRACTOR") == frozenset(
-        {"DEF_RELATIONAL_POTENTIAL", "PRIM_SCALE"}
+        {
+            "DEF_RELATIONAL_POTENTIAL",
+            "PRIM_SEMANTIC_WEIGHTING",
+            "PRIM_SCALE",
+        }
     )
