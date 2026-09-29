@@ -3,11 +3,12 @@ from math import pi
 
 import pytest
 
-from rdss import RelationalPoint, RelationTransport, SemanticScale, TensorScalarElement, TransportPath, TypedRelation
+from rdss import OccurrenceRelationPath, OccurrenceTransportPath, RelationOccurrence, RelationalPoint, RelationTransport, SemanticScale, TensorScalarElement, TransportPath, TypedRelation
 from rdss.realizations import (
     CP1RefinementRealization,
     CP1State,
     HolonomyPhaseRepresentation,
+    OccurrenceHolonomyPhaseRepresentation,
     MinimalDistinction,
     MoireRotation,
     reference_maximal_cp1_tree,
@@ -124,6 +125,39 @@ def closed_phase_path(total_phase: float):
     return path, x
 
 
+def occurrence_closed_phase_path(total_phase: float):
+    a = RelationalPoint()
+    scale = SemanticScale("object")
+    x = TensorScalarElement((1.0,), (0, 0), a, scale)
+    half = exp(0.5j * total_phase)
+
+    down = TypedRelation(a, a, "down")
+    up = TypedRelation(a, a, "up")
+    occurrence_path = OccurrenceRelationPath(
+        (
+            RelationOccurrence(down, (), (-1,)),
+            RelationOccurrence(up, (-1,), ()),
+        )
+    )
+
+    def move(z):
+        return TensorScalarElement(
+            tuple(half * c for c in z.components),
+            z.rank,
+            a,
+            z.scale,
+        )
+
+    path = OccurrenceTransportPath(
+        occurrence_path,
+        (
+            RelationTransport(down, move),
+            RelationTransport(up, move),
+        ),
+    )
+    return path, x
+
+
 def scalar_ratio_phase(path, element):
     final = path.apply(element)
     return final.components[0] / element.components[0]
@@ -136,6 +170,55 @@ def test_explicit_u1_holonomy_representation_returns_unit_phase():
     u = rep.phase(path, x)
 
     assert abs(u) == pytest.approx(1.0)
+
+
+def test_occurrence_u1_holonomy_representation_returns_unit_phase():
+    path, x = occurrence_closed_phase_path(0.4)
+    rep = OccurrenceHolonomyPhaseRepresentation(
+        "occurrence-scalar-ratio",
+        scalar_ratio_phase,
+    )
+
+    u = rep.phase(path, x)
+
+    assert abs(u) == pytest.approx(1.0)
+
+
+def test_occurrence_phase_representation_rejects_carrier_closed_occurrence_open_path():
+    a = RelationalPoint()
+    x = TensorScalarElement((1.0,), (0, 0), a, SemanticScale("object"))
+    relation = TypedRelation(a, a, "r")
+    occurrence_path = OccurrenceRelationPath(
+        (
+            RelationOccurrence(relation, (), (-1,)),
+        )
+    )
+    path = OccurrenceTransportPath(
+        occurrence_path,
+        (
+            RelationTransport(relation, lambda z: z),
+        ),
+    )
+    rep = OccurrenceHolonomyPhaseRepresentation(
+        "occurrence-open",
+        scalar_ratio_phase,
+    )
+
+    assert occurrence_path.carrier_closed
+    assert not occurrence_path.occurrence_closed
+    with pytest.raises(ValueError):
+        rep.phase(path, x)
+
+
+def test_occurrence_phase_representation_rejects_nonunit_phase():
+    path, x = occurrence_closed_phase_path(0.4)
+    rep = OccurrenceHolonomyPhaseRepresentation(
+        "occurrence-nonunit",
+        lambda _path, _element: 2.0 + 0.0j,
+    )
+
+    with pytest.raises(ValueError):
+        rep.phase(path, x)
 
 
 def test_nonunit_holonomy_representation_is_rejected():
