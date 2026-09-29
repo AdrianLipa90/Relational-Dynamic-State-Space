@@ -81,6 +81,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("PRIM_MODULE",),
     ),
     Claim(
+        "DEF_TYPED_ZERO",
+        ClaimKind.DEFINITION,
+        "The additive zero is typed by tensor rank, exact relational carrier, semantic scale, and component dimension; refinement level is derived from the carrier.",
+        ("PRIM_MODULE", "DEF_POINT", "PRIM_SCALE"),
+    ),
+    Claim(
         "PRIM_PRODUCT",
         ClaimKind.STRUCTURAL_PRIMITIVE,
         "A typed relational product star_R may be supplied without assuming associativity or commutativity.",
