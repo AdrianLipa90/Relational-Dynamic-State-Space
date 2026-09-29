@@ -4,7 +4,8 @@ from dataclasses import dataclass
 from math import acos, isfinite, pi
 from typing import Callable
 
-from .algebra import RelationalPoint, TensorScalarElement, wrap_phase
+from .algebra import RelationalPoint, TensorScalarElement
+from .phase import wrap_phase
 from .zero_axis import ZeroAxisPoint
 from .operations import TransportPath
 
