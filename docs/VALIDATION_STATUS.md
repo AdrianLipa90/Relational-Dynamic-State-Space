@@ -17,7 +17,7 @@ Observed public definitions:
 - relational potential: 3;
 - reference realizations: 6;
 - Zero Axis bridge: 2;
-- package-root public exports: 72.
+- package-root public exports: 76.
 
 Static checks found:
 
@@ -31,7 +31,7 @@ Static checks found:
 The current claim ledger contains:
 
 \[
-55
+58
 \]
 
 unique claim IDs.
@@ -63,21 +63,21 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 149 Python test functions:
+The current repository contains 162 Python test functions:
 
 | File | Test functions |
 |---|---:|
 | \`tests/test_algebra.py\` | 12 |
-| \`tests/test_axioms.py\` | 32 |
-| \`tests/test_closure.py\` | 20 |
+| \`tests/test_axioms.py\` | 34 |
+| \`tests/test_closure.py\` | 25 |
 | \`tests/test_independence_witnesses.py\` | 10 |
 | \`tests/test_layering.py\` | 3 |
-| \`tests/test_operations.py\` | 37 |
+| \`tests/test_operations.py\` | 43 |
 | \`tests/test_phase.py\` | 3 |
 | \`tests/test_potential.py\` | 13 |
 | \`tests/test_realizations.py\` | 15 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **149** |
+| **Total** | **162** |
 
 This is an inventory count, not a runtime result.
 
@@ -171,6 +171,26 @@ The finite non-empty countermodel with one carrier, no primitive relations, and 
 
 Thus RA0* without primitive relation incidence is strictly weaker than RA0_REL_STAR.
 
+### Occurrence-path holonomy audit
+
+Relation values and relation occurrences are now separate objects.
+
+A carrier/value path may be closed while the corresponding path-labelled occurrence remains open. The singleton refinement step
+
+\[
+a_{\varnothing}\to a_{-}
+\]
+
+projects to the carrier self-relation \(a\to a\), providing the executable counterexample
+
+\[
+\text{carrier-closed}
+\not\Rightarrow
+\text{occurrence-closed}.
+\]
+
+Occurrence-aware holonomy therefore requires closure in both carrier value and occurrence address. The public API now exposes \`RelationOccurrence\`, \`OccurrenceRelationPath\`, and \`OccurrenceTransportPath\`.
+
 ### Singleton-cardinality audit
 
 The exact minimum-cardinality statement is split into two steps:
@@ -242,10 +262,11 @@ The following are intentionally open rather than silently assumed:
 1. **Indexed tensor contraction gate** — requires explicit slot signatures, pairing, component shape, and contraction evaluator.
 2. **Non-strict monoidal coherence gate** — requires parenthesized tensor objects plus explicit associator/braiding isomorphisms before pentagon/hexagon can be tested.
 3. **Semantic weighting derivation gate** — the kernel evaluates supplied semantic weights but does not derive \(W_\sigma\) from a semantic graph/context.
-4. **Holonomy-to-\(U(1)\) existence theorem** — the executable interface exists, but no universal theorem says every RTOFA holonomy admits such a representation.
-5. **Relational-admissibility reduction gate** — RA0 may be demoted only if \(\operatorname{Adm}\) is explicitly redefined by relational incidence; META0 alone does not imply RA0.
-6. **Relational distinction binding promotion** — RA0_REL_STAR implies RA0_STAR, RA0, and RR1 only because it explicitly binds distinction slots to primitive branch-relation occurrences; this extra content remains unpromoted.
-7. **RA0* promotion** — \(\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}\) is tracked under the strengthened candidate statement; the canonical object-level pair remains \(\mathrm{RA0}+\mathrm{RR1}\) under META0.
+4. **Value-holonomy-to-\(U(1)\) existence theorem** — the executable value-level interface exists, but no universal theorem says every RTOFA value holonomy admits such a representation.
+5. **Occurrence-holonomy-to-\(U(1)\) bridge** — occurrence-aware holonomy is implemented, but an occurrence-preserving phase representation remains separate from the current value-level interface.
+6. **Relational-admissibility reduction gate** — RA0 may be demoted only if \(\operatorname{Adm}\) is explicitly redefined by relational incidence; META0 alone does not imply RA0.
+7. **Relational distinction binding promotion** — RA0_REL_STAR implies RA0_STAR, RA0, and RR1 only because it explicitly binds distinction slots to primitive branch-relation occurrences; this extra content remains unpromoted.
+8. **RA0* promotion** — \(\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}\) is tracked under the strengthened candidate statement; the canonical object-level pair remains \(\mathrm{RA0}+\mathrm{RR1}\) under META0.
 
 ## Branch safety
 
