@@ -190,7 +190,7 @@ p\ge 1.
 
 This is a derived relational deformation scalar, not physical energy.
 
-Holding the residual signature fixed isolates a purely semantic shift:
+Holding the residual signature and the potential order \(p\) fixed isolates a purely semantic shift:
 
 \[
 \boxed{
