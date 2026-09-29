@@ -13,12 +13,13 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 | RA0_STAR | CANDIDATE AXIOM | Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_BINARY_REL |
 | THM_RR1_FROM_RA0_STAR | THEOREM | RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences. | RA0_STAR |
 | REF_CP1 | REFERENCE REALIZATION | A minimal complex binary distinction may be represented by CP1 with Fubini-Study metric. | DEF_POINT, DEF_BINARY_REL |
-| DEF_TS | DEFINITION | Tensor-scalar grading uses rank (p,q); scalars are rank (0,0). | — |
+| PRIM_MODULE | STRUCTURAL PRIMITIVE | Each typed tensor-scalar sector carries an additive K-module structure; the reference kernel uses complex components. | — |
+| DEF_TS | DEFINITION | Tensor-scalar grading uses rank (p,q); scalars are rank (0,0). | PRIM_MODULE |
 | PRIM_PRODUCT | STRUCTURAL PRIMITIVE | A typed relational product star_R may be supplied without assuming associativity or commutativity. | — |
 | PRIM_SCALE | STRUCTURAL PRIMITIVE | Semantic scale is a typed partial-order/category-like structure. | — |
 | PRIM_ORBIT | STRUCTURAL PRIMITIVE | Admissible orbital actions U_g may act on algebra elements. | — |
 | DER_MOIRE | DERIVED | Relative Moiré action is M_ij = U_i U_j^{-1} where the inverse exists. | PRIM_ORBIT |
-| DEF_REFINEMENT_RESIDUAL | DEFINITION | Delta_F measures failure of exact product preservation under refinement. | RR1, PRIM_PRODUCT |
+| DEF_REFINEMENT_RESIDUAL | DEFINITION | Delta_F measures failure of exact product preservation under refinement. | RR1, PRIM_PRODUCT, PRIM_MODULE |
 | ZA_BRIDGE | BRIDGE | The companion Zero Axis model supplies Omega(s)=s/(1-s) and the critical-axis/unit-circle equivalence. | — |
 | DER_WINDING | DERIVED | Topological winding is derived only from a closed phase path with a continuous lift. | ZA_BRIDGE |
 
@@ -27,7 +28,7 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 1. **RA0 and RR1 are independent foundational assumptions in the current kernel.** RA0 requires relational admissibility; it does not force recursive refinement.
 2. **Binary relation typing is explicit.** It is part of the signature rather than a hidden consequence of RA0.
 3. **CP1 is not an axiom.** It is the chosen minimal complex binary projective realization. A non-CP1 model can still satisfy RA0 and RR1.
-4. **Tensor-scalar grading, semantic scale, orbital action and relational product are signature choices/structural primitives.** They are not derived from RA0.
+4. **The additive K-module structure, tensor-scalar grading, semantic scale, orbital action and relational product are signature choices/structural primitives.** They are not derived from RA0. The additive module is required before differences such as commutators, associators and refinement residuals are meaningful.
 5. **Moiré is derived once invertible orbital actions are present.**
 6. **Refinement residual requires both recursive refinement and a relational product.**
 7. **Zero Axis is imported from the companion model.** It is not an axiom of the general algebra.
