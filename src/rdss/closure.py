@@ -465,3 +465,22 @@ def finite_word_unrank(rank: int) -> tuple[int, ...]:
         bit = (index >> shift) & 1
         address.append(1 if bit else -1)
     return tuple(address)
+
+
+
+def binary_words_at_depth(depth: int) -> tuple[tuple[int, ...], ...]:
+    """All binary occurrence-address words of one exact finite depth."""
+    if depth < 0:
+        raise ValueError("depth must be non-negative")
+    start = (1 << depth) - 1
+    return tuple(
+        finite_word_unrank(start + index)
+        for index in range(1 << depth)
+    )
+
+
+def binary_boundary_cylinder_count(depth: int) -> int:
+    """Number of length-depth prefix cylinders in the ideal binary boundary."""
+    if depth < 0:
+        raise ValueError("depth must be non-negative")
+    return 1 << depth
