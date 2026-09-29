@@ -18,6 +18,7 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | RA0_REL_STAR | CANDIDATE AXIOM | Every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_RELATIONAL_DISTINCTION |
 | THM_RA0_FROM_RA0_REL_STAR | THEOREM | RA0_REL_STAR implies relational admissibility because each admitted host has branch-relation incidence. | RA0_REL_STAR |
 | THM_RR1_FROM_RA0_REL_STAR | THEOREM | RA0_REL_STAR generates recursive binary refinement to arbitrary finite depth. | RA0_REL_STAR |
+| THM_SINGLETON_FOUNDATION_MINIMALITY | THEOREM | Under META0 plus RA0_REL_STAR, admitted-carrier cardinality one is minimal and is achieved by the recursive singleton self-relational witness. | META0, RA0_REL_STAR |
 | THM_RR1_FROM_RA0_STAR | THEOREM | RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences. | RA0_STAR |
 | REF_CP1 | REFERENCE REALIZATION | A minimal complex binary distinction may be represented by two projectively distinct CP1 states with Fubini-Study metric. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | REF_CP1_REFINEMENT | REFERENCE REALIZATION | Recursive refinement is realized as a tree of local CP1/FS fibres indexed by relational carriers. | REF_CP1, RR1 |
