@@ -154,6 +154,18 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_META0_CARDINALITY_LOWER_BOUND", "REF_SINGLETON_RA0_REL_STAR_MODEL"),
     ),
     Claim(
+        "THM_BINARY_OCCURRENCE_COUNT",
+        ClaimKind.THEOREM,
+        "A complete binary occurrence unfolding through finite depth N contains exactly 2^(N+1)-1 path-labelled occurrences.",
+        ("RR1", "DEF_BINARY_DISTINCTION"),
+    ),
+    Claim(
+        "THM_FINITE_WORD_OCCURRENCE_COUNTABILITY",
+        ClaimKind.THEOREM,
+        "The full finite-depth occurrence address space {-1,+1}^{<omega} is countably infinite even when the underlying carrier presentation is finite or singleton.",
+        ("THM_BINARY_OCCURRENCE_COUNT",),
+    ),
+    Claim(
         "THM_RR1_FROM_RA0_STAR",
         ClaimKind.THEOREM,
         "RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences.",
