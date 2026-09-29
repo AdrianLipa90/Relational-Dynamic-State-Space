@@ -125,3 +125,23 @@ def test_refinement_residual_detects_exact_and_broken_self_similarity():
 
     assert refinement_residual(exact_refine, product, 2.0, 3.0) == pytest.approx(0.0)
     assert refinement_residual(broken_refine, product, 2.0, 3.0) > 0.0
+
+
+def test_tensor_scalar_reference_sector_has_additive_module_operations():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+    a = TensorScalarElement((1.0, 2.0), (1, 0), p, scale)
+    b = TensorScalarElement((3.0, -1.0), (1, 0), p, scale)
+
+    assert (a + b).components == (4.0 + 0j, 1.0 + 0j)
+    assert (a - b).components == (-2.0 + 0j, 3.0 + 0j)
+    assert a.scale_by(2.0).components == (2.0 + 0j, 4.0 + 0j)
+
+
+def test_addition_fails_closed_across_typed_sectors():
+    p = RelationalPoint()
+    a = TensorScalarElement((1.0,), (0, 0), p, SemanticScale("fruit"))
+    b = TensorScalarElement((1.0,), (0, 0), p, SemanticScale("vegetable"))
+
+    with pytest.raises(ValueError):
+        _ = a + b
