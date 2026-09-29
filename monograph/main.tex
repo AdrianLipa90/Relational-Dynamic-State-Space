@@ -68,6 +68,57 @@ sector:
 }
 \]
 
+\section{Model formation: non-reification and non-vacuity}
+
+Before the object-level relational axioms, RTOFA fixes the class of admissible
+models.
+
+Absolute nothingness is not assigned a term, carrier, state, value, relation,
+zero, or set inside the object language. In particular, the mathematical
+empty set \(\varnothing\) is not identified with absolute nothingness:
+\(\varnothing\) is already a mathematical object.
+
+The model-formation meta-axiom is therefore
+
+\[
+\boxed{
+\mathrm{META0}:
+\begin{cases}
+\text{absolute nothingness has no denotation in the RTOFA object language},\\[1mm]
+\mathfrak M\in\operatorname{Mod}(\mathrm{RTOFA})
+\Rightarrow
+\operatorname{Adm}^{\mathfrak M}\neq\varnothing.
+\end{cases}
+}
+\]
+
+META0 is not a proposition about an object called \\``nothing.'' It specifies
+what counts as an RTOFA model.
+
+Consequently every admissible model satisfies
+
+\[
+\boxed{
+\mathrm{EX0}:
+\exists p\,\operatorname{Adm}(p).
+}
+\]
+
+Thus
+
+\[
+\boxed{
+\mathrm{META0}\models\mathrm{EX0}.
+}
+\]
+
+EX0 is classified as a theorem of model-formation semantics rather than an
+additional object-level ontological axiom.
+
+A raw empty mathematical presentation remains useful as a metamathematical
+vacuity witness. Universal formulas may hold there vacuously, but that raw
+presentation is excluded from \(\operatorname{Mod}(\mathrm{RTOFA})\).
+
 \section{Relational admissibility}
 
 The motivating relational intuition is: if absolutely nothing is admitted,
@@ -117,50 +168,55 @@ identify the additive sector.
 The executable reference zero of an element preserves its rank, carrier,
 semantic scale, and component dimension.
 
-\subsection{Non-vacuity candidate EX0}
+\subsection{Formula-level vacuity versus admissible-model semantics}
 
-The formal RA0 above is conditional on an observable being admitted. RR1 is
-also conditional on a relational occurrence being available to refine.
-Consequently the empty admitted structure satisfies both statements
-vacuously.
+RA0 is conditional on an observable being admitted, and RR1 is conditional on
+a relational occurrence being available to refine. Therefore, if those
+formulas are evaluated over unrestricted raw presentations, the empty
+presentation satisfies them vacuously.
 
-If the intended foundational theory must exclude the empty model, an
-additional non-vacuity statement is required. The repository tracks
-
-\[
-\boxed{
-\mathrm{EX0}:
-\exists p\,\operatorname{Adm}(p)
-}
-\]
-
-as a candidate axiom, not as a silently assumed consequence.
-
-The executable empty witness establishes
+Accordingly, at the formula level,
 
 \[
 \boxed{
 \mathrm{RA0}+\mathrm{RR1}
-\not\Rightarrow
-\mathrm{EX0}.
+\not\vdash
+\mathrm{EX0},
 }
 \]
 
-The strengthened closure candidate has the same logical boundary:
+and likewise
 
 \[
 \boxed{
 \mathrm{RA0}^{*}
-\not\Rightarrow
+\not\vdash
 \mathrm{EX0}.
 }
 \]
 
-Thus there are two independent foundational questions: whether every admitted
-observable is relational, and whether the intended model contains any
-admitted carrier at all. The canonical foundation remains
-\(\mathrm{RA0}+\mathrm{RR1}\) until EX0 is explicitly promoted or absorbed
-into a strengthened RA0.
+This does not contradict META0. The empty presentation is a mathematical
+object used to audit vacuous truth; it is not an admissible RTOFA model.
+
+Within the intended model class,
+
+\[
+\boxed{
+\mathrm{META0}\models\mathrm{EX0}.
+}
+\]
+
+Hence the foundational stratification is
+
+\[
+\boxed{
+\mathrm{META0}
+\;\triangleright\;
+(\mathrm{RA0}+\mathrm{RR1}),
+}
+\]
+
+with EX0 derived from model formation.
 
 \section{Minimal carrier and minimal distinction}
 
@@ -984,14 +1040,15 @@ U(1)
 
 \section{Axiom and dependency audit}
 
-The formal dependency audit separates eight claim classes:
+The formal dependency audit separates nine claim classes:
 \[
 \boxed{
 \begin{gathered}
+\text{formation rule},\quad
 \text{axiom},\quad
 \text{candidate axiom},\quad
-\text{theorem},\quad
-\text{definition},\\
+\text{theorem},\\
+\text{definition},\quad
 \text{structural primitive},\quad
 \text{reference realization},\quad
 \text{derived construction},\quad
@@ -1000,10 +1057,16 @@ The formal dependency audit separates eight claim classes:
 }
 \]
 
-The current canonical foundational set is
+The current canonical foundational stratification is
 \[
-\boxed{\mathrm{RA0}+\mathrm{RR1}.}
+\boxed{
+\mathrm{META0}
+\;\triangleright\;
+(\mathrm{RA0}+\mathrm{RR1}).
+}
 \]
+META0 is a model-formation rule; RA0 and RR1 are the object-level axioms; EX0
+is a theorem of META0.
 The additive \(\mathbb K\)-module structure, relational product, semantic
 scale, and orbital action are independent structural ingredients of the
 algebraic signature rather than consequences of RA0. The complex
@@ -1106,9 +1169,10 @@ If fresh carrier identity at every refinement level is required, that must be
 introduced by an additional axiom or proved from additional structure.
 
 Accordingly RA0* is recorded as a candidate axiom and
-\(\mathrm{RR1}\) as a theorem candidate under RA0*. The canonical
-two-axiom status is retained until this stronger wording is explicitly
-promoted.
+\(\mathrm{THM\_RR1\_FROM\_RA0\_STAR}\) as the conditional closure
+theorem under RA0*. The canonical object-level pair RA0+RR1 is retained until
+the stronger wording of RA0* is explicitly promoted; META0 remains prior at
+the model-formation level in either case.
 
 \section{Minimal algebraic signature}
 
