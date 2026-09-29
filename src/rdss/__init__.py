@@ -74,7 +74,7 @@ from .realizations import (
     MoireRotation,
     reference_maximal_cp1_tree,
 )
-from .zero_axis import ZeroAxisPoint
+from .zero_axis import ZeroAxisPoint, finite_zero_axis_lift
 
 __all__ = [
     "RelationalPoint",
@@ -138,6 +138,7 @@ __all__ = [
     "MoireRotation",
     "reference_maximal_cp1_tree",
     "ZeroAxisPoint",
+    "finite_zero_axis_lift",
     "closed_path_winding",
     "winding_and_residual",
 ]
