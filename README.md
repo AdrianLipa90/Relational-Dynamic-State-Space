@@ -173,7 +173,7 @@ A selected set of non-negative residual diagnostics may be collected into a fixe
 d(X)=\{d_i(X)\}_{i\in I}.
 \]
 
-A semantic profile assigns non-negative weights \(w_{\sigma i}\) to that same signature. The reference scalar potential is
+A supplied semantic profile assigns non-negative weights \(w_{\sigma i}\) to that same signature. The current kernel does not infer these weights from the scale label \(\sigma\). The reference scalar potential is
 
 \[
 \boxed{
@@ -274,7 +274,7 @@ The kernel does **not** assume:
 - Zero Axis as an axiom of the general algebra;
 - any physical identification without a separate bridge theorem.
 
-See `docs/ARCHITECTURE.md` for module layering, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary, and `docs/VALIDATION_STATUS.md` for current verification status.
+See `docs/ARCHITECTURE.md` for module layering, `docs/RELATIONAL_POTENTIAL.md` for the semantic deformation scalar, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary, and `docs/VALIDATION_STATUS.md` for current verification status.
 
 ## Layer architecture
 
@@ -285,6 +285,8 @@ The implementation is deliberately stratified:
 \text{core algebra}
 \to
 \text{structural operators}
+\to
+\text{relational potential diagnostics}
 \to
 \text{phase/reference realizations}
 \to
