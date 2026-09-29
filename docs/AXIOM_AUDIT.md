@@ -294,7 +294,7 @@ w_{\sigma i}d_i(X)^p
 \right)^{1/p}.
 \]
 
-Holding \(D(X)\) fixed while changing only the supplied weighting defines the semantic potential shift
+Holding \(D(X)\) and \(p\) fixed while changing only the supplied weighting defines the semantic potential shift
 
 \[
 \Delta_{\sigma\to\tau}V_R(X)
