@@ -440,6 +440,83 @@ T_{\rm child}(F_{\rm source}X)
 }
 \]
 
+For semantic scale and transport,
+\[
+\boxed{
+\Delta_{S,T}(X)
+=
+\left\|
+S_{\rm target}(T_{\rm source}X)
+-
+T_{\rm target}(S_{\rm source}X)
+\right\|.
+}
+\]
+
+For orbital equivariance of transport,
+\[
+\boxed{
+\Delta_{U,T}(X)
+=
+\left\|
+U_{\rm target}(TX)-T(U_{\rm source}X)
+\right\|.
+}
+\]
+
+For refinement and semantic coarse-graining,
+\[
+\boxed{
+\Delta_{F,S}(X)
+=
+\left\|
+F_{\tau}(S_{\sigma\to\tau}X)
+-
+S_{\rm child}(F_{\sigma}X)
+\right\|.
+}
+\]
+
+For refinement and orbital action,
+\[
+\boxed{
+\Delta_{F,U}(X)
+=
+\left\|
+F(U_{\rm parent}X)
+-
+U_{\rm child}(FX)
+\right\|.
+}
+\]
+
+The tensor sector uses one generic monoidality diagnostic for any supplied
+typed map \(\Phi\):
+\[
+\boxed{
+\Delta_{\otimes,\Phi}(X,Y)
+=
+\left\|
+\Phi(X\otimes Y)
+-
+\Phi(X)\otimes'\Phi(Y)
+\right\|.
+}
+\]
+
+Likewise contraction naturality is measured by
+\[
+\boxed{
+\Delta_{\operatorname{Contr},\Phi}(X)
+=
+\left\|
+\operatorname{Contr}'(\Phi_{\rm high}X)
+-
+\Phi_{\rm low}(\operatorname{Contr}X)
+\right\|.
+}
+\]
+
 Zero residual defines the corresponding structure-preserving subclass.
 Non-zero residual remains explicit deformation data.
 
