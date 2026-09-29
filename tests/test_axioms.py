@@ -30,6 +30,18 @@ def test_cp1_is_not_mislabeled_as_foundational_axiom():
     assert set(claims["REF_CP1"].depends_on) == {"DEF_POINT", "DEF_BINARY_DISTINCTION"}
 
 
+def test_relationally_bound_distinction_is_explicit_definition():
+    claims = claim_map()
+    assert claims["DEF_RELATIONAL_DISTINCTION"].kind is ClaimKind.DEFINITION
+    assert set(claims["DEF_RELATIONAL_DISTINCTION"].depends_on) == {
+        "DEF_BINARY_DISTINCTION",
+        "DEF_BINARY_REL",
+    }
+    assert dependency_closure("DEF_RELATIONAL_DISTINCTION") == frozenset(
+        {"DEF_BINARY_DISTINCTION", "DEF_BINARY_REL", "DEF_POINT"}
+    )
+
+
 def test_recursive_refinement_is_independent_foundational_axiom():
     claims = claim_map()
     assert claims["RR1"].kind is ClaimKind.AXIOM
@@ -105,6 +117,32 @@ def test_ra0_star_is_candidate_not_silent_replacement():
     assert dependency_closure("THM_RR1_FROM_RA0_STAR") == frozenset(
         {"RA0_STAR", "DEF_POINT", "DEF_BINARY_DISTINCTION"}
     )
+
+
+def test_ra0_rel_star_is_candidate_with_two_explicit_theorems():
+    claims = claim_map()
+
+    assert claims["RA0_REL_STAR"].kind is ClaimKind.CANDIDATE_AXIOM
+    assert set(claims["RA0_REL_STAR"].depends_on) == {
+        "DEF_POINT",
+        "DEF_RELATIONAL_DISTINCTION",
+    }
+
+    base = frozenset(
+        {
+            "RA0_REL_STAR",
+            "DEF_RELATIONAL_DISTINCTION",
+            "DEF_BINARY_DISTINCTION",
+            "DEF_BINARY_REL",
+            "DEF_POINT",
+        }
+    )
+
+    assert claims["THM_RA0_FROM_RA0_REL_STAR"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_RA0_FROM_RA0_REL_STAR") == base
+
+    assert claims["THM_RR1_FROM_RA0_REL_STAR"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_RR1_FROM_RA0_REL_STAR") == base
 
 
 def test_current_canonical_axioms_remain_ra0_and_rr1_until_promotion():
