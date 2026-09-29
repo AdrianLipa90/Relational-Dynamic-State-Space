@@ -57,43 +57,24 @@ def minkowski_interval_sq(
 
 
 @dataclass(frozen=True)
-class PlanetaryRelationalLoad:
-    """Acceleration-like environmental relation used by RDSS examples.
-
-    The quantity is not named gravity at the foundational layer. A separate
-    coupling is required to turn acceleration x duration into dimensionless
-    holonomic phase.
-    """
-
-    acceleration_m_s2: float
-
-    def __post_init__(self) -> None:
-        if not isfinite(self.acceleration_m_s2):
-            raise ValueError("relational load must be finite")
-
-    def phase_increment(self, duration_s: float, coupling_s_per_m: float) -> float:
-        if duration_s < 0 or not isfinite(duration_s):
-            raise ValueError("duration must be finite and non-negative")
-        if not isfinite(coupling_s_per_m):
-            raise ValueError("coupling must be finite")
-        return coupling_s_per_m * self.acceleration_m_s2 * duration_s
-
-
-@dataclass(frozen=True)
 class CosmicRelationalStep:
-    """One cosmic RDSS step with flat base geometry and fibre holonomy."""
+    """One cosmic RDSS step with separate base, semantic, and context phases.
+
+    No physical example value is canonical here. Context phase is a generic
+    slot for any explicitly defined external or environmental relation.
+    """
 
     base_phase: float
     semantic_phase: float
-    planetary_phase: float = 0.0
+    context_phase: float = 0.0
 
     def __post_init__(self) -> None:
-        if not all(isfinite(v) for v in (self.base_phase, self.semantic_phase, self.planetary_phase)):
+        if not all(isfinite(v) for v in (self.base_phase, self.semantic_phase, self.context_phase)):
             raise ValueError("all phase contributions must be finite")
 
     @property
     def total_phase(self) -> float:
-        return self.base_phase + self.semantic_phase + self.planetary_phase
+        return self.base_phase + self.semantic_phase + self.context_phase
 
 
 def accumulated_holonomic_phase(steps: tuple[CosmicRelationalStep, ...]) -> float:
