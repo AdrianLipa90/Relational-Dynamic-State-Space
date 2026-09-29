@@ -6,7 +6,6 @@ from typing import Callable
 
 from .algebra import RelationalPoint, TensorScalarElement
 from .phase import wrap_phase
-from .zero_axis import ZeroAxisPoint
 from .operations import TransportPath
 
 
@@ -237,21 +236,3 @@ class HolonomyPhaseRepresentation:
         if modulus == 0.0:
             raise ValueError("zero cannot represent a U(1) phase")
         return value / modulus
-
-    def finite_zero_axis_point(
-        self,
-        path: TransportPath,
-        element: TensorScalarElement,
-    ) -> ZeroAxisPoint:
-        """Lift a finite U(1) phase through Omega^{-1}(u)=u/(1+u).
-
-        u=-1 is the compactified point at infinity and therefore has no finite
-        ZeroAxisPoint representation.
-        """
-        u = self.phase(path, element)
-        if abs(1.0 + u) <= self.tolerance:
-            raise ValueError("phase u=-1 corresponds to compactified Zero-Axis infinity")
-        s = u / (1.0 + u)
-        if abs(s.real - 0.5) > 10.0 * self.tolerance:
-            raise ValueError("inverse projective image left the Zero Axis")
-        return ZeroAxisPoint(float(s.imag))
