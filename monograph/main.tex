@@ -1,0 +1,251 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\title{Relational Dynamic State Space\\
+\large Algebraic Time, Hilbert--Moir\'e Geometry, Relational Attachment, and Page Attractors}
+\author{Adrian Lipa}
+\date{29 September 2026}
+
+\newcommand{\AT}{\mathfrak{A}_{T}}
+\newcommand{\HHM}{\mathcal{H}_{\mathrm{HM}}}
+\newcommand{\Nrel}{\mathcal{N}_{\mathrm{rel}}}
+\newcommand{\Apage}{\mathcal{A}_{\mathrm{page}}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Relational Dynamic State Space (RDSS) is introduced as a framework in which
+time and space are not postulated as coordinates of one primitive manifold.
+Time is represented by an algebra of ordered transformations, while space is
+represented by a Hilbert--Moir\'e state carrier equipped with an explicit
+lattice/topology layer. Relational semantics produces a scalar attachment
+field that deforms the metric of the carrier. Stable configurations of the
+coupled state--metric dynamics are called page attractors. The construction
+keeps arithmetic truth separate from geometric representation: an expression
+such as \(2+2=4\) retains its algebraic value while its relational-semantic
+embedding may induce a non-trivial scalar deformation. No identification
+with physical mass or gravity is assumed at this foundational stage.
+\end{abstract}
+
+\section{Foundational separation}
+
+RDSS starts from a strict separation:
+\[
+\boxed{\text{time}=\text{algebraic dynamics}},
+\qquad
+\boxed{\text{space}=\text{geometric state carrier}}.
+\]
+Let \(\AT\) denote the algebra of admissible ordered transformations and let
+\(\HHM\) denote the Hilbert--Moir\'e carrier. Their coupling is expressed by
+a representation
+\[
+\rho:\AT\longrightarrow \operatorname{End}(\HHM).
+\]
+A discrete orbit therefore has the form
+\[
+\Psi_{n+1}=\rho(a_n)\Psi_n,
+\qquad a_n\in\AT,
+\]
+without requiring a primitive external real-valued time coordinate.
+
+\section{Hilbert--Moir\'e space}
+
+The spatial layer is written schematically as
+\[
+\HHM=\mathcal{H}(\Lambda_{\mathrm{HO}},\mathcal F),
+\]
+where \(\Lambda_{\mathrm{HO}}\) is a hyperoctagonal-lattice structure and
+\(\mathcal F\) is a local state fibre. At the current stage, RDSS treats the
+precise hyperoctagonal realization as a replaceable topology contract rather
+than silently canonizing a single combinatorial model.
+
+A useful factorized representation is
+\[
+\HHM \simeq \ell^2(\Lambda_{\mathrm{HO}})
+\otimes \mathcal H_{\mathrm{local}},
+\]
+augmented by a Moir\'e/refinement structure.
+
+\section{Relational attachment}
+
+Let \(\mathcal R\) denote relational structure, \(C\) context, and \(\Psi\)
+the current state. The relational attachment is the map
+\[
+\boxed{
+\Nrel:(\Psi,\mathcal R,C)\longmapsto \chi
+}
+\]
+with scalar output \(\chi\in\mathbb R\).
+
+The reference implementation uses an explicit feature vector \(f_k\) and a
+replaceable linear functional
+\[
+\chi=b+\sum_k w_k f_k.
+\]
+This is an implementation baseline, not a claim that the physical or
+canonical semantic functional must be linear.
+
+\section{Semantic scalar deformation}
+
+Given a base metric \(g^{(0)}\), RDSS v0.1 uses the conformal deformation
+\[
+\boxed{
+g[\chi]=e^{2\chi}g^{(0)}.
+}
+\]
+This choice is explicit, differentiable, positive for finite real \(\chi\),
+and easy to falsify or replace.
+
+The critical invariant is that arithmetic evaluation and geometric
+representation remain separate channels. For
+\[
+E=(2+2)
+\]
+the value channel gives
+\[
+\operatorname{value}(E)=4,
+\]
+while the relational-semantic channel may give
+\[
+\Nrel(E,C)=\chi_E
+\]
+and consequently
+\[
+g^{(0)}\longmapsto e^{2\chi_E}g^{(0)}.
+\]
+Thus RDSS does not alter arithmetic truth. It allows the representation of a
+relation to modify the geometry of the state carrier.
+
+\section{Coupled dynamic state}
+
+A coupled state is represented by
+\[
+X_n=(\Psi_n,g_n).
+\]
+One RDSS step is
+\[
+\Psi_{n+1}=\rho(a_n)\Psi_n,
+\]
+followed by
+\[
+\chi_{n+1}=\Nrel(\Psi_{n+1},\mathcal R_{n+1},C_{n+1}),
+\]
+and
+\[
+g_{n+1}=\mathcal D_{\chi_{n+1}}(g^{(0)}).
+\]
+In the initial reference kernel
+\[
+\mathcal D_{\chi}(g^{(0)})=e^{2\chi}g^{(0)}.
+\]
+
+This yields the structural loop
+\[
+\boxed{
+\text{algebraic action}
+\rightarrow
+\text{state}
+\rightarrow
+\text{relational semantics}
+\rightarrow
+\chi
+\rightarrow
+\text{metric deformation}.
+}
+\]
+
+Future versions may allow \(g_{n+1}\) itself to modify the representation
+\(\rho\), producing a fully bidirectional feedback loop.
+
+\section{Page attractor}
+
+A page attractor is a stable configuration of the coupled update.
+For an update map
+\[
+\mathcal F:(\Psi_n,g_n)\mapsto(\Psi_{n+1},g_{n+1}),
+\]
+a fixed-point page attractor satisfies
+\[
+\boxed{
+\mathcal F(\Psi_\star,g_\star)=(\Psi_\star,g_\star).
+}
+\]
+The v0.1 computational definition declares convergence when both
+\[
+\|\Psi_{n+1}-\Psi_n\|_2\le\varepsilon
+\]
+and
+\[
+\|g_{n+1}-g_n\|_F\le\varepsilon.
+\]
+Periodic, quasiperiodic, and chaotic attractors are deliberately deferred.
+
+\section{Core object}
+
+The minimal RDSS object is therefore
+\[
+\boxed{
+\left(
+\HHM,\,
+\AT,\,
+\rho,\,
+\Nrel,\,
+\mathcal D,\,
+\Apage
+\right).
+}
+Equivalently, the evolving geometry can be displayed as
+\[
+\boxed{
+\AT
+\curvearrowright
+\left[
+\HHM,
+g\!\left(
+\Nrel[\operatorname{Sem}(\mathcal R,\Psi)]
+\right)
+\right].
+}
+\]
+
+\section{Epistemic boundary}
+
+The following statements belong to the mathematical framework at this stage:
+\begin{itemize}
+  \item time dynamics and spatial carrier are represented separately;
+  \item an explicit relational attachment can produce a scalar \(\chi\);
+  \item \(\chi\) can explicitly deform a metric;
+  \item coupled state--metric updates can possess attractors.
+\end{itemize}
+
+The following identifications are \emph{not} assumed:
+\begin{itemize}
+  \item page attractor \(=\) physical mass;
+  \item relational attachment/deformation \(=\) physical gravity;
+  \item the current linear semantic functional is canonical;
+  \item the current conformal deformation law is uniquely forced.
+\end{itemize}
+
+Those interpretations require separate derivation and validation gates.
+
+\section{Immediate research programme}
+
+The next mathematical gates are:
+\begin{enumerate}
+  \item define and test candidate hyperoctagonal adjacency/topology models;
+  \item formalize the generators and composition law of \(\AT\);
+  \item derive semantic features from relational structure rather than insert
+        them by hand;
+  \item classify fixed, periodic, and higher-order page attractors;
+  \item determine invariants under semantic deformation;
+  \item test whether geometry can feed back into \(\rho\) without
+        inconsistency;
+  \item only then test candidate physical interpretations.
+\end{enumerate}
+
+\end{document}
