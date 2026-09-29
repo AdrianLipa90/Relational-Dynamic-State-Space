@@ -88,6 +88,7 @@ from .realizations import (
     MinimalDistinction,
     MoireRotation,
     reference_maximal_cp1_tree,
+    lift_value_phase_to_occurrence,
 )
 from .zero_axis import ZeroAxisPoint, finite_zero_axis_lift
 
@@ -162,6 +163,7 @@ __all__ = [
     "MinimalDistinction",
     "MoireRotation",
     "reference_maximal_cp1_tree",
+    "lift_value_phase_to_occurrence",
     "ZeroAxisPoint",
     "finite_zero_axis_lift",
     "closed_path_winding",
