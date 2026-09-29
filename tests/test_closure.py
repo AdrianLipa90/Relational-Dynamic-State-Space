@@ -4,6 +4,7 @@ from rdss.closure import (
     BinaryDistinction,
     GenerativeRelationModel,
     requires_novelty,
+    singleton_ra0_star_model,
     two_cycle_ra0_star_model,
 )
 
@@ -118,3 +119,26 @@ def test_nonempty_presentation_satisfies_meta0_model_nonvacuity():
     model = two_cycle_ra0_star_model()
 
     assert model.is_admissible_rtofa_model()
+
+
+
+def test_singleton_carrier_supports_two_distinct_branch_occurrences():
+    model = singleton_ra0_star_model()
+
+    assert model.satisfies_ra0_star()
+    assert model.is_admissible_rtofa_model()
+
+    tree = model.unfold("a", 2)
+
+    assert tree[(-1,)] == "a"
+    assert tree[(1,)] == "a"
+    assert (-1,) != (1,)
+    assert tree[(-1, -1)] == "a"
+    assert tree[(1, 1)] == "a"
+    assert model.rr1_holds_through_depth("a", 5)
+
+
+def test_singleton_occurrence_distinction_does_not_imply_novelty():
+    model = singleton_ra0_star_model()
+
+    assert not requires_novelty(model, "a", 1)
