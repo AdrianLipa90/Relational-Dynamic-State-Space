@@ -232,6 +232,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("META0", "RA0_REL_STAR"),
     ),
     Claim(
+        "THM_TWO_RELATION_OCCURRENCE_MINIMALITY",
+        ClaimKind.THEOREM,
+        "The explicit minimal singleton witness attains the branch-occurrence lower bound, so the exact minimum is two.",
+        ("THM_RELATION_OCCURRENCE_CARDINALITY_LOWER_BOUND", "REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL"),
+    ),
+    Claim(
         "THM_BINARY_OCCURRENCE_COUNT",
         ClaimKind.THEOREM,
         "A complete binary occurrence unfolding through finite depth N contains exactly 2^(N+1)-1 path-labelled occurrences.",
