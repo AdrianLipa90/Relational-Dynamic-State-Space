@@ -71,6 +71,30 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_REFINEMENT_RIGHT_ACTION",),
     ),
     Claim(
+        "DEF_OCCURRENCE_PREFIX_ORDER",
+        ClaimKind.DEFINITION,
+        "The occurrence-address prefix order is u<=v iff there exists a finite word w with v=uw.",
+        ("DEF_OCCURRENCE_ADDRESS_SPACE",),
+    ),
+    Claim(
+        "THM_OCCURRENCE_MEET_SEMILATTICE",
+        ClaimKind.THEOREM,
+        "Under prefix order, finite binary occurrence addresses form a rooted meet-semilattice whose meet is the longest common prefix.",
+        ("DEF_OCCURRENCE_PREFIX_ORDER",),
+    ),
+    Claim(
+        "DEF_OCCURRENCE_TREE_DISTANCE",
+        ClaimKind.DEFINITION,
+        "The canonical occurrence-tree distance is d_T(u,v)=|u|+|v|-2|u meet v|.",
+        ("THM_OCCURRENCE_MEET_SEMILATTICE", "THM_REFINEMENT_LEVEL_GRADING"),
+    ),
+    Claim(
+        "THM_OCCURRENCE_TREE_METRIC",
+        ClaimKind.THEOREM,
+        "The canonical occurrence-tree distance is a metric on finite path-labelled occurrence addresses.",
+        ("DEF_OCCURRENCE_TREE_DISTANCE",),
+    ),
+    Claim(
         "DEF_BINARY_REL",
         ClaimKind.DEFINITION,
         "A primitive typed relation is binary: r:a->b. Higher arity is constructed separately.",
