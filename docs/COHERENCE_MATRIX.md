@@ -23,7 +23,7 @@ This matrix records which compatibility laws are implemented as exact checks, re
 | refinement ↔ semantic scale | branch/coarse-graining coherence | IMPLEMENTED |
 | refinement ↔ orbital action | branch/orbit equivariance | IMPLEMENTED |
 | tensor product ↔ strict associativity/unit/supplied braiding | residual diagnostics | IMPLEMENTED |
-| tensor product ↔ non-strict associator/braiding | pentagon/hexagon coherence | OPEN |
+| tensor product ↔ non-strict associator/braiding | pentagon/hexagon coherence | OPEN — MONOIDAL COHERENCE GATE |
 | contraction ↔ tensor product | requires indexed slot/pairing realization | OPEN — INDEXED TENSOR GATE |
 | abstract holonomy ↔ \(U(1)\) phase | explicit representation interface \(\chi\) | REFERENCE IMPLEMENTED |
 | abstract holonomy ↔ \(U(1)\) phase | existence/universality theorem for \(\chi\) | OPEN |
