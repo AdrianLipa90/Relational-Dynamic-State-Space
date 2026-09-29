@@ -98,7 +98,13 @@ is only claimed where the supplied inverse passes its coherence check.
 
 ## Semantic scales
 
-Semantic scale is not assumed to be one real number. It lives in a typed scale structure \(\Sigma\), represented in the reference kernel by an acyclic coarse-graining graph.
+Semantic scale is not assumed to be one real number. It lives in a typed scale structure \(\Sigma\), represented in the reference kernel by an acyclic coarse-graining graph. The reference kernel implements semantic coarse-graining as an executable typed map \(S_{\sigma\to\tau}\).
+
+The order dependence of semantic scaling and orbital action is measured by
+
+\[
+\Delta_{S,U}(X)=\|U(SX)-S(UX)\|.
+\]
 
 ## Orbital and Moiré sector
 
