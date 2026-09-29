@@ -1,6 +1,7 @@
 import pytest
 
 from rdss.algebra import (
+    OccurrenceAddress,
     RelationalPoint,
     SemanticScale,
     SemanticScaleGraph,
@@ -163,8 +164,8 @@ def test_refinement_residual_operates_on_tensor_scalar_elements():
 
 
 
-def test_relational_point_finite_word_action_is_monoid_action():
-    p = RelationalPoint((-1,))
+def test_occurrence_address_finite_word_action_is_monoid_action():
+    p = OccurrenceAddress((-1,))
     u = (1, -1)
     v = (-1, 1, 1)
 
@@ -172,22 +173,30 @@ def test_relational_point_finite_word_action_is_monoid_action():
     assert p.advance(u).advance(v) == p.advance(u + v)
 
 
-def test_relational_point_generators_match_binary_refinement():
-    p = RelationalPoint((1,))
+def test_occurrence_address_generators_match_binary_refinement():
+    p = OccurrenceAddress((1,))
     left, right = p.refine()
 
     assert left == p.advance((-1,))
     assert right == p.advance((1,))
 
 
-def test_relational_point_advance_fails_closed_on_invalid_word():
+def test_occurrence_address_advance_fails_closed_on_invalid_word():
     with pytest.raises(ValueError):
-        RelationalPoint().advance((0,))
+        OccurrenceAddress().advance((0,))
 
+
+def test_occurrence_address_is_semantically_distinct_from_relational_point():
+    address = OccurrenceAddress((-1, 1))
+    carrier = RelationalPoint((-1, 1))
+
+    assert address == (-1, 1)
+    assert address is not carrier
+    assert not isinstance(carrier, OccurrenceAddress)
 
 
 def test_refinement_level_is_free_monoid_length_grading():
-    p = RelationalPoint((-1, 1))
+    p = OccurrenceAddress((-1, 1))
     u = (1, -1, 1)
     v = (-1, -1)
 
@@ -196,13 +205,12 @@ def test_refinement_level_is_free_monoid_length_grading():
     assert p.advance(u + v).level == p.level + len(u) + len(v)
 
 
-
 def test_occurrence_prefix_order_and_meet_semilattice():
-    root = RelationalPoint()
-    left = RelationalPoint((-1,))
-    left_right = RelationalPoint((-1, 1))
-    left_left = RelationalPoint((-1, -1, 1))
-    right = RelationalPoint((1,))
+    root = OccurrenceAddress()
+    left = OccurrenceAddress((-1,))
+    left_right = OccurrenceAddress((-1, 1))
+    left_left = OccurrenceAddress((-1, -1, 1))
+    right = OccurrenceAddress((1,))
 
     assert root.is_prefix_of(left_right)
     assert left.is_prefix_of(left_right)
@@ -215,10 +223,10 @@ def test_occurrence_prefix_order_and_meet_semilattice():
 
 def test_occurrence_prefix_order_is_antisymmetric_on_addresses():
     points = [
-        RelationalPoint(),
-        RelationalPoint((-1,)),
-        RelationalPoint((1,)),
-        RelationalPoint((-1, 1)),
+        OccurrenceAddress(),
+        OccurrenceAddress((-1,)),
+        OccurrenceAddress((1,)),
+        OccurrenceAddress((-1, 1)),
     ]
 
     for x in points:
@@ -228,10 +236,10 @@ def test_occurrence_prefix_order_is_antisymmetric_on_addresses():
 
 
 def test_occurrence_tree_distance_has_expected_local_values():
-    root = RelationalPoint()
-    left = RelationalPoint((-1,))
-    right = RelationalPoint((1,))
-    left_right = RelationalPoint((-1, 1))
+    root = OccurrenceAddress()
+    left = OccurrenceAddress((-1,))
+    right = OccurrenceAddress((1,))
+    left_right = OccurrenceAddress((-1, 1))
 
     assert root.tree_distance(root) == 0
     assert root.tree_distance(left) == 1
@@ -243,13 +251,13 @@ def test_occurrence_tree_distance_has_expected_local_values():
 
 def test_occurrence_tree_distance_is_metric_on_sample():
     points = [
-        RelationalPoint(),
-        RelationalPoint((-1,)),
-        RelationalPoint((1,)),
-        RelationalPoint((-1, -1)),
-        RelationalPoint((-1, 1)),
-        RelationalPoint((1, -1)),
-        RelationalPoint((1, 1)),
+        OccurrenceAddress(),
+        OccurrenceAddress((-1,)),
+        OccurrenceAddress((1,)),
+        OccurrenceAddress((-1, -1)),
+        OccurrenceAddress((-1, 1)),
+        OccurrenceAddress((1, -1)),
+        OccurrenceAddress((1, 1)),
     ]
 
     for x in points:
