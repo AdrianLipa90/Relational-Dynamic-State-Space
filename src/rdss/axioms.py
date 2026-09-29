@@ -106,10 +106,22 @@ CLAIMS: tuple[Claim, ...] = (
         ("RA0_REL_STAR",),
     ),
     Claim(
+        "THM_META0_CARDINALITY_LOWER_BOUND",
+        ClaimKind.THEOREM,
+        "META0 implies that every admissible RTOFA model has at least one admitted carrier: |Adm| >= 1.",
+        ("META0",),
+    ),
+    Claim(
+        "REF_SINGLETON_RA0_REL_STAR_MODEL",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The recursive singleton self-relational model is an explicit admissible model of META0 plus RA0_REL_STAR with |Adm| = 1.",
+        ("META0", "RA0_REL_STAR"),
+    ),
+    Claim(
         "THM_SINGLETON_FOUNDATION_MINIMALITY",
         ClaimKind.THEOREM,
-        "Under META0 plus RA0_REL_STAR, admitted-carrier cardinality one is the minimum permitted cardinality and is achieved by the recursive singleton self-relational witness.",
-        ("META0", "RA0_REL_STAR"),
+        "Combining the META0 lower bound with the explicit singleton RA0_REL_STAR model shows that the minimum admitted-carrier cardinality is exactly one.",
+        ("THM_META0_CARDINALITY_LOWER_BOUND", "REF_SINGLETON_RA0_REL_STAR_MODEL"),
     ),
     Claim(
         "THM_RR1_FROM_RA0_STAR",
