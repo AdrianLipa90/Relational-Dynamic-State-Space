@@ -126,6 +126,79 @@ Hence, in the path-labelled occurrence semantics,
 
 RR1 can therefore be demoted to a theorem **only if RA0*** is promoted as the intended foundational axiom.
 
+## Relationally bound one-axiom candidate
+
+The current RA0* does not, by itself, prove RA0 because a hosted binary
+distinction is represented separately from primitive relational incidence.
+
+Introduce the stronger candidate
+
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+}
+\]
+
+(code identifier RA0_REL_STAR) by requiring every admitted carrier to host
+at least one **relationally bound** binary distinction. Such a distinction
+contains branch-relation occurrences
+
+\[
+r_-:p_\omega\to p_{\omega-},
+\qquad
+r_+:p_\omega\to p_{\omega+},
+\]
+
+with admitted endpoint occurrences.
+
+Then every admitted host has primitive relational incidence, so
+
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}.
+}
+\]
+
+The endpoint-admissibility and recursive hosted-distinction clauses also give,
+by the same finite-depth induction,
+
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RR1}.
+}
+\]
+
+Therefore
+
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}+\mathrm{RR1}.
+}
+\]
+
+The singleton executable witness is
+
+\[
+a\xrightarrow{r_-}a,
+\qquad
+a\xrightarrow{r_+}a,
+\]
+
+where the two branch-relation occurrences are distinct by branch slot even
+though source and target carrier labels coincide.
+
+This candidate is strictly stronger in formal content than the current RA0*:
+it adds the distinction-to-relation binding. It is executable but not
+promoted.
+
+See docs/RELATIONAL_DISTINCTION_BINDING_GATE.md.
+
 ## Why this is not a free proof from old RA0
 
 RA0* is genuinely stronger than RA0. It adds three pieces of content:
@@ -226,7 +299,7 @@ Current canonical stratification:
 }
 \]
 
-Candidate reduced object-level status:
+Candidate reduced object-level statuses:
 
 \[
 \boxed{
@@ -235,6 +308,18 @@ Candidate reduced object-level status:
 \mathrm{RA0}^{*}
 }
 \]
+
+for recursive closure alone, and
+
+\[
+\boxed{
+\mathrm{META0}
+\;\triangleright\;
+\mathrm{RA0}^{\mathrm{rel}*}
+}
+\]
+
+for the stronger executable candidate that implies both RA0 and RR1.
 
 with
 
