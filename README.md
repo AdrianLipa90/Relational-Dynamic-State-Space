@@ -1,57 +1,126 @@
-# Relational Dynamic State Space (RDSS)
+# Relational Tensor-Scalar Orbital-Fractal Algebra (RTOFA)
 
-RDSS is a mathematical and computational framework that keeps three layers explicit and separate:
+This repository develops a **general relational algebra**. The current core is intentionally independent of a particular spacetime, physical model, or application. RDSS, PhaseNav, Hilbert-Moiré constructions, Bloch/Kähler realizations, and physical interpretations are downstream representations or applications unless explicitly promoted by a separate derivation.
 
-1. **Time algebra / dynamics** — operators define ordered state transitions.
-2. **Hilbert–Moiré space** — a geometric carrier for admissible states, with a hyperoctagonal-lattice interface.
-3. **Relational semantics** — semantic features produce an explicit scalar attachment \(\chi\) that deforms the state-space metric.
+The canonical algebraic object is a typed family
 
-The central structural object is
+[
+mathfrak A_{m rel}
+=
+left{mathcal A_{sigma,n}^{p,q}ight},
+]
 
-\[
-\mathfrak A_T \curvearrowright
-\left(\mathcal H_{\mathrm{HM}}, g[\chi(\mathrm{Sem}(\mathcal R,\Psi))]\right).
-\]
+where ((p,q)) is tensor rank, (n) is refinement level, and (sigmainSigma) is a semantic scale/context. The scalar sector is the rank-zero sector
 
-Arithmetic truth and geometric embedding are deliberately separated. For example, the algebraic statement
+[
+mathbb K_{sigma,n}=mathcal A_{sigma,n}^{0,0}.
+]
 
-\[
-2+2=4
-\]
+## Foundation
 
-remains invariant, while the representation of that relation may generate a non-zero semantic scalar \(\chi\), and therefore a deformed metric
+The working foundational rule is relational admissibility:
 
-\[
-g' = e^{2\chi} g.
-\]
+[
+operatorname{Adm}(x)
+Longrightarrow
+exists,y,r:operatorname{Rel}_r(x,y).
+]
 
-This repository does **not** assume that the resulting attractors are physical mass or that relational deformation is physical gravity. Those are possible later interpretations only after independent mathematical and empirical gates.
+In words: an admissible observable object is not defined independently of relation. Algebraic zero is **not** identified with absence of relation.
 
-## Hilbert primacy
+The minimal carrier is a point (p), with no physical length scale built into the algebra. A physical realization may later attach a scale; the general algebra does not.
 
-RDSS has one canonical carrier: \(\mathcal H_{\mathrm{HM}}\). Bloch, Kähler/Fubini--Study, Minkowski/Lorentzian, Euclidean and other geometries are derived representations, projections, charts, quotients or induced metric structures of Hilbert--Moiré states. They are not independent foundational spaces.
+The reference minimal two-channel relational realization is
 
-A generic representation is written
+[
+mathbb P(mathbb C^2)=CP^1simeq S^2,
+]
 
-\[
-\Pi_\alpha:\mathcal H_{\mathrm{HM}}\to\mathcal X_\alpha.
-\]
+with the Fubini-Study distance
 
-The informational--holonomic coordinate \(\zeta=I+i\Theta\) is an internal Hilbert-state degree of freedom. Holonomy is defined along trajectories in Hilbert--Moiré state space; closure in a chosen representation does not imply closure of the full Hilbert state.
+[
+d_{m FS}([psi],[phi])=arccos |langlepsi|phiangle|.
+]
 
-## Core vocabulary
+A relation may select two projective points. Orthogonal/antipodal points represent maximal distinction; generic relations need not be maximal.
 
-- **Relational attachment** \(\mathcal N_{\rm rel}\): map from explicit relational/semantic features to a scalar deformation parameter \(\chi\).
-- **Page attractor** \(\mathcal A_{\rm page}\): a stable state/metric configuration under the coupled update rule.
-- **Time algebra** \(\mathfrak A_T\): ordered dynamics acting on admissible states.
-- **Hilbert–Moiré space** \(\mathcal H_{\rm HM}\): geometric state carrier with a replaceable lattice/topology backend.
-- **Dynamic state space**: the coupled triple \((\mathcal H_{\rm HM},\mathfrak A_T,\rho)\) with semantic metric feedback.
+## Recursive relational refinement
 
-## Status
+Every relational point may refine into two descendants:
 
-`v0.1-foundation` is intentionally minimal. It establishes interfaces, invariants, tests, and a matching LaTeX monograph before any stronger physical interpretation is admitted.
+[
+p_omegalongmapsto{p_{omega-},p_{omega+}},
+qquad
+omegain{-1,+1}^n.
+]
 
+This gives the algebra its fractal/refinement structure. Exact self-similarity is **not** assumed. Its failure is measured by the refinement residual
 
-## Example hygiene
+[
+Delta_F(X,Y)
+=
+F(Xstar Y)-F(X)star F(Y).
+]
 
-**Illustrative examples are non-canonical.** Story details, object labels, and numerical values used to explain RDSS are not model parameters unless they are separately formalized, justified, and tested.
+## Semantic scales
+
+Semantic scale is not assumed to be one real number. It lives in a typed scale structure (Sigma), represented in the reference kernel by an acyclic coarse-graining graph. A relation may be transported or quotiented to a common coarser scale only when the scale structure admits that map.
+
+## Orbital and Moiré sector
+
+Orbital structure is generated by actions (U_g). Orbits are derived objects, not stored state labels:
+
+[
+operatorname{Orb}(X)={U_gX:gin G}.
+]
+
+Moiré is intrinsically relative. For two local orientations,
+
+[
+M_{ij}=U_iU_j^{-1},
+]
+
+or, in the scalar-angle reference model,
+
+[
+Delta	heta_{ij}=operatorname{wrap}(	heta_i-	heta_j).
+]
+
+## Zero Axis / phase sector
+
+The current model uses the companion Zero Axis projective coordinate
+
+[
+Omega(s)=rac{s}{1-s}.
+]
+
+On the critical axis (Re s=	frac12),
+
+[
+|Omega(s)|=1,
+]
+
+so the compactified Zero Axis has a natural (U(1)) phase realization. Winding and phase residual are therefore **derived from a path** and are not independent coordinates of an algebra element.
+
+## Non-assumptions
+
+The kernel deliberately does **not** assume:
+
+- a Planck-scale minimal point;
+- a particular spacetime or metric;
+- associativity of the relational product;
+- commutativity of the relational product;
+- exact self-similarity under refinement;
+- one-dimensional semantic scale;
+- that winding, orbit, or residual are primitive state variables;
+- any physical identification of algebraic structures without a separate bridge theorem.
+
+The reference code exposes diagnostics for commutators, associators, refinement residuals, semantic coarse-graining, relative Moiré rotations, CP1/Fubini-Study separation, and Zero-Axis winding.
+
+## Development invariant
+
+Every promoted primitive should have four synchronized forms:
+
+[
+oxed{	ext{definition} + 	ext{reference code} + 	ext{test} + 	ext{LaTeX}}
+]
