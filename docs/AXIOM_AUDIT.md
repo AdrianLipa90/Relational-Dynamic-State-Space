@@ -42,6 +42,7 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 | DEF_REFINEMENT_SCALE_COHERENCE | DEFINITION | Measures refinement/coarse-graining naturality. | PRIM_REFINEMENT_MAP, PRIM_SCALE, PRIM_MODULE |
 | DEF_REFINEMENT_ORBIT_COHERENCE | DEFINITION | Measures refinement/orbital equivariance. | PRIM_REFINEMENT_MAP, PRIM_ORBIT, PRIM_MODULE |
 | ZA_BRIDGE | BRIDGE | The companion Zero Axis model supplies Omega(s)=s/(1-s) and the critical-axis/unit-circle equivalence. | — |
+| REF_HOLONOMY_PHASE | REFERENCE REALIZATION | A concrete realization supplies a U(1) representation of closed relational holonomy and finite lift through Omega^{-1}. | DER_HOLONOMY, ZA_BRIDGE |
 | DER_WINDING | DERIVED | Topological winding is derived only from a closed phase path with a continuous lift. | ZA_BRIDGE |
 
 ## Audit conclusions
@@ -225,3 +226,22 @@ This closes the implementation gate for a recursive CP1/Fubini-Study **reference
 \[
 \mathrm{RA0}+\mathrm{RR1}\not\Rightarrow CP^1.
 \]
+
+
+## Holonomy phase bridge boundary
+
+The kernel now contains an explicit reference interface
+
+\[
+\chi:\mathcal H_\gamma\to U(1)
+\]
+
+for realizations that can represent a closed relational holonomy by a unit-modulus phase. Once such a phase is supplied, the finite inverse projective lift
+
+\[
+\Omega^{-1}(u)=\frac{u}{1+u}
+\]
+
+returns a point on the Zero Axis for \(u\neq-1\); \(u=-1\) is treated as the compactified point at infinity.
+
+This is a reference interface, not a universal theorem. The existence criterion for \(\chi\) remains an open bridge problem.
