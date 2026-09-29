@@ -75,7 +75,7 @@ F_{\epsilon}:
 \mathcal A_{\tau,n+1}^{p,q}(p_{\omega\epsilon}).
 \]
 
-Exact self-similarity is not assumed. Its failure is measured by
+Exact self-similarity is not assumed. Branch refinement is primitive, while its compatibility with the product is measured by
 
 \[
 \Delta_F(X,Y)
@@ -136,6 +136,22 @@ M_{ij}=U_iU_j^{-1},
 \]
 
 where the inverse exists.
+
+## Cross-operation coherence
+
+The main structural maps are not assumed to preserve one another. The kernel measures
+
+\[
+\Delta_{T,\star},
+\qquad
+\Delta_{S,\star},
+\qquad
+\Delta_{U,\star},
+\qquad
+\Delta_{F,T}.
+\]
+
+These test, respectively, transport/product compatibility, semantic-scale/product compatibility, orbital/product compatibility, and the refinement/transport naturality square. Vanishing residuals define structure-preserving subclasses; non-zero values remain deformation data.
 
 ## Relational transport and abstract holonomy
 
