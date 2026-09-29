@@ -31,7 +31,7 @@ Static checks found:
 The current claim ledger contains:
 
 \[
-73
+77
 \]
 
 unique claim IDs.
@@ -63,7 +63,7 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 188 Python test functions:
+The current repository contains 193 Python test functions:
 
 | File | Test functions |
 |---|---:|
@@ -77,7 +77,7 @@ The current repository contains 188 Python test functions:
 | \`tests/test_potential.py\` | 13 |
 | \`tests/test_realizations.py\` | 18 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **188** |
+| **Total** | **193** |
 
 This is an inventory count, not a runtime result.
 
@@ -261,6 +261,35 @@ Hence
 |\operatorname{BranchOcc}(a)|=2.
 }
 \]
+### Occurrence tree-metric audit
+
+The finite occurrence addresses carry the canonical prefix order
+
+\[
+u\preceq v
+\Longleftrightarrow
+\exists w:\ v=uw,
+\]
+
+with longest-common-prefix meet
+
+\[
+u\wedge v=\operatorname{LCP}(u,v).
+\]
+
+The induced combinatorial distance is
+
+\[
+\boxed{
+d_T(u,v)
+=
+|u|+|v|-2|u\wedge v|.
+}
+\]
+
+The reference kernel implements the order, meet, and metric on `RelationalPoint`; tests cover antisymmetry, meet identities, positivity, symmetry, identity of indiscernibles, and triangle inequality on a finite sample.
+
+The claim dependency closure contains only the occurrence-address, prefix, meet, and grading layers. No CP1, Hilbert, Minkowski, or physical metric is imported.
 ### Refinement grading audit
 
 The occurrence-address monoid carries its natural word-length grading:
