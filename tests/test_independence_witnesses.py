@@ -85,3 +85,19 @@ def test_ra0_accepts_target_only_relational_incidence():
     )
 
     assert model.satisfies_ra0()
+
+
+
+def test_singleton_self_relation_and_same_label_refinement_satisfy_ra0_rr1():
+    model = FiniteRelationModel(
+        points=frozenset({"a"}),
+        admitted=frozenset({"a"}),
+        relations=frozenset({("a", "a")}),
+        refinements=(
+            ("a", "a", "a"),
+        ),
+    )
+
+    assert model.is_admissible_rtofa_model()
+    assert model.satisfies_ra0()
+    assert model.satisfies_rr1()
