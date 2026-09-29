@@ -172,6 +172,40 @@ and therefore
 
 RR1 is separate: it asserts that every finite word in this address monoid is
 actually realized by a relational occurrence from an admitted root.
+
+### Canonical occurrence-tree geometry
+
+The free-word addresses also carry a canonical prefix structure:
+
+\[
+u\preceq v
+\Longleftrightarrow
+\exists w:\ v=uw.
+\]
+
+The meet is the longest common prefix
+
+\[
+u\wedge v=\operatorname{LCP}(u,v),
+\]
+
+and the induced tree distance is
+
+\[
+\boxed{
+d_T(u,v)
+=
+|u|+|v|-2|u\wedge v|.
+}
+\]
+
+`RelationalPoint.is_prefix_of`, `.meet`, and `.tree_distance` implement these
+objects directly. The finite address set is therefore a rooted
+meet-semilattice equipped with its canonical combinatorial tree metric.
+
+This metric belongs to the occurrence-address layer. It is not a physical
+distance and is not identified with Fubini--Study, Hilbert-space, Minkowski,
+or any later geometric realization.
 ### Minimal underlying relation value
 
 The two branch occurrences do not need two distinct underlying relation
