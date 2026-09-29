@@ -24,6 +24,10 @@ def run(command: list[str], *, cwd: Path = ROOT) -> int:
     return int(completed.returncode)
 
 
+def validate_static() -> int:
+    return run([sys.executable, "scripts/static_audit.py"])
+
+
 def validate_tests() -> int:
     return run([sys.executable, "-m", "pytest", "-q"])
 
@@ -68,12 +72,12 @@ def main() -> int:
     parser.add_argument(
         "--tests-only",
         action="store_true",
-        help="run pytest only",
+        help="run static audit and pytest only",
     )
     parser.add_argument(
         "--latex-only",
         action="store_true",
-        help="compile monograph only",
+        help="run static audit and compile monograph only",
     )
     parser.add_argument(
         "--require-latex",
@@ -84,6 +88,12 @@ def main() -> int:
 
     if args.tests_only and args.latex_only:
         parser.error("--tests-only and --latex-only are mutually exclusive")
+
+    code = validate_static()
+    if code != 0:
+        print(f"STATIC AUDIT FAIL: exit={code}", file=sys.stderr)
+        return code
+    print("STATIC AUDIT PASS")
 
     if not args.latex_only:
         code = validate_tests()
