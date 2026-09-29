@@ -16,6 +16,7 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 | REF_CP1_REFINEMENT | REFERENCE REALIZATION | Recursive refinement is realized as a tree of local CP1/FS fibres indexed by relational carriers. | REF_CP1, RR1 |
 | PRIM_MODULE | STRUCTURAL PRIMITIVE | Each typed tensor-scalar sector carries an additive K-module structure; the reference kernel uses complex components. | — |
 | DEF_TS | DEFINITION | Tensor-scalar grading uses rank (p,q); scalars are rank (0,0). | PRIM_MODULE |
+| DEF_TYPED_ZERO | DEFINITION | Additive zero is typed by rank, exact carrier, semantic scale, and component dimension; level is derived from carrier. | PRIM_MODULE, DEF_POINT, PRIM_SCALE |
 | PRIM_PRODUCT | STRUCTURAL PRIMITIVE | A typed relational product star_R may be supplied without assuming associativity or commutativity. | — |
 | PRIM_TENSOR_PRODUCT | STRUCTURAL PRIMITIVE | A typed tensor product combines compatible tensor-scalar sectors; component formulas belong to realizations. | PRIM_MODULE |
 | PRIM_CONTRACTION | STRUCTURAL PRIMITIVE | A typed contraction lowers one covariant and one contravariant rank when a contraction rule is supplied. | PRIM_MODULE |
