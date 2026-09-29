@@ -325,6 +325,22 @@ p_\omega\longmapsto
 }
 \tag{RR1}
 \]
+The two children are non-degenerate as \emph{occurrences}: their path
+addresses \(\omega-\) and \(\omega+\) are distinct. This does not require
+their underlying carrier labels to be different. In particular, the
+singleton presentation
+\[
+D(a)=(a,a)
+\]
+is permitted: \(a_-\) and \(a_+\) are different relational occurrences
+even though
+\[
+\operatorname{carrier}(a_-)
+=
+\operatorname{carrier}(a_+)
+=
+a.
+\]
 RR1 is an explicit second foundational axiom: RA0 requires relation but does
 not by itself force recursive refinement. Thus the general construction contains a recursive relational tower
 \[
@@ -1156,7 +1172,13 @@ A stronger candidate foundational statement is therefore introduced:
 together with the closure clause that the two selected endpoint occurrences
 are themselves admitted carriers.
 
-RA0* does not require this distinction to be unique. If several admissible
+RA0* does not require this distinction to be unique. It also does not require
+the two endpoint \emph{carrier labels} to differ. Non-degeneracy is supplied
+by the two ordered occurrence slots \((-),(+)\), so
+\[
+D(a)=(a,a)
+\]
+is a valid hosted binary occurrence distinction. If several admissible
 binary distinctions are hosted by the same carrier, any one witness is
 sufficient for the finite-depth induction below. The executable reference
 model chooses a lexicographically first endpoint pair solely to make its
@@ -1196,16 +1218,29 @@ This is a genuine strengthening of RA0, not a proof from its old wording.
 RA0* explicitly adds binary non-degeneracy and endpoint admissibility. Those
 clauses are precisely what makes the induction valid.
 
-The underlying carrier presentation may nevertheless be cyclic. For example,
+The underlying carrier presentation may be even smaller than a two-cycle. The
+singleton witness
+\[
+D(a)=(a,a)
+\]
+already satisfies RA0* at the occurrence level and unfolds as
+\[
+a_{\varnothing},
+\quad
+a_-,a_+,
+\quad
+a_{--},a_{-+},a_{+-},a_{++},
+\quad\ldots
+\]
+with distinct path-labelled occurrences carrying the same underlying label.
+A two-cycle such as
 \[
 D(a)=(a,b),
 \qquad
 D(b)=(a,b)
 \]
-satisfies RA0* while reusing the carrier labels \(a,b\). Its unfolding is
-still a complete binary tree of distinct path-labelled occurrences. Thus
-recursive relational structure does not by itself imply ontically fresh
-carrier identities:
+is another admissible finite presentation. Thus recursive relational structure
+does not by itself imply ontically fresh carrier identities:
 \[
 \boxed{
 \mathrm{RA0}^{*}\not\Rightarrow\mathrm{NOVELTY}.
