@@ -58,6 +58,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_POINT",),
     ),
     Claim(
+        "DEF_RELATIONAL_DISTINCTION",
+        ClaimKind.DEFINITION,
+        "A relationally bound binary distinction consists of two branch-relation occurrences from the host occurrence to the left/right endpoint occurrences; endpoint carrier labels may coincide.",
+        ("DEF_BINARY_DISTINCTION", "DEF_BINARY_REL"),
+    ),
+    Claim(
         "RR1",
         ClaimKind.AXIOM,
         "Recursive relational closure: at every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction, so the rule re-applies at each finite refinement depth.",
@@ -80,6 +86,24 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.CANDIDATE_AXIOM,
         "Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers.",
         ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
+    ),
+    Claim(
+        "RA0_REL_STAR",
+        ClaimKind.CANDIDATE_AXIOM,
+        "Every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted carriers.",
+        ("DEF_POINT", "DEF_RELATIONAL_DISTINCTION"),
+    ),
+    Claim(
+        "THM_RA0_FROM_RA0_REL_STAR",
+        ClaimKind.THEOREM,
+        "RA0_REL_STAR implies orientation-neutral relational admissibility because each admitted host is the source of at least one branch-relation occurrence.",
+        ("RA0_REL_STAR",),
+    ),
+    Claim(
+        "THM_RR1_FROM_RA0_REL_STAR",
+        ClaimKind.THEOREM,
+        "RA0_REL_STAR generates recursive binary refinement to arbitrary finite depth by induction on admitted path-labelled occurrences.",
+        ("RA0_REL_STAR",),
     ),
     Claim(
         "THM_RR1_FROM_RA0_STAR",
