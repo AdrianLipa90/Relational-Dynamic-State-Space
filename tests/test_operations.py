@@ -9,6 +9,7 @@ from rdss.operations import (
     RelationTransport,
     RelationalProductRule,
     SemanticScaleMap,
+    TensorProductRule,
     TransportPath,
     orbital_composition_residual,
     orbital_identity_residual,
@@ -955,3 +956,45 @@ def test_refinement_orbital_residual_checks_equivariance():
     assert refinement_orbital_residual(
         refinement, parent_orbit, broken_child, x
     ) > 0.0
+
+
+
+def test_tensor_product_rule_is_general_but_rank_typed():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+    left = TensorScalarElement((2.0,), (1, 0), p, scale)
+    right = TensorScalarElement((3.0,), (0, 1), p, scale)
+
+    rule = TensorProductRule(
+        "reference-like",
+        lambda a, b: TensorScalarElement(
+            (a.components[0] * b.components[0],),
+            (a.rank[0] + b.rank[0], a.rank[1] + b.rank[1]),
+            a.carrier,
+            a.scale,
+        ),
+    )
+
+    out = rule(left, right)
+    assert out.rank == (1, 1)
+    assert out.components == (6.0 + 0j,)
+
+
+def test_tensor_product_rule_rejects_wrong_rank():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+    left = TensorScalarElement((2.0,), (1, 0), p, scale)
+    right = TensorScalarElement((3.0,), (0, 1), p, scale)
+
+    bad = TensorProductRule(
+        "bad-rank",
+        lambda a, b: TensorScalarElement(
+            (a.components[0] * b.components[0],),
+            (0, 0),
+            a.carrier,
+            a.scale,
+        ),
+    )
+
+    with pytest.raises(ValueError):
+        bad(left, right)
