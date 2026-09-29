@@ -17,7 +17,7 @@ Observed public definitions:
 - relational potential: 3;
 - reference realizations: 6;
 - Zero Axis bridge: 2;
-- package-root public exports: 68.
+- package-root public exports: 72.
 
 Static checks found:
 
@@ -31,7 +31,7 @@ Static checks found:
 The current claim ledger contains:
 
 \[
-46
+51
 \]
 
 unique claim IDs.
@@ -63,21 +63,21 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 131 Python test functions:
+The current repository contains 143 Python test functions:
 
 | File | Test functions |
 |---|---:|
 | \`tests/test_algebra.py\` | 12 |
-| \`tests/test_axioms.py\` | 28 |
-| \`tests/test_closure.py\` | 10 |
-| \`tests/test_independence_witnesses.py\` | 8 |
+| \`tests/test_axioms.py\` | 31 |
+| \`tests/test_closure.py\` | 16 |
+| \`tests/test_independence_witnesses.py\` | 9 |
 | \`tests/test_layering.py\` | 3 |
 | \`tests/test_operations.py\` | 37 |
 | \`tests/test_phase.py\` | 3 |
 | \`tests/test_potential.py\` | 13 |
-| \`tests/test_realizations.py\` | 13 |
+| \`tests/test_realizations.py\` | 15 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **131** |
+| **Total** | **143** |
 
 This is an inventory count, not a runtime result.
 
@@ -102,6 +102,48 @@ Executable finite witnesses also establish that model non-vacuity does not imply
 \]
 
 The possible definitional reduction of RA0 is intentionally left OPEN.
+
+### Occurrence-level distinction audit
+
+Binary distinction non-degeneracy is now defined at the occurrence/address level.
+
+The two slots
+
+\[
+\omega-,
+\qquad
+\omega+
+\]
+
+are distinct even when both carry the same carrier label. The executable singleton witness
+
+\[
+D(a)=(a,a)
+\]
+
+therefore satisfies recursive occurrence closure without assuming ontic label multiplicity.
+
+The CP1 reference layer keeps a separate geometric non-degeneracy rule: the two projective states representing a distinction must have positive Fubini--Study separation.
+
+### Relationally bound reduction audit
+
+The stronger candidate RA0_REL_STAR explicitly binds the two distinction slots to primitive branch-relation occurrences. The ledger records separate theorem claims
+
+\[
+\mathrm{RA0\_REL\_STAR}\Rightarrow\mathrm{RA0},
+\qquad
+\mathrm{RA0\_REL\_STAR}\Rightarrow\mathrm{RR1}.
+\]
+
+Thus
+
+\[
+\mathrm{RA0\_REL\_STAR}
+\Rightarrow
+\mathrm{RA0}+\mathrm{RR1}.
+\]
+
+This candidate is executable but remains unpromoted.
 
 ### Typed-zero audit
 
@@ -155,7 +197,8 @@ The following are intentionally open rather than silently assumed:
 2. **Non-strict monoidal coherence gate** — requires parenthesized tensor objects plus explicit associator/braiding isomorphisms before pentagon/hexagon can be tested.
 3. **Semantic weighting derivation gate** — the kernel evaluates supplied semantic weights but does not derive \(W_\sigma\) from a semantic graph/context.
 4. **Holonomy-to-\(U(1)\) existence theorem** — the executable interface exists, but no universal theorem says every RTOFA holonomy admits such a representation.
-5. **Relational-admissibility reduction gate** — RA0 may be demoted only if \(\operatorname{Adm}\) is explicitly redefined by relational incidence; META0 alone does not imply RA0.\n6. **RA0* promotion** — \(\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}\) is tracked under the strengthened candidate statement; the canonical object-level pair remains \(\mathrm{RA0}+\mathrm{RR1}\) under META0.
+5. **Relational-admissibility reduction gate** — RA0 may be demoted only if \(\operatorname{Adm}\) is explicitly redefined by relational incidence; META0 alone does not imply RA0.\n6. **Relational distinction binding promotion** — RA0_REL_STAR implies both RA0 and RR1 only because it explicitly binds distinction slots to primitive branch-relation occurrences; this extra content remains unpromoted.
+7. **RA0* promotion** — \(\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}\) is tracked under the strengthened candidate statement; the canonical object-level pair remains \(\mathrm{RA0}+\mathrm{RR1}\) under META0.
 
 ## Branch safety
 
