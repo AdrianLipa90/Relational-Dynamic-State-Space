@@ -211,7 +211,7 @@ with
 |\Omega(s)|=1.
 \]
 
-This is an imported **bridge**, not an axiom of the general algebra. A concrete realization may additionally supply an explicit map from closed relational holonomy into \(U(1)\); finite phases then lift through \(\Omega^{-1}(u)=u/(1+u)\) to the Zero Axis, while \(u=-1\) is the compactified point at infinity. The existence of such a \(U(1)\) representation is not assumed universally. Phase turn-count and residual are derived from phase paths. A topological winding number is asserted only after the path is explicitly verified closed.
+This is an imported **bridge**, not an axiom of the general algebra. A concrete realization may independently supply a map from closed relational holonomy into \(U(1)\). Phase turn-count and topological winding depend on that phase representation plus closure; they do not depend on Zero Axis. If an application additionally uses the companion Zero Axis bridge, a verified finite phase may be lifted through \(\Omega^{-1}(u)=u/(1+u)\), while \(u=-1\) is the compactified point at infinity.
 
 ## Non-assumptions
 
@@ -233,21 +233,35 @@ See `docs/ARCHITECTURE.md` for module layering, `docs/AXIOM_AUDIT.md` for the ty
 
 The implementation is deliberately stratified:
 
-[
-oxed{
-	ext{core algebra}
-	o
-	ext{structural operators}
-	o
-	ext{phase/reference realizations}
-	o
-	ext{optional bridges}
+\[
+\boxed{
+\text{core algebra}
+\to
+\text{structural operators}
+\to
+\text{phase/reference realizations}
+\to
+\text{optional bridges}
 }
-]
+\]
 
-`src/rdss/algebra.py` is representation-free. CP1/Fubini--Study and scalar-angle Moiré live in `realizations.py`; generic U(1) utilities live in `phase.py`; Zero Axis lives in `zero_axis.py`. The package root re-exports these names for convenience without changing their epistemic layer.
+\`src/rdss/algebra.py\` is representation-free. CP1/Fubini--Study and scalar-angle Moiré live in \`realizations.py\`; generic U(1) utilities live in \`phase.py\`; Zero Axis lives in \`zero_axis.py\`. The package root re-exports these names for convenience without changing their epistemic layer.
 
-See `docs/ARCHITECTURE.md` for the exact module ownership and promotion rules.
+The holonomy phase map
+
+\[
+\chi:\mathcal H_\gamma\to U(1)
+\]
+
+is a reference-realization question. The optional Zero Axis lift
+
+\[
+\Omega^{-1}(u)=\frac{u}{1+u}
+\]
+
+is a separate bridge applied only after a unit phase has already been established.
+
+See \`docs/ARCHITECTURE.md\` for the exact module ownership and promotion rules.
 
 ## Development invariant
 
