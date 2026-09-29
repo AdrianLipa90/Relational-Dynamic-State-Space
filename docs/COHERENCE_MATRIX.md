@@ -18,10 +18,10 @@ This matrix records which compatibility laws are implemented as exact checks, re
 | refinement ↔ transport | \(\Delta_{F,T}\) naturality square | IMPLEMENTED |
 | arbitrary typed map ↔ tensor product | tensor-map monoidality residual | IMPLEMENTED |
 | arbitrary typed map ↔ contraction | contraction naturality residual | IMPLEMENTED |
-| semantic scale ↔ transport | naturality square | OPEN |
-| orbital action ↔ transport | equivariance square | OPEN |
-| refinement ↔ semantic scale | branch/coarse-graining coherence | OPEN |
-| refinement ↔ orbital action | branch/orbit equivariance | OPEN |
+| semantic scale ↔ transport | naturality square | IMPLEMENTED |
+| orbital action ↔ transport | equivariance square | IMPLEMENTED |
+| refinement ↔ semantic scale | branch/coarse-graining coherence | IMPLEMENTED |
+| refinement ↔ orbital action | branch/orbit equivariance | IMPLEMENTED |
 | tensor product ↔ associator/symmetry/braiding | monoidal coherence | OPEN |
 | contraction ↔ tensor product | contraction/tensor identities | OPEN |
 | Zero Axis phase ↔ abstract holonomy | representation/bridge theorem | OPEN |
