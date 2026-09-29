@@ -24,6 +24,9 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | THM_META0_CARDINALITY_LOWER_BOUND | THEOREM | META0 forces every admissible RTOFA model to satisfy |Adm| >= 1. | META0 |
 | REF_SINGLETON_RA0_REL_STAR_MODEL | REFERENCE REALIZATION | Explicit recursive singleton model satisfying META0 + RA0_REL_STAR with |Adm| = 1. | META0, RA0_REL_STAR |
 | THM_SINGLETON_FOUNDATION_MINIMALITY | THEOREM | Lower bound |Adm| >= 1 plus the singleton witness shows the exact minimum is 1. | THM_META0_CARDINALITY_LOWER_BOUND, REF_SINGLETON_RA0_REL_STAR_MODEL |
+| THM_RELATION_VALUE_CARDINALITY_LOWER_BOUND | THEOREM | META0 plus RA0_REL_STAR force at least one underlying primitive relation value after forgetting branch occurrence identity. | META0, RA0_REL_STAR |
+| REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL | REFERENCE REALIZATION | Explicit singleton model with one admitted carrier, one underlying self-relation value, and two distinct branch occurrences. | META0, RA0_REL_STAR |
+| THM_SINGLE_RELATION_VALUE_MINIMALITY | THEOREM | The exact minimum underlying relation-value cardinality under META0 plus RA0_REL_STAR is 1. | THM_RELATION_VALUE_CARDINALITY_LOWER_BOUND, REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL |
 | THM_RR1_FROM_RA0_STAR | THEOREM | RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences. | RA0_STAR |
 | REF_CP1 | REFERENCE REALIZATION | A minimal complex binary distinction may be represented by two projectively distinct CP1 states with Fubini-Study metric. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | REF_CP1_REFINEMENT | REFERENCE REALIZATION | Recursive refinement is realized as a tree of local CP1/FS fibres indexed by relational carriers. | REF_CP1, RR1 |
@@ -85,6 +88,7 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 14. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
 15. **RA0_REL_STAR is a stronger one-object-level-axiom candidate.** It differs from RA0* by explicitly binding binary distinction slots to primitive relation occurrences; only this stronger candidate currently carries explicit theorems to both RA0 and RR1.
 16. **Carrier cardinality and occurrence cardinality are independent scales.** A singleton carrier presentation can generate \(2^{N+1}-1\) distinct path-labelled occurrences through depth \(N\), and the full finite-word address space is countably infinite.
+17. **Underlying relation-value cardinality can also be minimal.** Two distinct branch occurrences may project to one self-relation value, so the minimal singleton RA0_REL_STAR model simultaneously attains \(|\operatorname{Adm}|=1\) and \(|\operatorname{RelVal}|=1\).
 
 ## Canonical foundational stratification
 
