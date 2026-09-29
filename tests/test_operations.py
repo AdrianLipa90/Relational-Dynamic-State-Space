@@ -19,6 +19,8 @@ from rdss.operations import (
     relative_moire_action,
     semantic_orbital_commutator_residual,
     semantic_product_residual,
+    tensor_map_residual,
+    contraction_map_residual,
     transport_composition_residual,
     transport_product_residual,
     typed_refinement_residual,
@@ -674,5 +676,83 @@ def test_refinement_transport_residual_checks_naturality_square():
         broken_child_transport,
         source_refine,
         target_refine,
+        x,
+    ) > 0.0
+
+
+
+def test_tensor_map_residual_checks_monoidality():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+    x = elem(2.0, carrier=p, scale=scale)
+    y = elem(3.0, carrier=p, scale=scale)
+
+    identity = lambda z: z
+    doubling = lambda z: TensorScalarElement(
+        tuple(2.0 * c for c in z.components),
+        z.rank,
+        z.carrier,
+        z.scale,
+    )
+
+    assert tensor_map_residual(
+        identity,
+        reference_tensor_product,
+        reference_tensor_product,
+        x,
+        y,
+    ) == pytest.approx(0.0)
+
+    assert tensor_map_residual(
+        doubling,
+        reference_tensor_product,
+        reference_tensor_product,
+        x,
+        y,
+    ) > 0.0
+
+
+def test_contraction_map_residual_checks_naturality():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+    x = TensorScalarElement((5.0,), (1, 1), p, scale)
+
+    contraction = ContractionRule(
+        "drop-one-pair",
+        lambda z: TensorScalarElement(
+            z.components,
+            (z.rank[0] - 1, z.rank[1] - 1),
+            z.carrier,
+            z.scale,
+        ),
+    )
+
+    identity = lambda z: z
+    scale2 = lambda z: TensorScalarElement(
+        tuple(2.0 * c for c in z.components),
+        z.rank,
+        z.carrier,
+        z.scale,
+    )
+    scale3 = lambda z: TensorScalarElement(
+        tuple(3.0 * c for c in z.components),
+        z.rank,
+        z.carrier,
+        z.scale,
+    )
+
+    assert contraction_map_residual(
+        identity,
+        identity,
+        contraction,
+        contraction,
+        x,
+    ) == pytest.approx(0.0)
+
+    assert contraction_map_residual(
+        scale2,
+        scale3,
+        contraction,
+        contraction,
         x,
     ) > 0.0
