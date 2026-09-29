@@ -156,6 +156,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("PRIM_SCALE", "PRIM_PRODUCT", "PRIM_MODULE"),
     ),
     Claim(
+        "DEF_SCALE_TRANSPORT_COHERENCE",
+        ClaimKind.DEFINITION,
+        "Semantic-transport residual measures failure of the coarse-graining/transport naturality square.",
+        ("PRIM_SCALE", "PRIM_TRANSPORT", "PRIM_MODULE"),
+    ),
+    Claim(
         "DEF_ORBITAL_COHERENCE",
         ClaimKind.DEFINITION,
         "Orbital identity, inverse and composition residuals diagnose exact action-law coherence.",
@@ -166,6 +172,12 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.DEFINITION,
         "Orbital-product residual measures failure of U(X star Y) = U(X) star' U(Y).",
         ("PRIM_ORBIT", "PRIM_PRODUCT", "PRIM_MODULE"),
+    ),
+    Claim(
+        "DEF_ORBIT_TRANSPORT_COHERENCE",
+        ClaimKind.DEFINITION,
+        "Orbital-transport residual measures equivariance of typed transport under orbital operators.",
+        ("PRIM_ORBIT", "PRIM_TRANSPORT", "PRIM_MODULE"),
     ),
     Claim(
         "DER_MOIRE",
@@ -190,6 +202,18 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.DEFINITION,
         "Refinement-transport residual measures failure of the naturality square between parent transport and child transport.",
         ("PRIM_REFINEMENT_MAP", "PRIM_TRANSPORT", "PRIM_MODULE"),
+    ),
+    Claim(
+        "DEF_REFINEMENT_SCALE_COHERENCE",
+        ClaimKind.DEFINITION,
+        "Refinement-scale residual measures failure of refinement/coarse-graining naturality.",
+        ("PRIM_REFINEMENT_MAP", "PRIM_SCALE", "PRIM_MODULE"),
+    ),
+    Claim(
+        "DEF_REFINEMENT_ORBIT_COHERENCE",
+        ClaimKind.DEFINITION,
+        "Refinement-orbit residual measures equivariance of branch refinement under orbital operators.",
+        ("PRIM_REFINEMENT_MAP", "PRIM_ORBIT", "PRIM_MODULE"),
     ),
     Claim(
         "ZA_BRIDGE",
