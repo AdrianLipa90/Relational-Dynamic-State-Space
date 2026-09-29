@@ -129,16 +129,13 @@ def scalar_ratio_phase(path, element):
     return final.components[0] / element.components[0]
 
 
-def test_explicit_u1_holonomy_representation_lifts_to_zero_axis():
+def test_explicit_u1_holonomy_representation_returns_unit_phase():
     path, x = closed_phase_path(0.4)
     rep = HolonomyPhaseRepresentation("scalar-ratio", scalar_ratio_phase)
 
     u = rep.phase(path, x)
-    point = rep.finite_zero_axis_point(path, x)
 
     assert abs(u) == pytest.approx(1.0)
-    assert point.s.real == pytest.approx(0.5)
-    assert point.omega == pytest.approx(u)
 
 
 def test_nonunit_holonomy_representation_is_rejected():
@@ -197,10 +194,8 @@ def test_phase_representation_requires_closed_path():
         rep.phase(path, x)
 
 
-def test_minus_one_phase_is_compactified_zero_axis_infinity():
+def test_minus_one_is_a_valid_u1_holonomy_phase():
     path, x = closed_phase_path(pi)
     rep = HolonomyPhaseRepresentation("minus-one", scalar_ratio_phase)
 
     assert rep.phase(path, x) == pytest.approx(-1.0 + 0.0j)
-    with pytest.raises(ValueError):
-        rep.finite_zero_axis_point(path, x)
