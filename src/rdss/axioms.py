@@ -52,6 +52,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_POINT", "DEF_BINARY_REL"),
     ),
     Claim(
+        "REF_CP1_REFINEMENT",
+        ClaimKind.REFERENCE_REALIZATION,
+        "Recursive refinement may be realized as a tree of local CP^1/Fubini-Study fibres indexed by relational carriers.",
+        ("REF_CP1", "RR1"),
+    ),
+    Claim(
         "RA0_STAR",
         ClaimKind.CANDIDATE_AXIOM,
         "Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers.",
