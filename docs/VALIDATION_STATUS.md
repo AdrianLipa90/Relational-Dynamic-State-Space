@@ -17,7 +17,7 @@ Observed public definitions:
 - relational potential: 3;
 - reference realizations: 6;
 - Zero Axis bridge: 2;
-- package-root public exports: 77.
+- package-root public exports: 81.
 
 Static checks found:
 
@@ -31,7 +31,7 @@ Static checks found:
 The current claim ledger contains:
 
 \[
-60
+65
 \]
 
 unique claim IDs.
@@ -63,7 +63,7 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 166 Python test functions:
+The current repository contains 177 Python test functions:
 
 | File | Test functions |
 |---|---:|
@@ -77,7 +77,7 @@ The current repository contains 166 Python test functions:
 | \`tests/test_potential.py\` | 13 |
 | \`tests/test_realizations.py\` | 18 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **166** |
+| **Total** | **177** |
 
 This is an inventory count, not a runtime result.
 
@@ -171,6 +171,17 @@ The finite non-empty countermodel with one carrier, no primitive relations, and 
 
 Thus RA0* without primitive relation incidence is strictly weaker than RA0_REL_STAR.
 
+RA0 plus RR1 also do not force the binding. The explicit singleton model with self-relation and recursive refinement but empty branch-binding data establishes
+
+\[
+\boxed{
+\mathrm{RA0}+\mathrm{RR1}
+\not\Rightarrow
+\mathrm{RA0\_REL\_STAR}.
+}
+\]
+
+So the one-object-level-axiom candidate is a genuine strengthening/compression rather than a notational rewrite.
 ### Occurrence-path holonomy audit
 
 Relation values and relation occurrences are now separate objects.
@@ -213,6 +224,33 @@ is represented by \`OccurrenceHolonomyPhaseRepresentation\`.
 
 The occurrence interface rejects carrier-closed but occurrence-open pseudo-loops before phase evaluation. Neither interface is promoted to a universal existence theorem.
 
+### Occurrence-growth audit
+
+Binary recursive refinement now has an executable exact-count theorem:
+
+\[
+\boxed{
+|V_{\le N}|=2^{N+1}-1.
+}
+\]
+
+The full finite-word occurrence space is constructively ranked by
+
+\[
+\rho(\omega)
+=
+2^{|\omega|}-1+\operatorname{bin}(\omega),
+\]
+
+with an explicit inverse. This establishes a bijection
+
+\[
+\{-1,+1\}^{<\omega}
+\longleftrightarrow
+\mathbb N.
+\]
+
+Hence a singleton carrier model may have one admitted carrier while carrying countably infinitely many finite path-labelled occurrences.
 ### Singleton-cardinality audit
 
 The exact minimum-cardinality statement is split into two steps:
