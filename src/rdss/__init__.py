@@ -127,4 +127,12 @@ __all__ = [
     "tensor_associator_residual",
     "tensor_unit_residual",
     "tensor_braiding_residual",
+    "CP1RefinementRealization",
+    "reference_maximal_cp1_tree",
 ]
+
+
+from .realizations import (
+    CP1RefinementRealization,
+    reference_maximal_cp1_tree,
+)
