@@ -287,3 +287,11 @@ def test_typed_zero_depends_on_exact_sector_primitives():
             "PRIM_SCALE",
         }
     )
+
+
+
+def test_ex0_is_nonvacuity_candidate_not_silently_promoted():
+    claims = claim_map()
+    assert claims["EX0"].kind is ClaimKind.CANDIDATE_AXIOM
+    assert dependency_closure("EX0") == frozenset({"DEF_POINT"})
+    assert "EX0" not in {claim.id for claim in foundational_axioms()}
