@@ -32,7 +32,7 @@ def test_recursive_refinement_is_independent_foundational_axiom():
 
 def test_structural_primitives_do_not_silently_depend_on_ra0():
     claims = claim_map()
-    for claim_id in ("PRIM_MODULE", "PRIM_PRODUCT", "PRIM_SCALE", "PRIM_TRANSPORT", "PRIM_REFINEMENT_MAP", "PRIM_ORBIT"):
+    for claim_id in ("PRIM_MODULE", "PRIM_PRODUCT", "PRIM_TENSOR_PRODUCT", "PRIM_CONTRACTION", "PRIM_SCALE", "PRIM_TRANSPORT", "PRIM_REFINEMENT_MAP", "PRIM_ORBIT"):
         assert claims[claim_id].kind is ClaimKind.STRUCTURAL_PRIMITIVE
         assert "RA0" not in dependency_closure(claim_id)
 
@@ -122,4 +122,27 @@ def test_orbital_coherence_residual_has_only_orbit_and_module_dependencies():
 def test_scale_orbit_residual_depends_on_scale_orbit_and_module():
     assert dependency_closure("DEF_SCALE_ORBIT_RESIDUAL") == frozenset(
         {"PRIM_SCALE", "PRIM_ORBIT", "PRIM_MODULE"}
+    )
+
+
+
+def test_cross_operation_coherence_dependencies_are_explicit():
+    assert dependency_closure("DEF_TRANSPORT_PRODUCT_COHERENCE") == frozenset(
+        {"PRIM_TRANSPORT", "DEF_BINARY_REL", "PRIM_PRODUCT", "PRIM_MODULE"}
+    )
+    assert dependency_closure("DEF_SCALE_PRODUCT_COHERENCE") == frozenset(
+        {"PRIM_SCALE", "PRIM_PRODUCT", "PRIM_MODULE"}
+    )
+    assert dependency_closure("DEF_ORBIT_PRODUCT_COHERENCE") == frozenset(
+        {"PRIM_ORBIT", "PRIM_PRODUCT", "PRIM_MODULE"}
+    )
+    assert dependency_closure("DEF_REFINEMENT_TRANSPORT_COHERENCE") == frozenset(
+        {
+            "PRIM_REFINEMENT_MAP",
+            "RR1",
+            "DEF_POINT",
+            "DEF_BINARY_REL",
+            "PRIM_TRANSPORT",
+            "PRIM_MODULE",
+        }
     )
