@@ -85,6 +85,24 @@ CLAIMS: tuple[Claim, ...] = (
         "Semantic scale is a typed partial-order/category-like structure, not necessarily a real scalar.",
     ),
     Claim(
+        "PRIM_TRANSPORT",
+        ClaimKind.STRUCTURAL_PRIMITIVE,
+        "Typed relation transports T_r may act between carrier sectors along composable relations.",
+        ("DEF_BINARY_REL", "PRIM_MODULE"),
+    ),
+    Claim(
+        "DER_HOLONOMY",
+        ClaimKind.DERIVED,
+        "Relational holonomy is transport around a closed composable relation path, measured against the starting state.",
+        ("PRIM_TRANSPORT",),
+    ),
+    Claim(
+        "DEF_TRANSPORT_RESIDUAL",
+        ClaimKind.DEFINITION,
+        "Transport composition residual measures failure of direct transport to equal sequential transport.",
+        ("PRIM_TRANSPORT",),
+    ),
+    Claim(
         "PRIM_ORBIT",
         ClaimKind.STRUCTURAL_PRIMITIVE,
         "Admissible orbital actions U_g may act on algebra elements.",
@@ -110,7 +128,7 @@ CLAIMS: tuple[Claim, ...] = (
         "DER_WINDING",
         ClaimKind.DERIVED,
         "Topological winding is derived only for a closed phase path with a continuous phase lift.",
-        ("ZA_BRIDGE",),
+        ("ZA_BRIDGE", "DER_HOLONOMY"),
     ),
 )
 
