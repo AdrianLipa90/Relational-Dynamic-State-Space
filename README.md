@@ -126,6 +126,42 @@ is countably infinite. The reference kernel implements the explicit bijection
 with \(-1\mapsto0\), \(+1\mapsto1\), through
 `finite_word_rank` / `finite_word_unrank`.
 
+### Minimal underlying relation value
+
+The two branch occurrences do not need two distinct underlying relation
+values. The minimal relational witness may use one self-relation
+
+\[
+r:a\to a
+\]
+
+for both branch slots. After forgetting occurrence identity,
+
+\[
+\pi_{\rm rel}(o_-)
+=
+\pi_{\rm rel}(o_+)
+=
+(a,a,r),
+\]
+
+while \(o_-\neq o_+\) because their branch slots differ.
+
+Thus the same minimal model can satisfy
+
+\[
+\boxed{
+|\operatorname{Adm}|=1,
+\qquad
+|\operatorname{RelVal}|=1,
+\qquad
+|\operatorname{BranchOcc}(a)|=2.
+}
+\]
+
+The distinction multiplicity therefore resides in the occurrence layer rather
+than requiring multiple base carriers or multiple underlying relation values.
+
 ## Reference minimal distinction
 
 A minimal complex binary distinction may be represented by
