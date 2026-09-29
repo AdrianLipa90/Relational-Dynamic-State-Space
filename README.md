@@ -126,6 +126,52 @@ is countably infinite. The reference kernel implements the explicit bijection
 with \(-1\mapsto0\), \(+1\mapsto1\), through
 `finite_word_rank` / `finite_word_unrank`.
 
+### Ideal occurrence boundary
+
+The countable finite-word tree has a separate ideal boundary
+
+\[
+\boxed{
+\partial V
+=
+\{-1,+1\}^{\mathbb N}.
+}
+\]
+
+Boundary points are infinite branch sequences, not additional finite occurrence carriers. At prefix depth \(n\), the boundary is partitioned into exactly
+
+\[
+2^n
+\]
+
+prefix cylinders; the reference helpers `binary_words_at_depth` and `binary_boundary_cylinder_count` audit this finite basis.
+
+Via the bijection
+
+\[
+\xi
+\longmapsto
+\{n\in\mathbb N:\xi_n=+1\},
+\]
+
+the ideal boundary has cardinality
+
+\[
+\boxed{
+|\partial V|=2^{\aleph_0}.
+}
+\]
+
+RR1 realizes every finite prefix of every ideal boundary sequence. It does **not** by itself assert a limit carrier for an infinite address. Thus
+
+\[
+\boxed{
+\text{uncountable ideal boundary}
+\neq
+\text{uncountably many admitted carriers}.
+}
+\]
+
 ### Occurrence address monoid
 
 The finite address words form
