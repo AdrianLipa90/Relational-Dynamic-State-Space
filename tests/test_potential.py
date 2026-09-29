@@ -114,3 +114,21 @@ def test_semantic_shift_requires_same_residual_signature():
 
     with pytest.raises(ValueError):
         semantic_potential_shift(residuals, source, target)
+
+
+
+def test_semantic_shift_rejects_change_in_p():
+    residuals = {"a": 1.0, "b": 2.0}
+    source = RelationalPotentialProfile(
+        SemanticScale("source"),
+        (("a", 1.0), ("b", 1.0)),
+        p=1.0,
+    )
+    target = RelationalPotentialProfile(
+        SemanticScale("target"),
+        (("a", 2.0), ("b", 1.0)),
+        p=2.0,
+    )
+
+    with pytest.raises(ValueError):
+        semantic_potential_shift(residuals, source, target)
