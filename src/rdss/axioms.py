@@ -66,7 +66,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "REF_CP1",
         ClaimKind.REFERENCE_REALIZATION,
-        "A minimal complex binary distinction may be represented by CP^1 with Fubini-Study metric.",
+        "A minimal complex binary distinction may be represented by two projectively distinct CP^1 states with Fubini-Study metric.",
         ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
