@@ -82,7 +82,7 @@ Each typed sector carries an additive module structure over a scalar domain \(\m
 (\mathcal A_{\sigma,n}^{p,q},+,0,-,\mathbb K\curvearrowright\mathcal A_{\sigma,n}^{p,q}).
 \]
 
-The abstract algebra does not fix \(\mathbb K=\mathbb C\). The reference kernel uses complex components. This structure is required before commutators, associators, and refinement residuals can be interpreted as differences.
+The abstract algebra does not fix \(\mathbb K=\mathbb C\). The reference kernel uses complex components. This structure is required before commutators, associators, and refinement residuals can be interpreted as differences. The executable zero of a reference element preserves its typed sector and satisfies \(X+0_X=X\) and \(X-X=0_X\).
 
 ## Semantic scales
 
@@ -110,6 +110,36 @@ M_{ij}=U_iU_j^{-1},
 
 where the inverse exists.
 
+## Relational transport and abstract holonomy
+
+For a composable relation path
+
+\[
+\gamma=(r_1,\ldots,r_m),
+\qquad
+r_k:a_{k-1}\to a_k,
+\]
+
+the core transport is
+
+\[
+T_\gamma=T_{r_m}\circ\cdots\circ T_{r_1}.
+\]
+
+If the path is closed, \(a_m=a_0\), its abstract relational holonomy is the return transport
+
+\[
+\mathcal H_\gamma:=T_\gamma,
+\]
+
+with state residual
+
+\[
+\varepsilon_\gamma(X)=\|\mathcal H_\gamma X-X\|.
+\]
+
+This definition requires neither spacetime nor \(U(1)\). A separate transport-composition residual measures failure of direct and sequential transport to agree.
+
 ## Zero Axis / phase bridge
 
 The companion Zero Axis model supplies
@@ -126,7 +156,7 @@ with
 |\Omega(s)|=1.
 \]
 
-This is an imported **bridge**, not an axiom of the general algebra. Phase turn-count and residual are derived from phase paths. A topological winding number is asserted only after the path is explicitly verified closed.
+This is an imported **bridge**, not an axiom of the general algebra. It supplies a phase realization of the more general relational holonomy. Phase turn-count and residual are derived from phase paths. A topological winding number is asserted only after the path is explicitly verified closed.
 
 ## Non-assumptions
 
