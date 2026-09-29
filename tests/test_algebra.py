@@ -34,10 +34,55 @@ def test_scalar_sector_is_tensor_rank_zero():
     assert scalar.is_scalar
 
 
-def test_typed_zero_is_not_empty_relation():
-    zero = TypedZero(rank=(1, 1), scale=SemanticScale("object"), level=2)
+def test_typed_zero_is_exact_additive_sector_not_empty_relation():
+    carrier = RelationalPoint((-1, 1))
+    scale = SemanticScale("object")
+    zero = TypedZero(
+        rank=(1, 1),
+        carrier=carrier,
+        scale=scale,
+        dimension=3,
+    )
+
     assert zero.rank == (1, 1)
+    assert zero.carrier == carrier
+    assert zero.scale == scale
+    assert zero.dimension == 3
     assert zero.level == 2
+    assert zero.as_element().components == (0j, 0j, 0j)
+
+
+def test_typed_zero_distinguishes_carriers_at_same_refinement_level():
+    scale = SemanticScale("object")
+    left = TypedZero(
+        rank=(0, 0),
+        carrier=RelationalPoint((-1,)),
+        scale=scale,
+        dimension=1,
+    )
+    right = TypedZero(
+        rank=(0, 0),
+        carrier=RelationalPoint((1,)),
+        scale=scale,
+        dimension=1,
+    )
+
+    assert left.level == right.level == 1
+    assert left != right
+
+
+def test_typed_zero_from_element_materializes_additive_identity():
+    p = RelationalPoint((1, -1))
+    scale = SemanticScale("object")
+    x = TensorScalarElement((2.0, -3.0), (1, 0), p, scale)
+
+    zero = TypedZero.from_element(x)
+    z = zero.as_element()
+
+    assert zero.carrier == p
+    assert zero.dimension == len(x.components)
+    assert x + z == x
+    assert x - x == z
 
 
 def test_semantic_scale_is_partial_order_like_coarse_graining():
