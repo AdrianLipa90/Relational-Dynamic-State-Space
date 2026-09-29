@@ -3,6 +3,7 @@ from __future__ import annotations
 from cmath import exp as cexp
 from dataclasses import dataclass
 from math import isfinite, pi
+from typing import Sequence
 
 
 def wrap_phase(angle: float) -> float:
@@ -13,20 +14,39 @@ def wrap_phase(angle: float) -> float:
     return pi if wrapped == -pi else wrapped
 
 
-@dataclass(frozen=True)
-class RelationalLoop:
-    """Closed base-space path with semantic phase increments on its edges."""
+def _finite_complex(z: complex) -> bool:
+    return isfinite(z.real) and isfinite(z.imag)
 
-    base_path: tuple[str, ...]
+
+def _distance(a: Sequence[complex], b: Sequence[complex]) -> float:
+    if len(a) != len(b):
+        raise ValueError("projected states must have equal dimensions")
+    return sum(abs(complex(x) - complex(y)) ** 2 for x, y in zip(a, b)) ** 0.5
+
+
+@dataclass(frozen=True)
+class RelationalHolonomyPath:
+    """RDSS path whose closure is tested only after choosing a representation.
+
+    The canonical carrier remains Hilbert-Moire. projected_start and
+    projected_end are coordinates produced by any chosen representation.
+    A representation may close while the transported internal state changes.
+    """
+
+    representation_name: str
+    projected_start: tuple[complex, ...]
+    projected_end: tuple[complex, ...]
     edge_phases: tuple[float, ...]
 
     def __post_init__(self) -> None:
-        if len(self.base_path) < 2:
-            raise ValueError("loop requires at least a start and end point")
-        if self.base_path[0] != self.base_path[-1]:
-            raise ValueError("base path must be closed")
-        if len(self.edge_phases) != len(self.base_path) - 1:
-            raise ValueError("one edge phase is required for each path edge")
+        if not self.representation_name.strip():
+            raise ValueError("representation name must be non-empty")
+        if not self.projected_start or len(self.projected_start) != len(self.projected_end):
+            raise ValueError("projected endpoints must have equal non-zero dimensions")
+        if not all(_finite_complex(complex(v)) for v in self.projected_start + self.projected_end):
+            raise ValueError("projected endpoints must be finite")
+        if not self.edge_phases:
+            raise ValueError("at least one holonomic phase increment is required")
         if not all(isfinite(float(x)) for x in self.edge_phases):
             raise ValueError("edge phases must be finite")
 
@@ -46,40 +66,46 @@ class RelationalLoop:
     def holonomy(self) -> complex:
         return cexp(1j * self.total_phase)
 
+    def representation_closed(self, tolerance: float = 1e-12) -> bool:
+        if tolerance <= 0 or not isfinite(tolerance):
+            raise ValueError("tolerance must be positive and finite")
+        return _distance(self.projected_start, self.projected_end) <= tolerance
+
 
 @dataclass(frozen=True)
-class ExperienceHolonomy:
-    start_fibre: complex
-    end_fibre: complex
+class HolonomyTransport:
+    start_internal: complex
+    end_internal: complex
     holonomy: complex
     residual_phase: float
     winding: int
-    same_base_point: bool
+    representation_closed: bool
     same_total_state: bool
 
 
-def transport_experience(
-    loop: RelationalLoop,
-    start_fibre: complex = 1.0 + 0.0j,
+def transport_holonomy(
+    path: RelationalHolonomyPath,
+    start_internal: complex = 1.0 + 0.0j,
     *,
     tolerance: float = 1e-12,
-) -> ExperienceHolonomy:
-    """Transport a U(1) reference fibre around a closed relational loop."""
+) -> HolonomyTransport:
+    """Transport one reference internal degree around an RDSS path."""
     if tolerance <= 0 or not isfinite(tolerance):
         raise ValueError("tolerance must be positive and finite")
-    if not (isfinite(start_fibre.real) and isfinite(start_fibre.imag)):
-        raise ValueError("start fibre must be finite")
+    if not _finite_complex(start_internal):
+        raise ValueError("internal state must be finite")
 
-    h = loop.holonomy
-    end = h * start_fibre
-    same_fibre = abs(end - start_fibre) <= tolerance
+    h = path.holonomy
+    end = h * start_internal
+    rep_closed = path.representation_closed(tolerance)
+    same_internal = abs(end - start_internal) <= tolerance
 
-    return ExperienceHolonomy(
-        start_fibre=start_fibre,
-        end_fibre=end,
+    return HolonomyTransport(
+        start_internal=start_internal,
+        end_internal=end,
         holonomy=h,
-        residual_phase=loop.residual_phase,
-        winding=loop.winding,
-        same_base_point=True,
-        same_total_state=same_fibre,
+        residual_phase=path.residual_phase,
+        winding=path.winding,
+        representation_closed=rep_closed,
+        same_total_state=rep_closed and same_internal,
     )
