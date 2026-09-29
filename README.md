@@ -23,12 +23,45 @@ The axiom audit distinguishes claims by role instead of labeling every useful co
 The current minimal axiom set is
 
 \[
-\boxed{\mathrm{RA0}+\mathrm{RR1}}.
+\boxed{
+\mathrm{META0}
+\;\triangleright\;
+(\mathrm{RA0}+\mathrm{RR1})
+}.
 \]
+
+Here \(\mathrm{META0}\) is a **model-formation meta-axiom**, not an object-level proposition.
+
+**META0 — non-reification and model non-vacuity**
+
+Absolute nothingness has no denotation in the RTOFA object language. In particular, it is not represented by a carrier, state, relation, zero, or by the empty set. The empty set is already a mathematical object.
+
+The intended model class is therefore restricted by definition to non-empty admitted carrier domains:
+
+\[
+\boxed{
+\mathfrak M\in\operatorname{Mod}(\mathrm{RTOFA})
+\Longrightarrow
+\operatorname{Adm}^{\mathfrak M}\neq\varnothing.
+}
+\]
+
+Consequently
+
+\[
+\boxed{
+\mathrm{EX0}:
+\exists p\,\operatorname{Adm}(p)
+}
+\]
+
+is a theorem of the model-formation semantics, not an additional ontological axiom.
+
+A raw empty mathematical presentation is still useful metamathematically: RA0, RR1, and RA0* can be vacuously true on it. But that presentation is not an admissible RTOFA model and is not identified with “absolute nothing.”
 
 **RA0 — relational admissibility**
 
-The motivating intuition is that an absolute absence supplies no admitted terms and therefore no admitted relation or observation. The executable algebra does not formalize “nothing” as an object; it formalizes only the relational consequence:
+Once a carrier is admitted, it is not defined as an observable independently of relation:
 
 \[
 \operatorname{Adm}(x)
@@ -36,36 +69,13 @@ The motivating intuition is that an absolute absence supplies no admitted terms 
 \exists\,y,r:\operatorname{Rel}_r(x,y).
 \]
 
-An admitted observable is not defined independently of relation.
-
 **RR1 — recursive relational closure**
 
 At every admitted path-labelled occurrence, a selected relational point may itself carry a further non-degenerate binary distinction, and the same rule re-applies at every finite refinement depth. This is the explicit extra assumption that generates the fractal/refinement tower; it is not silently claimed to follow from RA0.
 
 The minimal algebraic carrier is an unscaled point \(p\). Algebraic zero is not identified with absence of relation.
 
-### Non-vacuity gate
-
-The current formal RA0 and RR1 constrain admitted relational carriers, but they do not themselves assert that any admitted carrier exists. Hence the empty model satisfies both vacuously.
-
-The repository therefore tracks, without promoting it,
-
-\[
-\boxed{
-\mathrm{EX0}:
-\exists p\,\operatorname{Adm}(p).
-}
-\]
-
-Current status:
-
-\[
-\mathrm{RA0}+\mathrm{RR1}\not\Rightarrow\mathrm{EX0},
-\qquad
-\mathrm{RA0}^{*}\not\Rightarrow\mathrm{EX0}.
-\]
-
-See `docs/FOUNDATIONAL_NONVACUITY_GATE.md`.
+See \`docs/FOUNDATIONAL_NONVACUITY_GATE.md\` for the distinction between raw formula semantics and the intended non-empty model class.
 
 ## Reference minimal distinction
 
@@ -299,7 +309,7 @@ The kernel does **not** assume:
 - Zero Axis as an axiom of the general algebra;
 - any physical identification without a separate bridge theorem.
 
-See `docs/ARCHITECTURE.md` for module layering, `docs/FOUNDATIONAL_NONVACUITY_GATE.md` for the EX0 existence question, `docs/RELATIONAL_POTENTIAL.md` for the semantic deformation scalar, `docs/SEMANTIC_WEIGHTING_GATE.md` for the open weight-derivation problem, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary, and `docs/VALIDATION_STATUS.md` for current verification status.
+See `docs/ARCHITECTURE.md` for module layering, `docs/FOUNDATIONAL_NONVACUITY_GATE.md` for META0/non-vacuity semantics, `docs/RELATIONAL_POTENTIAL.md` for the semantic deformation scalar, `docs/SEMANTIC_WEIGHTING_GATE.md` for the open weight-derivation problem, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary, and `docs/VALIDATION_STATUS.md` for current verification status.
 
 ## Layer architecture
 
