@@ -57,3 +57,41 @@ def test_endpoints_must_be_admitted():
             admitted=frozenset({"a"}),
             distinctions=(BinaryDistinction("a", "a", "b"),),
         )
+
+
+
+def test_ra0_star_allows_multiple_distinctions_per_host():
+    model = GenerativeRelationModel(
+        admitted=frozenset({"a", "b", "c"}),
+        distinctions=(
+            BinaryDistinction("a", "b", "c"),
+            BinaryDistinction("a", "a", "b"),
+            BinaryDistinction("b", "a", "c"),
+            BinaryDistinction("c", "a", "b"),
+        ),
+    )
+
+    assert model.satisfies_ra0_star()
+    assert len(model.distinctions_by_host["a"]) == 2
+
+    selected = model.selected_distinction_by_host["a"]
+    assert (selected.left, selected.right) == ("a", "b")
+
+    tree = model.unfold("a", 1)
+    assert tree[(-1,)] == "a"
+    assert tree[(1,)] == "b"
+
+
+def test_ra0_star_multiple_distinctions_do_not_break_recursive_closure():
+    model = GenerativeRelationModel(
+        admitted=frozenset({"a", "b"}),
+        distinctions=(
+            BinaryDistinction("a", "a", "b"),
+            BinaryDistinction("a", "b", "a"),
+            BinaryDistinction("b", "a", "b"),
+        ),
+    )
+
+    assert model.satisfies_ra0_star()
+    for depth in range(6):
+        assert model.rr1_holds_through_depth("a", depth)
