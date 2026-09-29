@@ -36,6 +36,9 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | THM_RELATION_VALUE_CARDINALITY_LOWER_BOUND | THEOREM | META0 plus RA0_REL_STAR force at least one underlying primitive relation value after forgetting branch occurrence identity. | META0, RA0_REL_STAR |
 | REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL | REFERENCE REALIZATION | Explicit singleton model with one admitted carrier, one underlying self-relation value, and two distinct branch occurrences. | META0, RA0_REL_STAR |
 | THM_SINGLE_RELATION_VALUE_MINIMALITY | THEOREM | The exact minimum underlying relation-value cardinality under META0 plus RA0_REL_STAR is 1. | THM_RELATION_VALUE_CARDINALITY_LOWER_BOUND, REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL |
+| THM_RELATION_OCCURRENCE_CARDINALITY_LOWER_BOUND | THEOREM | META0 plus RA0_REL_STAR force at least two branch-relation occurrences. | META0, RA0_REL_STAR |
+| THM_TWO_RELATION_OCCURRENCE_MINIMALITY | THEOREM | The minimal singleton witness attains the branch-occurrence lower bound, so the exact minimum is 2. | THM_RELATION_OCCURRENCE_CARDINALITY_LOWER_BOUND, REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL |
+| THM_MINIMAL_RELATIONAL_ATOM_SIGNATURE | THEOREM | The exact minimal cardinality triple is one admitted carrier, one underlying relation value, and two branch-relation occurrences. | THM_SINGLETON_FOUNDATION_MINIMALITY, THM_SINGLE_RELATION_VALUE_MINIMALITY, THM_TWO_RELATION_OCCURRENCE_MINIMALITY |
 | THM_RR1_FROM_RA0_STAR | THEOREM | RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences. | RA0_STAR |
 | REF_CP1 | REFERENCE REALIZATION | A minimal complex binary distinction may be represented by two projectively distinct CP1 states with Fubini-Study metric. | DEF_POINT, DEF_BINARY_DISTINCTION |
 | REF_CP1_REFINEMENT | REFERENCE REALIZATION | Recursive refinement is realized as a tree of local CP1/FS fibres indexed by relational carriers. | REF_CP1, RR1 |
