@@ -95,3 +95,15 @@ def test_ra0_star_multiple_distinctions_do_not_break_recursive_closure():
     assert model.satisfies_ra0_star()
     for depth in range(6):
         assert model.rr1_holds_through_depth("a", depth)
+
+
+
+def test_ra0_star_is_vacuously_true_on_empty_presentation_without_ex0():
+    model = GenerativeRelationModel(
+        admitted=frozenset(),
+        distinctions=(),
+    )
+
+    assert model.satisfies_ra0_star()
+    with pytest.raises(ValueError):
+        model.unfold("a", 1)
