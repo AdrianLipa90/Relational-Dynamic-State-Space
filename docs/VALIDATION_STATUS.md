@@ -31,7 +31,7 @@ Static checks found:
 The current claim ledger contains:
 
 \[
-80
+84
 \]
 
 unique claim IDs.
@@ -63,13 +63,13 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 196 Python test functions:
+The current repository contains 200 Python test functions:
 
 | File | Test functions |
 |---|---:|
 | \`tests/test_algebra.py\` | 12 |
-| \`tests/test_axioms.py\` | 43 |
-| \`tests/test_closure.py\` | 35 |
+| \`tests/test_axioms.py\` | 44 |
+| \`tests/test_closure.py\` | 38 |
 | \`tests/test_independence_witnesses.py\` | 13 |
 | \`tests/test_layering.py\` | 3 |
 | \`tests/test_operations.py\` | 43 |
@@ -77,7 +77,7 @@ The current repository contains 196 Python test functions:
 | \`tests/test_potential.py\` | 13 |
 | \`tests/test_realizations.py\` | 19 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **196** |
+| **Total** | **200** |
 
 This is an inventory count, not a runtime result.
 
@@ -274,6 +274,28 @@ Under META0 plus RA0_REL_STAR, the exact minimum cardinalities are
 \]
 
 The lower bounds and the explicit singleton one-relation witness are tracked separately in the claim ledger. The two relation occurrences may project to the same self-relation value because occurrence identity includes the branch slot.
+
+### Ideal occurrence boundary audit
+
+The finite occurrence-address set remains countable:
+
+\[
+|\{-1,+1\}^{<\omega}|=\aleph_0.
+\]
+
+A separate ideal boundary is defined by
+
+\[
+\partial V=\{-1,+1\}^{\mathbb N},
+\]
+
+with exactly \(2^n\) prefix cylinders at depth \(n\) and cardinality
+
+\[
+|\partial V|=2^{\aleph_0}.
+\]
+
+RR1 realizes every finite prefix of every ideal boundary path. It does not assert an admitted infinite-address limit carrier, so boundary uncountability is not carrier uncountability.
 
 ### Occurrence tree-metric audit
 
