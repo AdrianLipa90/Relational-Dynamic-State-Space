@@ -231,3 +231,17 @@ def test_relational_distinction_rejects_empty_relation_label():
             left_relation="",
             right_relation="r+",
         )
+
+
+
+def test_singleton_relational_candidate_achieves_meta0_cardinality_lower_bound():
+    model = singleton_ra0_rel_star_model()
+    empty = GenerativeRelationModel(
+        admitted=frozenset(),
+        distinctions=(),
+    )
+
+    assert len(model.admitted) == 1
+    assert model.is_admissible_rtofa_model()
+    assert model.satisfies_ra0_rel_star()
+    assert not empty.is_admissible_rtofa_model()
