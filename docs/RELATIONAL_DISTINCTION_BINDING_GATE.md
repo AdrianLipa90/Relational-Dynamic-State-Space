@@ -60,6 +60,68 @@ a
 a.
 \]
 
+## Occurrence-to-relation-value projection
+
+A branch-relation occurrence carries the slot as part of its identity:
+
+\[
+o=(\epsilon,r,s,t),
+\qquad
+\epsilon\in\{-1,+1\}.
+\]
+
+Forgetting only the occurrence slot gives the core typed relation value
+
+\[
+\boxed{
+\pi_{\mathrm{rel}}:
+(\epsilon,r,s,t)
+\longmapsto
+(s,t,r).
+}
+\]
+
+The executable reference kernel materializes this through
+\`BranchRelationOccurrence.as_typed_relation(...)\`.
+
+The projection need not be injective. It is possible that
+
+\[
+o_-\neq o_+,
+\]
+
+while
+
+\[
+\pi_{\mathrm{rel}}(o_-)
+=
+\pi_{\mathrm{rel}}(o_+).
+\]
+
+For example,
+
+\[
+o_-=(-,r,a,a),
+\qquad
+o_+=(+,r,a,a)
+\]
+
+are distinct branch occurrences but represent the same underlying typed
+relation value after forgetting the branch slot.
+
+Thus RTOFA distinguishes:
+
+\[
+\boxed{
+\text{relation occurrence}
+\neq
+\text{relation value}.
+}
+\]
+
+This distinction is required for recursive branch structure and later
+transport/holonomy bookkeeping.
+
 ## Explicit countermodel for old RA0*
 
 The distinction-to-relation binding is not cosmetic.
