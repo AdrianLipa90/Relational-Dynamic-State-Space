@@ -1,13 +1,14 @@
 # RTOFA Axiom Audit
 
-This audit separates **axioms**, **definitions**, **structural primitives**, **reference realizations**, **derived constructions**, and **imported bridges**. A dependency edge means "this construction explicitly uses that item"; it is not a claim that every item is logically derivable from the foundational axiom.
+This audit separates **model-formation rules**, **axioms**, **definitions**, **structural primitives**, **reference realizations**, **derived constructions**, and **imported bridges**. A dependency edge means "this construction explicitly uses that item"; it is not a claim that every item is logically derivable from the foundational axiom.
 
 ## Classification
 
 | ID | Class | Statement | Direct dependencies |
 |---|---|---|---|
+| META0 | FORMATION RULE | Absolute nothingness has no object-language denotation; admissible RTOFA models have a non-empty admitted carrier domain. | — |
+| EX0 | THEOREM | Every admissible RTOFA model contains at least one admitted relational carrier. | META0 |
 | RA0 | AXIOM | An admitted observable is not independent of relation. | — |
-| EX0 | CANDIDATE AXIOM | At least one relational carrier is admitted; this prevents the empty model from satisfying the foundation vacuously. | DEF_POINT |
 | DEF_POINT | DEFINITION | The minimal algebraic carrier is an unscaled point. | — |
 | DEF_BINARY_REL | DEFINITION | A primitive typed relation is binary: r:a->b. Higher arity is constructed separately. | — |
 | RR1 | AXIOM | At every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction; the rule re-applies at every finite refinement depth. | DEF_POINT, DEF_BINARY_REL |
@@ -54,24 +55,32 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 
 ## Audit conclusions
 
-1. **RA0 and RR1 are independent foundational assumptions in the current kernel.** RA0 requires relational admissibility; it does not force recursive refinement.
-2. **Binary relation typing is explicit.** It is part of the signature rather than a hidden consequence of RA0.
-3. **CP1 is not an axiom.** It is the chosen minimal complex binary projective realization. A non-CP1 model can still satisfy RA0 and RR1.
-4. **The additive K-module structure, tensor-scalar grading, semantic scale, supplied semantic weighting, typed transport, orbital action and relational product are signature choices/structural primitives.** They are not derived from RA0. The additive module is required before differences such as commutators, associators and refinement residuals are meaningful.
-5. **Moiré is derived once invertible orbital actions are present.**
-6. **Refinement residual requires both recursive refinement and a relational product.**
-7. **A U(1) representation of relational holonomy is a reference realization, not a core theorem.**
-8. **Topological winding depends on that U(1) representation and an explicit closure check, not on Zero Axis.**
-9. **Zero Axis is an independent imported bridge.** Its finite inverse projective lift is optional and occurs only after a U(1) phase has already been supplied.
-10. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
+1. **META0 is logically prior to the object-level axioms.** It is a model-formation meta-axiom: absolute nothingness is not reified, and intended RTOFA models have non-empty admitted carrier domains.
+2. **EX0 is a theorem of META0, not an extra ontological axiom.** A raw empty mathematical presentation may satisfy universal formulas vacuously, but it is excluded from the intended model class.
+3. **RA0 and RR1 remain independent object-level foundational assumptions in the current kernel.** RA0 requires relational admissibility; it does not force recursive refinement.
+4. **Binary relation typing is explicit.** It is part of the signature rather than a hidden consequence of RA0.
+5. **CP1 is not an axiom.** It is the chosen minimal complex binary projective realization. A non-CP1 model can still satisfy RA0 and RR1.
+6. **The additive K-module structure, tensor-scalar grading, semantic scale, supplied semantic weighting, typed transport, orbital action and relational product are signature choices/structural primitives.** They are not derived from RA0. The additive module is required before differences such as commutators, associators and refinement residuals are meaningful.
+7. **Moiré is derived once invertible orbital actions are present.**
+8. **Refinement residual requires both recursive refinement and a relational product.**
+9. **A U(1) representation of relational holonomy is a reference realization, not a core theorem.**
+10. **Topological winding depends on that U(1) representation and an explicit closure check, not on Zero Axis.**
+11. **Zero Axis is an independent imported bridge.** Its finite inverse projective lift is optional and occurs only after a U(1) phase has already been supplied.
+12. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
 
-## Minimal foundational axiom set
+## Canonical foundational stratification
 
 \[
-\boxed{\mathrm{RA0}+\mathrm{RR1}}
+\boxed{
+\mathrm{META0}
+\;\triangleright\;
+(\mathrm{RA0}+\mathrm{RR1})
+}
 \]
 
-This is a deliberately small axiom set. It does **not** mean that the rest of the signature follows from these two axioms; it means those other ingredients are typed definitions, independent structural primitives, realizations, derivations, or bridges.
+META0 belongs to model formation rather than the object language. RA0 and RR1 are the current object-level axioms. EX0 is a theorem of META0.
+
+This deliberately small foundation does **not** mean that the rest of the signature follows from these statements; the remaining ingredients are typed definitions, independent structural primitives, realizations, derivations, or bridges.
 
 ## Open reduction target
 
@@ -315,37 +324,43 @@ For a finite admissible candidate set \(\mathcal C\),
 This construction is a relational scalar diagnostic. It is not identified with energy, mass, gravity, or metric curvature by the general algebra. A potential-to-geometry map would be a separate realization/bridge.
 
 
-## Non-vacuity boundary
+## Non-vacuity and non-reification boundary
 
-The current canonical foundation
+At the level of unrestricted raw presentations, the universal object-level formulas remain compatible with an empty carrier domain:
 
 \[
 \mathrm{RA0}+\mathrm{RR1}
+\not\vdash
+\mathrm{EX0},
+\qquad
+\mathrm{RA0}^{*}
+\not\vdash
+\mathrm{EX0}.
 \]
 
-does not force existence of an admitted carrier. The empty witness satisfies both statements vacuously. Therefore
+That empty presentation is a mathematical object and is useful as a vacuity witness. It is **not** identified with absolute nothingness.
+
+META0 fixes the intended model semantics:
 
 \[
 \boxed{
-\mathrm{RA0}+\mathrm{RR1}
-\not\Rightarrow
-\mathrm{EX0}.
+\mathfrak M\in\operatorname{Mod}(\mathrm{RTOFA})
+\Longrightarrow
+\operatorname{Adm}^{\mathfrak M}\neq\varnothing.
 }
 \]
 
-The same issue applies to the strengthened closure candidate:
+Hence
 
 \[
-\mathrm{RA0}^{*}
-\not\Rightarrow
-\mathrm{EX0}.
+\boxed{
+\mathrm{META0}\models\mathrm{EX0},
+\qquad
+\mathrm{EX0}:\exists p\,\operatorname{Adm}(p).
+}
 \]
 
-EX0 is therefore tracked separately as a candidate axiom:
+The executable reference kernel preserves this distinction by allowing an empty raw presentation while marking it as not admissible through the model-formation check.
 
-\[
-\mathrm{EX0}:
-\exists p\,\operatorname{Adm}(p).
-\]
+See \`docs/FOUNDATIONAL_NONVACUITY_GATE.md\`.
 
-No promotion is made automatically. See `docs/FOUNDATIONAL_NONVACUITY_GATE.md`.
