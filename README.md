@@ -235,12 +235,15 @@ Thus the same minimal model can satisfy
 \qquad
 |\operatorname{RelVal}|=1,
 \qquad
-|\operatorname{BranchOcc}(a)|=2.
+|\operatorname{RelOcc}|=2.
 }
 \]
 
 The distinction multiplicity therefore resides in the occurrence layer rather
 than requiring multiple base carriers or multiple underlying relation values.
+This triple is exact for the candidate model class: META0 gives the non-empty
+carrier lower bound, RA0_REL_STAR gives the two-occurrence lower bound, and
+the singleton one-relation witness attains all three simultaneously.
 
 ## Reference minimal distinction
 
