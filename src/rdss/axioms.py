@@ -148,6 +148,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("REF_CP1", "RR1"),
     ),
     Claim(
+        "REF_SINGLETON_CP1_OCCURRENCE_REALIZATION",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The minimal singleton relational model is compatible at every finite tested depth with a local CP^1/Fubini-Study fibre on each path-labelled occurrence, while all occurrences may retain the same underlying carrier label.",
+        ("REF_MINIMAL_SINGLE_RELATION_VALUE_MODEL", "REF_CP1_REFINEMENT"),
+    ),
+    Claim(
         "RA0_STAR",
         ClaimKind.CANDIDATE_AXIOM,
         "Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers.",
