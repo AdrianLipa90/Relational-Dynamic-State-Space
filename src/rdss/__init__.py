@@ -35,6 +35,7 @@ from .operations import (
     RelationalProductRule,
     TransportPath,
     orbital_composition_residual,
+    orbital_identity_residual,
     orbital_inverse_residual,
     product_bilinearity_residuals,
     reference_tensor_product,
@@ -88,4 +89,5 @@ __all__ = [
     "orbital_composition_residual",
     "orbital_inverse_residual",
     "product_bilinearity_residuals",
+    "orbital_identity_residual",
 ]
