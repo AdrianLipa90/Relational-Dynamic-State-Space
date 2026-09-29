@@ -1,0 +1,244 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class FiniteRelationModel:
+    """Finite witness model for RA0/RR1 dependency checks.
+
+    relations are directed primitive relations (source, target).
+    refinements map a relational endpoint to two distinct branch occurrences.
+    The two occurrences may carry the same underlying point label.
+    """
+
+    points: frozenset[str]
+    admitted: frozenset[str]
+    relations: frozenset[tuple[str, str]]
+    refinements: tuple[tuple[str, str, str], ...] = ()
+    branch_relations: tuple[tuple[str, int, str, str], ...] = ()
+
+    def __post_init__(self) -> None:
+        if not self.admitted <= self.points:
+            raise ValueError("admitted points must belong to the carrier")
+        for source, target in self.relations:
+            if source not in self.points or target not in self.points:
+                raise ValueError("relation endpoints must belong to the carrier")
+        seen: set[str] = set()
+        for parent, left, right in self.refinements:
+            if parent in seen:
+                raise ValueError("each parent has at most one reference refinement")
+            seen.add(parent)
+            if parent not in self.points or left not in self.points or right not in self.points:
+                raise ValueError("refinement points must belong to the carrier")
+
+        bound_slots: set[tuple[str, int]] = set()
+        for parent, branch, source, target in self.branch_relations:
+            if branch not in (-1, 1):
+                raise ValueError("branch relation slot must be -1 or +1")
+            key = (parent, branch)
+            if key in bound_slots:
+                raise ValueError("each parent/branch slot has at most one reference binding")
+            bound_slots.add(key)
+            if (
+                parent not in self.points
+                or source not in self.points
+                or target not in self.points
+            ):
+                raise ValueError("branch relation points must belong to the carrier")
+
+    def satisfies_ex0(self) -> bool:
+        """EX0 witness semantics: at least one relational carrier is admitted."""
+        return bool(self.admitted)
+
+    def is_admissible_rtofa_model(self) -> bool:
+        """Executable non-vacuity component of META0 for finite witnesses."""
+        return self.satisfies_ex0()
+
+    def satisfies_ra0(self) -> bool:
+        """RA0 witness semantics: every admitted point is incident to a relation."""
+        incident = {point for edge in self.relations for point in edge}
+        return self.admitted <= incident
+
+    def satisfies_ra0_star(self) -> bool:
+        """RA0* witness semantics without distinction-to-relation binding.
+
+        Every admitted carrier must have a binary refinement and both branch
+        carrier labels must themselves be admitted. Left/right occurrence
+        slots may carry the same label.
+        """
+        refinement_map = {
+            parent: (left, right)
+            for parent, left, right in self.refinements
+        }
+        if not self.admitted <= set(refinement_map):
+            return False
+        for parent in self.admitted:
+            left, right = refinement_map[parent]
+            if left not in self.admitted or right not in self.admitted:
+                return False
+        return True
+
+    def satisfies_rr1(self) -> bool:
+        """RR1 witness semantics: refinement closes recursively on reachable descendants.
+
+        Starting from every primitive relation endpoint, each reachable
+        refinement occurrence must itself have a non-degenerate refinement.
+        Finite cyclic presentations are allowed; recursion is about closure of
+        occurrences, not ontic novelty of carrier labels.
+        """
+        refinement_map = {
+            parent: (left, right)
+            for parent, left, right in self.refinements
+        }
+        frontier = list({x for edge in self.relations for x in edge})
+        seen: set[str] = set()
+
+        while frontier:
+            current = frontier.pop()
+            if current in seen:
+                continue
+            if current not in refinement_map:
+                return False
+            left, right = refinement_map[current]
+            seen.add(current)
+            frontier.extend((left, right))
+        return True
+
+    def satisfies_ra0_rel_star(self) -> bool:
+        """Relationally bound strengthening of RA0*.
+
+        Each admitted parent must have both branch occurrence slots explicitly
+        bound to primitive relation values from that parent to the selected
+        left/right refinement carrier. The two slots may project to the same
+        underlying relation value.
+        """
+        if not self.satisfies_ra0_star():
+            return False
+
+        refinement_map = {
+            parent: (left, right)
+            for parent, left, right in self.refinements
+        }
+        binding_map = {
+            (parent, branch): (source, target)
+            for parent, branch, source, target in self.branch_relations
+        }
+
+        for parent in self.admitted:
+            left, right = refinement_map[parent]
+            for branch, expected_target in ((-1, left), (1, right)):
+                relation = binding_map.get((parent, branch))
+                if relation is None:
+                    return False
+                source, target = relation
+                if source != parent or target != expected_target:
+                    return False
+                if (source, target) not in self.relations:
+                    return False
+        return True
+
+
+def witness_ra0_not_rr1() -> FiniteRelationModel:
+    """RA0 holds but recursive closure is deliberately absent."""
+    return FiniteRelationModel(
+        points=frozenset({"a", "b"}),
+        admitted=frozenset({"a", "b"}),
+        relations=frozenset({("a", "b"), ("b", "a")}),
+        refinements=(),
+    )
+
+
+def witness_rr1_not_ra0() -> FiniteRelationModel:
+    """Recursive RR1 holds while an admitted isolated point breaks RA0."""
+    return FiniteRelationModel(
+        points=frozenset({"a", "b", "q"}),
+        admitted=frozenset({"a", "b", "q"}),
+        relations=frozenset({("a", "b"), ("b", "a")}),
+        refinements=(
+            ("a", "a", "b"),
+            ("b", "a", "b"),
+        ),
+    )
+
+
+def witness_ra0_rr1_without_cp1() -> FiniteRelationModel:
+    """A recursive cyclic relational/refinement model with no CP1 layer."""
+    return FiniteRelationModel(
+        points=frozenset({"a", "b"}),
+        admitted=frozenset({"a", "b"}),
+        relations=frozenset({("a", "b"), ("b", "a")}),
+        refinements=(
+            ("a", "a", "b"),
+            ("b", "a", "b"),
+        ),
+    )
+
+
+
+def witness_ra0_rr1_without_ex0() -> FiniteRelationModel:
+    """Empty countermodel: RA0 and RR1 hold vacuously while EX0 fails."""
+    return FiniteRelationModel(
+        points=frozenset(),
+        admitted=frozenset(),
+        relations=frozenset(),
+        refinements=(),
+    )
+
+
+
+def witness_meta0_not_ra0() -> FiniteRelationModel:
+    """Non-empty admitted carrier domain without relational admissibility.
+
+    This witness shows that model non-vacuity alone does not imply RA0 when
+    Adm is treated as a primitive predicate.
+    """
+    return FiniteRelationModel(
+        points=frozenset({"a"}),
+        admitted=frozenset({"a"}),
+        relations=frozenset(),
+        refinements=(),
+    )
+
+
+
+def witness_ra0_star_not_ra0() -> FiniteRelationModel:
+    """Singleton RA0* distinction structure with no primitive relation."""
+    return FiniteRelationModel(
+        points=frozenset({"a"}),
+        admitted=frozenset({"a"}),
+        relations=frozenset(),
+        refinements=(
+            ("a", "a", "a"),
+        ),
+    )
+
+
+
+def witness_ra0_rr1_without_relational_binding() -> FiniteRelationModel:
+    """RA0 and recursive RR1 hold, but branch slots are not relation-bound."""
+    return FiniteRelationModel(
+        points=frozenset({"a"}),
+        admitted=frozenset({"a"}),
+        relations=frozenset({("a", "a")}),
+        refinements=(
+            ("a", "a", "a"),
+        ),
+        branch_relations=(),
+    )
+
+
+def witness_ra0_rel_star_singleton() -> FiniteRelationModel:
+    """Singleton finite witness with explicit relation binding on both slots."""
+    return FiniteRelationModel(
+        points=frozenset({"a"}),
+        admitted=frozenset({"a"}),
+        relations=frozenset({("a", "a")}),
+        refinements=(
+            ("a", "a", "a"),
+        ),
+        branch_relations=(
+            ("a", -1, "a", "a"),
+            ("a", 1, "a", "a"),
+        ),
+    )

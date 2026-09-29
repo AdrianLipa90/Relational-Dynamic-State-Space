@@ -1,0 +1,2189 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\title{Relational Tensor--Scalar Orbital--Fractal Algebra\\
+\large Core Signature, Coherence Residuals, and Reference Realizations}
+\author{Adrian Lipa}
+\date{29 September 2026}
+
+\newcommand{\Arel}{\mathfrak A_{\rm rel}}
+\newcommand{\CP}{\mathbb{CP}^{1}}
+\newcommand{\FS}{\mathrm{FS}}
+\newcommand{\Zaxis}{\mathcal Z_{0}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This monograph defines a general relational tensor--scalar,
+orbital--fractal algebra prior to any specific spacetime, metric, or physical
+interpretation. The core signature contains relational admissibility, a
+minimal point carrier, additive typed sectors, relational and tensor
+products, contraction, typed transport, semantic coarse-graining, orbital
+operators, and recursive branch refinement. Associativity, commutativity,
+bilinearity, functoriality, equivariance, monoidality, and cross-operation
+naturality are not silently imposed; their failures are retained as explicit
+residuals.
+
+Projective \(\CP\)/Fubini--Study geometry, scalar-angle Moir\'e rotation,
+generic \(U(1)\) phase tools, and the Zero-Axis projective map are separated
+from the core as reference realizations or bridge structures. In particular,
+the recursive \(\CP\) construction is fibre-local rather than one global
+Bloch sphere, and a phase representation of abstract relational holonomy must
+be supplied by a concrete realization before the Zero-Axis lift is used.
+
+The current canonical foundational stratification is
+\(\mathrm{META0}\triangleright(\mathrm{RA0}+\mathrm{RR1})\);
+the stronger object-level closure candidate \(\mathrm{RA0}^{*}\) is tracked
+separately. No Planck scale, Minkowski structure, gravitational law, exact
+self-similarity, or physical identification is assumed by the general
+algebra.
+\end{abstract}
+
+\section{Scope}
+
+The object developed here is not a spacetime model. It is a general algebra
+of relations. Concrete geometric and physical constructions may later be
+representations of this algebra, but they are not part of its definition.
+
+The typed algebraic family is written
+\[
+\boxed{
+\Arel=\left\{\mathcal A_{\sigma,\omega}^{p,q}\right\},
+}
+\]
+where \((p,q)\) is tensor rank, \(\omega\in\{-1,+1\}^{*}\) is the exact
+path-labelled relational carrier address, and \(\sigma\in\Sigma\) is a semantic
+scale or context. The refinement level is derived as \(n=|\omega|\); two
+different addresses at the same level remain different typed sectors.
+
+The scalar sector is not a separate ontology. It is the tensor rank-zero
+sector:
+\[
+\boxed{
+\mathbb K_{\sigma,\omega}=\mathcal A_{\sigma,\omega}^{0,0}.
+}
+\]
+
+\section{Model formation: non-reification and non-vacuity}
+
+Before the object-level relational axioms, RTOFA fixes the class of admissible
+models.
+
+Absolute nothingness is not assigned a term, carrier, state, value, relation,
+zero, or set inside the object language. In particular, the mathematical
+empty set \(\varnothing\) is not identified with absolute nothingness:
+\(\varnothing\) is already a mathematical object.
+
+The model-formation meta-axiom is therefore
+
+\[
+\boxed{
+\mathrm{META0}:
+\begin{cases}
+\text{absolute nothingness has no denotation in the RTOFA object language},\\[1mm]
+\mathfrak M\in\operatorname{Mod}(\mathrm{RTOFA})
+\Rightarrow
+\operatorname{Adm}^{\mathfrak M}\neq\varnothing.
+\end{cases}
+}
+\]
+
+META0 is not a proposition about an object called ``nothing.'' It specifies
+what counts as an RTOFA model.
+
+Consequently every admissible model satisfies
+
+\[
+\boxed{
+\mathrm{EX0}:
+\exists p\,\operatorname{Adm}(p).
+}
+\]
+
+Thus
+
+\[
+\boxed{
+\mathrm{META0}\models\mathrm{EX0}.
+}
+\]
+
+EX0 is classified as a theorem of model-formation semantics rather than an
+additional object-level ontological axiom.
+
+A raw empty mathematical presentation remains useful as a metamathematical
+vacuity witness. Universal formulas may hold there vacuously, but that raw
+presentation is excluded from \(\operatorname{Mod}(\mathrm{RTOFA})\).
+
+\section{Relational admissibility}
+
+The motivating relational intuition is: if absolutely nothing is admitted,
+there is no admitted term that can stand in relation to another and therefore
+no admitted observation can be formed. The formal kernel does not quantify
+over a metaphysical object called ``nothing.'' It records only the operational
+consequence relevant to the algebra: anything admitted as an observable is
+not independent of relation.
+
+Accordingly, the foundational rule is stated as the admissibility condition:
+\[
+\boxed{
+\operatorname{Adm}(x)
+\Longrightarrow
+\exists\,y,r:
+\left(
+\operatorname{Rel}_{r}(x,y)
+\lor
+\operatorname{Rel}_{r}(y,x)
+\right).
+}
+\tag{RA0}
+\]
+An admissible observable is therefore not defined as an isolated object.
+The statement is intentionally weaker and cleaner than a physical claim: it
+does not assign a spacetime, energy, length, or dynamics.
+
+\subsection{Relational-admissibility reduction gate}
+
+META0 does not by itself imply RA0 when \(\operatorname{Adm}\) is treated as
+a primitive predicate. The finite presentation
+\[
+P=\{a\},
+\qquad
+\operatorname{Adm}=\{a\},
+\qquad
+R=\varnothing
+\]
+is non-empty but leaves \(a\) incident to no primitive relation. Hence
+\[
+\boxed{
+\mathrm{META0}\not\Rightarrow\mathrm{RA0}
+}
+\]
+under the current primitive-admissibility language.
+
+There is a possible definitional reduction. One may instead define
+\[
+\boxed{
+\operatorname{Adm}_{R}(x)
+:\Longleftrightarrow
+\exists y,r\,
+\left(
+\operatorname{Rel}_{r}(x,y)
+\lor
+\operatorname{Rel}_{r}(y,x)
+\right).
+}
+\]
+Under this definition RA0 becomes true by definitional expansion and need not
+remain an independent axiom.
+
+This is not a theorem from the old language. It changes the semantics of
+admissibility: isolated carriers become inadmissible by definition. The
+current kernel therefore keeps primitive \(\operatorname{Adm}\) and RA0 as
+an axiom until that definitional reduction is explicitly promoted.
+
+A primitive relation is typed as a binary arrow
+\[
+\boxed{r:a\to b.}
+\]
+This is a definition of the primitive relational signature, not a theorem of
+RA0. Higher-arity relations may be constructed separately from binary
+relations or introduced by an explicit extension of the signature.
+
+The absence of an admitted relation is not identified with algebraic zero.
+For every typed sector there may be a zero element
+\[
+0_{\sigma,\omega}^{p,q}\in\mathcal A_{\sigma,\omega}^{p,q},
+\]
+while ``no relation'' is a separate condition.
+In the additive reference sector this zero is executable as the identity
+\[
+X+0_X=X,
+\qquad
+X-X=0_X.
+\]
+The zero \(0_X\) is sector-exact: it carries the same tensor rank, exact
+relational carrier, semantic scale, and component dimension as \(X\).
+Its refinement level is derived from that carrier and does not by itself
+identify the additive sector.
+The executable reference zero of an element preserves its rank, carrier,
+semantic scale, and component dimension.
+
+\subsection{Formula-level vacuity versus admissible-model semantics}
+
+RA0 is conditional on an observable being admitted, and RR1 is conditional on
+a relational occurrence being available to refine. Therefore, if those
+formulas are evaluated over unrestricted raw presentations, the empty
+presentation satisfies them vacuously.
+
+Accordingly, at the formula level,
+
+\[
+\boxed{
+\mathrm{RA0}+\mathrm{RR1}
+\not\vdash
+\mathrm{EX0},
+}
+\]
+
+and likewise
+
+\[
+\boxed{
+\mathrm{RA0}^{*}
+\not\vdash
+\mathrm{EX0}.
+}
+\]
+
+This does not contradict META0. The empty presentation is a mathematical
+object used to audit vacuous truth; it is not an admissible RTOFA model.
+
+Within the intended model class,
+
+\[
+\boxed{
+\mathrm{META0}\models\mathrm{EX0}.
+}
+\]
+
+Hence the foundational stratification is
+
+\[
+\boxed{
+\mathrm{META0}
+\;\triangleright\;
+(\mathrm{RA0}+\mathrm{RR1}),
+}
+\]
+
+with EX0 derived from model formation.
+
+\section{Minimal carrier and minimal distinction}
+
+The minimal carrier of the general algebra is a point
+\[
+\boxed{p.}
+\]
+No Planck length or other physical scale is attached to it at this level.
+A later physical representation may provide such a scale through a separate
+bridge.
+
+The reference minimal two-channel realization of a distinction uses a
+non-zero vector in \(\mathbb C^2\), modulo global phase:
+\[
+|\psi\rangle
+=\alpha|0\rangle+\beta|1\rangle,
+\qquad
+|\alpha|^2+|\beta|^2=1,
+\]
+\[
+\boxed{
+\mathbb P(\mathbb C^2)=\CP\simeq S^2.
+}
+\tag{REF-CP1}
+\]
+The natural projective metric is Fubini--Study:
+\[
+\boxed{
+d_{\FS}([\psi],[\phi])
+=\arccos|\langle\psi|\phi\rangle|.
+}
+\]
+
+A relation \(r\) may select two projective states
+\[
+r\longmapsto(p_r^-,p_r^+)\in\CP\times\CP.
+\]
+For this pair to realize a binary distinction faithfully, the projective
+states must be distinct:
+\[
+\boxed{
+d_{\FS}(p_r^-,p_r^+)>0.
+}
+\]
+This geometric non-degeneracy is separate from carrier-label multiplicity.
+The two branch occurrences may carry the same underlying carrier label while
+their local projective states remain distinct.
+
+Maximal distinction is the special case
+\[
+\langle p_r^-|p_r^+\rangle=0,
+\qquad
+d_{\FS}=\frac{\pi}{2}.
+\]
+Generic distinctions need not be maximal and therefore need not select
+antipodal Bloch points, but zero Fubini--Study separation is rejected by the
+reference distinction realization. Equation (REF-CP1) is a reference realization of a
+complex binary distinction. It is not claimed to follow from RA0 alone.
+
+\section{Recursive relational refinement}
+
+A selected relational point may itself become the carrier of another
+minimal distinction. Let
+\[
+V_n=\{-1,+1\}^{n}.
+\]
+For \(\omega\in V_n\), define the binary refinement
+\[
+\boxed{
+p_\omega\longmapsto
+\{p_{\omega-},p_{\omega+}\}.
+}
+\tag{RR1}
+\]
+The two children are non-degenerate as \emph{occurrences}: their path
+addresses \(\omega-\) and \(\omega+\) are distinct. This does not require
+their underlying carrier labels to be different. In particular, the
+singleton presentation
+\[
+D(a)=(a,a)
+\]
+is permitted: \(a_-\) and \(a_+\) are different relational occurrences
+even though
+\[
+\operatorname{carrier}(a_-)
+=
+\operatorname{carrier}(a_+)
+=
+a.
+\]
+RR1 is an explicit second foundational axiom: RA0 requires relation but does
+not by itself force recursive refinement. Thus the general construction contains a recursive relational tower
+\[
+p\to\{p_-,p_+\}
+\to\{p_{--},p_{-+},p_{+-},p_{++}\}
+\to\cdots.
+\]
+
+Fractality means compatibility across refinement levels, not a requirement of
+perfect geometric self-similarity. For a branch
+\(\epsilon\in\{-1,+1\}\), use the typed refinement
+\[
+\boxed{
+F_{\epsilon}:
+\mathcal A_{\sigma,\omega}^{p,q}
+\to
+\mathcal A_{\tau,\omega\epsilon}^{p,q}.
+}
+\]
+The target semantic scale \(\tau\) is explicit; the reference realization
+preserves tensor rank and advances the relational carrier by exactly one
+branch. For a relational product \(\star\), define
+\[
+\boxed{
+\Delta_{F_{\epsilon}}(X,Y)
+=
+F_{\epsilon}(X\star Y)
+-
+F_{\epsilon}(X)\star F_{\epsilon}(Y).
+}
+\]
+Exact self-similarity is the special case \(\Delta_F=0\). Non-zero residuals
+remain legitimate algebraic information.
+
+\subsection{Reference CP1 fibre realization of refinement}
+
+The recursive relation admits a concrete projective reference realization
+without promoting \(\CP\) to a universal axiom. Associate to each relational
+carrier a local fibre
+\[
+\boxed{
+\mathcal F_{\omega}\simeq\CP
+}
+\]
+with its Fubini--Study metric. A local distinction
+\[
+D_{\omega}
+=
+\left(
+q_{\omega-},q_{\omega+}
+\right),
+\qquad
+q_{\omega\pm}\in\mathcal F_{\omega},
+\]
+indexes the two child carriers
+\[
+p_{\omega-},
+\qquad
+p_{\omega+}.
+\]
+Each child carrier may then support its own local fibre
+\[
+\mathcal F_{\omega-}\simeq\CP,
+\qquad
+\mathcal F_{\omega+}\simeq\CP.
+\]
+
+The selected projective state \(q_{\omega\pm}\) in the parent fibre is
+not identified with a coordinate in the child fibre. The connection is an
+incidence/refinement relation:
+\[
+q_{\omega\pm}
+\rightsquigarrow
+p_{\omega\pm}
+\rightsquigarrow
+\mathcal F_{\omega\pm}.
+\]
+This avoids treating all refinement levels as points on one global Bloch
+sphere.
+
+The executable maximal reference tree chooses an orthogonal pair in every
+local fibre,
+\[
+d_{\FS}(q_{\omega-},q_{\omega+})=\frac{\pi}{2},
+\]
+but non-maximal local distinctions are also admissible. Hence maximal
+antipodality belongs to one reference subclass, not to the general relational
+axiom.
+
+\section{Tensor--scalar grading and typed relations}
+
+Each typed sector carries an additive module structure over a scalar domain \(\mathbb K\):
+\[
+\boxed{
+(\mathcal A_{\sigma,\omega}^{p,q},+,0,-,\mathbb K\curvearrowright\mathcal A_{\sigma,\omega}^{p,q}).
+}
+\]
+The abstract algebra does not fix \(\mathbb K=\mathbb C\); the reference kernel uses complex components. This additive structure is required before expressions such as commutators, associators, and refinement residuals can be formed as differences.
+
+Elements are typed by tensor rank, semantic scale, and exact relational carrier address:
+\[
+X\in\mathcal A_{\sigma,\omega}^{p,q}.
+\]
+The level \(n=|\omega|\) is derived metadata and is not sufficient to identify the additive sector.
+Tensor product and contraction have the schematic types
+\[
+\otimes:
+\mathcal A_{\sigma,\omega}^{p,q}\times
+\mathcal A_{\tau,\eta}^{r,s}
+\to
+\mathcal A_{\upsilon,\zeta}^{p+r,q+s},
+\]
+\[
+\operatorname{Contr}:
+\mathcal A_{\sigma,\omega}^{p,q}
+\to
+\mathcal A_{\sigma,\omega}^{p-1,q-1},
+\]
+whenever the relevant type and relation constraints are satisfied.
+
+The tensor product itself is supplied as a typed rule; the reference
+Kronecker-style implementation is only one realization. Strict monoidal
+properties are tested rather than assumed. Define
+\[
+\boxed{
+\Delta_{\alpha}^{\otimes}(X,Y,Z)
+=
+\left\|
+(X\otimes Y)\otimes Z
+-
+X\otimes(Y\otimes Z)
+\right\|
+}
+\]
+for strict associativity. For explicitly supplied left and right unit
+candidates \(\mathbf 1_L,\mathbf 1_R\),
+\[
+\boxed{
+\Delta_{\mathbf 1}^{\otimes}(X)
+=
+\max\left(
+\|\mathbf 1_L\otimes X-X\|,
+\|X\otimes\mathbf 1_R-X\|
+\right).
+}
+\]
+For a supplied braiding \(\beta_{X,Y}\),
+\[
+\boxed{
+\Delta_{\beta}^{\otimes}(X,Y)
+=
+\left\|
+\beta_{X,Y}(X\otimes Y)-Y\otimes X
+\right\|.
+}
+\]
+The zero-defect reference subclass is strict with respect to these checks.
+
+\subsection{Non-strict monoidal coherence gate}
+
+A full non-strict monoidal realization requires more structure than the
+current flattened tensor element stores. In particular, one must retain
+parenthesized tensor objects and explicit isomorphisms
+\[
+\alpha_{X,Y,Z}:
+(X\otimes Y)\otimes Z
+\longrightarrow
+X\otimes(Y\otimes Z),
+\]
+together with
+\[
+\beta_{X,Y}:
+X\otimes Y
+\longrightarrow
+Y\otimes X.
+\]
+Only after these source and target objects are represented explicitly can the
+pentagon and hexagon diagrams be evaluated without ambiguity. The present
+reference kernel therefore does not promote those coherence laws; it records
+strict residuals only. This is an explicit representation gate, not an
+assumption that pentagon or hexagon coherence fails.
+
+A typed relation is written
+\[
+r:a\to b
+\]
+and may induce transport
+\[
+\boxed{
+T_r:\mathcal A_a\to\mathcal A_b.
+}
+\tag{DEF-T}
+\]
+No universal transport law is imposed before the relation type is supplied.
+
+\section{Relational product: no premature associativity}
+
+Let
+\[
+\star_R:
+\mathcal A\times\mathcal A\to\mathcal A
+\]
+denote a relational product in a compatible typed sector. The current
+foundation does not assume either commutativity or associativity.
+
+Their failures are measured, not hidden:
+\[
+\boxed{
+[X,Y]_{\star}
+=X\star Y-Y\star X,
+}
+\]
+\[
+\boxed{
+\alpha(X,Y,Z)
+=(X\star Y)\star Z-X\star(Y\star Z).
+}
+\]
+Commutative or associative subclasses are recovered when the corresponding
+residual vanishes.
+
+Bilinearity is also not silently assumed. Define the additive defects
+\[
+B_L^+(X,Y;Z)
+=
+(X+Y)\star Z-X\star Z-Y\star Z,
+\]
+\[
+B_R^+(X;Y,Z)
+=
+X\star(Y+Z)-X\star Y-X\star Z,
+\]
+and scalar-linearity defects
+\[
+B_L^{\lambda}(X;Y)
+=
+(\lambda X)\star Y-\lambda(X\star Y),
+\]
+\[
+B_R^{\lambda}(X;Y)
+=
+X\star(\lambda Y)-\lambda(X\star Y).
+\]
+Exact \(\mathbb K\)-bilinearity is therefore a zero-defect subclass:
+\[
+\boxed{
+B_L^+=B_R^+=B_L^{\lambda}=B_R^{\lambda}=0.
+}
+\]
+The general relational product may leave this subclass, in which case the
+departure is recorded rather than hidden.
+
+\subsection{Indexed tensor gate}
+
+The abstract contraction interface does not by itself determine contraction
+identities on tensor products. The reference element currently records total
+rank and flat components, but not an ordered slot signature, slot dimensions,
+or a canonical pairing between upper and lower indices.
+
+Therefore expressions such as
+\[
+\operatorname{Contr}(X\otimes Y)
+\]
+remain realization-dependent until an indexed tensor model supplies
+\[
+\boxed{
+\text{slot signature}
++
+\text{pairing rule}
++
+\text{component shape}
++
+\text{contraction evaluator}.
+}
+\]
+This is an explicit gate, not a missing axiom. Rank \((p,q)\) alone cannot
+select which index pair is to be contracted.
+
+\section{Semantic scales}
+
+Semantic scale is not assumed to be a single real parameter. Let
+\[
+\boxed{\sigma\in\Sigma}
+\]
+where \(\Sigma\) is a typed partially ordered or categorical scale
+structure. A coarse-graining morphism is written
+\[
+S_{\sigma\to\tau}:
+\mathcal A_{\sigma,\omega}^{p,q}
+\to
+\mathcal A_{\tau,\omega}^{p,q}.
+\]
+Such a map is admissible only when the scale structure contains the required
+relation. This prevents unrelated semantic classes from being collapsed by
+arithmetic alone.
+
+A common semantic quotient of two types exists only when there is a common
+admissible upper scale. Thus semantic compatibility is part of the algebraic
+type system rather than an after-the-fact annotation.
+
+The reference kernel implements these as executable typed maps. A scale map
+must be admitted by the semantic scale graph, consume an element at its source
+scale, and return an element at its declared target scale while preserving the
+carrier and tensor rank in the reference realization.
+
+\section{Relational deformation potential}
+
+The semantic scale label \(\sigma\) does not by itself determine a scalar
+deformation. A concrete semantic weighting profile is supplied separately.
+Let a fixed named residual signature be
+
+\[
+D(X)=\{d_i(X)\}_{i\in I},
+\qquad
+d_i(X)\ge 0,
+\]
+
+and let the semantic profile at \(\sigma\) assign explicit non-negative
+weights
+
+\[
+W_\sigma=\{w_{\sigma i}\}_{i\in I},
+\qquad
+w_{\sigma i}\ge0,
+\]
+
+with at least one positive weight. The weighting law is structural input; it
+is not inferred from the string or label used to name \(\sigma\). Deriving
+\(W_\sigma\) from a semantic graph or contextual relation system is a
+separate open realization problem and is not part of the present algebraic
+definition.
+
+For \(p\ge1\), define the relational deformation potential
+
+\[
+\boxed{
+V_R^{(p)}(X\mid\sigma)
+=
+\left(
+\sum_{i\in I}
+w_{\sigma i}\,d_i(X)^p
+\right)^{1/p}.
+}
+\]
+
+The residual signature is part of the type contract. A potential profile is
+not allowed to silently add or omit a residual component.
+
+If the residual vector \(D(X)\) and the potential order \(p\) are held fixed
+while only the semantic weighting changes, then
+
+\[
+\boxed{
+\Delta_{\sigma\to\tau}V_R(X)
+=
+V_R^{(p)}(X\mid\tau)
+-
+V_R^{(p)}(X\mid\sigma)
+}
+\]
+
+isolates a semantic scalar deformation. Hence two evaluations can share the
+same represented algebraic state and the same numerical residuals while
+having different scalar relational potential because the supplied semantic
+weighting differs. A change of \(p\) is not classified as a pure semantic
+shift.
+
+For a finite admissible candidate set \(\mathcal C\), define the relational
+attractor set
+
+\[
+\boxed{
+\operatorname{Attr}_R(\mathcal C)
+=
+\operatorname*{arg\,min}_{c\in\mathcal C}
+V_R(c).
+}
+\]
+
+Ties are preserved rather than resolved arbitrarily.
+
+This construction is a scalar diagnostic of relational deformation. It is
+not identified by the general algebra with energy, mass, gravity, or metric
+curvature. A geometric realization may later supply a separate map such as
+
+\[
+\mathcal G:
+V_R
+\longmapsto
+\delta g,
+\]
+
+but that map is an additional realization/bridge and is not assumed here.
+
+\section{Orbital action and relative Moir\'e structure}
+
+Let \(G\) index admissible orbital operators
+\[
+U_g:\mathcal A\to\mathcal A.
+\]
+Calling this family an exact group action requires additional coherence.
+For a supplied identity representative, inverse, and product representative,
+define
+\[
+\Delta_e(X)=\|U_eX-X\|,
+\]
+\[
+\Delta_{\rm inv}(g;X)
+=
+\max\left(
+\|U_g^{-1}U_gX-X\|,
+\|U_gU_g^{-1}X-X\|
+\right),
+\]
+and
+\[
+\Delta_G(g,h;X)
+=
+\|U_{gh}X-U_g(U_hX)\|.
+\]
+An exact group-action sector is obtained when these residuals vanish on the
+domain of interest.
+
+An orbit is derived:
+\[
+\boxed{
+\operatorname{Orb}(X)=\{U_gX:g\in G\}.
+}
+\]
+It is not an independent coordinate carried by \(X\).
+
+Moir\'e structure is intrinsically relational. For two local orbital operators with a verified inverse,
+\[
+\boxed{
+M_{ij}=U_iU_j^{-1}.
+}
+\tag{DER-M}
+\]
+In a scalar-angle realization this reduces to the wrapped relative angle
+\[
+\Delta\theta_{ij}
+=\operatorname{wrap}_{2\pi}(\theta_i-\theta_j).
+\]
+
+Semantic scaling and orbital action need not commute. The executable mixed
+residual is
+\[
+\boxed{
+\Delta_{S,U}(X)
+=
+\|U(SX)-S(UX)\|.
+}
+\]
+For a relative Moir\'e operator this specializes schematically to
+\[
+[M,S]=MS-SM.
+\]
+A non-zero value is therefore a legitimate observable of the algebra rather
+than an implementation error.
+
+\section{Cross-operation coherence}
+
+The structural maps need not preserve one another automatically. RTOFA
+therefore records naturality and homomorphism defects instead of silently
+assuming them to vanish.
+
+For transport and relational product,
+\[
+\boxed{
+\Delta_{T,\star}(X,Y)
+=
+\left\|
+T_r(X\star Y)
+-
+T_r(X)\star' T_r(Y)
+\right\|.
+}
+\]
+
+For semantic coarse-graining and product,
+\[
+\boxed{
+\Delta_{S,\star}(X,Y)
+=
+\left\|
+S(X\star Y)
+-
+S(X)\star' S(Y)
+\right\|.
+}
+\]
+
+For orbital action and product,
+\[
+\boxed{
+\Delta_{U,\star}(X,Y)
+=
+\left\|
+U(X\star Y)
+-
+U(X)\star' U(Y)
+\right\|.
+}
+\]
+
+Finally, for parent transport, child transport, and a selected refinement
+branch, the naturality square has residual
+\[
+\boxed{
+\Delta_{F,T}(X)
+=
+\left\|
+F_{\rm target}(T_{\rm parent}X)
+-
+T_{\rm child}(F_{\rm source}X)
+\right\|.
+}
+\]
+
+For semantic scale and transport,
+\[
+\boxed{
+\Delta_{S,T}(X)
+=
+\left\|
+S_{\rm target}(T_{\rm source}X)
+-
+T_{\rm target}(S_{\rm source}X)
+\right\|.
+}
+\]
+
+For orbital equivariance of transport,
+\[
+\boxed{
+\Delta_{U,T}(X)
+=
+\left\|
+U_{\rm target}(TX)-T(U_{\rm source}X)
+\right\|.
+}
+\]
+
+For refinement and semantic coarse-graining,
+\[
+\boxed{
+\Delta_{F,S}(X)
+=
+\left\|
+F_{\tau}(S_{\sigma\to\tau}X)
+-
+S_{\rm child}(F_{\sigma}X)
+\right\|.
+}
+\]
+
+For refinement and orbital action,
+\[
+\boxed{
+\Delta_{F,U}(X)
+=
+\left\|
+F(U_{\rm parent}X)
+-
+U_{\rm child}(FX)
+\right\|.
+}
+\]
+
+The tensor sector uses one generic monoidality diagnostic for any supplied
+typed map \(\Phi\):
+\[
+\boxed{
+\Delta_{\otimes,\Phi}(X,Y)
+=
+\left\|
+\Phi(X\otimes Y)
+-
+\Phi(X)\otimes'\Phi(Y)
+\right\|.
+}
+\]
+
+Likewise contraction naturality is measured by
+\[
+\boxed{
+\Delta_{\operatorname{Contr},\Phi}(X)
+=
+\left\|
+\operatorname{Contr}'(\Phi_{\rm high}X)
+-
+\Phi_{\rm low}(\operatorname{Contr}X)
+\right\|.
+}
+\]
+
+Zero residual defines the corresponding structure-preserving subclass.
+Non-zero residual remains explicit deformation data.
+
+\section{Relational transport and two closure notions}
+
+Let
+\[
+\gamma=(r_1,\ldots,r_m)
+\]
+be a composable path of typed relation values
+\[
+r_k:a_{k-1}\to a_k.
+\]
+The corresponding transport is
+\[
+\boxed{
+T_{\gamma}
+=
+T_{r_m}\circ\cdots\circ T_{r_1}.
+}
+\]
+
+\subsection{Value-level closure}
+
+The relation-value path is carrier-closed when
+\[
+\boxed{
+a_m=a_0.
+}
+\]
+For such a path define the value-level return transport
+\[
+\boxed{
+\mathcal H^{\mathrm{val}}_{\gamma}:=T_{\gamma}
+}
+\]
+and the state-dependent residual
+\[
+\boxed{
+\varepsilon^{\mathrm{val}}_{\gamma}(X)
+=
+\left\|
+\mathcal H^{\mathrm{val}}_{\gamma}X-X
+\right\|.
+}
+\]
+
+This closure notion forgets path-labelled occurrence identity. It is therefore
+sufficient for ordinary relation-value holonomy, but not for branch-aware
+refinement holonomy.
+
+\subsection{Occurrence-level closure}
+
+An occurrence-aware relation step carries both the relation value and its
+source/target occurrence addresses:
+\[
+\tilde r_k
+=
+\bigl(
+r_k,
+\omega_{k-1},
+\omega_k
+\bigr).
+\]
+The occurrence-aware path is
+\[
+\widetilde\gamma
+=
+(\tilde r_1,\ldots,\tilde r_m),
+\]
+with carrier composability and occurrence composability required
+simultaneously.
+
+Occurrence closure is
+\[
+\boxed{
+\omega_m=\omega_0.
+}
+\]
+With a consistent occurrence-to-carrier assignment, this implies carrier
+closure. The converse is false.
+
+The minimal counterexample is the singleton refinement step
+\[
+a_{\varnothing}
+\xrightarrow{r}
+a_{-}.
+\]
+After forgetting occurrence address, its relation value is
+\[
+r:a\to a,
+\]
+so the value path is carrier-closed. But
+\[
+\varnothing\neq(-),
+\]
+hence the occurrence path is open.
+
+Therefore
+\[
+\boxed{
+\text{carrier-closed}
+\not\Rightarrow
+\text{occurrence-closed}.
+}
+\]
+
+Only when both close do we define branch-aware occurrence holonomy:
+\[
+\boxed{
+\mathcal H^{\mathrm{occ}}_{\widetilde\gamma}
+:=
+T_{\widetilde\gamma},
+\qquad
+\omega_m=\omega_0.
+}
+\]
+Its residual is
+\[
+\boxed{
+\varepsilon^{\mathrm{occ}}_{\widetilde\gamma}(X)
+=
+\left\|
+\mathcal H^{\mathrm{occ}}_{\widetilde\gamma}X-X
+\right\|.
+}
+\]
+
+The executable kernel represents these two levels separately:
+\texttt{RelationPath}/\texttt{TransportPath} at value level, and
+\texttt{RelationOccurrence}/\texttt{OccurrenceRelationPath}/
+\texttt{OccurrenceTransportPath} at occurrence level.
+
+\subsection{Transport composition defect}
+
+When both a direct transport and a two-step transport are available, define
+\[
+\boxed{
+\Delta_T(r_2,r_1;X)
+=
+\left\|
+T_{r_2\circ r_1}X
+-
+T_{r_2}\bigl(T_{r_1}X\bigr)
+\right\|.
+}
+\]
+The zero-defect case is functorial transport on that composition. A non-zero
+value records path/composition dependence rather than being discarded as an
+implementation error.
+
+\section{Phase representation of relational holonomy}
+
+The current reference phase interface is attached to value-level,
+carrier-closed holonomy:
+\[
+\boxed{
+\chi:
+\mathcal H^{\mathrm{val}}_{\gamma}
+\longmapsto
+u_{\gamma}\in U(1).
+}
+\]
+The existence of \(\chi\) is an additional realization statement; it is not a
+theorem of the core algebra.
+
+Once a closed value-level holonomy has a verified \(U(1)\) representative,
+phase quantities may be derived in that representation. For a closed phase
+loop \(\widetilde\gamma\subset U(1)\),
+\[
+\boxed{
+W(\widetilde\gamma)
+=
+\frac{1}{2\pi i}
+\oint_{\widetilde\gamma}u^{-1}\,du.
+}
+\]
+Neither winding nor phase residual is stored as an independent coordinate of
+the base algebra element.
+
+The implemented reference chain is therefore
+\[
+\boxed{
+\text{carrier-closed value holonomy}
+\xrightarrow{\ \chi\ }
+U(1).
+}
+\]
+
+Occurrence-aware holonomy has a separate reference interface,
+\[
+\boxed{
+\widetilde\chi:
+\mathcal H^{\mathrm{occ}}_{\widetilde\gamma}
+\longmapsto
+\widetilde u_{\widetilde\gamma}\in U(1).
+}
+\]
+The executable kernel exposes this through
+\texttt{OccurrenceHolonomyPhaseRepresentation}. It first requires genuine
+occurrence closure and then validates that the supplied phase lies on
+\(U(1)\).
+
+Occurrence-level winding may then be computed from a closed phase loop exactly
+as in the value-level case. This does not identify the two phase
+representations: occurrence identity is additional data.
+
+What remains open is a universal or existence theorem saying that every
+occurrence-aware RTOFA holonomy necessarily admits such a
+\(U(1)\) representation. The reference interface is executable; the
+universality claim is not assumed.
+
+\section{Zero Axis bridge}
+
+The companion Zero Axis model separately supplies the projective coordinate
+\[
+\boxed{
+\Omega(s)=\frac{s}{1-s}.
+}
+\]
+On the critical axis
+\[
+\Zaxis=\left\{s\in\mathbb C:\Re s=\frac12\right\},
+\]
+one has the exact equivalence
+\[
+\boxed{
+\Re s=\frac12
+\Longleftrightarrow
+|\Omega(s)|=1.
+}
+\tag{ZA-BRIDGE}
+\]
+Hence the compactified Zero Axis has a natural unit-circle representation.
+This identity is imported from the companion Zero Axis model as a bridge and
+is not an axiom of the general relational algebra.
+
+If an application has already supplied a verified finite phase
+\(u_{\gamma}\in U(1)\), the optional inverse projective lift is
+\[
+\boxed{
+s_{\gamma}
+=
+\Omega^{-1}(u_{\gamma})
+=
+\frac{u_{\gamma}}{1+u_{\gamma}},
+}
+\]
+whenever \(u_{\gamma}\neq-1\). The lifted point satisfies
+\[
+\Re s_{\gamma}=\frac12.
+\]
+The exceptional phase
+\[
+u_{\gamma}=-1
+\]
+is the compactified point at infinity of the Zero Axis rather than a finite
+\(s\)-coordinate.
+
+The core algebra therefore does not identify its generic \(U(1)\) phase
+sector with the Zero Axis. The Zero Axis lift is a later optional bridge:
+\[
+\boxed{
+U(1)
+\xrightarrow{\ \Omega^{-1}\ }
+\widehat{\Zaxis}.
+}
+\]
+
+\section{Axiom and dependency audit}
+
+The formal dependency audit separates nine claim classes:
+\[
+\boxed{
+\begin{gathered}
+\text{formation rule},\quad
+\text{axiom},\quad
+\text{candidate axiom},\quad
+\text{theorem},\\
+\text{definition},\quad
+\text{structural primitive},\quad
+\text{reference realization},\quad
+\text{derived construction},\quad
+\text{bridge}
+\end{gathered}
+}
+\]
+
+The current canonical foundational stratification is
+\[
+\boxed{
+\mathrm{META0}
+\;\triangleright\;
+(\mathrm{RA0}+\mathrm{RR1}).
+}
+\]
+META0 is a model-formation rule; RA0 and RR1 are the object-level axioms; EX0
+is a theorem of META0.
+The additive \(\mathbb K\)-module structure, relational product, semantic
+scale, and orbital action are independent structural ingredients of the
+algebraic signature rather than consequences of RA0. The complex
+\(\CP\)/Fubini--Study layer is a reference realization, and Zero Axis is an
+imported bridge.
+
+Finite witness models establish, in the current formal language,
+\[
+\boxed{
+\mathrm{RA0}\not\Rightarrow\mathrm{RR1},
+\qquad
+\mathrm{RR1}\not\Rightarrow\mathrm{RA0},
+\qquad
+\mathrm{RA0}+\mathrm{RR1}\not\Rightarrow\CP.
+}
+\]
+The RR1 witnesses are recursively closed finite cyclic presentations: every
+refinement descendant reachable from a primitive relation endpoint can itself
+refine. A merely one-level refinement is not counted as RR1. Thus no
+dependency is silently promoted to a theorem.
+
+\section{One-axiom closure candidate}
+
+The current canonical object-level foundation uses two explicit axioms under
+the prior model-formation rule META0:
+\[
+\boxed{
+\mathrm{META0}
+\;\triangleright\;
+(\mathrm{RA0}+\mathrm{RR1}).
+}
+\]
+The finite independence witnesses show that the original RA0 is too weak to
+force recursive refinement:
+\[
+\boxed{\mathrm{RA0}\not\Rightarrow\mathrm{RR1}.}
+\]
+
+A stronger candidate foundational statement is therefore introduced:
+\[
+\boxed{
+\mathrm{RA0}^{*}:
+\text{every admitted carrier hosts an admitted non-degenerate binary distinction}
+}
+\]
+together with the closure clause that the two selected endpoint occurrences
+are themselves admitted carriers.
+
+RA0* does not require this distinction to be unique. It also does not require
+the two endpoint \emph{carrier labels} to differ. Non-degeneracy is supplied
+by the two ordered occurrence slots \((-),(+)\), so
+\[
+D(a)=(a,a)
+\]
+is a valid hosted binary occurrence distinction. If several admissible
+binary distinctions are hosted by the same carrier, any one witness is
+sufficient for the finite-depth induction below. The executable reference
+model chooses a lexicographically first endpoint pair solely to make its
+unfolding deterministic; that selector is not part of RA0*.
+
+Let a relational occurrence be indexed by
+\[
+\omega\in\{-1,+1\}^{n}.
+\]
+If \(p_{\omega}\) is admitted, RA0* supplies
+\[
+D(p_{\omega})
+=
+\bigl(
+p_{\omega-},
+p_{\omega+}
+\bigr),
+\]
+and both endpoints are admitted. By induction on \(n\), for every finite
+depth \(N\) the complete binary address set
+\[
+\boxed{
+V_n=\{-1,+1\}^{n},
+\qquad
+0\le n\le N,
+}
+\]
+is generated. Hence
+\[
+\boxed{
+\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}
+}
+\]
+in the path-labelled occurrence semantics.
+
+\subsection{Relationally bound reduction candidate}
+
+The candidate RA0* above supplies recursive distinction structure but does not
+by itself identify a hosted distinction with primitive relation incidence.
+This separation is witnessed explicitly by
+\[
+P=\{a\},
+\qquad
+\operatorname{Adm}=\{a\},
+\qquad
+R=\varnothing,
+\qquad
+a\mapsto(a,a).
+\]
+The admitted carrier hosts the required binary occurrence distinction, so the
+current RA0* condition holds, but \(a\) is incident to no primitive relation.
+Hence
+\[
+\boxed{
+\mathrm{RA0}^{*}\not\Rightarrow\mathrm{RA0}.
+}
+\]
+The witness is non-empty, so the failure is not due to vacuous truth.
+
+Therefore RA0* proves RR1 but not RA0 in the current language.
+
+Define a stronger relationally bound distinction by equipping the two branch
+occurrence slots with explicit primitive relation occurrences
+\[
+r_-:p_\omega\to p_{\omega-},
+\qquad
+r_+:p_\omega\to p_{\omega+}.
+\]
+
+The corresponding stronger candidate is denoted
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+}
+\]
+and is represented in the executable claim ledger by
+\texttt{RA0\_REL\_STAR}.
+
+\subsection{Forgetful projection to the plain distinction candidate}
+
+A relationally bound binary distinction contains all data of a plain binary
+occurrence distinction plus explicit branch-relation occurrences. Forgetting
+only those relation labels defines a projection
+\[
+U:
+\mathrm{RA0}^{\mathrm{rel}*}\text{-models}
+\longrightarrow
+\mathrm{RA0}^{*}\text{-models}.
+\]
+It preserves the admitted carrier set and the complete path-labelled
+occurrence unfolding. Hence
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}^{*}.
+}
+\]
+Since the previous theorem gives
+\[
+\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1},
+\]
+the recursive-closure implication also factors as
+\[
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}^{*}
+\Rightarrow
+\mathrm{RR1}.
+\]
+
+Every admitted host now has primitive relational incidence. Therefore
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}.
+}
+\]
+
+The same endpoint-admissibility and finite-depth induction used above gives
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RR1}.
+}
+\]
+
+Consequently
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}+\mathrm{RR1}.
+}
+\]
+
+The converse fails in the expanded language. Consider the singleton raw
+presentation
+\[
+P=\{a\},
+\qquad
+R=\{(a,a)\},
+\qquad
+D(a)=(a,a),
+\]
+with no declared branch-slot-to-relation binding. It satisfies META0,
+orientation-neutral RA0, and recursive RR1, but it does not satisfy
+\(\mathrm{RA0}^{\mathrm{rel}*}\). Hence
+\[
+\boxed{
+\mathrm{RA0}+\mathrm{RR1}
+\not\Rightarrow
+\mathrm{RA0}^{\mathrm{rel}*}.
+}
+\]
+The proposed one-object-level-axiom reduction is therefore a strict
+strengthening/compression: one axiom replaces two only after additional
+relational binding data are made constitutive.
+
+Together with META0 this yields the candidate reduced stratification
+\[
+\boxed{
+\mathrm{META0}
+\;\triangleright\;
+\mathrm{RA0}^{\mathrm{rel}*}.
+}
+\]
+
+The singleton executable witness is
+\[
+a\xrightarrow{r_-}a,
+\qquad
+a\xrightarrow{r_+}a.
+\]
+The two branch-relation occurrences remain distinct by branch slot although
+their source and target carrier labels coincide.
+
+\subsection{Relation occurrences versus relation values}
+
+A branch-relation occurrence carries the binary branch slot as part of its
+identity:
+\[
+o=(\epsilon,r,s,t),
+\qquad
+\epsilon\in\{-1,+1\}.
+\]
+Forgetting only that occurrence slot yields the underlying typed relation
+value:
+\[
+\boxed{
+\pi_{\mathrm{rel}}(\epsilon,r,s,t)
+=
+(s,t,r).
+}
+\]
+The projection need not be injective. In particular,
+\[
+o_-=(-,r,a,a),
+\qquad
+o_+=(+,r,a,a)
+\]
+satisfy
+\[
+o_-\neq o_+,
+\qquad
+\pi_{\mathrm{rel}}(o_-)
+=
+\pi_{\mathrm{rel}}(o_+).
+\]
+Thus branch identity belongs to the occurrence layer rather than to the
+underlying relation value itself. The executable kernel preserves this
+distinction and can materialize the projected value as a core
+\texttt{TypedRelation}.
+
+\subsection{Singleton cardinality minimality}
+
+The singleton conclusion separates a lower bound from its attainment.
+
+META0 gives, for every admissible RTOFA model,
+\[
+\boxed{
+|\operatorname{Adm}^{\mathfrak M}|\ge1.
+}
+\]
+This is the cardinality lower bound.
+
+The explicit singleton relational model
+\[
+a\xrightarrow{r_-}a,
+\qquad
+a\xrightarrow{r_+}a
+\]
+satisfies META0 and \(\mathrm{RA0}^{\mathrm{rel}*}\) with
+\[
+|\operatorname{Adm}|=1.
+\]
+Hence the lower bound is attained and
+\[
+\boxed{
+\min_{\mathfrak M\models
+\mathrm{META0}+\mathrm{RA0}^{\mathrm{rel}*}}
+|\operatorname{Adm}^{\mathfrak M}|
+=
+1.
+}
+\]
+
+The claim ledger records the lower bound, the explicit singleton witness, and
+the resulting exact-minimum theorem separately. This is a statement about the
+formal model class, not a physical assertion about how many physical objects
+constitute a universe.
+
+\subsection{Minimal underlying relation-value cardinality}
+
+The same distinction between values and occurrences permits a second exact
+minimum. Under META0 plus \(\mathrm{RA0}^{\mathrm{rel}*}\), at least one
+admitted carrier exists, and that carrier hosts at least one relationally bound
+binary distinction. Forgetting branch occurrence identity therefore leaves at
+least one underlying primitive relation value:
+\[
+\boxed{
+|\operatorname{RelVal}|\ge1.
+}
+\]
+
+The lower bound is attained by the singleton model
+\[
+a\xrightarrow{r}a,
+\]
+with both branch slots projecting to the same relation value:
+\[
+o_-=(-,r,a,a),
+\qquad
+o_+=(+,r,a,a).
+\]
+Although
+\[
+o_-\neq o_+,
+\]
+their underlying value projection satisfies
+\[
+\pi_{\mathrm{rel}}(o_-)
+=
+\pi_{\mathrm{rel}}(o_+)
+=
+(a,a,r).
+\]
+
+Hence
+\[
+\boxed{
+\min_{\mathfrak M\models
+\mathrm{META0}+\mathrm{RA0}^{\mathrm{rel}*}}
+|\operatorname{RelVal}^{\mathfrak M}|
+=
+1.
+}
+\]
+
+The minimal reference model therefore simultaneously realizes
+\[
+\boxed{
+|\operatorname{Adm}|=1,
+\qquad
+|\operatorname{RelVal}|=1,
+\qquad
+|\operatorname{RelOcc}|=2.
+}
+\]
+The multiplicity required by binary distinction is located in the occurrence
+slots rather than in the cardinality of the underlying carrier or relation
+value sets.
+
+\subsection{Minimal branch-relation occurrence cardinality}
+
+META0 guarantees that an admissible model contains at least one admitted
+carrier. Under \(\mathrm{RA0}^{\mathrm{rel}*}\), that carrier hosts a
+relationally bound binary distinction with the two branch slots
+\[
+(-),(+).
+\]
+Therefore every model in the candidate class satisfies
+\[
+\boxed{
+|\operatorname{RelOcc}|\ge2.
+}
+\]
+
+The minimal singleton model attains this lower bound with
+\[
+o_-=(-,r,a,a),
+\qquad
+o_+=(+,r,a,a),
+\]
+so
+\[
+\boxed{
+\min_{\mathfrak M\models
+\mathrm{META0}+\mathrm{RA0}^{\mathrm{rel}*}}
+|\operatorname{RelOcc}^{\mathfrak M}|
+=
+2.
+}
+\]
+
+Combining the three exact minima gives the candidate-class cardinality
+signature
+\[
+\boxed{
+\left(
+|\operatorname{Adm}|,
+|\operatorname{RelVal}|,
+|\operatorname{RelOcc}|
+\right)
+=
+(1,1,2).
+}
+\]
+This is a metatheoretic statement about the relational signature, not a
+physical identification.
+
+\subsection{Occurrence growth from a singleton carrier}
+
+Carrier cardinality and occurrence cardinality are distinct invariants. Under
+binary recursive refinement, the number of path-labelled occurrences at
+exact depth \(n\) is
+\[
+|V_n|=2^n,
+\qquad
+V_n=\{-1,+1\}^{n}.
+\]
+Hence the total number of occurrences through depth \(N\) is
+\[
+\boxed{
+|V_{\le N}|
+=
+\sum_{n=0}^{N}2^n
+=
+2^{N+1}-1.
+}
+\]
+
+The executable kernel exposes the same formula as
+\texttt{binary\_occurrence\_count\_through\_depth}.
+
+The full address set over all finite depths is
+\[
+V_{<\omega}
+=
+\{-1,+1\}^{<\omega}.
+\]
+It is countably infinite. A constructive bijection with \(\mathbb N\) is
+obtained by encoding \(-1\mapsto0\), \(+1\mapsto1\) and setting
+\[
+\boxed{
+\rho(\omega)
+=
+2^{|\omega|}-1
++
+\operatorname{bin}(\omega).
+}
+\]
+Words are therefore ordered first by length and then by binary index. The
+inverse map is also explicit; the reference kernel implements the pair
+\texttt{finite\_word\_rank}/\texttt{finite\_word\_unrank}.
+
+Thus a singleton carrier model can satisfy
+\[
+|\operatorname{Adm}|=1
+\]
+while its relational occurrence structure grows without bound:
+\[
+\boxed{
+|\operatorname{Adm}|=1
+\quad\not\Rightarrow\quad
+|V_{<\omega}|=1.
+}
+\]
+More precisely,
+\[
+|V_{<\omega}|=\aleph_0.
+\]
+This is a combinatorial statement about path-labelled relational occurrences,
+not a physical infinity claim.
+
+\subsection{Ideal boundary of infinite branch sequences}
+
+The finite occurrence-address set
+\[
+B^{<\omega}
+=
+\{-1,+1\}^{<\omega}
+\]
+is countably infinite. Its ideal path boundary is a different object:
+\[
+\boxed{
+\partial V
+=
+B^\omega
+=
+\{-1,+1\}^{\mathbb N}.
+}
+\]
+
+For a finite word \(u\in B^n\), define the prefix cylinder
+\[
+[u]
+=
+\{
+\xi\in B^\omega:
+u\preceq\xi
+\}.
+\]
+At exact prefix depth \(n\), the boundary is partitioned into
+\[
+\boxed{
+2^n
+}
+\]
+such cylinders. The executable helpers
+\texttt{binary\_words\_at\_depth} and
+\texttt{binary\_boundary\_cylinder\_count} audit this finite prefix basis.
+
+The map
+\[
+\xi=(\xi_0,\xi_1,\ldots)
+\longmapsto
+S_\xi
+=
+\{
+n\in\mathbb N:
+\xi_n=+1
+\}
+\]
+is a bijection between \(B^\omega\) and the power set
+\(\mathcal P(\mathbb N)\). Therefore
+\[
+\boxed{
+|\partial V|
+=
+2^{\aleph_0}.
+}
+\]
+
+This does not contradict the countability of finite occurrence addresses:
+\[
+|B^{<\omega}|=\aleph_0,
+\qquad
+|B^\omega|=2^{\aleph_0}.
+\]
+
+Under RR1, for every ideal sequence \(\xi\in\partial V\), every finite
+prefix
+\[
+\xi\!\upharpoonright_n
+\]
+is realized by a path-labelled occurrence. Thus each ideal boundary point
+determines a coherent chain
+\[
+p_{\varnothing},
+\quad
+p_{\xi\upharpoonright_1},
+\quad
+p_{\xi\upharpoonright_2},
+\quad\ldots
+\]
+of finite occurrences.
+
+RR1 does not, however, assert the existence of a limit carrier
+\[
+p_\xi
+\]
+for an infinite address. Such a completion would require additional
+topological or geometric structure. Consequently
+\[
+\boxed{
+\text{uncountable ideal boundary}
+\not\Rightarrow
+\text{uncountably many admitted carriers}.
+}
+\]
+
+\subsection{Free monoid of occurrence addresses}
+
+The finite occurrence-address space
+\[
+B^*=\{-1,+1\}^{*}
+\]
+has a canonical algebraic structure under word concatenation. With the empty
+word \(\varnothing\) as identity, \(B^*\) is the free monoid on the two
+branch generators \(-1\) and \(+1\).
+
+Carrier values and occurrence addresses are distinct sorts:
+\[
+\boxed{
+a\neq\omega
+\quad\text{as semantic types.}
+}
+\]
+The carrier value \(a\) identifies the underlying relational carrier,
+whereas \(\omega\in B^*\) identifies a path-labelled occurrence of such a
+value in a recursive unfolding.
+
+For \(\omega,u\in B^*\), define the regular right action
+\[
+\boxed{
+\omega\cdot u
+=
+\omega u.
+}
+\]
+Then
+\[
+\omega\cdot\varnothing=\omega
+\]
+and
+\[
+\boxed{
+(\omega\cdot u)\cdot v
+=
+\omega\cdot(uv).
+}
+\]
+
+The executable kernel represents this canonical address algebra through
+\texttt{OccurrenceAddress}. In particular,
+\texttt{OccurrenceAddress.advance} realizes concatenation and
+\texttt{OccurrenceAddress.refine} realizes the two one-generator extensions.
+
+The word-length map
+\[
+\ell:B^*\to\mathbb N,
+\qquad
+\ell(\omega)=|\omega|
+\]
+is additive:
+\[
+\boxed{
+\ell(\omega u)
+=
+\ell(\omega)+|u|.
+}
+\]
+Thus the finite occurrence-address space is naturally \(\mathbb N\)-graded.
+
+RR1 is a separate closure statement: it says that, from an admitted root,
+every finite address word is represented by an actual path-labelled
+relational occurrence. Consequently
+\[
+\boxed{
+\text{address algebra}
+\neq
+\text{admission/realization of every address}.
+}
+\]
+
+\subsection{Reference embedding into binary point coordinates}
+
+Existing CP1/refinement realizations retain a binary reference coordinate on
+\texttt{RelationalPoint}. The relation between the two semantic sorts is
+therefore represented explicitly by an injective reference map
+\[
+\boxed{
+\iota:
+B^*
+\hookrightarrow
+P_{\rm ref},
+\qquad
+\iota(\omega)=p_\omega.
+}
+\]
+
+The executable function
+\[
+\texttt{reference\_point\_from\_occurrence}
+\]
+implements \(\iota\).
+
+This is a reference realization, not a type identity:
+\[
+\boxed{
+\operatorname{OccurrenceAddress}
+\not\equiv
+\operatorname{RelationalPoint}.
+}
+\]
+The fact that the reference point coordinate may numerically store the same
+binary tuple as \(\omega\) does not identify carrier/reference-coordinate
+values with branch-occurrence identity.
+
+\subsection{Prefix order, meet, and canonical tree metric}
+
+The free-monoid address structure carries a canonical rooted-tree order. For
+finite words \(u,v\in B^*\), define
+\[
+\boxed{
+u\preceq v
+\Longleftrightarrow
+\exists w\in B^*:\ v=uw.
+}
+\]
+This is the ancestor/prefix order.
+
+Any two finite words possess a greatest lower bound in this order: their
+longest common prefix,
+\[
+\boxed{
+u\wedge v
+=
+\operatorname{LCP}(u,v).
+}
+\]
+Hence the finite occurrence addresses form a rooted meet-semilattice.
+
+Using the word-length grading, define
+\[
+\boxed{
+d_T(u,v)
+=
+|u|+|v|-2|u\wedge v|.
+}
+\]
+This is the number of tree edges in the unique geodesic from \(u\) to
+\(v\): move from \(u\) upward to \(u\wedge v\), then downward to \(v\).
+Consequently
+\[
+d_T(u,v)\ge0,
+\qquad
+d_T(u,v)=0\Longleftrightarrow u=v,
+\]
+\[
+d_T(u,v)=d_T(v,u),
+\]
+and the triangle inequality holds. Thus
+\[
+\boxed{
+(B^*,d_T)
+\text{ is a metric space.}
+}
+\]
+
+The reference kernel implements the order, meet, and metric through
+\texttt{OccurrenceAddress.is\_prefix\_of},
+\texttt{OccurrenceAddress.meet}, and
+\texttt{OccurrenceAddress.tree\_distance}.
+
+This is a combinatorial metric forced by the occurrence-address structure.
+It is not identified with a physical distance, the Fubini--Study metric, a
+Hilbert norm, a Minkowski metric, or any later geometric realization.
+
+The algebraic address monoid exists independently of RR1. RR1 supplies the
+additional closure statement that, from an admitted root, every finite word
+\(u\in B^*\) is realized by an actual path-labelled relational occurrence.
+Thus
+\[
+\boxed{
+\text{address algebra}
+\neq
+\text{admission/realization of every address}.
+}
+\]
+
+This is a genuine strengthening: it adds distinction-to-relation binding.
+It is executable and theorem-tested but is not promoted as canonical.
+
+This is a genuine strengthening of RA0, not a proof from its old wording.
+RA0* explicitly adds binary non-degeneracy and endpoint admissibility. Those
+clauses are precisely what makes the induction valid.
+
+The underlying carrier presentation may be even smaller than a two-cycle. The
+singleton witness
+\[
+D(a)=(a,a)
+\]
+already satisfies RA0* at the occurrence level and unfolds as
+\[
+a_{\varnothing},
+\quad
+a_-,a_+,
+\quad
+a_{--},a_{-+},a_{+-},a_{++},
+\quad\ldots
+\]
+with distinct path-labelled occurrences carrying the same underlying label.
+A two-cycle such as
+\[
+D(a)=(a,b),
+\qquad
+D(b)=(a,b)
+\]
+is another admissible finite presentation. Thus recursive relational structure
+does not by itself imply ontically fresh carrier identities:
+\[
+\boxed{
+\mathrm{RA0}^{*}\not\Rightarrow\mathrm{NOVELTY}.
+}
+\]
+If fresh carrier identity at every refinement level is required, that must be
+introduced by an additional axiom or proved from additional structure.
+
+Accordingly RA0* is recorded as a candidate axiom and
+\(\mathrm{THM\_RR1\_FROM\_RA0\_STAR}\) as the conditional closure
+theorem under RA0*. The canonical object-level pair RA0+RR1 is retained until
+the stronger wording of RA0* is explicitly promoted; META0 remains prior at
+the model-formation level in either case.
+
+\section{Minimal algebraic signature}
+
+The core relational algebra is
+\[
+\boxed{
+\Arel^{\rm core}=
+\left(
+\mathbb K,
+\{\mathcal A_{\sigma,\omega}^{p,q}\},
++,
+0,
+-,
+\star_R,
+\otimes,
+\operatorname{Contr},
+T_r,
+U_g,
+S_{\sigma\to\tau},
+F_{-},F_{+}
+\right).
+}
+\]
+
+The semantic-potential diagnostic layer is an optional extension with a
+supplied weighting profile:
+\[
+\boxed{
+\Arel^{V}
+=
+\left(
+\Arel^{\rm core},
+W_\sigma
+\right).
+}
+\]
+Within this extension,
+\[
+V_R,\qquad
+\Delta_{\sigma\to\tau}V_R,\qquad
+\operatorname{Attr}_R
+\]
+are derived diagnostics rather than new primitive coordinates.
+
+A phase realization, when available, is recorded separately:
+\[
+\boxed{
+\Arel^{U(1)}
+=
+\left(
+\Arel^{\rm core},
+\chi:\mathcal H_\gamma\to U(1)
+\right).
+}
+\]
+The existence of \(\chi\) is not guaranteed by the core signature.
+
+The companion Zero-Axis structure is also recorded separately:
+\[
+\boxed{
+\Arel^{\rm ZA}
+=
+\left(
+\Arel^{\rm core},
+\Zaxis,
+\Omega
+\right).
+}
+\]
+An optional bridge may then identify an already verified \(U(1)\) phase with
+a finite Zero-Axis point through \(\Omega^{-1}\). This separation is
+epistemic, not operational.
+
+Core-derived diagnostics and structures include
+\[
+\boxed{
+\begin{gathered}
+\operatorname{Orb},\quad
+\mathcal H_{\gamma},\quad
+\Delta_T,\quad
+\Delta_{T,\star},\quad
+\Delta_{S,\star},\quad
+\Delta_{U,\star},\quad
+\Delta_{F,T},\\
+M_{ij},\quad
+\varepsilon,\quad
+\Delta_F,\quad
+[M,S],\quad
+[X,Y]_{\star},\quad
+\alpha(X,Y,Z).
+\end{gathered}
+}
+\]
+
+Extension-dependent derived diagnostics include
+\[
+\boxed{
+V_R,\quad
+\Delta_{\sigma\to\tau}V_R,\quad
+\operatorname{Attr}_R,\quad
+W.
+}
+\]
+Here \(W\) denotes topological winding and requires the \(U(1)\) phase
+realization; it is not a core coordinate.
+
+\section{Explicit non-assumptions}
+
+The general algebra does not assume:
+\begin{itemize}
+  \item a Planck-scale minimal point;
+  \item a particular spacetime, metric, or gravitational law;
+  \item associativity or commutativity of \(\star_R\);
+  \item exact preservation of products under refinement;
+  \item a one-dimensional numerical semantic scale;
+  \item winding, orbit, or residual as independent state coordinates;
+  \item a physical interpretation of an algebraic structure without a
+        separate bridge theorem.
+\end{itemize}
+
+\section{Reference-kernel obligations}
+
+A promoted primitive must remain synchronized across four layers:
+\[
+\boxed{
+\text{definition}
++\text{reference implementation}
++\text{test}
++\text{LaTeX statement}.
+}
+\]
+The initial executable kernel therefore tests the axiom dependency DAG, finite independence witnesses, RA0* closure witnesses, typed additive zero, typed operation interfaces, recursive point refinement,
+\(\CP\) normalization, Fubini--Study separation, rank-zero scalar typing,
+typed algebraic zero, semantic coarse-graining, relative Moir\'e rotation,
+Zero-Axis unit-circle projection, derived winding, associator/commutator
+diagnostics, and refinement residuals.
+
+\end{document}
