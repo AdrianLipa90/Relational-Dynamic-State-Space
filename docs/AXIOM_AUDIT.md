@@ -23,6 +23,11 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | DEF_BINARY_REL | DEFINITION | A primitive typed relation is binary: r:a->b. Higher arity is constructed separately. | — |
 | DEF_RELATION_OCCURRENCE | DEFINITION | A relation occurrence is a typed relation value together with source/target OccurrenceAddress values; distinct occurrences may project to the same relation value. | DEF_BINARY_REL, DEF_CARRIER_OCCURRENCE_SEPARATION |
 | DEF_OCCURRENCE_PATH | DEFINITION | An occurrence-aware path is composable in both carrier value and occurrence address, with one carrier consistently assigned to each occurrence address. | DEF_RELATION_OCCURRENCE |
+| DEF_OCCURRENCE_FORGETFUL_PROJECTION | DEFINITION | The projection pi_occ_to_val forgets occurrence addresses while preserving ordered typed relation values. | DEF_OCCURRENCE_PATH |
+| THM_OCCURRENCE_COMPOSABILITY_PROJECTS | THEOREM | Every occurrence-composable path projects to a composable relation-value path. | DEF_OCCURRENCE_FORGETFUL_PROJECTION |
+| THM_OCCURRENCE_CLOSED_IMPLIES_VALUE_CLOSED | THEOREM | With consistent occurrence-to-carrier assignment, occurrence closure implies carrier/value closure. | DEF_OCCURRENCE_FORGETFUL_PROJECTION |
+| REF_VALUE_CLOSED_OCCURRENCE_OPEN_COUNTERMODEL | REFERENCE REALIZATION | A singleton self-relation step can be value-closed while moving from the root occurrence to a child occurrence. | DEF_OCCURRENCE_FORGETFUL_PROJECTION |
+| THM_VALUE_CLOSED_NOT_OCCURRENCE_CLOSED | THEOREM | The singleton countermodel proves the converse closure implication fails. | REF_VALUE_CLOSED_OCCURRENCE_OPEN_COUNTERMODEL |
 | DEF_BINARY_DISTINCTION | DEFINITION | A hosted binary distinction has two distinct branch-occurrence slots (-,+); non-degeneracy is occurrence/address-level and does not require different carrier labels. | DEF_POINT, DEF_OCCURRENCE_ADDRESS_SPACE |
 | DEF_RELATIONAL_DISTINCTION | DEFINITION | A relationally bound distinction equips the two branch-occurrence slots with explicit primitive branch-relation occurrences; occurrence identity includes the branch slot, so the underlying relation values may coincide. | DEF_BINARY_DISTINCTION, DEF_RELATION_OCCURRENCE |
 | RR1 | AXIOM | At every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction; the rule re-applies at every finite refinement depth. | DEF_POINT, DEF_BINARY_DISTINCTION |
@@ -102,17 +107,18 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 8. **The additive K-module structure, tensor-scalar grading, semantic scale, supplied semantic weighting, typed transport, orbital action and relational product are signature choices/structural primitives.** They are not derived from RA0. The additive module is required before differences such as commutators, associators and refinement residuals are meaningful.
 9. **Moiré is derived once invertible orbital actions are present.**
 10. **Refinement residual requires both recursive refinement and a relational product.**
-11. **Carrier closure and occurrence closure are distinct.** A self-relation on a repeated carrier label can be carrier-closed while still moving to a different path-labelled occurrence. Branch-aware holonomy therefore requires occurrence closure.
-12. **Value-level and occurrence-level U(1) representations are separate reference realizations.** Neither is a universal theorem of the core algebra.
-13. **Topological winding depends on that U(1) representation and an explicit closure check, not on Zero Axis.**
-14. **Zero Axis is an independent imported bridge.** Its finite inverse projective lift is optional and occurs only after a U(1) phase has already been supplied.
-15. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
-16. **RA0_REL_STAR is a stronger one-object-level-axiom candidate.** It differs from RA0* by explicitly binding binary distinction slots to primitive relation occurrences; only this stronger candidate currently carries explicit theorems to both RA0 and RR1.
-17. **Carrier cardinality and occurrence cardinality are independent scales.** A singleton carrier presentation can generate \(2^{N+1}-1\) distinct path-labelled occurrences through depth \(N\), and the full finite-word address space is countably infinite.
-18. **Underlying relation-value cardinality can also be minimal.** Two distinct branch occurrences may project to one self-relation value, so the minimal singleton RA0_REL_STAR model simultaneously attains \(|\operatorname{Adm}|=1\) and \(|\operatorname{RelVal}|=1\).
-19. **Occurrence addresses form a free monoid.** The finite words \(\{-1,+1\}^{*}\) compose by concatenation with the empty word as identity; `OccurrenceAddress.advance` is the canonical right action, and RR1 realizes every finite word from an admitted root.
-20. **Refinement level is a monoid grading.** The occurrence-address level is word length: \(\ell(uv)=\ell(u)+\ell(v)\) and \(\ell(\omega u)=\ell(\omega)+|u|\).
-21. **Occurrence addresses carry a canonical tree metric.** Prefix order gives longest-common-prefix meet, and \(d_T(u,v)=|u|+|v|-2|u\wedge v|\) is the induced combinatorial tree metric. This is address geometry, not a physical metric.
+11. **Occurrence-to-value forgetting is explicit.** The projection \(\pi_{\rm occ\to val}\) drops occurrence addresses but preserves ordered relation values. Occurrence composability projects to value composability.
+12. **Carrier closure and occurrence closure are distinct.** Occurrence closure implies carrier/value closure under a consistent assignment, while the singleton self-relation countermodel shows the converse fails.
+13. **Value-level and occurrence-level U(1) representations are separate reference realizations.** Neither is a universal theorem of the core algebra.
+14. **Topological winding depends on that U(1) representation and an explicit closure check, not on Zero Axis.**
+15. **Zero Axis is an independent imported bridge.** Its finite inverse projective lift is optional and occurs only after a U(1) phase has already been supplied.
+16. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
+17. **RA0_REL_STAR is a stronger one-object-level-axiom candidate.** It differs from RA0* by explicitly binding binary distinction slots to primitive relation occurrences; only this stronger candidate currently carries explicit theorems to both RA0 and RR1.
+18. **Carrier cardinality and occurrence cardinality are independent scales.** A singleton carrier presentation can generate \(2^{N+1}-1\) distinct path-labelled occurrences through depth \(N\), and the full finite-word address space is countably infinite.
+19. **Underlying relation-value cardinality can also be minimal.** Two distinct branch occurrences may project to one self-relation value, so the minimal singleton RA0_REL_STAR model simultaneously attains \(|\operatorname{Adm}|=1\) and \(|\operatorname{RelVal}|=1\).
+20. **Occurrence addresses form a free monoid.** The finite words \(\{-1,+1\}^{*}\) compose by concatenation with the empty word as identity; `OccurrenceAddress.advance` is the canonical right action, and RR1 realizes every finite word from an admitted root.
+21. **Refinement level is a monoid grading.** The occurrence-address level is word length: \(\ell(uv)=\ell(u)+\ell(v)\) and \(\ell(\omega u)=\ell(\omega)+|u|\).
+22. **Occurrence addresses carry a canonical tree metric.** Prefix order gives longest-common-prefix meet, and \(d_T(u,v)=|u|+|v|-2|u\wedge v|\) is the induced combinatorial tree metric. This is address geometry, not a physical metric.
 
 ## Canonical foundational stratification
 
