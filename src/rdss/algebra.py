@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from math import acos, isfinite, pi
-from typing import Callable, Iterable, Sequence, TypeVar
+from math import isfinite, pi
+from typing import Callable, Sequence, TypeVar
 
 T = TypeVar("T")
 
@@ -42,59 +42,6 @@ class RelationalPoint:
             RelationalPoint(self.address + (-1,)),
             RelationalPoint(self.address + (1,)),
         )
-
-
-@dataclass(frozen=True)
-class CP1State:
-    """Normalized representative of one point in CP^1.
-
-    Global phase is not removed numerically; all invariant operations below
-    depend only on the projective ray.
-    """
-
-    alpha: complex
-    beta: complex
-
-    def __post_init__(self) -> None:
-        a = complex(self.alpha)
-        b = complex(self.beta)
-        if not (_finite_complex(a) and _finite_complex(b)):
-            raise ValueError("CP1 amplitudes must be finite")
-        norm2 = abs(a) ** 2 + abs(b) ** 2
-        if norm2 <= 0.0:
-            raise ValueError("the zero vector does not define a CP1 point")
-        norm = norm2 ** 0.5
-        object.__setattr__(self, "alpha", a / norm)
-        object.__setattr__(self, "beta", b / norm)
-
-    def overlap_abs(self, other: "CP1State") -> float:
-        inner = self.alpha.conjugate() * other.alpha + self.beta.conjugate() * other.beta
-        return min(1.0, max(0.0, abs(inner)))
-
-    def fubini_study_distance(self, other: "CP1State") -> float:
-        return acos(self.overlap_abs(other))
-
-    def orthogonal_partner(self) -> "CP1State":
-        return CP1State(-self.beta.conjugate(), self.alpha.conjugate())
-
-
-@dataclass(frozen=True)
-class MinimalDistinction:
-    """A relation selecting two projective states over one relational point."""
-
-    carrier: RelationalPoint
-    left: CP1State
-    right: CP1State
-    label: str = "distinction"
-
-    @property
-    def separation(self) -> float:
-        return self.left.fubini_study_distance(self.right)
-
-    def is_maximal(self, tolerance: float = 1e-12) -> bool:
-        if tolerance <= 0 or not isfinite(tolerance):
-            raise ValueError("tolerance must be positive and finite")
-        return abs(self.separation - (pi / 2.0)) <= tolerance
 
 
 @dataclass(frozen=True)
@@ -270,79 +217,6 @@ class TypedRelation:
     def __post_init__(self) -> None:
         if not self.label.strip():
             raise ValueError("relation label must be non-empty")
-
-
-@dataclass(frozen=True)
-class MoireRotation:
-    """Relative orbital rotation; only the difference is intrinsic here."""
-
-    theta_i: float
-    theta_j: float
-
-    def __post_init__(self) -> None:
-        if not (isfinite(self.theta_i) and isfinite(self.theta_j)):
-            raise ValueError("rotation angles must be finite")
-
-    @property
-    def delta(self) -> float:
-        return wrap_phase(self.theta_i - self.theta_j)
-
-
-@dataclass(frozen=True)
-class ZeroAxisPoint:
-    """Point s=1/2+it and its projective unit-circle coordinate Omega(s)."""
-
-    t: float
-
-    def __post_init__(self) -> None:
-        if not isfinite(self.t):
-            raise ValueError("zero-axis coordinate must be finite")
-
-    @property
-    def s(self) -> complex:
-        return 0.5 + 1j * self.t
-
-    @property
-    def omega(self) -> complex:
-        s = self.s
-        return s / (1.0 - s)
-
-    @property
-    def unit_circle_residual(self) -> float:
-        return abs(abs(self.omega) - 1.0)
-
-
-def winding_and_residual(phases: Iterable[float]) -> tuple[int, float]:
-    """Decompose an accumulated phase lift into nearest turn count and residual.
-
-    For a non-closed path the integer is only a turn-count candidate, not a
-    topological winding invariant. Use closed_path_winding for that claim.
-    """
-    total = 0.0
-    for phase in phases:
-        phase = float(phase)
-        if not isfinite(phase):
-            raise ValueError("phases must be finite")
-        total += phase
-    turn_count = round(total / (2.0 * pi))
-    residual = wrap_phase(total - turn_count * 2.0 * pi)
-    return turn_count, residual
-
-
-def closed_path_winding(
-    phases: Iterable[float],
-    *,
-    closure_tolerance: float = 1e-10,
-) -> int:
-    """Return topological winding only when the lifted phase path closes."""
-    if closure_tolerance <= 0 or not isfinite(closure_tolerance):
-        raise ValueError("closure_tolerance must be positive and finite")
-    winding, residual = winding_and_residual(phases)
-    if abs(residual) > closure_tolerance:
-        raise ValueError(
-            f"phase path is not closed: residual={residual!r} exceeds tolerance"
-        )
-    return winding
 
 
 def commutator(product: Callable[[T, T], T], x: T, y: T) -> T:
