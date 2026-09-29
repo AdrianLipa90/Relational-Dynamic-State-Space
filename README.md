@@ -227,7 +227,7 @@ The kernel does **not** assume:
 - Zero Axis as an axiom of the general algebra;
 - any physical identification without a separate bridge theorem.
 
-See `docs/ARCHITECTURE.md` for module layering, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, and `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary.
+See `docs/ARCHITECTURE.md` for module layering, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary, and `docs/VALIDATION_STATUS.md` for current verification status.
 
 ## Layer architecture
 
@@ -262,6 +262,26 @@ is a reference-realization question. The optional Zero Axis lift
 is a separate bridge applied only after a unit phase has already been established.
 
 See \`docs/ARCHITECTURE.md\` for the exact module ownership and promotion rules.
+
+## Local validation
+
+The repository includes a local validator that does not use GitHub Actions:
+
+```text
+python scripts/validate.py
+```
+
+Useful modes:
+
+```text
+python scripts/validate.py --tests-only
+python scripts/validate.py --latex-only
+python scripts/validate.py --require-latex
+```
+
+The default run executes pytest and then compiles the monograph when `latexmk` or `pdflatex` is installed. `--require-latex` converts a missing LaTeX toolchain from SKIP to FAIL.
+
+See `docs/VALIDATION_STATUS.md` for the latest distinction between static checks and runtime execution.
 
 ## Development invariant
 
