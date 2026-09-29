@@ -3,14 +3,16 @@ from math import pi
 
 import pytest
 
-from rdss import OccurrenceRelationPath, OccurrenceTransportPath, RelationOccurrence, RelationalPoint, RelationTransport, SemanticScale, TensorScalarElement, TransportPath, TypedRelation
+from rdss import OccurrenceRelationPath, OccurrenceTransportPath, RelationOccurrence, RelationalPoint, RelationTransport, SemanticScale, TensorScalarElement, TransportPath, TypedRelation, minimal_singleton_ra0_rel_star_model
 from rdss.realizations import (
     CP1RefinementRealization,
+    CP1RelationalUnfolding,
     CP1State,
     HolonomyPhaseRepresentation,
     OccurrenceHolonomyPhaseRepresentation,
     MinimalDistinction,
     MoireRotation,
+    reference_cp1_unfolding,
     reference_maximal_cp1_tree,
     lift_value_phase_to_occurrence,
 )
@@ -342,3 +344,36 @@ def test_single_carrier_can_support_two_distinct_cp1_branch_states():
     assert distinction.carrier == carrier
     assert distinction.left != distinction.right
     assert distinction.separation == pytest.approx(pi / 2.0)
+
+
+
+def test_singleton_relational_unfolding_matches_cp1_address_tree():
+    model = minimal_singleton_ra0_rel_star_model()
+    realized = reference_cp1_unfolding(model, "a", 3)
+
+    expected = model.unfold("a", 3)
+
+    assert realized.addresses == frozenset(expected)
+    assert len(realized.addresses) == 15
+    assert set(realized.label_by_address.values()) == {"a"}
+    assert realized.fibres.complete_through_depth(RelationalPoint(), 3)
+
+
+def test_singleton_carrier_label_reuse_is_independent_of_cp1_branch_separation():
+    model = minimal_singleton_ra0_rel_star_model()
+    realized = reference_cp1_unfolding(model, "a", 1)
+    root = RelationalPoint()
+
+    assert realized.label_by_address[(-1,)] == "a"
+    assert realized.label_by_address[(1,)] == "a"
+    assert realized.fibres.branch_state(root, -1) != realized.fibres.branch_state(root, 1)
+    assert realized.fibres.distinction_at(root).separation == pytest.approx(pi / 2.0)
+
+
+def test_cp1_relational_unfolding_rejects_address_mismatch():
+    fibres = reference_maximal_cp1_tree(1)
+    with pytest.raises(ValueError):
+        CP1RelationalUnfolding(
+            ((RelationalPoint(), "a"),),
+            fibres,
+        )
