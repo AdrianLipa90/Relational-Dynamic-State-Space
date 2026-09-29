@@ -7,15 +7,57 @@ from typing import Callable, Sequence, TypeVar
 T = TypeVar("T")
 
 
+class OccurrenceAddress(tuple):
+    """Canonical finite path-labelled occurrence address.
+
+    This type carries occurrence identity only. It is deliberately separate
+    from RelationalPoint, which is used as a carrier/reference-coordinate
+    value in the algebraic kernel.
+    """
+
+    def __new__(cls, word=()):
+        values = tuple(word)
+        if any(branch not in (-1, 1) for branch in values):
+            raise ValueError("occurrence addresses use only -1/+1 branches")
+        return super().__new__(cls, values)
+
+    @property
+    def level(self) -> int:
+        return len(self)
+
+    def advance(self, word) -> "OccurrenceAddress":
+        suffix = OccurrenceAddress(word)
+        return OccurrenceAddress(tuple(self) + tuple(suffix))
+
+    def is_prefix_of(self, other) -> bool:
+        other = OccurrenceAddress(other)
+        return tuple(other[: len(self)]) == tuple(self)
+
+    def meet(self, other) -> "OccurrenceAddress":
+        other = OccurrenceAddress(other)
+        common: list[int] = []
+        for left, right in zip(self, other):
+            if left != right:
+                break
+            common.append(left)
+        return OccurrenceAddress(common)
+
+    def tree_distance(self, other) -> int:
+        other = OccurrenceAddress(other)
+        ancestor = self.meet(other)
+        return self.level + other.level - 2 * ancestor.level
+
 def _finite_complex(z: complex) -> bool:
     return isfinite(z.real) and isfinite(z.imag)
 
 
 @dataclass(frozen=True, order=True)
 class RelationalPoint:
-    """Minimal relational carrier.
+    """Minimal relational carrier/reference-coordinate value.
 
-    The root has an empty binary address. Refinement appends +1 or -1.
+    The binary address is retained as a reference coordinate used by
+    existing realizations. Canonical branch-occurrence identity is represented
+    separately by OccurrenceAddress in occurrence-aware paths.
     No physical length scale is built into the point.
     """
 
