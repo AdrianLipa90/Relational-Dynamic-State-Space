@@ -1,14 +1,13 @@
 """Relational Dynamic State Space (RDSS) reference kernel."""
 
-from .holonomy import ExperienceHolonomy, RelationalLoop, transport_experience
-from .cosmic import (
-    CosmicRelationalStep,
+from .holonomy import HolonomyTransport, RelationalHolonomyPath, transport_holonomy
+from .representations import (
+    DerivedRepresentation,
+    HilbertMoireKet,
     InfoHolonomicCoordinate,
-    MinkowskiMoirePoint,
-    accumulated_holonomic_phase,
-    minkowski_interval_sq,
+    RepresentationMetric,
+    representation_displacement,
 )
-
 from .core import (
     ArithmeticRelation,
     DynamicState,
@@ -23,20 +22,20 @@ from .core import (
 
 __all__ = [
     "ArithmeticRelation",
-    "CosmicRelationalStep",
-    "InfoHolonomicCoordinate",
-    "MinkowskiMoirePoint",
-    "ExperienceHolonomy",
+    "DerivedRepresentation",
     "DynamicState",
+    "HilbertMoireKet",
     "HilbertMoireSpace",
+    "HolonomyTransport",
     "HyperoctagonalLattice",
+    "InfoHolonomicCoordinate",
     "LinearRelationalAttachment",
-    "RelationalLoop",
     "PageAttractorResult",
+    "RelationalHolonomyPath",
+    "RepresentationMetric",
     "SemanticMetric",
     "TimeAlgebraOperator",
     "evolve_until_page_attractor",
-    "transport_experience",
-    "accumulated_holonomic_phase",
-    "minkowski_interval_sq",
+    "representation_displacement",
+    "transport_holonomy",
 ]
