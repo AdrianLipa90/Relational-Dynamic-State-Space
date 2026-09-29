@@ -132,3 +132,41 @@ def test_semantic_shift_rejects_change_in_p():
 
     with pytest.raises(ValueError):
         semantic_potential_shift(residuals, source, target)
+
+
+
+def test_potential_rejects_empty_and_duplicate_weight_profiles():
+    with pytest.raises(ValueError):
+        RelationalPotentialProfile(
+            SemanticScale("object"),
+            (),
+        )
+
+    with pytest.raises(ValueError):
+        RelationalPotentialProfile(
+            SemanticScale("object"),
+            (("a", 1.0), ("a", 2.0)),
+        )
+
+
+def test_potential_rejects_extra_residual_component():
+    profile = RelationalPotentialProfile(
+        SemanticScale("object"),
+        (("a", 1.0),),
+    )
+
+    with pytest.raises(ValueError):
+        profile.evaluate({"a": 1.0, "b": 2.0})
+
+
+def test_relational_attractor_rejects_empty_or_negative_candidates():
+    with pytest.raises(ValueError):
+        relational_attractor_set({})
+
+    with pytest.raises(ValueError):
+        relational_attractor_set({"a": -1.0})
+
+
+def test_relational_attractor_rejects_invalid_tolerance():
+    with pytest.raises(ValueError):
+        relational_attractor_set({"a": 1.0}, tolerance=0.0)
