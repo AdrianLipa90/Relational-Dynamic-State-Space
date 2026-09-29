@@ -141,3 +141,39 @@ Every promoted primitive should have synchronized forms:
 \[
 \boxed{\text{definition}+\text{reference code}+\text{test}+\text{LaTeX}}.
 \]
+
+
+## One-axiom closure candidate
+
+The current canonical foundation remains
+
+\[
+\mathrm{RA0}+\mathrm{RR1}.
+\]
+
+A stronger candidate has now been isolated:
+
+\[
+\boxed{
+\mathrm{RA0}^{*}:
+\text{every admitted carrier hosts an admitted non-degenerate binary distinction,}
+}
+\]
+
+with the selected endpoint occurrences themselves admitted.
+
+Under this stronger statement, recursive refinement follows by induction on path-labelled occurrences:
+
+\[
+\boxed{
+\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}.
+}
+\]
+
+This does **not** mean old RA0 implied RR1. RA0* explicitly adds binary non-degeneracy and endpoint admissibility. It also does not force ontically new carrier identities at each depth:
+
+\[
+\mathrm{RA0}^{*}\not\Rightarrow\mathrm{NOVELTY}.
+\]
+
+See `docs/AXIOM_CLOSURE_AUDIT.md`.
