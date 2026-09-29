@@ -17,7 +17,7 @@ Observed public definitions:
 - relational potential: 3;
 - reference realizations: 6;
 - Zero Axis bridge: 2;
-- package-root public exports: 67.
+- package-root public exports: 68.
 
 Static checks found:
 
@@ -31,7 +31,7 @@ Static checks found:
 The current claim ledger contains:
 
 \[
-44
+46
 \]
 
 unique claim IDs.
@@ -63,23 +63,45 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 124 Python test functions:
+The current repository contains 131 Python test functions:
 
 | File | Test functions |
 |---|---:|
 | \`tests/test_algebra.py\` | 12 |
-| \`tests/test_axioms.py\` | 26 |
-| \`tests/test_closure.py\` | 8 |
-| \`tests/test_independence_witnesses.py\` | 5 |
+| \`tests/test_axioms.py\` | 28 |
+| \`tests/test_closure.py\` | 10 |
+| \`tests/test_independence_witnesses.py\` | 8 |
 | \`tests/test_layering.py\` | 3 |
 | \`tests/test_operations.py\` | 37 |
 | \`tests/test_phase.py\` | 3 |
 | \`tests/test_potential.py\` | 13 |
 | \`tests/test_realizations.py\` | 13 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **124** |
+| **Total** | **131** |
 
 This is an inventory count, not a runtime result.
+
+### Foundational semantics audit
+
+The current foundation is stratified as
+
+\[
+\mathrm{META0}
+\triangleright
+(\mathrm{RA0}+\mathrm{RR1}).
+\]
+
+META0 is a model-formation rule: absolute nothingness is not reified in the object language and admissible RTOFA models have non-empty admitted carrier domains. EX0 is a theorem of META0.
+
+RA0 is now orientation-neutral: an admitted observable must be incident to a primitive relation as source or target.
+
+Executable finite witnesses also establish that model non-vacuity does not imply RA0 while \(\operatorname{Adm}\) remains primitive:
+
+\[
+\mathrm{META0}\not\Rightarrow\mathrm{RA0}.
+\]
+
+The possible definitional reduction of RA0 is intentionally left OPEN.
 
 ### Typed-zero audit
 
@@ -107,7 +129,7 @@ The potential remains a scalar relational diagnostic. No potential-to-geometry o
 
 ### Documentation integrity
 
-Static markdown audit found no remaining control-character corruption or bare math delimiters in the audited architecture, coherence, indexed-tensor, relational-potential, semantic-weighting-gate, independence-witness, axiom-audit, and README documents after the raw-string repair.
+Static markdown audit covers the architecture, foundational non-vacuity, relational-admissibility reduction, coherence, indexed-tensor, relational-potential, semantic-weighting, independence-witness, axiom-audit, and README documents.
 
 ## RUNTIME NOT RUN ON CURRENT HEAD
 
@@ -133,7 +155,7 @@ The following are intentionally open rather than silently assumed:
 2. **Non-strict monoidal coherence gate** — requires parenthesized tensor objects plus explicit associator/braiding isomorphisms before pentagon/hexagon can be tested.
 3. **Semantic weighting derivation gate** — the kernel evaluates supplied semantic weights but does not derive \(W_\sigma\) from a semantic graph/context.
 4. **Holonomy-to-\(U(1)\) existence theorem** — the executable interface exists, but no universal theorem says every RTOFA holonomy admits such a representation.
-5. **RA0* promotion** — \(\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}\) is tracked under the strengthened candidate statement; the canonical foundational set remains \(\mathrm{RA0}+\mathrm{RR1}\).
+5. **Relational-admissibility reduction gate** — RA0 may be demoted only if \(\operatorname{Adm}\) is explicitly redefined by relational incidence; META0 alone does not imply RA0.\n6. **RA0* promotion** — \(\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}\) is tracked under the strengthened candidate statement; the canonical object-level pair remains \(\mathrm{RA0}+\mathrm{RR1}\) under META0.
 
 ## Branch safety
 
