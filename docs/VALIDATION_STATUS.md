@@ -12,10 +12,12 @@ This file distinguishes static verification from runtime execution. A static PAS
 Observed public definitions:
 
 - core algebra: 9;
+- structural operations: 33;
 - generic phase: 3;
+- relational potential: 3;
 - reference realizations: 6;
 - Zero Axis bridge: 2;
-- package-root public exports: 64.
+- package-root public exports: 67.
 
 Static checks found:
 
@@ -29,7 +31,7 @@ Static checks found:
 The current claim ledger contains:
 
 \[
-39
+43
 \]
 
 unique claim IDs.
@@ -61,22 +63,37 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 102 Python test functions:
+The current repository contains 113 Python test functions:
 
 | File | Test functions |
 |---|---:|
 | \`tests/test_algebra.py\` | 10 |
-| \`tests/test_axioms.py\` | 23 |
+| \`tests/test_axioms.py\` | 25 |
 | \`tests/test_closure.py\` | 6 |
 | \`tests/test_independence_witnesses.py\` | 3 |
 | \`tests/test_layering.py\` | 3 |
 | \`tests/test_operations.py\` | 37 |
 | \`tests/test_phase.py\` | 3 |
+| \`tests/test_potential.py\` | 9 |
 | \`tests/test_realizations.py\` | 13 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **102** |
+| **Total** | **113** |
 
 This is an inventory count, not a runtime result.
+
+### Relational potential audit
+
+The current potential layer explicitly separates:
+
+\[
+\text{semantic scale label}
+\neq
+\text{supplied semantic weighting profile}.
+\]
+
+A pure semantic shift requires the same residual signature and the same potential order \(p\); otherwise the reference implementation fails closed.
+
+The potential remains a scalar relational diagnostic. No potential-to-geometry or physical interpretation is promoted by the current kernel.
 
 ### Documentation integrity
 
