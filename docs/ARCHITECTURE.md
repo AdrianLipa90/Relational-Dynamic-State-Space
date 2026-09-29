@@ -109,7 +109,8 @@ Contains concrete realizations that may represent parts of the core:
 - Fubini-Study \`MinimalDistinction\`;
 - fibre-local recursive CP1 realization;
 - scalar-angle \`MoireRotation\`;
-- explicit closed-holonomy-to-U(1) representation interface.
+- explicit value-level closed-holonomy-to-U(1) representation interface;
+- explicit occurrence-closed-holonomy-to-U(1) representation interface (`OccurrenceHolonomyPhaseRepresentation`).
 
 A reference realization is executable and tested but is not thereby a theorem forced by the core axioms.
 
