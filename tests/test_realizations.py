@@ -12,6 +12,7 @@ from rdss.realizations import (
     MinimalDistinction,
     MoireRotation,
     reference_maximal_cp1_tree,
+    lift_value_phase_to_occurrence,
 )
 
 
@@ -125,7 +126,7 @@ def closed_phase_path(total_phase: float):
     return path, x
 
 
-def occurrence_closed_phase_path(total_phase: float):
+def occurrence_closed_phase_path(total_phase: float, branch: int = -1):
     a = RelationalPoint()
     scale = SemanticScale("object")
     x = TensorScalarElement((1.0,), (0, 0), a, scale)
@@ -135,8 +136,8 @@ def occurrence_closed_phase_path(total_phase: float):
     up = TypedRelation(a, a, "up")
     occurrence_path = OccurrenceRelationPath(
         (
-            RelationOccurrence(down, (), (-1,)),
-            RelationOccurrence(up, (-1,), ()),
+            RelationOccurrence(down, (), (branch,)),
+            RelationOccurrence(up, (branch,), ()),
         )
     )
 
@@ -219,6 +220,30 @@ def test_occurrence_phase_representation_rejects_nonunit_phase():
 
     with pytest.raises(ValueError):
         rep.phase(path, x)
+
+
+def test_value_phase_lift_is_branch_blind_occurrence_representation():
+    value_rep = HolonomyPhaseRepresentation(
+        "value-scalar-ratio",
+        scalar_ratio_phase,
+    )
+    lifted = lift_value_phase_to_occurrence(value_rep)
+
+    left_path, x = occurrence_closed_phase_path(0.4, branch=-1)
+    right_path, _ = occurrence_closed_phase_path(0.4, branch=1)
+
+    left_phase = lifted.phase(left_path, x)
+    right_phase = lifted.phase(right_path, x)
+
+    assert left_path.occurrence_path != right_path.occurrence_path
+    assert (
+        left_path.value_transport_path.relation_path
+        == right_path.value_transport_path.relation_path
+    )
+    assert left_phase == pytest.approx(right_phase)
+    assert left_phase == pytest.approx(
+        value_rep.phase(left_path.value_transport_path, x)
+    )
 
 
 def test_nonunit_holonomy_representation_is_rejected():
