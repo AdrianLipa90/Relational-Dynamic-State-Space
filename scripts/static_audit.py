@@ -26,6 +26,7 @@ AUDITED_DOCS = (
     ROOT / "docs" / "AXIOM_AUDIT.md",
     ROOT / "docs" / "AXIOM_CLOSURE_AUDIT.md",
     ROOT / "docs" / "COHERENCE_MATRIX.md",
+    ROOT / "docs" / "FOUNDATIONAL_NONVACUITY_GATE.md",
     ROOT / "docs" / "INDEPENDENCE_WITNESSES.md",
     ROOT / "docs" / "INDEXED_TENSOR_GATE.md",
     ROOT / "docs" / "MONOIDAL_COHERENCE_GATE.md",
