@@ -476,3 +476,31 @@ def test_ex0_is_theorem_of_model_formation_not_extra_object_axiom():
     assert claims["EX0"].kind is ClaimKind.THEOREM
     assert dependency_closure("EX0") == frozenset({"META0"})
     assert "EX0" not in {claim.id for claim in foundational_axioms()}
+
+
+
+def test_ra0_rr1_do_not_imply_ra0_rel_star():
+    claims = claim_map()
+
+    assert claims["REF_RA0_RR1_UNBOUND_MODEL"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert dependency_closure("REF_RA0_RR1_UNBOUND_MODEL") == frozenset(
+        {
+            "META0",
+            "RA0",
+            "RR1",
+            "DEF_POINT",
+            "DEF_BINARY_DISTINCTION",
+        }
+    )
+
+    assert claims["THM_RA0_RR1_NOT_RA0_REL_STAR"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_RA0_RR1_NOT_RA0_REL_STAR") == frozenset(
+        {
+            "REF_RA0_RR1_UNBOUND_MODEL",
+            "META0",
+            "RA0",
+            "RR1",
+            "DEF_POINT",
+            "DEF_BINARY_DISTINCTION",
+        }
+    )
