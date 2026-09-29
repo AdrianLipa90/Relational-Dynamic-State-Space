@@ -109,3 +109,10 @@ def test_orbital_coherence_residual_has_only_orbit_and_module_dependencies():
     assert dependency_closure("DEF_ORBITAL_COHERENCE") == frozenset(
         {"PRIM_ORBIT", "PRIM_MODULE"}
     )
+
+
+
+def test_scale_orbit_residual_depends_on_scale_orbit_and_module():
+    assert dependency_closure("DEF_SCALE_ORBIT_RESIDUAL") == frozenset(
+        {"PRIM_SCALE", "PRIM_ORBIT", "PRIM_MODULE"}
+    )
