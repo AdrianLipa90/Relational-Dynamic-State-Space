@@ -1274,6 +1274,39 @@ The corresponding stronger candidate is denoted
 and is represented in the executable claim ledger by
 \texttt{RA0\_REL\_STAR}.
 
+\subsection{Forgetful projection to the plain distinction candidate}
+
+A relationally bound binary distinction contains all data of a plain binary
+occurrence distinction plus explicit branch-relation occurrences. Forgetting
+only those relation labels defines a projection
+\[
+U:
+\mathrm{RA0}^{\mathrm{rel}*}\text{-models}
+\longrightarrow
+\mathrm{RA0}^{*}\text{-models}.
+\]
+It preserves the admitted carrier set and the complete path-labelled
+occurrence unfolding. Hence
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}^{*}.
+}
+\]
+Since the previous theorem gives
+\[
+\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1},
+\]
+the recursive-closure implication also factors as
+\[
+\mathrm{RA0}^{\mathrm{rel}*}
+\Rightarrow
+\mathrm{RA0}^{*}
+\Rightarrow
+\mathrm{RR1}.
+\]
+
 Every admitted host now has primitive relational incidence. Therefore
 \[
 \boxed{
