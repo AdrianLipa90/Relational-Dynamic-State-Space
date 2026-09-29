@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Callable
 
-from .algebra import SemanticScale, SemanticScaleGraph, TensorScalarElement, TypedRelation
+from .algebra import OccurrenceAddress, SemanticScale, SemanticScaleGraph, TensorScalarElement, TypedRelation
 
 
 ElementMap = Callable[[TensorScalarElement], TensorScalarElement]
@@ -204,13 +204,20 @@ class RelationOccurrence:
     """One typed relation value attached to source/target occurrence addresses."""
 
     relation: TypedRelation
-    source_occurrence: tuple[int, ...]
-    target_occurrence: tuple[int, ...]
+    source_occurrence: OccurrenceAddress
+    target_occurrence: OccurrenceAddress
 
     def __post_init__(self) -> None:
-        for address in (self.source_occurrence, self.target_occurrence):
-            if any(branch not in (-1, 1) for branch in address):
-                raise ValueError("occurrence addresses use only -1/+1 branches")
+        object.__setattr__(
+            self,
+            "source_occurrence",
+            OccurrenceAddress(self.source_occurrence),
+        )
+        object.__setattr__(
+            self,
+            "target_occurrence",
+            OccurrenceAddress(self.target_occurrence),
+        )
 
 
 @dataclass(frozen=True)
@@ -255,11 +262,11 @@ class OccurrenceRelationPath:
         return self.occurrences[-1].relation.target
 
     @property
-    def source_occurrence(self) -> tuple[int, ...]:
+    def source_occurrence(self) -> OccurrenceAddress:
         return self.occurrences[0].source_occurrence
 
     @property
-    def target_occurrence(self) -> tuple[int, ...]:
+    def target_occurrence(self) -> OccurrenceAddress:
         return self.occurrences[-1].target_occurrence
 
     @property
