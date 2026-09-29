@@ -8,7 +8,7 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 |---|---|---|---|
 | META0 | FORMATION RULE | Absolute nothingness has no object-language denotation; admissible RTOFA models have a non-empty admitted carrier domain. | — |
 | EX0 | THEOREM | Every admissible RTOFA model contains at least one admitted relational carrier. | META0 |
-| RA0 | AXIOM | An admitted observable is not independent of relation. | — |
+| RA0 | AXIOM | Every admitted observable is incident to at least one primitive relation, as source or target. | — |
 | DEF_POINT | DEFINITION | The minimal algebraic carrier is an unscaled point. | — |
 | DEF_BINARY_REL | DEFINITION | A primitive typed relation is binary: r:a->b. Higher arity is constructed separately. | — |
 | RR1 | AXIOM | At every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction; the rule re-applies at every finite refinement depth. | DEF_POINT, DEF_BINARY_REL |
@@ -57,7 +57,7 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 
 1. **META0 is logically prior to the object-level axioms.** It is a model-formation meta-axiom: absolute nothingness is not reified, and intended RTOFA models have non-empty admitted carrier domains.
 2. **EX0 is a theorem of META0, not an extra ontological axiom.** A raw empty mathematical presentation may satisfy universal formulas vacuously, but it is excluded from the intended model class.
-3. **RA0 and RR1 remain independent object-level foundational assumptions in the current kernel.** RA0 requires relational admissibility; it does not force recursive refinement.
+3. **RA0 and RR1 remain independent object-level foundational assumptions in the current kernel.** RA0 requires orientation-neutral relational incidence; it does not force recursive refinement.
 4. **Binary relation typing is explicit.** It is part of the signature rather than a hidden consequence of RA0.
 5. **CP1 is not an axiom.** It is the chosen minimal complex binary projective realization. A non-CP1 model can still satisfy RA0 and RR1.
 6. **The additive K-module structure, tensor-scalar grading, semantic scale, supplied semantic weighting, typed transport, orbital action and relational product are signature choices/structural primitives.** They are not derived from RA0. The additive module is required before differences such as commutators, associators and refinement residuals are meaningful.
