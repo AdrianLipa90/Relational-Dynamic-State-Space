@@ -32,7 +32,7 @@ def test_recursive_refinement_is_independent_foundational_axiom():
 
 def test_structural_primitives_do_not_silently_depend_on_ra0():
     claims = claim_map()
-    for claim_id in ("PRIM_MODULE", "PRIM_PRODUCT", "PRIM_SCALE", "PRIM_ORBIT"):
+    for claim_id in ("PRIM_MODULE", "PRIM_PRODUCT", "PRIM_SCALE", "PRIM_TRANSPORT", "PRIM_ORBIT"):
         assert claims[claim_id].kind is ClaimKind.STRUCTURAL_PRIMITIVE
         assert "RA0" not in dependency_closure(claim_id)
 
@@ -55,10 +55,26 @@ def test_zero_axis_is_a_bridge_not_an_axiom_of_general_algebra():
     assert claims["ZA_BRIDGE"].depends_on == ()
 
 
-def test_winding_depends_on_zero_axis_bridge_but_is_not_primitive_state():
+def test_relational_holonomy_is_derived_from_typed_transport():
+    claims = claim_map()
+    assert claims["DER_HOLONOMY"].kind is ClaimKind.DERIVED
+    assert dependency_closure("DER_HOLONOMY") == frozenset(
+        {"PRIM_TRANSPORT", "DEF_BINARY_REL", "PRIM_MODULE"}
+    )
+
+
+def test_winding_is_zero_axis_phase_representation_of_holonomy():
     claims = claim_map()
     assert claims["DER_WINDING"].kind is ClaimKind.DERIVED
-    assert dependency_closure("DER_WINDING") == frozenset({"ZA_BRIDGE"})
+    assert dependency_closure("DER_WINDING") == frozenset(
+        {
+            "ZA_BRIDGE",
+            "DER_HOLONOMY",
+            "PRIM_TRANSPORT",
+            "DEF_BINARY_REL",
+            "PRIM_MODULE",
+        }
+    )
 
 
 def test_foundational_axiom_set_is_small_and_explicit():
