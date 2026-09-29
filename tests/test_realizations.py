@@ -214,3 +214,23 @@ def test_phase_representation_rejects_element_on_wrong_source():
 
     with pytest.raises(ValueError):
         rep.phase(path, wrong)
+
+
+
+def test_cp1_identical_projective_states_do_not_realize_distinction():
+    p = CP1State(1.0, 0.0)
+
+    with pytest.raises(ValueError):
+        MinimalDistinction(RelationalPoint(), p, p)
+
+
+def test_single_carrier_can_support_two_distinct_cp1_branch_states():
+    carrier = RelationalPoint()
+    left = CP1State(1.0, 0.0)
+    right = CP1State(0.0, 1.0)
+
+    distinction = MinimalDistinction(carrier, left, right)
+
+    assert distinction.carrier == carrier
+    assert distinction.left != distinction.right
+    assert distinction.separation == pytest.approx(pi / 2.0)
