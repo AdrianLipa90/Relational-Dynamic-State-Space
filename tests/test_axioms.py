@@ -18,10 +18,32 @@ def test_binary_relation_is_explicit_signature_definition():
     assert claims["DEF_BINARY_REL"].depends_on == ()
 
 
+
 def test_binary_distinction_is_occurrence_level_not_label_inequality():
     claims = claim_map()
     assert claims["DEF_BINARY_DISTINCTION"].kind is ClaimKind.DEFINITION
-    assert claims["DEF_BINARY_DISTINCTION"].depends_on == ("DEF_POINT",)
+    assert set(claims["DEF_BINARY_DISTINCTION"].depends_on) == {
+        "DEF_POINT",
+        "DEF_OCCURRENCE_ADDRESS_SPACE",
+    }
+
+
+def test_occurrence_address_space_is_separate_from_carrier_values():
+    claims = claim_map()
+
+    assert claims["DEF_OCCURRENCE_ADDRESS_SPACE"].kind is ClaimKind.DEFINITION
+    assert claims["DEF_OCCURRENCE_ADDRESS_SPACE"].depends_on == ()
+
+    assert claims["DEF_CARRIER_OCCURRENCE_SEPARATION"].kind is ClaimKind.DEFINITION
+    assert set(claims["DEF_CARRIER_OCCURRENCE_SEPARATION"].depends_on) == {
+        "DEF_POINT",
+        "DEF_OCCURRENCE_ADDRESS_SPACE",
+    }
+
+    assert claims["REF_RELATIONAL_POINT_BINARY_COORDINATE"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert dependency_closure("REF_RELATIONAL_POINT_BINARY_COORDINATE") == frozenset(
+        {"DEF_POINT", "DEF_OCCURRENCE_ADDRESS_SPACE"}
+    )
 
 
 def test_relation_occurrence_and_occurrence_path_are_explicit_definitions():
@@ -29,28 +51,37 @@ def test_relation_occurrence_and_occurrence_path_are_explicit_definitions():
 
     assert claims["DEF_RELATION_OCCURRENCE"].kind is ClaimKind.DEFINITION
     assert set(claims["DEF_RELATION_OCCURRENCE"].depends_on) == {
-        "DEF_POINT",
         "DEF_BINARY_REL",
+        "DEF_CARRIER_OCCURRENCE_SEPARATION",
     }
+    assert dependency_closure("DEF_RELATION_OCCURRENCE") == frozenset(
+        {
+            "DEF_BINARY_REL",
+            "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_POINT",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+        }
+    )
 
     assert claims["DEF_OCCURRENCE_PATH"].kind is ClaimKind.DEFINITION
     assert claims["DEF_OCCURRENCE_PATH"].depends_on == (
         "DEF_RELATION_OCCURRENCE",
     )
-
     assert dependency_closure("DEF_OCCURRENCE_PATH") == frozenset(
         {
             "DEF_RELATION_OCCURRENCE",
-            "DEF_POINT",
             "DEF_BINARY_REL",
+            "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_POINT",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
         }
     )
-
 
 def test_cp1_is_not_mislabeled_as_foundational_axiom():
     claims = claim_map()
     assert claims["REF_CP1"].kind is ClaimKind.REFERENCE_REALIZATION
     assert set(claims["REF_CP1"].depends_on) == {"DEF_POINT", "DEF_BINARY_DISTINCTION"}
+
 
 
 def test_relationally_bound_distinction_is_explicit_definition():
@@ -65,10 +96,11 @@ def test_relationally_bound_distinction_is_explicit_definition():
             "DEF_BINARY_DISTINCTION",
             "DEF_RELATION_OCCURRENCE",
             "DEF_BINARY_REL",
+            "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
             "DEF_POINT",
         }
     )
-
 
 def test_recursive_refinement_is_independent_foundational_axiom():
     claims = claim_map()
@@ -90,6 +122,7 @@ def test_moire_is_derived_from_orbital_primitive():
     assert dependency_closure("DER_MOIRE") == frozenset({"PRIM_ORBIT"})
 
 
+
 def test_refinement_residual_depends_on_refinement_and_product():
     assert dependency_closure("DEF_REFINEMENT_RESIDUAL") == frozenset(
         {
@@ -97,11 +130,11 @@ def test_refinement_residual_depends_on_refinement_and_product():
             "RR1",
             "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
             "PRIM_PRODUCT",
             "PRIM_MODULE",
         }
     )
-
 
 def test_zero_axis_is_a_bridge_not_an_axiom_of_general_algebra():
     claims = claim_map()
@@ -117,6 +150,7 @@ def test_relational_holonomy_is_derived_from_typed_transport():
     )
 
 
+
 def test_occurrence_holonomy_requires_occurrence_path_semantics():
     claims = claim_map()
     assert claims["DER_OCCURRENCE_HOLONOMY"].kind is ClaimKind.DERIVED
@@ -127,6 +161,8 @@ def test_occurrence_holonomy_requires_occurrence_path_semantics():
             "DEF_BINARY_REL",
             "DEF_OCCURRENCE_PATH",
             "DEF_RELATION_OCCURRENCE",
+            "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
             "DEF_POINT",
         }
     )
@@ -145,6 +181,8 @@ def test_occurrence_u1_representation_and_winding_dependencies():
             "DEF_BINARY_REL",
             "DEF_OCCURRENCE_PATH",
             "DEF_RELATION_OCCURRENCE",
+            "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
             "DEF_POINT",
         }
     )
@@ -171,10 +209,11 @@ def test_branch_blind_occurrence_phase_lift_dependencies():
             "DEF_BINARY_REL",
             "DEF_OCCURRENCE_PATH",
             "DEF_RELATION_OCCURRENCE",
+            "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
             "DEF_POINT",
         }
     )
-
 
 def test_winding_depends_on_explicit_holonomy_u1_representation():
     claims = claim_map()
@@ -195,6 +234,7 @@ def test_foundational_axiom_set_is_small_and_explicit():
     assert ids == {"RA0", "RR1"}
 
 
+
 def test_ra0_star_is_candidate_not_silent_replacement():
     claims = claim_map()
 
@@ -202,7 +242,12 @@ def test_ra0_star_is_candidate_not_silent_replacement():
     assert set(claims["RA0_STAR"].depends_on) == {"DEF_POINT", "DEF_BINARY_DISTINCTION"}
     assert claims["THM_RR1_FROM_RA0_STAR"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_RR1_FROM_RA0_STAR") == frozenset(
-        {"RA0_STAR", "DEF_POINT", "DEF_BINARY_DISTINCTION"}
+        {
+            "RA0_STAR",
+            "DEF_POINT",
+            "DEF_BINARY_DISTINCTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+        }
     )
 
 
@@ -222,6 +267,8 @@ def test_ra0_rel_star_is_candidate_with_two_explicit_theorems():
             "DEF_BINARY_DISTINCTION",
             "DEF_RELATION_OCCURRENCE",
             "DEF_BINARY_REL",
+            "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
             "DEF_POINT",
         }
     )
@@ -255,6 +302,8 @@ def test_singleton_foundation_minimality_splits_lower_bound_and_attainability():
             "DEF_BINARY_DISTINCTION",
             "DEF_RELATION_OCCURRENCE",
             "DEF_BINARY_REL",
+            "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
         }
     )
 
@@ -270,9 +319,10 @@ def test_singleton_foundation_minimality_splits_lower_bound_and_attainability():
             "DEF_BINARY_DISTINCTION",
             "DEF_RELATION_OCCURRENCE",
             "DEF_BINARY_REL",
+            "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
         }
     )
-
 
 def test_current_canonical_axioms_remain_ra0_and_rr1_until_promotion():
     ids = {claim.id for claim in foundational_axioms()}
@@ -300,6 +350,7 @@ def test_scale_orbit_residual_depends_on_scale_orbit_and_module():
 
 
 
+
 def test_cross_operation_coherence_dependencies_are_explicit():
     assert dependency_closure("DEF_TRANSPORT_PRODUCT_COHERENCE") == frozenset(
         {"PRIM_TRANSPORT", "DEF_BINARY_REL", "PRIM_PRODUCT", "PRIM_MODULE"}
@@ -316,12 +367,12 @@ def test_cross_operation_coherence_dependencies_are_explicit():
             "RR1",
             "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
             "PRIM_TRANSPORT",
+            "DEF_BINARY_REL",
             "PRIM_MODULE",
         }
     )
-
-
 
 def test_tensor_and_contraction_coherence_dependencies():
     assert dependency_closure("DEF_TENSOR_MAP_COHERENCE") == frozenset(
@@ -330,6 +381,7 @@ def test_tensor_and_contraction_coherence_dependencies():
     assert dependency_closure("DEF_CONTRACTION_MAP_COHERENCE") == frozenset(
         {"PRIM_CONTRACTION", "PRIM_MODULE"}
     )
+
 
 
 
@@ -356,6 +408,7 @@ def test_remaining_first_order_naturality_dependencies():
             "RR1",
             "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
             "PRIM_SCALE",
             "PRIM_MODULE",
         }
@@ -366,12 +419,11 @@ def test_remaining_first_order_naturality_dependencies():
             "RR1",
             "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
             "PRIM_ORBIT",
             "PRIM_MODULE",
         }
     )
-
-
 
 def test_tensor_monoidal_coherence_dependencies():
     assert dependency_closure("DEF_TENSOR_MONOIDAL_COHERENCE") == frozenset(
@@ -380,14 +432,19 @@ def test_tensor_monoidal_coherence_dependencies():
 
 
 
+
 def test_cp1_recursive_realization_is_reference_layer():
     claims = claim_map()
     assert claims["REF_CP1_REFINEMENT"].kind is ClaimKind.REFERENCE_REALIZATION
     assert dependency_closure("REF_CP1_REFINEMENT") == frozenset(
-        {"REF_CP1", "RR1", "DEF_POINT", "DEF_BINARY_DISTINCTION"}
+        {
+            "REF_CP1",
+            "RR1",
+            "DEF_POINT",
+            "DEF_BINARY_DISTINCTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+        }
     )
-
-
 
 
 def test_singleton_cp1_occurrence_realization_dependencies():
@@ -406,8 +463,9 @@ def test_singleton_cp1_occurrence_realization_dependencies():
         "DEF_RELATIONAL_DISTINCTION",
         "DEF_RELATION_OCCURRENCE",
         "DEF_BINARY_REL",
+        "DEF_CARRIER_OCCURRENCE_SEPARATION",
+        "DEF_OCCURRENCE_ADDRESS_SPACE",
     } <= closure
-
 
 def test_holonomy_u1_representation_is_independent_of_zero_axis():
     claims = claim_map()
@@ -499,6 +557,7 @@ def test_ex0_is_theorem_of_model_formation_not_extra_object_axiom():
 
 
 
+
 def test_ra0_rr1_do_not_imply_ra0_rel_star():
     claims = claim_map()
 
@@ -510,6 +569,7 @@ def test_ra0_rr1_do_not_imply_ra0_rel_star():
             "RR1",
             "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
         }
     )
 
@@ -522,9 +582,9 @@ def test_ra0_rr1_do_not_imply_ra0_rel_star():
             "RR1",
             "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
         }
     )
-
 
 
 def test_binary_occurrence_growth_and_countability_theorems():
@@ -536,6 +596,7 @@ def test_binary_occurrence_growth_and_countability_theorems():
             "RR1",
             "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
         }
     )
 
@@ -546,9 +607,9 @@ def test_binary_occurrence_growth_and_countability_theorems():
             "RR1",
             "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
         }
     )
-
 
 
 def test_ideal_occurrence_boundary_claims():
@@ -556,17 +617,13 @@ def test_ideal_occurrence_boundary_claims():
 
     assert claims["DEF_OCCURRENCE_BOUNDARY"].kind is ClaimKind.DEFINITION
     assert dependency_closure("DEF_OCCURRENCE_BOUNDARY") == frozenset(
-        {
-            "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "DEF_POINT",
-        }
+        {"DEF_OCCURRENCE_ADDRESS_SPACE"}
     )
 
     boundary_base = frozenset(
         {
             "DEF_OCCURRENCE_BOUNDARY",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "DEF_POINT",
         }
     )
 
@@ -600,6 +657,8 @@ def test_relation_value_cardinality_minimality():
             "DEF_BINARY_DISTINCTION",
             "DEF_RELATION_OCCURRENCE",
             "DEF_BINARY_REL",
+            "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
         }
     )
 
@@ -619,7 +678,6 @@ def test_relation_value_cardinality_minimality():
     )
 
 
-
 def test_relation_occurrence_cardinality_minimality():
     claims = claim_map()
 
@@ -632,6 +690,8 @@ def test_relation_occurrence_cardinality_minimality():
             "DEF_BINARY_DISTINCTION",
             "DEF_RELATION_OCCURRENCE",
             "DEF_BINARY_REL",
+            "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
         }
     )
 
@@ -659,24 +719,16 @@ def test_occurrence_address_free_monoid_and_refinement_action_dependencies():
     claims = claim_map()
 
     assert claims["DEF_OCCURRENCE_ADDRESS_SPACE"].kind is ClaimKind.DEFINITION
-    assert dependency_closure("DEF_OCCURRENCE_ADDRESS_SPACE") == frozenset(
-        {"DEF_POINT"}
-    )
+    assert dependency_closure("DEF_OCCURRENCE_ADDRESS_SPACE") == frozenset()
 
     assert claims["THM_OCCURRENCE_ADDRESS_FREE_MONOID"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_OCCURRENCE_ADDRESS_FREE_MONOID") == frozenset(
-        {
-            "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "DEF_POINT",
-        }
+        {"DEF_OCCURRENCE_ADDRESS_SPACE"}
     )
 
     assert claims["THM_REFINEMENT_RIGHT_ACTION"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_REFINEMENT_RIGHT_ACTION") == frozenset(
-        {
-            "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "DEF_POINT",
-        }
+        {"DEF_OCCURRENCE_ADDRESS_SPACE"}
     )
 
     assert claims["THM_RR1_REALIZES_FINITE_WORDS"].kind is ClaimKind.THEOREM
@@ -690,7 +742,6 @@ def test_occurrence_address_free_monoid_and_refinement_action_dependencies():
     )
 
 
-
 def test_refinement_level_grading_theorem():
     claims = claim_map()
 
@@ -699,10 +750,8 @@ def test_refinement_level_grading_theorem():
         {
             "THM_REFINEMENT_RIGHT_ACTION",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "DEF_POINT",
         }
     )
-
 
 
 def test_occurrence_prefix_meet_and_tree_metric_dependencies():
@@ -710,10 +759,7 @@ def test_occurrence_prefix_meet_and_tree_metric_dependencies():
 
     assert claims["DEF_OCCURRENCE_PREFIX_ORDER"].kind is ClaimKind.DEFINITION
     assert dependency_closure("DEF_OCCURRENCE_PREFIX_ORDER") == frozenset(
-        {
-            "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "DEF_POINT",
-        }
+        {"DEF_OCCURRENCE_ADDRESS_SPACE"}
     )
 
     assert claims["THM_OCCURRENCE_MEET_SEMILATTICE"].kind is ClaimKind.THEOREM
@@ -721,7 +767,6 @@ def test_occurrence_prefix_meet_and_tree_metric_dependencies():
         {
             "DEF_OCCURRENCE_PREFIX_ORDER",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "DEF_POINT",
         }
     )
 
@@ -733,7 +778,6 @@ def test_occurrence_prefix_meet_and_tree_metric_dependencies():
             "THM_REFINEMENT_LEVEL_GRADING",
             "THM_REFINEMENT_RIGHT_ACTION",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "DEF_POINT",
         }
     )
 
@@ -746,6 +790,6 @@ def test_occurrence_prefix_meet_and_tree_metric_dependencies():
             "THM_REFINEMENT_LEVEL_GRADING",
             "THM_REFINEMENT_RIGHT_ACTION",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "DEF_POINT",
         }
     )
+
