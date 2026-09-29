@@ -32,7 +32,7 @@ def test_recursive_refinement_is_independent_foundational_axiom():
 
 def test_structural_primitives_do_not_silently_depend_on_ra0():
     claims = claim_map()
-    for claim_id in ("PRIM_PRODUCT", "PRIM_SCALE", "PRIM_ORBIT"):
+    for claim_id in ("PRIM_MODULE", "PRIM_PRODUCT", "PRIM_SCALE", "PRIM_ORBIT"):
         assert claims[claim_id].kind is ClaimKind.STRUCTURAL_PRIMITIVE
         assert "RA0" not in dependency_closure(claim_id)
 
@@ -45,7 +45,7 @@ def test_moire_is_derived_from_orbital_primitive():
 
 def test_refinement_residual_depends_on_refinement_and_product():
     assert dependency_closure("DEF_REFINEMENT_RESIDUAL") == frozenset(
-        {"RR1", "DEF_POINT", "DEF_BINARY_REL", "PRIM_PRODUCT"}
+        {"RR1", "DEF_POINT", "DEF_BINARY_REL", "PRIM_PRODUCT", "PRIM_MODULE"}
     )
 
 
