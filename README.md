@@ -262,9 +262,9 @@ For a finite admissible candidate set, the relational attractor set is
 
 with ties retained rather than broken arbitrarily.
 
-## Relational transport and abstract holonomy
+## Relational transport and two closure notions
 
-For a composable relation path
+For a composable relation-value path
 
 \[
 \gamma=(r_1,\ldots,r_m),
@@ -278,20 +278,77 @@ the core transport is
 T_\gamma=T_{r_m}\circ\cdots\circ T_{r_1}.
 \]
 
-If the path is closed, \(a_m=a_0\), its abstract relational holonomy is the return transport
+At the value level, carrier closure is
 
 \[
-\mathcal H_\gamma:=T_\gamma,
+a_m=a_0.
 \]
 
-with state residual
+This gives the value-level holonomy residual
 
 \[
-\varepsilon_\gamma(X)=\|\mathcal H_\gamma X-X\|.
+\varepsilon_\gamma^{\mathrm{val}}(X)
+=
+\left\|
+\mathcal H_\gamma^{\mathrm{val}}X-X
+\right\|.
 \]
 
-This definition requires neither spacetime nor \(U(1)\). A separate transport-composition residual measures failure of direct and sequential transport to agree.
+Occurrence-aware paths retain source and target occurrence addresses in addition to the typed relation value. Their closure condition is
 
+\[
+\omega_m=\omega_0.
+\]
+
+With a consistent occurrence-to-carrier assignment, occurrence closure implies carrier closure, but the converse is false. The singleton step
+
+\[
+a_{\varnothing}\to a_-,
+\]
+
+projects to the carrier self-relation \(a\to a\), so it is carrier-closed after forgetting occurrence identity while remaining occurrence-open.
+
+Therefore
+
+\[
+\boxed{
+\text{carrier-closed}
+\not\Rightarrow
+\text{occurrence-closed}.
+}
+\]
+
+The implementation keeps these levels separate:
+
+- `RelationPath` / `TransportPath` for relation-value paths;
+- `RelationOccurrence` / `OccurrenceRelationPath`;
+- `OccurrenceTransportPath` for occurrence-aware holonomy.
+
+## Phase representations
+
+The value-level reference interface is
+
+\[
+\chi:
+\mathcal H_\gamma^{\mathrm{val}}
+\to
+U(1),
+\]
+
+implemented by `HolonomyPhaseRepresentation`.
+
+The occurrence-aware reference interface is separate:
+
+\[
+\widetilde\chi:
+\mathcal H_{\widetilde\gamma}^{\mathrm{occ}}
+\to
+U(1),
+\]
+
+implemented by `OccurrenceHolonomyPhaseRepresentation`.
+
+Both interfaces validate unit modulus and path closure at their own level. Neither is a universal existence theorem.
 ## Zero Axis / phase bridge
 
 The companion Zero Axis model supplies
@@ -308,7 +365,7 @@ with
 |\Omega(s)|=1.
 \]
 
-This is an imported **bridge**, not an axiom of the general algebra. A concrete realization may independently supply a map from closed relational holonomy into \(U(1)\). Phase turn-count and topological winding depend on that phase representation plus closure; they do not depend on Zero Axis. If an application additionally uses the companion Zero Axis bridge, a verified finite phase may be lifted through \(\Omega^{-1}(u)=u/(1+u)\), while \(u=-1\) is the compactified point at infinity.
+This is an imported **bridge**, not an axiom of the general algebra. Value-level and occurrence-level holonomy have separate optional \(U(1)\) reference interfaces. Phase turn-count and winding depend on the chosen interface plus the corresponding closure condition; they do not depend on Zero Axis. If an application additionally uses the companion Zero Axis bridge, a verified finite phase may be lifted through \(\Omega^{-1}(u)=u/(1+u)\), while \(u=-1\) is the compactified point at infinity.
 
 ## Non-assumptions
 
@@ -346,13 +403,19 @@ The implementation is deliberately stratified:
 
 \`src/rdss/algebra.py\` is representation-free. CP1/Fubini--Study and scalar-angle Moiré live in \`realizations.py\`; generic U(1) utilities live in \`phase.py\`; Zero Axis lives in \`zero_axis.py\`. The package root re-exports these names for convenience without changing their epistemic layer.
 
-The holonomy phase map
+The value-level holonomy phase map
 
 \[
-\chi:\mathcal H_\gamma\to U(1)
+\chi:\mathcal H_\gamma^{\mathrm{val}}\to U(1)
 \]
 
-is a reference-realization question. The optional Zero Axis lift
+and the occurrence-level map
+
+\[
+\widetilde\chi:\mathcal H_{\widetilde\gamma}^{\mathrm{occ}}\to U(1)
+\]
+
+are separate reference-realization interfaces. The optional Zero Axis lift
 
 \[
 \Omega^{-1}(u)=\frac{u}{1+u}
