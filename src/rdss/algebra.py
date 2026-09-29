@@ -186,18 +186,44 @@ class TensorScalarElement:
 
 @dataclass(frozen=True)
 class TypedZero:
-    """Algebraic zero typed by rank, semantic scale and refinement level.
+    """Exact zero descriptor for one additive tensor-scalar sector.
 
-    This is not the same object as absence of a relation or an empty carrier.
+    Zero is typed by tensor rank, relational carrier, semantic scale, and
+    component dimension. Refinement level is derived from the carrier.
+    This is not absence of a relation or an empty carrier.
     """
 
     rank: tuple[int, int]
+    carrier: RelationalPoint
     scale: SemanticScale
-    level: int
+    dimension: int
 
     def __post_init__(self) -> None:
-        if self.rank[0] < 0 or self.rank[1] < 0 or self.level < 0:
-            raise ValueError("zero type indices must be non-negative")
+        if self.rank[0] < 0 or self.rank[1] < 0:
+            raise ValueError("zero tensor ranks must be non-negative")
+        if self.dimension <= 0:
+            raise ValueError("zero component dimension must be positive")
+
+    @property
+    def level(self) -> int:
+        return self.carrier.level
+
+    @classmethod
+    def from_element(cls, element: TensorScalarElement) -> "TypedZero":
+        return cls(
+            rank=element.rank,
+            carrier=element.carrier,
+            scale=element.scale,
+            dimension=len(element.components),
+        )
+
+    def as_element(self) -> TensorScalarElement:
+        return TensorScalarElement(
+            tuple(0j for _ in range(self.dimension)),
+            self.rank,
+            self.carrier,
+            self.scale,
+        )
 
 
 @dataclass(frozen=True)
