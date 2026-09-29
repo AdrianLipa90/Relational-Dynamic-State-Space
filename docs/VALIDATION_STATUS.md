@@ -31,7 +31,7 @@ Static checks found:
 The current claim ledger contains:
 
 \[
-68
+72
 \]
 
 unique claim IDs.
@@ -63,7 +63,7 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 181 Python test functions:
+The current repository contains 186 Python test functions:
 
 | File | Test functions |
 |---|---:|
@@ -77,7 +77,7 @@ The current repository contains 181 Python test functions:
 | \`tests/test_potential.py\` | 13 |
 | \`tests/test_realizations.py\` | 18 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **181** |
+| **Total** | **186** |
 
 This is an inventory count, not a runtime result.
 
@@ -261,6 +261,31 @@ Hence
 |\operatorname{BranchOcc}(a)|=2.
 }
 \]
+### Occurrence-address monoid audit
+
+The finite occurrence addresses form the free monoid
+
+\[
+B^*=\{-1,+1\}^{*}
+\]
+
+under concatenation, with the empty word as identity.
+
+The reference carrier action is
+
+\[
+p_\omega\cdot u=p_{\omega u},
+\]
+
+and satisfies
+
+\[
+p\cdot\varnothing=p,
+\qquad
+(p\cdot u)\cdot v=p\cdot(uv).
+\]
+
+`RelationalPoint.advance` implements this right action; `BranchRefinementMap` now routes through the same canonical address action. RR1 is tracked separately as the theorem that every finite word is realized from an admitted root.
 ### Occurrence-growth audit
 
 Binary recursive refinement now has an executable exact-count theorem:
