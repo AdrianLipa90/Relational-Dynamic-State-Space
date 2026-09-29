@@ -227,7 +227,7 @@ The kernel does **not** assume:
 - Zero Axis as an axiom of the general algebra;
 - any physical identification without a separate bridge theorem.
 
-See `docs/ARCHITECTURE.md` for module layering, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, and `docs/INDEXED_TENSOR_GATE.md` for the explicit contraction/tensor realization boundary.
+See `docs/ARCHITECTURE.md` for module layering, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, and `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary.
 
 ## Layer architecture
 
