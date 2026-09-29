@@ -132,10 +132,16 @@ CLAIMS: tuple[Claim, ...] = (
         ("PRIM_ORBIT",),
     ),
     Claim(
+        "PRIM_REFINEMENT_MAP",
+        ClaimKind.STRUCTURAL_PRIMITIVE,
+        "Typed branch refinement maps F_-/F_+ send level n sectors to selected child sectors at level n+1.",
+        ("RR1", "PRIM_MODULE"),
+    ),
+    Claim(
         "DEF_REFINEMENT_RESIDUAL",
         ClaimKind.DEFINITION,
         "Delta_F measures failure of exact product preservation under refinement.",
-        ("RR1", "PRIM_PRODUCT", "PRIM_MODULE"),
+        ("PRIM_REFINEMENT_MAP", "PRIM_PRODUCT", "PRIM_MODULE"),
     ),
     Claim(
         "ZA_BRIDGE",
