@@ -196,3 +196,10 @@ def test_remaining_first_order_naturality_dependencies():
             "PRIM_MODULE",
         }
     )
+
+
+
+def test_tensor_monoidal_coherence_dependencies():
+    assert dependency_closure("DEF_TENSOR_MONOIDAL_COHERENCE") == frozenset(
+        {"PRIM_TENSOR_PRODUCT", "PRIM_MODULE"}
+    )
