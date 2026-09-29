@@ -25,6 +25,7 @@ from .closure import (
     BinaryDistinction,
     GenerativeRelationModel,
     requires_novelty,
+    singleton_ra0_star_model,
     two_cycle_ra0_star_model,
 )
 from .phase import (
@@ -104,6 +105,7 @@ __all__ = [
     "BinaryDistinction",
     "GenerativeRelationModel",
     "requires_novelty",
+    "singleton_ra0_star_model",
     "two_cycle_ra0_star_model",
     "BranchRefinementMap",
     "ContractionRule",
