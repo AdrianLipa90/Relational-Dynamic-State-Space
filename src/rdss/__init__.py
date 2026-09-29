@@ -33,6 +33,7 @@ from .operations import (
     RelationPath,
     RelationTransport,
     RelationalProductRule,
+    SemanticScaleMap,
     TransportPath,
     orbital_composition_residual,
     orbital_identity_residual,
@@ -40,6 +41,7 @@ from .operations import (
     product_bilinearity_residuals,
     reference_tensor_product,
     relative_moire_action,
+    semantic_orbital_commutator_residual,
     transport_composition_residual,
 )
 from .closure import (
@@ -90,4 +92,6 @@ __all__ = [
     "orbital_inverse_residual",
     "product_bilinearity_residuals",
     "orbital_identity_residual",
+    "SemanticScaleMap",
+    "semantic_orbital_commutator_residual",
 ]
