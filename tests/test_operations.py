@@ -9,6 +9,7 @@ from rdss.operations import (
     RelationTransport,
     RelationalProductRule,
     SemanticScaleMap,
+    TensorBraidingRule,
     TensorProductRule,
     TransportPath,
     orbital_composition_residual,
@@ -30,6 +31,10 @@ from rdss.operations import (
     orbital_transport_residual,
     refinement_semantic_residual,
     refinement_orbital_residual,
+    reference_tensor_flip,
+    tensor_associator_residual,
+    tensor_unit_residual,
+    tensor_braiding_residual,
 )
 
 
@@ -998,3 +1003,59 @@ def test_tensor_product_rule_rejects_wrong_rank():
 
     with pytest.raises(ValueError):
         bad(left, right)
+
+
+
+def test_reference_tensor_product_is_strictly_associative():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+    x = TensorScalarElement((1.0, 2.0), (1, 0), p, scale)
+    y = TensorScalarElement((3.0, 5.0), (0, 1), p, scale)
+    z = TensorScalarElement((7.0,), (1, 1), p, scale)
+
+    assert tensor_associator_residual(
+        reference_tensor_product, x, y, z
+    ) == pytest.approx(0.0)
+
+
+def test_explicit_tensor_unit_is_checked_not_assumed():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+    unit = TensorScalarElement((1.0,), (0, 0), p, scale)
+    bad_unit = TensorScalarElement((2.0,), (0, 0), p, scale)
+    x = TensorScalarElement((3.0, 5.0), (1, 0), p, scale)
+
+    assert tensor_unit_residual(
+        reference_tensor_product, unit, unit, x
+    ) == pytest.approx(0.0)
+    assert tensor_unit_residual(
+        reference_tensor_product, bad_unit, unit, x
+    ) > 0.0
+
+
+def test_reference_tensor_flip_realizes_braiding():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+    x = TensorScalarElement((1.0, 2.0), (1, 0), p, scale)
+    y = TensorScalarElement((3.0, 5.0), (0, 1), p, scale)
+
+    flip = TensorBraidingRule("flip", reference_tensor_flip)
+    assert tensor_braiding_residual(
+        reference_tensor_product, flip, x, y
+    ) == pytest.approx(0.0)
+
+
+def test_bad_braiding_has_nonzero_residual():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+    x = TensorScalarElement((1.0, 2.0), (1, 0), p, scale)
+    y = TensorScalarElement((3.0, 5.0), (0, 1), p, scale)
+
+    bad = TensorBraidingRule(
+        "identity-order",
+        lambda a, b: reference_tensor_product(a, b),
+    )
+
+    assert tensor_braiding_residual(
+        reference_tensor_product, bad, x, y
+    ) > 0.0
