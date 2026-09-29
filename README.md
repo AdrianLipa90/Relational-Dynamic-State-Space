@@ -211,7 +211,7 @@ with
 |\Omega(s)|=1.
 \]
 
-This is an imported **bridge**, not an axiom of the general algebra. It supplies a phase realization of the more general relational holonomy. Phase turn-count and residual are derived from phase paths. A topological winding number is asserted only after the path is explicitly verified closed.
+This is an imported **bridge**, not an axiom of the general algebra. A concrete realization may additionally supply an explicit map from closed relational holonomy into \(U(1)\); finite phases then lift through \(\Omega^{-1}(u)=u/(1+u)\) to the Zero Axis, while \(u=-1\) is the compactified point at infinity. The existence of such a \(U(1)\) representation is not assumed universally. Phase turn-count and residual are derived from phase paths. A topological winding number is asserted only after the path is explicitly verified closed.
 
 ## Non-assumptions
 
