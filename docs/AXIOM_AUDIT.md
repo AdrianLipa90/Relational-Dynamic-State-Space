@@ -7,6 +7,7 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 | ID | Class | Statement | Direct dependencies |
 |---|---|---|---|
 | RA0 | AXIOM | An admitted observable is not independent of relation. | — |
+| EX0 | CANDIDATE AXIOM | At least one relational carrier is admitted; this prevents the empty model from satisfying the foundation vacuously. | DEF_POINT |
 | DEF_POINT | DEFINITION | The minimal algebraic carrier is an unscaled point. | — |
 | DEF_BINARY_REL | DEFINITION | A primitive typed relation is binary: r:a->b. Higher arity is constructed separately. | — |
 | RR1 | AXIOM | At every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction; the rule re-applies at every finite refinement depth. | DEF_POINT, DEF_BINARY_REL |
@@ -312,3 +313,39 @@ For a finite admissible candidate set \(\mathcal C\),
 \]
 
 This construction is a relational scalar diagnostic. It is not identified with energy, mass, gravity, or metric curvature by the general algebra. A potential-to-geometry map would be a separate realization/bridge.
+
+
+## Non-vacuity boundary
+
+The current canonical foundation
+
+\[
+\mathrm{RA0}+\mathrm{RR1}
+\]
+
+does not force existence of an admitted carrier. The empty witness satisfies both statements vacuously. Therefore
+
+\[
+\boxed{
+\mathrm{RA0}+\mathrm{RR1}
+\not\Rightarrow
+\mathrm{EX0}.
+}
+\]
+
+The same issue applies to the strengthened closure candidate:
+
+\[
+\mathrm{RA0}^{*}
+\not\Rightarrow
+\mathrm{EX0}.
+\]
+
+EX0 is therefore tracked separately as a candidate axiom:
+
+\[
+\mathrm{EX0}:
+\exists p\,\operatorname{Adm}(p).
+\]
+
+No promotion is made automatically. See `docs/FOUNDATIONAL_NONVACUITY_GATE.md`.
