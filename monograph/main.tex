@@ -1681,6 +1681,55 @@ More precisely,
 This is a combinatorial statement about path-labelled relational occurrences,
 not a physical infinity claim.
 
+\subsection{Free monoid of occurrence addresses}
+
+The finite address space
+\[
+B^*=\{-1,+1\}^{*}
+\]
+has a canonical algebraic structure under word concatenation. With the empty
+word \(\varnothing\) as identity, \(B^*\) is the free monoid on the two
+branch generators \(-1\) and \(+1\).
+
+For a carrier occurrence \(p_\omega\), define the right action
+\[
+\boxed{
+p_\omega\cdot u
+=
+p_{\omega u},
+\qquad
+u\in B^*.
+}
+\]
+Then
+\[
+p\cdot\varnothing=p
+\]
+and
+\[
+\boxed{
+(p\cdot u)\cdot v
+=
+p\cdot(uv).
+}
+\]
+
+The executable kernel realizes this action through
+\texttt{RelationalPoint.advance}; the one-generator maps
+\(F_-\) and \(F_+\) are its elementary branch actions.
+
+The algebraic address monoid exists independently of RR1. RR1 supplies the
+additional closure statement that, from an admitted root, every finite word
+\(u\in B^*\) is realized by an actual path-labelled relational occurrence.
+Thus
+\[
+\boxed{
+\text{address algebra}
+\neq
+\text{admission/realization of every address}.
+}
+\]
+
 This is a genuine strengthening: it adds distinction-to-relation binding.
 It is executable and theorem-tested but is not promoted as canonical.
 
