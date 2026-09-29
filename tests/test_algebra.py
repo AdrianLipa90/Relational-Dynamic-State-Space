@@ -145,3 +145,29 @@ def test_addition_fails_closed_across_typed_sectors():
 
     with pytest.raises(ValueError):
         _ = a + b
+
+
+def test_zero_like_is_additive_identity_in_typed_sector():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+    x = TensorScalarElement((2.0, -3.0), (1, 0), p, scale)
+    zero = x.zero_like()
+
+    assert zero.components == (0j, 0j)
+    assert (x + zero) == x
+    assert (x - x) == zero
+
+
+def test_refinement_residual_operates_on_tensor_scalar_elements():
+    p = RelationalPoint()
+    scale = SemanticScale("object")
+    x = TensorScalarElement((2.0,), (0, 0), p, scale)
+    y = TensorScalarElement((3.0,), (0, 0), p, scale)
+
+    def product(a, b):
+        return a + b
+
+    def exact_refine(a):
+        return a.scale_by(2.0)
+
+    assert refinement_residual(exact_refine, product, x, y) == pytest.approx(0.0)
