@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from math import isfinite, pi
+from math import isfinite
 from typing import Callable, Sequence, TypeVar
 
 T = TypeVar("T")
@@ -9,14 +9,6 @@ T = TypeVar("T")
 
 def _finite_complex(z: complex) -> bool:
     return isfinite(z.real) and isfinite(z.imag)
-
-
-def wrap_phase(angle: float) -> float:
-    """Wrap a real phase to (-pi, pi]."""
-    if not isfinite(angle):
-        raise ValueError("phase must be finite")
-    wrapped = (angle + pi) % (2.0 * pi) - pi
-    return pi if wrapped == -pi else wrapped
 
 
 @dataclass(frozen=True, order=True)
