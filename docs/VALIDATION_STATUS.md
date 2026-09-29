@@ -63,7 +63,7 @@ is represented separately by \`REF_HOLONOMY_ZERO_AXIS\`.
 
 ### Test inventory
 
-The current repository contains 113 Python test functions:
+The current repository contains 117 Python test functions:
 
 | File | Test functions |
 |---|---:|
@@ -74,10 +74,10 @@ The current repository contains 113 Python test functions:
 | \`tests/test_layering.py\` | 3 |
 | \`tests/test_operations.py\` | 37 |
 | \`tests/test_phase.py\` | 3 |
-| \`tests/test_potential.py\` | 9 |
+| \`tests/test_potential.py\` | 13 |
 | \`tests/test_realizations.py\` | 13 |
 | \`tests/test_zero_axis.py\` | 4 |
-| **Total** | **113** |
+| **Total** | **117** |
 
 This is an inventory count, not a runtime result.
 
@@ -97,7 +97,7 @@ The potential remains a scalar relational diagnostic. No potential-to-geometry o
 
 ### Documentation integrity
 
-Static markdown audit found no remaining control-character corruption or bare math delimiters in the audited architecture, coherence, indexed-tensor, axiom-audit, and README documents after the raw-string repair.
+Static markdown audit found no remaining control-character corruption or bare math delimiters in the audited architecture, coherence, indexed-tensor, relational-potential, semantic-weighting-gate, axiom-audit, and README documents after the raw-string repair.
 
 ## RUNTIME NOT RUN ON CURRENT HEAD
 
@@ -121,8 +121,9 @@ The following are intentionally open rather than silently assumed:
 
 1. **Indexed tensor contraction gate** — requires explicit slot signatures, pairing, component shape, and contraction evaluator.
 2. **Non-strict monoidal coherence gate** — requires parenthesized tensor objects plus explicit associator/braiding isomorphisms before pentagon/hexagon can be tested.
-3. **Holonomy-to-\(U(1)\) existence theorem** — the executable interface exists, but no universal theorem says every RTOFA holonomy admits such a representation.
-4. **RA0* promotion** — \(\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}\) is tracked under the strengthened candidate statement; the canonical foundational set remains \(\mathrm{RA0}+\mathrm{RR1}\).
+3. **Semantic weighting derivation gate** — the kernel evaluates supplied semantic weights but does not derive \(W_\sigma\) from a semantic graph/context.
+4. **Holonomy-to-\(U(1)\) existence theorem** — the executable interface exists, but no universal theorem says every RTOFA holonomy admits such a representation.
+5. **RA0* promotion** — \(\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}\) is tracked under the strengthened candidate statement; the canonical foundational set remains \(\mathrm{RA0}+\mathrm{RR1}\).
 
 ## Branch safety
 
