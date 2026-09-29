@@ -147,6 +147,46 @@ An admissible observable is therefore not defined as an isolated object.
 The statement is intentionally weaker and cleaner than a physical claim: it
 does not assign a spacetime, energy, length, or dynamics.
 
+\subsection{Relational-admissibility reduction gate}
+
+META0 does not by itself imply RA0 when \(\operatorname{Adm}\) is treated as
+a primitive predicate. The finite presentation
+\[
+P=\{a\},
+\qquad
+\operatorname{Adm}=\{a\},
+\qquad
+R=\varnothing
+\]
+is non-empty but leaves \(a\) incident to no primitive relation. Hence
+\[
+\boxed{
+\mathrm{META0}\not\Rightarrow\mathrm{RA0}
+}
+\]
+under the current primitive-admissibility language.
+
+There is a possible definitional reduction. One may instead define
+\[
+\boxed{
+\operatorname{Adm}_{R}(x)
+:\Longleftrightarrow
+\exists y,r\,
+\left(
+\operatorname{Rel}_{r}(x,y)
+\lor
+\operatorname{Rel}_{r}(y,x)
+\right).
+}
+\]
+Under this definition RA0 becomes true by definitional expansion and need not
+remain an independent axiom.
+
+This is not a theorem from the old language. It changes the semantics of
+admissibility: isolated carriers become inadmissible by definition. The
+current kernel therefore keeps primitive \(\operatorname{Adm}\) and RA0 as
+an axiom until that definitional reduction is explicitly promoted.
+
 A primitive relation is typed as a binary arrow
 \[
 \boxed{r:a\to b.}
