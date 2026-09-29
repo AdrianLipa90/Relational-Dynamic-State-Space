@@ -351,3 +351,59 @@ def typed_refinement_residual(
     refined_product = refinement(product(x, y))
     product_refined = product(refinement(x), refinement(y))
     return abs(refined_product - product_refined)
+
+
+
+def transport_product_residual(
+    transport: RelationTransport,
+    source_product: RelationalProductRule,
+    target_product: RelationalProductRule,
+    x: TensorScalarElement,
+    y: TensorScalarElement,
+) -> float:
+    """Measure T_r(X star Y) - (T_r X) star' (T_r Y)."""
+    direct = transport(source_product(x, y))
+    transported_product = target_product(transport(x), transport(y))
+    return abs(direct - transported_product)
+
+
+def semantic_product_residual(
+    scale_map: SemanticScaleMap,
+    source_product: RelationalProductRule,
+    target_product: RelationalProductRule,
+    x: TensorScalarElement,
+    y: TensorScalarElement,
+) -> float:
+    """Measure S(X star Y) - S(X) star' S(Y)."""
+    direct = scale_map(source_product(x, y))
+    scaled_product = target_product(scale_map(x), scale_map(y))
+    return abs(direct - scaled_product)
+
+
+def orbital_product_residual(
+    orbital: OrbitalAction,
+    source_product: RelationalProductRule,
+    target_product: RelationalProductRule,
+    x: TensorScalarElement,
+    y: TensorScalarElement,
+) -> float:
+    """Measure U(X star Y) - U(X) star' U(Y)."""
+    direct = orbital.act(source_product(x, y))
+    orbital_product = target_product(orbital.act(x), orbital.act(y))
+    return abs(direct - orbital_product)
+
+
+def refinement_transport_residual(
+    parent_transport: RelationTransport,
+    child_transport: RelationTransport,
+    source_refinement: BranchRefinementMap,
+    target_refinement: BranchRefinementMap,
+    element: TensorScalarElement,
+) -> float:
+    """Measure failure of the refinement/transport naturality square.
+
+    Compares F_target(T_parent X) with T_child(F_source X).
+    """
+    via_parent_then_refine = target_refinement(parent_transport(element))
+    via_refine_then_child = child_transport(source_refinement(element))
+    return abs(via_parent_then_refine - via_refine_then_child)
