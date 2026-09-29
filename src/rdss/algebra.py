@@ -29,6 +29,12 @@ class OccurrenceAddress(tuple):
         suffix = OccurrenceAddress(word)
         return OccurrenceAddress(tuple(self) + tuple(suffix))
 
+    def refine(self) -> tuple["OccurrenceAddress", "OccurrenceAddress"]:
+        return (
+            self.advance((-1,)),
+            self.advance((1,)),
+        )
+
     def is_prefix_of(self, other) -> bool:
         other = OccurrenceAddress(other)
         return tuple(other[: len(self)]) == tuple(self)
