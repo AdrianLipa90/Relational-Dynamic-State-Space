@@ -212,3 +212,18 @@ def test_cp1_recursive_realization_is_reference_layer():
     assert dependency_closure("REF_CP1_REFINEMENT") == frozenset(
         {"REF_CP1", "RR1", "DEF_POINT", "DEF_BINARY_REL"}
     )
+
+
+
+def test_holonomy_phase_bridge_is_reference_realization():
+    claims = claim_map()
+    assert claims["REF_HOLONOMY_PHASE"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert dependency_closure("REF_HOLONOMY_PHASE") == frozenset(
+        {
+            "DER_HOLONOMY",
+            "PRIM_TRANSPORT",
+            "DEF_BINARY_REL",
+            "PRIM_MODULE",
+            "ZA_BRIDGE",
+        }
+    )
