@@ -38,3 +38,8 @@ This repository does **not** assume that the resulting attractors are physical m
 ## Status
 
 `v0.1-foundation` is intentionally minimal. It establishes interfaces, invariants, tests, and a matching LaTeX monograph before any stronger physical interpretation is admitted.
+
+
+## Example hygiene
+
+**Illustrative examples are non-canonical.** Story details, object labels, and numerical values used to explain RDSS are not model parameters unless they are separately formalized, justified, and tested.
