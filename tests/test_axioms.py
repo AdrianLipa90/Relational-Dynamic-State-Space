@@ -64,3 +64,19 @@ def test_winding_depends_on_zero_axis_bridge_but_is_not_primitive_state():
 def test_foundational_axiom_set_is_small_and_explicit():
     ids = {claim.id for claim in foundational_axioms()}
     assert ids == {"RA0", "RR1"}
+
+
+def test_ra0_star_is_candidate_not_silent_replacement():
+    claims = claim_map()
+
+    assert claims["RA0_STAR"].kind is ClaimKind.CANDIDATE_AXIOM
+    assert set(claims["RA0_STAR"].depends_on) == {"DEF_POINT", "DEF_BINARY_REL"}
+    assert claims["THM_RR1_FROM_RA0_STAR"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_RR1_FROM_RA0_STAR") == frozenset(
+        {"RA0_STAR", "DEF_POINT", "DEF_BINARY_REL"}
+    )
+
+
+def test_current_canonical_axioms_remain_ra0_and_rr1_until_promotion():
+    ids = {claim.id for claim in foundational_axioms()}
+    assert ids == {"RA0", "RR1"}
