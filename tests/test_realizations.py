@@ -3,7 +3,7 @@ from math import pi
 
 import pytest
 
-from rdss import OccurrenceRelationPath, OccurrenceTransportPath, RelationOccurrence, RelationalPoint, RelationTransport, SemanticScale, TensorScalarElement, TransportPath, TypedRelation, minimal_singleton_ra0_rel_star_model
+from rdss import OccurrenceAddress, OccurrenceRelationPath, OccurrenceTransportPath, RelationOccurrence, RelationalPoint, RelationTransport, SemanticScale, TensorScalarElement, TransportPath, TypedRelation, minimal_singleton_ra0_rel_star_model
 from rdss.realizations import (
     CP1RefinementRealization,
     CP1RelationalUnfolding,
@@ -14,8 +14,30 @@ from rdss.realizations import (
     MoireRotation,
     reference_cp1_unfolding,
     reference_maximal_cp1_tree,
+    reference_point_from_occurrence,
     lift_value_phase_to_occurrence,
 )
+
+
+def test_occurrence_address_reference_embedding_is_injective():
+    left_address = OccurrenceAddress((-1,))
+    right_address = OccurrenceAddress((1,))
+
+    left_point = reference_point_from_occurrence(left_address)
+    right_point = reference_point_from_occurrence(right_address)
+
+    assert left_point == RelationalPoint((-1,))
+    assert right_point == RelationalPoint((1,))
+    assert left_point != right_point
+    assert not isinstance(left_point, OccurrenceAddress)
+
+
+def test_occurrence_address_reference_embedding_preserves_binary_word():
+    address = OccurrenceAddress((-1, 1, -1))
+    point = reference_point_from_occurrence(address)
+
+    assert point.address == tuple(address)
+    assert address == (-1, 1, -1)
 
 
 def test_cp1_fubini_study_maximal_distinction_is_pi_over_two():
