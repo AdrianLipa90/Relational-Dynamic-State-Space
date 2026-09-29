@@ -106,6 +106,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("RA0_REL_STAR",),
     ),
     Claim(
+        "THM_SINGLETON_FOUNDATION_MINIMALITY",
+        ClaimKind.THEOREM,
+        "Under META0 plus RA0_REL_STAR, admitted-carrier cardinality one is the minimum permitted cardinality and is achieved by the recursive singleton self-relational witness.",
+        ("META0", "RA0_REL_STAR"),
+    ),
+    Claim(
         "THM_RR1_FROM_RA0_STAR",
         ClaimKind.THEOREM,
         "RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences.",
