@@ -5,397 +5,381 @@
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 
-\title{Relational Dynamic State Space\\
-\large Algebraic Time, Hilbert--Moir\'e Geometry, Relational Attachment, and Page Attractors}
+\title{Relational Tensor--Scalar Orbital--Fractal Algebra\\
+\large A General Relational Algebra with Recursive Distinction, Semantic Scale, Moir\'e Action, and Zero-Axis Phase}
 \author{Adrian Lipa}
 \date{29 September 2026}
 
-\newcommand{\AT}{\mathfrak{A}_{T}}
-\newcommand{\HHM}{\mathcal{H}_{\mathrm{HM}}}
-\newcommand{\Nrel}{\mathcal{N}_{\mathrm{rel}}}
-\newcommand{\Apage}{\mathcal{A}_{\mathrm{page}}}
+\newcommand{\Arel}{\mathfrak A_{\rm rel}}
+\newcommand{\CP}{\mathbb{CP}^{1}}
+\newcommand{\FS}{\mathrm{FS}}
+\newcommand{\Zaxis}{\mathcal Z_{0}}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Relational Dynamic State Space (RDSS) is introduced as a framework in which
-time and space are not postulated as coordinates of one primitive manifold.
-Time is represented by an algebra of ordered transformations, while space is
-represented by a Hilbert--Moir\'e state carrier equipped with an explicit
-lattice/topology layer. Relational semantics produces a scalar attachment
-field that deforms the metric of the carrier. Stable configurations of the
-coupled state--metric dynamics are called page attractors. The construction
-keeps arithmetic truth separate from geometric representation: an expression
-such as \(2+2=4\) retains its algebraic value while its relational-semantic
-embedding may induce a non-trivial scalar deformation. No identification
-with physical mass or gravity is assumed at this foundational stage.
+This monograph defines a general relational tensor--scalar, orbital--fractal
+algebra. The construction is deliberately prior to any specific spacetime,
+metric, or physical interpretation. Its primitives are relational
+admissibility, a minimal point carrier, projective binary distinction,
+tensor--scalar grading, typed relations, semantic scales, orbital actions,
+relative Moir\'e transformations, recursive refinement, and a Zero-Axis phase
+sector. Quantities such as orbit, winding, associator, commutator, and
+refinement residual are derived rather than stored as independent state
+coordinates. No Planck scale, Minkowski structure, gravitational
+interpretation, associativity, commutativity, or exact self-similarity is
+assumed by the general algebra.
 \end{abstract}
 
-\section{Foundational separation}
+\section{Scope}
 
-RDSS starts from a strict separation:
+The object developed here is not a spacetime model. It is a general algebra
+of relations. Concrete geometric and physical constructions may later be
+representations of this algebra, but they are not part of its definition.
+
+The typed algebraic family is written
 \[
-\boxed{\text{time}=\text{algebraic dynamics}},
+\boxed{
+\Arel=\left\{\mathcal A_{\sigma,n}^{p,q}\right\},
+}
+\]
+where \((p,q)\) is tensor rank, \(n\in\mathbb N_0\) is refinement level,
+and \(\sigma\in\Sigma\) is a semantic scale or context.
+
+The scalar sector is not a separate ontology. It is the tensor rank-zero
+sector:
+\[
+\boxed{
+\mathbb K_{\sigma,n}=\mathcal A_{\sigma,n}^{0,0}.
+}
+\]
+
+\section{Relational admissibility}
+
+The foundational rule is stated as an admissibility condition:
+\[
+\boxed{
+\operatorname{Adm}(x)
+\Longrightarrow
+\exists\,y,r:\operatorname{Rel}_{r}(x,y).
+}
+\tag{A-1}
+\]
+An admissible observable is therefore not defined as an isolated object.
+The statement is intentionally weaker and cleaner than a physical claim: it
+does not assign a spacetime, energy, length, or dynamics.
+
+The absence of an admitted relation is not identified with algebraic zero.
+For every typed sector there may be a zero element
+\[
+0_{\sigma,n}^{p,q}\in\mathcal A_{\sigma,n}^{p,q},
+\]
+while ``no relation'' is a separate condition.
+
+\section{Minimal carrier and minimal distinction}
+
+The minimal carrier of the general algebra is a point
+\[
+\boxed{p.}
+\]
+No Planck length or other physical scale is attached to it at this level.
+A later physical representation may provide such a scale through a separate
+bridge.
+
+The reference minimal two-channel realization of a distinction uses a
+non-zero vector in \(\mathbb C^2\), modulo global phase:
+\[
+|\psi\rangle
+=\alpha|0\rangle+\beta|1\rangle,
 \qquad
-\boxed{\text{space}=\text{geometric state carrier}}.
+|\alpha|^2+|\beta|^2=1,
 \]
-Let \(\AT\) denote the algebra of admissible ordered transformations and let
-\(\HHM\) denote the Hilbert--Moir\'e carrier. Their coupling is expressed by
-a representation
-\[
-\rho:\AT\longrightarrow \operatorname{End}(\HHM).
-\]
-A discrete orbit therefore has the form
-\[
-\Psi_{n+1}=\rho(a_n)\Psi_n,
-\qquad a_n\in\AT,
-\]
-without requiring a primitive external real-valued time coordinate.
-
-\section{Hilbert--Moir\'e space}
-
-The spatial layer is written schematically as
-\[
-\HHM=\mathcal{H}(\Lambda_{\mathrm{HO}},\mathcal F),
-\]
-where \(\Lambda_{\mathrm{HO}}\) is a hyperoctagonal-lattice structure and
-\(\mathcal F\) is a local state fibre. At the current stage, RDSS treats the
-precise hyperoctagonal realization as a replaceable topology contract rather
-than silently canonizing a single combinatorial model.
-
-A useful factorized representation is
-\[
-\HHM \simeq \ell^2(\Lambda_{\mathrm{HO}})
-\otimes \mathcal H_{\mathrm{local}},
-\]
-augmented by a Moir\'e/refinement structure.
-
-\section{Relational attachment}
-
-Let \(\mathcal R\) denote relational structure, \(C\) context, and \(\Psi\)
-the current state. The relational attachment is the map
 \[
 \boxed{
-\Nrel:(\Psi,\mathcal R,C)\longmapsto \chi
+\mathbb P(\mathbb C^2)=\CP\simeq S^2.
 }
+\tag{A1}
 \]
-with scalar output \(\chi\in\mathbb R\).
-
-The reference implementation uses an explicit feature vector \(f_k\) and a
-replaceable linear functional
-\[
-\chi=b+\sum_k w_k f_k.
-\]
-This is an implementation baseline, not a claim that the physical or
-canonical semantic functional must be linear.
-
-\section{Semantic scalar deformation}
-
-Given a base metric \(g^{(0)}\), RDSS v0.1 uses the conformal deformation
+The natural projective metric is Fubini--Study:
 \[
 \boxed{
-g[\chi]=e^{2\chi}g^{(0)}.
-}
-\]
-This choice is explicit, differentiable, positive for finite real \(\chi\),
-and easy to falsify or replace.
-
-The critical invariant is that arithmetic evaluation and geometric
-representation remain separate channels. For
-\[
-E=(2+2)
-\]
-the value channel gives
-\[
-\operatorname{value}(E)=4,
-\]
-while the relational-semantic channel may give
-\[
-\Nrel(E,C)=\chi_E
-\]
-and consequently
-\[
-g^{(0)}\longmapsto e^{2\chi_E}g^{(0)}.
-\]
-Thus RDSS does not alter arithmetic truth. It allows the representation of a
-relation to modify the geometry of the state carrier.
-
-\section{Coupled dynamic state}
-
-A coupled state is represented by
-\[
-X_n=(\Psi_n,g_n).
-\]
-One RDSS step is
-\[
-\Psi_{n+1}=\rho(a_n)\Psi_n,
-\]
-followed by
-\[
-\chi_{n+1}=\Nrel(\Psi_{n+1},\mathcal R_{n+1},C_{n+1}),
-\]
-and
-\[
-g_{n+1}=\mathcal D_{\chi_{n+1}}(g^{(0)}).
-\]
-In the initial reference kernel
-\[
-\mathcal D_{\chi}(g^{(0)})=e^{2\chi}g^{(0)}.
-\]
-
-This yields the structural loop
-\[
-\boxed{
-\text{algebraic action}
-\rightarrow
-\text{state}
-\rightarrow
-\text{relational semantics}
-\rightarrow
-\chi
-\rightarrow
-\text{metric deformation}.
+d_{\FS}([\psi],[\phi])
+=\arccos|\langle\psi|\phi\rangle|.
 }
 \]
 
-Future versions may allow \(g_{n+1}\) itself to modify the representation
-\(\rho\), producing a fully bidirectional feedback loop.
-
-\section{Page attractor}
-
-A page attractor is a stable configuration of the coupled update.
-For an update map
+A relation \(r\) may select two projective states
 \[
-\mathcal F:(\Psi_n,g_n)\mapsto(\Psi_{n+1},g_{n+1}),
+r\longmapsto(p_r^-,p_r^+)\in\CP\times\CP.
 \]
-a fixed-point page attractor satisfies
+Maximal distinction is the special case
 \[
-\boxed{
-\mathcal F(\Psi_\star,g_\star)=(\Psi_\star,g_\star).
-}
-\]
-The v0.1 computational definition declares convergence when both
-\[
-\|\Psi_{n+1}-\Psi_n\|_2\le\varepsilon
-\]
-and
-\[
-\|g_{n+1}-g_n\|_F\le\varepsilon.
-\]
-Periodic, quasiperiodic, and chaotic attractors are deliberately deferred.
-
-
-\section{Hilbert primacy and derived representations}
-
-RDSS has one canonical carrier:
-\[
-\boxed{\HHM.}
-\]
-No Bloch sphere, K\"ahler chart, Minkowski chart, Euclidean chart or other
-geometry is introduced as a second foundational space. Such geometries are
-derived representations of states already living in \(\HHM\).
-
-For each admissible representation label \(\alpha\), let
-\[
-\boxed{
-\Pi_\alpha:\HHM\longrightarrow \mathcal X_\alpha
-}
-\]
-be a projection, chart, quotient, embedding coordinate map, or other explicit
-representation morphism. The symbol \(\mathcal X_\alpha\) denotes the image
-or coordinate realization selected by \(\Pi_\alpha\); it carries no
-independent ontological status in RDSS.
-
-A metric or quadratic form belongs to a representation only after such a
-choice. If \(G_\alpha\) is the corresponding form, then for two Hilbert--Moir\'e
-states \(\Psi,\Phi\) one may define
-\[
-Q_\alpha(\Psi,\Phi)
-=
-\left\langle
-\Pi_\alpha(\Psi-\Phi),
-G_\alpha\Pi_\alpha(\Psi-\Phi)
-\right\rangle.
-\]
-Thus a Lorentzian/Minkowski form, a Bloch representation, or a K\"ahler/
-Fubini--Study description is a choice of \((\Pi_\alpha,G_\alpha)\) inside the
-Hilbert framework, not a replacement for it.
-
-The informational--holonomic coordinate is likewise internal:
-\[
-\boxed{
-\zeta(\Psi)=I(\Psi)+i\Theta(\Psi).
-}
-\]
-It is a complex degree of freedom or functional of the Hilbert state. It is
-not postulated as an external spacetime axis.
-
-\section{Holonomy inside Hilbert--Moir\'e space}
-
-Let \(\Gamma\) be a trajectory in the Hilbert--Moir\'e state space (or its
-projective realization when global phase is quotiented). Relational transport
-is described by a connection \(\mathcal A_{\rm rel}\) and holonomy
-\[
-\boxed{
-U_\Gamma
-=
-\mathcal P\exp\!\left(
-i\int_\Gamma \mathcal A_{\rm rel}
-\right).
-}
-\]
-A representation may close even when the complete Hilbert state does not.
-For some representation \(\Pi_\alpha\), it is possible that
-\[
-\Pi_\alpha(\Psi_{\rm final})
-=
-\Pi_\alpha(\Psi_{\rm initial}),
-\]
-while simultaneously
-\[
-\boxed{
-\Psi_{\rm final}
-=
-U_\Gamma\Psi_{\rm initial}
-\neq
-\Psi_{\rm initial}.
-}
-\]
-This is the precise RDSS version of returning to the same represented point
-while retaining path-dependent information. Closure therefore has to be
-qualified by representation:
-\[
-\boxed{
-\text{representation closure}
-\not\Rightarrow
-\text{Hilbert-state closure}.
-}
-\]
-
-For a scalar \(U(1)\) reference transport,
-\[
-U_\Gamma
-=
-\exp\!\left(
-i\sum_{e\in\Gamma}\phi_e
-\right),
-\]
-with winding and residual
-\[
-W_\Gamma
-=
-\operatorname{round}\!\left(
-\frac{1}{2\pi}\sum_{e\in\Gamma}\phi_e
-\right),
+\langle p_r^-|p_r^+\rangle=0,
 \qquad
-\varepsilon_\Gamma
-=
-\operatorname{wrap}_{2\pi}\!\left(
-\sum_{e\in\Gamma}\phi_e
-\right).
+d_{\FS}=\frac{\pi}{2}.
 \]
-Higher-dimensional and non-Abelian transports remain admissible extensions.
+Generic relations need not be maximal and therefore need not select
+antipodal Bloch points.
 
-\section{Representation-specific geometries are derived, not fundamental}
+\section{Recursive relational refinement}
 
-The time algebra continues to act on the canonical carrier,
+A selected relational point may itself become the carrier of another
+minimal distinction. Let
 \[
-\rho:\AT\longrightarrow\operatorname{End}(\HHM).
+V_n=\{-1,+1\}^{n}.
 \]
-Only after a representation \(\Pi_\alpha\) is selected does one obtain a
-representation-specific geometric description. Schematically,
+For \(\omega\in V_n\), define the binary refinement
 \[
 \boxed{
-\HHM
-\xrightarrow{\ \Pi_\alpha\ }
-\mathcal X_\alpha,
-\qquad
-\Psi\mapsto x_\alpha.
+p_\omega\longmapsto
+\{p_{\omega-},p_{\omega+}\}.
+}
+\tag{A2}
+\]
+Thus the general construction contains a recursive relational tower
+\[
+p\to\{p_-,p_+\}
+\to\{p_{--},p_{-+},p_{+-},p_{++}\}
+\to\cdots.
+\]
+
+Fractality means compatibility across refinement levels, not a requirement of
+perfect geometric self-similarity. If
+\[
+F:\mathcal A_{\sigma,n}^{p,q}
+\to
+\mathcal A_{S(\sigma),n+1}^{p,q}
+\]
+is a refinement map and \(\star\) a relational product, define
+\[
+\boxed{
+\Delta_F(X,Y)
+=F(X\star Y)-F(X)\star F(Y).
 }
 \]
-A Lorentzian representation may therefore use a Minkowski form, while a
-qubit sector may be represented projectively on a Bloch sphere with its
-K\"ahler/Fubini--Study geometry. These are examples of derived descriptions
-of Hilbert states. RDSS does not promote any one of them to the universal
-carrier.
+Exact self-similarity is the special case \(\Delta_F=0\). Non-zero residuals
+remain legitimate algebraic information.
 
-Semantic dependence may act directly on Hilbert operators, representation
-maps, representation metrics, or the relational connection. A generic form
-is
+\section{Tensor--scalar grading and typed relations}
+
+Elements are typed by tensor rank, semantic scale, and refinement level:
 \[
-\chi=\Nrel(\Psi,\mathcal R,C),
+X\in\mathcal A_{\sigma,n}^{p,q}.
 \]
-followed by one or more deformations such as
+Tensor product and contraction have the schematic types
 \[
-G_\alpha\longmapsto G_\alpha[\chi],
-\qquad
-\mathcal A_{\rm rel}\longmapsto\mathcal A_{\rm rel}[\chi].
+\otimes:
+\mathcal A_{\sigma,n}^{p,q}\times
+\mathcal A_{\tau,m}^{r,s}
+\to
+\mathcal A_{\upsilon,k}^{p+r,q+s},
 \]
-The representation can therefore retain the same symbolic form while the
-relational/holonomic content of the transformation changes.
+\[
+\operatorname{Contr}:
+\mathcal A_{\sigma,n}^{p,q}
+\to
+\mathcal A_{\sigma,n}^{p-1,q-1},
+\]
+whenever the relevant type and relation constraints are satisfied.
 
-\section{Core object}
-
-The minimal RDSS object is therefore
+A typed relation is written
+\[
+r:a\to b
+\]
+and may induce transport
 \[
 \boxed{
+T_r:\mathcal A_a\to\mathcal A_b.
+}
+\tag{A3}
+\]
+No universal transport law is imposed before the relation type is supplied.
+
+\section{Relational product: no premature associativity}
+
+Let
+\[
+\star_R:
+\mathcal A\times\mathcal A\to\mathcal A
+\]
+denote a relational product in a compatible typed sector. The current
+foundation does not assume either commutativity or associativity.
+
+Their failures are measured, not hidden:
+\[
+\boxed{
+[X,Y]_{\star}
+=X\star Y-Y\star X,
+}
+\]
+\[
+\boxed{
+\alpha(X,Y,Z)
+=(X\star Y)\star Z-X\star(Y\star Z).
+}
+\]
+Commutative or associative subclasses are recovered when the corresponding
+residual vanishes.
+
+\section{Semantic scales}
+
+Semantic scale is not assumed to be a single real parameter. Let
+\[
+\boxed{\sigma\in\Sigma}
+\]
+where \(\Sigma\) is a typed partially ordered or categorical scale
+structure. A coarse-graining morphism is written
+\[
+S_{\sigma\to\tau}:
+\mathcal A_{\sigma,n}^{p,q}
+\to
+\mathcal A_{\tau,n}^{p,q}.
+\]
+Such a map is admissible only when the scale structure contains the required
+relation. This prevents unrelated semantic classes from being collapsed by
+arithmetic alone.
+
+A common semantic quotient of two types exists only when there is a common
+admissible upper scale. Thus semantic compatibility is part of the algebraic
+type system rather than an after-the-fact annotation.
+
+\section{Orbital action and relative Moir\'e structure}
+
+Let \(G\) act on admissible algebra elements through
+\[
+U_g:\mathcal A\to\mathcal A.
+\]
+An orbit is derived:
+\[
+\boxed{
+\operatorname{Orb}(X)=\{U_gX:g\in G\}.
+}
+\]
+It is not an independent coordinate carried by \(X\).
+
+Moir\'e structure is intrinsically relational. For two local orbital actions,
+\[
+\boxed{
+M_{ij}=U_iU_j^{-1}.
+}
+\tag{A4}
+\]
+In a scalar-angle realization this reduces to the wrapped relative angle
+\[
+\Delta\theta_{ij}
+=\operatorname{wrap}_{2\pi}(\theta_i-\theta_j).
+\]
+
+Semantic scaling and Moir\'e action need not commute. The mixed residual
+\[
+\boxed{
+[M,S]=MS-SM
+}
+\]
+is therefore a legitimate observable of the algebra rather than an error.
+
+\section{Zero Axis and the phase realization}
+
+The companion Zero Axis model supplies the projective coordinate
+\[
+\boxed{
+\Omega(s)=\frac{s}{1-s}.
+}
+\]
+On the critical axis
+\[
+\Zaxis=\left\{s\in\mathbb C:\Re s=\frac12\right\},
+\]
+one has the exact equivalence
+\[
+\boxed{
+\Re s=\frac12
+\Longleftrightarrow
+|\Omega(s)|=1.
+}
+\tag{A5}
+\]
+Hence the compactified Zero Axis has a natural unit-circle realization. The
+\(U(1)\) phase sector is therefore treated here as a projective realization
+of \(\Zaxis\), not as an unrelated extra primitive.
+
+For a closed phase path \(\gamma\), winding is derived:
+\[
+\boxed{
+W(\gamma)
+=\frac{1}{2\pi i}
+\oint_{\Omega\circ\gamma}u^{-1}\,du.
+}
+\]
+Likewise the phase residual is derived from accumulated holonomy. Neither
+winding nor residual is stored as an independent coordinate of the base
+algebra element.
+
+\section{Minimal algebraic signature}
+
+The present foundation can be summarized as
+\[
+\boxed{
+\Arel=
 \left(
-\HHM,\,
-\AT,\,
-\rho,\,
-\Nrel,\,
-\mathcal D,\,
-\Apage
+\{\mathcal A_{\sigma,n}^{p,q}\},
+0,
+\star_R,
+\otimes,
+\operatorname{Contr},
+T_r,
+U_g,
+M_{ij},
+S_{\sigma\to\tau},
+F,
+\Zaxis,
+\Omega
 \right).
 }
-Equivalently, the evolving geometry can be displayed as
+\]
+Derived diagnostics and structures include
 \[
 \boxed{
-\AT
-\curvearrowright
-\left[
-\HHM,
-g\!\left(
-\Nrel[\operatorname{Sem}(\mathcal R,\Psi)]
-\right)
-\right].
+\operatorname{Orb},\quad
+W,\quad
+\varepsilon,\quad
+\Delta_F,\quad
+[M,S],\quad
+[X,Y]_{\star},\quad
+\alpha(X,Y,Z).
 }
 \]
 
-\section{Epistemic boundary}
+\section{Explicit non-assumptions}
 
-The following statements belong to the mathematical framework at this stage:
+The general algebra does not assume:
 \begin{itemize}
-  \item time dynamics and spatial carrier are represented separately;
-  \item an explicit relational attachment can produce a scalar \(\chi\);
-  \item \(\chi\) can explicitly deform a metric;
-  \item coupled state--metric updates can possess attractors.
+  \item a Planck-scale minimal point;
+  \item a particular spacetime, metric, or gravitational law;
+  \item associativity or commutativity of \(\star_R\);
+  \item exact preservation of products under refinement;
+  \item a one-dimensional numerical semantic scale;
+  \item winding, orbit, or residual as independent state coordinates;
+  \item a physical interpretation of an algebraic structure without a
+        separate bridge theorem.
 \end{itemize}
 
-The following identifications are \emph{not} assumed:
-\begin{itemize}
-  \item page attractor \(=\) physical mass;
-  \item relational attachment/deformation \(=\) physical gravity;
-  \item the current linear semantic functional is canonical;
-  \item the current conformal deformation law is uniquely forced.
-\end{itemize}
+\section{Reference-kernel obligations}
 
-Those interpretations require separate derivation and validation gates.
-
-\section{Immediate research programme}
-
-The next mathematical gates are:
-\begin{enumerate}
-  \item define and test candidate hyperoctagonal adjacency/topology models;
-  \item formalize the generators and composition law of \(\AT\);
-  \item derive semantic features from relational structure rather than insert
-        them by hand;
-  \item classify fixed, periodic, and higher-order page attractors;
-  \item determine invariants under semantic deformation;
-  \item test whether geometry can feed back into \(\rho\) without
-        inconsistency;
-  \item only then test candidate physical interpretations.
-\end{enumerate}
+A promoted primitive must remain synchronized across four layers:
+\[
+\boxed{
+\text{definition}
++\text{reference implementation}
++\text{test}
++\text{LaTeX statement}.
+}
+\]
+The initial executable kernel therefore tests recursive point refinement,
+\(\CP\) normalization, Fubini--Study separation, rank-zero scalar typing,
+typed algebraic zero, semantic coarse-graining, relative Moir\'e rotation,
+Zero-Axis unit-circle projection, derived winding, associator/commutator
+diagnostics, and refinement residuals.
 
 \end{document}
