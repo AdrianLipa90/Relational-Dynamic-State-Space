@@ -7,13 +7,13 @@ The canonical algebraic object is a typed family
 \[
 \mathfrak A_{\rm rel}
 =
-\left\{\mathcal A_{\sigma,n}^{p,q}\right\},
+\left\{\mathcal A_{\sigma,\omega}^{p,q}\right\},
 \]
 
-where \((p,q)\) is tensor rank, \(n\) is refinement level, and \(\sigma\in\Sigma\) is a semantic scale/context. The scalar sector is the rank-zero sector
+where \((p,q)\) is tensor rank, \(\omega\in\{-1,+1\}^{*}\) is the exact path-labelled relational carrier address, and \(\sigma\in\Sigma\) is a semantic scale/context. The refinement level is derived as \(n=|\omega|\); it does not identify the sector by itself. The scalar sector is the rank-zero sector
 
 \[
-\mathbb K_{\sigma,n}=\mathcal A_{\sigma,n}^{0,0}.
+\mathbb K_{\sigma,\omega}=\mathcal A_{\sigma,\omega}^{0,0}.
 \]
 
 ## Foundational split
@@ -72,9 +72,9 @@ For each branch \(\epsilon\in\{-1,+1\}\), the executable algebra refinement is t
 
 \[
 F_{\epsilon}:
-\mathcal A_{\sigma,n}^{p,q}(p_\omega)
+\mathcal A_{\sigma,\omega}^{p,q}
 \to
-\mathcal A_{\tau,n+1}^{p,q}(p_{\omega\epsilon}).
+\mathcal A_{\tau,\omega\epsilon}^{p,q}.
 \]
 
 Exact self-similarity is not assumed. Branch refinement is primitive, while its compatibility with the product is measured by
@@ -100,7 +100,7 @@ A local distinction in \(\mathcal F_\omega\) indexes child carriers \(p_{\omega-
 Each typed sector carries an additive module structure over a scalar domain \(\mathbb K\):
 
 \[
-(\mathcal A_{\sigma,n}^{p,q},+,0,-,\mathbb K\curvearrowright\mathcal A_{\sigma,n}^{p,q}).
+(\mathcal A_{\sigma,\omega}^{p,q},+,0,-,\mathbb K\curvearrowright\mathcal A_{\sigma,\omega}^{p,q}).
 \]
 
 The abstract algebra does not fix \(\mathbb K=\mathbb C\). The reference kernel uses complex components. This structure is required before commutators, associators, and refinement residuals can be interpreted as differences. The executable zero of a reference element preserves its exact typed sector — tensor rank, relational carrier, semantic scale, and component dimension — and satisfies \(X+0_X=X\) and \(X-X=0_X\). Refinement level alone does not identify the zero sector.
