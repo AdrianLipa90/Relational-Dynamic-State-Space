@@ -251,3 +251,44 @@ Therefore
 \]
 
 This witness is the finite discrete analogue of the distinction between one underlying carrier and two relational/polar slots.
+
+
+## W7: RA0* without RA0
+
+Take the non-empty singleton presentation
+
+\[
+P=\{a\},
+\qquad
+\operatorname{Adm}=\{a\},
+\]
+
+with no primitive relations,
+
+\[
+R=\varnothing,
+\]
+
+but with the hosted binary occurrence refinement
+
+\[
+a\mapsto(a,a).
+\]
+
+The left/right refinement slots are distinct occurrences, their endpoint carrier labels are admitted, and every admitted carrier hosts such a refinement. Therefore the current occurrence-level RA0* condition holds.
+
+However \(a\) is incident to no primitive relation, so RA0 fails.
+
+Hence
+
+\[
+\boxed{
+\mathrm{RA0}^{*}
+\not\Rightarrow
+\mathrm{RA0}.
+}
+\]
+
+The model is non-empty, so the failure is not a vacuity artifact and is compatible with META0 model non-vacuity.
+
+This witness is exactly why the stronger relationally bound candidate RA0_REL_STAR is tracked separately. RA0_REL_STAR adds explicit branch-relation occurrences and thereby carries theorem claims to both RA0 and RR1.
