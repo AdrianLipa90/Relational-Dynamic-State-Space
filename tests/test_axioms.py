@@ -132,6 +132,30 @@ def test_occurrence_holonomy_requires_occurrence_path_semantics():
     )
 
 
+def test_occurrence_u1_representation_and_winding_dependencies():
+    claims = claim_map()
+
+    assert claims["REF_OCCURRENCE_HOLONOMY_U1"].kind is ClaimKind.REFERENCE_REALIZATION
+    occurrence_base = frozenset(
+        {
+            "REF_OCCURRENCE_HOLONOMY_U1",
+            "DER_OCCURRENCE_HOLONOMY",
+            "PRIM_TRANSPORT",
+            "PRIM_MODULE",
+            "DEF_BINARY_REL",
+            "DEF_OCCURRENCE_PATH",
+            "DEF_RELATION_OCCURRENCE",
+            "DEF_POINT",
+        }
+    )
+    assert dependency_closure("REF_OCCURRENCE_HOLONOMY_U1") == (
+        occurrence_base - {"REF_OCCURRENCE_HOLONOMY_U1"}
+    )
+
+    assert claims["DER_OCCURRENCE_WINDING"].kind is ClaimKind.DERIVED
+    assert dependency_closure("DER_OCCURRENCE_WINDING") == occurrence_base
+
+
 def test_winding_depends_on_explicit_holonomy_u1_representation():
     claims = claim_map()
     assert claims["DER_WINDING"].kind is ClaimKind.DERIVED
