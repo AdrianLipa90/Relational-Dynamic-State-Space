@@ -560,3 +560,39 @@ def test_relation_value_cardinality_minimality():
             *base,
         }
     )
+
+
+
+def test_occurrence_address_free_monoid_and_refinement_action_dependencies():
+    claims = claim_map()
+
+    assert claims["DEF_OCCURRENCE_ADDRESS_SPACE"].kind is ClaimKind.DEFINITION
+    assert dependency_closure("DEF_OCCURRENCE_ADDRESS_SPACE") == frozenset(
+        {"DEF_POINT"}
+    )
+
+    assert claims["THM_OCCURRENCE_ADDRESS_FREE_MONOID"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_OCCURRENCE_ADDRESS_FREE_MONOID") == frozenset(
+        {
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+        }
+    )
+
+    assert claims["THM_REFINEMENT_RIGHT_ACTION"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_REFINEMENT_RIGHT_ACTION") == frozenset(
+        {
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+        }
+    )
+
+    assert claims["THM_RR1_REALIZES_FINITE_WORDS"].kind is ClaimKind.THEOREM
+    assert dependency_closure("THM_RR1_REALIZES_FINITE_WORDS") == frozenset(
+        {
+            "RR1",
+            "DEF_BINARY_DISTINCTION",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+        }
+    )
