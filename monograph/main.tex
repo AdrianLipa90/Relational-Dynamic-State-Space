@@ -1556,6 +1556,67 @@ the resulting exact-minimum theorem separately. This is a statement about the
 formal model class, not a physical assertion about how many physical objects
 constitute a universe.
 
+\subsection{Minimal underlying relation-value cardinality}
+
+The same distinction between values and occurrences permits a second exact
+minimum. Under META0 plus \(\mathrm{RA0}^{\mathrm{rel}*}\), at least one
+admitted carrier exists, and that carrier hosts at least one relationally bound
+binary distinction. Forgetting branch occurrence identity therefore leaves at
+least one underlying primitive relation value:
+\[
+\boxed{
+|\operatorname{RelVal}|\ge1.
+}
+\]
+
+The lower bound is attained by the singleton model
+\[
+a\xrightarrow{r}a,
+\]
+with both branch slots projecting to the same relation value:
+\[
+o_-=(-,r,a,a),
+\qquad
+o_+=(+,r,a,a).
+\]
+Although
+\[
+o_-\neq o_+,
+\]
+their underlying value projection satisfies
+\[
+\pi_{\mathrm{rel}}(o_-)
+=
+\pi_{\mathrm{rel}}(o_+)
+=
+(a,a,r).
+\]
+
+Hence
+\[
+\boxed{
+\min_{\mathfrak M\models
+\mathrm{META0}+\mathrm{RA0}^{\mathrm{rel}*}}
+|\operatorname{RelVal}^{\mathfrak M}|
+=
+1.
+}
+\]
+
+The minimal reference model therefore simultaneously realizes
+\[
+\boxed{
+|\operatorname{Adm}|=1,
+\qquad
+|\operatorname{RelVal}|=1,
+\qquad
+|\operatorname{BranchOcc}(a)|=2.
+}
+\]
+The multiplicity required by binary distinction is located in the occurrence
+slots rather than in the cardinality of the underlying carrier or relation
+value sets.
+
 \subsection{Occurrence growth from a singleton carrier}
 
 Carrier cardinality and occurrence cardinality are distinct invariants. Under
