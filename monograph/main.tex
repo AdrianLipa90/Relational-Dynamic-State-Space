@@ -1741,6 +1741,66 @@ It therefore grades the carrier action:
 Thus the refinement level is not merely an implementation counter; it is the
 natural \(\mathbb N\)-grading induced by the free-monoid word length.
 
+\subsection{Prefix order, meet, and canonical tree metric}
+
+The free-monoid address structure carries a canonical rooted-tree order. For
+finite words \(u,v\in B^*\), define
+\[
+\boxed{
+u\preceq v
+\Longleftrightarrow
+\exists w\in B^*:\ v=uw.
+}
+\]
+This is the ancestor/prefix order.
+
+Any two finite words possess a greatest lower bound in this order: their
+longest common prefix,
+\[
+\boxed{
+u\wedge v
+=
+\operatorname{LCP}(u,v).
+}
+\]
+Hence the finite occurrence addresses form a rooted meet-semilattice.
+
+Using the word-length grading, define
+\[
+\boxed{
+d_T(u,v)
+=
+|u|+|v|-2|u\wedge v|.
+}
+\]
+This is the number of tree edges in the unique geodesic from \(u\) to
+\(v\): move from \(u\) upward to \(u\wedge v\), then downward to \(v\).
+Consequently
+\[
+d_T(u,v)\ge0,
+\qquad
+d_T(u,v)=0\Longleftrightarrow u=v,
+\]
+\[
+d_T(u,v)=d_T(v,u),
+\]
+and the triangle inequality holds. Thus
+\[
+\boxed{
+(B^*,d_T)
+\text{ is a metric space.}
+}
+\]
+
+The reference kernel implements the order, meet, and metric through
+\texttt{RelationalPoint.is\_prefix\_of},
+\texttt{RelationalPoint.meet}, and
+\texttt{RelationalPoint.tree\_distance}.
+
+This is a combinatorial metric forced by the occurrence-address structure.
+It is not identified with a physical distance, the Fubini--Study metric, a
+Hilbert norm, a Minkowski metric, or any later geometric realization.
+
 The algebraic address monoid exists independently of RR1. RR1 supplies the
 additional closure statement that, from an admitted root, every finite word
 \(u\in B^*\) is realized by an actual path-labelled relational occurrence.
