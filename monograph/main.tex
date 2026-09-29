@@ -328,6 +328,85 @@ Likewise the phase residual is derived from accumulated holonomy. Neither
 winding nor residual is stored as an independent coordinate of the base
 algebra element.
 
+\section{One-axiom closure candidate}
+
+The current canonical foundation uses two explicit axioms,
+\[
+\boxed{\mathrm{RA0}+\mathrm{RR1}.}
+\]
+The finite independence witnesses show that the original RA0 is too weak to
+force recursive refinement:
+\[
+\boxed{\mathrm{RA0}\not\Rightarrow\mathrm{RR1}.}
+\]
+
+A stronger candidate foundational statement is therefore introduced:
+\[
+\boxed{
+\mathrm{RA0}^{*}:
+\text{every admitted carrier hosts an admitted non-degenerate binary distinction}
+}
+\]
+together with the closure clause that the two selected endpoint occurrences
+are themselves admitted carriers.
+
+Let a relational occurrence be indexed by
+\[
+\omega\in\{-1,+1\}^{n}.
+\]
+If \(p_{\omega}\) is admitted, RA0* supplies
+\[
+D(p_{\omega})
+=
+\bigl(
+p_{\omega-},
+p_{\omega+}
+\bigr),
+\]
+and both endpoints are admitted. By induction on \(n\), for every finite
+depth \(N\) the complete binary address set
+\[
+\boxed{
+V_n=\{-1,+1\}^{n},
+\qquad
+0\le n\le N,
+}
+\]
+is generated. Hence
+\[
+\boxed{
+\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}
+}
+\]
+in the path-labelled occurrence semantics.
+
+This is a genuine strengthening of RA0, not a proof from its old wording.
+RA0* explicitly adds binary non-degeneracy and endpoint admissibility. Those
+clauses are precisely what makes the induction valid.
+
+The underlying carrier presentation may nevertheless be cyclic. For example,
+\[
+D(a)=(a,b),
+\qquad
+D(b)=(a,b)
+\]
+satisfies RA0* while reusing the carrier labels \(a,b\). Its unfolding is
+still a complete binary tree of distinct path-labelled occurrences. Thus
+recursive relational structure does not by itself imply ontically fresh
+carrier identities:
+\[
+\boxed{
+\mathrm{RA0}^{*}\not\Rightarrow\mathrm{NOVELTY}.
+}
+\]
+If fresh carrier identity at every refinement level is required, that must be
+introduced by an additional axiom or proved from additional structure.
+
+Accordingly RA0* is recorded as a candidate axiom and
+\(\mathrm{RR1}\) as a theorem candidate under RA0*. The canonical
+two-axiom status is retained until this stronger wording is explicitly
+promoted.
+
 \section{Minimal algebraic signature}
 
 The present foundation can be summarized as
