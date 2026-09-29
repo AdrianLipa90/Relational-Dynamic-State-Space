@@ -10,7 +10,6 @@ from .algebra import (
     associator,
     commutator,
     refinement_residual,
-    wrap_phase,
 )
 from .axioms import (
     CLAIMS,
@@ -26,6 +25,11 @@ from .closure import (
     GenerativeRelationModel,
     requires_novelty,
     two_cycle_ra0_star_model,
+)
+from .phase import (
+    closed_path_winding,
+    winding_and_residual,
+    wrap_phase,
 )
 from .operations import (
     BranchRefinementMap,
@@ -70,11 +74,7 @@ from .realizations import (
     MoireRotation,
     reference_maximal_cp1_tree,
 )
-from .zero_axis import (
-    ZeroAxisPoint,
-    closed_path_winding,
-    winding_and_residual,
-)
+from .zero_axis import ZeroAxisPoint
 
 __all__ = [
     "RelationalPoint",
