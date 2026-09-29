@@ -76,6 +76,16 @@ class GenerativeRelationModel:
         by_host = self.distinctions_by_host
         return self.admitted <= set(by_host)
 
+    def is_admissible_rtofa_model(self) -> bool:
+        """Apply META0 model formation semantics.
+
+        The raw finite presentation class allows the empty presentation so
+        vacuous truth can be audited explicitly. The empty presentation is a
+        mathematical object, but it is not an admissible RTOFA model because
+        the admitted carrier domain is empty.
+        """
+        return bool(self.admitted)
+
     def unfold(self, root: str, depth: int) -> dict[tuple[int, ...], str]:
         """Unfold the recursive relation into path-labelled binary occurrences.
 
