@@ -10,6 +10,8 @@ This matrix records which compatibility laws are implemented as exact checks, re
 | transport ↔ composition | transport composition residual | IMPLEMENTED |
 | transport ↔ closed loop | abstract holonomy residual | IMPLEMENTED |
 | transport ↔ product | \(\Delta_{T,\star}\) | IMPLEMENTED |
+| residual signature ↔ semantic weighting | \(V_R^{(p)}\) scalar potential | IMPLEMENTED |
+| relational potential ↔ geometric deformation | realization/bridge map \(V_R\mapsto\delta g\) or analogue | OPEN |
 | semantic scale ↔ orbital action | \(\Delta_{S,U}\) | IMPLEMENTED |
 | semantic scale ↔ product | \(\Delta_{S,\star}\) | IMPLEMENTED |
 | orbital family ↔ identity/inverse/composition | orbital coherence residuals | IMPLEMENTED |
