@@ -127,6 +127,24 @@ CLAIMS: tuple[Claim, ...] = (
         "Semantic scale is a typed partial-order/category-like structure, not necessarily a real scalar.",
     ),
     Claim(
+        "DEF_RELATIONAL_POTENTIAL",
+        ClaimKind.DEFINITION,
+        "A relational deformation potential is a non-negative semantic weighting of an explicit fixed residual signature.",
+        ("PRIM_SCALE",),
+    ),
+    Claim(
+        "DER_SEMANTIC_POTENTIAL_SHIFT",
+        ClaimKind.DERIVED,
+        "Semantic potential shift is the difference between two semantic potential profiles evaluated on the same residual signature.",
+        ("DEF_RELATIONAL_POTENTIAL",),
+    ),
+    Claim(
+        "DER_RELATIONAL_ATTRACTOR",
+        ClaimKind.DERIVED,
+        "The relational attractor set is the set of admissible candidates attaining minimum relational potential.",
+        ("DEF_RELATIONAL_POTENTIAL",),
+    ),
+    Claim(
         "PRIM_TRANSPORT",
         ClaimKind.STRUCTURAL_PRIMITIVE,
         "Typed relation transports T_r may act between carrier sectors along composable relations.",
