@@ -714,9 +714,50 @@ This abstract holonomy is part of the relational core. A phase or
 \(U(1)\) holonomy is a later representation of this more general transport
 structure.
 
-\section{Zero Axis and the phase realization}
+\section{Phase representation of relational holonomy}
 
-The companion Zero Axis model supplies the projective coordinate
+Abstract relational holonomy is part of the relational core, but it need not
+be a phase. A concrete realization may supply an explicit representation
+\[
+\boxed{
+\chi:
+\mathcal H_{\gamma}
+\longmapsto
+u_{\gamma}\in U(1).
+}
+\]
+The existence of \(\chi\) is an additional realization statement; it is not
+a theorem of the core algebra.
+
+Once a closed relational path has a verified \(U(1)\) representative, phase
+quantities are derived in that representation. For a closed phase loop
+\(\widetilde\gamma\subset U(1)\),
+\[
+\boxed{
+W(\widetilde\gamma)
+=
+\frac{1}{2\pi i}
+\oint_{\widetilde\gamma}u^{-1}\,du.
+}
+\]
+Likewise a phase residual may be computed from an accumulated phase lift.
+Neither winding nor phase residual is stored as an independent coordinate of
+the base algebra element.
+
+Thus the first reference chain is only
+\[
+\boxed{
+\text{closed relational holonomy}
+\xrightarrow{\ \chi\ }
+U(1).
+}
+\]
+What remains open is a universal or existence theorem specifying when a
+general RTOFA holonomy necessarily admits such a \(U(1)\) representation.
+
+\section{Zero Axis bridge}
+
+The companion Zero Axis model separately supplies the projective coordinate
 \[
 \boxed{
 \Omega(s)=\frac{s}{1-s}.
@@ -735,42 +776,12 @@ one has the exact equivalence
 }
 \tag{ZA-BRIDGE}
 \]
-Hence the compactified Zero Axis has a natural unit-circle realization. This
-identity is imported from the companion Zero Axis model as a bridge and is
-not an axiom of the general relational algebra. The
-\(U(1)\) phase sector is therefore treated here as a projective realization
-of \(\Zaxis\), not as an unrelated extra primitive.
+Hence the compactified Zero Axis has a natural unit-circle representation.
+This identity is imported from the companion Zero Axis model as a bridge and
+is not an axiom of the general relational algebra.
 
-For a closed phase path \(\gamma\), winding is derived:
-\[
-\boxed{
-W(\gamma)
-=\frac{1}{2\pi i}
-\oint_{\Omega\circ\gamma}u^{-1}\,du.
-}
-\]
-Likewise the phase residual is derived from accumulated holonomy. Neither
-winding nor residual is stored as an independent coordinate of the base
-algebra element.
-
-\subsection{Explicit phase representation of relational holonomy}
-
-Abstract relational holonomy need not be a phase. A concrete realization may,
-however, supply an explicit representation
-\[
-\boxed{
-\chi:
-\mathcal H_{\gamma}
-\longmapsto
-u_{\gamma}\in U(1).
-}
-\]
-The existence of \(\chi\) is an additional realization statement; it is not
-a theorem of the core algebra.
-
-Once a closed holonomy has a verified unit-modulus representative
-\(u_{\gamma}\), the companion Zero Axis bridge gives the finite inverse
-projective lift
+If an application has already supplied a verified finite phase
+\(u_{\gamma}\in U(1)\), the optional inverse projective lift is
 \[
 \boxed{
 s_{\gamma}
@@ -791,18 +802,15 @@ u_{\gamma}=-1
 is the compactified point at infinity of the Zero Axis rather than a finite
 \(s\)-coordinate.
 
-Thus the implemented reference chain is
+The core algebra therefore does not identify its generic \(U(1)\) phase
+sector with the Zero Axis. The Zero Axis lift is a later optional bridge:
 \[
 \boxed{
-\text{closed relational holonomy}
-\xrightarrow{\ \chi\ }
 U(1)
 \xrightarrow{\ \Omega^{-1}\ }
 \widehat{\Zaxis}.
 }
 \]
-What remains open is a universal or existence theorem specifying when a
-general RTOFA holonomy necessarily admits such a \(U(1)\) representation.
 
 \section{Axiom and dependency audit}
 
