@@ -98,12 +98,23 @@ def test_ra0_star_multiple_distinctions_do_not_break_recursive_closure():
 
 
 
-def test_ra0_star_is_vacuously_true_on_empty_presentation_without_ex0():
+def test_empty_raw_presentation_is_not_an_admissible_rtofa_model():
     model = GenerativeRelationModel(
         admitted=frozenset(),
         distinctions=(),
     )
 
+    # Formula-level RA0* is vacuously true on the raw empty presentation.
     assert model.satisfies_ra0_star()
+
+    # META0 excludes that presentation from the intended model class.
+    assert not model.is_admissible_rtofa_model()
+
     with pytest.raises(ValueError):
         model.unfold("a", 1)
+
+
+def test_nonempty_presentation_satisfies_meta0_model_nonvacuity():
+    model = two_cycle_ra0_star_model()
+
+    assert model.is_admissible_rtofa_model()
