@@ -8,7 +8,9 @@ This matrix records which compatibility laws are implemented as exact checks, re
 | product ↔ associativity | associator | IMPLEMENTED |
 | product ↔ commutativity | commutator | IMPLEMENTED |
 | transport ↔ composition | transport composition residual | IMPLEMENTED |
-| transport ↔ closed loop | abstract holonomy residual | IMPLEMENTED |
+| transport ↔ carrier-closed relation-value loop | value-level holonomy residual | IMPLEMENTED |
+| transport ↔ occurrence-closed loop | occurrence-aware holonomy residual | IMPLEMENTED |
+| carrier closure ↔ occurrence closure | carrier closure does not imply occurrence closure | IMPLEMENTED COUNTEREXAMPLE |
 | transport ↔ product | \(\Delta_{T,\star}\) | IMPLEMENTED |
 | semantic scale/graph ↔ semantic weighting profile | derivation law \(\mathcal W\) | OPEN — SEMANTIC WEIGHTING GATE |
 | residual signature ↔ semantic weighting | \(V_R^{(p)}\) scalar potential | IMPLEMENTED |
@@ -28,8 +30,9 @@ This matrix records which compatibility laws are implemented as exact checks, re
 | tensor product ↔ strict associativity/unit/supplied braiding | residual diagnostics | IMPLEMENTED |
 | tensor product ↔ non-strict associator/braiding | pentagon/hexagon coherence | OPEN — MONOIDAL COHERENCE GATE |
 | contraction ↔ tensor product | requires indexed slot/pairing realization | OPEN — INDEXED TENSOR GATE |
-| abstract holonomy ↔ \(U(1)\) phase | explicit representation interface \(\chi\) | REFERENCE IMPLEMENTED |
-| abstract holonomy ↔ \(U(1)\) phase | existence/universality theorem for \(\chi\) | OPEN |
+| value-level holonomy ↔ \(U(1)\) phase | explicit representation interface \(\chi\) | REFERENCE IMPLEMENTED |
+| occurrence-aware holonomy ↔ \(U(1)\) phase | occurrence-preserving phase representation | OPEN |
+| value-level holonomy ↔ \(U(1)\) phase | existence/universality theorem for \(\chi\) | OPEN |
 | \(U(1)\) phase ↔ Zero Axis | finite \(\Omega^{-1}(u)=u/(1+u)\) lift; \(u=-1\) at infinity | REFERENCE IMPLEMENTED |
 | CP1/FS realization ↔ recursive refinement | local-fibre tree realization | REFERENCE IMPLEMENTED |
 
