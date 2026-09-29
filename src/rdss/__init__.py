@@ -30,6 +30,7 @@ from .axioms import (
 from .operations import (
     BranchRefinementMap,
     ContractionRule,
+    contraction_map_residual,
     OrbitalAction,
     RelationPath,
     RelationTransport,
@@ -45,6 +46,7 @@ from .operations import (
     semantic_orbital_commutator_residual,
     semantic_product_residual,
     transport_composition_residual,
+    tensor_map_residual,
     transport_product_residual,
     typed_refinement_residual,
     refinement_transport_residual,
@@ -106,4 +108,6 @@ __all__ = [
     "semantic_product_residual",
     "orbital_product_residual",
     "refinement_transport_residual",
+    "contraction_map_residual",
+    "tensor_map_residual",
 ]
