@@ -314,6 +314,19 @@ class RelationalGenerativeModel:
                 return False
         return True
 
+    @property
+    def relation_values(self) -> frozenset[tuple[str, str, str]]:
+        """Underlying primitive relation values after forgetting branch slots."""
+        return frozenset(
+            (
+                occurrence.source,
+                occurrence.target,
+                occurrence.relation_label,
+            )
+            for distinction in self.distinctions
+            for occurrence in distinction.branch_relation_occurrences
+        )
+
     def branch_relations_at(
         self,
         host: str,
@@ -324,6 +337,21 @@ class RelationalGenerativeModel:
             raise KeyError(f"no relational distinction at host {host!r}") from exc
         return distinction.branch_relation_occurrences
 
+
+def minimal_singleton_ra0_rel_star_model() -> RelationalGenerativeModel:
+    """One carrier and one underlying relation value with two branch occurrences."""
+    return RelationalGenerativeModel(
+        admitted=frozenset({"a"}),
+        distinctions=(
+            RelationalBinaryDistinction(
+                host="a",
+                left="a",
+                right="a",
+                left_relation="r",
+                right_relation="r",
+            ),
+        ),
+    )
 
 def singleton_ra0_rel_star_model() -> RelationalGenerativeModel:
     """One carrier, two branch-relation occurrence slots, recursive closure."""
