@@ -222,6 +222,53 @@ The singleton witness has one admitted carrier \(a\) and two branch-relation occ
 
 It satisfies the executable candidate, RA0, and recursive RR1 to every tested finite depth.
 
+## Singleton cardinality theorem
+
+The singleton conclusion has two separate ingredients.
+
+First, META0 gives the lower bound
+
+\[
+\boxed{
+|\operatorname{Adm}^{\mathfrak M}|\ge 1
+}
+\]
+
+for every admissible RTOFA model.
+
+Second, the executable singleton model
+
+\[
+a\xrightarrow{r_-}a,
+\qquad
+a\xrightarrow{r_+}a
+\]
+
+satisfies META0 and RA0_REL_STAR with
+
+\[
+|\operatorname{Adm}|=1.
+\]
+
+Therefore the lower bound is attained, and hence
+
+\[
+\boxed{
+\min_{\mathfrak M\models\mathrm{META0}+\mathrm{RA0}^{\mathrm{rel}*}}
+|\operatorname{Adm}^{\mathfrak M}|
+=
+1.
+}
+\]
+
+The claim ledger separates these steps as:
+
+- \`THM_META0_CARDINALITY_LOWER_BOUND\`;
+- \`REF_SINGLETON_RA0_REL_STAR_MODEL\`;
+- \`THM_SINGLETON_FOUNDATION_MINIMALITY\`.
+
+This is a metatheoretic cardinality statement about the model class, not a claim that one physical object is sufficient for a physical universe.
+
 ## Promotion condition
 
 RA0_REL_STAR may replace the current pair RA0+RR1 only if the project explicitly accepts the following semantic identification:
