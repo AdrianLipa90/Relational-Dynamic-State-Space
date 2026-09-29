@@ -353,6 +353,18 @@ CLAIMS: tuple[Claim, ...] = (
         ("DER_HOLONOMY",),
     ),
     Claim(
+        "REF_OCCURRENCE_HOLONOMY_U1",
+        ClaimKind.REFERENCE_REALIZATION,
+        "A concrete realization may independently supply a U(1) representation of occurrence-closed relational holonomy.",
+        ("DER_OCCURRENCE_HOLONOMY",),
+    ),
+    Claim(
+        "DER_OCCURRENCE_WINDING",
+        ClaimKind.DERIVED,
+        "Occurrence-level topological winding is derived only after occurrence-closed holonomy has an explicit U(1) phase representation.",
+        ("REF_OCCURRENCE_HOLONOMY_U1",),
+    ),
+    Claim(
         "DER_WINDING",
         ClaimKind.DERIVED,
         "Topological winding is derived only after a closed value-level relational holonomy has an explicit U(1) phase representation.",
