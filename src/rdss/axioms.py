@@ -31,37 +31,43 @@ CLAIMS: tuple[Claim, ...] = (
         "DEF_POINT",
         ClaimKind.DEFINITION,
         "The minimal algebraic carrier is an unscaled point.",
-        ("RA0",),
+    ),
+    Claim(
+        "DEF_BINARY_REL",
+        ClaimKind.DEFINITION,
+        "A primitive typed relation is binary: r:a->b. Higher arity is constructed separately.",
     ),
     Claim(
         "RR1",
         ClaimKind.AXIOM,
-        "Recursive relational closure: a selected relational point may itself carry a further distinction.",
-        ("RA0", "DEF_POINT"),
+        "Recursive relational closure: a selected relational endpoint may itself carry a further distinction.",
+        ("DEF_POINT", "DEF_BINARY_REL"),
     ),
     Claim(
         "REF_CP1",
         ClaimKind.REFERENCE_REALIZATION,
         "A minimal complex binary distinction may be represented by CP^1 with Fubini-Study metric.",
-        ("DEF_POINT",),
+        ("DEF_POINT", "DEF_BINARY_REL"),
     ),
     Claim(
         "DEF_TS",
         ClaimKind.DEFINITION,
         "Tensor-scalar grading uses A^(p,q) with scalars in rank (0,0).",
-        ("RA0",),
+    ),
+    Claim(
+        "PRIM_PRODUCT",
+        ClaimKind.STRUCTURAL_PRIMITIVE,
+        "A typed relational product star_R may be supplied without assuming associativity or commutativity.",
     ),
     Claim(
         "PRIM_SCALE",
         ClaimKind.STRUCTURAL_PRIMITIVE,
         "Semantic scale is a typed partial-order/category-like structure, not necessarily a real scalar.",
-        ("RA0",),
     ),
     Claim(
         "PRIM_ORBIT",
         ClaimKind.STRUCTURAL_PRIMITIVE,
         "Admissible orbital actions U_g may act on algebra elements.",
-        ("RA0",),
     ),
     Claim(
         "DER_MOIRE",
@@ -73,7 +79,7 @@ CLAIMS: tuple[Claim, ...] = (
         "DEF_REFINEMENT_RESIDUAL",
         ClaimKind.DEFINITION,
         "Delta_F measures failure of exact product preservation under refinement.",
-        ("RR1",),
+        ("RR1", "PRIM_PRODUCT"),
     ),
     Claim(
         "ZA_BRIDGE",
@@ -83,7 +89,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "DER_WINDING",
         ClaimKind.DERIVED,
-        "Winding and phase residual are derived from a closed phase path, not stored coordinates.",
+        "Topological winding is derived only for a closed phase path with a continuous phase lift.",
         ("ZA_BRIDGE",),
     ),
 )
