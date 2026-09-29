@@ -41,9 +41,9 @@ class FiniteRelationModel:
         return self.satisfies_ex0()
 
     def satisfies_ra0(self) -> bool:
-        """RA0 witness semantics: every admitted point has an outgoing relation."""
-        sources = {source for source, _ in self.relations}
-        return self.admitted <= sources
+        """RA0 witness semantics: every admitted point is incident to a relation."""
+        incident = {point for edge in self.relations for point in edge}
+        return self.admitted <= incident
 
     def satisfies_rr1(self) -> bool:
         """RR1 witness semantics: refinement closes recursively on reachable descendants.
