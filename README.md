@@ -83,6 +83,16 @@ Exact self-similarity is not assumed. Branch refinement is primitive, while its 
 F(X\star Y)-F(X)\star F(Y).
 \]
 
+### Recursive CP1 fibre reference
+
+The CP1/Fubini-Study layer is implemented as a tested **reference realization** of recursive refinement:
+
+\[
+\mathcal F_\omega\simeq CP^1.
+\]
+
+A local distinction in \(\mathcal F_\omega\) indexes child carriers \(p_{\omega-},p_{\omega+}\), each of which may support its own local CP1 fibre. Parent projective states are not identified with child-fibre coordinates. The link is incidence/refinement, not one global sphere.
+
 ## Additive tensor-scalar sectors
 
 Each typed sector carries an additive module structure over a scalar domain \(\mathbb K\):
