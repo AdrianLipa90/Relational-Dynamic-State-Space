@@ -80,6 +80,18 @@ CLAIMS: tuple[Claim, ...] = (
         "A typed relational product star_R may be supplied without assuming associativity or commutativity.",
     ),
     Claim(
+        "PRIM_TENSOR_PRODUCT",
+        ClaimKind.STRUCTURAL_PRIMITIVE,
+        "A typed tensor product may combine compatible tensor-scalar sectors; concrete component formulas belong to realizations.",
+        ("PRIM_MODULE",),
+    ),
+    Claim(
+        "PRIM_CONTRACTION",
+        ClaimKind.STRUCTURAL_PRIMITIVE,
+        "Typed contraction lowers one covariant and one contravariant rank when a contraction rule is supplied.",
+        ("PRIM_MODULE",),
+    ),
+    Claim(
         "DEF_BILINEARITY_RESIDUAL",
         ClaimKind.DEFINITION,
         "Bilinearity residuals measure failure of additivity and scalar-linearity of the relational product.",
@@ -109,6 +121,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("PRIM_TRANSPORT",),
     ),
     Claim(
+        "DEF_TRANSPORT_PRODUCT_COHERENCE",
+        ClaimKind.DEFINITION,
+        "Transport-product residual measures failure of T_r(X star Y) = T_r(X) star' T_r(Y).",
+        ("PRIM_TRANSPORT", "PRIM_PRODUCT", "PRIM_MODULE"),
+    ),
+    Claim(
         "PRIM_ORBIT",
         ClaimKind.STRUCTURAL_PRIMITIVE,
         "Admissible orbital actions U_g may act on algebra elements.",
@@ -120,10 +138,22 @@ CLAIMS: tuple[Claim, ...] = (
         ("PRIM_SCALE", "PRIM_ORBIT", "PRIM_MODULE"),
     ),
     Claim(
+        "DEF_SCALE_PRODUCT_COHERENCE",
+        ClaimKind.DEFINITION,
+        "Semantic-product residual measures failure of S(X star Y) = S(X) star' S(Y).",
+        ("PRIM_SCALE", "PRIM_PRODUCT", "PRIM_MODULE"),
+    ),
+    Claim(
         "DEF_ORBITAL_COHERENCE",
         ClaimKind.DEFINITION,
-        "Orbital inverse and composition residuals diagnose exact inverse and action-law coherence.",
+        "Orbital identity, inverse and composition residuals diagnose exact action-law coherence.",
         ("PRIM_ORBIT", "PRIM_MODULE"),
+    ),
+    Claim(
+        "DEF_ORBIT_PRODUCT_COHERENCE",
+        ClaimKind.DEFINITION,
+        "Orbital-product residual measures failure of U(X star Y) = U(X) star' U(Y).",
+        ("PRIM_ORBIT", "PRIM_PRODUCT", "PRIM_MODULE"),
     ),
     Claim(
         "DER_MOIRE",
@@ -142,6 +172,12 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.DEFINITION,
         "Delta_F measures failure of exact product preservation under refinement.",
         ("PRIM_REFINEMENT_MAP", "PRIM_PRODUCT", "PRIM_MODULE"),
+    ),
+    Claim(
+        "DEF_REFINEMENT_TRANSPORT_COHERENCE",
+        ClaimKind.DEFINITION,
+        "Refinement-transport residual measures failure of the naturality square between parent transport and child transport.",
+        ("PRIM_REFINEMENT_MAP", "PRIM_TRANSPORT", "PRIM_MODULE"),
     ),
     Claim(
         "ZA_BRIDGE",
