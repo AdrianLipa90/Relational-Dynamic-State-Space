@@ -31,7 +31,8 @@ This matrix records which compatibility laws are implemented as exact checks, re
 | tensor product ↔ non-strict associator/braiding | pentagon/hexagon coherence | OPEN — MONOIDAL COHERENCE GATE |
 | contraction ↔ tensor product | requires indexed slot/pairing realization | OPEN — INDEXED TENSOR GATE |
 | value-level holonomy ↔ \(U(1)\) phase | explicit representation interface \(\chi\) | REFERENCE IMPLEMENTED |
-| occurrence-aware holonomy ↔ \(U(1)\) phase | occurrence-preserving phase representation | OPEN |
+| occurrence-aware holonomy ↔ \(U(1)\) phase | explicit occurrence-preserving representation interface | REFERENCE IMPLEMENTED |
+| occurrence-aware holonomy ↔ \(U(1)\) phase | existence/universality theorem | OPEN |
 | value-level holonomy ↔ \(U(1)\) phase | existence/universality theorem for \(\chi\) | OPEN |
 | \(U(1)\) phase ↔ Zero Axis | finite \(\Omega^{-1}(u)=u/(1+u)\) lift; \(u=-1\) at infinity | REFERENCE IMPLEMENTED |
 | CP1/FS realization ↔ recursive refinement | local-fibre tree realization | REFERENCE IMPLEMENTED |
