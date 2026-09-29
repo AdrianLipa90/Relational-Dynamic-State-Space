@@ -10,6 +10,8 @@ This audit separates **axioms**, **definitions**, **structural primitives**, **r
 | DEF_POINT | DEFINITION | The minimal algebraic carrier is an unscaled point. | — |
 | DEF_BINARY_REL | DEFINITION | A primitive typed relation is binary: r:a->b. Higher arity is constructed separately. | — |
 | RR1 | AXIOM | A selected relational endpoint may itself carry a further distinction. | DEF_POINT, DEF_BINARY_REL |
+| RA0_STAR | CANDIDATE AXIOM | Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_BINARY_REL |
+| THM_RR1_FROM_RA0_STAR | THEOREM | RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences. | RA0_STAR |
 | REF_CP1 | REFERENCE REALIZATION | A minimal complex binary distinction may be represented by CP1 with Fubini-Study metric. | DEF_POINT, DEF_BINARY_REL |
 | DEF_TS | DEFINITION | Tensor-scalar grading uses rank (p,q); scalars are rank (0,0). | — |
 | PRIM_PRODUCT | STRUCTURAL PRIMITIVE | A typed relational product star_R may be supplied without assuming associativity or commutativity. | — |
@@ -43,3 +45,30 @@ This is a deliberately small axiom set. It does **not** mean that the rest of th
 ## Open reduction target
 
 A future theorem may show that a stronger formulation of relational admissibility forces recursive closure, in which case RR1 could be demoted from axiom to theorem. The current repository does not assume such a result.
+
+
+## Closure-audit update
+
+The one-axiom reduction has now been isolated precisely.
+
+The old statement RA0 remains too weak:
+
+\[
+\mathrm{RA0}\not\Rightarrow\mathrm{RR1}.
+\]
+
+The strengthened candidate RA0* adds non-degenerate binary distinction and endpoint admissibility. Under those explicit clauses, recursive refinement is a theorem:
+
+\[
+\boxed{\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}}.
+\]
+
+This is not a free derivation from old RA0; it is a stronger foundational statement. The cyclic finite witness also shows
+
+\[
+\mathrm{RA0}^{*}\not\Rightarrow\mathrm{NOVELTY},
+\]
+
+so ontically fresh carrier identities at every refinement depth would require additional structure.
+
+See `docs/AXIOM_CLOSURE_AUDIT.md`.
