@@ -533,6 +533,21 @@ Hence
 }
 \]
 
+The converse fails in the expanded language: a singleton can satisfy RA0 and
+recursive RR1 while carrying no explicit branch-slot to primitive-relation
+binding. Therefore
+
+\[
+\boxed{
+\mathrm{RA0}+\mathrm{RR1}
+\not\Rightarrow
+\mathrm{RA0}^{\mathrm{rel}*}.
+}
+\]
+
+So this is a genuine strengthening/compression, not a notational
+re-expression of the old pair.
+
 Under META0 this is the current executable **one-object-level-axiom candidate**,
 
 \[
