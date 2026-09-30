@@ -593,3 +593,15 @@ explicit certificate audit.
 
 The last result is explicitly scoped to the selected forgetful rewrite system
 and is not a global RDSS canonical-normal-form claim.
+
+
+## Scoped normal form layer
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_SCOPED_REWRITE_NORMAL_FORM | DEFINITION | Unique irreducible result under one explicitly named rewrite system with explicit termination/confluence certificate provenance. | THM_TERMINATING_CONFLUENT_UNIQUE_IRREDUCIBLE |
+| REF_FORGETFUL_SCOPED_NORMAL_FORM | REFERENCE REALIZATION | The rdss-reference-forgetful-v1 scoped normal form, which may perform LOSSY forgetful rewrites. | DEF_SCOPED_REWRITE_NORMAL_FORM, REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE, REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE |
+| THM_REFERENCE_FORGETFUL_NORMAL_FORM_IDEMPOTENT | THEOREM | Reapplying the selected forgetful normal form yields the same strict target key and no further rewrite. | REF_FORGETFUL_SCOPED_NORMAL_FORM, THM_REFERENCE_FORGETFUL_UNIQUE_IRREDUCIBLE |
+
+The reference scoped normal form is explicitly not a global RDSS canonical
+normal-form claim.
