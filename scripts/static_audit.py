@@ -27,6 +27,7 @@ AUDITED_DOCS = (
     ROOT / "docs" / "AXIOM_CLOSURE_AUDIT.md",
     ROOT / "docs" / "CANONICAL_REDUCTION_GATE.md",
     ROOT / "docs" / "REFERENCE_CORPUS_SCAN.md",
+    ROOT / "docs" / "BRIDGE_GAP_TRIAGE.md",
     ROOT / "docs" / "CARRIER_OCCURRENCE_SEPARATION.md",
     ROOT / "docs" / "COHERENCE_MATRIX.md",
     ROOT / "docs" / "FOUNDATIONAL_NONVACUITY_GATE.md",
