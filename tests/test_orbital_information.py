@@ -4,6 +4,7 @@ import pytest
 
 from rdss import (
     CANONICAL_MIXING_CHANNELS,
+    ClaimKind,
     CANONICAL_MIXING_TURN_MEASURE,
     CenterHalfTurnBridge,
     HilbertMoireFibreState,
@@ -11,6 +12,7 @@ from rdss import (
     KAPPA_Q,
     OccurrenceAddress,
     canonical_mixing_channels,
+    claim_map,
     centered_relational_coordinate,
     external_relational_coordinate,
     information_increment_radians,
@@ -84,3 +86,15 @@ def test_two_layer_moire_factorization():
 def test_invalid_center_bridge_rejected():
     with pytest.raises(ValueError):
         CenterHalfTurnBridge(balance_coordinate=0.4)
+
+
+def test_orbital_information_claim_classification():
+    claims = claim_map()
+    assert claims["DEF_RELATIONAL_CENTER_CHART"].kind is ClaimKind.DEFINITION
+    assert claims["THM_RELATIONAL_CENTER_SELF_DUAL"].kind is ClaimKind.THEOREM
+    assert claims["BRIDGE_CENTER_HALF_TURN"].kind is ClaimKind.BRIDGE
+    assert claims["REF_HILBERT_MOIRE_FIBRE"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["REF_KAPPA_MIXING_NORMALIZATION"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["DER_KAPPA_NORMALIZED_TURN"].kind is ClaimKind.DERIVED
+    assert claims["DER_KAPPA_RADIAN_CHART"].kind is ClaimKind.DERIVED
+    assert claims["BRIDGE_ORBITAL_COMPLEX_STRUCTURE"].kind is ClaimKind.BRIDGE
