@@ -107,9 +107,9 @@ def _type_tag(value: object) -> str:
 def rdss_reference_corpus() -> tuple[CorpusItem, ...]:
     """Build a finite corpus from actual executable RDSS reference types.
 
-    The corpus intentionally contains both supported signature families and
-    existing RDSS classes that are not yet covered by the signature engine.
-    Those unsupported values are evidence for coverage work, not scan errors.
+    The corpus historically exposed signature-coverage gaps. The current
+    registry covers every value in this reference corpus, while the scanner
+    still preserves explicit coverage-gap reporting for future corpus growth.
     """
     occ_root = OccurrenceAddress()
     occ_left = OccurrenceAddress((-1,))
