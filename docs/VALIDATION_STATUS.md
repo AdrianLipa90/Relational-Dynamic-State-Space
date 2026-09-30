@@ -285,3 +285,55 @@ square-bracket math delimiters report no findings.
 These remain source/static/harness results. Full repository pytest and actual
 LaTeX compilation have NOT YET been executed on a complete checkout of this
 branch.
+
+
+## Explicit bridge graph milestone — 2026-09-30
+
+Current branch source inventory:
+
+- branch distance from main: 76 commits ahead, 0 behind;
+- changed files versus main: 18;
+- Python test functions: 276;
+- claim entries: 122;
+- package-root exports: 168;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0;
+- bridge public definitions: 14, missing exports: 0;
+- equivalence-graph public definitions: 8, missing exports: 0.
+
+The explicit bridge registry currently contains three justified bridge classes:
+
+1. OccurrenceAddress to reference RelationalPoint coordinate:
+   REFERENCE_REPRESENTATION + LOSSLESS + explicit inverse;
+2. RelationOccurrence to TypedRelation:
+   FORGETFUL_PROJECTION + LOSSY;
+3. OccurrenceRelationPath to RelationPath:
+   FORGETFUL_PROJECTION + LOSSY.
+
+The bridge-aware equivalence graph only unions:
+
+- same-family semantic-signature equivalents;
+- fully reversible LOSSLESS bridge matches with runtime round-trip verification.
+
+LOSSY and UNKNOWN bridge matches remain directed edges and do not union
+components. The unresolved bridge-gap report groups unmatched cross-family
+record pairs by semantic-family pair without asserting bridge existence.
+
+Source tests now cover direct and reverse reference bridges, strict round trip,
+lossy opt-in, lack of reverse projection edges, multi-hop bridge composition,
+shortest-route ambiguity, bridge-equivalence union, lossy non-union,
+unresolved family gaps and gap grouping.
+
+Structural checks on the current monograph text report:
+
+- unmatched environments: 0;
+- environment mismatches: 0;
+- brace balance: 0;
+- negative brace events: 0;
+- display delimiters: 259 open / 259 close.
+
+Changed Markdown files inspected for control characters and bare standalone
+square-bracket math delimiters report no findings.
+
+These remain source/static results. Full repository pytest and actual LaTeX
+compilation have NOT YET been executed on a complete checkout of this branch.
