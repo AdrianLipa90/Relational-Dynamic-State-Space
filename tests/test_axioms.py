@@ -1539,3 +1539,40 @@ def test_loss_witness_claims_prove_reference_noninjectivity():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_cp1_projective_claims_separate_raw_representation_from_quotient():
+    claims = claim_map()
+
+    assert claims["DEF_CP1_PROJECTIVE_EQUIVALENCE"].kind is ClaimKind.DEFINITION
+    assert "REF_CP1" in dependency_closure(
+        "DEF_CP1_PROJECTIVE_EQUIVALENCE"
+    )
+
+    assert claims["THM_CP1_GLOBAL_PHASE_QUOTIENT"].kind is ClaimKind.THEOREM
+    closure = dependency_closure(
+        "THM_CP1_GLOBAL_PHASE_QUOTIENT"
+    )
+    assert "DEF_CP1_PROJECTIVE_EQUIVALENCE" in closure
+    assert "REF_U1_PHASE_VALUE" in closure
+
+    assert claims["REF_CP1_PROJECTIVE_CHART_QUOTIENT"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert "DEF_CP1_PROJECTIVE_EQUIVALENCE" in dependency_closure(
+        "REF_CP1_PROJECTIVE_CHART_QUOTIENT"
+    )
+
+    assert claims["REF_REFERENCE_CORPUS_CP1_PROJECTIVE_QUOTIENT"].kind is ClaimKind.REFERENCE_REALIZATION
+    closure = dependency_closure(
+        "REF_REFERENCE_CORPUS_CP1_PROJECTIVE_QUOTIENT"
+    )
+    assert "DEF_REFERENCE_CORPUS" in closure
+    assert "REF_CP1_PROJECTIVE_CHART_QUOTIENT" in closure
+
+    assert {
+        "DEF_CP1_PROJECTIVE_EQUIVALENCE",
+        "THM_CP1_GLOBAL_PHASE_QUOTIENT",
+        "REF_CP1_PROJECTIVE_CHART_QUOTIENT",
+        "REF_REFERENCE_CORPUS_CP1_PROJECTIVE_QUOTIENT",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
