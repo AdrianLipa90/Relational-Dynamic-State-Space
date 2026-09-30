@@ -2662,6 +2662,47 @@ one supplied start state up to a finite depth. Its result is one of
 This distinguishes a concrete bounded confluence witness from a global
 Church--Rosser theorem. The latter is not claimed by the current kernel.
 
+\subsection{Explicit bridge graph}
+
+Cross-family comparison is mediated by an explicit typed bridge registry.
+A bridge records source and target semantic families, a forward map, an
+optional inverse, relation kind, information effect, preserved invariants and
+claim provenance.
+
+The current binary reference realization supplies
+\[
+\omega\in B^*
+\longleftrightarrow
+p_\omega\in P_{\rm ref}.
+\]
+The executable coordinate round trip is exact on the reference types, but the
+bridge remains a reference representation:
+\[
+\boxed{
+\operatorname{OccurrenceAddress}
+\not\equiv
+\operatorname{RelationalPoint}.
+}
+\]
+
+Forgetful maps from relation occurrence to relation value and from
+occurrence-aware path to relation-value path are registered separately as
+LOSSY projections.
+
+For a finite collection, strong equivalence components are generated only by
+same-family semantic-signature equivalence and fully reversible LOSSLESS bridge
+matches. Directed LOSSY or UNKNOWN bridge edges do not participate in the
+component union:
+\[
+\boxed{
+\mathrm{LOSSY\_BRIDGE}
+\not\Rightarrow
+\mathrm{COMPONENT\_UNION}.
+}
+\]
+Thus the bridge-aware graph records both equivalence connectivity and directed
+information loss without conflating them.
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
