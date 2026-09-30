@@ -254,6 +254,17 @@ from .operations import (
     transport_product_residual,
     typed_refinement_residual,
 )
+from .provenance import (
+    ClaimDependencyEdge,
+    ClaimDependencyGraph,
+    TransformationClaimProvenance,
+    ValueClaimProvenance,
+    build_claim_dependency_graph,
+    provenance_for_bridge_route,
+    provenance_for_normal_form,
+    provenance_for_rewrite_trace,
+    provenance_for_value,
+)
 from .realizations import (
     CP1RefinementRealization,
     CP1RelationalUnfolding,
@@ -465,6 +476,15 @@ __all__ = [
     "GraphEdgeKind",
     "build_bridge_equivalence_graph",
     "BranchRefinementMap",
+    "ClaimDependencyEdge",
+    "ClaimDependencyGraph",
+    "TransformationClaimProvenance",
+    "ValueClaimProvenance",
+    "build_claim_dependency_graph",
+    "provenance_for_bridge_route",
+    "provenance_for_normal_form",
+    "provenance_for_rewrite_trace",
+    "provenance_for_value",
     "ContractionRule",
     "OrbitalAction",
     "RelationOccurrence",
