@@ -1078,3 +1078,17 @@ def test_zero_sector_and_distinction_bridge_claims_are_scoped():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_relational_generative_projection_claim_is_non_foundational():
+    claims = claim_map()
+
+    assert claims["DEF_RELATIONAL_GENERATIVE_FORGETFUL_PROJECTION"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure(
+        "DEF_RELATIONAL_GENERATIVE_FORGETFUL_PROJECTION"
+    )
+    assert "THM_RA0_STAR_FROM_RA0_REL_STAR" in closure
+    assert "DEF_BRIDGE_REGISTRY" in closure
+    assert "DEF_RELATIONAL_GENERATIVE_FORGETFUL_PROJECTION" not in {
+        claim.id for claim in foundational_axioms()
+    }
