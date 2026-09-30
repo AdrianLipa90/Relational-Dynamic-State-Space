@@ -172,3 +172,36 @@ Axis, or physical interpretation.
 6. explicit quotient policies such as any future U(1) modulo-one reduction.
 
 Until those gates are discharged, the engine must not infer them.
+
+
+## Canonical signature update — 2026-09-30
+
+Branch inventory after the signature layer:
+
+- claim entries: 109;
+- Python test functions: 239;
+- package-root exports: 136;
+- duplicate claim IDs observed by source inventory: 0;
+- duplicate package exports observed by source inventory: 0;
+- canonical public definitions missing from package exports: 0;
+- signature public definitions missing from package exports: 0.
+
+The new repository test file tests/test_signature.py contains 12 test
+functions. They are inventory until a full checkout runtime executes pytest.
+
+An independent local logic harness exercised four critical signature semantics:
+
+1. same tensor-scalar sector with changed component value preserves structural
+   key while changing semantic state;
+2. changing tensor rank changes structural key;
+3. a common shift of both MoireRotation angles preserves the relative phase
+   signature;
+4. adding provenance does not change the semantic key.
+
+All four harness checks passed.
+
+This harness validates the comparison logic design, but it is not represented
+as execution of the repository's tests/test_signature.py.
+
+Full static audit, full 239-test pytest and LaTeX compilation remain NOT YET
+RUN on the complete current branch checkout.
