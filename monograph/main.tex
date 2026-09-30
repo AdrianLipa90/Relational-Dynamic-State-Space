@@ -2777,10 +2777,10 @@ reference triage therefore classifies selected bridge problems into
 
 The current triage contains eleven entries:
 \[
-(3,4,1,0,2,1)
+(3,4,1,0,0,2,1)
 \]
-in the order lossless, lossy, context-required, missing-intermediate,
-composite, and no-bridge-claim.
+in the order lossless, lossy, contextual-lossy, context-required,
+missing-intermediate, composite, and no-bridge-claim.
 
 The previously missing Zero-Axis intermediate is now closed by an explicit
 typed \(U(1)\) value family and finite reversible bridge.
@@ -2825,6 +2825,39 @@ domain. Since floating evaluation of the projective maps need not be bitwise
 reversible, the bridge declares an explicit numerical round-trip validator.
 Strict canonical round-trip equality remains the default for bridges that do
 not declare such a validator.
+
+\subsection{Contextual bridge registry}
+
+A bridge whose output depends on information external to the source value is
+not admitted to the global bridge graph. Instead it is represented by a
+contextual map
+\[
+(X,C)\longmapsto Y.
+\]
+
+The first instance materializes a symbolic branch-relation occurrence through
+an explicit carrier-label context:
+\[
+\operatorname{BranchRelationOccurrence}
++
+\operatorname{CarrierMapContext}
+\longrightarrow
+\operatorname{TypedRelation}.
+\]
+The context maps symbolic endpoint labels to RelationalPoint values. It is
+caller-supplied and is not inferred from the branch occurrence.
+
+The map is classified as
+\[
+\boxed{
+\mathrm{FORGETFUL\_PROJECTION}
++
+\mathrm{LOSSY}
+}
+\]
+because the branch slot is absent from TypedRelation. Consequently opposite
+branch slots with otherwise identical symbolic relation data may materialize
+to the same target relation under one context.
 
 \section{Reference-kernel obligations}
 
