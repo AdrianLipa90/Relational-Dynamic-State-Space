@@ -571,6 +571,54 @@ CLAIMS: tuple[Claim, ...] = (
         "A verified finite U(1) holonomy phase may be lifted to the companion Zero Axis through Omega^{-1}.",
         ("REF_HOLONOMY_U1", "ZA_BRIDGE"),
     ),
+    Claim(
+        "DEF_RELATIONAL_CENTER_CHART",
+        ClaimKind.DEFINITION,
+        "A supplied normalized dual coordinate p in [0,1] may be centered by Z=2p-1, so p=1/2 is represented by relational coordinate Z=0.",
+        ("DEF_BINARY_DISTINCTION",),
+    ),
+    Claim(
+        "THM_RELATIONAL_CENTER_SELF_DUAL",
+        ClaimKind.THEOREM,
+        "Under the involution p->1-p in the normalized dual chart, Z=2p-1 changes sign and the unique fixed point is p=1/2 iff Z=0.",
+        ("DEF_RELATIONAL_CENTER_CHART",),
+    ),
+    Claim(
+        "BRIDGE_CENTER_HALF_TURN",
+        ClaimKind.BRIDGE,
+        "An explicit reference bridge may map the balanced relational coordinate p=1/2 to the normalized U(1) half-turn class q=1/2; RDSS does not infer this displacement solely from their equal numeric value.",
+        ("THM_RELATIONAL_CENTER_SELF_DUAL", "REF_HOLONOMY_U1"),
+    ),
+    Claim(
+        "REF_HILBERT_MOIRE_FIBRE",
+        ClaimKind.REFERENCE_REALIZATION,
+        "A finite Hilbert-Moire fibre chart may combine an occurrence address, orbital label, normalized U(1) phase and non-zero finite Hilbert vector; the abstract direct-integral carrier requires additional measure-theoretic data.",
+        ("DEF_OCCURRENCE_ADDRESS_SPACE", "PRIM_ORBIT", "DER_MOIRE", "REF_HOLONOMY_U1"),
+    ),
+    Claim(
+        "REF_KAPPA_MIXING_NORMALIZATION",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The canonical project normalization uses the reference incidence count 3*(3^2-1)=24 and one normalized half-turn per channel, giving total normalized turn measure 12.",
+        ("BRIDGE_CENTER_HALF_TURN",),
+    ),
+    Claim(
+        "DER_KAPPA_NORMALIZED_TURN",
+        ClaimKind.DERIVED,
+        "With balanced binary information ln(2) and normalized turn measure 12, the normalized-turn information coefficient is kappa_q=ln(2)/12.",
+        ("REF_KAPPA_MIXING_NORMALIZATION",),
+    ),
+    Claim(
+        "DER_KAPPA_RADIAN_CHART",
+        ClaimKind.DERIVED,
+        "Under phi=2*pi*q, the information one-form kappa_q dq is represented by kappa_phi dphi with kappa_phi=ln(2)/(24*pi).",
+        ("DER_KAPPA_NORMALIZED_TURN",),
+    ),
+    Claim(
+        "BRIDGE_ORBITAL_COMPLEX_STRUCTURE",
+        ClaimKind.BRIDGE,
+        "If an oriented two-dimensional real inner-product carrier with compatible K satisfying K^2=-I is supplied, exp(phi K) realizes SO(2) congruent to U(1); derivation of that carrier structure from the minimal RDSS foundation remains open.",
+        ("PRIM_ORBIT",),
+    ),
 )
 
 
