@@ -872,3 +872,39 @@ def test_canonical_reduction_claims_are_non_foundational():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_canonical_signature_claims_are_non_foundational():
+    claims = claim_map()
+
+    assert claims["DEF_RDSS_CANONICAL_SIGNATURE"].kind is ClaimKind.DEFINITION
+    assert dependency_closure("DEF_RDSS_CANONICAL_SIGNATURE") == frozenset(
+        {"DEF_CANONICAL_NORMAL_FORM"}
+    )
+
+    assert claims["DEF_SIGNATURE_AXIS_STRATIFICATION"].kind is ClaimKind.DEFINITION
+    assert dependency_closure("DEF_SIGNATURE_AXIS_STRATIFICATION") == frozenset(
+        {
+            "DEF_RDSS_CANONICAL_SIGNATURE",
+            "DEF_CANONICAL_NORMAL_FORM",
+        }
+    )
+
+    assert claims["DEF_SIGNATURE_COMPARISON"].kind is ClaimKind.DEFINITION
+    assert "DEF_SIGNATURE_AXIS_STRATIFICATION" in dependency_closure(
+        "DEF_SIGNATURE_COMPARISON"
+    )
+
+    assert claims["DEF_SIGNATURE_NOVELTY_CLASSIFICATION"].kind is ClaimKind.DEFINITION
+    assert "DEF_SIGNATURE_COMPARISON" in dependency_closure(
+        "DEF_SIGNATURE_NOVELTY_CLASSIFICATION"
+    )
+
+    assert {
+        "DEF_RDSS_CANONICAL_SIGNATURE",
+        "DEF_SIGNATURE_AXIS_STRATIFICATION",
+        "DEF_SIGNATURE_COMPARISON",
+        "DEF_SIGNATURE_NOVELTY_CLASSIFICATION",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
