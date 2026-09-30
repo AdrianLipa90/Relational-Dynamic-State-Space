@@ -943,3 +943,50 @@ Deriving the compatible complex generator \(K^2=-I\), orientation and metric
 from the minimal RDSS foundation remains open.
 
 See docs/RELATIONAL_ORBITAL_INFORMATION_GATE.md.
+
+
+## Canonical semantic signature
+
+The normalization layer now also exposes a semantic signature
+
+\[
+\Sigma(X)=
+(
+\text{structural axes};
+\text{state axes};
+\text{representation};
+\text{provenance}
+).
+\]
+
+Structural axes currently include carrier, occurrence, relations, tensor rank,
+semantic scale, orbital label and component/vector dimension. Phase and state
+payload are state axes.
+
+The comparator distinguishes
+
+\[
+\text{same signature}
+\neq
+\text{same structure with a new state}
+\neq
+\text{new structure}
+\neq
+\text{unrelated family}.
+\]
+
+It separately identifies representation-only variants when two registered
+representations share the same semantic family and semantic key.
+
+This makes the intended anti-chaos question executable:
+
+\[
+\boxed{
+\text{is this new structure, new state, or only another representation?}
+}
+\]
+
+Unsupported semantic families are not guessed; they fail closed until an
+explicit extractor or bridge is registered.
+
+See docs/CANONICAL_REDUCTION_GATE.md.
