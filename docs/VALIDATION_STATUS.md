@@ -483,3 +483,28 @@ All writes in this development sequence were directed to
 \`feat/rdss-foundation-v0.1\`.
 
 No merge to \`main\` is asserted by this status file.
+
+
+## RELATIONAL ORBITAL INFORMATION / HILBERT--MOIRE GATE
+
+Current classification:
+
+- PASS EXACT: centered chart \(Z=2p-1\) and \(p=1/2\iff Z=0\);
+- PASS EXACT: normalized phase chart \(U(q)=e^{2\pi iq}\);
+- PASS EXACT: explicit half-turn bridge evaluates to \(U(1/2)=-1\);
+- PASS EXACT: canonical arithmetic \(3(3^2-1)=24\) and \(24/2=12\);
+- PASS EXACT: \(\kappa_q=\ln2/12\);
+- PASS EXACT: radian covariance
+  \(d\mathcal I=\kappa_qdq=\kappa_\phi d\phi\) with
+  \(\kappa_\phi=\ln2/(24\pi)\);
+- PASS EXACT: equal-amplitude two-layer Moire factorization;
+- REFERENCE REALIZATION: finite HilbertMoireFibreState;
+- BRIDGE: relational center \(p=1/2\) to orbital half-turn \(q=1/2\);
+- OPEN: derive that bridge from the minimal foundation rather than supply it;
+- OPEN: derive compatible \(K^2=-I\), orientation and positive metric from the
+  minimal RDSS foundation;
+- OPEN: physical interpretation of the Hilbert--Moire carrier and information
+  coefficient.
+
+The extension is intentionally downstream of the existing core and does not
+promote a new foundational axiom.

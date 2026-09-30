@@ -19,6 +19,41 @@ def test_binary_relation_is_explicit_signature_definition():
 
 
 
+def test_occurrence_forgetful_projection_and_closure_theorems():
+    claims = claim_map()
+
+    assert claims["DEF_OCCURRENCE_FORGETFUL_PROJECTION"].kind is ClaimKind.DEFINITION
+    projection_closure = dependency_closure("DEF_OCCURRENCE_FORGETFUL_PROJECTION")
+    assert projection_closure == frozenset(
+        {
+            "DEF_OCCURRENCE_PATH",
+            "DEF_RELATION_OCCURRENCE",
+            "DEF_BINARY_REL",
+            "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_POINT",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+        }
+    )
+
+    assert claims["THM_OCCURRENCE_COMPOSABILITY_PROJECTS"].kind is ClaimKind.THEOREM
+    assert {
+        "DEF_OCCURRENCE_FORGETFUL_PROJECTION",
+        *projection_closure,
+    } == dependency_closure("THM_OCCURRENCE_COMPOSABILITY_PROJECTS")
+
+    assert claims["THM_OCCURRENCE_CLOSED_IMPLIES_VALUE_CLOSED"].kind is ClaimKind.THEOREM
+    assert {
+        "DEF_OCCURRENCE_FORGETFUL_PROJECTION",
+        *projection_closure,
+    } == dependency_closure("THM_OCCURRENCE_CLOSED_IMPLIES_VALUE_CLOSED")
+
+    assert claims["REF_VALUE_CLOSED_OCCURRENCE_OPEN_COUNTERMODEL"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["THM_VALUE_CLOSED_NOT_OCCURRENCE_CLOSED"].kind is ClaimKind.THEOREM
+    assert "REF_VALUE_CLOSED_OCCURRENCE_OPEN_COUNTERMODEL" in dependency_closure(
+        "THM_VALUE_CLOSED_NOT_OCCURRENCE_CLOSED"
+    )
+
+
 def test_binary_distinction_is_occurrence_level_not_label_inequality():
     claims = claim_map()
     assert claims["DEF_BINARY_DISTINCTION"].kind is ClaimKind.DEFINITION

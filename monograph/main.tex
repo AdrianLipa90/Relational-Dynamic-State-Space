@@ -971,6 +971,95 @@ T_{r_m}\circ\cdots\circ T_{r_1}.
 }
 \]
 
+\subsection{Forgetful projection from occurrences to relation values}
+
+A relation occurrence carries a typed relation value together with source and
+target occurrence addresses,
+\[
+\widetilde r
+=
+(r,\omega_{\rm src},\omega_{\rm dst}).
+\]
+Define the forgetful projection
+\[
+\boxed{
+\pi_{\rm occ\to val}
+(\widetilde r)
+=
+r.
+}
+\]
+For an occurrence-aware path
+\[
+\widetilde\gamma
+=
+(\widetilde r_1,\ldots,\widetilde r_m),
+\]
+extend this componentwise:
+\[
+\boxed{
+\pi_{\rm occ\to val}
+(\widetilde\gamma)
+=
+(r_1,\ldots,r_m).
+}
+\]
+
+Occurrence composability requires both carrier-value composability and
+occurrence-address composability. Therefore forgetting addresses preserves
+value composability:
+\[
+\boxed{
+\widetilde\gamma
+\text{ occurrence-composable}
+\Longrightarrow
+\pi_{\rm occ\to val}(\widetilde\gamma)
+\text{ value-composable}.
+}
+\]
+
+For a consistent occurrence-to-carrier assignment, occurrence closure also
+implies value closure:
+\[
+\boxed{
+\omega_m=\omega_0
+\Longrightarrow
+a_m=a_0.
+}
+\]
+The converse is false. The singleton self-relation step
+\[
+a_{\varnothing}
+\xrightarrow{r}
+a_{-}
+\]
+projects to
+\[
+r:a\to a,
+\]
+which is value-closed, while
+\[
+\varnothing\neq(-)
+\]
+so the occurrence path remains open.
+
+Thus
+\[
+\boxed{
+\text{occurrence-closed}
+\Rightarrow
+\text{value-closed},
+\qquad
+\text{value-closed}
+\not\Rightarrow
+\text{occurrence-closed}.
+}
+\]
+
+The executable kernel exposes this projection explicitly through
+\texttt{forget\_relation\_occurrence} and
+\texttt{forget\_occurrence\_path}.
+
 \subsection{Value-level closure}
 
 The relation-value path is carrier-closed when
@@ -2154,6 +2243,204 @@ W.
 \]
 Here \(W\) denotes topological winding and requires the \(U(1)\) phase
 realization; it is not a core coordinate.
+
+\section{Relational center, Hilbert--Moir\'e carrier and information operator}
+
+This extension is downstream of the existing RTOFA core and does not replace
+META0, RA0, RR1, the occurrence-address algebra, the relative Moir\'e
+operator, the Zero-Axis bridge, or the optional \(U(1)\) holonomy
+representation.
+
+For a supplied normalized dual coordinate
+\[
+p\in[0,1],
+\qquad
+\mathcal J:p\mapsto1-p,
+\]
+define
+\[
+\boxed{
+Z=2p-1.
+}
+\]
+Then
+\[
+Z(\mathcal Jp)=-Z(p)
+\]
+and the unique self-dual midpoint is
+\[
+\boxed{
+p=\frac12
+\iff
+Z=0.
+}
+\]
+The notation \(1/2=0_R\) therefore denotes a coordinate identity: the external
+midpoint is the zero of the centered relational chart. It is not an arithmetic
+identity.
+
+The orbital displacement coordinate is kept semantically separate. An
+explicit bridge may be supplied,
+\[
+\boxed{
+B_{0\to\pi}:
+p=\frac12
+\longmapsto
+q=\frac12
+\in\mathbb R/\mathbb Z.
+}
+\]
+Under
+\[
+U(q)=e^{2\pi iq},
+\]
+this gives
+\[
+\boxed{
+U(1/2)=-1.
+}
+\]
+The bridge is not inferred merely because both coordinates use the number
+\(1/2\).
+
+When an oriented two-dimensional real inner-product carrier with compatible
+complex structure \(K\) is supplied,
+\[
+K^2=-I,
+\qquad
+e^{\phi K}
+=
+\cos\phi\,I+\sin\phi\,K,
+\]
+so
+\[
+SO(2)\cong U(1).
+\]
+The derivation of this orientation, metric and complex structure from the
+minimal RTOFA foundation remains open.
+
+A compatible layered Hilbert carrier may be represented abstractly by
+\[
+\boxed{
+\mathcal H_{\rm HM}
+=
+\int_F^\oplus
+\mathcal H_x\,d\mu_F(x),
+}
+\]
+provided a refinement space \(F\), measure \(\mu_F\), and measurable Hilbert
+fibres are supplied. The executable reference kernel implements only a finite
+fibre chart
+\[
+\Psi_{\omega,\ell,q}
+=
+(\omega,\ell,q,v),
+\]
+where \(\omega\) is an existing occurrence address, \(\ell\) an orbital label,
+\(q\) a normalized phase coordinate, and \(v\neq0\) a finite Hilbert vector.
+
+For two such fibre states,
+\[
+\boxed{
+M_{ij}^{U(1)}
+=
+U(q_i)U(q_j)^{-1}
+=
+e^{2\pi i(q_i-q_j)},
+}
+\]
+which is the phase-fibre realization of the already derived relative orbital
+action \(M_{ij}=U_iU_j^{-1}\).
+
+For equal amplitudes,
+\[
+A e^{2\pi iq_i}+A e^{2\pi iq_j}
+=
+2A
+e^{2\pi i(q_i+q_j)/2}
+\cos\!\left(\pi(q_i-q_j)\right),
+\]
+so mean phase and half-difference are exact two-layer coordinates.
+
+The balanced binary information unit is
+\[
+\boxed{
+I_\star=\ln2.
+}
+\]
+The canonical reference normalization uses
+\[
+N_F=3,
+\qquad
+\dim\mathfrak{su}(3)=8,
+\qquad
+N_{\rm mix}=3(3^2-1)=24.
+\]
+This \(3\times8\) incidence count is a reference normalization, not a theorem
+derived from META0, RA0, or RR1.
+
+With one normalized half-turn per channel,
+\[
+\Delta q_\star=\frac12,
+\]
+the total turn measure is
+\[
+\boxed{
+Q_{\rm mix}
+=
+24\cdot\frac12
+=
+12.
+}
+\]
+Hence
+\[
+\boxed{
+\kappa_q
+=
+\frac{\ln2}{12}.
+}
+\]
+The normalized-turn information one-form is
+\[
+\boxed{
+d\mathcal I
+=
+\kappa_q\,dq.
+}
+\]
+For the radian chart
+\[
+\phi=2\pi q,
+\qquad
+dq=\frac{d\phi}{2\pi},
+\]
+one obtains
+\[
+\boxed{
+d\mathcal I
+=
+\kappa_\phi\,d\phi,
+\qquad
+\kappa_\phi
+=
+\frac{\ln2}{24\pi}.
+}
+\]
+Thus the canonical radian representation is
+\[
+\boxed{
+\kappa
+\equiv
+\kappa_\phi
+=
+\frac{\ln2}{24\pi}.
+}
+\]
+
+The exact chart identities, the bridge assumptions, and the still-open
+complex-structure gate are intentionally kept separate in the executable claim
+ledger.
 
 \section{Explicit non-assumptions}
 

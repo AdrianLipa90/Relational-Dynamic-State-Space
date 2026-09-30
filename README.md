@@ -831,3 +831,70 @@ Under META0 this is the current executable **one-object-level-axiom candidate**,
 but it is not promoted: distinction-to-relation binding is additional formal content.
 
 See `docs/AXIOM_CLOSURE_AUDIT.md`. The distinction-to-relation reduction is isolated in `docs/RELATIONAL_DISTINCTION_BINDING_GATE.md`; the separate question of defining admissibility relationally is in `docs/RELATIONAL_ADMISSIBILITY_REDUCTION_GATE.md`.
+
+
+## Relational center / Hilbert--Moire information extension
+
+The private RDSS reference kernel now includes an explicit extension layer for
+the centered relational chart, a Hilbert--Moire fibre realization and the
+canonical information normalization. It does not replace META0, RA0, RR1,
+the existing Moire operator, Zero-Axis bridge, CP1 realization or U(1)
+holonomy interfaces.
+
+For a supplied normalized dual coordinate,
+
+\[
+Z=2p-1,
+\qquad
+\boxed{p=\frac12\iff Z=0_R}.
+\]
+
+The notation \(1/2=0_R\) is a coordinate identity only. The separate bridge
+
+\[
+p=\frac12\longmapsto q=\frac12\in\mathbb R/\mathbb Z
+\]
+
+is represented explicitly rather than inferred from numeric coincidence.
+Hence
+
+\[
+U(q)=e^{2\pi iq},
+\qquad
+U(1/2)=-1.
+\]
+
+A finite Hilbert--Moire fibre chart is represented by
+
+\[
+\Psi_{\omega,\ell,q}=(\omega,\ell,q,v),
+\]
+
+using the existing OccurrenceAddress as the refinement/occurrence coordinate.
+Its relative U(1) Moire phase realizes the existing RDSS relation
+\(M_{ij}=U_iU_j^{-1}\).
+
+The canonical reference normalization is
+
+\[
+N_{\rm mix}=3(3^2-1)=24,
+\qquad
+Q_{\rm mix}=24\cdot\frac12=12,
+\]
+
+so
+
+\[
+\boxed{\kappa_q=\frac{\ln2}{12}},
+\qquad
+\boxed{\kappa_\phi=\frac{\ln2}{24\pi}},
+\qquad
+d\mathcal I=\kappa_q\,dq=\kappa_\phi\,d\phi.
+\]
+
+The \(3\times8\) normalization, Hilbert--Moire direct integral and
+center-to-half-turn map are classified as reference/bridge structure.
+Deriving the compatible complex generator \(K^2=-I\), orientation and metric
+from the minimal RDSS foundation remains open.
+
+See docs/RELATIONAL_ORBITAL_INFORMATION_GATE.md.
