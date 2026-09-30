@@ -1187,3 +1187,14 @@ with 22 representation classes.
 
 This separation is used to distinguish genuine structural novelty from a new
 state or a different representation.
+
+
+## Claim provenance graph
+
+RDSS can now expand the claim provenance of an admitted value or transformation directly from the authoritative claim ledger.
+
+For a value, the provenance record joins semantic factorization, signature extractor provenance, root claim IDs and the complete induced dependency subgraph in topological order.
+
+Equivalent provenance expansion is available for bridge routes, rewrite traces and scoped normal forms.
+
+The provenance layer is read-only: it does not create, promote or reclassify claims.
