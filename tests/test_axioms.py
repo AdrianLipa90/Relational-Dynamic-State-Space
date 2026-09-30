@@ -986,3 +986,30 @@ def test_bridge_registry_claims_preserve_semantic_sort_separation():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_bridge_equivalence_graph_claims_keep_lossy_edges_out_of_components():
+    claims = claim_map()
+
+    assert claims["DEF_BRIDGE_EQUIVALENCE_GRAPH"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure("DEF_BRIDGE_EQUIVALENCE_GRAPH")
+    assert "DEF_BRIDGE_COMPARISON" in closure
+    assert "DEF_SIGNATURE_COMPARISON" in closure
+
+    assert claims["DEF_BRIDGE_EQUIVALENCE_COMPONENT"].kind is ClaimKind.DEFINITION
+    assert "DEF_BRIDGE_EQUIVALENCE_GRAPH" in dependency_closure(
+        "DEF_BRIDGE_EQUIVALENCE_COMPONENT"
+    )
+
+    assert claims["THM_LOSSY_BRIDGE_NONUNION"].kind is ClaimKind.THEOREM
+    assert "DEF_BRIDGE_EQUIVALENCE_COMPONENT" in dependency_closure(
+        "THM_LOSSY_BRIDGE_NONUNION"
+    )
+
+    assert {
+        "DEF_BRIDGE_EQUIVALENCE_GRAPH",
+        "DEF_BRIDGE_EQUIVALENCE_COMPONENT",
+        "THM_LOSSY_BRIDGE_NONUNION",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
