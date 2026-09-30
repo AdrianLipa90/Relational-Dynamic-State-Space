@@ -504,3 +504,22 @@ explicit bridge. No signature claim modifies META0, RA0 or RR1.
 The termination theorem is conditional on the supplied measure and its strict
 descent on every admitted step. The finite confluence audit is not a universal
 confluence theorem.
+
+
+## Explicit bridge graph claim layer
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_BRIDGE_REGISTRY | DEFINITION | Explicit typed graph of legal inter-family transformations with direction, information effect, inverse availability, invariants and claim provenance. | DEF_SIGNATURE_COMPARISON, DEF_REDUCTION_RELATION_KIND, DEF_REDUCTION_INFORMATION_EFFECT |
+| DEF_BRIDGE_ROUTE | DEFINITION | Finite composition of registered bridge edges; reverse traversal requires an explicit inverse; multiple distinct shortest routes fail closed. | DEF_BRIDGE_REGISTRY |
+| DEF_BRIDGE_COMPARISON | DEFINITION | Route one value into the other's semantic family, then compare signatures; LOSSY/UNKNOWN routes require opt-in. | DEF_BRIDGE_ROUTE, DEF_SIGNATURE_COMPARISON |
+| REF_OCCURRENCE_POINT_BRIDGE | REFERENCE_REALIZATION | Reversible binary coordinate bridge between OccurrenceAddress and the reference RelationalPoint coordinate. | REF_RELATIONAL_POINT_BINARY_COORDINATE, DEF_CARRIER_OCCURRENCE_SEPARATION, DEF_BRIDGE_REGISTRY |
+| THM_REFERENCE_COORDINATE_ROUNDTRIP | THEOREM | The explicit reference-coordinate conversion round-trips exactly on the executable binary coordinate types. | REF_OCCURRENCE_POINT_BRIDGE |
+| DEF_BRIDGE_EQUIVALENCE_GRAPH | DEFINITION | Finite graph with strong lossless/signature edges and separate directed LOSSY/UNKNOWN edges. | DEF_BRIDGE_COMPARISON, DEF_SIGNATURE_COMPARISON |
+| DEF_BRIDGE_EQUIVALENCE_COMPONENT | DEFINITION | Components are generated only by strong same-signature or fully reversible LOSSLESS bridge edges. | DEF_BRIDGE_EQUIVALENCE_GRAPH |
+| THM_LOSSY_BRIDGE_NONUNION | THEOREM | LOSSY edges are never passed to component union in the reference graph construction. | DEF_BRIDGE_EQUIVALENCE_COMPONENT |
+
+The bridge component relation is relative to the selected explicit bridge
+policy. It is not promoted to object identity. In particular, the reversible
+OccurrenceAddress/RelationalPoint reference-coordinate bridge preserves
+semantic sort separation.
