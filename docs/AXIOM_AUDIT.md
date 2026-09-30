@@ -617,3 +617,15 @@ normal-form claim.
 | REF_REFERENCE_CORPUS_FACTORIZATION_SUMMARY | REFERENCE REALIZATION | Current 36-record source corpus contracts to 22 families, 28 structures, 34 semantic states and 22 representation classes. | DEF_REFERENCE_CORPUS, DEF_SEMANTIC_FACTORIZATION |
 
 This layer does not add a new quotient or override bridge semantics.
+
+
+## Claim provenance graph layer
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_CLAIM_DEPENDENCY_PROJECTION | DEFINITION | Expands explicit root claim IDs into the induced subgraph of the authoritative RDSS claim ledger without creating or promoting claims. | DEF_RDSS_CANONICAL_SIGNATURE |
+| THM_PROVENANCE_TOPOLOGICAL_ORDER | THEOREM | Every included dependency is emitted before every included claim that depends on it. | DEF_CLAIM_DEPENDENCY_PROJECTION |
+| DEF_VALUE_CLAIM_PROVENANCE | DEFINITION | Combines semantic factorization, signature extractor provenance, signature claim roots and their dependency graph. | DEF_CLAIM_DEPENDENCY_PROJECTION, DEF_SEMANTIC_FACTORIZATION, DEF_RDSS_CANONICAL_SIGNATURE |
+| DEF_TRANSFORMATION_CLAIM_PROVENANCE | DEFINITION | Expands BridgeRoute, RewriteTrace or ScopedRewriteNormalForm claim roots through the same authoritative dependency graph. | DEF_CLAIM_DEPENDENCY_PROJECTION, DEF_BRIDGE_ROUTE, DEF_PRIORITY_FREE_REWRITE_SYSTEM, DEF_SCOPED_REWRITE_NORMAL_FORM |
+
+The provenance layer is read-only with respect to the claim ledger.
