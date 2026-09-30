@@ -1013,3 +1013,14 @@ def test_bridge_equivalence_graph_claims_keep_lossy_edges_out_of_components():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_bridge_gap_report_is_diagnostic_not_foundational():
+    claims = claim_map()
+
+    assert claims["DEF_BRIDGE_GAP_REPORT"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure("DEF_BRIDGE_GAP_REPORT")
+    assert "DEF_BRIDGE_EQUIVALENCE_GRAPH" in closure
+    assert "DEF_BRIDGE_GAP_REPORT" not in {
+        claim.id for claim in foundational_axioms()
+    }
