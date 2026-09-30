@@ -2730,14 +2730,14 @@ families remain distinct, or by refinement of the signature model.
 
 The canonical/signature/bridge machinery is exercised against a finite
 reference corpus constructed from current executable RDSS types. The current
-corpus contains 35 named values and every value has an admitted semantic
+corpus contains 36 named values and every value has an admitted semantic
 signature.
 
 The source contract is
 \[
-35
+36
 =
-35_{\rm supported}
+36_{\rm supported}
 +
 0_{\rm coverage\ gaps}.
 \]
@@ -2751,9 +2751,9 @@ N_{\rm semantic\ states},
 N_{\rm strict\ values}
 )
 =
-(35,21,27,33,34).
+(36,22,28,34,35).
 \]
-The expected bridge graph has 30 equivalence components, six strong edges,
+The expected bridge graph has 30 equivalence components, seven strong edges,
 five directed LOSSY projection edges and no UNKNOWN bridge edge.
 
 These numbers are executable expectations rather than a reported runtime
@@ -2777,14 +2777,54 @@ reference triage therefore classifies selected bridge problems into
 
 The current triage contains eleven entries:
 \[
-(2,4,1,1,2,1)
+(3,4,1,0,2,1)
 \]
 in the order lossless, lossy, context-required, missing-intermediate,
 composite, and no-bridge-claim.
 
-In particular, the Zero-Axis interface exposes a missing typed intermediate:
-the finite lift consumes a verified \(U(1)\) phase, while the current kernel has
-no canonical \(U(1)\)-phase value family. This is the next bridge target.
+The previously missing Zero-Axis intermediate is now closed by an explicit
+typed \(U(1)\) value family and finite reversible bridge.
+
+\subsection{Typed U(1) phase value}
+
+The representation layer now contains an explicit finite unit-circle value
+\[
+u\in U(1),
+\qquad
+|u|=1,
+\]
+rather than requiring every interface to pass an untyped complex scalar.
+
+The reference U1Phase representation admits construction from an angle
+\[
+u=e^{i\phi}
+\]
+or normalized turns
+\[
+u=e^{2\pi iq},
+\]
+together with group inverse and composition.
+
+For the companion Zero Axis, the finite projective correspondence is typed as
+\[
+U(1)\setminus\{-1\}
+\;\xleftrightarrow{\ \Omega^{-1},\,\Omega\ }\;
+\left\{\frac12+it:t\in\mathbb R\right\},
+\]
+where
+\[
+\Omega(s)=\frac{s}{1-s},
+\qquad
+\Omega^{-1}(u)=\frac{u}{1+u}.
+\]
+The phase \(u=-1\) remains the compactified point at infinity and is not given a
+finite ZeroAxisPoint representative.
+
+The bridge is classified as a LOSSLESS reference representation on the finite
+domain. Since floating evaluation of the projective maps need not be bitwise
+reversible, the bridge declares an explicit numerical round-trip validator.
+Strict canonical round-trip equality remains the default for bridges that do
+not declare such a validator.
 
 \section{Reference-kernel obligations}
 
