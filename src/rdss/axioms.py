@@ -799,7 +799,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "DEF_BRIDGE_GAP_TRIAGE",
         ClaimKind.DEFINITION,
-        "Bridge-gap triage classifies selected semantic-family relations conservatively as implemented lossless, implemented lossy, context-required, missing-intermediate-family, composite-not-equivalent, or no-bridge-claim, with claim provenance and without inferring new equivalences from similarity.",
+        "Bridge-gap triage classifies selected semantic-family relations conservatively as implemented lossless, implemented lossy, implemented contextual lossy, context-required, missing-intermediate-family, composite-not-equivalent, or no-bridge-claim, with claim provenance and without inferring new equivalences from similarity.",
         ("DEF_BRIDGE_GAP_REPORT", "DEF_BRIDGE_REGISTRY"),
     ),
 
