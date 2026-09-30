@@ -839,3 +839,57 @@ ContextualBridgeStep.
 
 The invariant engine is fail-closed. A descriptive preserves declaration never
 overrides a failed executable invariant.
+
+
+## Priority-free rewrite system
+
+The rewrite layer represents explicit oriented transformations. Registering a
+rule does not declare its target canonical.
+
+A rule records
+
+\[
+R=
+(
+F_s,F_t,T,\rho,\eta,
+\mathcal I,\mathcal C
+),
+\]
+
+where \(F_s,F_t\) are semantic families, \(T\) is the oriented transform,
+\(\rho\) is relation kind, \(\eta\) is information effect,
+\(\mathcal I\) are executable invariants and \(\mathcal C\) is claim
+provenance.
+
+Automatic rewriting is priority-free:
+
+\[
+\#\operatorname{Applicable}(X)=
+\begin{cases}
+0 & \text{irreducible under the selected system},\\
+1 & \text{automatic step admitted},\\
+>1 & \text{AMBIGUOUS; fail closed}.
+\end{cases}
+\]
+
+Registration order never selects between multiple applicable rules.
+
+The current reference forgetful rewrite system is generated from the four
+global FORGETFUL_PROJECTION bridges:
+
+1. RelationOccurrence \(\to\) TypedRelation;
+2. RelationalGenerativeModel \(\to\) GenerativeRelationModel;
+3. RelationalBinaryDistinction \(\to\) BinaryDistinction;
+4. OccurrenceRelationPath \(\to\) RelationPath.
+
+The adapter reuses each bridge's LOSSY information effect, executable
+invariants and claim provenance.
+
+The current 36-record reference corpus contains five values to which exactly
+one of these rules applies, 31 values irreducible under this selected subset,
+and no multi-rule ambiguity in the source contract.
+
+A rewrite trace records visited semantic-family/strict-value states. Repeating
+a state raises RewriteCycleError rather than being mistaken for termination.
+
+No confluence or global canonical-normal-form claim follows from this layer.
