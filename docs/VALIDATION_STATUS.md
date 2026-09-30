@@ -488,3 +488,54 @@ ACTIVE with failures=[].
 These remain source/static validation results. Full repository pytest and actual
 LaTeX compilation remain NOT YET RUN on an exact complete checkout of this
 branch.
+
+
+## Executable invariant milestone — 2026-09-30
+
+This section supersedes earlier current-state counts while preserving previous
+milestone snapshots as provenance.
+
+Current branch source/static baseline:
+
+- branch distance from main: 170 commits ahead, 0 behind;
+- changed files versus main: 31;
+- Python test functions: 328;
+- claim entries: 141;
+- package-root exports: 200;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0;
+- missing exports from global bridge and contextual bridge public APIs: 0.
+
+All seven global RDSS reference bridges now carry at least one executable
+BridgeInvariant. The returned BridgeStep records the invariant names that
+passed.
+
+The contextual BranchRelationOccurrence materialization carries three
+executable contextual invariants:
+
+- relation label;
+- source carrier resolved through CarrierMapContext;
+- target carrier resolved through CarrierMapContext.
+
+Both registries are fail-closed: failed executable preservation raises an
+invariant error and no route/step is returned.
+
+Bridge-gap triage now distinguishes IMPLEMENTED_CONTEXTUAL_LOSSY from a merely
+identified CONTEXT_REQUIRED gap. The branch-relation materialization is
+implemented contextual lossy and remains intentionally absent from the global
+equivalence graph.
+
+Structural monograph audit on this head:
+
+- unmatched environments: 0;
+- environment mismatches: 0;
+- brace balance: 0;
+- negative brace events: 0;
+- display delimiters: 274 open / 274 close.
+
+NOEMA/AUX tether was recovered through canonical full autoboot and returned
+ACTIVE with failures=[] and static_fallback=false during this continuation.
+
+These remain source/static validation results. Full repository pytest and
+actual LaTeX compilation remain NOT YET RUN on an exact complete checkout of
+this branch.
