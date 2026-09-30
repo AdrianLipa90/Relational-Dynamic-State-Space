@@ -607,8 +607,9 @@ set and \(\mathcal C\) is claim provenance.
 
 Reverse routing exists only when \(f^{-1}\) is explicitly supplied.
 
-A bridge declared LOSSLESS must pass strict executable round trip on every
-value actually routed through it:
+A bridge declared LOSSLESS must pass an executable round-trip validator on
+every value actually routed through it. Strict canonical equality is the
+default:
 
 \[
 \mathcal N_0\!\left(f^{-1}(f(X))\right)
@@ -616,19 +617,30 @@ value actually routed through it:
 \mathcal N_0(X).
 \]
 
-This is checked at route execution time, not assumed from the bridge label.
+A numerical bridge may instead supply an explicit validator when the
+mathematical map is reversible but floating evaluation is not bitwise exact.
+The validator is part of the bridge contract and is audited at route execution
+time.
 
-The initial registry contains:
+The current registry contains seven explicit bridges:
 
-1. the binary occurrence-address to reference-point coordinate bridge,
-   classified as REFERENCE_REPRESENTATION + LOSSLESS;
-2. relation-occurrence to relation-value forgetting,
-   classified as FORGETFUL_PROJECTION + LOSSY;
-3. occurrence-path to relation-path forgetting,
-   classified as FORGETFUL_PROJECTION + LOSSY.
+1. occurrence-address to reference-point coordinates:
+   REFERENCE_REPRESENTATION + LOSSLESS;
+2. finite U1Phase to finite ZeroAxisPoint:
+   REFERENCE_REPRESENTATION + LOSSLESS on the domain u != -1;
+3. TypedZero to the all-zero TensorScalarElement in the same sector:
+   REFERENCE_REPRESENTATION + LOSSLESS;
+4. RelationOccurrence to TypedRelation:
+   FORGETFUL_PROJECTION + LOSSY;
+5. OccurrenceRelationPath to RelationPath:
+   FORGETFUL_PROJECTION + LOSSY;
+6. RelationalBinaryDistinction to BinaryDistinction:
+   FORGETFUL_PROJECTION + LOSSY;
+7. RelationalGenerativeModel to GenerativeRelationModel:
+   FORGETFUL_PROJECTION + LOSSY.
 
-The first bridge is reversible as a reference coordinate realization while
-preserving the semantic sort distinction
+The occurrence/reference-point bridge is reversible as a reference coordinate
+realization while preserving the semantic sort distinction
 
 \[
 \operatorname{OccurrenceAddress}
@@ -636,7 +648,9 @@ preserving the semantic sort distinction
 \operatorname{RelationalPoint}.
 \]
 
-The two forgetful bridges have no reverse edge.
+The four forgetful bridges have no reverse edge. The finite U1/Zero-Axis
+bridge excludes u=-1 because that phase corresponds to the compactified point
+at infinity rather than a finite ZeroAxisPoint.
 
 Routing uses shortest explicit bridge paths. If multiple distinct shortest
 routes reach the requested semantic family, routing fails closed as ambiguity.
