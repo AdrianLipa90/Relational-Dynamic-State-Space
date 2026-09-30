@@ -1170,3 +1170,37 @@ def test_contextual_bridge_claims_are_scoped_and_lossy():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_executable_bridge_invariant_claims_are_non_foundational():
+    claims = claim_map()
+
+    assert claims["DEF_EXECUTABLE_BRIDGE_INVARIANT"].kind is ClaimKind.DEFINITION
+    assert "DEF_BRIDGE_REGISTRY" in dependency_closure(
+        "DEF_EXECUTABLE_BRIDGE_INVARIANT"
+    )
+    assert claims["THM_REFERENCE_BRIDGE_INVARIANT_ENFORCEMENT"].kind is ClaimKind.THEOREM
+    assert "DEF_EXECUTABLE_BRIDGE_INVARIANT" in dependency_closure(
+        "THM_REFERENCE_BRIDGE_INVARIANT_ENFORCEMENT"
+    )
+
+    assert claims["DEF_EXECUTABLE_CONTEXTUAL_BRIDGE_INVARIANT"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure(
+        "DEF_EXECUTABLE_CONTEXTUAL_BRIDGE_INVARIANT"
+    )
+    assert "DEF_CONTEXTUAL_BRIDGE_REGISTRY" in closure
+    assert "DEF_EXECUTABLE_BRIDGE_INVARIANT" in closure
+
+    assert claims["THM_REFERENCE_CONTEXTUAL_INVARIANT_ENFORCEMENT"].kind is ClaimKind.THEOREM
+    assert "DEF_EXECUTABLE_CONTEXTUAL_BRIDGE_INVARIANT" in dependency_closure(
+        "THM_REFERENCE_CONTEXTUAL_INVARIANT_ENFORCEMENT"
+    )
+
+    assert {
+        "DEF_EXECUTABLE_BRIDGE_INVARIANT",
+        "THM_REFERENCE_BRIDGE_INVARIANT_ENFORCEMENT",
+        "DEF_EXECUTABLE_CONTEXTUAL_BRIDGE_INVARIANT",
+        "THM_REFERENCE_CONTEXTUAL_INVARIANT_ENFORCEMENT",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
