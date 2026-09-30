@@ -2859,6 +2859,33 @@ because the branch slot is absent from TypedRelation. Consequently opposite
 branch slots with otherwise identical symbolic relation data may materialize
 to the same target relation under one context.
 
+\subsection{Executable bridge invariants}
+
+Bridge preservation claims are executable. A global bridge invariant is
+\[
+I_k=(p_k^{(s)},p_k^{(t)},\approx_k),
+\]
+and a traversed bridge must satisfy
+\[
+p_k^{(s)}(X)
+\approx_k
+p_k^{(t)}(B(X))
+\]
+for every attached \(I_k\). Failure aborts the bridge before a route step is
+returned.
+
+For a contextual bridge the source projection may depend on the supplied
+context:
+\[
+I_k^{(C)}=(p_k^{(s,C)},p_k^{(t)},\approx_k).
+\]
+Thus the branch-relation materialization verifies the relation label and both
+carrier endpoints through the explicit CarrierMapContext.
+
+The returned bridge steps record the names of all invariants that passed.
+Descriptive preservation metadata is therefore separated from executable
+preservation evidence.
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
