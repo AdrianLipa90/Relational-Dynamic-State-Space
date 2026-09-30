@@ -828,3 +828,47 @@ def test_occurrence_prefix_meet_and_tree_metric_dependencies():
         }
     )
 
+
+
+def test_canonical_reduction_claims_are_non_foundational():
+    claims = claim_map()
+
+    assert claims["DEF_CANONICAL_NORMAL_FORM"].kind is ClaimKind.DEFINITION
+    assert claims["DEF_CANONICAL_NORMAL_FORM"].depends_on == ()
+
+    assert claims["DEF_REDUCTION_RELATION_KIND"].kind is ClaimKind.DEFINITION
+    assert dependency_closure("DEF_REDUCTION_RELATION_KIND") == frozenset(
+        {"DEF_CANONICAL_NORMAL_FORM"}
+    )
+
+    assert claims["DEF_REDUCTION_INFORMATION_EFFECT"].kind is ClaimKind.DEFINITION
+    assert dependency_closure("DEF_REDUCTION_INFORMATION_EFFECT") == frozenset(
+        {
+            "DEF_REDUCTION_RELATION_KIND",
+            "DEF_CANONICAL_NORMAL_FORM",
+        }
+    )
+
+    assert claims["DEF_REDUCTION_TRACE"].kind is ClaimKind.DEFINITION
+    assert dependency_closure("DEF_REDUCTION_TRACE") == frozenset(
+        {
+            "DEF_REDUCTION_INFORMATION_EFFECT",
+            "DEF_REDUCTION_RELATION_KIND",
+            "DEF_CANONICAL_NORMAL_FORM",
+        }
+    )
+
+    assert claims["THM_STRICT_NORMAL_FORM_IDEMPOTENCE"].kind is ClaimKind.THEOREM
+    assert dependency_closure(
+        "THM_STRICT_NORMAL_FORM_IDEMPOTENCE"
+    ) == frozenset({"DEF_CANONICAL_NORMAL_FORM"})
+
+    assert {
+        "DEF_CANONICAL_NORMAL_FORM",
+        "DEF_REDUCTION_RELATION_KIND",
+        "DEF_REDUCTION_INFORMATION_EFFECT",
+        "DEF_REDUCTION_TRACE",
+        "THM_STRICT_NORMAL_FORM_IDEMPOTENCE",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
