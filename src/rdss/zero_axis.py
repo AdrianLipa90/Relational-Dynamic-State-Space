@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from math import isfinite
 
+from .phase import U1Phase
+
 
 @dataclass(frozen=True)
 class ZeroAxisPoint:
@@ -54,3 +56,22 @@ def finite_zero_axis_lift(
     if abs(s.real - 0.5) > 10.0 * tolerance:
         raise ValueError("inverse projective image left the Zero Axis")
     return ZeroAxisPoint(float(s.imag))
+
+
+
+def finite_zero_axis_lift_u1(
+    phase: U1Phase,
+) -> ZeroAxisPoint:
+    """Typed finite Zero-Axis lift from an explicit U1Phase."""
+    if not isinstance(phase, U1Phase):
+        raise TypeError("phase must be U1Phase")
+    return finite_zero_axis_lift(phase.value)
+
+
+def finite_zero_axis_phase(
+    point: ZeroAxisPoint,
+) -> U1Phase:
+    """Return the explicit U1 phase represented by a finite ZeroAxisPoint."""
+    if not isinstance(point, ZeroAxisPoint):
+        raise TypeError("point must be ZeroAxisPoint")
+    return U1Phase(point.omega)
