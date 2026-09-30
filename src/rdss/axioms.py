@@ -1067,8 +1067,21 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_REFERENCE_OBJECT_REDUCTION_CERTIFICATE_CONSISTENT",
         ClaimKind.THEOREM,
-        "The reference certificate factory returns only after checking agreement of strict source/target keys, rewrite rule provenance, lossiness, target irreducibility, scoped-normal-form idempotence, verified invariant inventory, value factorizations and claim-graph roots; any disagreement raises ReductionCertificateError.",
+        "The reference certificate factory returns only after checking agreement of strict source/target keys, full source/target value provenance, rewrite provenance, scoped-normal-form provenance, termination/confluence certificate identities, lossiness, target irreducibility, scoped-normal-form idempotence, verified invariant inventory and the complete authoritative claim dependency projection; any disagreement raises ReductionCertificateError.",
         ("REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE", "THM_REFERENCE_FORGETFUL_NORMAL_FORM_IDEMPOTENT", "THM_PROVENANCE_TOPOLOGICAL_ORDER"),
+    ),
+
+    Claim(
+        "DEF_REFERENCE_REDUCTION_CERTIFICATE_SCAN",
+        ClaimKind.DEFINITION,
+        "The reference reduction-certificate scan applies the reference forgetful object certificate factory independently to every named value in the finite RDSS reference corpus and aggregates verification, rewrite, fixed-point, lossiness and family-count diagnostics without changing any certificate.",
+        ("DEF_REFERENCE_CORPUS", "DEF_OBJECT_REDUCTION_CERTIFICATE"),
+    ),
+    Claim(
+        "REF_REFERENCE_REDUCTION_CERTIFICATE_SCAN",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The current 36-record reference corpus source contract expects 36 verified object certificates, 5 rewritten values, 31 fixed points, 5 LOSSY reductions, zero global-canonical results, 22 distinct source families and 18 distinct target families after the selected forgetful reduction.",
+        ("DEF_REFERENCE_REDUCTION_CERTIFICATE_SCAN", "REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE"),
     ),
 
 )
