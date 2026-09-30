@@ -642,3 +642,14 @@ The provenance layer is read-only with respect to the claim ledger.
 | REF_REFERENCE_REDUCTION_CERTIFICATE_SCAN | REFERENCE REALIZATION | Current source contract: 36 verified, 5 rewritten, 31 fixed, 5 LOSSY, zero global-canonical, 22 source families, 18 target families. | DEF_REFERENCE_REDUCTION_CERTIFICATE_SCAN, REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE |
 
 The batch layer aggregates certificates; it does not weaken per-object validation.
+
+
+## Loss witness layer
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_LOSS_WITNESS | DEFINITION | Two strict-unequal source values collapse through one declared LOSSY rule to one strict-equal irreducible target, with executable invariant evidence. | DEF_REWRITE_RULE, DEF_EXECUTABLE_BRIDGE_INVARIANT |
+| REF_FORGETFUL_LOSS_WITNESSES | REFERENCE REALIZATION | One executable noninjectivity witness exists for each of the four current forgetful rewrite rules. | DEF_LOSS_WITNESS, DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER |
+| THM_REFERENCE_FORGETFUL_REWRITES_NONINJECTIVE | THEOREM | Each current forgetful rule is noninjective on its full source family, so no two-sided inverse exists there and the LOSSY classification is witnessed independently. | REF_FORGETFUL_LOSS_WITNESSES |
+
+The witnesses validate information loss; they do not add new equivalences.
