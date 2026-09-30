@@ -1376,3 +1376,38 @@ def test_scoped_normal_form_claims_do_not_promote_global_canonicality():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_semantic_factorization_claims_reuse_signature_semantics():
+    claims = claim_map()
+
+    assert claims["DEF_SEMANTIC_FACTORIZATION"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure("DEF_SEMANTIC_FACTORIZATION")
+    assert "DEF_RDSS_CANONICAL_SIGNATURE" in closure
+    assert "DEF_SIGNATURE_AXIS_STRATIFICATION" in closure
+
+    assert claims["THM_FACTORIZATION_RECONSTRUCTS_SEMANTIC_KEY"].kind is ClaimKind.THEOREM
+    assert "DEF_SEMANTIC_FACTORIZATION" in dependency_closure(
+        "THM_FACTORIZATION_RECONSTRUCTS_SEMANTIC_KEY"
+    )
+
+    assert claims["DEF_FACTORIZATION_COMPARISON"].kind is ClaimKind.DEFINITION
+    assert "DEF_SEMANTIC_FACTORIZATION" in dependency_closure(
+        "DEF_FACTORIZATION_COMPARISON"
+    )
+
+    assert claims["REF_REFERENCE_CORPUS_FACTORIZATION_SUMMARY"].kind is ClaimKind.REFERENCE_REALIZATION
+    closure = dependency_closure(
+        "REF_REFERENCE_CORPUS_FACTORIZATION_SUMMARY"
+    )
+    assert "DEF_REFERENCE_CORPUS" in closure
+    assert "DEF_SEMANTIC_FACTORIZATION" in closure
+
+    assert {
+        "DEF_SEMANTIC_FACTORIZATION",
+        "THM_FACTORIZATION_RECONSTRUCTS_SEMANTIC_KEY",
+        "DEF_FACTORIZATION_COMPARISON",
+        "REF_REFERENCE_CORPUS_FACTORIZATION_SUMMARY",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
