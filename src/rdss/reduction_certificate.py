@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from .canonical import strict_normal_form
 from .confluence import (
     rdss_forgetful_confluence_certificate,
 )
@@ -103,25 +104,41 @@ def validate_reduction_certificate(
             "scoped reduction certificate cannot be global canonical"
         )
 
-    if (
-        certificate.normal_form.source_key
-        != certificate.source.factorization.semantic_key
-        and certificate.normal_form.source_key
-        != certificate.rewrite_trace.steps[0].source_key
-        if certificate.rewrite_trace.steps
-        else False
-    ):
+    source_key = strict_normal_form(
+        certificate.rewrite_trace.initial
+    ).key
+    target_key = strict_normal_form(
+        certificate.rewrite_trace.value
+    ).key
+
+    if certificate.normal_form.source_key != source_key:
         raise ReductionCertificateError(
             "normal-form source key disagrees with rewrite trace"
         )
-
-    if certificate.normal_form.target_key != (
-        certificate.rewrite_trace.steps[-1].target_key
-        if certificate.rewrite_trace.steps
-        else certificate.normal_form.source_key
-    ):
+    if certificate.normal_form.target_key != target_key:
         raise ReductionCertificateError(
             "normal-form target key disagrees with rewrite trace"
+        )
+    if strict_normal_form(
+        certificate.normal_form.value
+    ).key != target_key:
+        raise ReductionCertificateError(
+            "normal-form value disagrees with rewrite trace target"
+        )
+
+    expected_source = provenance_for_value(
+        certificate.rewrite_trace.initial
+    )
+    expected_target = provenance_for_value(
+        certificate.rewrite_trace.value
+    )
+    if certificate.source.factorization != expected_source.factorization:
+        raise ReductionCertificateError(
+            "source factorization disagrees with rewrite input"
+        )
+    if certificate.target.factorization != expected_target.factorization:
+        raise ReductionCertificateError(
+            "target factorization disagrees with rewrite target"
         )
 
     if (
@@ -135,14 +152,6 @@ def validate_reduction_certificate(
     if certificate.normal_form.lossy != certificate.rewrite_trace.lossy:
         raise ReductionCertificateError(
             "normal-form lossiness disagrees with rewrite trace"
-        )
-
-    if certificate.target.factorization.semantic_key != (
-        certificate.normal_form_provenance.graph.roots
-        and certificate.target.factorization.semantic_key
-    ):
-        raise ReductionCertificateError(
-            "target factorization provenance is inconsistent"
         )
 
     if not system.irreducible(certificate.rewrite_trace.value):
