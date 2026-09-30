@@ -1007,3 +1007,50 @@ A separate bounded auditor explores competing reductions and reports unique
 normal form, multiple normal forms, detected cycle, or bounded incompleteness.
 It is a finite diagnostic and is not described as a universal confluence
 theorem.
+
+
+## Explicit bridge graph
+
+Cross-family equivalence is now mediated by an explicit bridge registry rather
+than inferred from similar coordinates or labels.
+
+The initial registry includes the reversible binary reference-coordinate map
+
+\[
+\omega
+\leftrightarrow
+p_\omega
+\]
+
+between occurrence address and reference RelationalPoint coordinate. This is
+classified as a LOSSLESS REFERENCE_REPRESENTATION and does not identify the
+two semantic sorts.
+
+The existing occurrence-to-value forgetful maps are also registered, but remain
+
+\[
+\mathrm{FORGETFUL\_PROJECTION}
++
+\mathrm{LOSSY}.
+\]
+
+Only same-family semantic-signature equality or fully reversible LOSSLESS
+bridge matches are allowed to generate bridge-equivalence components.
+Information-losing projections remain directed edges and never union
+components.
+
+This gives RDSS an executable graph of
+
+\[
+\boxed{
+\text{equivalences}
++
+\text{representations}
++
+\text{directed projections}
++
+\text{unresolved bridge gaps}.
+}
+\]
+
+See docs/CANONICAL_REDUCTION_GATE.md.
