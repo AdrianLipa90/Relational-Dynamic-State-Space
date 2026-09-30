@@ -435,3 +435,74 @@ object identity.
 The CP1 extractor currently retains the normalized representative amplitudes as
 state. A global-phase quotient is not silently imposed by this version; an
 explicit projective canonicalization policy remains a later gate.
+
+
+## Semantic signature catalog
+
+Pairwise comparison is lifted to a finite catalog without deleting source
+objects.
+
+For indexed records \(X_i\), the catalog simultaneously groups by
+
+\[
+\text{family},
+\qquad
+K_{\rm struct},
+\qquad
+K_{\rm semantic},
+\qquad
+K_{\rm strict}.
+\]
+
+These correspond to progressively finer quotients:
+
+\[
+\boxed{
+\text{family}
+\supseteq
+\text{structure}
+\supseteq
+\text{semantic state}
+\supseteq
+\text{strict payload}.
+}
+\]
+
+A new candidate is classified against previously indexed records in the
+following fail-closed precedence:
+
+\[
+\text{EXACT\_REPEAT}
+\prec
+\text{SIGNATURE\_EQUIVALENT}
+\prec
+\text{REPRESENTATION\_ONLY}
+\prec
+\text{NEW\_STATE}
+\prec
+\text{NEW\_STRUCTURE}
+\prec
+\text{NEW\_FAMILY}.
+\]
+
+The order is a classification precedence, not a numeric metric or value
+judgment.
+
+The catalog retains every source value and its ordinal. It does not physically
+merge, delete, or rewrite records. Its role is to expose where apparent
+multiplicity collapses at a chosen semantic quotient level.
+
+The summary reports:
+
+\[
+(
+N_{\rm records},
+N_{\rm families},
+N_{\rm structures},
+N_{\rm semantic\ states},
+N_{\rm strict\ values}
+).
+\]
+
+This provides the first executable compression view over a heterogeneous RDSS
+object set.
