@@ -222,6 +222,14 @@ from .factorization import (
     factorize_value,
     summarize_factorizations,
 )
+from .loss_witness import (
+    LossWitness,
+    LossWitnessError,
+    LossWitnessSummary,
+    rdss_forgetful_loss_witnesses,
+    summarize_forgetful_loss_witnesses,
+    validate_loss_witness,
+)
 from .normal_form import (
     ScopedRewriteNormalForm,
     rdss_forgetful_normal_form,
@@ -547,6 +555,12 @@ __all__ = [
     "HolonomyPhaseRepresentation",
     "OccurrenceHolonomyPhaseRepresentation",
     "MinimalDistinction",
+    "LossWitness",
+    "LossWitnessError",
+    "LossWitnessSummary",
+    "rdss_forgetful_loss_witnesses",
+    "summarize_forgetful_loss_witnesses",
+    "validate_loss_witness",
     "MoireRotation",
     "CP1RelationalUnfolding",
     "reference_cp1_unfolding",
