@@ -923,3 +923,26 @@ def test_signature_catalog_claim_depends_on_novelty_classification():
     assert "DEF_SIGNATURE_CATALOG" not in {
         claim.id for claim in foundational_axioms()
     }
+
+
+def test_reduction_termination_and_confluence_claims_are_scoped():
+    claims = claim_map()
+
+    assert claims["DEF_LEXICOGRAPHIC_REDUCTION_ORDER"].kind is ClaimKind.DEFINITION
+    assert claims["THM_STRICT_LEX_DESCENT_TERMINATES"].kind is ClaimKind.THEOREM
+    assert "DEF_LEXICOGRAPHIC_REDUCTION_ORDER" in dependency_closure(
+        "THM_STRICT_LEX_DESCENT_TERMINATES"
+    )
+
+    assert claims["DEF_FINITE_CONFLUENCE_AUDIT"].kind is ClaimKind.DEFINITION
+    assert "DEF_REDUCTION_TRACE" in dependency_closure(
+        "DEF_FINITE_CONFLUENCE_AUDIT"
+    )
+
+    assert {
+        "DEF_LEXICOGRAPHIC_REDUCTION_ORDER",
+        "THM_STRICT_LEX_DESCENT_TERMINATES",
+        "DEF_FINITE_CONFLUENCE_AUDIT",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
