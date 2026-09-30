@@ -1204,3 +1204,43 @@ def test_executable_bridge_invariant_claims_are_non_foundational():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_priority_free_rewrite_claims_do_not_assert_canonicality():
+    claims = claim_map()
+
+    assert claims["DEF_REWRITE_RULE"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure("DEF_REWRITE_RULE")
+    assert "DEF_EXECUTABLE_BRIDGE_INVARIANT" in closure
+
+    assert claims["DEF_PRIORITY_FREE_REWRITE_SYSTEM"].kind is ClaimKind.DEFINITION
+    assert "DEF_REWRITE_RULE" in dependency_closure(
+        "DEF_PRIORITY_FREE_REWRITE_SYSTEM"
+    )
+
+    assert claims["DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure(
+        "DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER"
+    )
+    assert "DEF_PRIORITY_FREE_REWRITE_SYSTEM" in closure
+    assert "DEF_BRIDGE_REGISTRY" in closure
+
+    assert claims["THM_NO_IMPLICIT_REWRITE_PRIORITY"].kind is ClaimKind.THEOREM
+    assert "DEF_PRIORITY_FREE_REWRITE_SYSTEM" in dependency_closure(
+        "THM_NO_IMPLICIT_REWRITE_PRIORITY"
+    )
+
+    assert claims["THM_REWRITE_CYCLE_FAIL_CLOSED"].kind is ClaimKind.THEOREM
+    assert "DEF_PRIORITY_FREE_REWRITE_SYSTEM" in dependency_closure(
+        "THM_REWRITE_CYCLE_FAIL_CLOSED"
+    )
+
+    assert {
+        "DEF_REWRITE_RULE",
+        "DEF_PRIORITY_FREE_REWRITE_SYSTEM",
+        "DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER",
+        "THM_NO_IMPLICIT_REWRITE_PRIORITY",
+        "THM_REWRITE_CYCLE_FAIL_CLOSED",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
