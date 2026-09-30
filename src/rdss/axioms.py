@@ -731,6 +731,25 @@ CLAIMS: tuple[Claim, ...] = (
         ("REF_OCCURRENCE_POINT_BRIDGE",),
     ),
 
+    Claim(
+        "DEF_BRIDGE_EQUIVALENCE_GRAPH",
+        ClaimKind.DEFINITION,
+        "A finite bridge-aware equivalence graph has one record per source value, strong undirected equivalence edges generated only by same-family semantic-signature equivalence or fully reversible LOSSLESS bridge matches, and separate directed edges for LOSSY/UNKNOWN bridge matches.",
+        ("DEF_BRIDGE_COMPARISON", "DEF_SIGNATURE_COMPARISON"),
+    ),
+    Claim(
+        "DEF_BRIDGE_EQUIVALENCE_COMPONENT",
+        ClaimKind.DEFINITION,
+        "An equivalence component is a connected component generated only by strong signature-equivalence and fully reversible LOSSLESS bridge edges; it is equivalence under the selected bridge policy, not object identity.",
+        ("DEF_BRIDGE_EQUIVALENCE_GRAPH",),
+    ),
+    Claim(
+        "THM_LOSSY_BRIDGE_NONUNION",
+        ClaimKind.THEOREM,
+        "In the reference bridge-equivalence graph construction, LOSSY projection edges are recorded as directed edges and are never passed to the component-union operation, so a lossy bridge alone cannot collapse two equivalence components.",
+        ("DEF_BRIDGE_EQUIVALENCE_COMPONENT",),
+    ),
+
 )
 
 
