@@ -261,3 +261,32 @@ The equivalence graph therefore separates
 
 This layer does not alter the epistemic ownership of the underlying
 realizations or bridges.
+
+
+## Cross-cutting reference corpus layer
+
+\`src/rdss/corpus.py\` and \`scripts/reference_corpus_scan.py\`
+
+The reference corpus is the first finite executable dataset used to exercise
+the canonical/signature/bridge stack as one system.
+
+The corpus deliberately contains both currently supported signature families
+and existing RDSS executable types with no admitted signature extractor. The
+latter are reported as coverage gaps rather than dropped or guessed.
+
+The scanner composes:
+
+\[
+\mathcal N_0
+\to
+\Sigma
+\to
+\text{catalog}
+\to
+\text{bridge graph}
+\to
+\text{gap report}.
+\]
+
+It therefore acts as a regression target for mathematical compression, not as a
+new foundational layer.
