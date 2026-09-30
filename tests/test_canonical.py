@@ -10,6 +10,7 @@ from rdss.canonical import (
     ReductionCycleError,
     ReductionEngine,
     ReductionRule,
+    rdss_projection_engine,
     roundtrip_check,
     strict_normal_form,
 )
@@ -144,3 +145,70 @@ def test_cycle_is_rejected():
 def test_nonfinite_values_fail_closed():
     with pytest.raises(ValueError):
         strict_normal_form(float("nan"))
+
+
+def test_rdss_strict_form_keeps_carrier_and_occurrence_as_distinct_sorts():
+    from rdss import OccurrenceAddress, RelationalPoint
+
+    occurrence = OccurrenceAddress((-1, 1))
+    carrier = RelationalPoint((-1, 1))
+
+    assert not strict_normal_form(occurrence).same_key(
+        strict_normal_form(carrier)
+    )
+
+
+def test_rdss_relation_occurrence_projection_is_explicitly_lossy():
+    from rdss import RelationalPoint, TypedRelation
+    from rdss.operations import RelationOccurrence
+
+    carrier = RelationalPoint()
+    relation = TypedRelation(carrier, carrier, "r")
+    occurrence = RelationOccurrence(
+        relation,
+        (),
+        (-1,),
+    )
+    engine = rdss_projection_engine()
+
+    reduced = engine.reduce(occurrence)
+
+    assert reduced.value == relation
+    assert reduced.trace.lossy
+    assert reduced.trace.steps[0].kind is EquivalenceKind.FORGETFUL_PROJECTION
+    assert reduced.trace.steps[0].claim_ids == (
+        "DEF_OCCURRENCE_FORGETFUL_PROJECTION",
+    )
+
+    with pytest.raises(LossyReductionError):
+        engine.compare(occurrence, relation)
+
+    assert engine.compare(
+        occurrence,
+        relation,
+        allow_lossy=True,
+    ).equivalent
+
+
+def test_rdss_occurrence_path_projection_preserves_order_but_loses_addresses():
+    from rdss import RelationalPoint, TypedRelation
+    from rdss.operations import OccurrenceRelationPath, RelationOccurrence
+
+    carrier = RelationalPoint()
+    down = TypedRelation(carrier, carrier, "down")
+    up = TypedRelation(carrier, carrier, "up")
+    path = OccurrenceRelationPath(
+        (
+            RelationOccurrence(down, (), (-1,)),
+            RelationOccurrence(up, (-1,), ()),
+        )
+    )
+
+    reduced = rdss_projection_engine().reduce(path)
+
+    assert tuple(reduced.value.relations) == (down, up)
+    assert reduced.trace.lossy
+    assert reduced.trace.steps[0].preserves == (
+        "ordered relation values",
+        "carrier composability",
+    )
