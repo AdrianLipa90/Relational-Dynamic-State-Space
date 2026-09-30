@@ -302,3 +302,136 @@ mathematical gates are:
    alone.
 
 No item in this list is silently assumed by v0.1.
+
+
+## Canonical semantic signature
+
+Strict normalization answers whether two executable values have the same exact
+tagged payload. It does not by itself answer whether a difference belongs to
+structure, state, or representation.
+
+The signature layer therefore records
+
+\[
+\boxed{
+\Sigma(X)=
+(
+\text{family};
+\text{carrier},
+\text{occurrence},
+\text{relations},
+\text{rank},
+\text{scale},
+\text{orbit},
+\text{dimension};
+\text{phase},
+\text{state};
+\text{representation},
+\text{provenance}
+).
+}
+\]
+
+The semicolons indicate the current stratification.
+
+Structural axes are
+
+\[
+\{
+\text{carrier},
+\text{occurrence},
+\text{relations},
+\text{rank},
+\text{scale},
+\text{orbit},
+\text{dimension}
+\},
+\]
+
+while state axes are
+
+\[
+\{
+\text{phase},
+\text{state}
+\}.
+\]
+
+Representation and provenance are recorded separately.
+
+This prevents a changed amplitude, phase or vector from being promoted to a
+change of algebraic structure. Conversely, a changed carrier, occurrence path,
+relation topology, tensor rank, semantic scale, orbital sector or dimension is
+not hidden as a mere state update.
+
+### Signature comparison
+
+For two supported objects \(X,Y\), comparison is classified as one of
+
+\[
+\begin{aligned}
+&\mathrm{EXACT\_SIGNATURE},\\
+&\mathrm{SAME\_SEMANTIC\_STATE\_DIFFERENT\_REPRESENTATION},\\
+&\mathrm{SAME\_STRUCTURE\_DIFFERENT\_STATE},\\
+&\mathrm{STRUCTURAL\_DIFFERENCE},\\
+&\mathrm{INCOMPARABLE}.
+\end{aligned}
+\]
+
+INCOMPARABLE is fail-closed. It means the current signature registry has no
+declared common semantic family. It does not mean that no bridge can exist.
+Such a bridge must be added explicitly before a stronger identification is
+allowed.
+
+Relative novelty is then classified as
+
+\[
+\{
+\text{exact repeat},
+\text{signature-equivalent},
+\text{representation-only},
+\text{new state},
+\text{new structure},
+\text{new family}
+\}.
+\]
+
+Thus the executable question
+
+\[
+\boxed{
+\text{new information?}
+\quad\text{or}\quad
+\text{new representation?}
+}
+\]
+
+is no longer answered by visual similarity.
+
+### Current admitted extractors
+
+Version 0.1 supplies explicit extractors for:
+
+- OccurrenceAddress;
+- RelationalPoint;
+- SemanticScale;
+- TensorScalarElement;
+- TypedRelation;
+- RelationOccurrence;
+- RelationPath;
+- OccurrenceRelationPath;
+- HilbertMoireFibreState;
+- CP1State;
+- MoireRotation.
+
+No generic reflection fallback is used. Unsupported object types fail closed.
+
+The MoireRotation extractor uses the already-defined relative phase delta as
+its semantic phase axis. Consequently a common shift of both supplied angles
+may change the raw executable payload while leaving the same relative
+signature. This is classified as signature-equivalent rather than strict
+object identity.
+
+The CP1 extractor currently retains the normalized representative amplitudes as
+state. A global-phase quotient is not silently imposed by this version; an
+explicit projective canonicalization policy remains a later gate.
