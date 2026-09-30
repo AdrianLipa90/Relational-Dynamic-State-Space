@@ -22,7 +22,7 @@ constructed from current Python objects and the scan is produced by:
 
 ## Corpus contract
 
-The current source corpus contains 35 named values spanning:
+The current source corpus contains 36 named values spanning:
 
 - occurrence addresses and reference relational points;
 - semantic scale;
@@ -55,9 +55,9 @@ The current source registry now gives each of those types its own semantic
 family, so the source contract is:
 
 \[
-35
+36
 =
-35_{\rm supported}
+36_{\rm supported}
 +
 0_{\rm coverage\ gaps}.
 \]
@@ -96,8 +96,8 @@ The source contract currently expects:
 
 for the original 24-record supported slice. After closing the former coverage
 gaps, adding the explicit zero-element bridge witness and adding the relational
-generative model, the current 35-record source contract expects
-NEW_STATE=6 and NEW_FAMILY=21.
+generative model, the current 36-record source contract expects
+NEW_STATE=6 and NEW_FAMILY=22.
 
 The corresponding catalog expectations are
 
@@ -110,7 +110,7 @@ N_{\rm semantic\ states},
 N_{\rm strict\ values}
 )
 =
-(35,21,27,33,34).
+(36,22,28,34,35).
 \]
 
 These numbers are executable test expectations. They must not be reported as a
@@ -128,7 +128,7 @@ N_{\rm equivalence\ components}=30,
 with:
 
 \[
-N_{\rm strong\ edges}=6,
+N_{\rm strong\ edges}=7,
 \qquad
 N_{\rm lossy\ projection\ edges}=5,
 \qquad
@@ -145,7 +145,10 @@ The intended compression examples are:
 - RelationOccurrence and TypedRelation remain in separate components even
   when a directed LOSSY forgetful projection exists;
 - occurrence-aware and value-level relation cycles remain separate components
-  across their LOSSY projection.
+  across their LOSSY projection;
+- a typed U1Phase companion and its finite ZeroAxisPoint share one LOSSLESS
+  bridge-equivalence component, so adding the explicit intermediate family
+  does not increase the number of independent equivalence components.
 
 ## Deterministic CLI receipt
 
