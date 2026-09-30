@@ -337,3 +337,71 @@ square-bracket math delimiters report no findings.
 
 These remain source/static results. Full repository pytest and actual LaTeX
 compilation have NOT YET been executed on a complete checkout of this branch.
+
+
+## Reference corpus and bridge triage milestone — 2026-09-30
+
+Current branch source/static baseline:
+
+- branch distance from main: 120 commits ahead, 0 behind;
+- changed files versus main: 26;
+- Python test functions: 303;
+- claim entries: 129;
+- package-root exports: 179;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0.
+
+The current reference corpus contains 35 named executable values. Source tests
+expect complete signature coverage:
+
+\[
+35
+=
+35_{\rm supported}
++
+0_{\rm coverage\ gaps}.
+\]
+
+The expected catalog partition is
+
+\[
+(35,21,27,33,34)
+\]
+
+for records, families, structures, semantic states and strict values.
+
+The expected bridge graph contains:
+
+- 30 equivalence components;
+- 6 strong edges;
+- 5 directed LOSSY projection edges;
+- 0 UNKNOWN bridge edges.
+
+These expectations now exercise the explicit zero-sector bridge, relational
+distinction forgetful projection, and relational-generative-model to
+generative-model forgetful projection.
+
+Bridge-gap triage contains 11 entries with source contract:
+
+\[
+(2,4,1,1,2,1)
+\]
+
+for IMPLEMENTED_LOSSLESS, IMPLEMENTED_LOSSY, CONTEXT_REQUIRED,
+MISSING_INTERMEDIATE_FAMILY, COMPOSITE_NOT_EQUIVALENT and NO_BRIDGE_CLAIM.
+
+Live NOEMA/AUX tether and GREMLIN candidate runtime were verified ACTIVE during
+this milestone. GREMLIN remained CANDIDATE_ONLY with canon_allowed=false. No
+manual event was injected into its whisper bus because a dedicated producer
+contract for RDSS corpus receipts has not yet been established.
+
+Structural LaTeX audit on the current monograph reports:
+
+- unmatched environments: 0;
+- environment mismatches: 0;
+- brace balance: 0;
+- negative brace events: 0;
+- display delimiters: 263 open / 263 close.
+
+Full repository pytest and actual LaTeX compilation remain NOT YET RUN on an
+exact complete checkout of this branch.
