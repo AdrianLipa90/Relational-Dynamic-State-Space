@@ -596,3 +596,54 @@ Structural monograph audit on this head:
 These remain source/static validation results. Full repository pytest and actual
 LaTeX compilation remain NOT YET RUN on an exact complete checkout of this
 branch.
+
+
+## Scoped normal form milestone — 2026-09-30
+
+This section supersedes earlier current-state counts while preserving previous
+milestone snapshots as provenance.
+
+Current branch source/static baseline:
+
+- branch distance from main: 209 commits ahead, 0 behind;
+- changed files versus main: 37;
+- Python test functions: 357;
+- claim entries: 161;
+- package-root exports: 232;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0;
+- missing exports from scoped normal-form public API: 0.
+
+The reference forgetful rewrite system now has:
+
+- verified family-rank termination certificate;
+- verified distinct-source-family confluence certificate;
+- unique irreducible result under the selected system;
+- scoped normal-form API rdss_forgetful_normal_form.
+
+Reference corpus expectations:
+
+- 36 values total;
+- 5 values rewritten through one LOSSY forgetful rule;
+- 31 fixed points under the selected system;
+- every output irreducible;
+- scoped normal form idempotent at strict target-key level.
+
+The returned object explicitly reports:
+
+global_canonical = False.
+
+Therefore this milestone does not promote the selected forgetful quotient to a
+global RDSS canonical normal form.
+
+Structural monograph audit on this head:
+
+- unmatched environments: 0;
+- environment mismatches: 0;
+- brace balance: 0;
+- negative brace events: 0;
+- display delimiters: 287 open / 287 close.
+
+These remain source/static validation results. Full repository pytest and actual
+LaTeX compilation remain NOT YET RUN on an exact complete checkout of this
+branch.
