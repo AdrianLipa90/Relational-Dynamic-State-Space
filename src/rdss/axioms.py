@@ -674,6 +674,13 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_SIGNATURE_COMPARISON",),
     ),
 
+    Claim(
+        "DEF_SIGNATURE_CATALOG",
+        ClaimKind.DEFINITION,
+        "A signature catalog indexes admitted executable values simultaneously by semantic family, structural key, semantic-state key, and strict canonical payload without deleting source values; catalog novelty is evaluated relative to previously indexed records.",
+        ("DEF_SIGNATURE_NOVELTY_CLASSIFICATION",),
+    ),
+
 )
 
 
