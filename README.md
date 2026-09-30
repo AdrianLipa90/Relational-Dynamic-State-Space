@@ -1216,3 +1216,14 @@ The certificate is executable-validated and always reports global_canonical=Fals
 The reference batch scanner applies the same factory to all 36 corpus values. Its source contract is 36 verified certificates, 5 rewritten values, 31 fixed points, 5 LOSSY reductions, zero global-canonical results, 22 source families and 18 target families.
 
 scripts/reference_reduction_certificate_scan.py emits schema rdss.reduction-certificate-scan/v1.
+
+
+## Executable LOSSY witnesses
+
+The four reference forgetful rewrite rules now have explicit noninjectivity witnesses. For each rule RDSS constructs two strict-unequal source values that collapse to one strict-equal irreducible target while the rule's executable invariants pass.
+
+The witnesses cover occurrence-address loss at relation/path level and relation-binding loss at distinction/generative-model level.
+
+This makes the current LOSSY classification executable evidence rather than a descriptive label.
+
+scripts/reference_loss_witness_scan.py emits schema rdss.loss-witness-scan/v1.
