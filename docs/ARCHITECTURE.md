@@ -334,3 +334,20 @@ cycles.
 
 Executable bridge invariants are reused by rewrite steps and verified invariant
 names remain attached to the rewrite provenance.
+
+
+## Cross-cutting confluence layer
+
+src/rdss/confluence.py
+
+The confluence layer separates static rule-overlap candidates from concrete
+critical pairs.
+
+The current reference certificate is deliberately sufficient rather than
+maximally general: all forgetful rules have distinct source semantic families.
+This makes the rewrite relation deterministic and therefore confluent.
+
+The layer combines this confluence certificate with the explicit termination
+certificate to produce a certified unique irreducible result under the selected
+forgetful rewrite system. It does not promote that result to a global RDSS
+canonical normal form.
