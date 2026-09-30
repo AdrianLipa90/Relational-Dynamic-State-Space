@@ -1012,3 +1012,57 @@ This result is scoped:
 \text{global RDSS canonical normal form}.
 }
 \]
+
+
+## Scoped rewrite normal form
+
+Once one selected rewrite system has both a verified termination certificate
+and a verified confluence certificate, it admits a unique irreducible result.
+
+RDSS records that result together with its scope and certificate provenance:
+
+\[
+N_{\mathcal R}(X)
+=
+(
+\text{scope},
+\text{source key},
+\text{target key},
+\text{rewrite provenance},
+\text{lossiness},
+\text{termination certificate},
+\text{confluence certificate}
+).
+\]
+
+For the current reference subsystem the scope is
+
+\[
+\texttt{rdss-reference-forgetful-v1}.
+\]
+
+On the 36-record reference corpus:
+
+- 5 values are rewritten through one LOSSY forgetful rule;
+- 31 values are already irreducible;
+- every result is irreducible under the selected system;
+- reapplying the scoped normal form performs no further rewrite.
+
+Thus
+
+\[
+N_{\mathcal R}(N_{\mathcal R}(X))
+=
+N_{\mathcal R}(X)
+\]
+
+at the strict target-key level.
+
+The API explicitly reports
+
+\[
+\boxed{\texttt{global\_canonical}=\mathrm{False}}.
+\]
+
+This prevents the selected forgetful quotient from being silently promoted to a
+global RDSS canonical normal form.
