@@ -695,3 +695,42 @@ Structural monograph audit on this head:
 These remain source/static validation results. Full repository pytest and actual
 LaTeX compilation remain NOT YET RUN on an exact complete checkout of this
 branch.
+
+
+## Claim provenance milestone — 2026-09-30
+
+This section supersedes earlier current-state counts while preserving previous milestone snapshots as provenance.
+
+Current branch source/static baseline:
+
+- branch distance from main: 234 commits ahead, 0 behind;
+- changed files versus main: 41;
+- Python test functions: 372;
+- claim entries: 169;
+- package-root exports: 249;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0;
+- missing exports from claim provenance public API: 0.
+
+This continuation established the following certified layers on the branch:
+
+1. executable global and contextual bridge invariants;
+2. priority-free forgetful rewrite system;
+3. family-rank termination certificate with trace bound at most one;
+4. distinct-source-family confluence certificate;
+5. unique irreducible result under the selected forgetful system;
+6. scoped forgetful normal form with global_canonical=False;
+7. explicit family/structure/state/representation factorization;
+8. read-only claim provenance dependency graph for values, bridge routes, rewrite traces and scoped normal forms.
+
+Reference corpus remains 36 records with complete signature coverage. The semantic factorization source contract is 22 families, 28 structures, 34 semantic states and 22 representation classes.
+
+Structural monograph audit on this head:
+
+- unmatched environments: 0;
+- environment mismatches: 0;
+- brace balance: 0;
+- negative brace events: 0;
+- display delimiters: 293 open / 293 close.
+
+These remain source/static validation results. Full repository pytest and actual LaTeX compilation remain NOT YET RUN on an exact complete checkout of this branch.
