@@ -852,6 +852,19 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_CONTEXTUAL_BRANCH_RELATION_MATERIALIZATION",),
     ),
 
+    Claim(
+        "DEF_EXECUTABLE_BRIDGE_INVARIANT",
+        ClaimKind.DEFINITION,
+        "An executable bridge invariant consists of named source and target projections plus an explicit comparator; bridge execution fails closed when any declared invariant comparator returns false.",
+        ("DEF_BRIDGE_REGISTRY",),
+    ),
+    Claim(
+        "THM_REFERENCE_BRIDGE_INVARIANT_ENFORCEMENT",
+        ClaimKind.THEOREM,
+        "In the reference BridgeRegistry implementation, every BridgeInvariant attached to a traversed edge is executed before the edge is admitted into the returned route; a failed invariant raises BridgeInvariantError and no BridgeStep is returned.",
+        ("DEF_EXECUTABLE_BRIDGE_INVARIANT",),
+    ),
+
 )
 
 
