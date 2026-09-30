@@ -82,6 +82,10 @@ class ReductionCertificate:
 
     @property
     def verified(self) -> bool:
+        try:
+            validate_reduction_certificate(self)
+        except ReductionCertificateError:
+            return False
         return True
 
 
