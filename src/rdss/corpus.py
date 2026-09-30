@@ -184,6 +184,8 @@ def rdss_reference_corpus() -> tuple[CorpusItem, ...]:
     )
 
     distinction = BinaryDistinction("a", "b", "c")
+    zero_axis_reference = ZeroAxisPoint(1.0)
+    zero_axis_phase = U1Phase(zero_axis_reference.omega)
 
     return (
         CorpusItem(
@@ -339,8 +341,13 @@ def rdss_reference_corpus() -> tuple[CorpusItem, ...]:
         ),
         CorpusItem(
             "zero-axis-point",
-            ZeroAxisPoint(1.0),
+            zero_axis_reference,
             ("ZA_BRIDGE",),
+        ),
+        CorpusItem(
+            "u1-zero-axis-companion",
+            zero_axis_phase,
+            ("REF_U1_PHASE_VALUE",),
         ),
         CorpusItem(
             "binary-distinction",
