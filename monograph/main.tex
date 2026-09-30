@@ -2886,6 +2886,43 @@ The returned bridge steps record the names of all invariants that passed.
 Descriptive preservation metadata is therefore separated from executable
 preservation evidence.
 
+\subsection{Family-rank termination certificate}
+
+Termination is attached to a selected rewrite system through an explicit
+ranking
+\[
+\mu:F\to\mathbb N.
+\]
+A certificate is valid only when every registered rule
+\[
+F_s\to F_t
+\]
+satisfies
+\[
+\mu(F_s)>\mu(F_t).
+\]
+Strict descent in the natural numbers excludes infinite rewrite traces.
+
+For the current forgetful subsystem,
+\[
+\mu(F)=1
+\]
+on relation-occurrence, relational-generative-model,
+relational-binary-distinction and occurrence-relation-path source families,
+and
+\[
+\mu(F)=0
+\]
+on their targets and by default elsewhere. Hence every admitted automatic
+trace in this subsystem has
+\[
+\boxed{L_{\rm trace}\le 1}.
+\]
+
+This establishes termination for the selected forgetful rewrite system only.
+No confluence or canonical-normal-form claim follows from the termination
+certificate alone.
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
