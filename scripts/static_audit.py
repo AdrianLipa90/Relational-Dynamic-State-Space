@@ -118,6 +118,7 @@ def audit_layer_ownership() -> dict[str, int]:
         "potential": SRC / "rdss" / "potential.py",
         "provenance": SRC / "rdss" / "provenance.py",
         "realizations": SRC / "rdss" / "realizations.py",
+        "reduction_certificate": SRC / "rdss" / "reduction_certificate.py",
         "zero_axis": SRC / "rdss" / "zero_axis.py",
     }
     defs = {name: public_defs(path) for name, path in module_paths.items()}
@@ -185,6 +186,7 @@ def audit_test_imports() -> None:
         "rdss.potential": public_defs(SRC / "rdss" / "potential.py"),
         "rdss.provenance": public_defs(SRC / "rdss" / "provenance.py"),
         "rdss.realizations": public_defs(SRC / "rdss" / "realizations.py"),
+        "rdss.reduction_certificate": public_defs(SRC / "rdss" / "reduction_certificate.py"),
         "rdss.signature": public_defs(SRC / "rdss" / "signature.py"),
         "rdss.rewrite": public_defs(SRC / "rdss" / "rewrite.py"),
         "rdss.triage": public_defs(SRC / "rdss" / "triage.py"),
