@@ -321,6 +321,7 @@ def rdss_signature_extractors() -> tuple[SignatureExtractor, ...]:
         CenterHalfTurnBridge,
         HilbertMoireFibreState,
     )
+    from .phase import U1Phase
     from .realizations import (
         CP1State,
         MinimalDistinction,
@@ -605,6 +606,22 @@ def rdss_signature_extractors() -> tuple[SignatureExtractor, ...]:
                 claim_ids=("BRIDGE_CENTER_HALF_TURN",),
             ),
             ("DEF_RDSS_CANONICAL_SIGNATURE",),
+        ),
+        SignatureExtractor(
+            "u1_phase_signature",
+            lambda value: isinstance(value, U1Phase),
+            lambda value: _signature(
+                value,
+                family="u1_phase",
+                axes=(
+                    (SignatureAxis.PHASE, value.value),
+                ),
+                claim_ids=("REF_U1_PHASE_VALUE",),
+            ),
+            (
+                "DEF_RDSS_CANONICAL_SIGNATURE",
+                "DEF_SIGNATURE_AXIS_STRATIFICATION",
+            ),
         ),
         SignatureExtractor(
             "zero_axis_point_signature",
