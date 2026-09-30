@@ -2956,6 +2956,39 @@ rewrite system. The scope is essential:
 }
 \]
 
+\subsection{Scoped rewrite normal form}
+
+For one explicitly selected rewrite system with verified termination and
+confluence certificates, define the scoped normal form
+\[
+N_{\mathcal R}(X)
+\]
+as its unique irreducible result together with scope, rewrite provenance,
+lossiness and certificate identities.
+
+For the current reference forgetful system the scope is
+\[
+\texttt{rdss-reference-forgetful-v1}.
+\]
+On the reference corpus, five values undergo one LOSSY forgetful rewrite and
+thirty-one values are already fixed points.
+
+The construction is idempotent:
+\[
+N_{\mathcal R}(N_{\mathcal R}(X))
+=
+N_{\mathcal R}(X)
+\]
+at the strict target-key level.
+
+The scope is not optional metadata. The reference API explicitly refuses global
+canonical promotion:
+\[
+\boxed{
+\texttt{global\_canonical}=\mathrm{False}.
+}
+\]
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
