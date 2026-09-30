@@ -4,6 +4,7 @@ from rdss import (
     SemanticScale,
     TensorScalarElement,
 )
+from rdss.canonical import strict_normal_form
 from rdss.corpus import (
     rdss_reference_corpus,
     scan_rdss_reference_corpus,
@@ -114,10 +115,7 @@ def test_factorization_reconstructs_signature_keys_and_provenance():
         tuple(
             (
                 axis,
-                __import__(
-                    "rdss.canonical",
-                    fromlist=["strict_normal_form"],
-                ).strict_normal_form(raw).key,
+                strict_normal_form(raw).key,
             )
             for axis, raw in factor.structure_axes
         ),
