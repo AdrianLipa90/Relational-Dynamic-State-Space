@@ -1145,3 +1145,28 @@ The 36-record reference corpus source contract factors into
 \]
 
 for records, families, structures, semantic states and representation classes.
+
+
+## Claim provenance dependency graph
+
+RDSS can now answer the provenance question
+
+\[
+\text{from which claims does this value or transformation follow?}
+\]
+
+without creating a second ledger.
+
+Given explicit root claim IDs \(R\), the provenance layer returns the induced subgraph of the authoritative claim DAG:
+
+\[
+G_R=\operatorname{InducedDependencyGraph}(R).
+\]
+
+The graph is emitted in topological order: every dependency appears before the claim that depends on it.
+
+For one admitted value the provenance bundle combines semantic factorization, signature extractor provenance, signature root claim IDs and the induced dependency graph.
+
+Transformation provenance is also available for BridgeRoute, RewriteTrace and ScopedRewriteNormalForm. In each case the root claims are those already carried by the transformation; the provenance layer only expands their existing dependency closure.
+
+It does not manufacture, promote, reclassify or rewrite claims. It is a read-only projection of the authoritative RDSS ledger.
