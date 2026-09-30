@@ -158,11 +158,11 @@ def rdss_reference_bridge_triage() -> BridgeTriageReport:
             BridgeTriageEntry(
                 "zero_axis_point",
                 "u1_phase",
-                BridgeTriageStatus.MISSING_INTERMEDIATE_FAMILY,
-                "The finite Zero-Axis lift consumes a verified U(1) phase, but RDSS does not yet expose a canonical U(1)-phase value/signature family.",
+                BridgeTriageStatus.IMPLEMENTED_LOSSLESS,
+                "The finite projective Omega/Omega^{-1} bridge now uses the explicit U1Phase family and an explicit numerical round-trip validator; u=-1 remains outside the finite bridge domain.",
                 (
-                    "REF_HOLONOMY_ZERO_AXIS",
-                    "ZA_BRIDGE",
+                    "REF_U1_ZERO_AXIS_FINITE_BRIDGE",
+                    "THM_U1_ZERO_AXIS_FINITE_ROUNDTRIP",
                 ),
             ),
             BridgeTriageEntry(
