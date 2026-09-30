@@ -2553,6 +2553,56 @@ Both are classified as
 Therefore equality after forgetting occurrence addresses is not promoted to
 occurrence-level identity or isomorphism.
 
+\subsection{Canonical semantic signature}
+
+Strict canonical normalization is complemented by a semantic signature
+\[
+\Sigma(X)=
+\bigl(
+\text{family};
+\text{structural axes};
+\text{state axes};
+\text{representation};
+\text{provenance}
+\bigr).
+\]
+The current structural axes are carrier, occurrence address, ordered relation
+data, tensor rank, semantic scale, orbital sector and dimension. Phase and
+state payload are state axes.
+
+This stratification permits the executable distinction
+\[
+\boxed{
+\text{new structure}
+\neq
+\text{new state}
+\neq
+\text{new representation}.
+}
+\]
+
+For supported values, signature comparison returns exactly one of
+\[
+\begin{aligned}
+&\mathrm{EXACT\_SIGNATURE},\\
+&\mathrm{SAME\_SEMANTIC\_STATE\_DIFFERENT\_REPRESENTATION},\\
+&\mathrm{SAME\_STRUCTURE\_DIFFERENT\_STATE},\\
+&\mathrm{STRUCTURAL\_DIFFERENCE},\\
+&\mathrm{INCOMPARABLE}.
+\end{aligned}
+\]
+The last case is deliberately fail-closed: no cross-family identification is
+made without an explicit bridge.
+
+The current Moir\'e rotation reference signature uses only the already-defined
+relative phase \(\Delta=\operatorname{wrap}(\theta_i-\theta_j)\). Thus a common
+shift of both raw angles may leave the semantic signature unchanged while the
+strict executable payload differs. Such a case is classified as
+signature-equivalent, not object identity.
+
+The CP1 signature currently retains its normalized amplitude representative.
+No additional global-phase quotient is silently imposed by this layer.
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
