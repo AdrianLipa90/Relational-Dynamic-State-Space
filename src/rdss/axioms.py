@@ -909,6 +909,31 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_PRIORITY_FREE_REWRITE_SYSTEM",),
     ),
 
+    Claim(
+        "DEF_FAMILY_RANK_TERMINATION_CERTIFICATE",
+        ClaimKind.DEFINITION,
+        "A family-rank termination certificate assigns non-negative integer ranks to semantic families and is valid for a rewrite system when every registered rule strictly decreases rank from its source family to its target family.",
+        ("DEF_PRIORITY_FREE_REWRITE_SYSTEM",),
+    ),
+    Claim(
+        "THM_STRICT_FAMILY_RANK_TERMINATION",
+        ClaimKind.THEOREM,
+        "If every step of an admitted rewrite system strictly decreases a non-negative integer family rank, no infinite rewrite trace exists because the natural numbers admit no infinite strictly descending chain.",
+        ("DEF_FAMILY_RANK_TERMINATION_CERTIFICATE",),
+    ),
+    Claim(
+        "REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The reference forgetful rewrite system assigns rank 1 to relation_occurrence, relational_generative_model, relational_binary_distinction and occurrence_relation_path, rank 0 to their four target families, and default rank 0 elsewhere.",
+        ("DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER", "DEF_FAMILY_RANK_TERMINATION_CERTIFICATE"),
+    ),
+    Claim(
+        "THM_REFERENCE_FORGETFUL_REWRITE_TERMINATES",
+        ClaimKind.THEOREM,
+        "Every automatic trace in the reference forgetful rewrite system terminates after at most one rewrite step because every applicable source family has rank 1 and every rule target has rank 0, where no reference forgetful rule originates.",
+        ("REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE", "THM_STRICT_FAMILY_RANK_TERMINATION"),
+    ),
+
 )
 
 
