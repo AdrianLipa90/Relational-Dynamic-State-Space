@@ -757,6 +757,19 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_BRIDGE_EQUIVALENCE_GRAPH",),
     ),
 
+    Claim(
+        "DEF_REFERENCE_CORPUS",
+        ClaimKind.DEFINITION,
+        "The RDSS reference corpus is a finite named collection of executable objects built only from current RDSS core, structural, reference-realization and bridge types; it intentionally includes both signature-supported values and existing values outside current signature coverage.",
+        ("DEF_RDSS_CANONICAL_SIGNATURE",),
+    ),
+    Claim(
+        "DEF_REFERENCE_CORPUS_SCAN",
+        ClaimKind.DEFINITION,
+        "A reference corpus scan partitions corpus items into signature-supported values and explicit coverage gaps, classifies supported values by catalog novelty, constructs their bridge-aware equivalence graph, and reports unresolved bridge gaps without treating unsupported values as false mathematical equivalences.",
+        ("DEF_REFERENCE_CORPUS", "DEF_SIGNATURE_CATALOG", "DEF_BRIDGE_EQUIVALENCE_GRAPH", "DEF_BRIDGE_GAP_REPORT"),
+    ),
+
 )
 
 
