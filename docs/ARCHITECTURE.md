@@ -307,3 +307,13 @@ using CarrierMapContext. This operation is LOSSY because branch-slot identity
 is forgotten.
 
 No contextual bridge is automatically promoted to a global equivalence edge.
+
+
+### Executable bridge invariants
+
+Both global and contextual bridge layers enforce executable preservation tests.
+The global form compares source and target projections; the contextual form may
+also project through explicit caller-supplied context.
+
+A failed invariant aborts bridge execution. Verified invariant names are stored
+on the returned bridge step for downstream audit and GREMLIN ingestion.
