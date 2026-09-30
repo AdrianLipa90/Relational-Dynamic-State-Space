@@ -1,0 +1,304 @@
+# Canonical Normal Form and Reduction Gate
+
+## Purpose
+
+This layer exists to reduce representational chaos without silently identifying
+mathematically different objects.
+
+The governing rule is:
+
+\[
+\boxed{
+\text{normalize structure}
+\neq
+\text{erase distinctions}.
+}
+\]
+
+RDSS therefore separates strict canonical identity from explicit semantic
+reductions.
+
+## Strict canonical normal form
+
+For an executable value \(X\), define the strict normal form
+
+\[
+\mathcal N_0(X)
+=
+(\operatorname{type}(X),\operatorname{payload}(X)).
+\]
+
+The reference implementation recursively freezes finite executable data while
+retaining type tags. Dataclasses retain field names and values; tuple
+subclasses retain their concrete type tag; finite floats and complex values are
+encoded exactly rather than rounded.
+
+Consequently, representation type remains part of strict identity.
+
+In particular,
+
+\[
+\boxed{
+\mathcal N_0(
+\operatorname{OccurrenceAddress}(\omega)
+)
+\neq
+\mathcal N_0(
+\operatorname{RelationalPoint}(\omega)
+)
+}
+\]
+
+even when the displayed binary coordinates coincide.
+
+This preserves the existing carrier/occurrence separation.
+
+By construction,
+
+\[
+\boxed{
+\mathcal N_0(\mathcal N_0(X))
+=
+\mathcal N_0(X).
+}
+\]
+
+This is registered as THM_STRICT_NORMAL_FORM_IDEMPOTENCE.
+
+## Explicit reduction rule
+
+A reduction rule is typed by
+
+\[
+R
+=
+(P,f,\rho,\eta,f^{-1},\mathcal I,\mathcal C),
+\]
+
+where \(P\) is the applicability predicate, \(f\) the forward transformation,
+\(\rho\) the semantic relation kind, \(\eta\) the information effect,
+\(f^{-1}\) an optional explicit inverse, \(\mathcal I\) the preserved
+invariants and \(\mathcal C\) the claim-provenance set.
+
+The allowed relation kinds are
+
+\[
+\rho\in
+\{
+\mathrm{IDENTITY},
+\mathrm{EXACT\_EQUIVALENCE},
+\mathrm{ISOMORPHISM},
+\mathrm{REFERENCE\_REPRESENTATION},
+\mathrm{FORGETFUL\_PROJECTION},
+\mathrm{APPROXIMATION}
+\}.
+\]
+
+The information effect is independently declared as
+
+\[
+\eta\in
+\{
+\mathrm{LOSSLESS},
+\mathrm{LOSSY},
+\mathrm{UNKNOWN}
+\}.
+\]
+
+The two classifications are intentionally independent.
+
+## Reversibility rule
+
+A reduction may be declared LOSSLESS only when an explicit inverse is supplied.
+
+For an isomorphism rule this is mandatory:
+
+\[
+\boxed{
+\rho=\mathrm{ISOMORPHISM}
+\Longrightarrow
+\eta=\mathrm{LOSSLESS}
+\land
+f^{-1}\text{ supplied}.
+}
+\]
+
+The executable roundtrip check verifies
+
+\[
+\mathcal N_0\!\left(f^{-1}(f(X))\right)
+=
+\mathcal N_0(X).
+\]
+
+A passing round trip is evidence for the supplied executable realization; it is
+not by itself a universal theorem about every object in a broader mathematical
+class.
+
+## Fail-closed reduction dynamics
+
+For current state \(X_k\), let
+
+\[
+A(X_k)
+=
+\{R_j:P_j(X_k)=\mathrm{True}\}
+\]
+
+be the set of applicable reduction rules.
+
+The engine uses
+
+\[
+|A(X_k)|=0
+\Rightarrow
+\text{normal form reached},
+\]
+
+\[
+|A(X_k)|=1
+\Rightarrow
+X_{k+1}=f_j(X_k),
+\]
+
+\[
+|A(X_k)|>1
+\Rightarrow
+\boxed{\mathrm{AMBIGUOUS\_REDUCTION}}.
+\]
+
+Registration order is not used as hidden mathematical authority.
+
+The exact canonical key of every visited state is retained. Re-visiting a key,
+or applying a no-progress rule, raises a cycle error:
+
+\[
+\mathcal N_0(X_{k+1})
+\in
+\{
+\mathcal N_0(X_0),\ldots,\mathcal N_0(X_k)
+\}
+\Rightarrow
+\boxed{\mathrm{REDUCTION\_CYCLE}}.
+\]
+
+A finite max_steps guard is an additional executable termination boundary.
+A general global termination or confluence theorem has not yet been claimed.
+
+## Provenance trace
+
+Every accepted reduction step records
+
+\[
+(
+\text{rule},
+\rho,
+\eta,
+\mathcal N_0(X_k),
+\mathcal N_0(X_{k+1}),
+\text{inverse?},
+\mathcal I,
+\mathcal C
+).
+\]
+
+Thus the final canonical key and the route used to obtain it remain separate:
+
+\[
+\boxed{
+\text{canonical key}
+\neq
+\text{provenance}.
+}
+\]
+
+Two values may have the same final key while retaining different provenance
+histories.
+
+## Equality versus projection comparison
+
+The default comparison path rejects any reduction trace containing LOSSY or
+UNKNOWN.
+
+Therefore
+
+\[
+\boxed{
+\text{strict/lossless comparison}
+\neq
+\text{comparison after information loss}.
+}
+\]
+
+A lossy comparison requires explicit allow_lossy=True. That opt-in means only
+that the caller intentionally compares the projected values. It does not
+promote the original inputs to strict equality, isomorphism, or identity.
+
+## Initial RDSS projection rules
+
+The first domain-specific rule set contains only structures whose status was
+already explicit in RDSS.
+
+For a relation occurrence,
+
+\[
+(r,\omega_s,\omega_t)
+\longmapsto
+r,
+\]
+
+and for an occurrence-aware path,
+
+\[
+((r_1,\omega_0,\omega_1),\ldots,
+ (r_n,\omega_{n-1},\omega_n))
+\longmapsto
+(r_1,\ldots,r_n).
+\]
+
+Both are declared
+
+\[
+\boxed{
+\rho=\mathrm{FORGETFUL\_PROJECTION},
+\qquad
+\eta=\mathrm{LOSSY}.
+}
+\]
+
+They are grounded in DEF_OCCURRENCE_FORGETFUL_PROJECTION; the path rule also
+records THM_OCCURRENCE_COMPOSABILITY_PROJECTS.
+
+The projection preserves ordered relation values and carrier composability, but
+it discards occurrence addresses. Therefore it cannot be used silently to
+claim occurrence-level equivalence.
+
+## Non-assumptions
+
+The canonical reduction layer does not assume:
+
+- OccurrenceAddress equals RelationalPoint;
+- projection equality implies identity;
+- every reference representation is invertible;
+- every reduction system is confluent;
+- every reduction system terminates globally;
+- approximation is exact equivalence;
+- CP1, Hilbert--Moire, Zero Axis, or a physical geometry is the unique normal
+  form of RDSS.
+
+## Next gates
+
+The current implementation establishes the reduction substrate. The next
+mathematical gates are:
+
+1. an explicit RDSS signature extractor for carrier, occurrence, relation,
+   rank, semantic scale, phase, and representation fields;
+2. a typed registry of proven isomorphisms and reference representations;
+3. confluence analysis for compatible rule subsets;
+4. a well-founded reduction ordering for termination proofs;
+5. explicit quotient policies, including any future \(U(1)\) phase
+   normalization modulo one turn;
+6. machine-readable invariant preservation checks rather than string labels
+   alone.
+
+No item in this list is silently assumed by v0.1.
