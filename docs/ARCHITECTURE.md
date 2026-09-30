@@ -317,3 +317,20 @@ also project through explicit caller-supplied context.
 
 A failed invariant aborts bridge execution. Verified invariant names are stored
 on the returned bridge step for downstream audit and GREMLIN ingestion.
+
+
+## Cross-cutting rewrite layer
+
+src/rdss/rewrite.py
+
+The rewrite system is an oriented transformation layer above explicit bridge
+semantics. It does not assign hidden priorities and does not declare canonical
+representatives.
+
+The current reference subsystem adapts only FORGETFUL_PROJECTION bridges.
+Automatic execution is permitted only when one rule applies. Multiple
+applicable rules fail closed as ambiguity; repeated states fail closed as
+cycles.
+
+Executable bridge invariants are reused by rewrite steps and verified invariant
+names remain attached to the rewrite provenance.
