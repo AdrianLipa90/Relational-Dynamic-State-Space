@@ -2703,6 +2703,29 @@ component union:
 Thus the bridge-aware graph records both equivalence connectivity and directed
 information loss without conflating them.
 
+\subsection{Unresolved bridge gaps}
+
+Cross-family record pairs for which no registered bridge route matches are
+retained as unresolved. They are grouped by semantic-family pair,
+\[
+G(F_i,F_j)
+=
+\{(a,b):\operatorname{family}(a)=F_i,\;
+\operatorname{family}(b)=F_j,\;
+\text{no admitted matching bridge route}\}.
+\]
+This produces a finite map of missing bridge coverage without asserting that a
+bridge must exist:
+\[
+\boxed{
+\text{unresolved pair}
+\not\Rightarrow
+\text{bridge existence}.
+}
+\]
+A gap may later be resolved by a justified bridge, by a proof that the
+families remain distinct, or by refinement of the signature model.
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
