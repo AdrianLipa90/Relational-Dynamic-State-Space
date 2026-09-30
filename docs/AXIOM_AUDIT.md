@@ -444,3 +444,34 @@ The executable reference kernel preserves this distinction by allowing an empty 
 
 See \`docs/FOUNDATIONAL_NONVACUITY_GATE.md\`.
 
+
+
+## Canonical reduction claim layer
+
+The canonical reduction machinery is not a new foundational axiom. Its current
+claim classification is:
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_CANONICAL_NORMAL_FORM | DEFINITION | Exact type-tagged canonical key plus separate non-authoritative provenance. | — |
+| DEF_REDUCTION_RELATION_KIND | DEFINITION | Every reduction declares identity/equivalence/isomorphism/reference/projection/approximation status. | DEF_CANONICAL_NORMAL_FORM |
+| DEF_REDUCTION_INFORMATION_EFFECT | DEFINITION | Every reduction declares LOSSLESS/LOSSY/UNKNOWN; LOSSLESS requires an explicit inverse. | DEF_REDUCTION_RELATION_KIND |
+| DEF_REDUCTION_TRACE | DEFINITION | Every accepted step records before/after keys, relation kind, information effect, preserved invariants and claim provenance; ambiguity/cycles fail closed. | DEF_REDUCTION_INFORMATION_EFFECT |
+| THM_STRICT_NORMAL_FORM_IDEMPOTENCE | THEOREM | Strict normalization satisfies \(\mathcal N_0(\mathcal N_0(X))=\mathcal N_0(X)\) by construction. | DEF_CANONICAL_NORMAL_FORM |
+
+None of these claims changes
+
+\[
+\boxed{
+\mathrm{META0}
+\triangleright
+(\mathrm{RA0}+\mathrm{RR1}).
+}
+\]
+
+The first RDSS-specific canonical reductions reuse the existing
+DEF_OCCURRENCE_FORGETFUL_PROJECTION and
+THM_OCCURRENCE_COMPOSABILITY_PROJECTS claims. They are marked LOSSY and are not
+reclassified as identity or isomorphism.
+
+See docs/CANONICAL_REDUCTION_GATE.md.
