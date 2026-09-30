@@ -6,7 +6,11 @@ from enum import Enum
 from typing import Callable
 
 from .algebra import RelationalPoint
-from .canonical import EquivalenceKind, InformationEffect
+from .canonical import (
+    EquivalenceKind,
+    InformationEffect,
+    strict_normal_form,
+)
 from .closure import BranchRelationOccurrence
 from .operations import TypedRelation
 from .signature import SignatureEngine, rdss_signature_engine
@@ -25,6 +29,10 @@ class AmbiguousContextualBridgeError(ContextualBridgeError):
 
 
 class ContextualBridgeTypeError(ContextualBridgeError):
+    pass
+
+
+class ContextualBridgeInvariantError(ContextualBridgeError):
     pass
 
 
@@ -85,6 +93,53 @@ class CarrierMapContext:
 
 ContextPredicate = Callable[[object], bool]
 ContextualTransform = Callable[[object, object], object]
+ContextualInvariantProjection = Callable[[object, object], object]
+ContextualInvariantTargetProjection = Callable[[object], object]
+ContextualInvariantComparator = Callable[[object, object], bool]
+
+
+def _strict_contextual_invariant_equal(
+    left: object,
+    right: object,
+) -> bool:
+    return strict_normal_form(left).same_key(
+        strict_normal_form(right)
+    )
+
+
+@dataclass(frozen=True)
+class ContextualBridgeInvariant:
+    name: str
+    source_context_projection: ContextualInvariantProjection
+    target_projection: ContextualInvariantTargetProjection
+    comparator: ContextualInvariantComparator = (
+        _strict_contextual_invariant_equal
+    )
+    claim_ids: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        if not self.name.strip():
+            raise ValueError(
+                "contextual bridge invariant name must be non-empty"
+            )
+        if any(not item.strip() for item in self.claim_ids):
+            raise ValueError(
+                "contextual bridge invariant claim ids "
+                "must be non-empty"
+            )
+
+    def verify(
+        self,
+        source: object,
+        context: object,
+        target: object,
+    ) -> bool:
+        left = self.source_context_projection(
+            source,
+            context,
+        )
+        right = self.target_projection(target)
+        return bool(self.comparator(left, right))
 
 
 @dataclass(frozen=True)
@@ -99,6 +154,7 @@ class ContextualBridgeSpec:
     transform: ContextualTransform
     kind: EquivalenceKind
     information_effect: InformationEffect
+    invariants: tuple[ContextualBridgeInvariant, ...] = ()
     preserves: tuple[str, ...] = ()
     claim_ids: tuple[str, ...] = ()
 
@@ -135,6 +191,13 @@ class ContextualBridgeSpec:
                 "projection/approximation contextual bridge "
                 "cannot be LOSSLESS"
             )
+        invariant_names = [
+            item.name for item in self.invariants
+        ]
+        if len(invariant_names) != len(set(invariant_names)):
+            raise ValueError(
+                "contextual bridge invariant names must be unique"
+            )
         if any(not item.strip() for item in self.preserves):
             raise ValueError(
                 "contextual bridge preserved invariants "
@@ -154,6 +217,7 @@ class ContextualBridgeStep:
     information_effect: InformationEffect
     source_family: str
     target_family: str
+    verified_invariants: tuple[str, ...]
     preserves: tuple[str, ...]
     claim_ids: tuple[str, ...]
 
@@ -248,6 +312,19 @@ class ContextualBridgeRegistry:
                 f"{target_signature.family!r}"
             )
 
+        verified_invariants: list[str] = []
+        for invariant in spec.invariants:
+            if not invariant.verify(
+                value,
+                context,
+                target,
+            ):
+                raise ContextualBridgeInvariantError(
+                    f"contextual bridge {spec.name!r} "
+                    f"failed invariant {invariant.name!r}"
+                )
+            verified_invariants.append(invariant.name)
+
         return ContextualBridgeResult(
             value=target,
             step=ContextualBridgeStep(
@@ -257,6 +334,9 @@ class ContextualBridgeRegistry:
                 information_effect=spec.information_effect,
                 source_family=spec.source_family,
                 target_family=spec.target_family,
+                verified_invariants=tuple(
+                    verified_invariants
+                ),
                 preserves=spec.preserves,
                 claim_ids=spec.claim_ids,
             ),
@@ -303,6 +383,40 @@ def rdss_contextual_bridge_specs(
             transform=materialize_branch_relation_occurrence,
             kind=EquivalenceKind.FORGETFUL_PROJECTION,
             information_effect=InformationEffect.LOSSY,
+            invariants=(
+                ContextualBridgeInvariant(
+                    "relation label",
+                    source_context_projection=lambda value, context: (
+                        value.relation_label
+                    ),
+                    target_projection=lambda value: value.label,
+                    claim_ids=(
+                        "DEF_CONTEXTUAL_BRANCH_RELATION_MATERIALIZATION",
+                    ),
+                ),
+                ContextualBridgeInvariant(
+                    "source endpoint through supplied carrier map",
+                    source_context_projection=lambda value, context: (
+                        context.resolve(value.source)
+                    ),
+                    target_projection=lambda value: value.source,
+                    claim_ids=(
+                        "DEF_CARRIER_MAP_CONTEXT",
+                        "DEF_CONTEXTUAL_BRANCH_RELATION_MATERIALIZATION",
+                    ),
+                ),
+                ContextualBridgeInvariant(
+                    "target endpoint through supplied carrier map",
+                    source_context_projection=lambda value, context: (
+                        context.resolve(value.target)
+                    ),
+                    target_projection=lambda value: value.target,
+                    claim_ids=(
+                        "DEF_CARRIER_MAP_CONTEXT",
+                        "DEF_CONTEXTUAL_BRANCH_RELATION_MATERIALIZATION",
+                    ),
+                ),
+            ),
             preserves=(
                 "relation label",
                 "source endpoint through supplied carrier map",
