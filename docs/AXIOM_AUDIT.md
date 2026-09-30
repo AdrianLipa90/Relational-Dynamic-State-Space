@@ -605,3 +605,15 @@ and is not a global RDSS canonical-normal-form claim.
 
 The reference scoped normal form is explicitly not a global RDSS canonical
 normal-form claim.
+
+
+## Semantic factorization layer
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_SEMANTIC_FACTORIZATION | DEFINITION | Explicit \((F,S,\sigma,\rho)\) view over RDSSSignature: family, structural key, state key and representation tag. | DEF_RDSS_CANONICAL_SIGNATURE, DEF_SIGNATURE_AXIS_STRATIFICATION |
+| THM_FACTORIZATION_RECONSTRUCTS_SEMANTIC_KEY | THEOREM | The factorization preserves the original structural, state and semantic keys exactly. | DEF_SEMANTIC_FACTORIZATION |
+| DEF_FACTORIZATION_COMPARISON | DEFINITION | Ordered comparison by family, structure, state and representation. | DEF_SEMANTIC_FACTORIZATION |
+| REF_REFERENCE_CORPUS_FACTORIZATION_SUMMARY | REFERENCE REALIZATION | Current 36-record source corpus contracts to 22 families, 28 structures, 34 semantic states and 22 representation classes. | DEF_REFERENCE_CORPUS, DEF_SEMANTIC_FACTORIZATION |
+
+This layer does not add a new quotient or override bridge semantics.
