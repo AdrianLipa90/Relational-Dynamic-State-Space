@@ -949,3 +949,66 @@ for every automatic trace in this subsystem.
 
 This proves termination only for the selected reference forgetful rewrite
 system. It does not prove termination for arbitrary future rewrite rules.
+
+
+## Critical pairs and confluence certificate
+
+A source-family overlap audit inspects unordered pairs of rewrite rules.
+Rules with different declared source families cannot both apply to one admitted
+value because every value has one semantic signature family.
+
+Candidate overlap:
+
+\[
+R_i:F\to F_i,
+\qquad
+R_j:F\to F_j.
+\]
+
+For a concrete value \(X\) with two applicable rules the analyzer records the
+critical pair
+
+\[
+R_i(X),
+\qquad
+R_j(X).
+\]
+
+The reference forgetful rewrite system has four rules with pairwise distinct
+source families, therefore its source-family overlap audit is empty.
+
+Hence every admitted value has at most one immediate rewrite successor:
+
+\[
+\boxed{
+\#\operatorname{Succ}(X)\le 1.
+}
+\]
+
+A deterministic rewrite relation is confluent. If
+
+\[
+X\to^*Y,
+\qquad
+X\to^*Z,
+\]
+
+both endpoints lie on the same unique successor orbit. Without loss of
+generality the shorter path endpoint rewrites to the longer one, so the pair is
+joinable.
+
+Therefore the current reference forgetful system is confluent.
+
+Combining this certificate with the family-rank termination certificate yields
+a unique irreducible result for every admitted value under this selected
+rewrite system.
+
+This result is scoped:
+
+\[
+\boxed{
+\text{unique irreducible under reference forgetful rewrite}
+\neq
+\text{global RDSS canonical normal form}.
+}
+\]
