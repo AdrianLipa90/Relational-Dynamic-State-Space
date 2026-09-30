@@ -647,3 +647,51 @@ Structural monograph audit on this head:
 These remain source/static validation results. Full repository pytest and actual
 LaTeX compilation remain NOT YET RUN on an exact complete checkout of this
 branch.
+
+
+## Semantic factorization milestone — 2026-09-30
+
+This section supersedes earlier current-state counts while preserving previous
+milestone snapshots as provenance.
+
+Current branch source/static baseline:
+
+- branch distance from main: 222 commits ahead, 0 behind;
+- changed files versus main: 39;
+- Python test functions: 365;
+- claim entries: 165;
+- package-root exports: 240;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0;
+- missing exports from semantic factorization public API: 0.
+
+Every admitted RDSSSignature is now exposed as the explicit factorization
+
+\[
+\mathfrak F(X)=(F,S,\sigma,\rho),
+\]
+
+where family, structural key, state key and representation remain separate.
+
+The factorization is a view over existing signature semantics and reconstructs
+the original structural/state/semantic keys exactly.
+
+Reference corpus source contract:
+
+\[
+(36,22,28,34,22)
+\]
+
+for records, families, structures, semantic states and representation classes.
+
+Structural monograph audit on this head:
+
+- unmatched environments: 0;
+- environment mismatches: 0;
+- brace balance: 0;
+- negative brace events: 0;
+- display delimiters: 292 open / 292 close.
+
+These remain source/static validation results. Full repository pytest and actual
+LaTeX compilation remain NOT YET RUN on an exact complete checkout of this
+branch.
