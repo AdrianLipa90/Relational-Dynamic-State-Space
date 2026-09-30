@@ -12,7 +12,8 @@ def test_reference_bridge_triage_has_stable_status_counts():
     assert summary.entries == 11
     assert summary.implemented_lossless == 3
     assert summary.implemented_lossy == 4
-    assert summary.context_required == 1
+    assert summary.implemented_contextual_lossy == 1
+    assert summary.context_required == 0
     assert summary.missing_intermediate_family == 0
     assert summary.composite_not_equivalent == 2
     assert summary.no_bridge_claim == 1
@@ -30,14 +31,20 @@ def test_reference_bridge_triage_claim_provenance_resolves():
     assert missing == set()
 
 
-def test_context_required_bridge_is_branch_occurrence_to_typed_relation():
+def test_contextual_branch_occurrence_bridge_is_implemented_lossy():
     entries = rdss_reference_bridge_triage().by_status(
-        BridgeTriageStatus.CONTEXT_REQUIRED
+        BridgeTriageStatus.IMPLEMENTED_CONTEXTUAL_LOSSY
     )
 
     assert len(entries) == 1
     assert entries[0].source_family == "branch_relation_occurrence"
     assert entries[0].target_family == "typed_relation"
+
+
+def test_reference_triage_has_no_unimplemented_context_required_entry():
+    assert rdss_reference_bridge_triage().by_status(
+        BridgeTriageStatus.CONTEXT_REQUIRED
+    ) == ()
 
 
 def test_zero_axis_u1_bridge_is_now_implemented_lossless():
