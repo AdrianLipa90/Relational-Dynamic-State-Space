@@ -6,10 +6,14 @@ from rdss.canonical import (
     AmbiguousReductionError,
     EquivalenceKind,
     InformationEffect,
+    FiniteConfluenceStatus,
+    LexicographicReductionOrder,
     LossyReductionError,
+    NonDescendingReductionError,
     ReductionCycleError,
     ReductionEngine,
     ReductionRule,
+    audit_finite_confluence,
     rdss_projection_engine,
     roundtrip_check,
     strict_normal_form,
@@ -212,3 +216,178 @@ def test_rdss_occurrence_path_projection_preserves_order_but_loses_addresses():
         "ordered relation values",
         "carrier composability",
     )
+
+
+
+def test_well_founded_order_accepts_strict_descent():
+    rule = ReductionRule(
+        "decrement",
+        lambda value: isinstance(value, int) and value > 0,
+        lambda value: value - 1,
+        EquivalenceKind.EXACT_EQUIVALENCE,
+        InformationEffect.UNKNOWN,
+    )
+    order = LexicographicReductionOrder(
+        "natural-number",
+        lambda value: (value,),
+        1,
+    )
+
+    result = ReductionEngine(
+        (rule,),
+        ordering=order,
+    ).reduce(3)
+
+    assert result.value == 0
+    assert len(result.trace.steps) == 3
+
+
+def test_well_founded_order_rejects_non_descent():
+    rule = ReductionRule(
+        "increment",
+        lambda value: isinstance(value, int),
+        lambda value: value + 1,
+        EquivalenceKind.APPROXIMATION,
+        InformationEffect.UNKNOWN,
+    )
+    order = LexicographicReductionOrder(
+        "natural-number",
+        lambda value: (value,),
+        1,
+    )
+
+    with pytest.raises(NonDescendingReductionError):
+        ReductionEngine(
+            (rule,),
+            ordering=order,
+        ).reduce(1)
+
+
+def test_reduction_order_requires_fixed_measure_dimension():
+    order = LexicographicReductionOrder(
+        "fixed-one",
+        lambda value: (value,) if value else (0, 0),
+        1,
+    )
+
+    assert order.key(2) == (2,)
+    with pytest.raises(ValueError):
+        order.key(0)
+
+
+def test_finite_confluence_audit_finds_unique_join():
+    rules = (
+        ReductionRule(
+            "start-left",
+            lambda value: value == "start",
+            lambda value: "left",
+            EquivalenceKind.EXACT_EQUIVALENCE,
+            InformationEffect.UNKNOWN,
+        ),
+        ReductionRule(
+            "start-right",
+            lambda value: value == "start",
+            lambda value: "right",
+            EquivalenceKind.EXACT_EQUIVALENCE,
+            InformationEffect.UNKNOWN,
+        ),
+        ReductionRule(
+            "left-end",
+            lambda value: value == "left",
+            lambda value: "end",
+            EquivalenceKind.EXACT_EQUIVALENCE,
+            InformationEffect.UNKNOWN,
+        ),
+        ReductionRule(
+            "right-end",
+            lambda value: value == "right",
+            lambda value: "end",
+            EquivalenceKind.EXACT_EQUIVALENCE,
+            InformationEffect.UNKNOWN,
+        ),
+    )
+
+    report = audit_finite_confluence(
+        "start",
+        rules,
+        max_depth=3,
+    )
+
+    assert report.status is FiniteConfluenceStatus.UNIQUE_NORMAL_FORM
+    assert report.confluent_on_explored_graph
+    assert len(report.terminal_keys) == 1
+
+
+def test_finite_confluence_audit_detects_multiple_normal_forms():
+    rules = (
+        ReductionRule(
+            "start-left",
+            lambda value: value == "start",
+            lambda value: "left",
+            EquivalenceKind.APPROXIMATION,
+            InformationEffect.UNKNOWN,
+        ),
+        ReductionRule(
+            "start-right",
+            lambda value: value == "start",
+            lambda value: "right",
+            EquivalenceKind.APPROXIMATION,
+            InformationEffect.UNKNOWN,
+        ),
+    )
+
+    report = audit_finite_confluence(
+        "start",
+        rules,
+        max_depth=2,
+    )
+
+    assert report.status is FiniteConfluenceStatus.MULTIPLE_NORMAL_FORMS
+    assert len(report.terminal_keys) == 2
+
+
+def test_finite_confluence_audit_detects_cycle():
+    rules = (
+        ReductionRule(
+            "a-b",
+            lambda value: value == "a",
+            lambda value: "b",
+            EquivalenceKind.APPROXIMATION,
+            InformationEffect.UNKNOWN,
+        ),
+        ReductionRule(
+            "b-a",
+            lambda value: value == "b",
+            lambda value: "a",
+            EquivalenceKind.APPROXIMATION,
+            InformationEffect.UNKNOWN,
+        ),
+    )
+
+    report = audit_finite_confluence(
+        "a",
+        rules,
+        max_depth=4,
+    )
+
+    assert report.status is FiniteConfluenceStatus.CYCLE_DETECTED
+    assert report.cycle_edges
+
+
+def test_finite_confluence_audit_reports_depth_truncation():
+    rule = ReductionRule(
+        "decrement",
+        lambda value: isinstance(value, int) and value > 0,
+        lambda value: value - 1,
+        EquivalenceKind.EXACT_EQUIVALENCE,
+        InformationEffect.UNKNOWN,
+    )
+
+    report = audit_finite_confluence(
+        3,
+        (rule,),
+        max_depth=1,
+    )
+
+    assert report.status is FiniteConfluenceStatus.BOUNDED_INCOMPLETE
+    assert report.truncated_keys
