@@ -1411,3 +1411,41 @@ def test_semantic_factorization_claims_reuse_signature_semantics():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_claim_provenance_graph_is_a_projection_of_existing_ledger():
+    claims = claim_map()
+
+    assert claims["DEF_CLAIM_DEPENDENCY_PROJECTION"].kind is ClaimKind.DEFINITION
+    assert "DEF_RDSS_CANONICAL_SIGNATURE" in dependency_closure(
+        "DEF_CLAIM_DEPENDENCY_PROJECTION"
+    )
+
+    assert claims["THM_PROVENANCE_TOPOLOGICAL_ORDER"].kind is ClaimKind.THEOREM
+    assert "DEF_CLAIM_DEPENDENCY_PROJECTION" in dependency_closure(
+        "THM_PROVENANCE_TOPOLOGICAL_ORDER"
+    )
+
+    assert claims["DEF_VALUE_CLAIM_PROVENANCE"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure("DEF_VALUE_CLAIM_PROVENANCE")
+    assert "DEF_CLAIM_DEPENDENCY_PROJECTION" in closure
+    assert "DEF_SEMANTIC_FACTORIZATION" in closure
+    assert "DEF_RDSS_CANONICAL_SIGNATURE" in closure
+
+    assert claims["DEF_TRANSFORMATION_CLAIM_PROVENANCE"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure(
+        "DEF_TRANSFORMATION_CLAIM_PROVENANCE"
+    )
+    assert "DEF_CLAIM_DEPENDENCY_PROJECTION" in closure
+    assert "DEF_BRIDGE_ROUTE" in closure
+    assert "DEF_PRIORITY_FREE_REWRITE_SYSTEM" in closure
+    assert "DEF_SCOPED_REWRITE_NORMAL_FORM" in closure
+
+    assert {
+        "DEF_CLAIM_DEPENDENCY_PROJECTION",
+        "THM_PROVENANCE_TOPOLOGICAL_ORDER",
+        "DEF_VALUE_CLAIM_PROVENANCE",
+        "DEF_TRANSFORMATION_CLAIM_PROVENANCE",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
