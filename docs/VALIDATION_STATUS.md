@@ -241,3 +241,47 @@ Structural LaTeX audit on the current branch text reports:
 
 These are structural checks only. Full pytest and full LaTeX compilation remain
 NOT YET RUN on a complete checkout of this branch.
+
+
+## Termination/confluence milestone — 2026-09-30
+
+Current branch inventory after the ordering and finite-confluence layer:
+
+- branch distance from main: 48 commits ahead, 0 behind;
+- changed files versus main: 14;
+- Python test functions: 253;
+- claim entries: 113;
+- package-root exports: 146;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0;
+- canonical public definitions: 22, missing exports: 0;
+- signature public definitions: 17, missing exports: 0.
+
+The new source tests cover:
+
+- strict descent under a fixed-dimensional lexicographic N^k measure;
+- rejection of non-descending steps;
+- rejection of variable-dimensional measures;
+- finite confluence with a unique join;
+- finite non-confluence via multiple terminal forms;
+- explicit cycle detection;
+- bounded-incomplete depth truncation.
+
+An independent local logic harness reproduced all four finite-confluence outcome
+classes used by the implementation: unique normal form, multiple normal forms,
+cycle detected, and bounded incomplete.
+
+Structural checks on the current monograph text report:
+
+- unmatched LaTeX environments: 0;
+- environment mismatches: 0;
+- brace balance: 0;
+- negative brace events: 0;
+- display delimiters: 254 open / 254 close.
+
+Changed Markdown files inspected for control characters and bare standalone
+square-bracket math delimiters report no findings.
+
+These remain source/static/harness results. Full repository pytest and actual
+LaTeX compilation have NOT YET been executed on a complete checkout of this
+branch.
