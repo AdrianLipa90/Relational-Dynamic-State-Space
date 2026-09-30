@@ -135,6 +135,7 @@ The current canonical foundational stratification is
 
 Contains representation-level U(1) utilities:
 
+- explicit normalized U1Phase values;
 - principal phase wrapping;
 - turn count plus residual;
 - closed-path winding.
@@ -178,7 +179,7 @@ For a separately verified phase \(u\in U(1)\), \(u\neq-1\), the optional bridge 
 \Omega^{-1}(u)=\frac{u}{1+u}.
 \]
 
-The critical-axis/unit-circle identity belongs to the companion Zero Axis bridge, not to the primitive RTOFA signature. The existence of a holonomy-to-\(U(1)\) representation is a separate realization question.
+The critical-axis/unit-circle identity belongs to the companion Zero Axis bridge, not to the primitive RTOFA signature. The finite typed U1/Zero-Axis bridge is explicit on \(U(1)\setminus\{-1\}\); the exceptional phase remains the compactified point at infinity. The existence of a holonomy-to-\(U(1)\) representation is a separate realization question.
 
 ## Public API
 
