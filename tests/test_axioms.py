@@ -946,3 +946,43 @@ def test_reduction_termination_and_confluence_claims_are_scoped():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_bridge_registry_claims_preserve_semantic_sort_separation():
+    claims = claim_map()
+
+    assert claims["DEF_BRIDGE_REGISTRY"].kind is ClaimKind.DEFINITION
+    assert "DEF_SIGNATURE_COMPARISON" in dependency_closure(
+        "DEF_BRIDGE_REGISTRY"
+    )
+
+    assert claims["DEF_BRIDGE_ROUTE"].kind is ClaimKind.DEFINITION
+    assert "DEF_BRIDGE_REGISTRY" in dependency_closure(
+        "DEF_BRIDGE_ROUTE"
+    )
+
+    assert claims["DEF_BRIDGE_COMPARISON"].kind is ClaimKind.DEFINITION
+    assert "DEF_BRIDGE_ROUTE" in dependency_closure(
+        "DEF_BRIDGE_COMPARISON"
+    )
+
+    assert claims["REF_OCCURRENCE_POINT_BRIDGE"].kind is ClaimKind.REFERENCE_REALIZATION
+    closure = dependency_closure("REF_OCCURRENCE_POINT_BRIDGE")
+    assert "DEF_CARRIER_OCCURRENCE_SEPARATION" in closure
+    assert "REF_RELATIONAL_POINT_BINARY_COORDINATE" in closure
+    assert "DEF_BRIDGE_REGISTRY" in closure
+
+    assert claims["THM_REFERENCE_COORDINATE_ROUNDTRIP"].kind is ClaimKind.THEOREM
+    assert "REF_OCCURRENCE_POINT_BRIDGE" in dependency_closure(
+        "THM_REFERENCE_COORDINATE_ROUNDTRIP"
+    )
+
+    assert {
+        "DEF_BRIDGE_REGISTRY",
+        "DEF_BRIDGE_ROUTE",
+        "DEF_BRIDGE_COMPARISON",
+        "REF_OCCURRENCE_POINT_BRIDGE",
+        "THM_REFERENCE_COORDINATE_ROUNDTRIP",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
