@@ -1104,3 +1104,33 @@ def test_bridge_gap_triage_is_diagnostic_and_non_foundational():
     assert "DEF_BRIDGE_GAP_TRIAGE" not in {
         claim.id for claim in foundational_axioms()
     }
+
+
+def test_u1_zero_axis_bridge_claims_are_scoped():
+    claims = claim_map()
+
+    assert claims["REF_U1_PHASE_VALUE"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["DEF_BRIDGE_ROUNDTRIP_VALIDATOR"].kind is ClaimKind.DEFINITION
+    assert "DEF_BRIDGE_REGISTRY" in dependency_closure(
+        "DEF_BRIDGE_ROUNDTRIP_VALIDATOR"
+    )
+
+    assert claims["REF_U1_ZERO_AXIS_FINITE_BRIDGE"].kind is ClaimKind.REFERENCE_REALIZATION
+    closure = dependency_closure("REF_U1_ZERO_AXIS_FINITE_BRIDGE")
+    assert "REF_U1_PHASE_VALUE" in closure
+    assert "ZA_BRIDGE" in closure
+    assert "DEF_BRIDGE_ROUNDTRIP_VALIDATOR" in closure
+
+    assert claims["THM_U1_ZERO_AXIS_FINITE_ROUNDTRIP"].kind is ClaimKind.THEOREM
+    assert "REF_U1_ZERO_AXIS_FINITE_BRIDGE" in dependency_closure(
+        "THM_U1_ZERO_AXIS_FINITE_ROUNDTRIP"
+    )
+
+    assert {
+        "REF_U1_PHASE_VALUE",
+        "DEF_BRIDGE_ROUNDTRIP_VALIDATOR",
+        "REF_U1_ZERO_AXIS_FINITE_BRIDGE",
+        "THM_U1_ZERO_AXIS_FINITE_ROUNDTRIP",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
