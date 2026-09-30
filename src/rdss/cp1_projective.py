@@ -191,7 +191,6 @@ def compare_cp1_projective(
 
     equivalent = (
         determinant_residual <= tolerance
-        and distance <= tolerance
         and left_point.equivalent_to(
             right_point,
             tolerance=tolerance,
