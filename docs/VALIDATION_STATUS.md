@@ -734,3 +734,48 @@ Structural monograph audit on this head:
 - display delimiters: 293 open / 293 close.
 
 These remain source/static validation results. Full repository pytest and actual LaTeX compilation remain NOT YET RUN on an exact complete checkout of this branch.
+
+
+## Object reduction certificate milestone — 2026-09-30
+
+This section supersedes earlier current-state counts while preserving previous milestone snapshots as provenance.
+
+Current branch source/static baseline:
+
+- branch distance from main: 256 commits ahead, 0 behind;
+- changed files versus main: 46;
+- Python test functions: 384;
+- claim entries: 174;
+- package-root exports: 257;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0;
+- missing exports from reduction-certificate and certificate-scan public APIs: 0.
+
+The object-level reduction certificate now joins source/target value provenance, certified rewrite trace, scoped normal form, executable invariant evidence, termination/confluence certificate identities and the authoritative combined claim dependency projection.
+
+Its validator rechecks all of those surfaces and fails closed on disagreement. The certificate explicitly reports global_canonical=False.
+
+The reference batch scan source contract is:
+
+- records: 36;
+- verified certificates: 36;
+- rewritten: 5;
+- fixed points: 31;
+- LOSSY reductions: 5;
+- global-canonical-true: 0;
+- distinct source families: 22;
+- distinct target families after selected forgetful reduction: 18.
+
+The deterministic CLI emits schema rdss.reduction-certificate-scan/v1 and exits non-zero if any corpus certificate fails verification or if any result claims global canonicality.
+
+Structural monograph audit on this head:
+
+- unmatched environments: 0;
+- environment mismatches: 0;
+- brace balance: 0;
+- negative brace events: 0;
+- display delimiters: 296 open / 296 close.
+
+NOEMA/AUX tether was re-checked during continuation and returned ACTIVE with failures=[].
+
+These remain source/static validation results. Full repository pytest and actual LaTeX compilation remain NOT YET RUN on an exact complete checkout of this branch.
