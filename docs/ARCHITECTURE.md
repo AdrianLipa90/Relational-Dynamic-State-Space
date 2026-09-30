@@ -52,6 +52,43 @@ Occurrence identity is preserved separately from relation values. The structural
 
 A carrier self-loop can be closed at the value level while remaining open at the occurrence level. Occurrence-aware holonomy is therefore strictly guarded against this information loss.
 
+## Cross-cutting canonical reduction layer
+
+\`src/rdss/canonical.py\`
+
+This layer gives RDSS a fail-closed mechanism for deciding when two
+representations may be reduced to a common executable form without silently
+erasing semantic distinctions.
+
+The strict form preserves concrete type tags:
+
+\[
+\mathcal N_0(X)
+=
+(\operatorname{type}(X),\operatorname{payload}(X)).
+\]
+
+Therefore equal-looking binary coordinates on \`OccurrenceAddress\` and
+\`RelationalPoint\` remain different strict forms.
+
+Every non-trivial reduction rule declares:
+
+- semantic relation kind;
+- information effect: LOSSLESS, LOSSY, or UNKNOWN;
+- optional inverse;
+- preserved invariants;
+- claim provenance.
+
+Multiple simultaneously applicable rules fail as ambiguity. Re-visiting an
+already observed strict key fails as a reduction cycle. LOSSY/UNKNOWN traces
+are rejected by default when testing equivalence.
+
+The first RDSS-specific rules are only the already-established
+occurrence-to-value forgetful projections. They are explicitly marked LOSSY.
+No projection is promoted to identity, isomorphism, or strict equality.
+
+See \`docs/CANONICAL_REDUCTION_GATE.md\`.
+
 ## Layer 2 — Relational potential diagnostics
 
 \`src/rdss/potential.py\`
