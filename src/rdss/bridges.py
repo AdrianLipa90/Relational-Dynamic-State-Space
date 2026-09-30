@@ -472,7 +472,17 @@ class BridgeRegistry:
 
 def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
     """Return only bridges already justified by the current RDSS ledger."""
-    from .algebra import OccurrenceAddress, RelationalPoint, TypedRelation
+    from .algebra import (
+        OccurrenceAddress,
+        RelationalPoint,
+        TensorScalarElement,
+        TypedRelation,
+        TypedZero,
+    )
+    from .closure import (
+        BinaryDistinction,
+        RelationalBinaryDistinction,
+    )
     from .operations import (
         OccurrenceRelationPath,
         RelationOccurrence,
@@ -506,6 +516,32 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
             ),
         ),
         BridgeSpec(
+            name="typed_zero_to_zero_element",
+            source_family="typed_zero",
+            target_family="tensor_scalar_element",
+            forward=lambda value: value.as_element(),
+            inverse=TypedZero.from_element,
+            source_check=lambda value: isinstance(value, TypedZero),
+            target_check=lambda value: (
+                isinstance(value, TensorScalarElement)
+                and all(component == 0j for component in value.components)
+            ),
+            kind=EquivalenceKind.REFERENCE_REPRESENTATION,
+            information_effect=InformationEffect.LOSSLESS,
+            preserves=(
+                "tensor rank",
+                "carrier",
+                "semantic scale",
+                "component dimension",
+                "additive zero",
+            ),
+            claim_ids=(
+                "DEF_TYPED_ZERO",
+                "DEF_TS",
+                "PRIM_MODULE",
+            ),
+        ),
+        BridgeSpec(
             name="forget_relation_occurrence",
             source_family="relation_occurrence",
             target_family="typed_relation",
@@ -527,6 +563,32 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
             ),
             claim_ids=(
                 "DEF_OCCURRENCE_FORGETFUL_PROJECTION",
+            ),
+        ),
+        BridgeSpec(
+            name="forget_relational_distinction_binding",
+            source_family="relational_binary_distinction",
+            target_family="binary_distinction",
+            forward=lambda value: value.binary,
+            source_check=lambda value: isinstance(
+                value,
+                RelationalBinaryDistinction,
+            ),
+            target_check=lambda value: isinstance(
+                value,
+                BinaryDistinction,
+            ),
+            kind=EquivalenceKind.FORGETFUL_PROJECTION,
+            information_effect=InformationEffect.LOSSY,
+            preserves=(
+                "host label",
+                "left endpoint label",
+                "right endpoint label",
+                "binary branch slots",
+            ),
+            claim_ids=(
+                "DEF_RELATIONAL_DISTINCTION",
+                "DEF_BINARY_DISTINCTION",
             ),
         ),
         BridgeSpec(
