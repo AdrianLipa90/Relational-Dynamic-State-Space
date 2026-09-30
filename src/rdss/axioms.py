@@ -803,6 +803,30 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_BRIDGE_GAP_REPORT", "DEF_BRIDGE_REGISTRY"),
     ),
 
+    Claim(
+        "REF_U1_PHASE_VALUE",
+        ClaimKind.REFERENCE_REALIZATION,
+        "A finite U(1) phase value may be represented explicitly by a normalized complex number u with |u|=1; the reference U1Phase type rejects zero, non-finite values, and values outside the unit circle tolerance.",
+    ),
+    Claim(
+        "DEF_BRIDGE_ROUNDTRIP_VALIDATOR",
+        ClaimKind.DEFINITION,
+        "A LOSSLESS executable bridge uses strict canonical round-trip equality by default; a bridge may instead supply an explicit round-trip validator when its numerical representation is mathematically reversible but floating evaluation is not bitwise exact.",
+        ("DEF_BRIDGE_REGISTRY",),
+    ),
+    Claim(
+        "REF_U1_ZERO_AXIS_FINITE_BRIDGE",
+        ClaimKind.REFERENCE_REALIZATION,
+        "On the finite domain U(1) without u=-1, the projective map Omega^{-1}(u)=u/(1+u) and Omega(s)=s/(1-s) provide an explicit reversible bridge between U1Phase and finite ZeroAxisPoint values; u=-1 remains the compactified point at infinity.",
+        ("REF_U1_PHASE_VALUE", "ZA_BRIDGE", "DEF_BRIDGE_ROUNDTRIP_VALIDATOR"),
+    ),
+    Claim(
+        "THM_U1_ZERO_AXIS_FINITE_ROUNDTRIP",
+        ClaimKind.THEOREM,
+        "For finite admitted U1Phase and ZeroAxisPoint values, the explicit Omega/Omega^{-1} bridge returns the starting semantic value within its declared numerical round-trip tolerance; the exceptional phase u=-1 is outside the finite bridge domain.",
+        ("REF_U1_ZERO_AXIS_FINITE_BRIDGE",),
+    ),
+
 )
 
 
