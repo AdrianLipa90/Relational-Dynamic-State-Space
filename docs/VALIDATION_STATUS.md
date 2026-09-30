@@ -539,3 +539,60 @@ ACTIVE with failures=[] and static_fallback=false during this continuation.
 These remain source/static validation results. Full repository pytest and
 actual LaTeX compilation remain NOT YET RUN on an exact complete checkout of
 this branch.
+
+
+## Rewrite termination and confluence milestone — 2026-09-30
+
+This section supersedes earlier current-state counts while preserving previous
+milestone snapshots as provenance.
+
+Current branch source/static baseline:
+
+- branch distance from main: 198 commits ahead, 0 behind;
+- changed files versus main: 35;
+- Python test functions: 351;
+- claim entries: 158;
+- package-root exports: 230;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0;
+- missing exports from rewrite and confluence public APIs: 0.
+
+The priority-free reference rewrite system contains four oriented forgetful
+rules derived from the four global FORGETFUL_PROJECTION bridges.
+
+Reference corpus source tests expect:
+
+- corpus values: 36;
+- values with exactly one forgetful rewrite: 5;
+- irreducible values under this selected system: 31;
+- values with multiple applicable forgetful rules: 0;
+- every rewriteable corpus value reaches an irreducible value in one step.
+
+The family-rank termination certificate assigns rank 1 to all four rewrite
+source families and rank 0 to all four targets/default families. Every selected
+rule strictly decreases rank, proving:
+
+\[
+L_{\rm trace}\le 1.
+\]
+
+The distinct-source-family confluence certificate reports no rule-source
+overlaps. Therefore the selected rewrite relation is deterministic and
+confluent.
+
+Combining the termination and confluence certificates yields a unique
+irreducible result under the selected reference forgetful rewrite system.
+
+This is explicitly NOT promoted to a global RDSS canonical-normal-form claim.
+
+Structural monograph audit on this head:
+
+- unmatched environments: 0;
+- environment mismatches: 0;
+- brace balance: 0;
+- negative brace events: 0;
+- display delimiters: 283 open / 283 close.
+
+These remain source/static validation results. Full repository pytest and actual
+LaTeX compilation remain NOT YET RUN on an exact complete checkout of this
+branch.
