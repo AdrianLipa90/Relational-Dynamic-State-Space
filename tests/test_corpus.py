@@ -9,7 +9,7 @@ from rdss.axioms import claim_map
 def test_reference_corpus_has_stable_named_inventory():
     corpus = rdss_reference_corpus()
 
-    assert len(corpus) == 35
+    assert len(corpus) == 36
     names = tuple(item.name for item in corpus)
     assert len(names) == len(set(names))
 
@@ -22,6 +22,7 @@ def test_reference_corpus_has_stable_named_inventory():
     assert "moire-base" in names
     assert "typed-zero" in names
     assert "zero-axis-point" in names
+    assert "u1-zero-axis-companion" in names
     assert "generative-relation-model" in names
     assert "relational-generative-relation-model" in names
 
@@ -42,8 +43,8 @@ def test_reference_corpus_claim_provenance_resolves_in_ledger():
 def test_reference_corpus_scan_has_complete_signature_coverage():
     result = scan_rdss_reference_corpus()
 
-    assert len(result.items) == 35
-    assert len(result.supported_items) == 35
+    assert len(result.items) == 36
+    assert len(result.supported_items) == 36
     assert result.coverage_gaps == ()
     assert result.coverage_complete
 
@@ -57,26 +58,26 @@ def test_reference_corpus_novelty_counts_separate_redundancy_state_and_structure
     assert counts[NoveltyKind.REPRESENTATION_ONLY] == 0
     assert counts[NoveltyKind.NEW_STATE] == 6
     assert counts[NoveltyKind.NEW_STRUCTURE] == 6
-    assert counts[NoveltyKind.NEW_FAMILY] == 21
+    assert counts[NoveltyKind.NEW_FAMILY] == 22
 
 
 def test_reference_corpus_catalog_summary_quantifies_compression_layers():
     summary = scan_rdss_reference_corpus().catalog_summary
 
-    assert summary.records == 35
-    assert summary.families == 21
-    assert summary.structures == 27
-    assert summary.semantic_states == 33
-    assert summary.strict_values == 34
+    assert summary.records == 36
+    assert summary.families == 22
+    assert summary.structures == 28
+    assert summary.semantic_states == 34
+    assert summary.strict_values == 35
 
 
 def test_reference_corpus_graph_keeps_lossy_projection_out_of_components():
     graph = scan_rdss_reference_corpus().equivalence_graph
     summary = graph.summary()
 
-    assert summary.records == 35
+    assert summary.records == 36
     assert summary.equivalence_components == 30
-    assert summary.strong_edges == 6
+    assert summary.strong_edges == 7
     assert summary.lossy_projection_edges == 5
     assert summary.unknown_bridge_edges == 0
 
@@ -186,3 +187,19 @@ def test_reference_corpus_relational_generative_projection_is_lossy_nonunion():
         if edge.source == source and edge.target == target
     ]
     assert len(matching) == 1
+
+
+
+def test_reference_corpus_u1_and_zero_axis_share_lossless_component():
+    result = scan_rdss_reference_corpus()
+    index = {
+        item.name: ordinal
+        for ordinal, item in enumerate(result.supported_items)
+    }
+    graph = result.equivalence_graph
+
+    assert graph.component_of(
+        index["u1-zero-axis-companion"]
+    ) == graph.component_of(
+        index["zero-axis-point"]
+    )
