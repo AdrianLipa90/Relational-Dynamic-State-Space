@@ -2626,6 +2626,42 @@ representation-only variant, new state, new structure, or new family.
 No catalog admission rewrites the source object and no cross-family bridge is
 invented by the index.
 
+\subsection{Termination and finite confluence}
+
+A reduction cycle guard is operationally necessary but is not a proof that all
+reduction paths terminate. The kernel therefore permits an explicit
+fixed-dimensional measure
+\[
+\mu:X\to\mathbb N^k,
+\qquad
+1\le k<\infty,
+\]
+ordered lexicographically. Every admitted ordered step must satisfy
+\[
+\boxed{
+\mu(X_{n+1})<_{\mathrm{lex}}\mu(X_n).
+}
+\]
+Since lexicographic order on fixed finite-dimensional \(\mathbb N^k\) is
+well-founded, strict descent on every step implies termination of the
+corresponding reduction sequence.
+
+The measure is supplied rather than inferred. A variable-dimensional measure
+is rejected because it does not provide the same well-founded certificate.
+
+A separate finite confluence auditor explores every applicable rule branch from
+one supplied start state up to a finite depth. Its result is one of
+\[
+\begin{aligned}
+&\mathrm{UNIQUE\_NORMAL\_FORM},\\
+&\mathrm{MULTIPLE\_NORMAL\_FORMS},\\
+&\mathrm{CYCLE\_DETECTED},\\
+&\mathrm{BOUNDED\_INCOMPLETE}.
+\end{aligned}
+\]
+This distinguishes a concrete bounded confluence witness from a global
+Church--Rosser theorem. The latter is not claimed by the current kernel.
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
