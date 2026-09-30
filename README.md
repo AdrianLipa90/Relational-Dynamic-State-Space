@@ -1077,9 +1077,9 @@ closed by assigning explicit semantic families without inventing bridges.
 The current source contract is
 
 \[
-35
+36
 =
-35_{\rm signature\ supported}
+36_{\rm signature\ supported}
 +
 0_{\rm coverage\ gaps}.
 \]
@@ -1087,13 +1087,13 @@ The current source contract is
 The full corpus is expected by source tests to classify into
 
 \[
-21\ \text{families},
+22\ \text{families},
 \qquad
-27\ \text{structures},
+28\ \text{structures},
 \qquad
-33\ \text{semantic states},
+34\ \text{semantic states},
 \qquad
-34\ \text{strict values}.
+35\ \text{strict values}.
 \]
 
 These are test expectations, not a claimed runtime PASS.
@@ -1102,3 +1102,35 @@ The deterministic scanner is scripts/reference_corpus_scan.py and emits the
 schema rdss.reference-corpus-scan/v1.
 
 See docs/REFERENCE_CORPUS_SCAN.md.
+
+
+## Explicit U(1) phase value
+
+The generic phase layer now exposes a typed U1Phase value rather than using
+raw complex numbers as the only executable representation of a point on the
+unit circle.
+
+For finite \(u\in U(1)\),
+
+\[
+|u|=1.
+\]
+
+The reference type supports construction from angle or normalized turns,
+group composition and inverse.
+
+The existing Zero-Axis map is now typed as
+
+\[
+U(1)\setminus\{-1\}
+\;\xleftrightarrow{\ \Omega^{-1},\,\Omega\ }\;
+\{\text{finite ZeroAxisPoint}\}.
+\]
+
+This bridge is classified as LOSSLESS REFERENCE_REPRESENTATION on its finite
+domain. The exceptional phase \(u=-1\) remains the compactified point at
+infinity and is not coerced into a finite value.
+
+Because floating evaluation of \(\Omega\) is not always bitwise reversible,
+the bridge registry now supports an explicit round-trip validator. Strict
+canonical equality remains the default for bridges that do not declare one.
