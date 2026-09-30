@@ -364,3 +364,14 @@ coordinates and preserves the original signature keys exactly.
 The factorization layer is intended for graph compression, diagnostics and
 cross-repository comparison where "same structure", "same state" and "same
 representation" must not be conflated.
+
+
+## Cross-cutting claim provenance layer
+
+src/rdss/provenance.py
+
+The provenance layer projects explicit signature/transformation claim IDs onto the existing authoritative claim DAG. Dependencies are returned in topological order.
+
+Value provenance binds semantic factorization and signature extractor provenance to the induced claim subgraph. Bridge routes, rewrite traces and scoped normal forms expose the same dependency expansion from their own recorded root claims.
+
+This is a read-only provenance view. It is not a claim-authoring or claim-promotion mechanism.
