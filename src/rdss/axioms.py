@@ -934,6 +934,55 @@ CLAIMS: tuple[Claim, ...] = (
         ("REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE", "THM_STRICT_FAMILY_RANK_TERMINATION"),
     ),
 
+    Claim(
+        "DEF_RULE_SOURCE_FAMILY_OVERLAP_AUDIT",
+        ClaimKind.DEFINITION,
+        "A source-family overlap audit enumerates unordered pairs of registered rewrite rules whose declared source semantic family is the same; such pairs are candidate one-step overlaps, while distinct source families cannot both apply to one value because every value has one admitted signature family.",
+        ("DEF_PRIORITY_FREE_REWRITE_SYSTEM", "DEF_RDSS_CANONICAL_SIGNATURE"),
+    ),
+    Claim(
+        "DEF_DISTINCT_SOURCE_FAMILY_CONFLUENCE_CERTIFICATE",
+        ClaimKind.DEFINITION,
+        "A distinct-source-family confluence certificate is valid when the selected rewrite system has no pair of rules sharing a declared source semantic family.",
+        ("DEF_RULE_SOURCE_FAMILY_OVERLAP_AUDIT",),
+    ),
+    Claim(
+        "THM_DISTINCT_SOURCE_FAMILY_DETERMINISM",
+        ClaimKind.THEOREM,
+        "If a rewrite system has at most one registered rule for each semantic source family, then every admitted value has at most one immediate rewrite successor because its signature assigns exactly one source family.",
+        ("DEF_DISTINCT_SOURCE_FAMILY_CONFLUENCE_CERTIFICATE",),
+    ),
+    Claim(
+        "THM_DETERMINISTIC_REWRITE_CONFLUENCE",
+        ClaimKind.THEOREM,
+        "A deterministic rewrite relation is confluent: any two finite rewrite sequences from one source lie on the same unique successor orbit, so the shorter endpoint rewrites to the longer endpoint.",
+        ("THM_DISTINCT_SOURCE_FAMILY_DETERMINISM",),
+    ),
+    Claim(
+        "REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The four reference forgetful rewrite rules have pairwise distinct source families, so their source-family overlap audit is empty.",
+        ("DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER", "DEF_DISTINCT_SOURCE_FAMILY_CONFLUENCE_CERTIFICATE"),
+    ),
+    Claim(
+        "THM_REFERENCE_FORGETFUL_REWRITE_CONFLUENT",
+        ClaimKind.THEOREM,
+        "The reference forgetful rewrite relation is confluent because its distinct-source-family certificate makes the relation deterministic.",
+        ("REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE", "THM_DETERMINISTIC_REWRITE_CONFLUENCE"),
+    ),
+    Claim(
+        "THM_TERMINATING_CONFLUENT_UNIQUE_IRREDUCIBLE",
+        ClaimKind.THEOREM,
+        "For a rewrite system that is terminating and confluent, every admitted starting value reaches a unique irreducible result under that selected system.",
+        ("THM_STRICT_FAMILY_RANK_TERMINATION", "THM_DETERMINISTIC_REWRITE_CONFLUENCE"),
+    ),
+    Claim(
+        "THM_REFERENCE_FORGETFUL_UNIQUE_IRREDUCIBLE",
+        ClaimKind.THEOREM,
+        "Combining the reference forgetful termination and confluence certificates gives each admitted value a unique irreducible result under the selected forgetful rewrite system; this is not promoted to a global RDSS canonical normal form.",
+        ("THM_REFERENCE_FORGETFUL_REWRITE_TERMINATES", "THM_REFERENCE_FORGETFUL_REWRITE_CONFLUENT", "THM_TERMINATING_CONFLUENT_UNIQUE_IRREDUCIBLE"),
+    ),
+
 )
 
 
