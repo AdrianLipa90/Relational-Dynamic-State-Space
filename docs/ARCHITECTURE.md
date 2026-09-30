@@ -292,3 +292,18 @@ The scanner composes:
 
 It therefore acts as a regression target for mathematical compression, not as a
 new foundational layer.
+
+
+## Cross-cutting contextual bridge layer
+
+\`src/rdss/contextual_bridges.py\`
+
+Context-dependent transformations are separated from the global bridge graph.
+A contextual bridge is executable only after the caller supplies a typed
+context object.
+
+The current example materializes BranchRelationOccurrence into TypedRelation
+using CarrierMapContext. This operation is LOSSY because branch-slot identity
+is forgotten.
+
+No contextual bridge is automatically promoted to a global equivalence edge.
