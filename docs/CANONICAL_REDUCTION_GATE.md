@@ -584,3 +584,106 @@ BOUNDED_INCOMPLETE means the selected depth was insufficient to decide.
 
 The finite audit is evidence on one explored graph. It is deliberately not
 promoted to a global Church--Rosser theorem for the whole reduction system.
+
+
+## Explicit bridge registry
+
+Semantic families remain incomparable until an explicit bridge is registered.
+
+A bridge record contains
+
+\[
+B=
+(
+F_s,F_t,f,f^{-1},\rho,\eta,
+\mathcal I,\mathcal C
+),
+\]
+
+where \(F_s,F_t\) are source/target signature families, \(f\) is the forward
+map, \(f^{-1}\) is optional, \(\rho\) is the semantic relation kind,
+\(\eta\) is the information effect, \(\mathcal I\) is the preserved-invariant
+set and \(\mathcal C\) is claim provenance.
+
+Reverse routing exists only when \(f^{-1}\) is explicitly supplied.
+
+A bridge declared LOSSLESS must pass strict executable round trip on every
+value actually routed through it:
+
+\[
+\mathcal N_0\!\left(f^{-1}(f(X))\right)
+=
+\mathcal N_0(X).
+\]
+
+This is checked at route execution time, not assumed from the bridge label.
+
+The initial registry contains:
+
+1. the binary occurrence-address to reference-point coordinate bridge,
+   classified as REFERENCE_REPRESENTATION + LOSSLESS;
+2. relation-occurrence to relation-value forgetting,
+   classified as FORGETFUL_PROJECTION + LOSSY;
+3. occurrence-path to relation-path forgetting,
+   classified as FORGETFUL_PROJECTION + LOSSY.
+
+The first bridge is reversible as a reference coordinate realization while
+preserving the semantic sort distinction
+
+\[
+\operatorname{OccurrenceAddress}
+\not\equiv
+\operatorname{RelationalPoint}.
+\]
+
+The two forgetful bridges have no reverse edge.
+
+Routing uses shortest explicit bridge paths. If multiple distinct shortest
+routes reach the requested semantic family, routing fails closed as ambiguity.
+
+Bridge comparison first transports one value into the semantic family of the
+other and only then invokes signature comparison. LOSSY/UNKNOWN routes require
+explicit opt-in.
+
+## Bridge-aware equivalence graph
+
+For a finite value set, the bridge registry and signature engine induce a
+graph with two fundamentally different edge classes.
+
+Strong edges are:
+
+\[
+\text{same-family semantic signature}
+\quad\text{or}\quad
+\text{fully reversible LOSSLESS bridge match}.
+\]
+
+Only strong edges generate union-find equivalence components.
+
+Directed weak edges are:
+
+\[
+\text{LOSSY projection}
+\quad\text{or}\quad
+\text{UNKNOWN bridge}.
+\]
+
+They are recorded but never collapse components.
+
+Therefore
+
+\[
+\boxed{
+\text{LOSSY edge}
+\not\Rightarrow
+\text{equivalence-component union}.
+}
+\]
+
+A component means equivalence under the currently selected lossless
+signature/bridge policy. It is not promoted to ontological identity.
+
+The graph reports unresolved cross-family pairs when no explicit bridge route
+matches. These unresolved pairs are useful targets for later mathematics:
+they show where a bridge theorem is still missing rather than silently
+manufacturing one.
