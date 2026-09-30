@@ -1092,3 +1092,15 @@ def test_relational_generative_projection_claim_is_non_foundational():
     assert "DEF_RELATIONAL_GENERATIVE_FORGETFUL_PROJECTION" not in {
         claim.id for claim in foundational_axioms()
     }
+
+
+def test_bridge_gap_triage_is_diagnostic_and_non_foundational():
+    claims = claim_map()
+
+    assert claims["DEF_BRIDGE_GAP_TRIAGE"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure("DEF_BRIDGE_GAP_TRIAGE")
+    assert "DEF_BRIDGE_GAP_REPORT" in closure
+    assert "DEF_BRIDGE_REGISTRY" in closure
+    assert "DEF_BRIDGE_GAP_TRIAGE" not in {
+        claim.id for claim in foundational_axioms()
+    }
