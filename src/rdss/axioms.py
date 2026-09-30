@@ -1103,6 +1103,31 @@ CLAIMS: tuple[Claim, ...] = (
         ("REF_FORGETFUL_LOSS_WITNESSES",),
     ),
 
+    Claim(
+        "DEF_CP1_PROJECTIVE_EQUIVALENCE",
+        ClaimKind.DEFINITION,
+        "For nonzero complex two-component representatives psi=(alpha,beta) and phi=(gamma,delta), CP1 projective equivalence is psi~phi iff there exists lambda!=0 with phi=lambda psi; equivalently alpha*delta-beta*gamma=0. For normalized representatives, every such lambda has unit modulus and is a global phase.",
+        ("REF_CP1",),
+    ),
+    Claim(
+        "THM_CP1_GLOBAL_PHASE_QUOTIENT",
+        ClaimKind.THEOREM,
+        "Multiplying a normalized CP1 representative by one common U(1) phase leaves its projective equivalence class unchanged, while projectively distinct normalized representatives have nonzero Fubini-Study separation.",
+        ("DEF_CP1_PROJECTIVE_EQUIVALENCE", "REF_U1_PHASE_VALUE"),
+    ),
+    Claim(
+        "REF_CP1_PROJECTIVE_CHART_QUOTIENT",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The reference CP1 quotient selects the larger-magnitude amplitude as a stable chart pivot and stores the phase-invariant ratio of the other amplitude to that pivot; numerical equivalence requires both determinant and chart-coordinate residuals to lie within an explicit tolerance, while Fubini-Study distance is retained as an independent diagnostic.",
+        ("DEF_CP1_PROJECTIVE_EQUIVALENCE",),
+    ),
+    Claim(
+        "REF_REFERENCE_CORPUS_CP1_PROJECTIVE_QUOTIENT",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The current reference corpus contains three raw CP1State representatives but two projective classes: cp1-north and cp1-north-global-phase collapse to one CP1 point while cp1-south remains distinct.",
+        ("DEF_REFERENCE_CORPUS", "REF_CP1_PROJECTIVE_CHART_QUOTIENT"),
+    ),
+
 )
 
 
