@@ -2,7 +2,18 @@ from dataclasses import dataclass
 
 import pytest
 
-from rdss import OccurrenceAddress, RelationalPoint, TypedRelation
+from rdss import (
+    OccurrenceAddress,
+    RelationalPoint,
+    SemanticScale,
+    TensorScalarElement,
+    TypedRelation,
+    TypedZero,
+)
+from rdss.closure import (
+    BinaryDistinction,
+    RelationalBinaryDistinction,
+)
 from rdss.bridges import (
     AmbiguousBridgeError,
     BridgeRegistry,
@@ -240,3 +251,88 @@ def test_identity_cannot_be_smuggled_in_as_cross_family_bridge():
             kind=EquivalenceKind.IDENTITY,
             information_effect=InformationEffect.LOSSLESS,
         )
+
+
+
+def test_typed_zero_bridge_is_lossless_on_zero_subspace():
+    registry = rdss_bridge_registry()
+    point = RelationalPoint()
+    scale = SemanticScale("object")
+    zero = TypedZero((0, 0), point, scale, 2)
+
+    route = registry.direct(
+        zero,
+        "tensor_scalar_element",
+    )
+
+    assert route.value == TensorScalarElement(
+        (0j, 0j),
+        (0, 0),
+        point,
+        scale,
+    )
+    assert route.fully_reversible
+    assert route.steps[0].kind is EquivalenceKind.REFERENCE_REPRESENTATION
+
+
+def test_zero_tensor_element_has_explicit_reverse_bridge_to_typed_zero():
+    registry = rdss_bridge_registry()
+    point = RelationalPoint()
+    scale = SemanticScale("object")
+    zero_element = TensorScalarElement(
+        (0j, 0j),
+        (1, 1),
+        point,
+        scale,
+    )
+
+    route = registry.direct(
+        zero_element,
+        "typed_zero",
+    )
+
+    assert route.value == TypedZero(
+        (1, 1),
+        point,
+        scale,
+        2,
+    )
+    assert route.fully_reversible
+
+
+def test_nonzero_tensor_element_cannot_use_typed_zero_reverse_bridge():
+    registry = rdss_bridge_registry()
+    nonzero = TensorScalarElement(
+        (1 + 0j,),
+        (0, 0),
+        RelationalPoint(),
+        SemanticScale("object"),
+    )
+
+    with pytest.raises(UnsupportedBridgeError):
+        registry.direct(nonzero, "typed_zero")
+
+
+def test_relational_distinction_forgetful_bridge_is_lossy():
+    registry = rdss_bridge_registry()
+    relational = RelationalBinaryDistinction(
+        "a",
+        "b",
+        "c",
+        "r-left",
+        "r-right",
+    )
+    binary = BinaryDistinction("a", "b", "c")
+
+    with pytest.raises(LossyBridgeError):
+        registry.compare(relational, binary)
+
+    result = registry.compare(
+        relational,
+        binary,
+        allow_lossy=True,
+    )
+
+    assert result.equivalent_after_bridge
+    assert result.route.lossy
+    assert not result.route.fully_reversible
