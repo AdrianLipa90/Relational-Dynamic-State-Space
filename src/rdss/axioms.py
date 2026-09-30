@@ -1002,6 +1002,31 @@ CLAIMS: tuple[Claim, ...] = (
         ("REF_FORGETFUL_SCOPED_NORMAL_FORM", "THM_REFERENCE_FORGETFUL_UNIQUE_IRREDUCIBLE"),
     ),
 
+    Claim(
+        "DEF_SEMANTIC_FACTORIZATION",
+        ClaimKind.DEFINITION,
+        "The semantic factorization of an admitted RDSS value is the tuple (F,S,sigma,rho) obtained from its existing RDSSSignature, where F is semantic family, S is the structural key built from non-state axes, sigma is the state key built from PHASE/STATE axes, and rho is the concrete representation tag.",
+        ("DEF_RDSS_CANONICAL_SIGNATURE", "DEF_SIGNATURE_AXIS_STRATIFICATION"),
+    ),
+    Claim(
+        "THM_FACTORIZATION_RECONSTRUCTS_SEMANTIC_KEY",
+        ClaimKind.THEOREM,
+        "For every admitted RDSSSignature, the semantic factorization preserves the original structural key, state key and semantic key exactly; it is a view of the existing signature rather than a new semantic quotient.",
+        ("DEF_SEMANTIC_FACTORIZATION",),
+    ),
+    Claim(
+        "DEF_FACTORIZATION_COMPARISON",
+        ClaimKind.DEFINITION,
+        "Factorization comparison classifies two admitted values by family equality, then structural-key equality, then state-key equality, then representation equality, yielding DIFFERENT_FAMILY, DIFFERENT_STRUCTURE, DIFFERENT_STATE, REPRESENTATION_ONLY or SAME_FACTORIZATION.",
+        ("DEF_SEMANTIC_FACTORIZATION",),
+    ),
+    Claim(
+        "REF_REFERENCE_CORPUS_FACTORIZATION_SUMMARY",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The current 36-record reference corpus source contract factors into 22 semantic families, 28 structural keys, 34 semantic-state keys and 22 representation classes.",
+        ("DEF_REFERENCE_CORPUS", "DEF_SEMANTIC_FACTORIZATION"),
+    ),
+
 )
 
 
