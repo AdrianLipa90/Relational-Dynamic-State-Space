@@ -22,7 +22,7 @@ constructed from current Python objects and the scan is produced by:
 
 ## Corpus contract
 
-The current source corpus contains 33 named values spanning:
+The current source corpus contains 35 named values spanning:
 
 - occurrence addresses and reference relational points;
 - semantic scale;
@@ -55,9 +55,9 @@ The current source registry now gives each of those types its own semantic
 family, so the source contract is:
 
 \[
-33
+35
 =
-33_{\rm supported}
+35_{\rm supported}
 +
 0_{\rm coverage\ gaps}.
 \]
@@ -94,9 +94,10 @@ The source contract currently expects:
 \end{array}
 \]
 
-for the original 24-record supported slice. After closing the nine coverage
-gaps, each newly admitted type currently contributes one NEW_FAMILY record,
-so the full 33-record source contract expects NEW_FAMILY=20.
+for the original 24-record supported slice. After closing the former coverage
+gaps, adding the explicit zero-element bridge witness and adding the relational
+generative model, the current 35-record source contract expects
+NEW_STATE=6 and NEW_FAMILY=21.
 
 The corresponding catalog expectations are
 
@@ -109,7 +110,7 @@ N_{\rm semantic\ states},
 N_{\rm strict\ values}
 )
 =
-(33,20,26,31,32).
+(35,21,27,33,34).
 \]
 
 These numbers are executable test expectations. They must not be reported as a
@@ -121,15 +122,15 @@ CLI.
 The current source tests expect the full corpus to produce:
 
 \[
-N_{\rm equivalence\ components}=29,
+N_{\rm equivalence\ components}=30,
 \]
 
 with:
 
 \[
-N_{\rm strong\ edges}=5,
+N_{\rm strong\ edges}=6,
 \qquad
-N_{\rm lossy\ projection\ edges}=3,
+N_{\rm lossy\ projection\ edges}=5,
 \qquad
 N_{\rm unknown\ bridge\ edges}=0.
 \]
@@ -163,8 +164,10 @@ with:
 - bridge-gap summary;
 - family-pair gap details.
 
-Default execution is diagnostic and exits zero even while coverage gaps remain.
---require-complete returns non-zero while any signature coverage gap remains.
+Default execution is diagnostic. --require-complete returns non-zero if future
+corpus growth introduces any signature coverage gap. The current source
+contract expects complete coverage, but that expectation still requires runtime
+execution on an exact checkout.
 
 ## Validation boundary
 
