@@ -6,8 +6,13 @@ from rdss.bridges import (
     rdss_bridge_registry,
 )
 from rdss.closure import BranchRelationOccurrence
+from rdss.canonical import EquivalenceKind, InformationEffect
 from rdss.contextual_bridges import (
     CarrierMapContext,
+    ContextualBridgeInvariant,
+    ContextualBridgeInvariantError,
+    ContextualBridgeRegistry,
+    ContextualBridgeSpec,
     UnsupportedContextualBridgeError,
     materialize_branch_relation_occurrence,
     rdss_contextual_bridge_registry,
@@ -87,6 +92,11 @@ def test_contextual_branch_relation_materialization_is_lossy():
         "DEF_CONTEXTUAL_BRANCH_RELATION_MATERIALIZATION",
         "DEF_RELATIONAL_DISTINCTION",
     )
+    assert result.step.verified_invariants == (
+        "relation label",
+        "source endpoint through supplied carrier map",
+        "target endpoint through supplied carrier map",
+    )
 
 
 def test_branch_slot_is_not_present_after_contextual_projection():
@@ -153,4 +163,63 @@ def test_wrong_context_type_fails_closed():
             occurrence,
             "typed_relation",
             context={"a": RelationalPoint()},
+        )
+
+
+
+def test_contextual_invariant_failure_is_fail_closed():
+    point = RelationalPoint()
+    occurrence = BranchRelationOccurrence(
+        -1,
+        "r",
+        "a",
+        "a",
+    )
+    context = CarrierMapContext.from_mapping(
+        {"a": point}
+    )
+    bad = ContextualBridgeSpec(
+        name="bad-contextual-invariant",
+        source_family="branch_relation_occurrence",
+        target_family="typed_relation",
+        context_name="carrier_label_map",
+        source_check=lambda value: isinstance(
+            value,
+            BranchRelationOccurrence,
+        ),
+        context_check=lambda value: isinstance(
+            value,
+            CarrierMapContext,
+        ),
+        target_check=lambda value: isinstance(
+            value,
+            TypedRelation,
+        ),
+        transform=lambda value, ctx: TypedRelation(
+            ctx.resolve(value.source),
+            ctx.resolve(value.target),
+            value.relation_label,
+        ),
+        kind=EquivalenceKind.FORGETFUL_PROJECTION,
+        information_effect=InformationEffect.LOSSY,
+        invariants=(
+            ContextualBridgeInvariant(
+                "deliberately false",
+                source_context_projection=lambda value, ctx: (
+                    value.relation_label
+                ),
+                target_projection=lambda value: (
+                    value.label + "-wrong"
+                ),
+            ),
+        ),
+    )
+
+    registry = ContextualBridgeRegistry((bad,))
+
+    with pytest.raises(ContextualBridgeInvariantError):
+        registry.direct(
+            occurrence,
+            "typed_relation",
+            context=context,
         )
