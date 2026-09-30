@@ -1054,3 +1054,48 @@ This gives RDSS an executable graph of
 \]
 
 See docs/CANONICAL_REDUCTION_GATE.md.
+
+
+## Reference corpus scan
+
+RDSS now contains an executable finite reference corpus built from current core,
+structural and reference-realization types.
+
+The source corpus intentionally mixes:
+
+- exact duplicates;
+- same structure with different state;
+- structural changes;
+- signature-equivalent representations;
+- lossless reference bridges;
+- lossy forgetful projections;
+- currently unsupported executable types.
+
+The source contract currently partitions
+
+\[
+33
+=
+24_{\rm signature\ supported}
++
+9_{\rm coverage\ gaps}.
+\]
+
+The supported slice is expected by source tests to compress to
+
+\[
+11\ \text{families},
+\qquad
+17\ \text{structures},
+\qquad
+22\ \text{semantic states},
+\qquad
+23\ \text{strict values}.
+\]
+
+These are test expectations, not a claimed runtime PASS.
+
+The deterministic scanner is scripts/reference_corpus_scan.py and emits the
+schema rdss.reference-corpus-scan/v1.
+
+See docs/REFERENCE_CORPUS_SCAN.md.
