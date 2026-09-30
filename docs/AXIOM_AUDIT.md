@@ -629,3 +629,16 @@ This layer does not add a new quotient or override bridge semantics.
 | DEF_TRANSFORMATION_CLAIM_PROVENANCE | DEFINITION | Expands BridgeRoute, RewriteTrace or ScopedRewriteNormalForm claim roots through the same authoritative dependency graph. | DEF_CLAIM_DEPENDENCY_PROJECTION, DEF_BRIDGE_ROUTE, DEF_PRIORITY_FREE_REWRITE_SYSTEM, DEF_SCOPED_REWRITE_NORMAL_FORM |
 
 The provenance layer is read-only with respect to the claim ledger.
+
+
+## Object reduction certificate layer
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_OBJECT_REDUCTION_CERTIFICATE | DEFINITION | One auditable object-level bundle joining source/target provenance, certified rewrite trace, scoped normal form, invariant evidence and the combined claim graph. | DEF_VALUE_CLAIM_PROVENANCE, DEF_TRANSFORMATION_CLAIM_PROVENANCE, DEF_SCOPED_REWRITE_NORMAL_FORM, DEF_EXECUTABLE_BRIDGE_INVARIANT |
+| REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE | REFERENCE REALIZATION | Reference certificate for rdss-reference-forgetful-v1 with explicit termination/confluence identities and global canonicality false. | DEF_OBJECT_REDUCTION_CERTIFICATE, REF_FORGETFUL_SCOPED_NORMAL_FORM, REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE, REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE |
+| THM_REFERENCE_OBJECT_REDUCTION_CERTIFICATE_CONSISTENT | THEOREM | Reference factory checks strict keys, complete value/transformation provenance, certificate identities, irreducibility, idempotence, invariant inventory and authoritative claim projection before returning. | REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE, THM_REFERENCE_FORGETFUL_NORMAL_FORM_IDEMPOTENT, THM_PROVENANCE_TOPOLOGICAL_ORDER |
+| DEF_REFERENCE_REDUCTION_CERTIFICATE_SCAN | DEFINITION | Applies the object certificate factory independently to every named value in the reference corpus and aggregates diagnostics. | DEF_REFERENCE_CORPUS, DEF_OBJECT_REDUCTION_CERTIFICATE |
+| REF_REFERENCE_REDUCTION_CERTIFICATE_SCAN | REFERENCE REALIZATION | Current source contract: 36 verified, 5 rewritten, 31 fixed, 5 LOSSY, zero global-canonical, 22 source families, 18 target families. | DEF_REFERENCE_REDUCTION_CERTIFICATE_SCAN, REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE |
+
+The batch layer aggregates certificates; it does not weaken per-object validation.
