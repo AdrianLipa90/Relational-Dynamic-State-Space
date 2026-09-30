@@ -743,3 +743,47 @@ This is a diagnostic of missing formal coverage. It does not assert
 A gap can be resolved only by adding an explicit justified bridge, proving that
 the families should remain distinct, or refining the signatures so that the
 apparent gap is classified more accurately.
+
+
+## Contextual bridge registry
+
+Some transformations require information that is not carried by the source
+value itself. These are not placed in the global bridge registry.
+
+The contextual registry accepts an explicit context object at execution time:
+
+\[
+(X,C)\longmapsto Y.
+\]
+
+The first contextual bridge is
+
+\[
+\operatorname{BranchRelationOccurrence}
++
+\operatorname{CarrierMapContext}
+\longrightarrow
+\operatorname{TypedRelation}.
+\]
+
+CarrierMapContext explicitly maps symbolic endpoint labels to RelationalPoint
+values. The mapping is caller-supplied data and is not inferred from relation
+labels or branch identity.
+
+The transformation remains
+
+\[
+\boxed{
+\mathrm{FORGETFUL\_PROJECTION}
++
+\mathrm{LOSSY}
+}
+\]
+
+because the branch occurrence slot is absent from TypedRelation. Indeed, two
+branch occurrences with the same relation label and symbolic endpoints but
+opposite branch slots materialize to the same TypedRelation under the same
+context.
+
+Contextual bridges are kept separate from the global BridgeRegistry so that
+the absence of context cannot silently create a global equivalence edge.
