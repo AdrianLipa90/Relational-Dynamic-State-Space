@@ -1344,3 +1344,35 @@ def test_confluence_certificate_claims_preserve_selected_system_scope():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_scoped_normal_form_claims_do_not_promote_global_canonicality():
+    claims = claim_map()
+
+    assert claims["DEF_SCOPED_REWRITE_NORMAL_FORM"].kind is ClaimKind.DEFINITION
+    assert "THM_TERMINATING_CONFLUENT_UNIQUE_IRREDUCIBLE" in dependency_closure(
+        "DEF_SCOPED_REWRITE_NORMAL_FORM"
+    )
+
+    assert claims["REF_FORGETFUL_SCOPED_NORMAL_FORM"].kind is ClaimKind.REFERENCE_REALIZATION
+    closure = dependency_closure(
+        "REF_FORGETFUL_SCOPED_NORMAL_FORM"
+    )
+    assert "DEF_SCOPED_REWRITE_NORMAL_FORM" in closure
+    assert "REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE" in closure
+    assert "REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE" in closure
+
+    assert claims["THM_REFERENCE_FORGETFUL_NORMAL_FORM_IDEMPOTENT"].kind is ClaimKind.THEOREM
+    closure = dependency_closure(
+        "THM_REFERENCE_FORGETFUL_NORMAL_FORM_IDEMPOTENT"
+    )
+    assert "REF_FORGETFUL_SCOPED_NORMAL_FORM" in closure
+    assert "THM_REFERENCE_FORGETFUL_UNIQUE_IRREDUCIBLE" in closure
+
+    assert {
+        "DEF_SCOPED_REWRITE_NORMAL_FORM",
+        "REF_FORGETFUL_SCOPED_NORMAL_FORM",
+        "THM_REFERENCE_FORGETFUL_NORMAL_FORM_IDEMPOTENT",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
