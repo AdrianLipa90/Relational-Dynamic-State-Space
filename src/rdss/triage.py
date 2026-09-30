@@ -7,6 +7,7 @@ from enum import Enum
 class BridgeTriageStatus(str, Enum):
     IMPLEMENTED_LOSSLESS = "implemented_lossless"
     IMPLEMENTED_LOSSY = "implemented_lossy"
+    IMPLEMENTED_CONTEXTUAL_LOSSY = "implemented_contextual_lossy"
     CONTEXT_REQUIRED = "context_required"
     MISSING_INTERMEDIATE_FAMILY = "missing_intermediate_family"
     COMPOSITE_NOT_EQUIVALENT = "composite_not_equivalent"
@@ -35,6 +36,7 @@ class BridgeTriageSummary:
     entries: int
     implemented_lossless: int
     implemented_lossy: int
+    implemented_contextual_lossy: int
     context_required: int
     missing_intermediate_family: int
     composite_not_equivalent: int
@@ -67,6 +69,9 @@ class BridgeTriageReport:
             ],
             implemented_lossy=counts[
                 BridgeTriageStatus.IMPLEMENTED_LOSSY
+            ],
+            implemented_contextual_lossy=counts[
+                BridgeTriageStatus.IMPLEMENTED_CONTEXTUAL_LOSSY
             ],
             context_required=counts[
                 BridgeTriageStatus.CONTEXT_REQUIRED
@@ -151,9 +156,12 @@ def rdss_reference_bridge_triage() -> BridgeTriageReport:
             BridgeTriageEntry(
                 "branch_relation_occurrence",
                 "typed_relation",
-                BridgeTriageStatus.CONTEXT_REQUIRED,
-                "Materializing a TypedRelation requires an external mapping from symbolic endpoint labels to RelationalPoint carriers.",
-                ("DEF_RELATIONAL_DISTINCTION",),
+                BridgeTriageStatus.IMPLEMENTED_CONTEXTUAL_LOSSY,
+                "Materialization is implemented through CarrierMapContext; the transformation remains outside the global bridge graph and is LOSSY because the branch slot is forgotten.",
+                (
+                    "DEF_CONTEXTUAL_BRANCH_RELATION_MATERIALIZATION",
+                    "THM_CONTEXTUAL_BRANCH_SLOT_NONINJECTIVE",
+                ),
             ),
             BridgeTriageEntry(
                 "zero_axis_point",
