@@ -1084,6 +1084,25 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_REFERENCE_REDUCTION_CERTIFICATE_SCAN", "REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE"),
     ),
 
+    Claim(
+        "DEF_LOSS_WITNESS",
+        ClaimKind.DEFINITION,
+        "A rewrite loss witness consists of two strict-unequal source values in one rewrite source family that are transformed by the same declared LOSSY rule to strict-equal target values, with executable invariant evidence and an irreducible target.",
+        ("DEF_REWRITE_RULE", "DEF_EXECUTABLE_BRIDGE_INVARIANT"),
+    ),
+    Claim(
+        "REF_FORGETFUL_LOSS_WITNESSES",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The reference forgetful rewrite system contains one executable loss witness for each of its four rules: relation-occurrence forgetting, occurrence-path forgetting, relational-distinction binding forgetting and relational-generative binding forgetting.",
+        ("DEF_LOSS_WITNESS", "DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER"),
+    ),
+    Claim(
+        "THM_REFERENCE_FORGETFUL_REWRITES_NONINJECTIVE",
+        ClaimKind.THEOREM,
+        "Each of the four reference forgetful rewrite rules is noninjective on its source family because an explicit witness pair X!=Y is mapped by that rule to one strict-equal target; therefore none of those rules admits a two-sided inverse on the full source family and the LOSSY classification is independently witnessed.",
+        ("REF_FORGETFUL_LOSS_WITNESSES",),
+    ),
+
 )
 
 
