@@ -475,3 +475,19 @@ THM_OCCURRENCE_COMPOSABILITY_PROJECTS claims. They are marked LOSSY and are not
 reclassified as identity or isomorphism.
 
 See docs/CANONICAL_REDUCTION_GATE.md.
+
+
+## Canonical signature claim layer
+
+The semantic signature engine is a classification layer, not a foundational
+extension.
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_RDSS_CANONICAL_SIGNATURE | DEFINITION | Supported executable objects expose a finite semantic signature separated from concrete representation, provenance, and strict object identity. | DEF_CANONICAL_NORMAL_FORM |
+| DEF_SIGNATURE_AXIS_STRATIFICATION | DEFINITION | Carrier, occurrence, relations, rank, scale, orbit and dimension are structural axes; phase and state payload are state axes. | DEF_RDSS_CANONICAL_SIGNATURE |
+| DEF_SIGNATURE_COMPARISON | DEFINITION | Comparison distinguishes same semantic signature, representation-only difference, same structure/different state, structural difference, and incomparable families. | DEF_SIGNATURE_AXIS_STRATIFICATION |
+| DEF_SIGNATURE_NOVELTY_CLASSIFICATION | DEFINITION | Relative novelty is classified as exact repeat, signature-equivalent, representation-only, new state, new structure, or new family. | DEF_SIGNATURE_COMPARISON |
+
+No signature comparison may convert INCOMPARABLE into equivalence without an
+explicit bridge. No signature claim modifies META0, RA0 or RR1.
