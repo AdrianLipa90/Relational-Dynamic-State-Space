@@ -122,6 +122,12 @@ def rdss_reference_corpus() -> tuple[CorpusItem, ...]:
         point_root,
         scale_object,
     )
+    scalar_zero = TensorScalarElement(
+        (0 + 0j,),
+        (0, 0),
+        point_root,
+        scale_object,
+    )
     scalar_two = TensorScalarElement(
         (2 + 0j,),
         (0, 0),
@@ -212,6 +218,11 @@ def rdss_reference_corpus() -> tuple[CorpusItem, ...]:
             "tensor-scalar-one",
             scalar_one,
             ("DEF_TS", "PRIM_MODULE"),
+        ),
+        CorpusItem(
+            "tensor-scalar-zero",
+            scalar_zero,
+            ("DEF_TS", "PRIM_MODULE", "DEF_TYPED_ZERO"),
         ),
         CorpusItem(
             "tensor-scalar-two",
