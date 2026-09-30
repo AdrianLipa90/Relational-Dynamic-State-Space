@@ -127,6 +127,14 @@ from .potential import (
     relational_attractor_set,
     semantic_potential_shift,
 )
+from .equivalence_graph import (
+    BridgeEquivalenceGraph,
+    EquivalenceGraphEdge,
+    EquivalenceGraphRecord,
+    EquivalenceGraphSummary,
+    GraphEdgeKind,
+    build_bridge_equivalence_graph,
+)
 from .operations import (
     BranchRefinementMap,
     ContractionRule,
@@ -287,6 +295,12 @@ __all__ = [
     "singleton_ra0_rel_star_model",
     "singleton_ra0_star_model",
     "two_cycle_ra0_star_model",
+    "BridgeEquivalenceGraph",
+    "EquivalenceGraphEdge",
+    "EquivalenceGraphRecord",
+    "EquivalenceGraphSummary",
+    "GraphEdgeKind",
+    "build_bridge_equivalence_graph",
     "BranchRefinementMap",
     "ContractionRule",
     "OrbitalAction",
