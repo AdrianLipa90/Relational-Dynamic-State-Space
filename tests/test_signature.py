@@ -20,6 +20,7 @@ from rdss.signature import (
     SignatureEngine,
     SignatureExtractor,
     UnsupportedSignatureError,
+    rdss_signature_catalog,
     rdss_signature_engine,
 )
 
@@ -235,3 +236,75 @@ def test_signature_records_extractor_and_claim_provenance():
     )
     assert "DEF_OCCURRENCE_ADDRESS_SPACE" in signature.claim_ids
     assert "DEF_RDSS_CANONICAL_SIGNATURE" in signature.claim_ids
+
+
+
+def test_signature_catalog_classifies_exact_repeat():
+    catalog = rdss_signature_catalog()
+    value = OccurrenceAddress((-1,))
+
+    assert catalog.add(value).novelty is NoveltyKind.NEW_FAMILY
+    repeated = catalog.add(value)
+
+    assert repeated.novelty is NoveltyKind.EXACT_REPEAT
+    assert repeated.is_redundant
+    assert repeated.representative is not None
+    assert repeated.representative.ordinal == 0
+
+
+def test_signature_catalog_separates_new_state_from_new_structure():
+    catalog = rdss_signature_catalog()
+    carrier = RelationalPoint()
+    scale = SemanticScale("object")
+
+    first = element(1, carrier=carrier, scale=scale)
+    second = element(2, carrier=carrier, scale=scale)
+    third = element(2, rank=(1, 0), carrier=carrier, scale=scale)
+
+    assert catalog.add(first).novelty is NoveltyKind.NEW_FAMILY
+    assert catalog.add(second).novelty is NoveltyKind.NEW_STATE
+    assert catalog.add(third).novelty is NoveltyKind.NEW_STRUCTURE
+
+
+def test_signature_catalog_detects_signature_equivalent_moire_payloads():
+    catalog = rdss_signature_catalog()
+
+    assert catalog.add(
+        MoireRotation(1.0, 0.25)
+    ).novelty is NoveltyKind.NEW_FAMILY
+
+    shifted = catalog.add(
+        MoireRotation(2.0, 1.25)
+    )
+
+    assert shifted.novelty is NoveltyKind.SIGNATURE_EQUIVALENT
+    assert shifted.is_redundant
+
+
+def test_signature_catalog_summary_counts_each_quotient_level():
+    catalog = rdss_signature_catalog()
+    carrier = RelationalPoint()
+    scale = SemanticScale("object")
+
+    catalog.add(element(1, carrier=carrier, scale=scale))
+    catalog.add(element(2, carrier=carrier, scale=scale))
+    catalog.add(element(2, rank=(1, 0), carrier=carrier, scale=scale))
+    catalog.add(OccurrenceAddress())
+
+    summary = catalog.summary()
+
+    assert summary.records == 4
+    assert summary.families == 2
+    assert summary.structures == 3
+    assert summary.semantic_states == 4
+    assert summary.strict_values == 4
+
+
+def test_catalog_does_not_merge_occurrence_and_carrier_families():
+    catalog = rdss_signature_catalog()
+
+    catalog.add(OccurrenceAddress((-1,)))
+    assessment = catalog.add(RelationalPoint((-1,)))
+
+    assert assessment.novelty is NoveltyKind.NEW_FAMILY
+    assert catalog.summary().families == 2
