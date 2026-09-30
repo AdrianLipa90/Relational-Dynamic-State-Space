@@ -1047,3 +1047,34 @@ def test_reference_corpus_scan_claims_are_diagnostic():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_zero_sector_and_distinction_bridge_claims_are_scoped():
+    claims = claim_map()
+
+    assert claims["REF_TYPED_ZERO_ELEMENT_BRIDGE"].kind is ClaimKind.REFERENCE_REALIZATION
+    closure = dependency_closure("REF_TYPED_ZERO_ELEMENT_BRIDGE")
+    assert "DEF_TYPED_ZERO" in closure
+    assert "DEF_TS" in closure
+    assert "DEF_BRIDGE_REGISTRY" in closure
+
+    assert claims["THM_TYPED_ZERO_ELEMENT_ROUNDTRIP"].kind is ClaimKind.THEOREM
+    assert "REF_TYPED_ZERO_ELEMENT_BRIDGE" in dependency_closure(
+        "THM_TYPED_ZERO_ELEMENT_ROUNDTRIP"
+    )
+
+    assert claims["DEF_RELATIONAL_DISTINCTION_FORGETFUL_PROJECTION"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure(
+        "DEF_RELATIONAL_DISTINCTION_FORGETFUL_PROJECTION"
+    )
+    assert "DEF_RELATIONAL_DISTINCTION" in closure
+    assert "DEF_BINARY_DISTINCTION" in closure
+    assert "DEF_BRIDGE_REGISTRY" in closure
+
+    assert {
+        "REF_TYPED_ZERO_ELEMENT_BRIDGE",
+        "THM_TYPED_ZERO_ELEMENT_ROUNDTRIP",
+        "DEF_RELATIONAL_DISTINCTION_FORGETFUL_PROJECTION",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
