@@ -590,6 +590,16 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
             ),
             kind=EquivalenceKind.REFERENCE_REPRESENTATION,
             information_effect=InformationEffect.LOSSLESS,
+            invariants=(
+                BridgeInvariant(
+                    "binary coordinate word",
+                    source_projection=lambda value: tuple(value),
+                    target_projection=lambda value: value.address,
+                    claim_ids=(
+                        "REF_RELATIONAL_POINT_BINARY_COORDINATE",
+                    ),
+                ),
+            ),
             preserves=("binary coordinate word",),
             claim_ids=(
                 "DEF_CARRIER_OCCURRENCE_SEPARATION",
@@ -627,6 +637,22 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
             ),
             kind=EquivalenceKind.REFERENCE_REPRESENTATION,
             information_effect=InformationEffect.LOSSLESS,
+            invariants=(
+                BridgeInvariant(
+                    "projective Omega correspondence",
+                    source_projection=lambda value: value.value,
+                    target_projection=lambda value: finite_zero_axis_phase(
+                        value
+                    ).value,
+                    comparator=lambda left, right: (
+                        abs(left - right)
+                        <= 10.0 * U1_TOLERANCE
+                    ),
+                    claim_ids=(
+                        "REF_U1_ZERO_AXIS_FINITE_BRIDGE",
+                    ),
+                ),
+            ),
             preserves=(
                 "finite U(1) phase",
                 "finite Zero-Axis coordinate",
@@ -650,6 +676,43 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
             ),
             kind=EquivalenceKind.REFERENCE_REPRESENTATION,
             information_effect=InformationEffect.LOSSLESS,
+            invariants=(
+                BridgeInvariant(
+                    "tensor rank",
+                    source_projection=lambda value: value.rank,
+                    target_projection=lambda value: value.rank,
+                    claim_ids=("DEF_TYPED_ZERO", "DEF_TS"),
+                ),
+                BridgeInvariant(
+                    "carrier",
+                    source_projection=lambda value: value.carrier,
+                    target_projection=lambda value: value.carrier,
+                    claim_ids=("DEF_TYPED_ZERO", "DEF_TS"),
+                ),
+                BridgeInvariant(
+                    "semantic scale",
+                    source_projection=lambda value: value.scale,
+                    target_projection=lambda value: value.scale,
+                    claim_ids=("DEF_TYPED_ZERO", "DEF_TS"),
+                ),
+                BridgeInvariant(
+                    "component dimension",
+                    source_projection=lambda value: value.dimension,
+                    target_projection=lambda value: len(
+                        value.components
+                    ),
+                    claim_ids=("DEF_TYPED_ZERO", "DEF_TS"),
+                ),
+                BridgeInvariant(
+                    "additive zero",
+                    source_projection=lambda value: True,
+                    target_projection=lambda value: all(
+                        component == 0j
+                        for component in value.components
+                    ),
+                    claim_ids=("DEF_TYPED_ZERO", "PRIM_MODULE"),
+                ),
+            ),
             preserves=(
                 "tensor rank",
                 "carrier",
@@ -678,6 +741,16 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
             ),
             kind=EquivalenceKind.FORGETFUL_PROJECTION,
             information_effect=InformationEffect.LOSSY,
+            invariants=(
+                BridgeInvariant(
+                    "typed relation value",
+                    source_projection=lambda value: value.relation,
+                    target_projection=lambda value: value,
+                    claim_ids=(
+                        "DEF_OCCURRENCE_FORGETFUL_PROJECTION",
+                    ),
+                ),
+            ),
             preserves=(
                 "typed relation value",
                 "source carrier",
@@ -702,6 +775,27 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
             ),
             kind=EquivalenceKind.FORGETFUL_PROJECTION,
             information_effect=InformationEffect.LOSSY,
+            invariants=(
+                BridgeInvariant(
+                    "admitted carrier labels",
+                    source_projection=lambda value: value.admitted,
+                    target_projection=lambda value: value.admitted,
+                    claim_ids=(
+                        "THM_RA0_STAR_FROM_RA0_REL_STAR",
+                    ),
+                ),
+                BridgeInvariant(
+                    "binary distinction skeleton",
+                    source_projection=lambda value: tuple(
+                        item.binary
+                        for item in value.distinctions
+                    ),
+                    target_projection=lambda value: value.distinctions,
+                    claim_ids=(
+                        "THM_RA0_STAR_FROM_RA0_REL_STAR",
+                    ),
+                ),
+            ),
             preserves=(
                 "admitted carrier labels",
                 "binary distinction hosts",
@@ -729,6 +823,17 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
             ),
             kind=EquivalenceKind.FORGETFUL_PROJECTION,
             information_effect=InformationEffect.LOSSY,
+            invariants=(
+                BridgeInvariant(
+                    "binary distinction skeleton",
+                    source_projection=lambda value: value.binary,
+                    target_projection=lambda value: value,
+                    claim_ids=(
+                        "DEF_RELATIONAL_DISTINCTION",
+                        "DEF_BINARY_DISTINCTION",
+                    ),
+                ),
+            ),
             preserves=(
                 "host label",
                 "left endpoint label",
@@ -755,6 +860,19 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
             ),
             kind=EquivalenceKind.FORGETFUL_PROJECTION,
             information_effect=InformationEffect.LOSSY,
+            invariants=(
+                BridgeInvariant(
+                    "ordered relation values",
+                    source_projection=lambda value: tuple(
+                        item.relation
+                        for item in value.occurrences
+                    ),
+                    target_projection=lambda value: value.relations,
+                    claim_ids=(
+                        "THM_OCCURRENCE_COMPOSABILITY_PROJECTS",
+                    ),
+                ),
+            ),
             preserves=(
                 "ordered relation values",
                 "carrier composability",
