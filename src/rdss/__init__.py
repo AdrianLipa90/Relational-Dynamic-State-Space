@@ -43,7 +43,11 @@ from .canonical import (
 )
 from .signature import (
     AmbiguousSignatureError,
+    CatalogAssessment,
     NoveltyKind,
+    SignatureCatalog,
+    SignatureCatalogSummary,
+    SignatureRecord,
     RDSSSignature,
     SignatureAxis,
     SignatureComparison,
@@ -52,6 +56,7 @@ from .signature import (
     SignatureError,
     SignatureExtractor,
     UnsupportedSignatureError,
+    rdss_signature_catalog,
     rdss_signature_engine,
     rdss_signature_extractors,
 )
@@ -158,6 +163,10 @@ from .zero_axis import ZeroAxisPoint, finite_zero_axis_lift
 
 __all__ = [
     "AmbiguousSignatureError",
+    "CatalogAssessment",
+    "SignatureCatalog",
+    "SignatureCatalogSummary",
+    "SignatureRecord",
     "NoveltyKind",
     "RDSSSignature",
     "SignatureAxis",
@@ -167,6 +176,7 @@ __all__ = [
     "SignatureError",
     "SignatureExtractor",
     "UnsupportedSignatureError",
+    "rdss_signature_catalog",
     "rdss_signature_engine",
     "rdss_signature_extractors",
     "AmbiguousReductionError",
