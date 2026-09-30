@@ -198,6 +198,13 @@ from .realizations import (
     reference_point_from_occurrence,
     lift_value_phase_to_occurrence,
 )
+from .triage import (
+    BridgeTriageEntry,
+    BridgeTriageReport,
+    BridgeTriageStatus,
+    BridgeTriageSummary,
+    rdss_reference_bridge_triage,
+)
 from .zero_axis import ZeroAxisPoint, finite_zero_axis_lift
 
 __all__ = [
@@ -210,6 +217,11 @@ __all__ = [
     "BridgeRoute",
     "BridgeSpec",
     "BridgeStep",
+    "BridgeTriageEntry",
+    "BridgeTriageReport",
+    "BridgeTriageStatus",
+    "BridgeTriageSummary",
+    "rdss_reference_bridge_triage",
     "BridgeTypeError",
     "LossyBridgeError",
     "UnsupportedBridgeError",
