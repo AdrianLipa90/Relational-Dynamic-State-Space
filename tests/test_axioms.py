@@ -908,3 +908,18 @@ def test_canonical_signature_claims_are_non_foundational():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_signature_catalog_claim_depends_on_novelty_classification():
+    claims = claim_map()
+
+    assert claims["DEF_SIGNATURE_CATALOG"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure("DEF_SIGNATURE_CATALOG")
+    assert "DEF_SIGNATURE_NOVELTY_CLASSIFICATION" in closure
+    assert "DEF_SIGNATURE_COMPARISON" in closure
+    assert "DEF_SIGNATURE_AXIS_STRATIFICATION" in closure
+    assert "DEF_RDSS_CANONICAL_SIGNATURE" in closure
+    assert "DEF_CANONICAL_NORMAL_FORM" in closure
+    assert "DEF_SIGNATURE_CATALOG" not in {
+        claim.id for claim in foundational_axioms()
+    }
