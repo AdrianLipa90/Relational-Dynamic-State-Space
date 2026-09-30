@@ -1227,3 +1227,34 @@ rdss.reduction-certificate-scan/v1.
 
 It exits non-zero if not every record verifies or if any result claims global
 canonicality.
+
+
+## Executable noninjectivity witnesses
+
+The LOSSY label on the four reference forgetful rules is now backed by explicit noninjectivity witnesses.
+
+For each rule \(R\), RDSS constructs two strict-unequal values \(X\neq Y\) in the same source family such that
+
+\[
+R(X)=R(Y).
+\]
+
+Each witness is accepted only if:
+
+- both source strict keys differ;
+- both applications use the same declared rewrite rule;
+- both steps are classified LOSSY;
+- executable bridge invariants pass on both steps;
+- the two target strict keys are equal;
+- the common target is irreducible under the selected forgetful system.
+
+The four witnesses cover:
+
+1. RelationOccurrence values differing in occurrence address;
+2. OccurrenceRelationPath values differing in occurrence address;
+3. RelationalBinaryDistinction values differing in relation labels;
+4. RelationalGenerativeModel values differing in branch-relation labels.
+
+Therefore each current forgetful rule is noninjective on its source family and cannot admit a two-sided inverse on that full family.
+
+The deterministic CLI emits schema rdss.loss-witness-scan/v1.
