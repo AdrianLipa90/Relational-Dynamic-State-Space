@@ -523,3 +523,13 @@ The bridge component relation is relative to the selected explicit bridge
 policy. It is not promoted to object identity. In particular, the reversible
 OccurrenceAddress/RelationalPoint reference-coordinate bridge preserves
 semantic sort separation.
+
+
+### Bridge-gap diagnostic
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_BRIDGE_GAP_REPORT | DEFINITION | Groups unresolved cross-family record pairs by semantic-family pair without asserting that a bridge exists. | DEF_BRIDGE_EQUIVALENCE_GRAPH |
+
+The gap report is a research-navigation diagnostic, not a foundational claim or
+an automatic bridge-discovery theorem.
