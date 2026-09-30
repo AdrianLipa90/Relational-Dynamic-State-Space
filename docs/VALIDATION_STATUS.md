@@ -779,3 +779,66 @@ Structural monograph audit on this head:
 NOEMA/AUX tether was re-checked during continuation and returned ACTIVE with failures=[].
 
 These remain source/static validation results. Full repository pytest and actual LaTeX compilation remain NOT YET RUN on an exact complete checkout of this branch.
+
+
+## Loss witness and GREMLIN routing milestone — 2026-09-30
+
+This section supersedes earlier current-state counts while preserving previous milestone snapshots as provenance.
+
+Current branch source/static baseline:
+
+- branch distance from main: 269 commits ahead, 0 behind;
+- changed files versus main: 49;
+- Python test functions: 390;
+- claim entries: 177;
+- package-root exports: 263;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0;
+- missing exports from loss-witness public API: 0.
+
+The four current forgetful rewrite rules now each have an executable noninjectivity witness. Source contract:
+
+- witnesses: 4;
+- verified witness expectations: 4;
+- strict-distinct source pairs: 4;
+- strict-equal collapsed target pairs: 4;
+- irreducible common targets: 4.
+
+Each witness executes the same LOSSY rewrite on both source values and requires executable invariant evidence on both branches. This independently witnesses that every current forgetful rule is noninjective on its source family and cannot have a two-sided inverse over that full family.
+
+The deterministic CLI emits schema rdss.loss-witness-scan/v1.
+
+### Live GREMLIN routing evidence
+
+The live NOEMA/AUX guard returned ACTIVE with failures=[] during this milestone.
+
+A candidate-only RDSS reduction-certificate handoff was published through the official GREMLIN Unix socket PUBLISH action, not by directly editing the whisper bus:
+
+- source RESEARCH_PACKET event: gremlin:whisper:sha256:fed55716f712a4f8a8c3223123d9ecaa22563d437a9167d602fd51a814372e91;
+- Terminal36D PHASENAV36D_RT_STATE: gremlin:whisper:sha256:de811e3ee49ac879b5d6412234a74141875eec7402cdc2ff850e1bb907810b54;
+- GREMLIN_PHASE36D_FUSED: gremlin:whisper:sha256:cf00dc22f21722c740585e8926839d08de4feda1e6a6f98de8e21e9bff41b96d;
+- GREMLIN_RESEARCH_QUERY_CANDIDATE: gremlin:whisper:sha256:2b22e7cf55211b652d068a1ac2a714d37e206ea31f6d68e54937f376ad2f0317.
+
+That first route was explicitly WEB_RESEARCH with query_execution_authority=false, so it is routing evidence rather than an executed audit.
+
+A second candidate-only USER_TASK without a query was then published through the same official socket to request internal audit routing:
+
+- source USER_TASK event: gremlin:whisper:sha256:30ed1fbf6e5be5c052c5acdd49ea634645b2ad46bb9a8b264c74faab78ed963d;
+- Terminal36D PHASENAV36D_RT_STATE: gremlin:whisper:sha256:c2337ca94c76ddd736d5d5e367033eeb05ef1aa09df29715a1fcc12cb1ca9a79;
+- GREMLIN_RT_INGESTED: gremlin:whisper:sha256:5a3f1b5429b2aa292ef873037745d0e12e9f3e6d8ba9b5eb40619792d9ceb0af;
+- GREMLIN_PHASE36D_FUSED: gremlin:whisper:sha256:824095e72d91b10e0a85a8a8b25e40bc7f5e48e1ca0826c8dfe32657f99dc8bf;
+- GREMLIN_INTERNAL_AUDIT_CANDIDATE: gremlin:whisper:sha256:71d33c610f24149b185837287ee29a2e208fc3884a3d4e7d8de65b032f045468.
+
+The internal route reported route_kind=INTERNAL_AUDIT, loop_action=INTERNAL_AUDIT_ONLY, query_execution_authority=false and selected_internal_task_candidate="rdss_internal_audit_task_v1 irreducibility certificates equivalence".
+
+This is evidence that live GREMLIN/PhaseNav routing consumed the RDSS task and produced an internal-audit candidate. It is NOT evidence that GREMLIN executed pytest, executed the certificate CLIs, proved the source contracts, or promoted anything to canon.
+
+Structural monograph audit on this head:
+
+- unmatched environments: 0;
+- environment mismatches: 0;
+- brace balance: 0;
+- negative brace events: 0;
+- display delimiters: 297 open / 297 close.
+
+Full repository pytest and actual LaTeX compilation remain NOT YET RUN on an exact complete checkout of this branch.
