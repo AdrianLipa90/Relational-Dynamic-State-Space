@@ -99,6 +99,7 @@ def package_exports() -> set[str]:
 def audit_layer_ownership() -> dict[str, int]:
     module_paths = {
         "core": SRC / "rdss" / "algebra.py",
+        "canonical": SRC / "rdss" / "canonical.py",
         "operations": SRC / "rdss" / "operations.py",
         "phase": SRC / "rdss" / "phase.py",
         "potential": SRC / "rdss" / "potential.py",
@@ -156,6 +157,7 @@ def audit_test_imports() -> None:
     module_defs = {
         "rdss.algebra": public_defs(SRC / "rdss" / "algebra.py"),
         "rdss.axioms": public_defs(SRC / "rdss" / "axioms.py"),
+        "rdss.canonical": public_defs(SRC / "rdss" / "canonical.py"),
         "rdss.closure": public_defs(SRC / "rdss" / "closure.py"),
         "rdss.operations": public_defs(SRC / "rdss" / "operations.py"),
         "rdss.phase": public_defs(SRC / "rdss" / "phase.py"),
