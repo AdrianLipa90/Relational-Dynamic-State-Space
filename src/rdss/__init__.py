@@ -127,6 +127,14 @@ from .potential import (
     relational_attractor_set,
     semantic_potential_shift,
 )
+from .corpus import (
+    CorpusCoverageGap,
+    CorpusItem,
+    CorpusNovelty,
+    CorpusScanResult,
+    rdss_reference_corpus,
+    scan_rdss_reference_corpus,
+)
 from .equivalence_graph import (
     BridgeEquivalenceGraph,
     BridgeGap,
@@ -297,6 +305,12 @@ __all__ = [
     "singleton_ra0_rel_star_model",
     "singleton_ra0_star_model",
     "two_cycle_ra0_star_model",
+    "CorpusCoverageGap",
+    "CorpusItem",
+    "CorpusNovelty",
+    "CorpusScanResult",
+    "rdss_reference_corpus",
+    "scan_rdss_reference_corpus",
     "BridgeEquivalenceGraph",
     "BridgeGap",
     "BridgeGapReport",
