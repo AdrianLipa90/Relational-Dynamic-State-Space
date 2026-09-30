@@ -506,3 +506,81 @@ N_{\rm strict\ values}
 
 This provides the first executable compression view over a heterogeneous RDSS
 object set.
+
+
+## Termination ordering
+
+Cycle detection protects one observed run but does not prove that every
+possible reduction path terminates. A stronger certificate is an explicit
+well-founded measure.
+
+Version 0.1 admits a fixed-dimensional map
+
+\[
+\mu:X\to\mathbb N^k,
+\qquad
+1\le k<\infty,
+\]
+
+with lexicographic order. The dimension \(k\) is fixed by the order object; a
+variable-length tuple is rejected.
+
+Every ordered reduction step must satisfy
+
+\[
+\boxed{
+\mu(X_{n+1})<_{\rm lex}\mu(X_n).
+}
+\]
+
+Because lexicographic order on fixed finite-dimensional \(\mathbb N^k\) is
+well-founded, an infinite strictly descending chain cannot exist. Therefore
+
+\[
+\boxed{
+\forall n\;
+\mu(X_{n+1})<_{\rm lex}\mu(X_n)
+\Longrightarrow
+\text{the reduction sequence terminates}.
+}
+\]
+
+The executable engine checks strict descent at every applied step. A
+non-descending rule fails closed.
+
+This theorem is conditional on the supplied measure being defined on every
+state reached by the admitted reduction system. RDSS does not invent a measure
+for a rule set.
+
+## Finite confluence audit
+
+Operational reduction rejects multiple simultaneously applicable rules as
+AMBIGUOUS_REDUCTION. A separate audit mode intentionally explores those
+branches to test whether they rejoin.
+
+For a supplied start state and finite depth \(d\), the auditor constructs the
+reachable reduction graph and reports one of
+
+\[
+\{
+\mathrm{UNIQUE\_NORMAL\_FORM},
+\mathrm{MULTIPLE\_NORMAL\_FORMS},
+\mathrm{CYCLE\_DETECTED},
+\mathrm{BOUNDED\_INCOMPLETE}
+\}.
+\]
+
+UNIQUE_NORMAL_FORM means that the fully explored bounded graph reaches exactly
+one terminal strict canonical key and contains no detected cycle or depth
+truncation.
+
+MULTIPLE_NORMAL_FORMS is a concrete non-confluence witness for the explored
+start state.
+
+CYCLE_DETECTED is a concrete termination failure witness unless an additional
+quotient or ordering changes the admitted state graph.
+
+BOUNDED_INCOMPLETE means the selected depth was insufficient to decide.
+
+The finite audit is evidence on one explored graph. It is deliberately not
+promoted to a global Church--Rosser theorem for the whole reduction system.
