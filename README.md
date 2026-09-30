@@ -1071,26 +1071,29 @@ The source corpus intentionally mixes:
 - lossy forgetful projections;
 - currently unsupported executable types.
 
-The source contract currently partitions
+The first corpus pass exposed nine signature-coverage gaps. They have now been
+closed by assigning explicit semantic families without inventing bridges.
+
+The current source contract is
 
 \[
 33
 =
-24_{\rm signature\ supported}
+33_{\rm signature\ supported}
 +
-9_{\rm coverage\ gaps}.
+0_{\rm coverage\ gaps}.
 \]
 
-The supported slice is expected by source tests to compress to
+The full corpus is expected by source tests to classify into
 
 \[
-11\ \text{families},
+20\ \text{families},
 \qquad
-17\ \text{structures},
+26\ \text{structures},
 \qquad
-22\ \text{semantic states},
+31\ \text{semantic states},
 \qquad
-23\ \text{strict values}.
+32\ \text{strict values}.
 \]
 
 These are test expectations, not a claimed runtime PASS.
