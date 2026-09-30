@@ -375,3 +375,19 @@ The provenance layer projects explicit signature/transformation claim IDs onto t
 Value provenance binds semantic factorization and signature extractor provenance to the induced claim subgraph. Bridge routes, rewrite traces and scoped normal forms expose the same dependency expansion from their own recorded root claims.
 
 This is a read-only provenance view. It is not a claim-authoring or claim-promotion mechanism.
+
+
+## Cross-cutting reduction certificate layer
+
+src/rdss/reduction_certificate.py and src/rdss/certificate_scan.py
+
+The object certificate composes value provenance, certified rewrite trace,
+scoped normal form, target provenance, executable invariant evidence and the
+combined authoritative claim dependency projection.
+
+The batch scanner applies the same fail-closed factory to the finite reference
+corpus and emits aggregate diagnostics. The JSON CLI is intended as a stable
+machine-readable handoff surface for later GREMLIN ingestion.
+
+Neither layer changes the claim ledger or promotes scoped results to global
+canonical forms.
