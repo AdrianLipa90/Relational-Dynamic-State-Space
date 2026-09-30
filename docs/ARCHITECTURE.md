@@ -201,3 +201,38 @@ Any promoted structure must be synchronized across:
 \]
 
 and its epistemic role must remain explicit.
+
+
+## Cross-cutting canonical signature layer
+
+\`src/rdss/signature.py\`
+
+This layer classifies supported executable values without changing their
+epistemic ownership.
+
+It records structural axes
+
+\[
+(\text{carrier},\text{occurrence},\text{relations},\text{rank},
+\text{scale},\text{orbit},\text{dimension})
+\]
+
+separately from state axes
+
+\[
+(\text{phase},\text{state}),
+\]
+
+and records concrete representation and provenance independently.
+
+The comparison layer distinguishes exact semantic signature,
+representation-only variants, same structure with different state, structural
+difference, and incomparable semantic families.
+
+Incomparability is fail-closed. Cross-family identification requires an
+explicit bridge rather than a heuristic similarity rule.
+
+The current registry has no generic reflection fallback: only explicitly
+admitted RDSS types receive signatures.
+
+See \`docs/CANONICAL_REDUCTION_GATE.md\`.
