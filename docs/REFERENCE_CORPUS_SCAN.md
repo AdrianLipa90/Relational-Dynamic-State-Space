@@ -45,19 +45,24 @@ The current source corpus contains 33 named values spanning:
 The corpus intentionally contains duplicate, same-state-family,
 same-structure/different-state, structural-difference and cross-family cases.
 
-## Expected signature-coverage frontier
+## Signature-coverage frontier
 
-Source tests lock the current intended split:
+The first corpus draft exposed nine executable types without admitted
+signatures. They were used as explicit coverage targets rather than dropped or
+coerced into existing families.
+
+The current source registry now gives each of those types its own semantic
+family, so the source contract is:
 
 \[
 33
 =
-24_{\rm supported}
+33_{\rm supported}
 +
-9_{\rm coverage\ gaps}.
+0_{\rm coverage\ gaps}.
 \]
 
-The nine explicit coverage targets are:
+The newly covered families correspond to:
 
 1. TypedZero;
 2. SemanticScaleGraph;
@@ -69,9 +74,8 @@ The nine explicit coverage targets are:
 8. RelationalBinaryDistinction;
 9. GenerativeRelationModel.
 
-A coverage gap means only that the current signature engine has no admitted
-extractor for that executable type. It does not mean the object is invalid or
-mathematically unrelated to RDSS.
+Closing signature coverage does not introduce cross-family equivalence. Each
+type remains distinct until a separately justified bridge is registered.
 
 ## Expected novelty partition on the supported slice
 
@@ -90,7 +94,9 @@ The source contract currently expects:
 \end{array}
 \]
 
-for 24 signature-supported records.
+for the original 24-record supported slice. After closing the nine coverage
+gaps, each newly admitted type currently contributes one NEW_FAMILY record,
+so the full 33-record source contract expects NEW_FAMILY=20.
 
 The corresponding catalog expectations are
 
@@ -103,7 +109,7 @@ N_{\rm semantic\ states},
 N_{\rm strict\ values}
 )
 =
-(24,11,17,22,23).
+(33,20,26,31,32).
 \]
 
 These numbers are executable test expectations. They must not be reported as a
@@ -112,10 +118,10 @@ CLI.
 
 ## Bridge-graph expectations
 
-The current source tests expect the supported corpus to produce:
+The current source tests expect the full corpus to produce:
 
 \[
-N_{\rm equivalence\ components}=20,
+N_{\rm equivalence\ components}=29,
 \]
 
 with:
