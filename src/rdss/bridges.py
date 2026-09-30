@@ -235,6 +235,10 @@ class BridgeRegistry:
     def bridges(self) -> tuple[BridgeSpec, ...]:
         return self._bridges
 
+    @property
+    def signature_engine(self) -> SignatureEngine:
+        return self._signature_engine
+
     def _edges_from(
         self,
         family: str,
