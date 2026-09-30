@@ -502,7 +502,13 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
         forget_occurrence_path,
         forget_relation_occurrence,
     )
+    from .phase import U1Phase, U1_TOLERANCE
     from .realizations import reference_point_from_occurrence
+    from .zero_axis import (
+        ZeroAxisPoint,
+        finite_zero_axis_lift_u1,
+        finite_zero_axis_phase,
+    )
 
     return (
         BridgeSpec(
@@ -525,6 +531,47 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
             claim_ids=(
                 "DEF_CARRIER_OCCURRENCE_SEPARATION",
                 "REF_RELATIONAL_POINT_BINARY_COORDINATE",
+            ),
+        ),
+        BridgeSpec(
+            name="u1_to_finite_zero_axis",
+            source_family="u1_phase",
+            target_family="zero_axis_point",
+            forward=finite_zero_axis_lift_u1,
+            inverse=finite_zero_axis_phase,
+            roundtrip_validator=lambda original, recovered: (
+                (
+                    isinstance(original, U1Phase)
+                    and isinstance(recovered, U1Phase)
+                    and abs(original.value - recovered.value)
+                    <= 10.0 * U1_TOLERANCE
+                )
+                or
+                (
+                    isinstance(original, ZeroAxisPoint)
+                    and isinstance(recovered, ZeroAxisPoint)
+                    and abs(original.t - recovered.t)
+                    <= 10.0 * U1_TOLERANCE
+                )
+            ),
+            source_check=lambda value: (
+                isinstance(value, U1Phase)
+                and abs(1.0 + value.value) > U1_TOLERANCE
+            ),
+            target_check=lambda value: isinstance(
+                value,
+                ZeroAxisPoint,
+            ),
+            kind=EquivalenceKind.REFERENCE_REPRESENTATION,
+            information_effect=InformationEffect.LOSSLESS,
+            preserves=(
+                "finite U(1) phase",
+                "finite Zero-Axis coordinate",
+                "projective Omega correspondence",
+            ),
+            claim_ids=(
+                "REF_U1_ZERO_AXIS_FINITE_BRIDGE",
+                "ZA_BRIDGE",
             ),
         ),
         BridgeSpec(
