@@ -361,3 +361,53 @@ def roundtrip_check(
     return strict_normal_form(recovered).same_key(
         strict_normal_form(value)
     )
+
+
+def rdss_projection_rules() -> tuple[ReductionRule, ...]:
+    """Return explicit lossy RDSS occurrence-to-value projection rules.
+
+    These rules implement only the already-defined forgetful projection.
+    They never identify occurrence identity with carrier identity.
+    """
+    from .operations import (
+        OccurrenceRelationPath,
+        RelationOccurrence,
+        forget_occurrence_path,
+        forget_relation_occurrence,
+    )
+
+    return (
+        ReductionRule(
+            name="forget_relation_occurrence",
+            applies=lambda value: isinstance(value, RelationOccurrence),
+            transform=forget_relation_occurrence,
+            kind=EquivalenceKind.FORGETFUL_PROJECTION,
+            information_effect=InformationEffect.LOSSY,
+            preserves=(
+                "typed relation value",
+                "source carrier",
+                "target carrier",
+            ),
+            claim_ids=("DEF_OCCURRENCE_FORGETFUL_PROJECTION",),
+        ),
+        ReductionRule(
+            name="forget_occurrence_path",
+            applies=lambda value: isinstance(value, OccurrenceRelationPath),
+            transform=forget_occurrence_path,
+            kind=EquivalenceKind.FORGETFUL_PROJECTION,
+            information_effect=InformationEffect.LOSSY,
+            preserves=(
+                "ordered relation values",
+                "carrier composability",
+            ),
+            claim_ids=(
+                "DEF_OCCURRENCE_FORGETFUL_PROJECTION",
+                "THM_OCCURRENCE_COMPOSABILITY_PROJECTS",
+            ),
+        ),
+    )
+
+
+def rdss_projection_engine() -> ReductionEngine:
+    """Build the explicit occurrence-to-value projection engine."""
+    return ReductionEngine(rdss_projection_rules())
