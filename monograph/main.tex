@@ -3023,6 +3023,18 @@ For the current 36-record reference corpus, the source contract is
 \]
 for records, families, structures, semantic states and representation classes.
 
+\subsection{Claim provenance dependency graph}
+
+For explicit root claim IDs \(R\), define the induced dependency projection
+\[
+G_R=\operatorname{InducedDependencyGraph}(R).
+\]
+The projection is evaluated against the authoritative RDSS claim ledger and is emitted in topological order, so every dependency precedes every claim that depends on it.
+
+For a value \(X\), the provenance record binds its semantic factorization \(\mathfrak F(X)\), signature-extractor provenance, signature root claim IDs and \(G_R\). The same dependency expansion is available for bridge routes, rewrite traces and scoped normal forms.
+
+The construction is read-only: it does not create claims, alter claim kinds, promote candidates or change dependencies.
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
