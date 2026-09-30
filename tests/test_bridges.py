@@ -12,7 +12,9 @@ from rdss import (
 )
 from rdss.closure import (
     BinaryDistinction,
+    GenerativeRelationModel,
     RelationalBinaryDistinction,
+    RelationalGenerativeModel,
 )
 from rdss.bridges import (
     AmbiguousBridgeError,
@@ -336,3 +338,44 @@ def test_relational_distinction_forgetful_bridge_is_lossy():
     assert result.equivalent_after_bridge
     assert result.route.lossy
     assert not result.route.fully_reversible
+
+
+
+def test_relational_generative_model_forgetful_bridge_is_lossy():
+    registry = rdss_bridge_registry()
+    relational = RelationalGenerativeModel(
+        frozenset({"a", "b", "c"}),
+        (
+            RelationalBinaryDistinction(
+                "a",
+                "b",
+                "c",
+                "r-left",
+                "r-right",
+            ),
+        ),
+    )
+    generative = GenerativeRelationModel(
+        frozenset({"a", "b", "c"}),
+        (
+            BinaryDistinction(
+                "a",
+                "b",
+                "c",
+            ),
+        ),
+    )
+
+    with pytest.raises(LossyBridgeError):
+        registry.compare(relational, generative)
+
+    result = registry.compare(
+        relational,
+        generative,
+        allow_lossy=True,
+    )
+
+    assert result.equivalent_after_bridge
+    assert result.route.lossy
+    assert not result.route.fully_reversible
+    assert result.route.value == generative
