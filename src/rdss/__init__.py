@@ -64,6 +64,12 @@ from .canonical import (
     roundtrip_check,
     strict_normal_form,
 )
+from .reduction_certificate import (
+    ReductionCertificate,
+    ReductionCertificateError,
+    certify_forgetful_reduction,
+    validate_reduction_certificate,
+)
 from .rewrite import (
     AmbiguousRewriteError,
     FamilyRankTerminationCertificate,
@@ -423,6 +429,10 @@ __all__ = [
     "BinaryDistinction",
     "BranchRelationOccurrence",
     "GenerativeRelationModel",
+    "ReductionCertificate",
+    "ReductionCertificateError",
+    "certify_forgetful_reduction",
+    "validate_reduction_certificate",
     "RelationalBinaryDistinction",
     "RelationalGenerativeModel",
     "finite_word_unrank",
