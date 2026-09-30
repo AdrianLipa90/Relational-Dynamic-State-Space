@@ -2923,6 +2923,39 @@ This establishes termination for the selected forgetful rewrite system only.
 No confluence or canonical-normal-form claim follows from the termination
 certificate alone.
 
+\subsection{Critical pairs and confluence}
+
+Potential one-step overlaps are first detected at the rule-family level. If two
+rules share one source family,
+\[
+R_i:F\to F_i,
+\qquad
+R_j:F\to F_j,
+\]
+then a concrete value in \(F\) may generate a critical pair.
+
+The four current forgetful rules have pairwise distinct source families.
+Because each admitted value has exactly one semantic signature family, at most
+one forgetful rule can apply:
+\[
+\#\operatorname{Succ}(X)\le 1.
+\]
+
+Thus the reference forgetful rewrite relation is deterministic. Any two finite
+derivations from a common source lie on the same successor orbit and are
+therefore joinable, so the relation is confluent.
+
+Together with the family-rank termination certificate this yields a unique
+irreducible result for every admitted value under the selected forgetful
+rewrite system. The scope is essential:
+\[
+\boxed{
+\text{unique selected-system irreducible}
+\neq
+\text{global RDSS canonical normal form}.
+}
+\]
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
