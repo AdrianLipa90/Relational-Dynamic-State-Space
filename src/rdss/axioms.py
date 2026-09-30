@@ -789,6 +789,13 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_RELATIONAL_DISTINCTION", "DEF_BINARY_DISTINCTION", "DEF_BRIDGE_REGISTRY"),
     ),
 
+    Claim(
+        "DEF_RELATIONAL_GENERATIVE_FORGETFUL_PROJECTION",
+        ClaimKind.DEFINITION,
+        "The executable projection RelationalGenerativeModel.as_ra0_star_model forgets explicit branch-relation labels while retaining the admitted carrier set and binary distinction host/endpoint structure, yielding a GenerativeRelationModel.",
+        ("THM_RA0_STAR_FROM_RA0_REL_STAR", "DEF_BRIDGE_REGISTRY"),
+    ),
+
 )
 
 
