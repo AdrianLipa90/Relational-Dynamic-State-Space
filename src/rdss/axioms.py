@@ -750,6 +750,13 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_BRIDGE_EQUIVALENCE_COMPONENT",),
     ),
 
+    Claim(
+        "DEF_BRIDGE_GAP_REPORT",
+        ClaimKind.DEFINITION,
+        "A bridge-gap report groups unresolved cross-family record pairs by unordered semantic-family pair; it identifies missing explicit bridge coverage without asserting that a bridge exists or should exist.",
+        ("DEF_BRIDGE_EQUIVALENCE_GRAPH",),
+    ),
+
 )
 
 
