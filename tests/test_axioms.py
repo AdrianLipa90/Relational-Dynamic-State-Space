@@ -1024,3 +1024,26 @@ def test_bridge_gap_report_is_diagnostic_not_foundational():
     assert "DEF_BRIDGE_GAP_REPORT" not in {
         claim.id for claim in foundational_axioms()
     }
+
+
+def test_reference_corpus_scan_claims_are_diagnostic():
+    claims = claim_map()
+
+    assert claims["DEF_REFERENCE_CORPUS"].kind is ClaimKind.DEFINITION
+    assert "DEF_RDSS_CANONICAL_SIGNATURE" in dependency_closure(
+        "DEF_REFERENCE_CORPUS"
+    )
+
+    assert claims["DEF_REFERENCE_CORPUS_SCAN"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure("DEF_REFERENCE_CORPUS_SCAN")
+    assert "DEF_REFERENCE_CORPUS" in closure
+    assert "DEF_SIGNATURE_CATALOG" in closure
+    assert "DEF_BRIDGE_EQUIVALENCE_GRAPH" in closure
+    assert "DEF_BRIDGE_GAP_REPORT" in closure
+
+    assert {
+        "DEF_REFERENCE_CORPUS",
+        "DEF_REFERENCE_CORPUS_SCAN",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
