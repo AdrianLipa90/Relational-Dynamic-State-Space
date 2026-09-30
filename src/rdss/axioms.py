@@ -681,6 +681,25 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_SIGNATURE_NOVELTY_CLASSIFICATION",),
     ),
 
+    Claim(
+        "DEF_LEXICOGRAPHIC_REDUCTION_ORDER",
+        ClaimKind.DEFINITION,
+        "A reduction ordering may be supplied by a fixed finite-dimensional measure mu:X->N^k with lexicographic order; every executable reduction step admitted under that order must strictly decrease mu.",
+        ("DEF_REDUCTION_TRACE",),
+    ),
+    Claim(
+        "THM_STRICT_LEX_DESCENT_TERMINATES",
+        ClaimKind.THEOREM,
+        "For fixed finite k, lexicographic order on N^k is well-founded; therefore any reduction sequence whose every step strictly decreases an admitted N^k measure is finite.",
+        ("DEF_LEXICOGRAPHIC_REDUCTION_ORDER",),
+    ),
+    Claim(
+        "DEF_FINITE_CONFLUENCE_AUDIT",
+        ClaimKind.DEFINITION,
+        "A bounded confluence audit explores every admitted reduction branch from a supplied start value up to a finite depth and reports unique normal form, multiple normal forms, detected cycle, or bounded incompleteness; this finite audit is not a general Church-Rosser theorem.",
+        ("DEF_REDUCTION_TRACE",),
+    ),
+
 )
 
 
