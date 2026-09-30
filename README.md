@@ -1156,3 +1156,34 @@ global_canonical=False.
 
 This is therefore a certified selected-system normal form, not a global RDSS
 canonical representative.
+
+
+## Semantic factorization
+
+RDSS now exposes every admitted signature as
+
+\[
+\mathfrak F(X)=(F,S,\sigma,\rho),
+\]
+
+with semantic family \(F\), structural key \(S\), state key \(\sigma\) and
+representation tag \(\rho\).
+
+This is a view over the existing RDSSSignature model, not a new quotient.
+
+The current reference corpus source contract is:
+
+\[
+36\ \text{records}
+\rightarrow
+22\ \text{families}
+\rightarrow
+28\ \text{structures}
+\rightarrow
+34\ \text{semantic states}
+\]
+
+with 22 representation classes.
+
+This separation is used to distinguish genuine structural novelty from a new
+state or a different representation.
