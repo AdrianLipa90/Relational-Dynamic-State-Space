@@ -521,3 +521,186 @@ def rdss_signature_extractors() -> tuple[SignatureExtractor, ...]:
 
 def rdss_signature_engine() -> SignatureEngine:
     return SignatureEngine(rdss_signature_extractors())
+
+
+
+@dataclass(frozen=True)
+class SignatureRecord:
+    ordinal: int
+    signature: RDSSSignature
+    strict_key: object
+    value: object
+
+
+@dataclass(frozen=True)
+class CatalogAssessment:
+    novelty: NoveltyKind
+    signature: RDSSSignature
+    representative: SignatureRecord | None = None
+
+    @property
+    def is_redundant(self) -> bool:
+        return self.novelty in {
+            NoveltyKind.EXACT_REPEAT,
+            NoveltyKind.SIGNATURE_EQUIVALENT,
+            NoveltyKind.REPRESENTATION_ONLY,
+        }
+
+
+@dataclass(frozen=True)
+class SignatureCatalogSummary:
+    records: int
+    families: int
+    structures: int
+    semantic_states: int
+    strict_values: int
+
+
+class SignatureCatalog:
+    """Deterministic in-memory index over RDSS semantic signatures.
+
+    The catalog does not delete or merge user values. It classifies each value
+    against already indexed records and exposes quotient-like groupings at
+    family, structure, semantic-state and strict-payload levels.
+    """
+
+    def __init__(self, engine: SignatureEngine) -> None:
+        self._engine = engine
+        self._records: list[SignatureRecord] = []
+
+    @property
+    def records(self) -> tuple[SignatureRecord, ...]:
+        return tuple(self._records)
+
+    def assess(self, value: object) -> CatalogAssessment:
+        signature = self._engine.signature(value)
+        strict_key = strict_normal_form(value).key
+
+        exact = tuple(
+            record
+            for record in self._records
+            if record.strict_key == strict_key
+        )
+        if exact:
+            return CatalogAssessment(
+                NoveltyKind.EXACT_REPEAT,
+                signature,
+                exact[0],
+            )
+
+        semantic = tuple(
+            record
+            for record in self._records
+            if record.signature.family == signature.family
+            and record.signature.semantic_key == signature.semantic_key
+        )
+        if semantic:
+            representation_variant = next(
+                (
+                    record
+                    for record in semantic
+                    if record.signature.representation
+                    != signature.representation
+                ),
+                None,
+            )
+            if representation_variant is not None:
+                return CatalogAssessment(
+                    NoveltyKind.REPRESENTATION_ONLY,
+                    signature,
+                    representation_variant,
+                )
+            return CatalogAssessment(
+                NoveltyKind.SIGNATURE_EQUIVALENT,
+                signature,
+                semantic[0],
+            )
+
+        structural = tuple(
+            record
+            for record in self._records
+            if record.signature.family == signature.family
+            and record.signature.structural_key == signature.structural_key
+        )
+        if structural:
+            return CatalogAssessment(
+                NoveltyKind.NEW_STATE,
+                signature,
+                structural[0],
+            )
+
+        same_family = tuple(
+            record
+            for record in self._records
+            if record.signature.family == signature.family
+        )
+        if same_family:
+            return CatalogAssessment(
+                NoveltyKind.NEW_STRUCTURE,
+                signature,
+                same_family[0],
+            )
+
+        return CatalogAssessment(
+            NoveltyKind.NEW_FAMILY,
+            signature,
+            None,
+        )
+
+    def add(self, value: object) -> CatalogAssessment:
+        assessment = self.assess(value)
+        self._records.append(
+            SignatureRecord(
+                ordinal=len(self._records),
+                signature=assessment.signature,
+                strict_key=strict_normal_form(value).key,
+                value=value,
+            )
+        )
+        return assessment
+
+    def _group_by(
+        self,
+        key_fn: Callable[[SignatureRecord], object],
+    ) -> tuple[tuple[SignatureRecord, ...], ...]:
+        groups: dict[object, list[SignatureRecord]] = {}
+        for record in self._records:
+            key = key_fn(record)
+            groups.setdefault(key, []).append(record)
+        return tuple(
+            tuple(groups[key])
+            for key in sorted(groups, key=repr)
+        )
+
+    def family_groups(self) -> tuple[tuple[SignatureRecord, ...], ...]:
+        return self._group_by(
+            lambda record: record.signature.family
+        )
+
+    def structure_groups(self) -> tuple[tuple[SignatureRecord, ...], ...]:
+        return self._group_by(
+            lambda record: record.signature.structural_key
+        )
+
+    def semantic_groups(self) -> tuple[tuple[SignatureRecord, ...], ...]:
+        return self._group_by(
+            lambda record: record.signature.semantic_key
+        )
+
+    def strict_groups(self) -> tuple[tuple[SignatureRecord, ...], ...]:
+        return self._group_by(
+            lambda record: record.strict_key
+        )
+
+    def summary(self) -> SignatureCatalogSummary:
+        return SignatureCatalogSummary(
+            records=len(self._records),
+            families=len(self.family_groups()),
+            structures=len(self.structure_groups()),
+            semantic_states=len(self.semantic_groups()),
+            strict_values=len(self.strict_groups()),
+        )
+
+
+def rdss_signature_catalog() -> SignatureCatalog:
+    return SignatureCatalog(rdss_signature_engine())
