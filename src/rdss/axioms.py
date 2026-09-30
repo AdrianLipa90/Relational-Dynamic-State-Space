@@ -619,6 +619,36 @@ CLAIMS: tuple[Claim, ...] = (
         "If an oriented two-dimensional real inner-product carrier with compatible K satisfying K^2=-I is supplied, exp(phi K) realizes SO(2) congruent to U(1); derivation of that carrier structure from the minimal RDSS foundation remains open.",
         ("PRIM_ORBIT",),
     ),
+    Claim(
+        "DEF_CANONICAL_NORMAL_FORM",
+        ClaimKind.DEFINITION,
+        "A strict canonical normal form is an exact type-tagged finite key for an executable RDSS value together with separate non-authoritative reduction provenance; provenance is not part of strict key equality.",
+    ),
+    Claim(
+        "DEF_REDUCTION_RELATION_KIND",
+        ClaimKind.DEFINITION,
+        "Every admitted canonical reduction rule declares its semantic relation kind explicitly: identity, exact equivalence, isomorphism, reference representation, forgetful projection, or approximation.",
+        ("DEF_CANONICAL_NORMAL_FORM",),
+    ),
+    Claim(
+        "DEF_REDUCTION_INFORMATION_EFFECT",
+        ClaimKind.DEFINITION,
+        "Every admitted canonical reduction rule declares its information effect as LOSSLESS, LOSSY, or UNKNOWN; a LOSSLESS rule requires an explicit inverse, while forgetful projection and approximation may not be labeled LOSSLESS.",
+        ("DEF_REDUCTION_RELATION_KIND",),
+    ),
+    Claim(
+        "DEF_REDUCTION_TRACE",
+        ClaimKind.DEFINITION,
+        "Canonical reduction records an ordered provenance trace containing rule identity, relation kind, information effect, preserved invariants, claim provenance, and before/after exact keys; competing applicable rules and reduction cycles fail closed.",
+        ("DEF_REDUCTION_INFORMATION_EFFECT",),
+    ),
+    Claim(
+        "THM_STRICT_NORMAL_FORM_IDEMPOTENCE",
+        ClaimKind.THEOREM,
+        "Applying strict canonical normalization to an already constructed CanonicalNormalForm returns that same normal form, so N(N(X))=N(X) by construction.",
+        ("DEF_CANONICAL_NORMAL_FORM",),
+    ),
+
 )
 
 
