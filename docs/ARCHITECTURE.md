@@ -351,3 +351,16 @@ The layer combines this confluence certificate with the explicit termination
 certificate to produce a certified unique irreducible result under the selected
 forgetful rewrite system. It does not promote that result to a global RDSS
 canonical normal form.
+
+
+## Cross-cutting semantic factorization layer
+
+src/rdss/factorization.py
+
+This layer is a view over RDSSSignature, not a second signature system. It
+exposes family, structure, state and representation as separate auditable
+coordinates and preserves the original signature keys exactly.
+
+The factorization layer is intended for graph compression, diagnostics and
+cross-repository comparison where "same structure", "same state" and "same
+representation" must not be conflated.
