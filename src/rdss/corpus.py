@@ -16,6 +16,7 @@ from .closure import (
     BranchRelationOccurrence,
     GenerativeRelationModel,
     RelationalBinaryDistinction,
+    RelationalGenerativeModel,
 )
 from .equivalence_graph import (
     BridgeEquivalenceGraph,
@@ -365,6 +366,22 @@ def rdss_reference_corpus() -> tuple[CorpusItem, ...]:
                 "r-right",
             ),
             ("DEF_RELATIONAL_DISTINCTION",),
+        ),
+        CorpusItem(
+            "relational-generative-relation-model",
+            RelationalGenerativeModel(
+                frozenset({"a", "b", "c"}),
+                (
+                    RelationalBinaryDistinction(
+                        "a",
+                        "b",
+                        "c",
+                        "r-left",
+                        "r-right",
+                    ),
+                ),
+            ),
+            ("RA0_REL_STAR",),
         ),
         CorpusItem(
             "generative-relation-model",
