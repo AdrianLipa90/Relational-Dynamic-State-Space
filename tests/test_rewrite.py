@@ -10,6 +10,7 @@ from rdss.canonical import (
     EquivalenceKind,
     InformationEffect,
 )
+from rdss.corpus import rdss_reference_corpus
 from rdss.operations import RelationOccurrence
 from rdss.realizations import reference_point_from_occurrence
 from rdss.rewrite import (
@@ -257,3 +258,61 @@ def test_automatic_trace_detects_rewrite_cycle():
             OccurrenceAddress((-1,)),
             max_steps=4,
         )
+
+
+
+def test_reference_corpus_has_five_unique_forgetful_rewrite_targets():
+    system = rdss_forgetful_rewrite_system()
+    corpus = rdss_reference_corpus()
+
+    rewriteable = []
+    ambiguous = []
+    irreducible = []
+
+    for item in corpus:
+        rules = system.applicable_rules(item.value)
+        if len(rules) == 1:
+            rewriteable.append(
+                (item.name, rules[0].name)
+            )
+        elif len(rules) > 1:
+            ambiguous.append(
+                (
+                    item.name,
+                    tuple(rule.name for rule in rules),
+                )
+            )
+        else:
+            irreducible.append(item.name)
+
+    assert len(corpus) == 36
+    assert len(rewriteable) == 5
+    assert len(irreducible) == 31
+    assert ambiguous == []
+
+    assert {name for name, _ in rewriteable} == {
+        "relation-occurrence-down",
+        "relation-occurrence-up",
+        "occurrence-cycle",
+        "relational-binary-distinction",
+        "relational-generative-relation-model",
+    }
+
+
+def test_reference_corpus_forgetful_rewrites_all_finish_in_one_step():
+    system = rdss_forgetful_rewrite_system()
+
+    for item in rdss_reference_corpus():
+        rules = system.applicable_rules(item.value)
+        if not rules:
+            continue
+        assert len(rules) == 1
+
+        trace = system.trace_until_irreducible(
+            item.value,
+            max_steps=4,
+        )
+
+        assert len(trace.steps) == 1
+        assert trace.lossy
+        assert system.irreducible(trace.value)
