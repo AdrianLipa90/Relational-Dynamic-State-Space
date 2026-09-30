@@ -58,6 +58,30 @@ class EquivalenceGraphSummary:
 
 
 @dataclass(frozen=True)
+class BridgeGap:
+    left_family: str
+    right_family: str
+    pairs: tuple[tuple[int, int], ...]
+
+    @property
+    def count(self) -> int:
+        return len(self.pairs)
+
+
+@dataclass(frozen=True)
+class BridgeGapReport:
+    gaps: tuple[BridgeGap, ...]
+
+    @property
+    def unresolved_pairs(self) -> int:
+        return sum(gap.count for gap in self.gaps)
+
+    @property
+    def family_pairs(self) -> int:
+        return len(self.gaps)
+
+
+@dataclass(frozen=True)
 class BridgeEquivalenceGraph:
     records: tuple[EquivalenceGraphRecord, ...]
     edges: tuple[EquivalenceGraphEdge, ...]
@@ -92,6 +116,34 @@ class BridgeEquivalenceGraph:
             if ordinal in component:
                 return component
         raise RuntimeError("record is missing from equivalence components")
+
+    def bridge_gap_report(self) -> BridgeGapReport:
+        grouped: dict[
+            tuple[str, str],
+            list[tuple[int, int]],
+        ] = {}
+        for left, right in self.unresolved_cross_family_pairs:
+            left_family = self.records[left].signature.family
+            right_family = self.records[right].signature.family
+            family_pair = tuple(
+                sorted(
+                    (left_family, right_family)
+                )
+            )
+            grouped.setdefault(
+                family_pair,
+                [],
+            ).append((left, right))
+
+        gaps = tuple(
+            BridgeGap(
+                left_family=family_pair[0],
+                right_family=family_pair[1],
+                pairs=tuple(grouped[family_pair]),
+            )
+            for family_pair in sorted(grouped)
+        )
+        return BridgeGapReport(gaps)
 
     def summary(self) -> EquivalenceGraphSummary:
         return EquivalenceGraphSummary(
