@@ -270,9 +270,10 @@ realizations or bridges.
 The reference corpus is the first finite executable dataset used to exercise
 the canonical/signature/bridge stack as one system.
 
-The corpus deliberately contains both currently supported signature families
-and existing RDSS executable types with no admitted signature extractor. The
-latter are reported as coverage gaps rather than dropped or guessed.
+The corpus originally exposed executable types without admitted signature
+extractors. Those gaps are now covered by explicit semantic families. The
+scanner retains fail-closed coverage-gap reporting for any future corpus value
+that lacks an admitted extractor.
 
 The scanner composes:
 
