@@ -576,3 +576,20 @@ does not override an executable FAIL.
 
 No claim of termination is made for rewrite systems that do not pass an
 explicit certificate audit.
+
+
+## Confluence certificate layer
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_RULE_SOURCE_FAMILY_OVERLAP_AUDIT | DEFINITION | Enumerates rewrite-rule pairs sharing a declared source semantic family. | DEF_PRIORITY_FREE_REWRITE_SYSTEM, DEF_RDSS_CANONICAL_SIGNATURE |
+| DEF_DISTINCT_SOURCE_FAMILY_CONFLUENCE_CERTIFICATE | DEFINITION | Valid when no two selected rewrite rules share a source semantic family. | DEF_RULE_SOURCE_FAMILY_OVERLAP_AUDIT |
+| THM_DISTINCT_SOURCE_FAMILY_DETERMINISM | THEOREM | Distinct rule source families imply at most one immediate successor per admitted value. | DEF_DISTINCT_SOURCE_FAMILY_CONFLUENCE_CERTIFICATE |
+| THM_DETERMINISTIC_REWRITE_CONFLUENCE | THEOREM | Deterministic rewrite relations are confluent because all finite derivations lie on one successor orbit. | THM_DISTINCT_SOURCE_FAMILY_DETERMINISM |
+| REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE | REFERENCE REALIZATION | The four reference forgetful rules have pairwise distinct source families. | DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER, DEF_DISTINCT_SOURCE_FAMILY_CONFLUENCE_CERTIFICATE |
+| THM_REFERENCE_FORGETFUL_REWRITE_CONFLUENT | THEOREM | The reference forgetful rewrite relation is confluent. | REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE, THM_DETERMINISTIC_REWRITE_CONFLUENCE |
+| THM_TERMINATING_CONFLUENT_UNIQUE_IRREDUCIBLE | THEOREM | Termination plus confluence gives a unique irreducible result under the selected system. | THM_STRICT_FAMILY_RANK_TERMINATION, THM_DETERMINISTIC_REWRITE_CONFLUENCE |
+| THM_REFERENCE_FORGETFUL_UNIQUE_IRREDUCIBLE | THEOREM | The selected reference forgetful system gives a unique irreducible result for each admitted value. | THM_REFERENCE_FORGETFUL_REWRITE_TERMINATES, THM_REFERENCE_FORGETFUL_REWRITE_CONFLUENT, THM_TERMINATING_CONFLUENT_UNIQUE_IRREDUCIBLE |
+
+The last result is explicitly scoped to the selected forgetful rewrite system
+and is not a global RDSS canonical-normal-form claim.
