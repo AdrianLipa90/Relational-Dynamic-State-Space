@@ -2729,17 +2729,17 @@ families remain distinct, or by refinement of the signature model.
 \subsection{Reference corpus compression scan}
 
 The canonical/signature/bridge machinery is exercised against a finite
-reference corpus constructed from current executable RDSS types. The corpus
-contains 33 named values and intentionally includes both supported semantic
-families and types outside current signature coverage.
+reference corpus constructed from current executable RDSS types. The current
+corpus contains 35 named values and every value has an admitted semantic
+signature.
 
 The source contract is
 \[
-33
+35
 =
-24_{\rm supported}
+35_{\rm supported}
 +
-9_{\rm coverage\ gaps}.
+0_{\rm coverage\ gaps}.
 \]
 On the supported slice, source tests define the expected catalog partition
 \[
@@ -2751,14 +2751,40 @@ N_{\rm semantic\ states},
 N_{\rm strict\ values}
 )
 =
-(24,11,17,22,23).
+(35,21,27,33,34).
 \]
-The expected bridge graph has 20 strong equivalence components, five strong
-edges, three directed LOSSY projection edges and no UNKNOWN bridge edge.
+The expected bridge graph has 30 equivalence components, six strong edges,
+five directed LOSSY projection edges and no UNKNOWN bridge edge.
 
 These numbers are executable expectations rather than a reported runtime
 result. Unsupported corpus values remain explicit coverage targets rather than
 being coerced into an existing semantic family.
+
+\subsection{Bridge-gap triage}
+
+Not every unresolved family pair represents the same mathematical task. The
+reference triage therefore classifies selected bridge problems into
+\[
+\{
+\mathrm{IMPLEMENTED\_LOSSLESS},
+\mathrm{IMPLEMENTED\_LOSSY},
+\mathrm{CONTEXT\_REQUIRED},
+\mathrm{MISSING\_INTERMEDIATE\_FAMILY},
+\mathrm{COMPOSITE\_NOT\_EQUIVALENT},
+\mathrm{NO\_BRIDGE\_CLAIM}
+\}.
+\]
+
+The current triage contains eleven entries:
+\[
+(2,4,1,1,2,1)
+\]
+in the order lossless, lossy, context-required, missing-intermediate,
+composite, and no-bridge-claim.
+
+In particular, the Zero-Axis interface exposes a missing typed intermediate:
+the finite lift consumes a verified \(U(1)\) phase, while the current kernel has
+no canonical \(U(1)\)-phase value family. This is the next bridge target.
 
 \section{Reference-kernel obligations}
 
