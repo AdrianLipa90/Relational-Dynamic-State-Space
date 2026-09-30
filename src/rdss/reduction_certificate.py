@@ -136,13 +136,31 @@ def validate_reduction_certificate(
     expected_target = provenance_for_value(
         certificate.rewrite_trace.value
     )
-    if certificate.source.factorization != expected_source.factorization:
+    if certificate.source != expected_source:
         raise ReductionCertificateError(
-            "source factorization disagrees with rewrite input"
+            "source provenance disagrees with rewrite input"
         )
-    if certificate.target.factorization != expected_target.factorization:
+    if certificate.target != expected_target:
         raise ReductionCertificateError(
-            "target factorization disagrees with rewrite target"
+            "target provenance disagrees with rewrite target"
+        )
+
+    termination = rdss_forgetful_termination_certificate()
+    confluence = rdss_forgetful_confluence_certificate()
+
+    if (
+        certificate.normal_form.termination_certificate
+        != termination.name
+    ):
+        raise ReductionCertificateError(
+            "normal-form termination certificate identity disagrees"
+        )
+    if (
+        certificate.normal_form.confluence_certificate
+        != confluence.name
+    ):
+        raise ReductionCertificateError(
+            "normal-form confluence certificate identity disagrees"
         )
 
     if (
@@ -175,6 +193,24 @@ def validate_reduction_certificate(
             "idempotent target key disagrees with certificate target key"
         )
 
+    expected_rewrite_provenance = provenance_for_rewrite_trace(
+        certificate.rewrite_trace
+    )
+    expected_normal_form_provenance = provenance_for_normal_form(
+        certificate.normal_form
+    )
+    if certificate.rewrite_provenance != expected_rewrite_provenance:
+        raise ReductionCertificateError(
+            "rewrite provenance disagrees with rewrite trace"
+        )
+    if (
+        certificate.normal_form_provenance
+        != expected_normal_form_provenance
+    ):
+        raise ReductionCertificateError(
+            "normal-form provenance disagrees with scoped normal form"
+        )
+
     expected_invariants = _unique(
         tuple(
             name
@@ -190,6 +226,13 @@ def validate_reduction_certificate(
     if certificate.claim_graph.roots != certificate.root_claim_ids:
         raise ReductionCertificateError(
             "claim graph roots disagree with certificate roots"
+        )
+    expected_graph = build_claim_dependency_graph(
+        certificate.root_claim_ids
+    )
+    if certificate.claim_graph != expected_graph:
+        raise ReductionCertificateError(
+            "claim graph disagrees with authoritative dependency projection"
         )
 
 
