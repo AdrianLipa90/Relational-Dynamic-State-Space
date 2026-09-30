@@ -1198,3 +1198,21 @@ For a value, the provenance record joins semantic factorization, signature extra
 Equivalent provenance expansion is available for bridge routes, rewrite traces and scoped normal forms.
 
 The provenance layer is read-only: it does not create, promote or reclassify claims.
+
+
+## Object reduction certificates
+
+RDSS now exposes certify_forgetful_reduction(X), which returns one scoped, auditable certificate joining:
+
+- source semantic factorization and claim provenance;
+- certified rewrite trace and executable invariant evidence;
+- scoped forgetful normal form;
+- target semantic factorization and claim provenance;
+- termination and confluence certificate identities;
+- the combined authoritative claim dependency graph.
+
+The certificate is executable-validated and always reports global_canonical=False.
+
+The reference batch scanner applies the same factory to all 36 corpus values. Its source contract is 36 verified certificates, 5 rewritten values, 31 fixed points, 5 LOSSY reductions, zero global-canonical results, 22 source families and 18 target families.
+
+scripts/reference_reduction_certificate_scan.py emits schema rdss.reduction-certificate-scan/v1.
