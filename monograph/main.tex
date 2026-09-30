@@ -2989,6 +2989,40 @@ canonical promotion:
 }
 \]
 
+\subsection{Structure--state--representation factorization}
+
+The canonical signature is exposed as the explicit tuple
+\[
+\mathfrak F(X)=(F,S,\sigma,\rho),
+\]
+where \(F\) is semantic family, \(S\) is the structural key, \(\sigma\) is the
+state key, and \(\rho\) is the concrete representation tag.
+
+The construction is not a second semantic system. It reuses the current
+RDSSSignature partition in which PHASE and STATE are state axes and all other
+registered axes are structural. Hence
+\[
+S=\operatorname{structural\_key}(\Sigma(X)),
+\qquad
+\sigma=\operatorname{state\_key}(\Sigma(X)),
+\]
+and
+\[
+(S,\sigma)=\operatorname{semantic\_key}(\Sigma(X)).
+\]
+
+This makes the distinctions
+\[
+\text{family}\neq\text{structure}\neq\text{state}\neq\text{representation}
+\]
+explicit for downstream graph compression.
+
+For the current 36-record reference corpus, the source contract is
+\[
+(36,22,28,34,22)
+\]
+for records, families, structures, semantic states and representation classes.
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
