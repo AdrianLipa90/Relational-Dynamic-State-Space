@@ -1449,3 +1449,39 @@ def test_claim_provenance_graph_is_a_projection_of_existing_ledger():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_object_reduction_certificate_claims_are_scoped():
+    claims = claim_map()
+
+    assert claims["DEF_OBJECT_REDUCTION_CERTIFICATE"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure("DEF_OBJECT_REDUCTION_CERTIFICATE")
+    assert "DEF_VALUE_CLAIM_PROVENANCE" in closure
+    assert "DEF_TRANSFORMATION_CLAIM_PROVENANCE" in closure
+    assert "DEF_SCOPED_REWRITE_NORMAL_FORM" in closure
+    assert "DEF_EXECUTABLE_BRIDGE_INVARIANT" in closure
+
+    assert claims["REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE"].kind is ClaimKind.REFERENCE_REALIZATION
+    closure = dependency_closure(
+        "REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE"
+    )
+    assert "DEF_OBJECT_REDUCTION_CERTIFICATE" in closure
+    assert "REF_FORGETFUL_SCOPED_NORMAL_FORM" in closure
+    assert "REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE" in closure
+    assert "REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE" in closure
+
+    assert claims["THM_REFERENCE_OBJECT_REDUCTION_CERTIFICATE_CONSISTENT"].kind is ClaimKind.THEOREM
+    closure = dependency_closure(
+        "THM_REFERENCE_OBJECT_REDUCTION_CERTIFICATE_CONSISTENT"
+    )
+    assert "REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE" in closure
+    assert "THM_REFERENCE_FORGETFUL_NORMAL_FORM_IDEMPOTENT" in closure
+    assert "THM_PROVENANCE_TOPOLOGICAL_ORDER" in closure
+
+    assert {
+        "DEF_OBJECT_REDUCTION_CERTIFICATE",
+        "REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE",
+        "THM_REFERENCE_OBJECT_REDUCTION_CERTIFICATE_CONSISTENT",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
