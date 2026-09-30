@@ -99,6 +99,8 @@ from .closure import (
     two_cycle_ra0_star_model,
 )
 from .phase import (
+    U1Phase,
+    U1_TOLERANCE,
     closed_path_winding,
     winding_and_residual,
     wrap_phase,
@@ -205,7 +207,12 @@ from .triage import (
     BridgeTriageSummary,
     rdss_reference_bridge_triage,
 )
-from .zero_axis import ZeroAxisPoint, finite_zero_axis_lift
+from .zero_axis import (
+    ZeroAxisPoint,
+    finite_zero_axis_lift,
+    finite_zero_axis_lift_u1,
+    finite_zero_axis_phase,
+)
 
 __all__ = [
     "AmbiguousBridgeError",
@@ -276,6 +283,8 @@ __all__ = [
     "associator",
     "commutator",
     "refinement_residual",
+    "U1Phase",
+    "U1_TOLERANCE",
     "wrap_phase",
     "CANONICAL_MIXING_CHANNELS",
     "CANONICAL_MIXING_TURN_MEASURE",
@@ -382,6 +391,8 @@ __all__ = [
     "lift_value_phase_to_occurrence",
     "ZeroAxisPoint",
     "finite_zero_axis_lift",
+    "finite_zero_axis_lift_u1",
+    "finite_zero_axis_phase",
     "closed_path_winding",
     "winding_and_residual",
     "RelationalPotentialProfile",
