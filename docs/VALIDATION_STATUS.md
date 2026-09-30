@@ -405,3 +405,86 @@ Structural LaTeX audit on the current monograph reports:
 
 Full repository pytest and actual LaTeX compilation remain NOT YET RUN on an
 exact complete checkout of this branch.
+
+
+## Typed U1 milestone — 2026-09-30
+
+This section supersedes earlier current-state counts while preserving previous
+milestone snapshots as provenance.
+
+Current branch source/static baseline:
+
+- branch distance from main: 142 commits ahead, 0 behind;
+- changed files versus main: 29;
+- Python test functions: 312;
+- claim entries: 133;
+- package-root exports: 183;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0;
+- missing exports among canonical/signature/bridge/equivalence/corpus/triage/
+  phase/Zero-Axis public definitions: 0.
+
+The reference corpus source contract is now:
+
+\[
+36
+=
+36_{\rm supported}
++
+0_{\rm coverage\ gaps}.
+\]
+
+Expected catalog partition:
+
+\[
+(36,22,28,34,35)
+\]
+
+for records, families, structures, semantic states and strict values.
+
+Expected bridge graph:
+
+- 30 equivalence components;
+- 7 strong edges;
+- 5 directed LOSSY projection edges;
+- 0 UNKNOWN bridge edges.
+
+Bridge-gap triage source contract is now:
+
+\[
+(3,4,1,0,2,1)
+\]
+
+for IMPLEMENTED_LOSSLESS, IMPLEMENTED_LOSSY, CONTEXT_REQUIRED,
+MISSING_INTERMEDIATE_FAMILY, COMPOSITE_NOT_EQUIVALENT and NO_BRIDGE_CLAIM.
+
+The previous missing intermediate family has been closed by the explicit
+U1Phase value type and the finite typed projective bridge
+
+\[
+U(1)\setminus\{-1\}
+\leftrightarrow
+\{\text{finite ZeroAxisPoint}\}.
+\]
+
+The finite U1/Zero-Axis bridge declares a bridge-local numerical round-trip
+validator; strict canonical equality remains the default round-trip criterion
+for bridges without an explicit validator.
+
+Structural monograph audit on this head:
+
+- unmatched environments: 0;
+- environment mismatches: 0;
+- brace balance: 0;
+- negative brace events: 0;
+- display delimiters: 268 open / 268 close.
+
+Changed Markdown documents inspected for control characters and bare standalone
+square-bracket math delimiters report no findings.
+
+NOEMA/AUX tether was independently re-checked during continuation and returned
+ACTIVE with failures=[].
+
+These remain source/static validation results. Full repository pytest and actual
+LaTeX compilation remain NOT YET RUN on an exact complete checkout of this
+branch.
