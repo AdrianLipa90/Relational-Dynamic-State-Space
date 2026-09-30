@@ -145,3 +145,43 @@ def test_component_lookup_is_total_on_records():
     assert graph.component_of(0) == (0, 1)
     assert graph.component_of(1) == (0, 1)
     assert graph.component_of(2) == (2,)
+
+
+
+def test_bridge_gap_report_groups_missing_family_links():
+    graph = build_bridge_equivalence_graph(
+        (
+            OccurrenceAddress(),
+            MoireRotation(1.0, 0.0),
+            MoireRotation(2.0, 0.5),
+        )
+    )
+
+    report = graph.bridge_gap_report()
+
+    assert report.family_pairs == 1
+    assert report.unresolved_pairs == 2
+    gap = report.gaps[0]
+    assert {
+        gap.left_family,
+        gap.right_family,
+    } == {
+        "occurrence_address",
+        "moire_relative_rotation",
+    }
+    assert gap.count == 2
+
+
+def test_bridge_gap_report_is_empty_when_every_cross_family_pair_is_bridged():
+    graph = build_bridge_equivalence_graph(
+        (
+            OccurrenceAddress((-1,)),
+            RelationalPoint((-1,)),
+        )
+    )
+
+    report = graph.bridge_gap_report()
+
+    assert report.family_pairs == 0
+    assert report.unresolved_pairs == 0
+    assert report.gaps == ()
