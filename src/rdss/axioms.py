@@ -700,6 +700,37 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_REDUCTION_TRACE",),
     ),
 
+    Claim(
+        "DEF_BRIDGE_REGISTRY",
+        ClaimKind.DEFINITION,
+        "An RDSS bridge registry is an explicit typed graph of legal transformations between semantic signature families; every bridge declares source/target families, relation kind, information effect, source/target checks, optional inverse, preserved invariants, and claim provenance.",
+        ("DEF_SIGNATURE_COMPARISON", "DEF_REDUCTION_RELATION_KIND", "DEF_REDUCTION_INFORMATION_EFFECT"),
+    ),
+    Claim(
+        "DEF_BRIDGE_ROUTE",
+        ClaimKind.DEFINITION,
+        "A bridge route is a finite composition of registered directed bridge edges; inverse edges exist only where an explicit inverse is supplied, and multiple distinct shortest routes fail closed as ambiguity.",
+        ("DEF_BRIDGE_REGISTRY",),
+    ),
+    Claim(
+        "DEF_BRIDGE_COMPARISON",
+        ClaimKind.DEFINITION,
+        "Bridge comparison first routes one value into the semantic family of the other and only then applies signature comparison; any LOSSY or UNKNOWN bridge route requires explicit opt-in.",
+        ("DEF_BRIDGE_ROUTE", "DEF_SIGNATURE_COMPARISON"),
+    ),
+    Claim(
+        "REF_OCCURRENCE_POINT_BRIDGE",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The current binary reference realization supplies a reversible coordinate bridge between OccurrenceAddress omega in B* and RelationalPoint with the same binary coordinate word; this bridge is a reference representation and does not identify the two semantic sorts.",
+        ("REF_RELATIONAL_POINT_BINARY_COORDINATE", "DEF_CARRIER_OCCURRENCE_SEPARATION", "DEF_BRIDGE_REGISTRY"),
+    ),
+    Claim(
+        "THM_REFERENCE_COORDINATE_ROUNDTRIP",
+        ClaimKind.THEOREM,
+        "For the explicit binary reference bridge, converting an OccurrenceAddress to its RelationalPoint coordinate and extracting the binary address back returns the original occurrence word, and the reverse coordinate round trip returns the original RelationalPoint value.",
+        ("REF_OCCURRENCE_POINT_BRIDGE",),
+    ),
+
 )
 
 
