@@ -15,6 +15,7 @@ from .signature import (
 
 Predicate = Callable[[object], bool]
 Transform = Callable[[object], object]
+RoundtripValidator = Callable[[object, object], bool]
 
 
 class BridgeError(RuntimeError):
@@ -59,6 +60,7 @@ class BridgeSpec:
     kind: EquivalenceKind
     information_effect: InformationEffect
     inverse: Transform | None = None
+    roundtrip_validator: RoundtripValidator | None = None
     preserves: tuple[str, ...] = ()
     claim_ids: tuple[str, ...] = ()
 
@@ -298,9 +300,17 @@ class BridgeRegistry:
                     f"LOSSLESS bridge {edge.spec.name!r} has no inverse"
                 )
             recovered = inverse_transform(target)
-            roundtrip_verified = strict_normal_form(recovered).same_key(
-                strict_normal_form(value)
-            )
+            if edge.spec.roundtrip_validator is None:
+                roundtrip_verified = strict_normal_form(recovered).same_key(
+                    strict_normal_form(value)
+                )
+            else:
+                roundtrip_verified = bool(
+                    edge.spec.roundtrip_validator(
+                        value,
+                        recovered,
+                    )
+                )
             if not roundtrip_verified:
                 raise BridgeRoundtripError(
                     f"bridge {edge.spec.name!r} failed strict round trip"
