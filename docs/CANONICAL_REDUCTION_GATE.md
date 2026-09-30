@@ -787,3 +787,55 @@ context.
 
 Contextual bridges are kept separate from the global BridgeRegistry so that
 the absence of context cannot silently create a global equivalence edge.
+
+
+## Executable bridge invariants
+
+Bridge preservation claims are no longer only descriptive strings.
+
+A global bridge may attach executable invariant records
+
+\[
+I_k=(p_k^{(s)},p_k^{(t)},\approx_k),
+\]
+
+where \(p_k^{(s)}\) and \(p_k^{(t)}\) project source and target values into the
+quantity that should be preserved and \(\approx_k\) is an explicit comparator.
+
+For every traversed edge the registry requires
+
+\[
+p_k^{(s)}(X)
+\approx_k
+p_k^{(t)}(B(X)).
+\]
+
+If any declared invariant fails, execution raises BridgeInvariantError and no
+BridgeStep is returned.
+
+The current seven global bridges have executable invariants covering:
+
+- occurrence/reference binary coordinate word;
+- finite U1/Zero-Axis projective correspondence;
+- typed-zero rank, carrier, scale, dimension and additive-zero state;
+- relation value under occurrence forgetting;
+- admitted carriers and binary-distinction skeleton under relational-model
+  forgetting;
+- binary-distinction skeleton under relational-distinction forgetting;
+- ordered relation values under occurrence-path forgetting.
+
+Returned BridgeStep records contain the exact names of verified invariants.
+
+Contextual bridges use the analogous typed form
+
+\[
+I_k=(p_k^{(s,c)},p_k^{(t)},\approx_k),
+\]
+
+where the source projection may depend on the explicit context \(C\).
+BranchRelationOccurrence materialization currently verifies relation label,
+resolved source carrier and resolved target carrier before returning a
+ContextualBridgeStep.
+
+The invariant engine is fail-closed. A descriptive preserves declaration never
+overrides a failed executable invariant.
