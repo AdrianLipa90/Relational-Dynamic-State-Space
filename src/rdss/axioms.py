@@ -878,6 +878,37 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_EXECUTABLE_CONTEXTUAL_BRIDGE_INVARIANT",),
     ),
 
+    Claim(
+        "DEF_REWRITE_RULE",
+        ClaimKind.DEFINITION,
+        "An RDSS rewrite rule is an explicitly oriented typed transformation with source and target semantic families, relation kind, information effect, executable invariants and claim provenance; orientation does not by itself declare a canonical representative.",
+        ("DEF_EXECUTABLE_BRIDGE_INVARIANT", "DEF_REDUCTION_RELATION_KIND", "DEF_REDUCTION_INFORMATION_EFFECT"),
+    ),
+    Claim(
+        "DEF_PRIORITY_FREE_REWRITE_SYSTEM",
+        ClaimKind.DEFINITION,
+        "A priority-free rewrite system is a finite set of named rewrite rules in which automatic stepping is admitted only when exactly one rule applies; multiple applicable rules fail closed as ambiguity rather than being resolved by registration order.",
+        ("DEF_REWRITE_RULE",),
+    ),
+    Claim(
+        "DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER",
+        ClaimKind.DEFINITION,
+        "The reference forgetful rewrite system orients each currently registered FORGETFUL_PROJECTION bridge in its declared forward direction and reuses the bridge information effect, executable invariants and claim provenance.",
+        ("DEF_PRIORITY_FREE_REWRITE_SYSTEM", "DEF_BRIDGE_REGISTRY"),
+    ),
+    Claim(
+        "THM_NO_IMPLICIT_REWRITE_PRIORITY",
+        ClaimKind.THEOREM,
+        "In the reference RewriteSystem, step(X) raises AmbiguousRewriteError whenever more than one registered rule applies to X; registration order therefore cannot select an automatic rewrite branch.",
+        ("DEF_PRIORITY_FREE_REWRITE_SYSTEM",),
+    ),
+    Claim(
+        "THM_REWRITE_CYCLE_FAIL_CLOSED",
+        ClaimKind.THEOREM,
+        "The reference automatic rewrite trace records semantic-family plus strict-value states and raises RewriteCycleError when a state repeats, so a detected cycle is not reported as an irreducible result.",
+        ("DEF_PRIORITY_FREE_REWRITE_SYSTEM",),
+    ),
+
 )
 
 
