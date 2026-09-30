@@ -37,26 +37,13 @@ def test_reference_corpus_claim_provenance_resolves_in_ledger():
     assert missing == set()
 
 
-def test_reference_corpus_scan_reports_signature_coverage_gaps():
+def test_reference_corpus_scan_has_complete_signature_coverage():
     result = scan_rdss_reference_corpus()
 
     assert len(result.items) == 33
-    assert len(result.supported_items) == 24
-    assert len(result.coverage_gaps) == 9
-    assert not result.coverage_complete
-
-    gap_names = {gap.name for gap in result.coverage_gaps}
-    assert gap_names == {
-        "typed-zero",
-        "semantic-scale-graph",
-        "minimal-distinction",
-        "center-half-turn-bridge",
-        "zero-axis-point",
-        "binary-distinction",
-        "branch-relation-occurrence",
-        "relational-binary-distinction",
-        "generative-relation-model",
-    }
+    assert len(result.supported_items) == 33
+    assert result.coverage_gaps == ()
+    assert result.coverage_complete
 
 
 def test_reference_corpus_novelty_counts_separate_redundancy_state_and_structure():
@@ -68,25 +55,25 @@ def test_reference_corpus_novelty_counts_separate_redundancy_state_and_structure
     assert counts[NoveltyKind.REPRESENTATION_ONLY] == 0
     assert counts[NoveltyKind.NEW_STATE] == 5
     assert counts[NoveltyKind.NEW_STRUCTURE] == 6
-    assert counts[NoveltyKind.NEW_FAMILY] == 11
+    assert counts[NoveltyKind.NEW_FAMILY] == 20
 
 
 def test_reference_corpus_catalog_summary_quantifies_compression_layers():
     summary = scan_rdss_reference_corpus().catalog_summary
 
-    assert summary.records == 24
-    assert summary.families == 11
-    assert summary.structures == 17
-    assert summary.semantic_states == 22
-    assert summary.strict_values == 23
+    assert summary.records == 33
+    assert summary.families == 20
+    assert summary.structures == 26
+    assert summary.semantic_states == 31
+    assert summary.strict_values == 32
 
 
 def test_reference_corpus_graph_keeps_lossy_projection_out_of_components():
     graph = scan_rdss_reference_corpus().equivalence_graph
     summary = graph.summary()
 
-    assert summary.records == 24
-    assert summary.equivalence_components == 20
+    assert summary.records == 33
+    assert summary.equivalence_components == 29
     assert summary.strong_edges == 5
     assert summary.lossy_projection_edges == 3
     assert summary.unknown_bridge_edges == 0
