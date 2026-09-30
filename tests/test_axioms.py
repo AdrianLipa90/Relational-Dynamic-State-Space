@@ -1244,3 +1244,40 @@ def test_priority_free_rewrite_claims_do_not_assert_canonicality():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_rewrite_termination_certificate_claims_are_scoped():
+    claims = claim_map()
+
+    assert claims["DEF_FAMILY_RANK_TERMINATION_CERTIFICATE"].kind is ClaimKind.DEFINITION
+    assert "DEF_PRIORITY_FREE_REWRITE_SYSTEM" in dependency_closure(
+        "DEF_FAMILY_RANK_TERMINATION_CERTIFICATE"
+    )
+
+    assert claims["THM_STRICT_FAMILY_RANK_TERMINATION"].kind is ClaimKind.THEOREM
+    assert "DEF_FAMILY_RANK_TERMINATION_CERTIFICATE" in dependency_closure(
+        "THM_STRICT_FAMILY_RANK_TERMINATION"
+    )
+
+    assert claims["REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE"].kind is ClaimKind.REFERENCE_REALIZATION
+    closure = dependency_closure(
+        "REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE"
+    )
+    assert "DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER" in closure
+    assert "DEF_FAMILY_RANK_TERMINATION_CERTIFICATE" in closure
+
+    assert claims["THM_REFERENCE_FORGETFUL_REWRITE_TERMINATES"].kind is ClaimKind.THEOREM
+    closure = dependency_closure(
+        "THM_REFERENCE_FORGETFUL_REWRITE_TERMINATES"
+    )
+    assert "REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE" in closure
+    assert "THM_STRICT_FAMILY_RANK_TERMINATION" in closure
+
+    assert {
+        "DEF_FAMILY_RANK_TERMINATION_CERTIFICATE",
+        "THM_STRICT_FAMILY_RANK_TERMINATION",
+        "REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE",
+        "THM_REFERENCE_FORGETFUL_REWRITE_TERMINATES",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
