@@ -639,6 +639,51 @@ with
 
 This is an imported **bridge**, not an axiom of the general algebra. Value-level and occurrence-level holonomy have separate optional \(U(1)\) reference interfaces. Phase turn-count and winding depend on the chosen interface plus the corresponding closure condition; they do not depend on Zero Axis. If an application additionally uses the companion Zero Axis bridge, a verified finite phase may be lifted through \(\Omega^{-1}(u)=u/(1+u)\), while \(u=-1\) is the compactified point at infinity.
 
+## Canonical normalization and reduction
+
+RDSS now has an explicit fail-closed normalization layer for reducing
+representational chaos without collapsing distinct semantic sorts.
+
+The strict form
+
+\[
+\mathcal N_0(X)
+=
+(\operatorname{type}(X),\operatorname{payload}(X))
+\]
+
+retains the concrete representation tag, so for example
+
+\[
+\mathcal N_0(\operatorname{OccurrenceAddress}(\omega))
+\neq
+\mathcal N_0(\operatorname{RelationalPoint}(\omega)).
+\]
+
+Non-trivial reductions are never inferred from visual similarity. Every rule
+declares its relation kind, information effect, preserved invariants, optional
+inverse, and claim provenance.
+
+The reduction engine fails closed when more than one rule applies or when a
+rule would create a cycle. Comparisons crossing LOSSY or UNKNOWN reductions
+are rejected unless the caller explicitly opts into projected comparison.
+
+The initial RDSS rule set contains only the already-defined occurrence-to-value
+forgetful projections, classified as
+
+\[
+\boxed{
+\mathrm{FORGETFUL\_PROJECTION}
++
+\mathrm{LOSSY}.
+}
+\]
+
+Thus equality after forgetting occurrence addresses is not silently promoted to
+occurrence-level identity or isomorphism.
+
+See \`docs/CANONICAL_REDUCTION_GATE.md\`.
+
 ## Non-assumptions
 
 The kernel does **not** assume:
