@@ -491,3 +491,16 @@ extension.
 
 No signature comparison may convert INCOMPARABLE into equivalence without an
 explicit bridge. No signature claim modifies META0, RA0 or RR1.
+
+
+## Reduction termination and confluence layer
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_LEXICOGRAPHIC_REDUCTION_ORDER | DEFINITION | A fixed finite-dimensional \(\mathbb N^k\) measure may certify strict lexicographic descent of each reduction step. | DEF_REDUCTION_TRACE |
+| THM_STRICT_LEX_DESCENT_TERMINATES | THEOREM | Strict descent in fixed finite-dimensional lexicographic \(\mathbb N^k\) excludes infinite reduction chains. | DEF_LEXICOGRAPHIC_REDUCTION_ORDER |
+| DEF_FINITE_CONFLUENCE_AUDIT | DEFINITION | A bounded branch exploration reports unique normal form, multiple normal forms, cycle, or bounded incompleteness. | DEF_REDUCTION_TRACE |
+
+The termination theorem is conditional on the supplied measure and its strict
+descent on every admitted step. The finite confluence audit is not a universal
+confluence theorem.
