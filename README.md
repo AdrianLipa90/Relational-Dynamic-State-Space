@@ -1134,3 +1134,25 @@ infinity and is not coerced into a finite value.
 Because floating evaluation of \(\Omega\) is not always bitwise reversible,
 the bridge registry now supports an explicit round-trip validator. Strict
 canonical equality remains the default for bridges that do not declare one.
+
+
+## Scoped forgetful normal form
+
+The reference forgetful rewrite system now has explicit termination and
+confluence certificates, so it admits a unique irreducible result under that
+selected system.
+
+The API rdss_forgetful_normal_form returns that result with:
+
+- scope;
+- source and target strict keys;
+- rewrite rule provenance;
+- lossiness;
+- termination certificate;
+- confluence certificate.
+
+The scope is rdss-reference-forgetful-v1 and the API explicitly reports
+global_canonical=False.
+
+This is therefore a certified selected-system normal form, not a global RDSS
+canonical representative.
