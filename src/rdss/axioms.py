@@ -649,6 +649,31 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_CANONICAL_NORMAL_FORM",),
     ),
 
+    Claim(
+        "DEF_RDSS_CANONICAL_SIGNATURE",
+        ClaimKind.DEFINITION,
+        "An executable RDSS object may expose a finite semantic signature whose axes are recorded separately from concrete representation, provenance, and strict object identity.",
+        ("DEF_CANONICAL_NORMAL_FORM",),
+    ),
+    Claim(
+        "DEF_SIGNATURE_AXIS_STRATIFICATION",
+        ClaimKind.DEFINITION,
+        "Canonical signatures separate structural axes (carrier, occurrence, relations, tensor rank, semantic scale, orbit and dimension) from state axes (phase and state payload), so a state change need not be promoted to a structural change.",
+        ("DEF_RDSS_CANONICAL_SIGNATURE",),
+    ),
+    Claim(
+        "DEF_SIGNATURE_COMPARISON",
+        ClaimKind.DEFINITION,
+        "Signature comparison distinguishes exact semantic signature, representation-only difference, same structure with different state, structural difference, and incomparable semantic families; incomparable families require an explicit bridge before stronger identification.",
+        ("DEF_SIGNATURE_AXIS_STRATIFICATION",),
+    ),
+    Claim(
+        "DEF_SIGNATURE_NOVELTY_CLASSIFICATION",
+        ClaimKind.DEFINITION,
+        "Relative novelty is classified from signature comparison as exact repeat, signature-equivalent redundancy, representation-only variant, new state, new structure, or new semantic family.",
+        ("DEF_SIGNATURE_COMPARISON",),
+    ),
+
 )
 
 
