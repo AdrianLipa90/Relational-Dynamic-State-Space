@@ -22,6 +22,22 @@ from .axioms import (
     formation_rules,
     validate_dependency_dag,
 )
+from .bridges import (
+    AmbiguousBridgeError,
+    BridgeComparison,
+    BridgeDirection,
+    BridgeError,
+    BridgeRegistry,
+    BridgeRoundtripError,
+    BridgeRoute,
+    BridgeSpec,
+    BridgeStep,
+    BridgeTypeError,
+    LossyBridgeError,
+    UnsupportedBridgeError,
+    rdss_bridge_registry,
+    rdss_bridge_specs,
+)
 from .canonical import (
     AmbiguousReductionError,
     CanonicalNormalForm,
@@ -167,6 +183,20 @@ from .realizations import (
 from .zero_axis import ZeroAxisPoint, finite_zero_axis_lift
 
 __all__ = [
+    "AmbiguousBridgeError",
+    "BridgeComparison",
+    "BridgeDirection",
+    "BridgeError",
+    "BridgeRegistry",
+    "BridgeRoundtripError",
+    "BridgeRoute",
+    "BridgeSpec",
+    "BridgeStep",
+    "BridgeTypeError",
+    "LossyBridgeError",
+    "UnsupportedBridgeError",
+    "rdss_bridge_registry",
+    "rdss_bridge_specs",
     "AmbiguousSignatureError",
     "CatalogAssessment",
     "SignatureCatalog",
