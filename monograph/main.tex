@@ -2456,6 +2456,103 @@ The general algebra does not assume:
         separate bridge theorem.
 \end{itemize}
 
+\section{Canonical normalization and reduction}
+
+The executable kernel now includes a fail-closed canonicalization layer whose
+purpose is to reduce representational redundancy without erasing semantic
+distinctions.
+
+For an executable value \(X\), the strict canonical form is represented
+schematically as
+\[
+\mathcal N_0(X)
+=
+\bigl(\operatorname{type}(X),\operatorname{payload}(X)\bigr).
+\]
+Concrete type is therefore part of strict identity. In particular,
+\[
+\boxed{
+\mathcal N_0\!\left(\operatorname{OccurrenceAddress}(\omega)\right)
+\neq
+\mathcal N_0\!\left(\operatorname{RelationalPoint}(\omega)\right)
+}
+\]
+even when both display the same binary coordinate word.
+
+The strict normalizer is idempotent by construction:
+\[
+\boxed{
+\mathcal N_0(\mathcal N_0(X))=\mathcal N_0(X).
+}
+\]
+
+A non-trivial reduction rule carries two independent classifications. Its
+semantic relation kind belongs to
+\[
+\{
+\mathrm{IDENTITY},
+\mathrm{EXACT\_EQUIVALENCE},
+\mathrm{ISOMORPHISM},
+\mathrm{REFERENCE\_REPRESENTATION},
+\mathrm{FORGETFUL\_PROJECTION},
+\mathrm{APPROXIMATION}
+\},
+\]
+while its information effect belongs to
+\[
+\{
+\mathrm{LOSSLESS},
+\mathrm{LOSSY},
+\mathrm{UNKNOWN}
+\}.
+\]
+A rule declared LOSSLESS must supply an explicit inverse. An isomorphism rule
+must be both LOSSLESS and explicitly invertible.
+
+If \(A(X)\) is the set of applicable reduction rules at state \(X\), the
+reference engine uses
+\[
+|A(X)|=0
+\Rightarrow
+\text{stop},
+\qquad
+|A(X)|=1
+\Rightarrow
+\text{apply the unique rule},
+\]
+while
+\[
+\boxed{
+|A(X)|>1
+\Rightarrow
+\mathrm{AMBIGUOUS\_REDUCTION}.
+}
+\]
+Registration order therefore carries no hidden mathematical authority.
+Repeated exact canonical keys are rejected as reduction cycles.
+
+The first RDSS-specific rules are the already-established occurrence-to-value
+forgetful projections,
+\[
+(r,\omega_s,\omega_t)\longmapsto r
+\]
+and
+\[
+((r_1,\omega_0,\omega_1),\ldots,(r_n,\omega_{n-1},\omega_n))
+\longmapsto
+(r_1,\ldots,r_n).
+\]
+Both are classified as
+\[
+\boxed{
+\mathrm{FORGETFUL\_PROJECTION}
++
+\mathrm{LOSSY}.
+}
+\]
+Therefore equality after forgetting occurrence addresses is not promoted to
+occurrence-level identity or isomorphism.
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
