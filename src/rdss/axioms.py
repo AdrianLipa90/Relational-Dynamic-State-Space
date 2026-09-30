@@ -983,6 +983,25 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_REFERENCE_FORGETFUL_REWRITE_TERMINATES", "THM_REFERENCE_FORGETFUL_REWRITE_CONFLUENT", "THM_TERMINATING_CONFLUENT_UNIQUE_IRREDUCIBLE"),
     ),
 
+    Claim(
+        "DEF_SCOPED_REWRITE_NORMAL_FORM",
+        ClaimKind.DEFINITION,
+        "A scoped rewrite normal form is the unique irreducible result produced by one explicitly named rewrite system together with explicit termination and confluence certificates; the scope name and certificate provenance are part of the result and no global canonicality is implied.",
+        ("THM_TERMINATING_CONFLUENT_UNIQUE_IRREDUCIBLE",),
+    ),
+    Claim(
+        "REF_FORGETFUL_SCOPED_NORMAL_FORM",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The reference forgetful scoped normal form uses the rdss-reference-forgetful-v1 rewrite system, its family-rank termination certificate and its distinct-source-family confluence certificate; rewritten results may be LOSSY.",
+        ("DEF_SCOPED_REWRITE_NORMAL_FORM", "REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE", "REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE"),
+    ),
+    Claim(
+        "THM_REFERENCE_FORGETFUL_NORMAL_FORM_IDEMPOTENT",
+        ClaimKind.THEOREM,
+        "Applying the reference forgetful scoped normal-form function to its own result performs no further rewrite and returns the same strict target key, because the first result is irreducible under the selected system.",
+        ("REF_FORGETFUL_SCOPED_NORMAL_FORM", "THM_REFERENCE_FORGETFUL_UNIQUE_IRREDUCIBLE"),
+    ),
+
 )
 
 
