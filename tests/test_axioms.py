@@ -1134,3 +1134,39 @@ def test_u1_zero_axis_bridge_claims_are_scoped():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_contextual_bridge_claims_are_scoped_and_lossy():
+    claims = claim_map()
+
+    assert claims["DEF_CONTEXTUAL_BRIDGE_REGISTRY"].kind is ClaimKind.DEFINITION
+    assert "DEF_BRIDGE_REGISTRY" in dependency_closure(
+        "DEF_CONTEXTUAL_BRIDGE_REGISTRY"
+    )
+
+    assert claims["DEF_CARRIER_MAP_CONTEXT"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure("DEF_CARRIER_MAP_CONTEXT")
+    assert "DEF_POINT" in closure
+    assert "DEF_CONTEXTUAL_BRIDGE_REGISTRY" in closure
+
+    assert claims["DEF_CONTEXTUAL_BRANCH_RELATION_MATERIALIZATION"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure(
+        "DEF_CONTEXTUAL_BRANCH_RELATION_MATERIALIZATION"
+    )
+    assert "DEF_RELATIONAL_DISTINCTION" in closure
+    assert "DEF_BINARY_REL" in closure
+    assert "DEF_CARRIER_MAP_CONTEXT" in closure
+
+    assert claims["THM_CONTEXTUAL_BRANCH_SLOT_NONINJECTIVE"].kind is ClaimKind.THEOREM
+    assert "DEF_CONTEXTUAL_BRANCH_RELATION_MATERIALIZATION" in dependency_closure(
+        "THM_CONTEXTUAL_BRANCH_SLOT_NONINJECTIVE"
+    )
+
+    assert {
+        "DEF_CONTEXTUAL_BRIDGE_REGISTRY",
+        "DEF_CARRIER_MAP_CONTEXT",
+        "DEF_CONTEXTUAL_BRANCH_RELATION_MATERIALIZATION",
+        "THM_CONTEXTUAL_BRANCH_SLOT_NONINJECTIVE",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
