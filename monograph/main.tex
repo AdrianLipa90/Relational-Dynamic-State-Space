@@ -3035,6 +3035,27 @@ For a value \(X\), the provenance record binds its semantic factorization \(\mat
 
 The construction is read-only: it does not create claims, alter claim kinds, promote candidates or change dependencies.
 
+\subsection{Object-level reduction certificate}
+
+For one admitted input \(X\), the reference reduction certificate binds the source value provenance, certified rewrite trace, scoped normal form, target value provenance, verified rewrite invariants and the combined authoritative claim dependency graph.
+
+Writing the selected irreducible target as \(Y\), the evidence bundle is schematically
+\[
+\mathcal C(X)=\bigl(\mathfrak F(X),G_X,T_X,N_{\mathcal R}(X),\mathfrak F(Y),G_Y,\mathcal I,G_{\mathcal C}\bigr).
+\]
+The factory returns only after rechecking strict source/target keys, complete provenance, termination/confluence certificate identities, lossiness, target irreducibility, normal-form idempotence, executable invariant inventory and the authoritative claim projection.
+
+The certificate remains scoped:
+\[
+\boxed{\texttt{global\_canonical}=\mathrm{False}.}
+\]
+
+The reference corpus certificate scan applies this factory independently to all 36 named values. The source contract is
+\[
+(36,36,5,31,5,0,22,18),
+\]
+for total records, verified certificates, rewritten values, fixed points, LOSSY reductions, global-canonical results, distinct source families and distinct target families.
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
