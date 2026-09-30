@@ -1485,3 +1485,28 @@ def test_object_reduction_certificate_claims_are_scoped():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_reduction_certificate_scan_claims_are_diagnostic():
+    claims = claim_map()
+
+    assert claims["DEF_REFERENCE_REDUCTION_CERTIFICATE_SCAN"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure(
+        "DEF_REFERENCE_REDUCTION_CERTIFICATE_SCAN"
+    )
+    assert "DEF_REFERENCE_CORPUS" in closure
+    assert "DEF_OBJECT_REDUCTION_CERTIFICATE" in closure
+
+    assert claims["REF_REFERENCE_REDUCTION_CERTIFICATE_SCAN"].kind is ClaimKind.REFERENCE_REALIZATION
+    closure = dependency_closure(
+        "REF_REFERENCE_REDUCTION_CERTIFICATE_SCAN"
+    )
+    assert "DEF_REFERENCE_REDUCTION_CERTIFICATE_SCAN" in closure
+    assert "REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE" in closure
+
+    assert {
+        "DEF_REFERENCE_REDUCTION_CERTIFICATE_SCAN",
+        "REF_REFERENCE_REDUCTION_CERTIFICATE_SCAN",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
