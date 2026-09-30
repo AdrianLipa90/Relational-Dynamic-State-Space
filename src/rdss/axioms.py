@@ -1052,6 +1052,25 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_CLAIM_DEPENDENCY_PROJECTION", "DEF_BRIDGE_ROUTE", "DEF_PRIORITY_FREE_REWRITE_SYSTEM", "DEF_SCOPED_REWRITE_NORMAL_FORM"),
     ),
 
+    Claim(
+        "DEF_OBJECT_REDUCTION_CERTIFICATE",
+        ClaimKind.DEFINITION,
+        "An object-level reduction certificate binds one input value's value provenance, certified rewrite trace, scoped normal form, target value provenance, verified rewrite invariants, explicit termination/confluence certificate identities and the induced claim dependency graph into one auditable scoped result.",
+        ("DEF_VALUE_CLAIM_PROVENANCE", "DEF_TRANSFORMATION_CLAIM_PROVENANCE", "DEF_SCOPED_REWRITE_NORMAL_FORM", "DEF_EXECUTABLE_BRIDGE_INVARIANT"),
+    ),
+    Claim(
+        "REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The reference forgetful object reduction certificate uses the rdss-reference-forgetful-v1 rewrite system together with its family-rank termination certificate, distinct-source-family confluence certificate, scoped forgetful normal form and read-only claim provenance graph; global canonicality is explicitly false.",
+        ("DEF_OBJECT_REDUCTION_CERTIFICATE", "REF_FORGETFUL_SCOPED_NORMAL_FORM", "REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE", "REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE"),
+    ),
+    Claim(
+        "THM_REFERENCE_OBJECT_REDUCTION_CERTIFICATE_CONSISTENT",
+        ClaimKind.THEOREM,
+        "The reference certificate factory returns only after checking agreement of strict source/target keys, rewrite rule provenance, lossiness, target irreducibility, scoped-normal-form idempotence, verified invariant inventory, value factorizations and claim-graph roots; any disagreement raises ReductionCertificateError.",
+        ("REF_FORGETFUL_OBJECT_REDUCTION_CERTIFICATE", "THM_REFERENCE_FORGETFUL_NORMAL_FORM_IDEMPOTENT", "THM_PROVENANCE_TOPOLOGICAL_ORDER"),
+    ),
+
 )
 
 
