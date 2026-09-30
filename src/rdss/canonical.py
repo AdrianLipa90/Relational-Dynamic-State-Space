@@ -125,15 +125,20 @@ class LexicographicReductionOrder:
 
     name: str
     measure: ReductionMeasure
+    dimension: int
 
     def __post_init__(self) -> None:
         if not self.name.strip():
             raise ValueError("reduction order name must be non-empty")
+        if self.dimension <= 0:
+            raise ValueError("reduction order dimension must be positive")
 
     def key(self, value: object) -> tuple[int, ...]:
         raw = tuple(self.measure(value))
-        if not raw:
-            raise ValueError("reduction measure must be non-empty")
+        if len(raw) != self.dimension:
+            raise ValueError(
+                "reduction measure must have the declared fixed dimension"
+            )
         if any(
             not isinstance(item, int)
             or isinstance(item, bool)
@@ -513,7 +518,7 @@ def audit_finite_confluence(
     ] = [(value, 0, frozenset({start_key}))]
     expanded: set[object] = set()
     terminals: dict[object, object] = {}
-    cycle_edges: list[tuple[str, object, object]] = []
+    edges: dict[object, list[tuple[str, object]]] = {}
     truncated: set[object] = set()
 
     while frontier:
@@ -548,10 +553,11 @@ def audit_finite_confluence(
                     f"under order {ordering.name!r}"
                 )
 
+            edges.setdefault(current_key, []).append(
+                (rule.name, next_key)
+            )
+
             if next_key == current_key or next_key in ancestry:
-                cycle_edges.append(
-                    (rule.name, current_key, next_key)
-                )
                 continue
 
             frontier.append(
@@ -561,6 +567,27 @@ def audit_finite_confluence(
                     ancestry | {next_key},
                 )
             )
+
+    cycle_edges: list[tuple[str, object, object]] = []
+    visiting: set[object] = set()
+    visited: set[object] = set()
+
+    def visit(node: object) -> None:
+        if node in visited:
+            return
+        visiting.add(node)
+        for rule_name, target in edges.get(node, ()):
+            if target in visiting:
+                cycle_edges.append(
+                    (rule_name, node, target)
+                )
+                continue
+            visit(target)
+        visiting.remove(node)
+        visited.add(node)
+
+    for node in tuple(edges):
+        visit(node)
 
     terminal_keys = tuple(sorted(terminals, key=repr))
     cycle_tuple = tuple(cycle_edges)
