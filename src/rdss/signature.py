@@ -300,16 +300,32 @@ def rdss_signature_extractors() -> tuple[SignatureExtractor, ...]:
         OccurrenceAddress,
         RelationalPoint,
         SemanticScale,
+        SemanticScaleGraph,
         TensorScalarElement,
         TypedRelation,
+        TypedZero,
+    )
+    from .closure import (
+        BinaryDistinction,
+        BranchRelationOccurrence,
+        GenerativeRelationModel,
+        RelationalBinaryDistinction,
     )
     from .operations import (
         OccurrenceRelationPath,
         RelationOccurrence,
         RelationPath,
     )
-    from .orbital_information import HilbertMoireFibreState
-    from .realizations import CP1State, MoireRotation
+    from .orbital_information import (
+        CenterHalfTurnBridge,
+        HilbertMoireFibreState,
+    )
+    from .realizations import (
+        CP1State,
+        MinimalDistinction,
+        MoireRotation,
+    )
+    from .zero_axis import ZeroAxisPoint
 
     return (
         SignatureExtractor(
@@ -515,6 +531,190 @@ def rdss_signature_extractors() -> tuple[SignatureExtractor, ...]:
                 "DEF_RDSS_CANONICAL_SIGNATURE",
                 "DEF_SIGNATURE_AXIS_STRATIFICATION",
             ),
+        ),
+
+        SignatureExtractor(
+            "typed_zero_signature",
+            lambda value: isinstance(value, TypedZero),
+            lambda value: _signature(
+                value,
+                family="typed_zero",
+                axes=(
+                    (SignatureAxis.CARRIER, value.carrier),
+                    (SignatureAxis.RANK, value.rank),
+                    (SignatureAxis.SCALE, value.scale),
+                    (SignatureAxis.DIMENSION, value.dimension),
+                ),
+                claim_ids=("DEF_TYPED_ZERO",),
+            ),
+            (
+                "DEF_RDSS_CANONICAL_SIGNATURE",
+                "DEF_SIGNATURE_AXIS_STRATIFICATION",
+            ),
+        ),
+        SignatureExtractor(
+            "semantic_scale_graph_signature",
+            lambda value: isinstance(value, SemanticScaleGraph),
+            lambda value: _signature(
+                value,
+                family="semantic_scale_graph",
+                axes=(
+                    (SignatureAxis.RELATIONS, value.edges),
+                ),
+                claim_ids=("PRIM_SCALE",),
+            ),
+            ("DEF_RDSS_CANONICAL_SIGNATURE",),
+        ),
+        SignatureExtractor(
+            "minimal_distinction_signature",
+            lambda value: isinstance(value, MinimalDistinction),
+            lambda value: _signature(
+                value,
+                family="cp1_distinction",
+                axes=(
+                    (SignatureAxis.CARRIER, value.carrier),
+                    (SignatureAxis.RELATIONS, value.label),
+                    (
+                        SignatureAxis.STATE,
+                        (value.left, value.right),
+                    ),
+                ),
+                claim_ids=("REF_CP1",),
+            ),
+            (
+                "DEF_RDSS_CANONICAL_SIGNATURE",
+                "DEF_SIGNATURE_AXIS_STRATIFICATION",
+            ),
+        ),
+        SignatureExtractor(
+            "center_half_turn_bridge_signature",
+            lambda value: isinstance(value, CenterHalfTurnBridge),
+            lambda value: _signature(
+                value,
+                family="center_half_turn_bridge",
+                axes=(
+                    (
+                        SignatureAxis.RELATIONS,
+                        (
+                            value.balance_coordinate,
+                            value.half_turn,
+                        ),
+                    ),
+                ),
+                claim_ids=("BRIDGE_CENTER_HALF_TURN",),
+            ),
+            ("DEF_RDSS_CANONICAL_SIGNATURE",),
+        ),
+        SignatureExtractor(
+            "zero_axis_point_signature",
+            lambda value: isinstance(value, ZeroAxisPoint),
+            lambda value: _signature(
+                value,
+                family="zero_axis_point",
+                axes=(
+                    (SignatureAxis.DIMENSION, 1),
+                    (SignatureAxis.STATE, value.t),
+                ),
+                claim_ids=("ZA_BRIDGE",),
+            ),
+            (
+                "DEF_RDSS_CANONICAL_SIGNATURE",
+                "DEF_SIGNATURE_AXIS_STRATIFICATION",
+            ),
+        ),
+        SignatureExtractor(
+            "binary_distinction_signature",
+            lambda value: isinstance(value, BinaryDistinction),
+            lambda value: _signature(
+                value,
+                family="binary_distinction",
+                axes=(
+                    (
+                        SignatureAxis.RELATIONS,
+                        (
+                            value.host,
+                            value.left,
+                            value.right,
+                        ),
+                    ),
+                ),
+                claim_ids=("DEF_BINARY_DISTINCTION",),
+            ),
+            ("DEF_RDSS_CANONICAL_SIGNATURE",),
+        ),
+        SignatureExtractor(
+            "branch_relation_occurrence_signature",
+            lambda value: isinstance(value, BranchRelationOccurrence),
+            lambda value: _signature(
+                value,
+                family="branch_relation_occurrence",
+                axes=(
+                    (SignatureAxis.OCCURRENCE, value.branch),
+                    (
+                        SignatureAxis.RELATIONS,
+                        (
+                            value.relation_label,
+                            value.source,
+                            value.target,
+                        ),
+                    ),
+                ),
+                claim_ids=("DEF_RELATIONAL_DISTINCTION",),
+            ),
+            (
+                "DEF_RDSS_CANONICAL_SIGNATURE",
+                "DEF_SIGNATURE_AXIS_STRATIFICATION",
+            ),
+        ),
+        SignatureExtractor(
+            "relational_binary_distinction_signature",
+            lambda value: isinstance(value, RelationalBinaryDistinction),
+            lambda value: _signature(
+                value,
+                family="relational_binary_distinction",
+                axes=(
+                    (
+                        SignatureAxis.RELATIONS,
+                        (
+                            value.host,
+                            value.left,
+                            value.right,
+                            value.left_relation,
+                            value.right_relation,
+                        ),
+                    ),
+                ),
+                claim_ids=("DEF_RELATIONAL_DISTINCTION",),
+            ),
+            ("DEF_RDSS_CANONICAL_SIGNATURE",),
+        ),
+        SignatureExtractor(
+            "generative_relation_model_signature",
+            lambda value: isinstance(value, GenerativeRelationModel),
+            lambda value: _signature(
+                value,
+                family="generative_relation_model",
+                axes=(
+                    (
+                        SignatureAxis.RELATIONS,
+                        (
+                            tuple(sorted(value.admitted)),
+                            tuple(
+                                sorted(
+                                    value.distinctions,
+                                    key=lambda item: (
+                                        item.host,
+                                        item.left,
+                                        item.right,
+                                    ),
+                                )
+                            ),
+                        ),
+                    ),
+                ),
+                claim_ids=("RA0_STAR",),
+            ),
+            ("DEF_RDSS_CANONICAL_SIGNATURE",),
         ),
     )
 
