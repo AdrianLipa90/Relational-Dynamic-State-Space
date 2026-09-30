@@ -200,6 +200,16 @@ from .equivalence_graph import (
     GraphEdgeKind,
     build_bridge_equivalence_graph,
 )
+from .factorization import (
+    FactorizationComparison,
+    FactorizationRelation,
+    FactorizationSummary,
+    SemanticFactorization,
+    compare_factorizations,
+    factorize_signature,
+    factorize_value,
+    summarize_factorizations,
+)
 from .normal_form import (
     ScopedRewriteNormalForm,
     rdss_forgetful_normal_form,
@@ -353,6 +363,14 @@ __all__ = [
     "rdss_forgetful_rewrite_rules",
     "rdss_forgetful_rewrite_system",
     "rdss_forgetful_termination_certificate",
+    "FactorizationComparison",
+    "FactorizationRelation",
+    "FactorizationSummary",
+    "SemanticFactorization",
+    "compare_factorizations",
+    "factorize_signature",
+    "factorize_value",
+    "summarize_factorizations",
     "ScopedRewriteNormalForm",
     "rdss_forgetful_normal_form",
     "SemanticScale",
