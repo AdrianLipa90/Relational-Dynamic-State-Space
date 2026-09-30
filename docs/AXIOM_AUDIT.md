@@ -533,3 +533,20 @@ semantic sort separation.
 
 The gap report is a research-navigation diagnostic, not a foundational claim or
 an automatic bridge-discovery theorem.
+
+
+## Typed U1 phase and finite Zero-Axis bridge
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| REF_U1_PHASE_VALUE | REFERENCE REALIZATION | Explicit finite normalized complex representative of a point on \(U(1)\). | — |
+| DEF_BRIDGE_ROUNDTRIP_VALIDATOR | DEFINITION | LOSSLESS bridges use strict canonical round-trip equality by default and may explicitly declare a numerical validator when floating evaluation is not bitwise exact. | DEF_BRIDGE_REGISTRY |
+| REF_U1_ZERO_AXIS_FINITE_BRIDGE | REFERENCE REALIZATION | Finite projective bridge \(U(1)\setminus\{-1\}\leftrightarrow\{1/2+it\}\). | REF_U1_PHASE_VALUE, ZA_BRIDGE, DEF_BRIDGE_ROUNDTRIP_VALIDATOR |
+| THM_U1_ZERO_AXIS_FINITE_ROUNDTRIP | THEOREM | The finite projective bridge returns the starting semantic value within its declared numerical validator; \(u=-1\) is outside the finite domain. | REF_U1_ZERO_AXIS_FINITE_BRIDGE |
+
+The numerical validator does not globally replace exact canonical equality.
+It is bridge-local, explicit, and part of the executable proof obligation.
+
+The typed U1 family closes the previous MISSING_INTERMEDIATE_FAMILY triage item
+for the finite Zero-Axis interface. It does not by itself prove that every RDSS
+holonomy admits a U(1) representation.
