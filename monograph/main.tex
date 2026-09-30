@@ -2726,6 +2726,40 @@ bridge must exist:
 A gap may later be resolved by a justified bridge, by a proof that the
 families remain distinct, or by refinement of the signature model.
 
+\subsection{Reference corpus compression scan}
+
+The canonical/signature/bridge machinery is exercised against a finite
+reference corpus constructed from current executable RDSS types. The corpus
+contains 33 named values and intentionally includes both supported semantic
+families and types outside current signature coverage.
+
+The source contract is
+\[
+33
+=
+24_{\rm supported}
++
+9_{\rm coverage\ gaps}.
+\]
+On the supported slice, source tests define the expected catalog partition
+\[
+(
+N_{\rm records},
+N_{\rm families},
+N_{\rm structures},
+N_{\rm semantic\ states},
+N_{\rm strict\ values}
+)
+=
+(24,11,17,22,23).
+\]
+The expected bridge graph has 20 strong equivalence components, five strong
+edges, three directed LOSSY projection edges and no UNKNOWN bridge edge.
+
+These numbers are executable expectations rather than a reported runtime
+result. Unsupported corpus values remain explicit coverage targets rather than
+being coerced into an existing semantic family.
+
 \section{Reference-kernel obligations}
 
 A promoted primitive must remain synchronized across four layers:
