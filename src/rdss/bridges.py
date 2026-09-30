@@ -16,6 +16,46 @@ from .signature import (
 Predicate = Callable[[object], bool]
 Transform = Callable[[object], object]
 RoundtripValidator = Callable[[object, object], bool]
+InvariantProjection = Callable[[object], object]
+InvariantComparator = Callable[[object, object], bool]
+
+
+def _strict_invariant_equal(left: object, right: object) -> bool:
+    return strict_normal_form(left).same_key(
+        strict_normal_form(right)
+    )
+
+
+@dataclass(frozen=True)
+class BridgeInvariant:
+    name: str
+    source_projection: InvariantProjection
+    target_projection: InvariantProjection
+    comparator: InvariantComparator = _strict_invariant_equal
+    claim_ids: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        if not self.name.strip():
+            raise ValueError("bridge invariant name must be non-empty")
+        if any(not item.strip() for item in self.claim_ids):
+            raise ValueError(
+                "bridge invariant claim ids must be non-empty"
+            )
+
+    def verify(
+        self,
+        source: object,
+        target: object,
+        *,
+        direction: "BridgeDirection",
+    ) -> bool:
+        if direction is BridgeDirection.FORWARD:
+            left = self.source_projection(source)
+            right = self.target_projection(target)
+        else:
+            left = self.target_projection(source)
+            right = self.source_projection(target)
+        return bool(self.comparator(left, right))
 
 
 class BridgeError(RuntimeError):
@@ -42,6 +82,10 @@ class LossyBridgeError(BridgeError):
     pass
 
 
+class BridgeInvariantError(BridgeError):
+    pass
+
+
 class BridgeDirection(str, Enum):
     FORWARD = "forward"
     INVERSE = "inverse"
@@ -61,6 +105,7 @@ class BridgeSpec:
     information_effect: InformationEffect
     inverse: Transform | None = None
     roundtrip_validator: RoundtripValidator | None = None
+    invariants: tuple[BridgeInvariant, ...] = ()
     preserves: tuple[str, ...] = ()
     claim_ids: tuple[str, ...] = ()
 
@@ -69,6 +114,9 @@ class BridgeSpec:
             raise ValueError("bridge name must be non-empty")
         if not self.source_family.strip() or not self.target_family.strip():
             raise ValueError("bridge families must be non-empty")
+        invariant_names = [item.name for item in self.invariants]
+        if len(invariant_names) != len(set(invariant_names)):
+            raise ValueError("bridge invariant names must be unique")
         if any(not item.strip() for item in self.preserves):
             raise ValueError("bridge preserved invariants must be non-empty")
         if any(not item.strip() for item in self.claim_ids):
@@ -116,6 +164,7 @@ class BridgeStep:
     source_key: object
     target_key: object
     roundtrip_verified: bool
+    verified_invariants: tuple[str, ...]
     preserves: tuple[str, ...]
     claim_ids: tuple[str, ...]
 
@@ -292,6 +341,19 @@ class BridgeRegistry:
                 f"{edge.target_family!r}, got {target_signature.family!r}"
             )
 
+        verified_invariants: list[str] = []
+        for invariant in edge.spec.invariants:
+            if not invariant.verify(
+                value,
+                target,
+                direction=edge.direction,
+            ):
+                raise BridgeInvariantError(
+                    f"bridge {edge.spec.name!r} failed invariant "
+                    f"{invariant.name!r}"
+                )
+            verified_invariants.append(invariant.name)
+
         roundtrip_verified = False
         inverse_transform = edge.inverse_transform
         if edge.spec.information_effect is InformationEffect.LOSSLESS:
@@ -326,6 +388,7 @@ class BridgeRegistry:
             source_key=source_signature.semantic_key,
             target_key=target_signature.semantic_key,
             roundtrip_verified=roundtrip_verified,
+            verified_invariants=tuple(verified_invariants),
             preserves=edge.spec.preserves,
             claim_ids=edge.spec.claim_ids,
         )
