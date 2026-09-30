@@ -40,6 +40,12 @@ from .bridges import (
     rdss_bridge_registry,
     rdss_bridge_specs,
 )
+from .certificate_scan import (
+    ReductionCertificateScan,
+    ReductionCertificateScanItem,
+    ReductionCertificateScanSummary,
+    scan_reference_reduction_certificates,
+)
 from .canonical import (
     AmbiguousReductionError,
     CanonicalNormalForm,
@@ -429,6 +435,10 @@ __all__ = [
     "BinaryDistinction",
     "BranchRelationOccurrence",
     "GenerativeRelationModel",
+    "ReductionCertificateScan",
+    "ReductionCertificateScanItem",
+    "ReductionCertificateScanSummary",
+    "scan_reference_reduction_certificates",
     "ReductionCertificate",
     "ReductionCertificateError",
     "certify_forgetful_reduction",
