@@ -205,3 +205,39 @@ as execution of the repository's tests/test_signature.py.
 
 Full static audit, full 239-test pytest and LaTeX compilation remain NOT YET
 RUN on the complete current branch checkout.
+
+
+## Semantic catalog update — 2026-09-30
+
+Current branch source inventory:
+
+- branch distance from main: 37 commits ahead, 0 behind;
+- Python test functions: 245;
+- claim entries: 110;
+- package-root exports: 141;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0;
+- signature public definitions: 17;
+- signature public definitions missing from package exports: 0.
+
+The semantic catalog adds source-level tests for:
+
+- exact-repeat classification;
+- new-state versus new-structure separation;
+- signature-equivalent relative Moire payloads;
+- quotient-level summary counts;
+- carrier/occurrence family separation.
+
+A local independent logic harness also reproduced the catalog precedence for
+exact repeat, signature-equivalent, new state, new structure and new family.
+
+Structural LaTeX audit on the current branch text reports:
+
+- unmatched environments: 0;
+- environment mismatches: 0;
+- brace balance: 0;
+- negative brace balance events: 0;
+- display-math delimiters: 251 open / 251 close.
+
+These are structural checks only. Full pytest and full LaTeX compilation remain
+NOT YET RUN on a complete checkout of this branch.
