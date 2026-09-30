@@ -1069,7 +1069,7 @@ The source corpus intentionally mixes:
 - signature-equivalent representations;
 - lossless reference bridges;
 - lossy forgetful projections;
-- currently unsupported executable types.
+- executable types that historically exposed signature-coverage gaps.
 
 The first corpus pass exposed nine signature-coverage gaps. They have now been
 closed by assigning explicit semantic families without inventing bridges.
@@ -1077,9 +1077,9 @@ closed by assigning explicit semantic families without inventing bridges.
 The current source contract is
 
 \[
-33
+35
 =
-33_{\rm signature\ supported}
+35_{\rm signature\ supported}
 +
 0_{\rm coverage\ gaps}.
 \]
@@ -1087,13 +1087,13 @@ The current source contract is
 The full corpus is expected by source tests to classify into
 
 \[
-20\ \text{families},
+21\ \text{families},
 \qquad
-26\ \text{structures},
+27\ \text{structures},
 \qquad
-31\ \text{semantic states},
+33\ \text{semantic states},
 \qquad
-32\ \text{strict values}.
+34\ \text{strict values}.
 \]
 
 These are test expectations, not a claimed runtime PASS.
