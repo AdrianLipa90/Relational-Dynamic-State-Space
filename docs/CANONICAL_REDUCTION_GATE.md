@@ -1170,3 +1170,60 @@ For one admitted value the provenance bundle combines semantic factorization, si
 Transformation provenance is also available for BridgeRoute, RewriteTrace and ScopedRewriteNormalForm. In each case the root claims are those already carried by the transformation; the provenance layer only expands their existing dependency closure.
 
 It does not manufacture, promote, reclassify or rewrite claims. It is a read-only projection of the authoritative RDSS ledger.
+
+
+## Object-level reduction certificate
+
+A scoped normal form is now wrapped in an object-level reduction certificate
+that binds the complete evidence chain for one input value.
+
+For input \(X\), the certificate contains:
+
+\[
+\mathcal C(X)=
+(\mathfrak F(X),G_X,T_X,N_{\mathcal R}(X),\mathfrak F(Y),G_Y,\mathcal I,G_{\mathcal C}),
+\]
+
+where \(Y\) is the selected-system irreducible result, \(G_X\) and \(G_Y\)
+are value claim-provenance graphs, \(T_X\) is the certified rewrite trace,
+\(\mathcal I\) is the inventory of executable invariants that passed, and
+\(G_{\mathcal C}\) is the induced claim graph for the combined certificate.
+
+The factory fails closed unless all of the following agree:
+
+- strict source and target keys;
+- complete source and target value provenance;
+- rewrite rule provenance;
+- scoped-normal-form provenance;
+- termination and confluence certificate identities;
+- lossiness;
+- target irreducibility;
+- scoped-normal-form idempotence;
+- executable invariant inventory;
+- authoritative claim dependency projection.
+
+The certificate explicitly reports
+
+\[
+\boxed{\texttt{global\_canonical}=\mathrm{False}}.
+\]
+
+## Reference reduction-certificate scan
+
+The reference batch scan applies the same certificate factory independently to
+every named corpus value. The current source contract is:
+
+\[
+(36,36,5,31,5,0,22,18),
+\]
+
+for records, verified certificates, rewritten values, fixed points, LOSSY
+reductions, global-canonical-true results, distinct source families and distinct
+target families.
+
+The deterministic CLI emits schema
+
+rdss.reduction-certificate-scan/v1.
+
+It exits non-zero if not every record verifies or if any result claims global
+canonicality.
