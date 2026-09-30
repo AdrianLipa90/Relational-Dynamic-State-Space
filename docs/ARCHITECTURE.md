@@ -391,3 +391,12 @@ machine-readable handoff surface for later GREMLIN ingestion.
 
 Neither layer changes the claim ledger or promotes scoped results to global
 canonical forms.
+
+
+## Cross-cutting loss witness layer
+
+src/rdss/loss_witness.py
+
+The loss-witness layer adversarially validates the current forgetful projections by constructing distinct source pairs that collapse to one target under the same rule. This provides executable noninjectivity evidence for the LOSSY classification instead of relying on labels alone.
+
+The witness layer reuses the priority-free rewrite system and executable invariant engine; it does not introduce new rewrite rules.
