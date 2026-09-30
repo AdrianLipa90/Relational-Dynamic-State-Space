@@ -15,13 +15,16 @@ from rdss.operations import RelationOccurrence
 from rdss.realizations import reference_point_from_occurrence
 from rdss.rewrite import (
     AmbiguousRewriteError,
+    FamilyRankTerminationCertificate,
     NoRewriteRuleError,
     RewriteCycleError,
     RewriteInvariantError,
     RewriteRule,
+    RewriteTerminationCertificateError,
     RewriteSystem,
     rdss_forgetful_rewrite_rules,
     rdss_forgetful_rewrite_system,
+    rdss_forgetful_termination_certificate,
 )
 
 
@@ -316,3 +319,102 @@ def test_reference_corpus_forgetful_rewrites_all_finish_in_one_step():
         assert len(trace.steps) == 1
         assert trace.lossy
         assert system.irreducible(trace.value)
+
+
+
+def test_reference_forgetful_termination_certificate_verifies_all_rules():
+    system = rdss_forgetful_rewrite_system()
+    certificate = rdss_forgetful_termination_certificate()
+
+    audit = certificate.audit(system)
+
+    assert audit.verified
+    assert audit.violations == ()
+    assert audit.checked_rules == tuple(
+        rule.name for rule in system.rules
+    )
+
+    for rule in system.rules:
+        assert (
+            certificate.rank(rule.source_family)
+            >
+            certificate.rank(rule.target_family)
+        )
+
+
+def test_reference_forgetful_certificate_bounds_rewriteable_values_by_one_step():
+    system = rdss_forgetful_rewrite_system()
+    certificate = rdss_forgetful_termination_certificate()
+
+    for item in rdss_reference_corpus():
+        rules = system.applicable_rules(item.value)
+        trace = system.trace_certified(
+            item.value,
+            certificate,
+        )
+
+        if rules:
+            assert len(rules) == 1
+            assert len(trace.steps) == 1
+            assert certificate.rank(
+                rules[0].source_family
+            ) == 1
+        else:
+            assert trace.steps == ()
+
+        assert system.irreducible(trace.value)
+
+
+def test_invalid_family_rank_certificate_fails_closed_on_cycle():
+    forward = RewriteRule(
+        name="to-point",
+        source_family="occurrence_address",
+        target_family="relational_carrier",
+        transform=reference_point_from_occurrence,
+        source_check=lambda value: isinstance(
+            value,
+            OccurrenceAddress,
+        ),
+        target_check=lambda value: isinstance(
+            value,
+            RelationalPoint,
+        ),
+        kind=EquivalenceKind.REFERENCE_REPRESENTATION,
+        information_effect=InformationEffect.LOSSLESS,
+    )
+    backward = RewriteRule(
+        name="to-occurrence",
+        source_family="relational_carrier",
+        target_family="occurrence_address",
+        transform=lambda value: OccurrenceAddress(value.address),
+        source_check=lambda value: isinstance(
+            value,
+            RelationalPoint,
+        ),
+        target_check=lambda value: isinstance(
+            value,
+            OccurrenceAddress,
+        ),
+        kind=EquivalenceKind.REFERENCE_REPRESENTATION,
+        information_effect=InformationEffect.LOSSLESS,
+    )
+    system = RewriteSystem((forward, backward))
+    certificate = FamilyRankTerminationCertificate(
+        name="invalid-cycle-ranking",
+        ranks=(
+            ("occurrence_address", 1),
+            ("relational_carrier", 0),
+        ),
+    )
+
+    audit = certificate.audit(system)
+
+    assert not audit.verified
+    assert len(audit.violations) == 1
+    assert audit.violations[0].rule_name == "to-occurrence"
+
+    with pytest.raises(RewriteTerminationCertificateError):
+        system.trace_certified(
+            OccurrenceAddress((-1,)),
+            certificate,
+        )
