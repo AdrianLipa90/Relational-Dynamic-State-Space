@@ -770,6 +770,25 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_REFERENCE_CORPUS", "DEF_SIGNATURE_CATALOG", "DEF_BRIDGE_EQUIVALENCE_GRAPH", "DEF_BRIDGE_GAP_REPORT"),
     ),
 
+    Claim(
+        "REF_TYPED_ZERO_ELEMENT_BRIDGE",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The reference kernel identifies TypedZero sector metadata with the all-zero TensorScalarElement in the same rank, carrier, semantic scale, and component dimension through an explicit reversible representation bridge restricted to the zero subspace.",
+        ("DEF_TYPED_ZERO", "DEF_TS", "DEF_BRIDGE_REGISTRY"),
+    ),
+    Claim(
+        "THM_TYPED_ZERO_ELEMENT_ROUNDTRIP",
+        ClaimKind.THEOREM,
+        "For the reference zero-sector bridge, TypedZero.as_element followed by TypedZero.from_element returns the original TypedZero, and the reverse round trip returns the original all-zero TensorScalarElement.",
+        ("REF_TYPED_ZERO_ELEMENT_BRIDGE",),
+    ),
+    Claim(
+        "DEF_RELATIONAL_DISTINCTION_FORGETFUL_PROJECTION",
+        ClaimKind.DEFINITION,
+        "The forgetful projection from RelationalBinaryDistinction to BinaryDistinction retains host and left/right endpoint labels while discarding explicit left/right relation labels.",
+        ("DEF_RELATIONAL_DISTINCTION", "DEF_BINARY_DISTINCTION", "DEF_BRIDGE_REGISTRY"),
+    ),
+
 )
 
 
