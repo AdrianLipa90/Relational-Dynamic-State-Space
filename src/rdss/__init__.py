@@ -200,6 +200,10 @@ from .equivalence_graph import (
     GraphEdgeKind,
     build_bridge_equivalence_graph,
 )
+from .normal_form import (
+    ScopedRewriteNormalForm,
+    rdss_forgetful_normal_form,
+)
 from .operations import (
     BranchRefinementMap,
     ContractionRule,
@@ -349,6 +353,8 @@ __all__ = [
     "rdss_forgetful_rewrite_rules",
     "rdss_forgetful_rewrite_system",
     "rdss_forgetful_termination_certificate",
+    "ScopedRewriteNormalForm",
+    "rdss_forgetful_normal_form",
     "SemanticScale",
     "SemanticScaleGraph",
     "TensorScalarElement",
