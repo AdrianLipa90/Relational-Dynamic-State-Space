@@ -563,3 +563,16 @@ holonomy admits a U(1) representation.
 
 Executable invariant failure is a route failure. Descriptive preservation text
 does not override an executable FAIL.
+
+
+## Rewrite termination certificate layer
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_FAMILY_RANK_TERMINATION_CERTIFICATE | DEFINITION | Natural-number rank on semantic families that must strictly decrease across every selected rewrite rule. | DEF_PRIORITY_FREE_REWRITE_SYSTEM |
+| THM_STRICT_FAMILY_RANK_TERMINATION | THEOREM | Strict descent in \(\mathbb N\) excludes infinite rewrite traces. | DEF_FAMILY_RANK_TERMINATION_CERTIFICATE |
+| REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE | REFERENCE REALIZATION | Rank 1 on the four current forgetful source families and rank 0 on their targets/default families. | DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER, DEF_FAMILY_RANK_TERMINATION_CERTIFICATE |
+| THM_REFERENCE_FORGETFUL_REWRITE_TERMINATES | THEOREM | Every reference forgetful trace has length at most one. | REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE, THM_STRICT_FAMILY_RANK_TERMINATION |
+
+No claim of termination is made for rewrite systems that do not pass an
+explicit certificate audit.
