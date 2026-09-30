@@ -687,3 +687,45 @@ The graph reports unresolved cross-family pairs when no explicit bridge route
 matches. These unresolved pairs are useful targets for later mathematics:
 they show where a bridge theorem is still missing rather than silently
 manufacturing one.
+
+
+## Bridge gap report
+
+Unresolved cross-family pairs are not discarded. They are grouped by unordered
+semantic-family pair:
+
+\[
+G(F_i,F_j)
+=
+\{
+(a,b):
+\operatorname{family}(a)=F_i,\;
+\operatorname{family}(b)=F_j,\;
+\text{no registered matching bridge route}
+\}.
+\]
+
+The report exposes
+
+\[
+\left(
+N_{\rm family\ pairs},
+N_{\rm unresolved\ record\ pairs}
+\right)
+\]
+
+together with the concrete record ordinals in each family-pair gap.
+
+This is a diagnostic of missing formal coverage. It does not assert
+
+\[
+\boxed{
+\text{unresolved pair}
+\not\Rightarrow
+\text{bridge exists}.
+}
+\]
+
+A gap can be resolved only by adding an explicit justified bridge, proving that
+the families should remain distinct, or refining the signatures so that the
+apparent gap is classified more accurately.
