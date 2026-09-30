@@ -1066,3 +1066,82 @@ The API explicitly reports
 
 This prevents the selected forgetful quotient from being silently promoted to a
 global RDSS canonical normal form.
+
+
+## Structure-state-representation factorization
+
+RDSS now exposes the existing signature semantics as an explicit factorization
+
+\[
+\mathfrak F(X)
+=
+(F,S,\sigma,\rho),
+\]
+
+where:
+
+- \(F\) is semantic family;
+- \(S\) is the structural key built from every non-state signature axis;
+- \(\sigma\) is the state key built from PHASE and STATE axes;
+- \(\rho\) is the concrete representation tag.
+
+No new quotient is introduced. The factorization is reconstructed directly from
+RDSSSignature and therefore preserves
+
+\[
+S=\operatorname{structural\_key}(\Sigma(X)),
+\]
+
+\[
+\sigma=\operatorname{state\_key}(\Sigma(X)),
+\]
+
+and
+
+\[
+(S,\sigma)=\operatorname{semantic\_key}(\Sigma(X)).
+\]
+
+Comparison proceeds in the order
+
+\[
+F
+\rightarrow
+S
+\rightarrow
+\sigma
+\rightarrow
+\rho.
+\]
+
+This yields the explicit classes:
+
+\[
+\{
+\text{DIFFERENT\_FAMILY},
+\text{DIFFERENT\_STRUCTURE},
+\text{DIFFERENT\_STATE},
+\text{REPRESENTATION\_ONLY},
+\text{SAME\_FACTORIZATION}
+\}.
+\]
+
+Important examples from the current reference model:
+
+- changing TensorScalarElement components while rank/carrier/scale/dimension
+  stay fixed is a state change;
+- changing tensor rank is structural;
+- a common angular shift of both MoireRotation angles leaves the same
+  factorization because the relative phase is unchanged;
+- CP1 global phase is currently represented as a state difference because no
+  CP1 projective-phase quotient has yet been installed in the signature layer;
+- OccurrenceAddress and RelationalPoint remain different families even when an
+  explicit lossless reference bridge relates them.
+
+The 36-record reference corpus source contract factors into
+
+\[
+(36,22,28,34,22)
+\]
+
+for records, families, structures, semantic states and representation classes.
