@@ -1510,3 +1510,32 @@ def test_reduction_certificate_scan_claims_are_diagnostic():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_loss_witness_claims_prove_reference_noninjectivity():
+    claims = claim_map()
+
+    assert claims["DEF_LOSS_WITNESS"].kind is ClaimKind.DEFINITION
+    closure = dependency_closure("DEF_LOSS_WITNESS")
+    assert "DEF_REWRITE_RULE" in closure
+    assert "DEF_EXECUTABLE_BRIDGE_INVARIANT" in closure
+
+    assert claims["REF_FORGETFUL_LOSS_WITNESSES"].kind is ClaimKind.REFERENCE_REALIZATION
+    closure = dependency_closure(
+        "REF_FORGETFUL_LOSS_WITNESSES"
+    )
+    assert "DEF_LOSS_WITNESS" in closure
+    assert "DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER" in closure
+
+    assert claims["THM_REFERENCE_FORGETFUL_REWRITES_NONINJECTIVE"].kind is ClaimKind.THEOREM
+    assert "REF_FORGETFUL_LOSS_WITNESSES" in dependency_closure(
+        "THM_REFERENCE_FORGETFUL_REWRITES_NONINJECTIVE"
+    )
+
+    assert {
+        "DEF_LOSS_WITNESS",
+        "REF_FORGETFUL_LOSS_WITNESSES",
+        "THM_REFERENCE_FORGETFUL_REWRITES_NONINJECTIVE",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
