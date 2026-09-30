@@ -41,6 +41,20 @@ from .canonical import (
     roundtrip_check,
     strict_normal_form,
 )
+from .signature import (
+    AmbiguousSignatureError,
+    NoveltyKind,
+    RDSSSignature,
+    SignatureAxis,
+    SignatureComparison,
+    SignatureComparisonKind,
+    SignatureEngine,
+    SignatureError,
+    SignatureExtractor,
+    UnsupportedSignatureError,
+    rdss_signature_engine,
+    rdss_signature_extractors,
+)
 from .closure import (
     BinaryDistinction,
     BranchRelationOccurrence,
@@ -143,6 +157,18 @@ from .realizations import (
 from .zero_axis import ZeroAxisPoint, finite_zero_axis_lift
 
 __all__ = [
+    "AmbiguousSignatureError",
+    "NoveltyKind",
+    "RDSSSignature",
+    "SignatureAxis",
+    "SignatureComparison",
+    "SignatureComparisonKind",
+    "SignatureEngine",
+    "SignatureError",
+    "SignatureExtractor",
+    "UnsupportedSignatureError",
+    "rdss_signature_engine",
+    "rdss_signature_extractors",
     "AmbiguousReductionError",
     "CanonicalNormalForm",
     "EquivalenceKind",
