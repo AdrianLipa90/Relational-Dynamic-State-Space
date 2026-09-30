@@ -38,6 +38,10 @@ class LossyReductionError(ReductionError):
     pass
 
 
+class NonDescendingReductionError(ReductionError):
+    pass
+
+
 def _type_tag(value: object) -> str:
     cls = type(value)
     return f"{cls.__module__}.{cls.__qualname__}"
@@ -112,6 +116,37 @@ def strict_normal_form(value: object) -> CanonicalNormalForm:
 
 Predicate = Callable[[object], bool]
 Transform = Callable[[object], object]
+ReductionMeasure = Callable[[object], tuple[int, ...]]
+
+
+@dataclass(frozen=True)
+class LexicographicReductionOrder:
+    """Explicit well-founded order on non-negative integer tuples."""
+
+    name: str
+    measure: ReductionMeasure
+
+    def __post_init__(self) -> None:
+        if not self.name.strip():
+            raise ValueError("reduction order name must be non-empty")
+
+    def key(self, value: object) -> tuple[int, ...]:
+        raw = tuple(self.measure(value))
+        if not raw:
+            raise ValueError("reduction measure must be non-empty")
+        if any(
+            not isinstance(item, int)
+            or isinstance(item, bool)
+            or item < 0
+            for item in raw
+        ):
+            raise ValueError(
+                "reduction measure must contain non-negative integers"
+            )
+        return raw
+
+    def descends(self, before: object, after: object) -> bool:
+        return self.key(after) < self.key(before)
 
 
 @dataclass(frozen=True)
@@ -238,15 +273,22 @@ class ReductionEngine:
     def __init__(
         self,
         rules: tuple[ReductionRule, ...] = (),
+        *,
+        ordering: LexicographicReductionOrder | None = None,
     ) -> None:
         names = [rule.name for rule in rules]
         if len(names) != len(set(names)):
             raise ValueError("reduction rule names must be unique")
         self._rules = tuple(rules)
+        self._ordering = ordering
 
     @property
     def rules(self) -> tuple[ReductionRule, ...]:
         return self._rules
+
+    @property
+    def ordering(self) -> LexicographicReductionOrder | None:
+        return self._ordering
 
     def reduce(
         self,
@@ -284,6 +326,15 @@ class ReductionEngine:
             rule = applicable[0]
             next_value = rule.transform(current)
             next_key = strict_normal_form(next_value).key
+
+            if (
+                self._ordering is not None
+                and not self._ordering.descends(current, next_value)
+            ):
+                raise NonDescendingReductionError(
+                    f"reduction rule {rule.name!r} does not descend "
+                    f"under order {self._ordering.name!r}"
+                )
 
             if next_key == current_key or next_key in seen:
                 raise ReductionCycleError(
@@ -411,3 +462,123 @@ def rdss_projection_rules() -> tuple[ReductionRule, ...]:
 def rdss_projection_engine() -> ReductionEngine:
     """Build the explicit occurrence-to-value projection engine."""
     return ReductionEngine(rdss_projection_rules())
+
+
+
+class FiniteConfluenceStatus(str, Enum):
+    UNIQUE_NORMAL_FORM = "unique_normal_form"
+    MULTIPLE_NORMAL_FORMS = "multiple_normal_forms"
+    CYCLE_DETECTED = "cycle_detected"
+    BOUNDED_INCOMPLETE = "bounded_incomplete"
+
+
+@dataclass(frozen=True)
+class FiniteConfluenceReport:
+    status: FiniteConfluenceStatus
+    explored_states: int
+    terminal_keys: tuple[object, ...]
+    cycle_edges: tuple[tuple[str, object, object], ...]
+    truncated_keys: tuple[object, ...]
+
+    @property
+    def confluent_on_explored_graph(self) -> bool:
+        return (
+            self.status
+            is FiniteConfluenceStatus.UNIQUE_NORMAL_FORM
+        )
+
+
+def audit_finite_confluence(
+    value: object,
+    rules: tuple[ReductionRule, ...],
+    *,
+    max_depth: int = 16,
+    ordering: LexicographicReductionOrder | None = None,
+) -> FiniteConfluenceReport:
+    """Explore every admitted reduction branch up to a finite depth.
+
+    This is bounded evidence, not a general Church-Rosser theorem.
+    Ambiguity is intentionally explored here rather than rejected, because
+    the purpose is to test whether competing one-step reductions rejoin.
+    """
+    if max_depth < 0:
+        raise ValueError("max_depth must be non-negative")
+    names = [rule.name for rule in rules]
+    if len(names) != len(set(names)):
+        raise ValueError("reduction rule names must be unique")
+
+    start_key = strict_normal_form(value).key
+    frontier: list[
+        tuple[object, int, frozenset[object]]
+    ] = [(value, 0, frozenset({start_key}))]
+    expanded: set[object] = set()
+    terminals: dict[object, object] = {}
+    cycle_edges: list[tuple[str, object, object]] = []
+    truncated: set[object] = set()
+
+    while frontier:
+        current, depth, ancestry = frontier.pop(0)
+        current_key = strict_normal_form(current).key
+        if current_key in expanded:
+            continue
+        expanded.add(current_key)
+
+        applicable = tuple(
+            rule for rule in rules
+            if bool(rule.applies(current))
+        )
+        if not applicable:
+            terminals[current_key] = current
+            continue
+
+        if depth >= max_depth:
+            truncated.add(current_key)
+            continue
+
+        for rule in applicable:
+            next_value = rule.transform(current)
+            next_key = strict_normal_form(next_value).key
+
+            if (
+                ordering is not None
+                and not ordering.descends(current, next_value)
+            ):
+                raise NonDescendingReductionError(
+                    f"reduction rule {rule.name!r} does not descend "
+                    f"under order {ordering.name!r}"
+                )
+
+            if next_key == current_key or next_key in ancestry:
+                cycle_edges.append(
+                    (rule.name, current_key, next_key)
+                )
+                continue
+
+            frontier.append(
+                (
+                    next_value,
+                    depth + 1,
+                    ancestry | {next_key},
+                )
+            )
+
+    terminal_keys = tuple(sorted(terminals, key=repr))
+    cycle_tuple = tuple(cycle_edges)
+    truncated_keys = tuple(sorted(truncated, key=repr))
+
+    if len(terminal_keys) > 1:
+        status = FiniteConfluenceStatus.MULTIPLE_NORMAL_FORMS
+    elif cycle_tuple:
+        status = FiniteConfluenceStatus.CYCLE_DETECTED
+    elif truncated_keys or len(terminal_keys) != 1:
+        status = FiniteConfluenceStatus.BOUNDED_INCOMPLETE
+    else:
+        status = FiniteConfluenceStatus.UNIQUE_NORMAL_FORM
+
+    return FiniteConfluenceReport(
+        status=status,
+        explored_states=len(expanded),
+        terminal_keys=terminal_keys,
+        cycle_edges=cycle_tuple,
+        truncated_keys=truncated_keys,
+    )
