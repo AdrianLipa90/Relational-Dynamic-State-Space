@@ -51,6 +51,10 @@ class RewriteStepLimitError(RewriteError):
     pass
 
 
+class RewriteTerminationCertificateError(RewriteError):
+    pass
+
+
 @dataclass(frozen=True)
 class RewriteRule:
     """One explicit oriented rewrite rule.
@@ -120,6 +124,120 @@ class RewriteRule:
 
 
 @dataclass(frozen=True)
+class FamilyRankViolation:
+    rule_name: str
+    source_family: str
+    target_family: str
+    source_rank: int
+    target_rank: int
+
+
+@dataclass(frozen=True)
+class RewriteTerminationAudit:
+    certificate_name: str
+    checked_rules: tuple[str, ...]
+    violations: tuple[FamilyRankViolation, ...]
+
+    @property
+    def verified(self) -> bool:
+        return not self.violations
+
+
+@dataclass(frozen=True)
+class FamilyRankTerminationCertificate:
+    """Natural-number ranking certificate over semantic families."""
+
+    name: str
+    ranks: tuple[tuple[str, int], ...]
+    default_rank: int = 0
+    claim_ids: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        if not self.name.strip():
+            raise ValueError(
+                "termination certificate name must be non-empty"
+            )
+        families = [family for family, _ in self.ranks]
+        if any(not family.strip() for family in families):
+            raise ValueError(
+                "termination certificate families must be non-empty"
+            )
+        if len(families) != len(set(families)):
+            raise ValueError(
+                "termination certificate families must be unique"
+            )
+        if self.default_rank < 0:
+            raise ValueError(
+                "termination default rank must be non-negative"
+            )
+        if any(rank < 0 for _, rank in self.ranks):
+            raise ValueError(
+                "termination ranks must be non-negative"
+            )
+        if any(not claim.strip() for claim in self.claim_ids):
+            raise ValueError(
+                "termination certificate claim ids must be non-empty"
+            )
+
+    @property
+    def rank_map(self) -> dict[str, int]:
+        return dict(self.ranks)
+
+    def rank(self, family: str) -> int:
+        return self.rank_map.get(
+            family,
+            self.default_rank,
+        )
+
+    def audit(
+        self,
+        system: "RewriteSystem",
+    ) -> RewriteTerminationAudit:
+        violations: list[FamilyRankViolation] = []
+        checked: list[str] = []
+
+        for rule in system.rules:
+            checked.append(rule.name)
+            source_rank = self.rank(rule.source_family)
+            target_rank = self.rank(rule.target_family)
+            if source_rank <= target_rank:
+                violations.append(
+                    FamilyRankViolation(
+                        rule_name=rule.name,
+                        source_family=rule.source_family,
+                        target_family=rule.target_family,
+                        source_rank=source_rank,
+                        target_rank=target_rank,
+                    )
+                )
+
+        return RewriteTerminationAudit(
+            certificate_name=self.name,
+            checked_rules=tuple(checked),
+            violations=tuple(violations),
+        )
+
+    def require_valid(
+        self,
+        system: "RewriteSystem",
+    ) -> RewriteTerminationAudit:
+        audit = self.audit(system)
+        if not audit.verified:
+            details = ", ".join(
+                (
+                    f"{item.rule_name}:"
+                    f"{item.source_rank}<={item.target_rank}"
+                )
+                for item in audit.violations
+            )
+            raise RewriteTerminationCertificateError(
+                "termination certificate failed: "
+                + details
+            )
+        return audit
+
+
+@dataclass(frozen=True)
 class RewriteStep:
     rule_name: str
     source_family: str
@@ -176,6 +294,10 @@ class RewriteSystem:
     @property
     def rules(self) -> tuple[RewriteRule, ...]:
         return self._rules
+
+    @property
+    def signature_engine(self) -> SignatureEngine:
+        return self._signature_engine
 
     def applicable_rules(
         self,
@@ -271,6 +393,32 @@ class RewriteSystem:
                 f"multiple rewrite rules apply: {names}"
             )
         return self.apply(value, candidates[0].name)
+
+    def trace_certified(
+        self,
+        value: object,
+        certificate: FamilyRankTerminationCertificate,
+    ) -> RewriteTrace:
+        certificate.require_valid(self)
+        if self.irreducible(value):
+            return RewriteTrace(
+                initial=value,
+                value=value,
+                steps=(),
+            )
+
+        family = self._signature_engine.signature(
+            value
+        ).family
+        bound = certificate.rank(family)
+        if bound <= 0:
+            raise RewriteTerminationCertificateError(
+                "rewriteable value has non-positive certified rank"
+            )
+        return self.trace_until_irreducible(
+            value,
+            max_steps=bound,
+        )
 
     def trace_explicit(
         self,
@@ -368,4 +516,26 @@ def rdss_forgetful_rewrite_rules(
 def rdss_forgetful_rewrite_system() -> RewriteSystem:
     return RewriteSystem(
         rdss_forgetful_rewrite_rules()
+    )
+
+
+
+def rdss_forgetful_termination_certificate(
+) -> FamilyRankTerminationCertificate:
+    return FamilyRankTerminationCertificate(
+        name="rdss-forgetful-family-rank-v1",
+        ranks=(
+            ("relation_occurrence", 1),
+            ("relational_generative_model", 1),
+            ("relational_binary_distinction", 1),
+            ("occurrence_relation_path", 1),
+            ("typed_relation", 0),
+            ("generative_relation_model", 0),
+            ("binary_distinction", 0),
+            ("relation_path", 0),
+        ),
+        default_rank=0,
+        claim_ids=(
+            "REF_FORGETFUL_REWRITE_TERMINATION_CERTIFICATE",
+        ),
     )
