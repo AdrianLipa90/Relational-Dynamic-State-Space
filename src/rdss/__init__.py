@@ -129,6 +129,8 @@ from .potential import (
 )
 from .equivalence_graph import (
     BridgeEquivalenceGraph,
+    BridgeGap,
+    BridgeGapReport,
     EquivalenceGraphEdge,
     EquivalenceGraphRecord,
     EquivalenceGraphSummary,
@@ -296,6 +298,8 @@ __all__ = [
     "singleton_ra0_star_model",
     "two_cycle_ra0_star_model",
     "BridgeEquivalenceGraph",
+    "BridgeGap",
+    "BridgeGapReport",
     "EquivalenceGraphEdge",
     "EquivalenceGraphRecord",
     "EquivalenceGraphSummary",
