@@ -34,7 +34,7 @@ The current statuses are:
 | relational_binary_distinction | binary_distinction | IMPLEMENTED_LOSSY | Explicit relation labels are forgotten. |
 | relational_generative_model | generative_relation_model | IMPLEMENTED_LOSSY | Explicit branch-relation binding is forgotten under RA0_REL_STAR to RA0_STAR projection. |
 | branch_relation_occurrence | typed_relation | CONTEXT_REQUIRED | Symbolic endpoint labels require an external mapping to RelationalPoint carriers. |
-| zero_axis_point | u1_phase | MISSING_INTERMEDIATE_FAMILY | Zero-Axis lift is defined from verified U(1) phase, but there is no canonical U(1)-phase signature family yet. |
+| zero_axis_point | u1_phase | IMPLEMENTED_LOSSLESS | Explicit U1Phase now bridges reversibly to finite ZeroAxisPoint through Omega/Omega^{-1}; u=-1 remains outside the finite domain. |
 | cp1_distinction | cp1_state | COMPOSITE_NOT_EQUIVALENT | MinimalDistinction contains two CP1 states over a carrier; it is not one CP1 state. |
 | semantic_scale_graph | semantic_scale | COMPOSITE_NOT_EQUIVALENT | A scale graph is a relation among scale labels, not one scale node. |
 | center_half_turn_bridge | moire_relative_rotation | NO_BRIDGE_CLAIM | No current claim identifies the bridge object with a relative Moire rotation. |
@@ -52,7 +52,7 @@ N_{\rm composite},
 N_{\rm no\ claim}
 )
 =
-(11,2,4,1,1,2,1).
+(11,3,4,1,0,2,1).
 \]
 
 ## Consequence for next work
@@ -61,14 +61,12 @@ The next mathematically justified bridge work is not to add arbitrary edges.
 
 The priority order is:
 
-1. introduce an explicit U(1)-phase value/signature family so existing
-   holonomy and Zero-Axis interfaces can meet on a typed intermediate object;
-2. design a contextual bridge interface for transformations that require
+1. design a contextual bridge interface for transformations that require
    external carrier maps, starting with BranchRelationOccurrence to
    TypedRelation;
-3. preserve composite objects as composites unless a quotient/decomposition
+2. preserve composite objects as composites unless a quotient/decomposition
    theorem explicitly changes their status;
-4. keep CenterHalfTurnBridge and MoireRotation distinct until a bridge theorem
+3. keep CenterHalfTurnBridge and MoireRotation distinct until a bridge theorem
    exists.
 
 This triage is diagnostic. It neither asserts that every gap should be closed
