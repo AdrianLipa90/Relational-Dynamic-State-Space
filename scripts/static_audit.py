@@ -101,6 +101,7 @@ def audit_layer_ownership() -> dict[str, int]:
     module_paths = {
         "core": SRC / "rdss" / "algebra.py",
         "canonical": SRC / "rdss" / "canonical.py",
+        "bridges": SRC / "rdss" / "bridges.py",
         "signature": SRC / "rdss" / "signature.py",
         "operations": SRC / "rdss" / "operations.py",
         "phase": SRC / "rdss" / "phase.py",
@@ -160,6 +161,7 @@ def audit_test_imports() -> None:
         "rdss.algebra": public_defs(SRC / "rdss" / "algebra.py"),
         "rdss.axioms": public_defs(SRC / "rdss" / "axioms.py"),
         "rdss.canonical": public_defs(SRC / "rdss" / "canonical.py"),
+        "rdss.bridges": public_defs(SRC / "rdss" / "bridges.py"),
         "rdss.closure": public_defs(SRC / "rdss" / "closure.py"),
         "rdss.operations": public_defs(SRC / "rdss" / "operations.py"),
         "rdss.phase": public_defs(SRC / "rdss" / "phase.py"),
