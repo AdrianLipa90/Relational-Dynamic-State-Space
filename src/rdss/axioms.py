@@ -1027,6 +1027,31 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_REFERENCE_CORPUS", "DEF_SEMANTIC_FACTORIZATION"),
     ),
 
+    Claim(
+        "DEF_CLAIM_DEPENDENCY_PROJECTION",
+        ClaimKind.DEFINITION,
+        "A claim dependency projection takes an explicit set of existing root claim IDs and returns the induced dependency subgraph of the authoritative RDSS claim ledger; it does not create, promote or rewrite claims.",
+        ("DEF_RDSS_CANONICAL_SIGNATURE",),
+    ),
+    Claim(
+        "THM_PROVENANCE_TOPOLOGICAL_ORDER",
+        ClaimKind.THEOREM,
+        "The reference claim-dependency projection emits a topological ordering in which every included dependency appears before every included claim that depends on it.",
+        ("DEF_CLAIM_DEPENDENCY_PROJECTION",),
+    ),
+    Claim(
+        "DEF_VALUE_CLAIM_PROVENANCE",
+        ClaimKind.DEFINITION,
+        "Value claim provenance combines one admitted value's semantic factorization, signature-extractor provenance, signature root claim IDs and the induced claim dependency graph.",
+        ("DEF_CLAIM_DEPENDENCY_PROJECTION", "DEF_SEMANTIC_FACTORIZATION", "DEF_RDSS_CANONICAL_SIGNATURE"),
+    ),
+    Claim(
+        "DEF_TRANSFORMATION_CLAIM_PROVENANCE",
+        ClaimKind.DEFINITION,
+        "Transformation claim provenance expands the explicit root claim IDs carried by a BridgeRoute, RewriteTrace or ScopedRewriteNormalForm into the induced authoritative claim dependency graph.",
+        ("DEF_CLAIM_DEPENDENCY_PROJECTION", "DEF_BRIDGE_ROUTE", "DEF_PRIORITY_FREE_REWRITE_SYSTEM", "DEF_SCOPED_REWRITE_NORMAL_FORM"),
+    ),
+
 )
 
 
