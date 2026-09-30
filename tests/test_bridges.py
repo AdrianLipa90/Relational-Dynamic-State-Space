@@ -188,17 +188,15 @@ def test_bridge_route_composes_multiple_explicit_lossless_edges():
 
 
 def test_multiple_shortest_bridge_routes_fail_closed():
+    first = lossless_bridge("a-c-1", A, C)
+    second = lossless_bridge("a-c-2", A, C)
     registry = BridgeRegistry(
-        (
-            lossless_bridge("a-b", A, B),
-            lossless_bridge("a-c", A, C),
-            lossless_bridge("b-c", B, C),
-        ),
+        (first, second),
         signature_engine=toy_signature_engine(),
     )
 
     with pytest.raises(AmbiguousBridgeError):
-        registry.direct(A(1), "B") if False else registry.route(
+        registry.route(
             A(1),
             "C",
             max_hops=2,
