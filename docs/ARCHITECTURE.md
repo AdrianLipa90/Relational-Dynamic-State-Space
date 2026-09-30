@@ -236,3 +236,28 @@ The current registry has no generic reflection fallback: only explicitly
 admitted RDSS types receive signatures.
 
 See \`docs/CANONICAL_REDUCTION_GATE.md\`.
+
+
+## Cross-cutting bridge graph layer
+
+\`src/rdss/bridges.py\` and \`src/rdss/equivalence_graph.py\`
+
+The bridge registry is the only cross-family routing authority for canonical
+comparison. Similar-looking signatures do not create edges automatically.
+
+Reversible LOSSLESS bridges may generate strong equivalence edges after
+runtime round-trip verification. Forgetful/LOSSY bridges remain directed
+projection edges.
+
+The equivalence graph therefore separates
+
+\[
+\boxed{
+\text{lossless equivalence connectivity}
+\neq
+\text{directed information-losing projection}.
+}
+\]
+
+This layer does not alter the epistemic ownership of the underlying
+realizations or bridges.
