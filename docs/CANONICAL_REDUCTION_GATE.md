@@ -893,3 +893,59 @@ A rewrite trace records visited semantic-family/strict-value states. Repeating
 a state raises RewriteCycleError rather than being mistaken for termination.
 
 No confluence or global canonical-normal-form claim follows from this layer.
+
+
+## Family-rank termination certificate
+
+Termination is proved only for rewrite subsets carrying an explicit decreasing
+measure.
+
+A family-rank certificate supplies
+
+\[
+\mu:F\to\mathbb N.
+\]
+
+It is valid for a rewrite system exactly when every registered rule
+
+\[
+F_s\to F_t
+\]
+
+satisfies
+
+\[
+\mu(F_s)>\mu(F_t).
+\]
+
+Because \(\mathbb N\) has no infinite strictly descending chain, a verified
+certificate excludes infinite rewrite traces for that selected system.
+
+The current reference forgetful subsystem uses
+
+\[
+\mu=
+\begin{cases}
+1,&F\in\{
+\text{relation_occurrence},
+\text{relational_generative_model},
+\text{relational_binary_distinction},
+\text{occurrence_relation_path}
+\},\\
+0,&\text{otherwise}.
+\end{cases}
+\]
+
+Every one of the four reference forgetful rules maps rank \(1\) to rank \(0\).
+No reference forgetful rule originates at rank \(0\). Therefore
+
+\[
+\boxed{
+L_{\rm trace}\le 1
+}
+\]
+
+for every automatic trace in this subsystem.
+
+This proves termination only for the selected reference forgetful rewrite
+system. It does not prove termination for arbitrary future rewrite rules.
