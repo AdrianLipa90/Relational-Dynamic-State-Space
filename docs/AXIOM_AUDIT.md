@@ -550,3 +550,16 @@ It is bridge-local, explicit, and part of the executable proof obligation.
 The typed U1 family closes the previous MISSING_INTERMEDIATE_FAMILY triage item
 for the finite Zero-Axis interface. It does not by itself prove that every RDSS
 holonomy admits a U(1) representation.
+
+
+## Executable bridge invariant layer
+
+| ID | Kind | Meaning | Dependencies |
+|---|---|---|---|
+| DEF_EXECUTABLE_BRIDGE_INVARIANT | DEFINITION | Named source/target projections plus comparator; global bridge execution fails closed if the invariant is false. | DEF_BRIDGE_REGISTRY |
+| THM_REFERENCE_BRIDGE_INVARIANT_ENFORCEMENT | THEOREM | Reference BridgeRegistry executes every attached invariant before returning a BridgeStep. | DEF_EXECUTABLE_BRIDGE_INVARIANT |
+| DEF_EXECUTABLE_CONTEXTUAL_BRIDGE_INVARIANT | DEFINITION | Contextual invariant may project through source plus explicit context before comparison with target. | DEF_CONTEXTUAL_BRIDGE_REGISTRY, DEF_EXECUTABLE_BRIDGE_INVARIANT |
+| THM_REFERENCE_CONTEXTUAL_INVARIANT_ENFORCEMENT | THEOREM | Reference ContextualBridgeRegistry executes every attached contextual invariant before returning a ContextualBridgeStep. | DEF_EXECUTABLE_CONTEXTUAL_BRIDGE_INVARIANT |
+
+Executable invariant failure is a route failure. Descriptive preservation text
+does not override an executable FAIL.
