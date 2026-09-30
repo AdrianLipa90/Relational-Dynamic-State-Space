@@ -481,7 +481,9 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
     )
     from .closure import (
         BinaryDistinction,
+        GenerativeRelationModel,
         RelationalBinaryDistinction,
+        RelationalGenerativeModel,
     )
     from .operations import (
         OccurrenceRelationPath,
@@ -563,6 +565,33 @@ def rdss_bridge_specs() -> tuple[BridgeSpec, ...]:
             ),
             claim_ids=(
                 "DEF_OCCURRENCE_FORGETFUL_PROJECTION",
+            ),
+        ),
+        BridgeSpec(
+            name="forget_relational_generative_binding",
+            source_family="relational_generative_model",
+            target_family="generative_relation_model",
+            forward=lambda value: value.as_ra0_star_model(),
+            source_check=lambda value: isinstance(
+                value,
+                RelationalGenerativeModel,
+            ),
+            target_check=lambda value: isinstance(
+                value,
+                GenerativeRelationModel,
+            ),
+            kind=EquivalenceKind.FORGETFUL_PROJECTION,
+            information_effect=InformationEffect.LOSSY,
+            preserves=(
+                "admitted carrier labels",
+                "binary distinction hosts",
+                "left endpoint labels",
+                "right endpoint labels",
+            ),
+            claim_ids=(
+                "THM_RA0_STAR_FROM_RA0_REL_STAR",
+                "RA0_REL_STAR",
+                "RA0_STAR",
             ),
         ),
         BridgeSpec(
