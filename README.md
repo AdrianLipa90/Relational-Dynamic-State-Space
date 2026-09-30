@@ -990,3 +990,20 @@ Unsupported semantic families are not guessed; they fail closed until an
 explicit extractor or bridge is registered.
 
 See docs/CANONICAL_REDUCTION_GATE.md.
+
+
+### Termination and confluence guards
+
+A reduction rule set may optionally provide a fixed-dimensional measure
+
+\[
+\mu:X\to\mathbb N^k
+\]
+
+that must strictly decrease on every applied step. This gives a genuine
+conditional termination certificate for the admitted reduction path.
+
+A separate bounded auditor explores competing reductions and reports unique
+normal form, multiple normal forms, detected cycle, or bounded incompleteness.
+It is a finite diagnostic and is not described as a universal confluence
+theorem.
