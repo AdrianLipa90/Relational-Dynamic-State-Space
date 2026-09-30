@@ -827,6 +827,31 @@ CLAIMS: tuple[Claim, ...] = (
         ("REF_U1_ZERO_AXIS_FINITE_BRIDGE",),
     ),
 
+    Claim(
+        "DEF_CONTEXTUAL_BRIDGE_REGISTRY",
+        ClaimKind.DEFINITION,
+        "A contextual bridge registry stores transformations that are invalid without caller-supplied typed context; contextual bridges are kept separate from the global bridge registry so missing context cannot create implicit global equivalence edges.",
+        ("DEF_BRIDGE_REGISTRY",),
+    ),
+    Claim(
+        "DEF_CARRIER_MAP_CONTEXT",
+        ClaimKind.DEFINITION,
+        "CarrierMapContext is a finite explicit map from symbolic carrier labels to RelationalPoint values; the map is external contextual data and is not inferred from BranchRelationOccurrence identity.",
+        ("DEF_POINT", "DEF_CONTEXTUAL_BRIDGE_REGISTRY"),
+    ),
+    Claim(
+        "DEF_CONTEXTUAL_BRANCH_RELATION_MATERIALIZATION",
+        ClaimKind.DEFINITION,
+        "Given BranchRelationOccurrence and an explicit CarrierMapContext resolving its symbolic source and target labels, materialization yields the corresponding TypedRelation and forgets the branch occurrence slot; the transformation is therefore contextual and LOSSY.",
+        ("DEF_RELATIONAL_DISTINCTION", "DEF_BINARY_REL", "DEF_CARRIER_MAP_CONTEXT"),
+    ),
+    Claim(
+        "THM_CONTEXTUAL_BRANCH_SLOT_NONINJECTIVE",
+        ClaimKind.THEOREM,
+        "Two BranchRelationOccurrence values that differ only by branch slot but share relation label and symbolic endpoints materialize through the same CarrierMapContext to the same TypedRelation, so the contextual materialization is not injective on branch occurrences.",
+        ("DEF_CONTEXTUAL_BRANCH_RELATION_MATERIALIZATION",),
+    ),
+
 )
 
 
