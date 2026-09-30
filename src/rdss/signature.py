@@ -310,6 +310,7 @@ def rdss_signature_extractors() -> tuple[SignatureExtractor, ...]:
         BranchRelationOccurrence,
         GenerativeRelationModel,
         RelationalBinaryDistinction,
+        RelationalGenerativeModel,
     )
     from .operations import (
         OccurrenceRelationPath,
@@ -685,6 +686,36 @@ def rdss_signature_extractors() -> tuple[SignatureExtractor, ...]:
                     ),
                 ),
                 claim_ids=("DEF_RELATIONAL_DISTINCTION",),
+            ),
+            ("DEF_RDSS_CANONICAL_SIGNATURE",),
+        ),
+        SignatureExtractor(
+            "relational_generative_model_signature",
+            lambda value: isinstance(value, RelationalGenerativeModel),
+            lambda value: _signature(
+                value,
+                family="relational_generative_model",
+                axes=(
+                    (
+                        SignatureAxis.RELATIONS,
+                        (
+                            tuple(sorted(value.admitted)),
+                            tuple(
+                                sorted(
+                                    value.distinctions,
+                                    key=lambda item: (
+                                        item.host,
+                                        item.left,
+                                        item.right,
+                                        item.left_relation,
+                                        item.right_relation,
+                                    ),
+                                )
+                            ),
+                        ),
+                    ),
+                ),
+                claim_ids=("RA0_REL_STAR",),
             ),
             ("DEF_RDSS_CANONICAL_SIGNATURE",),
         ),
