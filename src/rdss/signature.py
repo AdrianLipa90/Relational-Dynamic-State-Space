@@ -99,7 +99,8 @@ class RDSSSignature:
             if axis in seen:
                 raise ValueError(f"duplicate signature axis: {axis.value}")
             seen.add(axis)
-            normalized.append((axis, _canonical_key(raw_value)))
+            _canonical_key(raw_value)
+            normalized.append((axis, raw_value))
         normalized.sort(key=lambda item: item[0].value)
         object.__setattr__(self, "axes", tuple(normalized))
 
@@ -125,12 +126,18 @@ class RDSSSignature:
     def structural_key(self) -> object:
         return (
             self.family,
-            self.structural_axes,
+            tuple(
+                (axis, _canonical_key(value))
+                for axis, value in self.structural_axes
+            ),
         )
 
     @property
     def state_key(self) -> object:
-        return self.state_axes
+        return tuple(
+            (axis, _canonical_key(value))
+            for axis, value in self.state_axes
+        )
 
     @property
     def semantic_key(self) -> object:
