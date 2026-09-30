@@ -865,6 +865,19 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_EXECUTABLE_BRIDGE_INVARIANT",),
     ),
 
+    Claim(
+        "DEF_EXECUTABLE_CONTEXTUAL_BRIDGE_INVARIANT",
+        ClaimKind.DEFINITION,
+        "An executable contextual bridge invariant consists of a named projection of source plus supplied context, a target projection, and an explicit comparator; contextual bridge execution fails closed when any declared invariant comparator returns false.",
+        ("DEF_CONTEXTUAL_BRIDGE_REGISTRY", "DEF_EXECUTABLE_BRIDGE_INVARIANT"),
+    ),
+    Claim(
+        "THM_REFERENCE_CONTEXTUAL_INVARIANT_ENFORCEMENT",
+        ClaimKind.THEOREM,
+        "In the reference ContextualBridgeRegistry implementation, every contextual invariant attached to the selected bridge is executed after target typing and before a ContextualBridgeStep is returned; failure raises ContextualBridgeInvariantError.",
+        ("DEF_EXECUTABLE_CONTEXTUAL_BRIDGE_INVARIANT",),
+    ),
+
 )
 
 
