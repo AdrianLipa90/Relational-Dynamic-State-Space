@@ -18,11 +18,14 @@ from rdss.closure import (
 )
 from rdss.bridges import (
     AmbiguousBridgeError,
+    BridgeInvariant,
+    BridgeInvariantError,
     BridgeRegistry,
     BridgeSpec,
     LossyBridgeError,
     UnsupportedBridgeError,
     rdss_bridge_registry,
+    rdss_bridge_specs,
 )
 from rdss.canonical import EquivalenceKind, InformationEffect
 from rdss.operations import (
@@ -379,3 +382,89 @@ def test_relational_generative_model_forgetful_bridge_is_lossy():
     assert result.route.lossy
     assert not result.route.fully_reversible
     assert result.route.value == generative
+
+
+
+def test_all_reference_bridges_have_executable_invariants():
+    specs = rdss_bridge_specs()
+
+    assert len(specs) == 7
+    assert all(spec.invariants for spec in specs)
+
+
+def test_reference_point_bridge_records_verified_invariant():
+    route = rdss_bridge_registry().direct(
+        OccurrenceAddress((-1, 1)),
+        "relational_carrier",
+    )
+
+    assert route.steps[0].verified_invariants == (
+        "binary coordinate word",
+    )
+
+
+def test_lossy_relation_projection_still_verifies_preserved_relation_value():
+    carrier = RelationalPoint()
+    relation = TypedRelation(carrier, carrier, "r")
+    occurrence = RelationOccurrence(
+        relation,
+        (),
+        (-1,),
+    )
+
+    route = rdss_bridge_registry().direct(
+        occurrence,
+        "typed_relation",
+    )
+
+    assert route.lossy
+    assert route.steps[0].verified_invariants == (
+        "typed relation value",
+    )
+
+
+def test_bridge_invariant_failure_is_fail_closed():
+    bad = BridgeSpec(
+        name="bad-preservation",
+        source_family="A",
+        target_family="B",
+        forward=lambda value: B(value.value + 1),
+        inverse=lambda value: A(value.value - 1),
+        source_check=lambda value: isinstance(value, A),
+        target_check=lambda value: isinstance(value, B),
+        kind=EquivalenceKind.ISOMORPHISM,
+        information_effect=InformationEffect.LOSSLESS,
+        invariants=(
+            BridgeInvariant(
+                "value",
+                source_projection=lambda value: value.value,
+                target_projection=lambda value: value.value,
+            ),
+        ),
+    )
+    registry = BridgeRegistry(
+        (bad,),
+        signature_engine=toy_signature_engine(),
+    )
+
+    with pytest.raises(BridgeInvariantError):
+        registry.direct(A(3), "B")
+
+
+def test_zero_sector_bridge_verifies_all_declared_executable_invariants():
+    point = RelationalPoint()
+    scale = SemanticScale("object")
+    zero = TypedZero((1, 1), point, scale, 2)
+
+    route = rdss_bridge_registry().direct(
+        zero,
+        "tensor_scalar_element",
+    )
+
+    assert set(route.steps[0].verified_invariants) == {
+        "tensor rank",
+        "carrier",
+        "semantic scale",
+        "component dimension",
+        "additive zero",
+    }
