@@ -1281,3 +1281,66 @@ def test_rewrite_termination_certificate_claims_are_scoped():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_confluence_certificate_claims_preserve_selected_system_scope():
+    claims = claim_map()
+
+    assert claims["DEF_RULE_SOURCE_FAMILY_OVERLAP_AUDIT"].kind is ClaimKind.DEFINITION
+    assert "DEF_PRIORITY_FREE_REWRITE_SYSTEM" in dependency_closure(
+        "DEF_RULE_SOURCE_FAMILY_OVERLAP_AUDIT"
+    )
+
+    assert claims["DEF_DISTINCT_SOURCE_FAMILY_CONFLUENCE_CERTIFICATE"].kind is ClaimKind.DEFINITION
+    assert "DEF_RULE_SOURCE_FAMILY_OVERLAP_AUDIT" in dependency_closure(
+        "DEF_DISTINCT_SOURCE_FAMILY_CONFLUENCE_CERTIFICATE"
+    )
+
+    assert claims["THM_DISTINCT_SOURCE_FAMILY_DETERMINISM"].kind is ClaimKind.THEOREM
+    assert "DEF_DISTINCT_SOURCE_FAMILY_CONFLUENCE_CERTIFICATE" in dependency_closure(
+        "THM_DISTINCT_SOURCE_FAMILY_DETERMINISM"
+    )
+
+    assert claims["THM_DETERMINISTIC_REWRITE_CONFLUENCE"].kind is ClaimKind.THEOREM
+    assert "THM_DISTINCT_SOURCE_FAMILY_DETERMINISM" in dependency_closure(
+        "THM_DETERMINISTIC_REWRITE_CONFLUENCE"
+    )
+
+    assert claims["REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert "DEF_FORGETFUL_BRIDGE_REWRITE_ADAPTER" in dependency_closure(
+        "REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE"
+    )
+
+    assert claims["THM_REFERENCE_FORGETFUL_REWRITE_CONFLUENT"].kind is ClaimKind.THEOREM
+    closure = dependency_closure(
+        "THM_REFERENCE_FORGETFUL_REWRITE_CONFLUENT"
+    )
+    assert "REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE" in closure
+    assert "THM_DETERMINISTIC_REWRITE_CONFLUENCE" in closure
+
+    assert claims["THM_TERMINATING_CONFLUENT_UNIQUE_IRREDUCIBLE"].kind is ClaimKind.THEOREM
+    closure = dependency_closure(
+        "THM_TERMINATING_CONFLUENT_UNIQUE_IRREDUCIBLE"
+    )
+    assert "THM_STRICT_FAMILY_RANK_TERMINATION" in closure
+    assert "THM_DETERMINISTIC_REWRITE_CONFLUENCE" in closure
+
+    assert claims["THM_REFERENCE_FORGETFUL_UNIQUE_IRREDUCIBLE"].kind is ClaimKind.THEOREM
+    closure = dependency_closure(
+        "THM_REFERENCE_FORGETFUL_UNIQUE_IRREDUCIBLE"
+    )
+    assert "THM_REFERENCE_FORGETFUL_REWRITE_TERMINATES" in closure
+    assert "THM_REFERENCE_FORGETFUL_REWRITE_CONFLUENT" in closure
+
+    assert {
+        "DEF_RULE_SOURCE_FAMILY_OVERLAP_AUDIT",
+        "DEF_DISTINCT_SOURCE_FAMILY_CONFLUENCE_CERTIFICATE",
+        "THM_DISTINCT_SOURCE_FAMILY_DETERMINISM",
+        "THM_DETERMINISTIC_REWRITE_CONFLUENCE",
+        "REF_FORGETFUL_REWRITE_CONFLUENCE_CERTIFICATE",
+        "THM_REFERENCE_FORGETFUL_REWRITE_CONFLUENT",
+        "THM_TERMINATING_CONFLUENT_UNIQUE_IRREDUCIBLE",
+        "THM_REFERENCE_FORGETFUL_UNIQUE_IRREDUCIBLE",
+    }.isdisjoint(
+        {claim.id for claim in foundational_axioms()}
+    )
