@@ -1682,6 +1682,10 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_HAMLET_OPERATOR_ALGEBRA_C2_MODULE"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_OPERATOR_FROBENIUS_NORM"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_OPERATOR_PROJECTIVE_CP1"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_PAULI_TRIPLE"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_SU2_GENERATORS"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_SU2_CASIMIR_HALF"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_SPINOR_2PI_4PI_RETURN"].kind is ClaimKind.THEOREM
     assert claims["DEF_HAMLET_COMPLEX_BRANCH_SPACE"].kind is ClaimKind.DEFINITION
     assert claims["THM_HAMLET_UNIQUE_SYMMETRY_HERMITIAN_FORM"].kind is ClaimKind.THEOREM
     assert claims["REF_HAMLET_COUNTING_HERMITIAN_FORM"].kind is ClaimKind.REFERENCE_REALIZATION
@@ -1911,4 +1915,23 @@ def test_canonical_spin_chain_does_not_depend_on_bare_singleton_point() -> None:
     assert "THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER" not in closure
     assert "REF_META0_SINGLETON_POINT_PRESENTATION" not in closure
     assert "DEF_POINT" not in closure
+
+def test_half_representation_label_is_derived_from_hamlet_su2_before_berry_matching() -> None:
+    claims = claim_map()
+
+    assert claims["THM_HAMLET_PAULI_TRIPLE"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_SU2_GENERATORS"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_SU2_CASIMIR_HALF"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_SPINOR_2PI_4PI_RETURN"].kind is ClaimKind.THEOREM
+
+    casimir_closure = dependency_closure("THM_HAMLET_SU2_CASIMIR_HALF")
+    assert "THM_HAMLET_PAULI_TRIPLE" in casimir_closure
+    assert "THM_HAMLET_SU2_GENERATORS" in casimir_closure
+    assert "REF_CP1_BERRY_GEOMETRIC_PHASE" not in casimir_closure
+    assert "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE" not in casimir_closure
+
+    final_closure = dependency_closure("THM_EULER_BERRY_MINIMAL_SPIN_HALF")
+    assert "THM_HAMLET_SU2_CASIMIR_HALF" in final_closure
+    assert "THM_HAMLET_SPINOR_2PI_4PI_RETURN" in final_closure
+    assert "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE" in final_closure
 
