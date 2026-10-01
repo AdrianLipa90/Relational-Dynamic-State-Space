@@ -211,9 +211,64 @@ g^4=-7+24J
 is an independent closure check: it reproduces \(-L_3\) and the integer \(24\)
 without defining either quantity.
 
-The Collatz layer is downstream. A separate source-minimal parity argument
-independently yields the same coefficient triple \(2,3,+1\). Therefore
-coefficient provenance is double-closed.
+The Collatz layer is downstream. The same coefficient triple \((2,3,+1)\)
+is now recovered independently by three routes:
+
+\[
+\boxed{
+\text{source-minimal parity}
+=
+\text{Gaussian/Bombelli}
+=
+\text{operator-dimension + universal repair}.
+}
+\]
+
+For the third route, the durable role count is \(q=2\), the full real
+operator algebra has dimension \(q^2=4\), and removing the identity line
+leaves
+
+\[
+\boxed{q^2-1=3}
+\]
+
+non-identity directions. A residue-independent repair that reopens
+association for every nonzero residue class exists only for the binary case
+\(q=2\), where the unique minimal positive repair is \(+1\).
+
+Thus coefficient provenance is **triple-closed**.
+
+The same operator count gives the canonical active arithmetic seed
+
+\[
+\boxed{n_0=4-1=3}.
+\]
+
+The exact finite trajectory begins
+
+\[
+3\to10\to5,
+\]
+
+and the depth from \(3\) to \(1\) is
+
+\[
+\boxed{7}.
+\]
+
+Therefore the same relational core closes
+
+\[
+\boxed{
+L_4=2,\qquad L_5=5,\qquad L_3=7,
+}
+\]
+
+with
+
+\[
+L_3=L_4+L_5.
+\]
 
 The operation semantics also close at finite-cardinality level.
 
