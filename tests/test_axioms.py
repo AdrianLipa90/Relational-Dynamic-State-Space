@@ -1666,6 +1666,8 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["DEF_CANONICAL_FIRST_HAMLET_NONDEGENERATE"].kind is ClaimKind.DEFINITION
     assert claims["THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES"].kind is ClaimKind.THEOREM
     assert claims["GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["THM_RELATIONAL_DEFORMATION_POTENTIAL_IS_DOWNSTREAM"].kind is ClaimKind.THEOREM
+    assert claims["THM_BINARY_CLOSURE_MODEL_IS_DOWNSTREAM"].kind is ClaimKind.THEOREM
     assert claims["THM_FIRST_HAMLET_Z2"].kind is ClaimKind.THEOREM
     assert claims["THM_FIRST_HAMLET_HARTLEY_LN2"].kind is ClaimKind.THEOREM
     assert claims["THM_DISPERSION_RETURNS_INDISTINCTION"].kind is ClaimKind.THEOREM
@@ -2004,4 +2006,23 @@ def test_hartley_ln2_requires_two_nonempty_first_hamlet_branches() -> None:
 
     strict_gate = claims["GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0"]
     assert strict_gate.kind is ClaimKind.DERIVATION_GATE
+
+def test_existing_potential_and_binary_closure_cannot_be_used_upstream_for_first_hamlet() -> None:
+    claims = claim_map()
+
+    assert claims["THM_RELATIONAL_DEFORMATION_POTENTIAL_IS_DOWNSTREAM"].kind is ClaimKind.THEOREM
+    potential_closure = dependency_closure("THM_RELATIONAL_DEFORMATION_POTENTIAL_IS_DOWNSTREAM")
+    assert "DEF_RELATIONAL_POTENTIAL" in potential_closure
+    assert "PRIM_SEMANTIC_WEIGHTING" in potential_closure
+
+    assert claims["THM_BINARY_CLOSURE_MODEL_IS_DOWNSTREAM"].kind is ClaimKind.THEOREM
+    closure_closure = dependency_closure("THM_BINARY_CLOSURE_MODEL_IS_DOWNSTREAM")
+    assert "DEF_OCCURRENCE_ADDRESS_SPACE" in closure_closure
+
+    first_hamlet_closure = dependency_closure("THM_FIRST_HAMLET_DISPERSION_STRUCTURE")
+    assert "DEF_RELATIONAL_POTENTIAL" not in first_hamlet_closure
+    assert "PRIM_SEMANTIC_WEIGHTING" not in first_hamlet_closure
+    assert "DEF_OCCURRENCE_ADDRESS_SPACE" not in first_hamlet_closure
+    assert "THM_RELATIONAL_DEFORMATION_POTENTIAL_IS_DOWNSTREAM" not in first_hamlet_closure
+    assert "THM_BINARY_CLOSURE_MODEL_IS_DOWNSTREAM" not in first_hamlet_closure
 
