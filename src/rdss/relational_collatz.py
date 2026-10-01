@@ -82,6 +82,18 @@ def durable_role_count() -> int:
     return 2
 
 
+def full_operator_basis() -> tuple[str, str, str, str]:
+    """Canonical real basis of the durable two-role operator algebra."""
+
+    return ("I", "S", "P", "J")
+
+
+def active_operator_basis() -> tuple[str, str, str]:
+    """Non-identity sector of the canonical operator basis."""
+
+    return tuple(label for label in full_operator_basis() if label != "I")
+
+
 def operator_algebra_real_dimension(role_count: int = 2) -> int:
     """Real dimension of End(R^q)=M_q(R)."""
 
@@ -122,9 +134,9 @@ def universal_constant_repair(role_count: int = 2) -> int:
 
 
 def active_seed_from_relation_algebra() -> int:
-    """Canonical active arithmetic seed: non-identity operator count."""
+    """Canonical active seed: cardinality of the non-identity operator sector."""
 
-    return nonidentity_operator_dimension(durable_role_count())
+    return len(active_operator_basis())
 
 
 def relational_collatz_depth_to_one(seed: int, *, max_steps: int = 10_000) -> int:
@@ -146,32 +158,47 @@ def relational_collatz_depth_to_one(seed: int, *, max_steps: int = 10_000) -> in
 
 
 def relational_l_constant_certificate() -> dict[str, int | bool]:
-    """Cross-module exact certificate for the relational Collatz/L closure."""
+    """Exact relational Collatz derivation with Gaussian crosscheck.
+
+    Primary values:
+      L4 = durable role count,
+      L5 = first completed D/R/A cycle from the active seed,
+      L3 = exact finite depth of the same seed to one.
+
+    The Gaussian/root-extension result is used only as an independent
+    crosscheck of the same triple.
+    """
 
     from .gaussian_bombelli import l_constants_from_gaussian_and_root_extension
 
-    l3, l4, l5 = l_constants_from_gaussian_and_root_extension()
     seed = active_seed_from_relation_algebra()
     first = relational_collatz_step(seed)
     second = relational_collatz_step(first)
 
+    l4 = durable_role_count()
+    l5 = second
+    l3 = relational_collatz_depth_to_one(seed)
+    gaussian_l3, gaussian_l4, gaussian_l5 = l_constants_from_gaussian_and_root_extension()
+
     return {
-        "role_count": durable_role_count(),
+        "role_count": l4,
         "operator_dimension": operator_algebra_real_dimension(),
         "nonidentity_dimension": nonidentity_operator_dimension(),
+        "active_basis_size": len(active_operator_basis()),
         "universal_repair": universal_constant_repair(),
-        "association_divisor": 2,
-        "dissociation_multiplier": 3,
+        "association_divisor": l4,
+        "dissociation_multiplier": nonidentity_operator_dimension(),
         "active_seed": seed,
         "seed_step_1": first,
         "seed_step_2": second,
-        "depth_to_one": relational_collatz_depth_to_one(seed),
+        "depth_to_one": l3,
         "L3": l3,
         "L4": l4,
         "L5": l5,
-        "seed_matches_multiplier": seed == 3,
+        "seed_matches_multiplier": seed == nonidentity_operator_dimension(),
         "first_full_cycle_reaches_L5": second == l5,
         "depth_matches_L3": relational_collatz_depth_to_one(seed) == l3,
         "root_extension_matches": l3 == l4 + l5,
+        "gaussian_triple_matches": (l3, l4, l5) == (gaussian_l3, gaussian_l4, gaussian_l5),
     }
 
