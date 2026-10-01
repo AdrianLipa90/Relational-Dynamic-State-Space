@@ -85,7 +85,11 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
     assert by_id["GAUSSIAN_BOMBELLI_CLOSURE"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["COLLATZ_COEFFICIENT_PROVENANCE_DOUBLE_CLOSED"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["SOURCE_MINIMAL_PARITY_LAW_TO_COLLATZ"].status is ExistenceChainStatus.CONDITIONAL_EXACT
-    assert by_id["SOURCE_MINIMALITY_INHERITANCE_GATE"].status is ExistenceChainStatus.DERIVATION_GATE
+    assert by_id["ASSOCIATION_AS_DYAD_QUOTIENT"].status is ExistenceChainStatus.EXACT_IDENTITY
+    assert by_id["DISSOCIATION_AS_THREE_FIBRE"].status is ExistenceChainStatus.EXACT_IDENTITY
+    assert by_id["REPAIR_AS_SINGLETON_COPRODUCT"].status is ExistenceChainStatus.EXACT_IDENTITY
+    assert by_id["PARITY_TO_RELATIONAL_COLLATZ"].status is ExistenceChainStatus.EXACT_IDENTITY
+    assert by_id["PRIMITIVE_NATURAL_DYNAMICS_BINDING_GATE"].status is ExistenceChainStatus.DERIVATION_GATE
     assert by_id["COLLATZ_BRANCHES_TO_PSL2"].status is ExistenceChainStatus.CONDITIONAL_EXACT
     assert by_id["COLLATZ_BRANCHES_TO_LOG_SIGNATURE"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["Z2_TO_SIGN_CHARACTER"].status is ExistenceChainStatus.EXACT_IDENTITY
