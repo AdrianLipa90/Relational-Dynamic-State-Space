@@ -3,6 +3,7 @@ from rdss.axioms import (
     claim_map,
     dependency_closure,
     foundational_axioms,
+    foundational_laws,
     formation_rules,
     validate_dependency_dag,
 )
@@ -265,9 +266,10 @@ def test_winding_depends_on_explicit_holonomy_u1_representation():
     )
 
 
-def test_foundational_axiom_set_is_small_and_explicit():
-    ids = {claim.id for claim in foundational_axioms()}
+def test_foundational_law_set_is_small_and_explicit():
+    ids = {claim.id for claim in foundational_laws()}
     assert ids == {"A0"}
+    assert foundational_axioms() == foundational_laws()
 
 
 
@@ -363,8 +365,8 @@ def test_singleton_foundation_minimality_splits_lower_bound_and_attainability():
         }
     )
 
-def test_current_canonical_axioms_remain_ra0_and_rr1_until_promotion():
-    ids = {claim.id for claim in foundational_axioms()}
+def test_current_canonical_foundation_is_the_first_law():
+    ids = {claim.id for claim in foundational_laws()}
     assert ids == {"A0"}
 
 
@@ -1597,10 +1599,11 @@ def test_cp1_projective_claims_separate_raw_representation_from_quotient():
     )
 
 
-def test_unique_foundational_axiom_is_a0() -> None:
+def test_unique_foundational_law_is_a0_legacy_identifier() -> None:
     claims = claim_map()
-    assert claims["A0"].kind is ClaimKind.AXIOM
+    assert claims["A0"].kind is ClaimKind.FOUNDATIONAL_LAW
     assert claims["A0"].depends_on == ()
+    assert tuple(claim.id for claim in foundational_laws()) == ("A0",)
     assert tuple(claim.id for claim in foundational_axioms()) == ("A0",)
     assert claims["RA0"].kind is ClaimKind.DERIVATION_GATE
     assert claims["RR1"].kind is ClaimKind.DERIVATION_GATE
@@ -1619,6 +1622,34 @@ def test_algebraic_geometric_cell_claims_do_not_add_axioms() -> None:
     assert claims["REF_OCTAHEDRAL_RELATIONAL_CORE"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["DEF_CUBIC_FACE_ADJACENCY_COMPLEX"].kind is ClaimKind.DEFINITION
     assert claims["REF_ALGEBRAIC_GEOMETRIC_INFORMATION_CELL"].kind is ClaimKind.REFERENCE_REALIZATION
-    assert claims["GATE_CELL_RELATIVE_STATE_TO_MOIRE"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["DEF_CUBIC_FACE_FRAME_TRANSPORT"].kind is ClaimKind.DEFINITION
+    assert claims["DER_STELLA_SECTOR_TRANSPORT"].kind is ClaimKind.DERIVED
+    assert claims["DER_CELL_RELATIVE_STATE_TO_MOIRE"].kind is ClaimKind.DERIVED
+    assert claims["GATE_MOIRE_DYNAMICAL_LAW"].kind is ClaimKind.DERIVATION_GATE
 
-    assert tuple(claim.id for claim in foundational_axioms()) == ("A0",)
+    assert tuple(claim.id for claim in foundational_laws()) == ("A0",)
+
+def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
+    claims = claim_map()
+
+    assert claims["GATE_L1_EXISTENCE_POTENTIAL"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_L1_EXISTENCE_POTENTIAL"].depends_on == ("A0",)
+
+    assert claims["GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["THM_HAMLET_HALF_HALF"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_LN2"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_RELATIONAL_ZETA_ZERO"].kind is ClaimKind.THEOREM
+    assert claims["GATE_HAMLET_IMAGINARY_GENERATOR"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["THM_IMAGINARY_GENERATOR_U1"].kind is ClaimKind.THEOREM
+    assert claims["BRIDGE_EXISTENCE_POTENTIAL_AHARONOV_BOHM"].kind is ClaimKind.BRIDGE
+    assert claims["REF_EXISTENCE_POTENTIAL_CP1_SPHERE"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["REF_RELATIONAL_ZETA_POTENTIAL_SPHERE_CENTER"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["THM_EULER_BERRY_MINIMAL_SPIN_HALF"].kind is ClaimKind.THEOREM
+
+    assert "GATE_L1_EXISTENCE_POTENTIAL" in dependency_closure(
+        "THM_EULER_BERRY_MINIMAL_SPIN_HALF"
+    )
+    assert "GATE_HAMLET_IMAGINARY_GENERATOR" in dependency_closure(
+        "THM_EULER_BERRY_MINIMAL_SPIN_HALF"
+    )
+
