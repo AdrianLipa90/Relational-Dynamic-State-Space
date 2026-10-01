@@ -32,6 +32,23 @@ SOURCE_REFERENCES = (
     ),
 )
 
+OFHM_RULE_DEPENDENCIES = {
+    "symbolic_fractal_boundary": (
+        "euler_symbolic_branch_space",
+        "hilbert_hotel_shift",
+    ),
+    "moire_cocycle": (
+        "bees_relative_phase_coherence",
+    ),
+    "hilbert_transport": (
+        "moire_cocycle",
+    ),
+    "phase_dynamics": (
+        "bees_local_coupling",
+        "idt_phase_update",
+    ),
+}
+
 
 def _require_finite(value: float, *, name: str) -> float:
     out = float(value)
