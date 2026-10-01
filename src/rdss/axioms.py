@@ -43,6 +43,18 @@ CLAIMS: tuple[Claim, ...] = (
         "A non-trivial finite information state is a state with a finite outcome set containing at least two distinguishable alternatives; a one-outcome state has no internal distinction capacity.",
     ),
     Claim(
+        "DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE",
+        ClaimKind.DEFINITION,
+        "Canonical RDSS semantics: a realized existence state is an admitted non-trivial information state. A bare singleton carrier remains a valid model-formation witness for non-vacuity but is not, by this definition, a realized informational state.",
+        ("A0", "DEF_EXISTENCE_POTENTIAL", "DEF_NONTRIVIAL_INFORMATION_STATE", "THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER"),
+    ),
+    Claim(
+        "THM_CANONICAL_REALIZED_EXISTENCE_BINARY",
+        ClaimKind.THEOREM,
+        "Under DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE, the minimal finite realized existence state has exactly two distinguishable alternatives and automorphism group S2 congruent to Z2.",
+        ("DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE", "THM_MINIMAL_INFORMATION_STATE_BINARY", "THM_TWO_STATE_AUTOMORPHISM_Z2"),
+    ),
+    Claim(
         "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY",
         ClaimKind.DERIVATION_GATE,
         "Mega-audit target: derive that the minimal realized carrier selected by the First-Law/META0 model-formation route must be a non-trivial information state rather than a merely non-empty but distinction-free carrier.",
@@ -77,6 +89,18 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.DERIVATION_GATE,
         "Mega-audit target: derive that the abstract Hamlet Z2 alternatives are not merely labels but are realized as two distinct relational branch occurrences hosted by the admitted carrier, thereby supplying the semantic content required by the existing RA0_REL_STAR closure candidate.",
         ("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY", "DEF_RELATIONAL_DISTINCTION"),
+    ),
+    Claim(
+        "DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION",
+        ClaimKind.DEFINITION,
+        "Canonical RDSS relational-information semantics: distinguishable alternatives of a realized information state are represented as distinct occurrence identities bound to their host by branch relations; carrier labels may coincide while occurrence identities remain distinct.",
+        ("DEF_RELATIONAL_DISTINCTION", "DEF_CARRIER_OCCURRENCE_SEPARATION"),
+    ),
+    Claim(
+        "REF_CANONICAL_HAMLET_RELATIONAL_REALIZATION",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The canonical minimal Hamlet realization uses one admitted host carrier, one underlying relation value if desired, and two distinct +/- branch-relation occurrences. This realizes the semantic shape targeted by RA0_REL_STAR without claiming that bare L1 logically forces that representation.",
+        ("DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE", "DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION", "THM_CANONICAL_REALIZED_EXISTENCE_BINARY"),
     ),
     Claim(
         "THM_BINARY_BRANCH_SWAP_INVOLUTION",
