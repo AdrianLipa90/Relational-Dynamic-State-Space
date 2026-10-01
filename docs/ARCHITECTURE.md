@@ -117,17 +117,21 @@ V_R.
 
 \`src/rdss/axioms.py\`, \`src/rdss/closure.py\`, \`src/rdss/witnesses.py\`
 
-Separates axioms, definitions, structural primitives, derived constructions, reference realizations, bridges, candidate axioms, and theorems.
+Separates the unique axiom, definitions, structural primitives, derived constructions, reference realizations, bridges, derivation gates, and theorems.
 
 The current canonical foundational stratification is
 
 \[
+A_0
+\Longrightarrow
 \mathrm{META0}
-\;\triangleright\;
-(\mathrm{RA0}+\mathrm{RR1}).
+\Longrightarrow
+\text{derived structure / explicit derivation gates}.
 \]
 
-\(\mathrm{RA0}^{*}\) remains a stronger candidate closure statement.
+\(\mathrm{RA0}\), \(\mathrm{RR1}\), \(\mathrm{RA0}^{*}\) and
+\(\mathrm{RA0}^{\mathrm{rel}*}\) are downstream derivation gates, not
+additional axioms.
 
 ## Layer 4 — Generic phase representation
 
