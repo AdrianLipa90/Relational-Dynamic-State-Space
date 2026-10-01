@@ -137,7 +137,7 @@ def test_relationally_bound_distinction_is_explicit_definition():
         }
     )
 
-def test_recursive_refinement_is_independent_foundational_axiom():
+def test_recursive_refinement_is_explicit_derivation_gate():
     claims = claim_map()
     assert claims["RR1"].kind is ClaimKind.DERIVATION_GATE
     assert "RA0" not in dependency_closure("RR1")
@@ -332,6 +332,7 @@ def test_singleton_foundation_minimality_splits_lower_bound_and_attainability():
     witness_closure = dependency_closure("REF_SINGLETON_RA0_REL_STAR_MODEL")
     assert witness_closure == frozenset(
         {
+            "A0",
             "META0",
             "RA0_REL_STAR",
             "DEF_POINT",
@@ -402,6 +403,7 @@ def test_cross_operation_coherence_dependencies_are_explicit():
     )
     assert dependency_closure("DEF_REFINEMENT_TRANSPORT_COHERENCE") == frozenset(
         {
+            "A0",
             "PRIM_REFINEMENT_MAP",
             "RR1",
             "DEF_POINT",
@@ -480,6 +482,7 @@ def test_cp1_recursive_realization_is_reference_layer():
     assert claims["REF_CP1_REFINEMENT"].kind is ClaimKind.REFERENCE_REALIZATION
     assert dependency_closure("REF_CP1_REFINEMENT") == frozenset(
         {
+            "A0",
             "REF_CP1",
             "RR1",
             "DEF_POINT",
@@ -784,6 +787,7 @@ def test_occurrence_address_free_monoid_and_refinement_action_dependencies():
     assert claims["THM_RR1_REALIZES_FINITE_WORDS"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_RR1_REALIZES_FINITE_WORDS") == frozenset(
         {
+            "A0",
             "RR1",
             "DEF_BINARY_DISTINCTION",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
