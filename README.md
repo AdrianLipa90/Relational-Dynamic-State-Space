@@ -50,124 +50,180 @@ The corrected causal order is now
 }
 \]
 
-\(\mathcal I_0\) is primitive indistinction: existence potential with no
-persistent distinction yet established.
-
-The first Hamlet is the persistence dichotomy
-
-\[
-\boxed{
-H_0
-=
-\{\mathsf{Disp},\mathsf{Struct}\},
-}
-\]
-
-where DISPERSION means that a candidate distinction does not persist and
-STRUCTURE means that it does.
-
-The Boolean predicate supplies these two exhaustive labels, but by itself does
-not prove that both preimages are non-empty. Canonical RDSS therefore defines
-the **first Hamlet** as the non-degenerate bifurcation in which both
-DISPERSION and STRUCTURE are admissible possibilities. Deriving that
-non-degeneracy from a concrete physical dynamics remains an explicit gate.
-
-This first Hamlet occurs **before** selection of a non-trivial point.
-
-For the canonical non-degenerate first Hamlet,
-
-\[
-|H_0|=2,
-\]
-
-Hartley information is
-
-\[
-\boxed{
-I_H=\ln2
-}
-\]
-
-without any probability assignment.
-
-The strict dynamics gate now has a non-circular Collatz realization. For a
-positive odd information state \(n\),
-
-\[
-n
-\xrightarrow{\mathsf D}
-3n
-\xrightarrow{\mathsf R}
-3n+1
-\xrightarrow{\mathsf A}
-T_C(n)
-=
-\frac{3n+1}{2^{\nu_2(3n+1)}}.
-\]
-
-Here \(\mathsf D\) is dissociation, \(\mathsf R\) is missing-element repair,
-and \(\mathsf A\) is maximal association by every available factor two.
-
-The effective persistence balance is no longer free:
-
-\[
-\boxed{
-\mu_C(n)
-=
-\nu_2(3n+1)\ln2
--
-\ln\frac{3n+1}{n}
-=
-\ln\frac{n}{T_C(n)}.
-}
-\]
-
-Thus \(\mu_C>0\) means association dominates locally, \(\mu_C<0\) means
-dissociation dominates, and \(\mu_C=0\) is critical. The continuous reference
-flow \( \dot d=d(\mu-d) \) may use \(\mu=\mu_C(n)\); the remaining strict
-bridge is why primitive indistinction is represented by a particular Collatz
-state \(n\). No global Collatz-convergence claim is used.
-
-The branches then separate:
+The first Hamlet is only the persistence bifurcation:
 
 \[
 \mathsf{Disp}
+=
+\neg\operatorname{Persist},
+\qquad
+\mathsf{Struct}
+=
+\operatorname{Persist}.
+\]
+
+Its complement gives a valid **meta** \(Z_2\), and if both classes are
+admissible its Hartley count is a valid **meta** \(\ln2\). These are not used
+as the internal two-state carrier of the projective geometry, because
+DISPERSION leaves no persistent distinction.
+
+The branches separate as
+
+\[
+\boxed{
+\mathsf{Disp}
 \rightarrow
 \mathcal I_0,
+}
 \]
 
 while
 
 \[
+\boxed{
 \mathsf{Struct}
-+
-\min|\operatorname{Adm}|=1
 \rightarrow
-p^\star,
+R,
+}
 \]
 
-where \(p^\star\) is the minimal non-trivial information point. The bare
-singleton point retained elsewhere in the repository is only a non-vacuity
-witness and is not the cause of the first Hamlet.
+where \(R\) is the minimal persistent non-trivial relation. The one-carrier
+minimum remains available as the carrier witness, but a point alone is not the
+non-trivial structure.
 
-The complement action on
-\(\{\mathsf{Disp},\mathsf{Struct}\}\) gives \(\mathbb Z_2\). Its non-trivial
-real character gives the sign chart \(\{-1,+1\}\), with relational centre
-\(\zeta=0\).
+For a non-self-collapsed persistent relation,
 
-On the free real Hamlet span, branch swap and polarity satisfy
+\[
+J_R:(s,t;R)\mapsto(t,s;R^{-1}),
+\qquad
+J_R^2=I.
+\]
+
+Therefore one relation supplies the two durable orientation roles
+
+\[
+\boxed{
+\{N,S\}.
+}
+\]
+
+This role orbit carries the canonical structural
+
+\[
+\boxed{
+Z_2
+}
+\]
+
+used downstream. Since it has exactly two roles,
+
+\[
+\boxed{
+I_R=\ln|\{N,S\}|=\ln2.
+}
+\]
+
+Thus the deterministic structural spine is
+
+\[
+\boxed{
+\mathcal P_E
+\rightarrow
+\mathcal I_0
+\rightarrow
+\text{first Hamlet}
+\rightarrow
+\mathsf{Struct}
+\rightarrow
+R
+\rightarrow
+\{N,S\}
+\rightarrow
+Z_2
+\rightarrow
+\ln2.
+}
+\]
+
+The Collatz layer is downstream of this relation-role algebra. The admitted
+branches are
+
+\[
+E(n)=\frac n2,
+\qquad
+O(n)=3n+1.
+\]
+
+Once admitted, they have exact signed local scale signatures
+
+\[
+\boxed{
+\sigma_E=-\ln2,
+\qquad
+\sigma_O=+\ln3,
+}
+\]
+
+and exact projective matrices
+
+\[
+M_E\sim
+\begin{pmatrix}
+1&0\\
+0&2
+\end{pmatrix},
+\qquad
+M_O\sim
+\begin{pmatrix}
+3&1\\
+0&1
+\end{pmatrix},
+\]
+
+whose determinant-one normalizations lie in \(SL(2,\mathbb R)\), hence act in
+\(PSL(2,\mathbb R)\).
+
+The remaining deterministic gate is precise:
+
+\[
+\boxed{
+R+\text{relation-role algebra}
+\stackrel{?}{\Longrightarrow}
+E:n\mapsto n/2,\quad O:n\mapsto3n+1.
+}
+\]
+
+In particular, the coefficients \(2\), \(3\) and the repair \(+1\) are not
+silently treated as already derived.
+
+From the durable relation-role \(Z_2\), the non-trivial real character gives
+the normalized sign chart
+
+\[
+\{-1,+1\},
+\]
+
+with relational centre
+
+\[
+\zeta=0.
+\]
+
+On the real span of the persistent roles, swap \(S\) and polarity \(P\) obey
 
 \[
 S^2=P^2=I,
 \qquad
-SP=-PS.
+SP=-PS,
 \]
 
-Therefore
+so
 
 \[
 \boxed{
-J:=SP,\qquad J^2=-I.
+J:=SP,
+\qquad
+J^2=-I.
 }
 \]
 
