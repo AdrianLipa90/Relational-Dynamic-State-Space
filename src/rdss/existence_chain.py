@@ -203,12 +203,28 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "The orbit is horizontal in the reference Hopf connection and the first projective return therefore carries the non-trivial -1 holonomy.",
     ),
     ExistenceChainStep(
-        "BERRY_EULER_HAMLET_TO_SPIN_HALF",
-        "Berry geometric phase plus Hamlet projective sign closure",
-        "minimal non-trivial spin sector",
+        "HAMLET_PAULI_TO_SU2",
+        "Hamlet swap/polarity/complex structure",
+        "standard su(2) defining generators",
+        ExistenceChainStatus.CONDITIONAL_EXACT,
+        "sigma_x=S, sigma_z=-P, sigma_y=-iJ; T_k=sigma_k/2",
+        "The commutators close exactly as [T_i,T_j]=i epsilon_ijk T_k.",
+    ),
+    ExistenceChainStep(
+        "SU2_CASIMIR_TO_HALF",
+        "Hamlet defining su(2) representation",
+        "representation label j=1/2",
         ExistenceChainStatus.CONDITIONAL_STANDARD_RESULT,
-        "exp(i 2*pi*s)=-1 -> s_min=1/2",
-        "Spin one half is selected once the Berry law and Hamlet-derived non-trivial sign closure are both supplied.",
+        "sum T_k^2=3I/4=j(j+1)I -> j=1/2",
+        "This is representation-theoretic half-spin. Identifying it with physical angular momentum is a downstream bridge.",
+    ),
+    ExistenceChainStep(
+        "BERRY_EULER_HAMLET_TO_SPIN_HALF",
+        "Hamlet su(2) half representation plus Berry/Euler closure",
+        "consistent half-spin / 2pi-sign / 4pi-return structure",
+        ExistenceChainStatus.CONDITIONAL_STANDARD_RESULT,
+        "j=1/2; U(2*pi)=-I; U(4*pi)=I; Hol_Berry=-1",
+        "The half label is fixed by the su(2) Casimir; Berry/Euler supplies an independent geometric consistency check.",
     ),
 )
 
@@ -386,6 +402,129 @@ def hamlet_operator_to_real_branch_chart(
     return (scale * (z0 + z1), scale * 1j * (z0 - z1))
 
 
+def _matmul2(
+    left: tuple[tuple[complex, complex], tuple[complex, complex]],
+    right: tuple[tuple[complex, complex], tuple[complex, complex]],
+) -> tuple[tuple[complex, complex], tuple[complex, complex]]:
+    return (
+        (
+            left[0][0] * right[0][0] + left[0][1] * right[1][0],
+            left[0][0] * right[0][1] + left[0][1] * right[1][1],
+        ),
+        (
+            left[1][0] * right[0][0] + left[1][1] * right[1][0],
+            left[1][0] * right[0][1] + left[1][1] * right[1][1],
+        ),
+    )
+
+
+def _matsub2(
+    left: tuple[tuple[complex, complex], tuple[complex, complex]],
+    right: tuple[tuple[complex, complex], tuple[complex, complex]],
+) -> tuple[tuple[complex, complex], tuple[complex, complex]]:
+    return tuple(
+        tuple(left[i][j] - right[i][j] for j in range(2))
+        for i in range(2)
+    )  # type: ignore[return-value]
+
+
+def _matscale2(
+    scalar: complex,
+    matrix: tuple[tuple[complex, complex], tuple[complex, complex]],
+) -> tuple[tuple[complex, complex], tuple[complex, complex]]:
+    return tuple(
+        tuple(scalar * matrix[i][j] for j in range(2))
+        for i in range(2)
+    )  # type: ignore[return-value]
+
+
+def hamlet_pauli_matrices() -> tuple[
+    tuple[tuple[complex, complex], tuple[complex, complex]],
+    tuple[tuple[complex, complex], tuple[complex, complex]],
+    tuple[tuple[complex, complex], tuple[complex, complex]],
+]:
+    """Pauli triple derived from Hamlet swap S, polarity P and J=SP."""
+
+    sigma_x = ((0j, 1 + 0j), (1 + 0j, 0j))
+    j_op = ((0j, 1 + 0j), (-1 + 0j, 0j))
+    polarity = ((-1 + 0j, 0j), (0j, 1 + 0j))
+    sigma_y = _matscale2(-1j, j_op)
+    sigma_z = _matscale2(-1.0, polarity)
+    return sigma_x, sigma_y, sigma_z
+
+
+def hamlet_su2_generators() -> tuple[
+    tuple[tuple[complex, complex], tuple[complex, complex]],
+    tuple[tuple[complex, complex], tuple[complex, complex]],
+    tuple[tuple[complex, complex], tuple[complex, complex]],
+]:
+    return tuple(_matscale2(0.5, sigma) for sigma in hamlet_pauli_matrices())  # type: ignore[return-value]
+
+
+def hamlet_su2_commutator_residual() -> float:
+    """Maximum residual for [T_i,T_j]=i epsilon_ijk T_k."""
+
+    generators = hamlet_su2_generators()
+    triples = (
+        (0, 1, 2, 1),
+        (1, 2, 0, 1),
+        (2, 0, 1, 1),
+        (1, 0, 2, -1),
+        (2, 1, 0, -1),
+        (0, 2, 1, -1),
+    )
+    residual = 0.0
+    for i, j, k, sign in triples:
+        comm = _matsub2(
+            _matmul2(generators[i], generators[j]),
+            _matmul2(generators[j], generators[i]),
+        )
+        target = _matscale2(1j * sign, generators[k])
+        residual = max(
+            residual,
+            max(
+                abs(comm[row][col] - target[row][col])
+                for row in range(2)
+                for col in range(2)
+            ),
+        )
+    return residual
+
+
+def hamlet_su2_casimir_value() -> float:
+    """Return j(j+1) for the defining Hamlet su(2) representation."""
+
+    generators = hamlet_su2_generators()
+    diagonal = 0j
+    offdiag = 0.0
+    total = ((0j, 0j), (0j, 0j))
+    for generator in generators:
+        square = _matmul2(generator, generator)
+        total = tuple(
+            tuple(total[i][j] + square[i][j] for j in range(2))
+            for i in range(2)
+        )  # type: ignore[assignment]
+    diagonal = 0.5 * (total[0][0] + total[1][1])
+    offdiag = max(abs(total[0][1]), abs(total[1][0]), abs(total[0][0] - total[1][1]))
+    if offdiag > 1e-12 or abs(diagonal.imag) > 1e-12:
+        raise AssertionError("Hamlet su(2) Casimir is not scalar")
+    return float(diagonal.real)
+
+
+def hamlet_su2_representation_label() -> float:
+    """Non-negative j solving j(j+1)=Casimir."""
+
+    c = hamlet_su2_casimir_value()
+    return (-1.0 + sqrt(1.0 + 4.0 * c)) / 2.0
+
+
+def hamlet_spinor_z_rotation(theta: float) -> tuple[complex, complex]:
+    """Diagonal entries of exp(-i theta sigma_z / 2)."""
+
+    half = 0.5 * float(theta)
+    return (exp(-1j * half), exp(1j * half))
+
+
 def u1_phase(phi: float) -> complex:
     return exp(1j * float(phi))
 
@@ -433,6 +572,11 @@ def exact_chain_sanity() -> bool:
                 )
             ),
             IMAGINARY_GENERATOR * IMAGINARY_GENERATOR == -1,
+            hamlet_su2_commutator_residual() <= 1e-12,
+            isclose(hamlet_su2_casimir_value(), 0.75, abs_tol=1e-12),
+            isclose(hamlet_su2_representation_label(), 0.5, abs_tol=1e-12),
+            all(abs(value + 1.0) <= 1e-12 for value in hamlet_spinor_z_rotation(2.0 * pi)),
+            all(abs(value - 1.0) <= 1e-12 for value in hamlet_spinor_z_rotation(4.0 * pi)),
             isclose(abs(u1_phase(0.731)), 1.0),
             spin_half_sign_return(),
             spin_half_full_return(),
