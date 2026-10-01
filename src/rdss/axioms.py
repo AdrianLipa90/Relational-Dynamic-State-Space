@@ -645,7 +645,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_HAMLET_RELATIONAL_ZETA_ZERO",
         ClaimKind.THEOREM,
-        "Under the normalized sign-character chart of the persistent relation roles {-1,+1}, the relational centre is zeta=(-1+1)/2=0. This represented relational zero is not absolute nothingness and does not depend on persistence-class probabilities."
+        "Under the normalized sign-character chart of the persistent relation roles {-1,+1}, the relational centre is zeta=(-1+1)/2=0. This represented relational zero is not absolute nothingness and does not depend on persistence-class probabilities.",
         ("THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER",),
     ),
     Claim(
@@ -669,7 +669,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_FIRST_HAMLET_SWAP_INVARIANT_UNIT_VECTOR",
         ClaimKind.THEOREM,
-        "Legacy identifier, canonical content: on the persistent relation-role span, the +1 eigenspace of role swap S is one-dimensional and spanned by e_N+e_S. Unit normalization fixes Psi_0=(e_N+e_S)/sqrt(2), unique up to overall sign/phase; no probability premise is used."
+        "Legacy identifier, canonical content: on the persistent relation-role span, the +1 eigenspace of role swap S is one-dimensional and spanned by e_N+e_S. Unit normalization fixes Psi_0=(e_N+e_S)/sqrt(2), unique up to overall sign/phase; no probability premise is used.",
         ("DEF_HAMLET_REAL_LINEAR_SPAN", "THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE"),
     ),
     Claim(
