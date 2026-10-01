@@ -848,9 +848,11 @@ bridge.
 |---|---|
 | \(L_1\to\mathcal P_E\) | PASS DEFINITIONAL |
 | \(\mathcal P_E\to\mathcal I_0\) | PASS DEFINITIONAL |
-| persistence predicate \(\to\{\mathsf{Disp},\mathsf{Struct}\}\) | PASS EXACT |
-| first Hamlet complement \(\to\mathbb Z_2\) | PASS EXACT |
-| \(|H_0|=2\to\ln2\) (Hartley) | PASS EXACT |
+| persistence predicate \(\to\) Boolean DISPERSION/STRUCTURE partition schema | PASS EXACT |
+| canonical non-degeneracy: both branches non-empty | PASS DEFINITIONAL |
+| \(\mathcal P_E+\mathcal I_0\to\) physical non-degeneracy of both branches | DERIVATION GATE |
+| non-degenerate first Hamlet complement \(\to\mathbb Z_2\) | PASS CONDITIONAL / EXACT |
+| non-degenerate \(|H_0|=2\to\ln2\) (Hartley) | PASS CONDITIONAL / EXACT |
 | \(\mathsf{Disp}\to\mathcal I_0\) | PASS DEFINITIONAL |
 | \(\mathsf{Struct}+\min|Adm|=1\to p^\star\) | PASS MODEL THEOREM |
 | bare singleton point \(\not\Rightarrow\) first Hamlet | PASS COUNTERMODEL |
