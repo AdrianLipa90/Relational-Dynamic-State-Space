@@ -1670,6 +1670,10 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_IMAGINARY_GENERATOR"].kind is ClaimKind.THEOREM
     assert claims["THM_IMAGINARY_GENERATOR_U1"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_COMPLEX_SCALAR_ALGEBRA"].kind is ClaimKind.THEOREM
+    assert claims["DEF_HAMLET_COMPLEX_BRANCH_SPACE"].kind is ClaimKind.DEFINITION
+    assert claims["REF_HAMLET_COUNTING_HERMITIAN_FORM"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["THM_HAMLET_PROJECTIVE_CP1"].kind is ClaimKind.THEOREM
     assert claims["REF_EXISTENCE_POTENTIAL_CP1_SPHERE"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["REF_RELATIONAL_ZETA_POTENTIAL_SPHERE_CENTER"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["REF_CP1_BERRY_GEOMETRIC_PHASE"].kind is ClaimKind.REFERENCE_REALIZATION
@@ -1746,6 +1750,7 @@ def test_z2_nontrivial_character_closes_algebraic_minus_one_not_berry_loop_mappi
     assert loop_gate.kind is ClaimKind.DERIVATION_GATE
     loop_closure = dependency_closure("GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE")
     assert "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER" in loop_closure
+    assert "THM_Z2_SIGN_EMBEDS_U1" in loop_closure
     assert "REF_CP1_BERRY_GEOMETRIC_PHASE" in loop_closure
 
 def test_hamlet_swap_and_polarity_generate_complex_structure_without_upstream_u1() -> None:
@@ -1763,4 +1768,23 @@ def test_hamlet_swap_and_polarity_generate_complex_structure_without_upstream_u1
 
     u1_closure = dependency_closure("THM_IMAGINARY_GENERATOR_U1")
     assert "THM_HAMLET_IMAGINARY_GENERATOR" in u1_closure
+
+def test_cp1_factorization_keeps_scalar_phase_and_branch_dimension_distinct() -> None:
+    claims = claim_map()
+
+    assert claims["THM_HAMLET_COMPLEX_SCALAR_ALGEBRA"].kind is ClaimKind.THEOREM
+    scalar_closure = dependency_closure("THM_HAMLET_COMPLEX_SCALAR_ALGEBRA")
+    assert "THM_HAMLET_IMAGINARY_GENERATOR" in scalar_closure
+
+    assert claims["DEF_HAMLET_COMPLEX_BRANCH_SPACE"].kind is ClaimKind.DEFINITION
+    branch_closure = dependency_closure("DEF_HAMLET_COMPLEX_BRANCH_SPACE")
+    assert "THM_HAMLET_COMPLEX_SCALAR_ALGEBRA" in branch_closure
+    assert "THM_MINIMAL_INFORMATION_STATE_BINARY" in branch_closure
+
+    assert claims["REF_HAMLET_COUNTING_HERMITIAN_FORM"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["THM_HAMLET_PROJECTIVE_CP1"].kind is ClaimKind.THEOREM
+    cp1_closure = dependency_closure("THM_HAMLET_PROJECTIVE_CP1")
+    assert "DEF_HAMLET_COMPLEX_BRANCH_SPACE" in cp1_closure
+    assert "REF_HAMLET_COUNTING_HERMITIAN_FORM" in cp1_closure
+    assert "THM_IMAGINARY_GENERATOR_U1" in cp1_closure
 
