@@ -205,6 +205,18 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_HAMLET_OPERATOR_ALGEBRA_C2_MODULE", "THM_HAMLET_OPERATOR_FROBENIUS_NORM", "DEF_CP1_PROJECTIVE_EQUIVALENCE", "THM_IMAGINARY_GENERATOR_U1"),
     ),
     Claim(
+        "THM_HAMLET_S3_SU2_BIJECTION",
+        ClaimKind.THEOREM,
+        "A unit pair of Hamlet module coordinates determines an SU(2) matrix by taking that pair as the first column and its standard orthogonal conjugate as the second column. This construction is bijective, so the unit module sphere S^3 is canonically identified with SU(2).",
+        ("THM_HAMLET_OPERATOR_FROBENIUS_NORM",),
+    ),
+    Claim(
+        "THM_HAMLET_SU2_U1_QUOTIENT_S2",
+        ClaimKind.THEOREM,
+        "Under the S^3 to SU(2) identification, common Hamlet module phase is the standard right U(1) action in SU(2). Hence the potential sphere is equivalently SU(2)/U(1), CP^1 and S^2.",
+        ("THM_HAMLET_S3_SU2_BIJECTION", "THM_HAMLET_OPERATOR_PROJECTIVE_CP1"),
+    ),
+    Claim(
         "THM_HAMLET_PAULI_TRIPLE",
         ClaimKind.THEOREM,
         "After the complex scalar algebra C_J is available, the Hamlet operators define the Pauli triple sigma_x=S, sigma_z=-P, sigma_y=-iJ. They obey sigma_k^2=I and [sigma_i,sigma_j]=2 i epsilon_ijk sigma_k.",
