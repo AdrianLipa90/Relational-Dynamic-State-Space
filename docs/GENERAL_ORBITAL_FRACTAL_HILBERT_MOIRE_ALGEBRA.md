@@ -81,6 +81,18 @@ mathbb Z^{<omega}.
 
 An address is a symbolic refinement coordinate. It is not automatically a convergent geometric point.
 
+Combining the Euler branch carrier with the Hilbert-Hotel countable shift gives the RDSS symbolic fractal-boundary algebra
+
+\[
+\boxed{
+\mathcal B_{\rm F}
+=
+(\mathbb Z^{<\omega},R_k,S_{\rm HH}).
+}
+\]
+
+Here "boundary" is symbolic/operator language; it does not assert that every infinite address has a geometric limit.
+
 The binary RDSS occurrence carrier
 
 [
