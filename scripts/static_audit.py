@@ -175,7 +175,13 @@ def audit_claim_graph() -> dict[str, int]:
 
 def audit_test_imports() -> None:
     module_defs = {
-        "rdss.algebraic_geometry_cell": public_defs(SRC / "rdss" / "algebraic_geometry_cell.py"),
+        "rdss.algebraic_geometry_cell": public_defs(SRC / "rdss" / "algebraic_geometry_cell.py") | {
+            "OCTAHEDRON_FACE_COUNT",
+            "OCTAHEDRON_VERTEX_COUNT",
+            "SPIN_HALF",
+            "SPINOR_FULL_RETURN",
+            "SPINOR_SIGN_RETURN",
+        },
         "rdss.algebra": public_defs(SRC / "rdss" / "algebra.py"),
         "rdss.axioms": public_defs(SRC / "rdss" / "axioms.py"),
         "rdss.canonical": public_defs(SRC / "rdss" / "canonical.py"),
