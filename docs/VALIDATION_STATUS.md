@@ -1104,21 +1104,35 @@ One intermediate claim-DAG patch accidentally introduced a self-dependency in
 `DER_OFHM_SYMBOLIC_FRACTAL_BOUNDARY`; it was detected immediately and repaired
 in commit `75ce179d2aadfdc770a73d0772dbfa576cf9e880` before validation was accepted.
 
-Full repository pytest was executed in the same exact branch checkout.
+Full repository pytest was executed after repairing the historical claim/test
+drift exposed by the first run.
 
-Result: **FAIL — 11 failing tests**, all in `tests/test_axioms.py`.
-The dedicated OFHM suite remained PASS.
+Final execution receipt:
 
-Before that run could start, pytest exposed two pre-existing missing commas in
-`src/rdss/axioms.py` that are also present on `main`; they caused collection
-to abort with `TypeError: 'str' object is not callable`. They were repaired on
-this feature branch only in commit
-`d67187f0db937e69ea0856f11a66906c18af8ae5`.
+- targeted OFHM: **13/13 PASS**;
+- full RDSS pytest: **531/531 PASS**;
+- `python scripts/static_audit.py`: **PASS**;
+- static audit claim count: 346;
+- package exports: 439;
+- test files audited: 36;
+- monograph display-math pairs: 419;
+- monograph lines: 4190.
 
-The 11 remaining failing claim definitions were compared byte-for-byte between
-`main` and this feature branch and are unchanged by the OFHM integration.
-They therefore remain historical RDSS claim/test drift rather than OFHM
-regressions. Full-suite status is still FAIL until that drift is reconciled.
+The repair separated two classes of defects:
+
+1. two pre-existing missing commas in `src/rdss/axioms.py`, repaired in
+   `d67187f0db937e69ea0856f11a66906c18af8ae5`;
+2. historical dependency-test drift after later canonical refactors, plus one
+   real dependency regression in which the TIR minimum-structure bridge
+   unnecessarily inherited the bare-singleton non-vacuity witness.
+
+The TIR bridge is now source-clean and depends directly on A0; the canonical
+spin chain is again independent of `REF_META0_SINGLETON_POINT_PRESENTATION`
+and `DEF_POINT`. Legacy tests were reconciled with the current representation-
+free core, CP1 reference-layer ownership, operator-sector Collatz semantics,
+and the current formation-rule set.
+
+Successful final workflow run: `36930538220`, job `110598411166`.
 
 Temporary workflow instrumentation was removed after execution; it is not part
 of the retained RDSS feature surface.
