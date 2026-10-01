@@ -7,7 +7,13 @@ from rdss.existence_chain import (
     LN2,
     RELATIONAL_ZETA_ZERO,
     ExistenceChainStatus,
+    FirstHamletOutcome,
     binary_entropy_nats,
+    first_hamlet_outcomes,
+    first_hamlet_classify,
+    first_hamlet_complement,
+    hartley_information_nats,
+    first_hamlet_hartley_nats,
     branch_swap,
     branch_word_swap,
     branch_swap_vector,
@@ -53,19 +59,18 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
     by_id = {step.id: step for step in CANONICAL_EXISTENCE_CHAIN}
 
     assert by_id["L1_TO_EXISTENCE_POTENTIAL"].status is ExistenceChainStatus.DEFINITIONAL
-    assert by_id["L1_MODEL_TO_MINIMAL_POINT"].status is ExistenceChainStatus.MODEL_THEOREM
-    assert by_id["POINT_TO_INFORMATIONALITY"].status is ExistenceChainStatus.DERIVATION_GATE
-    assert by_id["CANONICAL_REALIZED_EXISTENCE_INFORMATIONALITY"].status is ExistenceChainStatus.DEFINITIONAL
-    assert by_id["INFORMATIONALITY_TO_BINARY"].status is ExistenceChainStatus.CONDITIONAL_EXACT
-    assert by_id["BINARY_TO_Z2_AUTOMORPHISM"].status is ExistenceChainStatus.EXACT_IDENTITY
-    assert by_id["CANONICAL_REALIZED_EXISTENCE_TO_HAMLET"].status is ExistenceChainStatus.CONDITIONAL_EXACT
+    assert by_id["POTENTIAL_TO_PRIMITIVE_INDISTINCTION"].status is ExistenceChainStatus.DEFINITIONAL
+    assert by_id["INDISTINCTION_TO_FIRST_HAMLET"].status is ExistenceChainStatus.EXACT_IDENTITY
+    assert by_id["FIRST_HAMLET_TO_Z2"].status is ExistenceChainStatus.EXACT_IDENTITY
+    assert by_id["FIRST_HAMLET_TO_LN2"].status is ExistenceChainStatus.EXACT_IDENTITY
+    assert by_id["DISPERSION_TO_INDISTINCTION"].status is ExistenceChainStatus.DEFINITIONAL
+    assert by_id["STRUCTURE_TO_INFORMATION_POINT"].status is ExistenceChainStatus.MODEL_THEOREM
+    assert by_id["BARE_POINT_NOT_FIRST_HAMLET"].status is ExistenceChainStatus.MODEL_THEOREM
     assert by_id["CANONICAL_HAMLET_RELATIONAL_REALIZATION"].status is ExistenceChainStatus.DEFINITIONAL
-    assert by_id["EXISTENCE_POTENTIAL_TO_HAMLET"].status is ExistenceChainStatus.DERIVATION_GATE
     assert by_id["HAMLET_TO_HALF_HALF"].status is ExistenceChainStatus.CONDITIONAL_EXACT
+    assert by_id["SHANNON_LN2_CONSISTENCY"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["Z2_TO_SIGN_CHARACTER"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["ORIENTATION_TO_IMAGINARY_GENERATOR"].status is ExistenceChainStatus.CONDITIONAL_EXACT
-
-    assert by_id["HALF_HALF_TO_LN2"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["IMAGINARY_GENERATOR_TO_U1"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["BINARY_PHASE_TO_CP1"].status is ExistenceChainStatus.STANDARD_GEOMETRY
     assert by_id["HAMLET_S3_TO_SU2"].status is ExistenceChainStatus.STANDARD_GEOMETRY
@@ -84,7 +89,26 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
     )
 
 
-def test_hamlet_symmetry_gives_half_half_and_ln2() -> None:
+def test_first_hamlet_is_dispersion_or_structure_and_hartley_ln2() -> None:
+    assert first_hamlet_outcomes() == (
+        FirstHamletOutcome.DISPERSION,
+        FirstHamletOutcome.STRUCTURE,
+    )
+    assert first_hamlet_classify(False) is FirstHamletOutcome.DISPERSION
+    assert first_hamlet_classify(True) is FirstHamletOutcome.STRUCTURE
+    assert (
+        first_hamlet_complement(FirstHamletOutcome.DISPERSION)
+        is FirstHamletOutcome.STRUCTURE
+    )
+    assert (
+        first_hamlet_complement(first_hamlet_complement(FirstHamletOutcome.DISPERSION))
+        is FirstHamletOutcome.DISPERSION
+    )
+    assert isclose(hartley_information_nats(2), log(2.0), abs_tol=1e-15)
+    assert isclose(first_hamlet_hartley_nats(), LN2, abs_tol=1e-15)
+
+
+def test_probability_half_half_is_downstream_consistency_not_ln2_premise() -> None:
     assert branch_swap(-1) == 1
     assert branch_swap(1) == -1
     assert branch_swap(branch_swap(-1)) == -1
@@ -93,6 +117,7 @@ def test_hamlet_symmetry_gives_half_half_and_ln2() -> None:
     assert hamlet_distribution() == (0.5, 0.5)
     assert isclose(binary_entropy_nats(0.5), log(2.0), abs_tol=1e-15)
     assert isclose(hamlet_information_nats(), LN2, abs_tol=1e-15)
+    assert isclose(hamlet_information_nats(), first_hamlet_hartley_nats(), abs_tol=1e-15)
 
 
 def test_relational_zero_is_midpoint_not_absolute_nothingness_marker() -> None:
