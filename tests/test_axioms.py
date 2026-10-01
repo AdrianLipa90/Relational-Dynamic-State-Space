@@ -1612,9 +1612,10 @@ def test_algebraic_geometric_cell_claims_do_not_add_axioms() -> None:
     claims = claim_map()
 
     assert claims["DEF_STATIC_OCTAHEDRAL_FRAME"].kind is ClaimKind.DEFINITION
-    assert claims["GATE_EULER_SPIN_HALF_POLARIZATION"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["BRIDGE_TIR_EULER_BERRY_SPIN_HALF_POLARIZATION"].kind is ClaimKind.BRIDGE
     assert claims["DEF_DYNAMIC_TETRAHEDRAL_PAIR"].kind is ClaimKind.DEFINITION
-    assert claims["GATE_STELLA_OCTANGULA_EMBEDDING"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["REF_STELLA_OCTANGULA_STANDARD_COMPOUND"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["GATE_DYNAMIC_TETRAHEDRA_STATIC_FRAME_EMBEDDING"].kind is ClaimKind.DERIVATION_GATE
     assert claims["DEF_OCTAHEDRAL_FACE_ADJACENCY_COMPLEX"].kind is ClaimKind.DEFINITION
     assert claims["REF_ALGEBRAIC_GEOMETRIC_INFORMATION_CELL"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["GATE_CELL_RELATIVE_STATE_TO_MOIRE"].kind is ClaimKind.DERIVATION_GATE
