@@ -91,6 +91,42 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_OCCURRENCE_ADDRESS_SPACE",),
     ),
     Claim(
+        "DEF_REFERENCE_DISTINCTION_AMPLITUDE",
+        ClaimKind.DEFINITION,
+        "Reference dynamics uses a non-negative scalar distinction amplitude d>=0 measuring only the magnitude of persistent differentiation. This amplitude carries no prior +/- branch sign and therefore does not presuppose the first-Hamlet Z2 polarity.",
+        ("DEF_PRIMITIVE_INDISTINCTION",),
+    ),
+    Claim(
+        "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW",
+        ClaimKind.REFERENCE_REALIZATION,
+        "A minimal noncircular persistence realization is d_dot=d(mu-d)=-dW/dd on d>=0 with W(d;mu)=-mu*d^2/2+d^3/3. The control parameter mu is supplied by the realization and is not derived from P_E.",
+        ("DEF_REFERENCE_DISTINCTION_AMPLITUDE",),
+    ),
+    Claim(
+        "THM_REF_PERSISTENCE_FLOW_DISPERSION",
+        ClaimKind.THEOREM,
+        "For the reference persistence flow with mu<0, d=0 is the unique non-negative equilibrium, its linear rate is mu<0, every positive initial d remains non-negative and converges to zero, and W decreases monotonically. This realizes DISPERSION without assuming a binary sign alphabet.",
+        ("REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW",),
+    ),
+    Claim(
+        "THM_REF_PERSISTENCE_FLOW_STRUCTURE",
+        ClaimKind.THEOREM,
+        "For the reference persistence flow with mu>0, d=0 is unstable and d=mu>0 is a stable equilibrium attracting every positive initial d. This realizes STRUCTURE without assuming a binary sign alphabet.",
+        ("REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW",),
+    ),
+    Claim(
+        "THM_REF_PERSISTENCE_FLOW_REALIZES_BOTH_HAMLET_REGIMES",
+        ClaimKind.THEOREM,
+        "The single parameterized reference flow realizes both first-Hamlet persistence regimes on the same non-negative amplitude space: mu<0 gives DISPERSION and mu>0 gives STRUCTURE, with mu=0 the critical boundary. This proves algebraic/dynamical consistency of non-degeneracy but not its derivation from P_E alone.",
+        ("THM_REF_PERSISTENCE_FLOW_DISPERSION", "THM_REF_PERSISTENCE_FLOW_STRUCTURE", "THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES"),
+    ),
+    Claim(
+        "GATE_BIND_PERSISTENCE_CONTROL_TO_EXISTENCE_POTENTIAL",
+        ClaimKind.DERIVATION_GATE,
+        "Strict bridge target: derive or empirically identify the origin and sign freedom of the reference control parameter mu from primitive existence potential P_E and indistinction I_0. Until this bridge is closed, the reference flow is a consistency witness rather than a foundational dynamics theorem.",
+        ("DEF_EXISTENCE_POTENTIAL", "DEF_PRIMITIVE_INDISTINCTION", "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW"),
+    ),
+    Claim(
         "THM_FIRST_HAMLET_Z2",
         ClaimKind.THEOREM,
         "Complementation of the Boolean persistence predicate exchanges DISPERSION and STRUCTURE and squares to the identity. The two first-Hamlet classes therefore carry the canonical Z2 complement action.",
