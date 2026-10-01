@@ -151,16 +151,22 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_HAMLET_COMPLEX_SCALAR_ALGEBRA", "THM_MINIMAL_INFORMATION_STATE_BINARY"),
     ),
     Claim(
+        "THM_HAMLET_UNIQUE_SYMMETRY_HERMITIAN_FORM",
+        ClaimKind.THEOREM,
+        "On the two-complex-dimensional Hamlet branch space, any positive-definite Hermitian form invariant under both branch swap S and branch polarity P is a positive scalar multiple of the identity form. The normalized branch-weight convention fixes that scalar, yielding the canonical l2/counting Hermitian form.",
+        ("DEF_HAMLET_COMPLEX_BRANCH_SPACE", "THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE", "THM_HAMLET_HALF_HALF"),
+    ),
+    Claim(
         "REF_HAMLET_COUNTING_HERMITIAN_FORM",
         ClaimKind.REFERENCE_REALIZATION,
-        "The reference branch-space Hermitian form is the counting-measure l2 form <psi,phi>=sum_{b in B} conjugate(psi_b) phi_b, with the two branch delta-functions orthonormal. Its physical uniqueness is not asserted by the foundational chain.",
-        ("DEF_HAMLET_COMPLEX_BRANCH_SPACE", "THM_HAMLET_HALF_HALF"),
+        "The executable/reference branch-space Hermitian form is <psi,phi>=sum_{b in B} conjugate(psi_b) phi_b with branch delta-functions orthonormal, realizing THM_HAMLET_UNIQUE_SYMMETRY_HERMITIAN_FORM at unit normalization.",
+        ("THM_HAMLET_UNIQUE_SYMMETRY_HERMITIAN_FORM",),
     ),
     Claim(
         "THM_HAMLET_PROJECTIVE_CP1",
         ClaimKind.THEOREM,
-        "For the two-complex-dimensional Hamlet branch space, non-zero vectors modulo non-zero common complex scaling form CP^1. Under the reference Hermitian normalization, the unit sphere S^3 modulo common U(1) phase is CP^1, diffeomorphic to S^2.",
-        ("DEF_HAMLET_COMPLEX_BRANCH_SPACE", "REF_HAMLET_COUNTING_HERMITIAN_FORM", "DEF_CP1_PROJECTIVE_EQUIVALENCE", "THM_IMAGINARY_GENERATOR_U1"),
+        "For the two-complex-dimensional Hamlet branch space with its symmetry-fixed Hermitian form, non-zero vectors modulo non-zero common complex scaling form CP^1. The normalized unit sphere S^3 modulo common U(1) phase is CP^1, diffeomorphic to S^2.",
+        ("DEF_HAMLET_COMPLEX_BRANCH_SPACE", "THM_HAMLET_UNIQUE_SYMMETRY_HERMITIAN_FORM", "REF_HAMLET_COUNTING_HERMITIAN_FORM", "DEF_CP1_PROJECTIVE_EQUIVALENCE", "THM_IMAGINARY_GENERATOR_U1"),
     ),
     Claim(
         "REF_EXISTENCE_POTENTIAL_CP1_SPHERE",
