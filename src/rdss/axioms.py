@@ -45,8 +45,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE",
         ClaimKind.DEFINITION,
-        "Canonical RDSS semantics: a realized existence state is an admitted non-trivial information state. A bare singleton carrier remains a valid model-formation witness for non-vacuity but is not, by this definition, a realized informational state.",
-        ("A0", "DEF_EXISTENCE_POTENTIAL", "DEF_NONTRIVIAL_INFORMATION_STATE", "THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER"),
+        "Canonical RDSS semantics: a realized existence state is an admitted non-trivial information state. This semantic definition is downstream of the modal existence potential but independent of the separate bare-singleton model witness used only to prove non-vacuity.",
+        ("DEF_EXISTENCE_POTENTIAL", "DEF_NONTRIVIAL_INFORMATION_STATE"),
     ),
     Claim(
         "THM_CANONICAL_REALIZED_EXISTENCE_BINARY",
@@ -137,6 +137,12 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.THEOREM,
         "Under the normalized sign-character chart {-1,+1}, the relational centre is zeta=(-1+1)/2=0. This represented relational zero is not absolute nothingness and does not depend on assigning probabilities.",
         ("THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER",),
+    ),
+    Claim(
+        "THM_BARE_CARRIER_POINT_DISTINCT_FROM_RELATIONAL_ZETA",
+        ClaimKind.THEOREM,
+        "The bare singleton RelationalPoint used as a model-theoretic non-vacuity witness and the derived relational centre zeta=0 are distinct typed constructions: the former witnesses |Adm|=1 without internal binary structure, while the latter is defined only after the Hamlet sign opposition is available.",
+        ("THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER", "THM_HAMLET_RELATIONAL_ZETA_ZERO"),
     ),
     Claim(
         "DEF_HAMLET_REAL_LINEAR_SPAN",
