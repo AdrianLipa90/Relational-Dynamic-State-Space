@@ -1,531 +1,591 @@
 # RDSS Logical-Causal Mega-Audit V1
 
-Status: FIRST PASS / NO PROMOTION YET  
-Scope: First Law -> existence potential -> Hamlet -> ln2 -> relational zero -> i -> U(1) -> CP1/S2 -> Berry/Euler -> spin 1/2  
-Policy: fail closed; no hidden premise may be repaired silently.
+Status: FIRST PASS / NO SILENT PROMOTION  
+Scope: First Law -> existence potential -> Hamlet distinction -> ln2/sign/zero -> i -> U(1) -> CP1/S2 -> Berry phase -> phase-connection potential -> spin-half selection  
+Policy: fail closed; every arrow carries an explicit epistemic status.
 
 ## Audit labels
 
-- **LAW** — foundational statement of the system; not presented as a theorem.
-- **PASS-DEFINITIONAL** — follows by explicit definition, without physical content.
-- **PASS-CONDITIONAL** — theorem once its listed premises are supplied.
-- **PASS-STANDARD** — standard mathematics/physics under explicit conventional premises.
-- **OPEN-GATE** — the arrow is not yet derived from earlier RDSS structure.
-- **NO-GO-AS-STATED** — the arrow cannot be used in the claimed causal direction because it presupposes downstream structure.
-- **REFERENCE-ONLY** — useful external analogy/anchor, not a derivation.
+- LAW — foundational statement of the system.
+- PASS-DEFINITIONAL — exact after an explicit definition.
+- PASS-CONDITIONAL — theorem after listed premises are supplied.
+- PASS-STANDARD — standard mathematics/physics under explicit conventional premises.
+- OPEN-GATE — not yet derived from earlier RDSS structure.
+- NO-GO-AS-STATED — causal direction would be circular or overclaiming.
+- REFERENCE-ONLY — external precedent/analogy, not a derivation.
 
 ## M0. First Law of Existence
 
-[
-L_1:quad 	ext{absolute nothingness is not a realizable state.}
-]
+\[
+L_1:\quad
+\text{absolute nothingness is not a realizable state.}
+\]
 
-**Status: LAW.**
+Status: LAW.
 
-The mega-audit does not attempt to prove the foundational law from an earlier
-RDSS premise. Doing so would contradict its role as the first statement.
-
-Absolute nothingness remains distinct from:
-- the empty set;
-- algebraic zero;
-- an empty presentation;
-- a zero vector;
-- a zero phase;
-- relational zeta zero.
-
-All of those are already mathematical objects or relations.
+Absolute nothingness is distinct from every represented mathematical object,
+including \(\varnothing\), algebraic zero, a zero vector, zero phase and the
+RDSS relational zero \(\zeta=0\).
 
 ## M1. First Law -> existence potential
 
-Target arrow:
+\[
+\neg\mathcal N\rightarrow\mathcal P_E.
+\]
 
-[
+The safe minimal reading is modal:
 
-egmathcal Nightarrowmathcal P_E.
-]
-
-### Minimal reading
-
-Define
-
-[
-oxed{
-mathcal P_E := 	ext{the modal/admissible possibility remaining after }
-mathcal N	ext{ is excluded}.
+\[
+\boxed{
+\mathcal P_E
+:=
+\text{admissible possibility remaining after absolute nothingness is excluded}.
 }
-]
+\]
 
-On this reading the arrow is a definitional complement:
+Status: PASS-DEFINITIONAL on this minimal reading.
 
-[
+A stronger reading in which \(\mathcal P_E\) already has physical magnitude,
+energy, field strength or dynamics is not licensed by \(L_1\).
 
-egmathcal NRightarrowmathcal P_E.
-]
+Status of any physicalized \(\mathcal P_E\): OPEN-GATE.
 
-**Status: PASS-DEFINITIONAL.**
+## M2. Existence potential -> Hamlet distinction
 
-No energy, field strength, scalar magnitude, metric, force law, spacetime
-coordinate or dynamics is implied.
+The intended primitive uncertainty is pre-observable and pre-Hilbert:
 
-### Strong physical reading
+\[
+\mathcal P_E
+\rightarrow
+\text{unresolved realization/orientation}.
+\]
 
-If (mathcal P_E) is instead claimed to be a physical scalar/vector
-potential with quantitative dynamics, that structure does not follow from
-(L_1) alone.
+Minimal non-degeneracy gives two alternatives only after a distinction is
+required:
 
-**Status: OPEN-GATE for any physical potential.**
+\[
+\boxed{
+\text{non-degenerate minimal distinction}
+\Rightarrow
+\mathbb Z_2.
+}
+\]
 
-### Required repository split
+The still-open question is why undifferentiated existence potential must
+actualize/differentiate at all.
 
-Use two distinct semantic objects:
+Status: OPEN-GATE.
 
-1. `ExistencePotential` — modal/foundational, magnitude-free;
-2. any later physical potential — typed separately and requiring a bridge.
+“Hamlet uncertainty” names this primitive relational uncertainty. It must not
+yet be identified with the standard Heisenberg/Robertson inequality.
 
-This prevents the word “potential” from silently importing physics.
+## M3. Standard Heisenberg is downstream, not the upstream cause
 
-## M2. Existence potential -> Hamlet uncertainty
+The Robertson relation
 
-Target arrow:
+\[
+\Delta A\,\Delta B
+\ge
+\frac12
+\left|
+\langle[A,B]\rangle
+\right|
+\]
 
-[
-mathcal P_E
-ightarrow
-	ext{unresolved binary orientation}.
-]
+already assumes a quantum state, operators, expectation values and commutator
+structure.
 
-The First Law plus modal existence potential does not by itself imply:
-- a fluctuation;
-- stochasticity;
-- a quantum superposition;
-- a probability measure;
-- exactly two realized channels.
+Therefore using standard Heisenberg/Robertson uncertainty to create the first
+binary carrier would be causally circular.
 
-A binary structure becomes minimal **once a non-degenerate distinction is
-required**: the smallest set with more than one distinguishable outcome has
-cardinality two.
+Status: NO-GO-AS-STATED upstream.
 
-Therefore the logically clean intermediate form is
+Possible downstream role:
 
-[
-mathcal P_E
-ightarrow
-oxed{	ext{realization/distinction gate}}
-ightarrow
-mathbb Z_2.
-]
+\[
+\text{Hamlet relational uncertainty}
+\rightarrow
+\text{quantum carrier}
+\rightarrow
+\text{Heisenberg/Robertson realization}.
+\]
 
-The missing question is not “why two rather than three?”; minimal
-non-degeneracy answers that. The missing question is “why must undifferentiated
-potential actualize/differentiate at all?”
-
-**Status: OPEN-GATE.**
-
-“Hamlet uncertainty” is retained as the name of this pre-observable,
-pre-Hilbert relational uncertainty. It must not yet be identified with the
-standard Heisenberg/Robertson relation.
-
-## M3. Why standard Heisenberg cannot be the upstream cause
-
-The Robertson uncertainty relation has the form
-
-[
-Delta A,Delta B
-ge
-rac12left|langle[A,B]angleight|.
-]
-
-It already presupposes a quantum state, observables represented by operators,
-expectation values and a commutator structure.
-
-Therefore using standard Heisenberg/Robertson uncertainty to derive the
-primitive two-state carrier would be causally circular: the formalism used in
-the premise already contains downstream quantum-state structure.
-
-**Status: NO-GO-AS-STATED upstream.**
-
-Possible later role:
-
-[
-	ext{Hamlet relational uncertainty}
-ightarrow
-	ext{quantum carrier}
-ightarrow
-	ext{Robertson/Heisenberg as a downstream realization/check}.
-]
-
-## M4. Hamlet Z2 symmetry -> equal weights
+## M4. Hamlet symmetry -> half-half
 
 Assume:
-1. exactly two exhaustive alternatives;
-2. a normalized weight/probability measure;
-3. invariance under exchange of the alternatives.
 
-Then
-
-[
+\[
 p_-+p_+=1,
-qquad
-p_-=p_+,
-]
+\qquad
+p_-=p_+.
+\]
 
-so uniquely
+Then uniquely
 
-[
-oxed{p_-=p_+=rac12}.
-]
+\[
+\boxed{
+p_-=p_+=\frac12.
+}
+\]
 
-**Status: PASS-CONDITIONAL.**
+Status: PASS-CONDITIONAL.
 
-The equality is forced by exchange symmetry; the existence of a probability
-or normalized weight measure is an explicit premise.
+The equality is forced by exchange symmetry; the existence of a normalized
+weight/probability measure is an explicit premise.
 
-## M5. Half-half -> ln 2
+## M5. Half-half -> ln2
 
 For Shannon entropy in nats,
 
-[
-H(p)=-sum_j p_jln p_j.
-]
+\[
+H(p)=-\sum_j p_j\ln p_j,
+\]
 
-At the balanced binary state,
+so
 
-[
-Hleft(rac12,rac12ight)
+\[
+H\left(\frac12,\frac12\right)
 =
--rac12lnrac12-rac12lnrac12
+-\frac12\ln\frac12
+-\frac12\ln\frac12
 =
-oxed{ln2}.
-]
+\boxed{\ln2}.
+\]
 
-**Status: PASS-STANDARD / exact identity.**
+Status: PASS-STANDARD / exact identity.
 
-What is not yet proved by this identity alone is that Shannon entropy is the
-unique foundational information functional for RDSS. That stronger uniqueness
-claim would require the relevant Shannon/Khinchin-type assumptions to be
-declared and audited.
+This does not by itself prove that Shannon entropy is the unique possible
+foundational information functional.
 
-## M6. Binary symmetry -> +/-1
+## M6. Binary distinction -> normalized signs
 
-Once the primitive binary opposition is typed as the group (mathbb Z_2),
-its non-trivial one-dimensional real character maps the two group elements to
+The non-trivial one-dimensional real character of \(\mathbb Z_2\) gives the
+normalized sign representation
 
-[
-oxed{{+1,-1}}.
-]
+\[
+\boxed{
+\mathbb Z_2\rightarrow\{-1,+1\}.
+}
+\]
 
-Thus the signs need not be treated as unexplained numerical decorations.
+Status: PASS-CONDITIONAL on the representation choice.
 
-**Status: PASS-CONDITIONAL** on the (mathbb Z_2) representation choice.
+The absolute scale is conventional; the opposition of signs is structural.
 
-The normalization scale is conventional; the sign opposition is structural.
+## M7. Signs -> relational zeta zero
 
-## M7. +/-1 -> relational zeta zero
+In the normalized affine chart,
 
-With the normalized affine chart,
-
-[
-zeta
+\[
+\boxed{
+\zeta
 =
-rac{(+1)+(-1)}{2}
+\frac{-1+1}{2}
 =
-oxed{0}.
-]
+0.
+}
+\]
 
-**Status: PASS-CONDITIONAL / exact identity under the chart.**
+Status: PASS-CONDITIONAL / exact under the chart.
 
 Crucial invariant:
 
-[
-oxed{0
-eqmathcal N}.
-]
+\[
+\boxed{
+0\neq\mathcal N.
+}
+\]
 
-Relational zero is defined by the relation between represented values and
-therefore cannot be absolute nothingness.
+A relationally represented zero cannot be absolute nothingness.
 
-The symbol (zeta) in this step denotes the RDSS relational zero centre, not
-the Riemann zeta function.
+## M8. Real opposition -> imaginary generator
 
-## M8. Real opposition -> imaginary generator i
+Target:
 
-Target arrow:
+\[
+\{-1,0,+1\}
+\rightarrow
+i,
+\qquad
+i^2=-1.
+\]
 
-[
-{-1,0,+1}ightarrow i,
-qquad i^2=-1.
-]
+A real binary opposition alone does not uniquely force a complex structure.
+To obtain \(i\) as an orthogonal quarter-turn generator one needs additional
+structure equivalent to an oriented two-dimensional real carrier with a
+compatible complex structure \(J^2=-I\), or an independently derived
+equivalent.
 
-A real binary opposition alone does **not** uniquely force a complex
-structure. To obtain (i) as an orthogonal quarter-turn generator one needs
-additional structure equivalent to, for example:
-- an oriented two-dimensional real carrier;
-- a compatible metric/inner product;
-- an operator (J) with (J^2=-I);
-- or another independently derived construction that supplies the same data.
+Status: OPEN-GATE.
 
-The older RDSS conditional result
-“oriented two-dimensional real inner-product carrier + compatible
-(K^2=-I) -> SO(2) ~= U(1)”
-already reflects this fact.
+This remains one of the sharpest mathematical gaps.
 
-**Status: OPEN-GATE.**
+## M9. Imaginary generator -> U(1)
 
-This is currently the sharpest purely mathematical gap in the frozen chain.
+Once \(i^2=-1\) and a real phase parameter \(\phi\) are supplied,
 
-## M9. i -> U(1)
+\[
+u(\phi)=e^{i\phi}
+\]
 
-Given the complex generator and a real phase parameter,
+obeys
 
-[
-u(phi)=e^{iphi}
-]
+\[
+|u(\phi)|=1,
+\qquad
+u(\phi_1)u(\phi_2)=u(\phi_1+\phi_2).
+\]
 
-satisfies
+Status: PASS-STANDARD.
 
-[
-|u(phi)|=1,
-qquad
-u(phi_1)u(phi_2)=u(phi_1+phi_2).
-]
+The unresolved debt is upstream: deriving the complex generator and continuous
+phase parameter.
 
-Therefore the orbit is (U(1)).
+## M10. U(1) is not yet the sphere
 
-**Status: PASS-STANDARD / exact.**
+A phase orbit alone does not imply \(\mathbb{CP}^1\). A normalized complex
+two-component carrier is additionally required:
 
-The remaining upstream debt is the derivation of the complex generator and
-continuous phase parameter, not the exponential closure itself.
+\[
+(\alpha,\beta)\in\mathbb C^2\setminus\{0\},
+\qquad
+|\alpha|^2+|\beta|^2=1.
+\]
 
-## M10. Aharonov-Bohm
+After quotienting common phase,
 
-The Aharonov-Bohm effect is a strong standard reference that quantum
-potential/connection data can produce observable phase information even where
-the classical local field along the accessible path vanishes.
+\[
+(\alpha,\beta)\sim e^{i\chi}(\alpha,\beta),
+\]
 
-However the AB construction already lives in quantum mechanics with a complex
-wavefunction and phase.
+one obtains
 
-Therefore it cannot be used to derive (i), a complex Hilbert carrier or
-(U(1)) from pre-quantum existence potential without circularity.
+\[
+\boxed{
+S^3/U(1)
+\cong
+\mathbb{CP}^{1}
+\cong
+S^2.
+}
+\]
 
-**Status: REFERENCE-ONLY for the foundational chain.**
+Status: PASS-STANDARD once the complex two-state carrier and normalization are
+supplied.
 
-Its correct role is:
+The derivation of that carrier/norm from earlier RDSS structure remains an
+audit target.
 
-[
-	ext{independent physical precedent for connection/potential -> phase},
-]
+The relational zero \(\zeta=0\) may be the centre of the ambient Bloch-ball
+chart, but it is not a pure-state point on the \(\mathbb{CP}^1\) surface.
 
-not
+## M11. Projective geometry -> Berry phase
 
-[
-mathcal P_ERightarrow U(1).
-]
+On projective Hilbert-state geometry, parallel transport around a closed loop
+produces a \(U(1)\) holonomy. That geometric holonomy is the Berry phase:
 
-## M11. Binary complex carrier -> CP1 / S2
+\[
+\boxed{
+\gamma_B
+=
+\operatorname{Hol}_C.
+}
+\]
 
-For a non-zero complex two-component state
+For spin-coherent geometry one writes, up to orientation convention,
 
-[
-(alpha,eta)inmathbb C^2setminus{0},
-]
+\[
+\gamma_B=s\Omega.
+\]
 
-projective identification by non-zero common complex scaling gives
+Status: PASS-STANDARD as geometric holonomy on the supplied projective
+quantum-state bundle.
 
-[
-mathbb{CP}^1.
-]
+Causal direction used by RDSS:
 
-For normalized representatives, quotienting the common (U(1)) phase gives
+\[
+\boxed{
+\text{projective geometry}
+\rightarrow
+\text{parallel transport}
+\rightarrow
+\text{holonomy}
+\rightarrow
+\gamma_B.
+}
+\]
 
-[
-S^3/U(1)congmathbb{CP}^1cong S^2.
-]
+## M12. Berry phase -> potential/connection class
 
-**Status: PASS-STANDARD.**
+A geometric phase can be represented locally by a \(U(1)\) connection
+one-form:
 
-But the premise is **not merely (U(1))**. The chain requires:
-- a complex two-component carrier;
-- non-zero norm;
-- normalization/projectivization.
+\[
+\boxed{
+\gamma_B[C]
+=
+\oint_C\mathcal A_B
+\pmod{2\pi}.
+}
+\]
 
-Therefore `REF_EXISTENCE_POTENTIAL_CP1_SPHERE` correctly remains a
-reference realization rather than a theorem from (U(1)) alone.
+The representative is gauge-dependent:
 
-### Relational zero and the sphere
+\[
+\mathcal A_B
+\mapsto
+\mathcal A_B+d\chi.
+\]
 
-The pure-state (mathbb{CP}^1) manifold is the sphere surface. The vector
-centre (0) belongs to the ambient Bloch-ball chart, not to the pure-state
-surface.
+Therefore the correct inference is not
 
-Thus
+\[
+\gamma_B\rightarrow\text{one unique potential},
+\]
 
-[
-oxed{zeta=0}
-]
+but
 
-may be the centre of the **potential-sphere ambient representation**, but
-must not be mislabeled as a pure CP1 state.
+\[
+\boxed{
+\gamma_B
+\rightarrow
+[\mathcal A_B]_{\mathrm{gauge}}
+}
+\]
 
-## M12. CP1 + Berry + Euler -> spin 1/2
+under the usual regularity/bundle assumptions.
 
-For a spin-(s) coherent-state loop subtending solid angle (Omega), the
-standard geometric phase is proportional to (sOmega), up to orientation
-sign convention.
+Status: PASS-CONDITIONAL / standard local connection representation.
+
+This is the precise form of the statement:
+
+\[
+\boxed{
+\text{when we have phase, we have potential/connection information}.
+}
+\]
+
+It is crucial to keep this later geometric potential distinct from the
+primitive existence potential:
+
+\[
+\boxed{
+\mathcal P_E\neq\mathcal A_B.
+}
+\]
+
+## M13. Aharonov-Bohm belongs downstream
+
+Aharonov–Bohm is an independent physical precedent that gauge-potential
+information may be encoded in observable phase even where the classical local
+field vanishes along the accessible path.
+
+But AB already presupposes quantum phase/gauge structure.
+
+Therefore it is not used to derive \(i\), \(U(1)\), \(\mathbb{CP}^1\) or
+\(\gamma_B\).
+
+Status: REFERENCE-ONLY.
+
+Its correct role is external confirmation of the significance of the
+phase-potential relation.
+
+## M14. Hamlet -> projective sign closure
+
+For spin-half to be genuinely forced by the Hamlet branch, RDSS must derive
+the non-trivial projective sign
+
+\[
+\boxed{
+e^{i\gamma}=-1
+}
+\]
+
+from primitive binary non-degeneracy/exchange, rather than inserting the sign
+as an independent condition.
+
+Target:
+
+\[
+\boxed{
+\text{Hamlet non-triviality}
+\rightarrow
+\text{non-trivial projective sign closure}.
+}
+\]
+
+Status: OPEN-GATE.
+
+This is the direct causal bridge between Hamlet uncertainty and the later
+spin-half selection.
+
+## M15. Berry + Euler + Hamlet sign -> spin one half
 
 For an equatorial hemisphere,
 
-[
-Omega=2pi.
-]
+\[
+\Omega=2\pi.
+\]
 
-If the primitive full-loop closure is required to carry the non-trivial
-projective sign,
+With
 
-[
-e^{i2pi s}=-1,
-]
+\[
+\gamma_B=s\Omega=2\pi s
+\]
 
-then
+and the Hamlet-derived non-trivial sign closure
 
-[
-sinmathbb Z+rac12.
-]
+\[
+e^{i\gamma_B}=-1,
+\]
 
-The smallest positive solution is
+we obtain
 
-[
-oxed{s=rac12},
-]
+\[
+e^{i2\pi s}=-1,
+\]
 
-and the doubled traversal gives the (4pi) return to (+1).
+so
 
-**Status: PASS-CONDITIONAL.**
+\[
+s\in\mathbb Z+\frac12.
+\]
 
-### Causal warning
+The smallest positive sector is
 
-Berry phase does not create the concept of spin from nothing. The standard
-formula is written for a spin representation. Therefore this step is best
-read as a **selection theorem**:
+\[
+\boxed{
+s_{\min}=\frac12.
+}
+\]
 
-[
-	ext{allowed spin sectors}
-+
-	ext{non-trivial projective sign}
-+
-	ext{Berry geometry}
-Rightarrow
-s_{min}=rac12.
-]
+The doubled traversal gives
 
-It is not yet a derivation that every realization of the First Law must carry
-physical angular momentum (1/2).
+\[
+e^{i4\pi(1/2)}=+1.
+\]
 
-## M13. Stronger route suggested by the audit
+Status: PASS-CONDITIONAL.
 
-The cleanest current causal graph is
+This is a selection theorem. The physical identification of the selected
+representation with measured angular momentum spin remains a separate
+physical bridge.
 
-[
+## M16. First-pass causal graph
+
+The strongest current graph is
+
+\[
 L_1
-ightarrow
-mathcal P_E
-ightarrow
-oxed{	ext{REALIZATION / DISTINCTION GATE}}
-ightarrow
-mathbb Z_2
-]
+\rightarrow
+\mathcal P_E
+\rightarrow
+\boxed{\text{DISTINCTION GATE}}
+\rightarrow
+\mathbb Z_2.
+\]
 
-followed by two exact branches:
+Then
 
-[
-mathbb Z_2
-ightarrow
-(1/2,1/2)
-ightarrow
-ln2,
-]
+\[
+\mathbb Z_2
+\rightarrow
+\left(\frac12,\frac12\right)
+\rightarrow
+\ln2,
+\]
 
 and
 
-[
-mathbb Z_2
-ightarrow
-{-1,+1}
-ightarrow
-zeta=0.
-]
+\[
+\mathbb Z_2
+\rightarrow
+\{-1,+1\}
+\rightarrow
+\zeta=0.
+\]
 
-The next unresolved bridge is
+Next:
 
-[
-oxed{
-mathbb Z_2+	ext{relational centre}
-
-otRightarrow i
-quad	ext{without additional structure}.
-}
-]
-
-Once that gate is closed,
-
-[
+\[
+\boxed{
+\{-1,0,+1\}
+\not\Rightarrow
 i
-ightarrow
+}
+\]
+
+without additional derivation of complex structure.
+
+Once that gate closes:
+
+\[
+i
+\rightarrow
 U(1)
-ightarrow
-	ext{complex two-state projective carrier}
-ightarrow
-mathbb{CP}^1simeq S^2
-]
+\rightarrow
+\text{normalized complex two-state projective carrier}
+\rightarrow
+\mathbb{CP}^{1}\simeq S^2
+\rightarrow
+\gamma_B
+\rightarrow
+[\mathcal A_B]_{\mathrm{gauge}}.
+\]
 
-is standard mathematics under explicit premises.
+In parallel,
 
-The final spin selection is then
+\[
+\text{Hamlet non-triviality}
+\rightarrow
+\boxed{\text{PROJECTIVE SIGN GATE}}
+\rightarrow
+e^{i\gamma}=-1.
+\]
 
-[
-mathbb Z_2	ext{ non-trivial sign}
+The two branches then meet:
+
+\[
+\gamma_B
 +
-mathbb{CP}^1/mathrm{SU}(2)	ext{-type geometry}
-+
-	ext{Berry/Euler closure}
-ightarrow
-s_{min}=rac12,
-]
+e^{i\gamma_B}=-1
+\rightarrow
+s_{\min}=\frac12.
+\]
 
-with the physical identification of that representation as actual angular
-momentum remaining a separate empirical/bridge question.
+## M17. First-pass verdict
 
-## M14. First-pass verdict
+Closed or conditionally closed:
 
-### Closed or conditionally closed
+- First Law: LAW.
+- minimal binary once distinction is required: cardinality two.
+- symmetric binary -> \(1/2,1/2\): PASS-CONDITIONAL.
+- half-half -> \(\ln2\): exact.
+- \(\mathbb Z_2\) -> sign representation: PASS-CONDITIONAL.
+- sign midpoint -> relational zero: exact under normalized chart.
+- \(i\) -> \(U(1)\): standard exact.
+- complex two-state projective quotient -> \(\mathbb{CP}^1\simeq S^2\): standard.
+- projective transport -> Berry phase: standard geometric holonomy.
+- Berry phase -> local gauge-potential/connection class: standard conditional representation.
+- Berry/Euler + non-trivial sign -> minimal spin half: PASS-CONDITIONAL.
 
-- First Law: foundational LAW.
-- symmetric binary -> (1/2,1/2): PASS-CONDITIONAL.
-- (1/2,1/2) -> (ln2): PASS-STANDARD.
-- (mathbb Z_2) sign representation -> (+1,-1): PASS-CONDITIONAL.
-- (+1,-1) -> relational (0): PASS-CONDITIONAL.
-- (i) -> (U(1)): PASS-STANDARD.
-- complex binary projective carrier -> CP1/S2: PASS-STANDARD.
-- Berry/Euler non-trivial sign -> minimal spin half: PASS-CONDITIONAL.
+Open:
 
-### Open
-
-1. Why must modal existence potential actualize into a non-degenerate distinction?
+1. Why must existence potential differentiate/actualize?
 2. Why is the first distinction ontic rather than merely epistemic?
-3. What uniquely supplies the complex structure / orthogonal generator (i)?
-4. What derives the norm/projective carrier needed for CP1 from earlier RDSS structure?
-5. What licenses the physical identification of the selected projective representation with angular momentum spin?
+3. What uniquely forces the complex structure \(i\)?
+4. What derives the normalized complex two-state carrier required for CP1?
+5. Why does Hamlet non-triviality force the projective sign \(-1\) on the primitive loop?
+6. What licenses identification of the resulting representation with physical angular momentum spin?
 
-### Explicit no-go / anti-circularity constraints
+Anti-circularity constraints:
 
-- Do not use standard Heisenberg/Robertson uncertainty to derive the
-  pre-Hilbert Hamlet carrier.
-- Do not use Aharonov-Bohm to derive U(1); AB already presupposes quantum
-  phase structure.
-- Do not infer CP1 from U(1) alone.
-- Do not identify the Bloch-sphere centre with a pure CP1 point.
-- Do not claim Berry phase alone derives physical spin; it selects within an
-  already typed spin representation.
+- standard Heisenberg/Robertson cannot create the pre-Hilbert Hamlet carrier;
+- Aharonov–Bohm cannot create the upstream phase geometry;
+- \(U(1)\) alone does not imply CP1;
+- a Berry phase determines potential/connection information only up to gauge;
+- relational zero is not absolute nothingness;
+- the Bloch-ball centre is not a pure CP1 state;
+- spin-half is not promoted until the Hamlet-to-projective-sign gate closes.
 
-This V1 report is intentionally conservative. No open gate is silently
-promoted.
+No open gate is silently repaired.
