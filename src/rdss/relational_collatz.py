@@ -75,3 +75,103 @@ def odd_branch_reopens_association(cardinality: int) -> bool:
         raise ValueError("odd-branch check requires odd cardinality")
     repaired = relational_collatz_step(n)
     return repaired % 2 == 0 and association_quotient_cardinality(repaired) >= 1
+
+def durable_role_count() -> int:
+    """Cardinality of the persistent relation-role orbit."""
+
+    return 2
+
+
+def operator_algebra_real_dimension(role_count: int = 2) -> int:
+    """Real dimension of End(R^q)=M_q(R)."""
+
+    q = _positive_integer(role_count, "role_count")
+    return q * q
+
+
+def nonidentity_operator_dimension(role_count: int = 2) -> int:
+    """Operator-algebra dimension after removing the identity line."""
+
+    q = _positive_integer(role_count, "role_count")
+    return operator_algebra_real_dimension(q) - 1
+
+
+def universal_constant_repair(role_count: int = 2) -> int:
+    """Minimal residue-independent repair after multiplier q^2-1.
+
+    A single constant repair mapping every nonzero residue class mod q into
+    the divisible class exists only for q=2. In that binary case the minimal
+    positive repair is 1.
+    """
+
+    q = _positive_integer(role_count, "role_count")
+    if q < 2:
+        raise ValueError("role_count must be at least two")
+    multiplier = q * q - 1
+    repairs = [
+        repair
+        for repair in range(1, q + 1)
+        if all(
+            (multiplier * residue + repair) % q == 0
+            for residue in range(1, q)
+        )
+    ]
+    if not repairs:
+        raise ValueError("no residue-independent universal repair exists")
+    return min(repairs)
+
+
+def active_seed_from_relation_algebra() -> int:
+    """Canonical active arithmetic seed: non-identity operator count."""
+
+    return nonidentity_operator_dimension(durable_role_count())
+
+
+def relational_collatz_depth_to_one(seed: int, *, max_steps: int = 10_000) -> int:
+    """Exact finite depth for seeds that reach one within max_steps.
+
+    No global Collatz-convergence claim is made.
+    """
+
+    n = _positive_integer(seed, "seed")
+    if max_steps < 0:
+        raise ValueError("max_steps must be non-negative")
+    for depth in range(max_steps + 1):
+        if n == 1:
+            return depth
+        if depth == max_steps:
+            break
+        n = relational_collatz_step(n)
+    raise RuntimeError("seed did not reach one within max_steps")
+
+
+def relational_l_constant_certificate() -> dict[str, int | bool]:
+    """Cross-module exact certificate for the relational Collatz/L closure."""
+
+    from .gaussian_bombelli import l_constants_from_gaussian_and_root_extension
+
+    l3, l4, l5 = l_constants_from_gaussian_and_root_extension()
+    seed = active_seed_from_relation_algebra()
+    first = relational_collatz_step(seed)
+    second = relational_collatz_step(first)
+
+    return {
+        "role_count": durable_role_count(),
+        "operator_dimension": operator_algebra_real_dimension(),
+        "nonidentity_dimension": nonidentity_operator_dimension(),
+        "universal_repair": universal_constant_repair(),
+        "association_divisor": 2,
+        "dissociation_multiplier": 3,
+        "active_seed": seed,
+        "seed_step_1": first,
+        "seed_step_2": second,
+        "depth_to_one": relational_collatz_depth_to_one(seed),
+        "L3": l3,
+        "L4": l4,
+        "L5": l5,
+        "seed_matches_multiplier": seed == 3,
+        "first_full_cycle_reaches_L5": second == l5,
+        "depth_matches_L3": relational_collatz_depth_to_one(seed) == l3,
+        "root_extension_matches": l3 == l4 + l5,
+    }
+
