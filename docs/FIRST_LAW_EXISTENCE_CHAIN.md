@@ -50,9 +50,13 @@ Therefore
 \boxed{\mathcal P_E\neq\mathcal A_B}.
 \]
 
-## Frozen causal order
+## Frozen causal order: strict versus canonical
 
-The main pre-audit route is
+The mega-audit keeps two non-interchangeable tracks.
+
+### Strict entailment track
+
+From the First Law and its model-formation rule:
 
 \[
 \boxed{
@@ -60,17 +64,69 @@ The main pre-audit route is
 \rightarrow
 \mathcal P_E
 \rightarrow
-\text{Hamlet uncertainty}
-\rightarrow
+\min|\operatorname{Adm}|=1.
+}
+\]
+
+The next implication is **not** currently a theorem:
+
+\[
+\boxed{
+\text{bare minimal point}
+\not\Rightarrow
+\text{non-trivial information}
+}
+\]
+
+because RDSS has an explicit bare singleton countermodel. Therefore the strict
+gate
+
+\[
+\text{point}\rightarrow\text{informationality}
+\]
+
+remains visible.
+
+Likewise, an abstract binary outcome set does not by itself prove the
+universal relational-incidence claim RA0_REL_STAR.
+
+### Canonical RDSS semantic track
+
+RDSS separately defines
+
+\[
+\boxed{
+\text{realized existence state}
+:=
+\text{admitted non-trivial information state}.
+}
+\]
+
+This is a semantic definition, not a second foundational law. Under that
+definition the minimal realized state has
+
+\[
+|\Omega|_{\min}=2,
+\qquad
+\operatorname{Aut}(\Omega)\cong S_2\cong\mathbb Z_2.
+\]
+
+Canonical relational-information semantics represents the two alternatives
+as distinct occurrence identities bound to their host.
+
+The downstream canonical route is then
+
+\[
+\boxed{
 \mathbb Z_2
 \rightarrow
 \left(\frac12,\frac12\right)
 \rightarrow
-\ln 2
+\ln2
 }
 \]
 
-together with the sign branch
+and
 
 \[
 \boxed{
@@ -80,53 +136,70 @@ together with the sign branch
 \rightarrow
 \zeta=0
 \rightarrow
-i
+(S,P)
 \rightarrow
-U(1)
+J=SP,\ J^2=-I
+\rightarrow
+U(1).
 }
 \]
 
-and then the projective/geometric branch
+Keeping scalar phase and branch identity distinct gives
 
 \[
 \boxed{
-U(1)
-+\text{normalized complex two-state carrier}
+\mathbb C_J[B]\simeq\mathbb C^2
 \rightarrow
-\mathbb{CP}^{1}\simeq S^2
-\rightarrow
-\text{geometric holonomy}
-\rightarrow
-\gamma_B
+\mathbb{CP}^1\simeq S^2.
 }
 \]
 
-followed by
+The canonical horizontal orbit
 
 \[
-\boxed{
-\gamma_B
-\rightarrow
-[\mathcal A_B]_{\mathrm{gauge}}
-}
+\psi(\theta)=e^{\theta J}\psi_0,
+\qquad
+0\le\theta\le\pi
 \]
 
-and, independently,
+satisfies
 
 \[
-\boxed{
-\text{Hamlet non-triviality}
-\rightarrow
-\text{projective sign closure}
-\rightarrow
-\text{Berry/Euler selection}
-\rightarrow
-s_{\min}=\frac12.
-}
+\langle\psi,\dot\psi\rangle=0,
+\qquad
+\psi(\pi)=-\psi_0,
 \]
 
-The order is normative for the audit. In particular, the Berry/phase-potential
-layer must not be reversed into an upstream cause of the existence potential.
+so its projective Berry holonomy is
+
+\[
+\boxed{-1}.
+\]
+
+For the corresponding great-circle hemisphere,
+
+\[
+\Omega=2\pi,
+\]
+
+and the standard spin-\(s\) Berry law selects
+
+\[
+\boxed{s_{\min}=\frac12}.
+\]
+
+Finally,
+
+\[
+\gamma_B[C]
+=
+\oint_C\mathcal A_B
+\pmod{2\pi}
+\]
+
+represents Berry phase through a local connection only up to gauge. The
+primitive modal potential \(\mathcal P_E\) and the geometric connection
+\(\mathcal A_B\) remain distinct.
 
 ## 1. Existence potential and minimal point
 
