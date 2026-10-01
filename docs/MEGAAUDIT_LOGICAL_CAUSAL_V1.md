@@ -1278,52 +1278,61 @@ Closed or conditionally closed on the canonical RDSS track:
 
 - First Law -> modal existence potential: PASS-DEFINITIONAL.
 - existence potential before stable distinction -> primitive indistinction: PASS-DEFINITIONAL.
-- persistence predicate -> Boolean DISPERSION/STRUCTURE partition schema: PASS-EXACT.
-- canonical first-Hamlet non-degeneracy (both preimages non-empty): PASS-DEFINITIONAL.
-- physical derivation of that non-degeneracy from \(\mathcal P_E+\mathcal I_0\): OPEN-GATE.
-- non-degenerate first-Hamlet complement -> \(Z_2\): PASS-CONDITIONAL / EXACT.
-- two non-empty first-Hamlet classes -> Hartley \(\ln2\): PASS-CONDITIONAL / EXACT, probability-free.
+- persistence predicate -> DISPERSION/STRUCTURE partition schema: PASS-EXACT.
+- canonical first-Hamlet non-degeneracy: PASS-DEFINITIONAL; physical derivation remains OPEN.
+- first-Hamlet complement and two-class Hartley count: PASS-CONDITIONAL / EXACT as meta structure only.
 - DISPERSION -> primitive indistinction: PASS-DEFINITIONAL.
-- STRUCTURE + one-carrier minimum -> non-trivial information point \(p^\star\): PASS-MODEL-THEOREM.
-- bare singleton point is not sufficient to generate first Hamlet: PASS-COUNTERMODEL.
-- optional complement-invariant normalized weighting -> \(1/2,1/2\): PASS-CONDITIONAL.
-- Shannon entropy at \(1/2,1/2\) -> \(\ln2\): CONSISTENCY CHECK.
-- first-Hamlet \(Z_2\) -> unique non-trivial real sign character: PASS-EXACT.
+- STRUCTURE -> minimal persistent non-trivial relation \(R\): PASS-DEFINITIONAL STRUCTURAL TYPING.
+- minimum object/carrier cardinality one: PASS-MODEL-THEOREM and kept distinct from minimum non-trivial structure.
+- persistent relation reversal -> durable role orbit \(\{N,S\}\): PASS-EXACT.
+- durable role orbit -> structural \(Z_2\): PASS-EXACT.
+- durable two-role orbit -> structural Hartley \(\ln2\): PASS-EXACT and probability-free.
+- persistence classes used as CP1 basis: NO-GO; removed from canonical geometry.
+- source-minimal affine parity-law class -> \(E(n)=n/2,\ O(n)=3n+1\): PASS-CONDITIONAL / EXACT.
+- coefficient \(2\): exact from durable dyad cardinality inside the declared association rule.
+- coefficient \(3\): exact least non-trivial positive odd multiplier.
+- repair \(+1\): exact least positive odd parity-flipping repair.
+- upstream relational minimality -> source-minimal parity-law signature: OPEN INHERITANCE GATE.
+- admitted Collatz branches -> projective \(PSL(2,\mathbb R)\) lift: PASS-CONDITIONAL / EXACT.
+- admitted Collatz branches -> signed local log-Jacobians \((-\ln2,+\ln3)\): PASS-EXACT.
+- durable role \(Z_2\) -> unique non-trivial real sign character: PASS-EXACT.
 - sign midpoint -> relational \(\zeta=0\): PASS-EXACT in the normalized chart.
-- swap + polarity -> \(J^2=-I\): PASS-EXACT.
+- role swap + polarity -> \(J^2=-I\): PASS-EXACT.
 - \(J\) -> \(U(1)\): PASS-STANDARD.
-- \(\operatorname{Alg}_{\mathbb R}(S,P)\) -> \(M_2(\mathbb R)\): PASS-EXACT.
-- \(M_2(\mathbb R)=\mathbb C_J\oplus S\mathbb C_J\): PASS-EXACT.
+- full role-operator algebra -> \(M_2(\mathbb R)=\mathbb C_J\oplus S\mathbb C_J\): PASS-EXACT.
 - unit operator module -> \(S^3/U(1)\cong\mathbb{CP}^1\cong S^2\): PASS-STANDARD.
-- canonical horizontal Hamlet loop -> Berry holonomy \(-1\): PASS-THEOREM.
-- Hamlet Pauli triple -> \(\mathfrak{su}(2)\): PASS-EXACT.
+- canonical horizontal role loop -> Berry holonomy \(-1\): PASS-THEOREM.
+- role Pauli triple -> \(\mathfrak{su}(2)\): PASS-EXACT.
 - Casimir \(3/4\) -> representation label \(j=1/2\): PASS-STANDARD.
 - \(SU(2)\) defining rotation -> \(2\pi:-I,\ 4\pi:+I\): PASS-EXACT.
 - Berry phase -> local connection/potential class: PASS-CONDITIONAL up to gauge.
 
 Strict questions still open:
 
-1. What physical/dynamical law instantiates a candidate differentiation of
-   \(\mathcal P_E+\mathcal I_0\)? The formal DISPERSION/STRUCTURE partition is
-   exact, but an actual dynamics is a separate claim.
-2. Does bare foundational structure force universal relational occurrence
-   binding RA0_REL_STAR, or is the current occurrence realization only the
-   canonical RDSS representation?
-3. What licenses identification of the derived \(j=1/2\) representation with
-   measured physical angular momentum in a concrete system?
-4. What physical bridge, if any, relates primitive modal potential
-   \(\mathcal P_E\) to the later Berry connection class
-   \([\mathcal A_B]_{\mathrm{gauge}}\)?
+1. Derive, rather than define canonically, that both persistence regimes are
+   dynamically admissible from \(\mathcal P_E+\mathcal I_0\).
+2. Derive that upstream First-Law/minimal-relation dependency rules force the
+   source-minimal affine parity-law construction language. Determinism alone
+   does not select one map from all deterministic maps.
+3. Determine whether the free real linearization of the durable role dyad is
+   itself forced by the primitive relation or remains the minimal canonical
+   linear realization. The current operator-algebra results are exact once
+   this linearization is admitted.
+4. Establish any concrete physical identification of the derived
+   \(j=1/2\) representation with measured angular momentum.
+5. Establish any physical bridge between primitive modal potential
+   \(\mathcal P_E\) and the later Berry connection class.
 
 Anti-circularity constraints retained:
 
-- standard Heisenberg/Robertson remains downstream of the first-Hamlet algebra;
-- Aharonov–Bohm remains external physical precedent, not the source of the upstream phase geometry;
-- \(\ln2\) is not derived from a probability assumption;
-- the non-trivial point is downstream of STRUCTURE, not upstream of the first Hamlet;
-- \(U(1)\) alone is not treated as CP1;
-- the canonical CP1 route uses the full Hamlet operator algebra and does not duplicate the binary degree of freedom;
-- Berry phase determines connection information only up to gauge;
+- DISPERSION/STRUCTURE is a persistence classification, not the CP1 basis.
+- standard Heisenberg/Robertson remains downstream.
+- Aharonov--Bohm remains downstream physical precedent.
+- neither meta nor structural \(\ln2\) is derived from a probability assumption.
+- a bare singleton point is not substituted for a non-trivial relation.
+- Collatz downstream identities never substitute for the open source-minimality inheritance gate.
+- \(U(1)\) alone is not treated as CP1.
+- Berry phase determines connection information only up to gauge.
 - relational zero is not absolute nothingness.
 
 No open gate is silently repaired.
