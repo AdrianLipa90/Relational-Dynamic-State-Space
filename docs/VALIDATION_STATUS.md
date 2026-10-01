@@ -1038,3 +1038,74 @@ Validation boundary:
 - full repository pytest on an exact complete checkout: **NOT RUN**;
 - actual LaTeX compilation on the final exact head: **NOT RUN**;
 - CI PASS is not claimed.
+
+## General orbital-fractal Hilbert-Moiré synthesis — 2026-10-01
+
+Branch: `feat/general-orbital-fractal-hilbert-moire-v0.1`.
+
+Source provenance is frozen to:
+
+- Infinities `339d6c58f3e7d86c67a4f758cd7416692f8f8280`;
+- GREMLIN `b0000828238e0cd244f5eb1fb679155315df372f`;
+- Informational-Dynamics-of-Metatime `31f1a74d65aeb5e107840fa9971b335c7f339504`.
+
+Added:
+
+- `src/rdss/orbital_fractal_hilbert_moire.py`;
+- `tests/test_orbital_fractal_hilbert_moire.py`;
+- `docs/GENERAL_ORBITAL_FRACTAL_HILBERT_MOIRE_ALGEBRA.md`;
+- OFHM claim-ledger entries;
+- public API exports;
+- architecture and monograph integration.
+
+The source dependency order is explicit:
+
+\[
+\text{Euler}+\text{Hilbert--Hotel}
+\Rightarrow
+\text{symbolic fractal boundary},
+\]
+
+\[
+\text{BEES}
+\Rightarrow
+\text{Moiré cocycle}
+\Rightarrow
+\text{Hilbert transport},
+\]
+
+\[
+\text{BEES}+\text{IDT}
+\Rightarrow
+\text{relational phase dynamics}.
+\]
+
+Targeted execution of the exact standalone OFHM module and its dedicated test
+file in the current tool runtime produced:
+
+\[
+\boxed{13/13\ \mathrm{PASS}}.
+\]
+
+The targeted set covers countable rank/unrank, binary embedding,
+Hilbert--Hotel successor/predecessor, Euler fixed-point and inverse branches,
+Moiré cocycle composition, Hilbert norm preservation, BEES common-phase
+invariance, refinement/shift separation, aligned-current zero, the IDT
+discrete update, and the frozen source dependency graph.
+
+Static connector audit after integration reports:
+
+- OFHM required public exports missing: 0;
+- OFHM required claim IDs missing: 0;
+- duplicate claim IDs: 0;
+- duplicate package exports: 0.
+
+One intermediate claim-DAG patch accidentally introduced a self-dependency in
+`DER_OFHM_SYMBOLIC_FRACTAL_BOUNDARY`; it was detected immediately and repaired
+in commit `75ce179d2aadfdc770a73d0772dbfa576cf9e880` before validation was accepted.
+
+Full repository pytest has **NOT YET BEEN RUN** on this branch.
+
+Actual LaTeX compilation has **NOT YET BEEN RUN** on this branch. The monograph
+text is integrated, but compilation status remains separate from source
+integration.
