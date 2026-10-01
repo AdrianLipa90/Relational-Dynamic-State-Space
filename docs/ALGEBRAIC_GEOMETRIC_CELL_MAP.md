@@ -158,7 +158,9 @@ while
 \boxed{
 \text{dynamic state}
 =
-\{\phi_{\pm,n}(t),P_{\pm,n},\theta_{\pm,n}(t)\}.
+\{\phi_{\pm,n}(t),\theta_{\pm,n}(t)\},
+\qquad
+P_\pm=\pm1\ \text{sector labels}.
 }
 \]
 
@@ -270,17 +272,79 @@ Euclidean face-to-face lattice realization.
 
 Local tetrahedral phase/spin/angular state does not move a shared cube face.
 
+## Forced face-frame transport and edge Moiré state
+
+A face pair alone does not determine how the two Stella sectors are identified.
+An oriented gluing therefore carries an explicit signed-permutation cube-frame
+transport
+
+\[
+g_e(x)_i=s_i x_{\pi(i)},
+\qquad
+s_i\in\{-1,+1\},
+\]
+
+from the right cell frame to the left cell frame. The executable transport
+fails closed unless the declared right face maps exactly onto the declared
+left face.
+
+Because the Stella supports are exactly the parity classes \(xyz=\pm1\),
+
+\[
+xyz\longmapsto\eta_e xyz,
+\qquad
+\boxed{\eta_e=s_1s_2s_3\in\{-1,+1\}}.
+\]
+
+Thus \(\eta_e=+1\) preserves \(T_+\) and \(T_-\), whereas
+\(\eta_e=-1\) exchanges them.
+
+For one cell define the gauge-reduced relative Stella phase
+
+\[
+\boxed{
+\delta_n=U_{n,+}U_{n,-}^{-1}\in U(1).
+}
+\]
+
+A common cell phase \(U_{n,\pm}\mapsto\lambda_nU_{n,\pm}\) cancels exactly.
+For an oriented glued face \(e=(n,m)\), the resulting edge mismatch is
+
+\[
+\boxed{
+\Xi_e=\delta_n\,\delta_m^{-\eta_e}.
+}
+\]
+
+The signed-permutation transport also induces a \(D_4\) action on the square
+face. With a fixed cyclic tangent-coordinate convention its orientation sign
+is \(\epsilon_e\in\{-1,+1\}\). For the current real-valued angular offset the
+reference mismatch is
+
+\[
+\Delta\vartheta_e
+=
+\vartheta_n-\eta_e\epsilon_e\vartheta_m,
+\qquad
+\vartheta_n=\theta_{n,+}-\theta_{n,-}.
+\]
+
+No periodic identification of the current real-valued angular offset is
+silently imposed. No interaction energy or time-evolution law is introduced.
+
 ## Open derivation gates
 
-The corrected geometry closes the previous vertex-embedding gate. The open
-formal work is now downstream:
+The corrected geometry now also closes the frame-transport, Stella-sector
+transport and geometric edge-Moiré gates in the executable reference
+construction. The remaining downstream work is:
 
-1. derive the neighbour-coupling law across a shared static cube face;
-2. determine how relative tetrahedral phase/polarization/angular state is
-   transported across that face;
-3. derive the resulting moiré field from those relative states;
-4. determine whether a higher-order dodecahedral/icosahedral organization
-   emerges from the cubic-cell dynamics rather than being imposed locally.
+1. derive, rather than assume, any dynamical neighbour-coupling or interaction
+   energy law;
+2. derive cycle/plaquette holonomy from composed edge states with explicit
+   orientation conventions;
+3. determine whether a higher-order dodecahedral/icosahedral organization
+   emerges from the cubic-cell dynamics rather than being imposed locally;
+4. test any proposed physical identification against independent evidence.
 
 These are derivation targets, not new axioms.
 
@@ -296,7 +360,11 @@ The corrected map is registered as:
 - \`REF_OCTAHEDRAL_RELATIONAL_CORE\` — reference realization;
 - \`DEF_CUBIC_FACE_ADJACENCY_COMPLEX\` — definition;
 - \`REF_ALGEBRAIC_GEOMETRIC_INFORMATION_CELL\` — reference realization;
-- \`GATE_CELL_RELATIVE_STATE_TO_MOIRE\` — derivation gate.
+- \`DEF_CUBIC_FACE_FRAME_TRANSPORT\` — definition;
+- \`DER_STELLA_SECTOR_TRANSPORT\` — derived result;
+- \`DEF_STELLA_RELATIVE_STATE\` — definition;
+- \`DER_CELL_RELATIVE_STATE_TO_MOIRE\` — derived result;
+- \`GATE_MOIRE_DYNAMICAL_LAW\` — downstream derivation gate.
 
 The foundational axiom inventory remains exactly
 
