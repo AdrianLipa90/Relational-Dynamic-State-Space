@@ -181,10 +181,22 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_DYAD_FORCES_ASSOCIATION_DIVISOR_TWO", "THM_MINIMAL_ODD_DISSOCIATION_MULTIPLIER_THREE", "THM_MINIMAL_POSITIVE_ODD_REPAIR_ONE"),
     ),
     Claim(
+        "BRIDGE_TIR_CLOSED_PHASE_WINDING_INTEGERS",
+        ClaimKind.BRIDGE,
+        "TIR General Orbital Algebra proves that every closed U(1) orbit has winding n=(1/2pi) integral dphi in Z, with orientation reversal n->-n. RDSS imports this only after its own U(1) phase circle has been derived.",
+        ("THM_IMAGINARY_GENERATOR_U1",),
+    ),
+    Claim(
+        "THM_RELATION_ROLE_GAUSSIAN_INTEGER_LATTICE",
+        ClaimKind.THEOREM,
+        "The derived complex scalar algebra C_J=span_R{I,J} together with the integer winding subgroup canonically contains the rank-two lattice ZI direct-sum ZJ, isomorphic to the Gaussian integers Z[i]. Thus integral coefficients on I and J need not be inserted as an unrelated arithmetic primitive.",
+        ("THM_HAMLET_COMPLEX_SCALAR_ALGEBRA", "BRIDGE_TIR_CLOSED_PHASE_WINDING_INTEGERS"),
+    ),
+    Claim(
         "DEF_RELATION_ROLE_GAUSSIAN_LIFT_CLASS",
         ClaimKind.DEFINITION,
-        "In the already-derived scalar algebra C_J with J^2=-I and durable role cardinality two, consider integral non-real lifts G_k=2I+kJ with nonzero integer k. Primitive/minimal lift means minimizing |k|.",
-        ("THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT", "THM_HAMLET_COMPLEX_SCALAR_ALGEBRA"),
+        "Let q=|{N,S}|=2. Inside the derived Gaussian lattice ZI direct-sum ZJ, the non-real lifts with fixed scalar part q are G_k=qI+kJ for nonzero integer k. Primitive/minimal lift means minimizing |k|.",
+        ("THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT", "THM_RELATION_ROLE_GAUSSIAN_INTEGER_LATTICE"),
     ),
     Claim(
         "THM_MINIMAL_RELATION_ROLE_GAUSSIAN_GENERATOR",
