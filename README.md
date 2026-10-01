@@ -215,26 +215,47 @@ The Collatz layer is downstream. A separate source-minimal parity argument
 independently yields the same coefficient triple \(2,3,+1\). Therefore
 coefficient provenance is double-closed.
 
-The remaining deterministic gate is no longer numerical. It is the operation
-semantics:
+The operation semantics also close at finite-cardinality level.
+
+Association is quotient by the complete free durable-role pairing,
 
 \[
 \boxed{
-\text{relation algebra}
-\stackrel{?}{\Longrightarrow}
-\mathsf A=\div2,\quad
-\mathsf D=\times3,\quad
-\mathsf R=+1.
+|X/Z_2|=|X|/2.
 }
 \]
 
-Conditional on that operation signature,
+Dissociation is a three-fold fibre extension,
 
 \[
-E(n)=\frac n2,
-\qquad
-O(n)=3n+1.
+\boxed{
+|X\times F_3|=3|X|,
+}
 \]
+
+and repair is adjoining one singleton,
+
+\[
+\boxed{
+|X\sqcup\{\star\}|=|X|+1.
+}
+\]
+
+Therefore parity fixes the deterministic branch:
+
+\[
+\boxed{
+C(n)=
+\begin{cases}
+n/2,&n\text{ even},\\
+3n+1,&n\text{ odd}.
+\end{cases}
+}
+\]
+
+The algebraic Collatz normalization is therefore closed. The remaining gate is
+only whether the intended natural dynamics is physically/foundationally bound
+to this exact relational-cardinality normalization.
 
 Their exact signed local scale signatures are
 
