@@ -205,6 +205,30 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_HAMLET_OPERATOR_ALGEBRA_C2_MODULE", "THM_HAMLET_OPERATOR_FROBENIUS_NORM", "DEF_CP1_PROJECTIVE_EQUIVALENCE", "THM_IMAGINARY_GENERATOR_U1"),
     ),
     Claim(
+        "THM_HAMLET_PAULI_TRIPLE",
+        ClaimKind.THEOREM,
+        "After the complex scalar algebra C_J is available, the Hamlet operators define the Pauli triple sigma_x=S, sigma_z=-P, sigma_y=-iJ. They obey sigma_k^2=I and [sigma_i,sigma_j]=2 i epsilon_ijk sigma_k.",
+        ("THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R", "THM_HAMLET_COMPLEX_SCALAR_ALGEBRA"),
+    ),
+    Claim(
+        "THM_HAMLET_SU2_GENERATORS",
+        ClaimKind.THEOREM,
+        "With T_k=sigma_k/2, the Hamlet Pauli triple satisfies [T_i,T_j]=i epsilon_ijk T_k and therefore furnishes the defining two-dimensional representation of the standard su(2) Lie algebra.",
+        ("THM_HAMLET_PAULI_TRIPLE",),
+    ),
+    Claim(
+        "THM_HAMLET_SU2_CASIMIR_HALF",
+        ClaimKind.THEOREM,
+        "For the Hamlet su(2) generators, sum_k T_k^2=3I/4. Under the standard non-negative su(2) representation label j defined by the Casimir j(j+1)I, this uniquely gives j=1/2.",
+        ("THM_HAMLET_SU2_GENERATORS",),
+    ),
+    Claim(
+        "THM_HAMLET_SPINOR_2PI_4PI_RETURN",
+        ClaimKind.THEOREM,
+        "Exponentiating any normalized Hamlet su(2) axis gives the defining spinor rotation U(theta)=exp(-i theta n·sigma/2). Consequently U(2*pi)=-I and U(4*pi)=+I.",
+        ("THM_HAMLET_SU2_GENERATORS",),
+    ),
+    Claim(
         "DEF_HAMLET_COMPLEX_BRANCH_SPACE",
         ClaimKind.DEFINITION,
         "Alternative reference presentation: using the derived complex scalar algebra C_J, the free complex vector space on two labelled Hamlet outcomes is H_B=C_J[B]. The mega-audit no longer uses this construction as the canonical derivation of complex dimension two because it can obscure reuse of the same binary degree of freedom; the operator-algebra module A_H supplies the canonical route.",
@@ -285,8 +309,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_EULER_BERRY_MINIMAL_SPIN_HALF",
         ClaimKind.THEOREM,
-        "For the canonical great-circle loop, the enclosed hemisphere has solid angle 2*pi and the derived Berry holonomy is -1. Under the standard spin-s coherent-state phase law exp(i*s*Omega), exp(i*2*pi*s)=-1, so the smallest positive allowed sector is s=1/2; the doubled 4*pi traversal returns to +1.",
-        ("REF_CP1_BERRY_GEOMETRIC_PHASE", "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE"),
+        "The Hamlet Pauli algebra gives the defining su(2) representation with Casimir j(j+1)=3/4, hence j=1/2, and its exponentiated rotations satisfy 2*pi -> -I and 4*pi -> +I. The independently derived canonical Berry loop has the same -1 holonomy, with Euler phase exp(i*pi)=-1. Thus representation-theoretic half-spin and Berry/Euler closure agree without using the spin-s Berry formula as an upstream premise. Physical angular-momentum identification remains a separate bridge.",
+        ("THM_HAMLET_SU2_CASIMIR_HALF", "THM_HAMLET_SPINOR_2PI_4PI_RETURN", "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE"),
     ),
     Claim(
         "META0",
