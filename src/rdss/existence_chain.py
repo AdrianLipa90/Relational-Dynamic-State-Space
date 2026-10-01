@@ -15,6 +15,7 @@ class ExistenceChainStatus(str, Enum):
     """Epistemic status for one arrow in the pre-audit existence chain."""
 
     FOUNDATIONAL_LAW = "foundational_law"
+    DEFINITIONAL = "definitional"
     DERIVATION_GATE = "derivation_gate"
     EXACT_IDENTITY = "exact_identity"
     STANDARD_GEOMETRY = "standard_geometry"
@@ -56,9 +57,9 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "L1_TO_EXISTENCE_POTENTIAL",
         "not absolute nothingness",
         "existence potential P_E",
-        ExistenceChainStatus.DERIVATION_GATE,
+        ExistenceChainStatus.DEFINITIONAL,
         "not N -> P_E",
-        "Mega-audit must test whether P_E is genuinely forced rather than renamed non-vacuity.",
+        "P_E is the modal/admissible complement of absolute nothingness; no physical potential is implied.",
     ),
     ExistenceChainStep(
         "L1_MODEL_TO_MINIMAL_POINT",
