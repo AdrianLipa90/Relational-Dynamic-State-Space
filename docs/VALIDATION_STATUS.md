@@ -1080,8 +1080,8 @@ The source dependency order is explicit:
 \text{relational phase dynamics}.
 \]
 
-Targeted execution of the exact standalone OFHM module and its dedicated test
-file in the current tool runtime produced:
+Targeted execution on the exact GitHub branch checkout under Python 3.12
+(workflow run 36929710749, job 110595679440) produced:
 
 \[
 \boxed{13/13\ \mathrm{PASS}}.
@@ -1104,7 +1104,24 @@ One intermediate claim-DAG patch accidentally introduced a self-dependency in
 `DER_OFHM_SYMBOLIC_FRACTAL_BOUNDARY`; it was detected immediately and repaired
 in commit `75ce179d2aadfdc770a73d0772dbfa576cf9e880` before validation was accepted.
 
-Full repository pytest has **NOT YET BEEN RUN** on this branch.
+Full repository pytest was executed in the same exact branch checkout.
+
+Result: **FAIL — 11 failing tests**, all in `tests/test_axioms.py`.
+The dedicated OFHM suite remained PASS.
+
+Before that run could start, pytest exposed two pre-existing missing commas in
+`src/rdss/axioms.py` that are also present on `main`; they caused collection
+to abort with `TypeError: 'str' object is not callable`. They were repaired on
+this feature branch only in commit
+`d67187f0db937e69ea0856f11a66906c18af8ae5`.
+
+The 11 remaining failing claim definitions were compared byte-for-byte between
+`main` and this feature branch and are unchanged by the OFHM integration.
+They therefore remain historical RDSS claim/test drift rather than OFHM
+regressions. Full-suite status is still FAIL until that drift is reconciled.
+
+Temporary workflow instrumentation was removed after execution; it is not part
+of the retained RDSS feature surface.
 
 Actual LaTeX compilation has **NOT YET BEEN RUN** on this branch. The monograph
 text is integrated, but compilation status remains separate from source
