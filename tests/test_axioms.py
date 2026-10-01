@@ -116,7 +116,11 @@ def test_relation_occurrence_and_occurrence_path_are_explicit_definitions():
 def test_cp1_is_not_mislabeled_as_foundational_axiom():
     claims = claim_map()
     assert claims["REF_CP1"].kind is ClaimKind.REFERENCE_REALIZATION
-    assert set(claims["REF_CP1"].depends_on) == {"DEF_POINT", "DEF_BINARY_DISTINCTION"}
+    assert set(claims["REF_CP1"].depends_on) == {
+        "DEF_POINT",
+        "DEF_BINARY_DISTINCTION",
+        "DEF_CP1_PROJECTIVE_EQUIVALENCE",
+    }
 
 
 
@@ -167,6 +171,7 @@ def test_refinement_residual_depends_on_refinement_and_product():
             "RR1",
             "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
+            "DEF_CP1_PROJECTIVE_EQUIVALENCE",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
             "PRIM_PRODUCT",
             "PRIM_MODULE",
@@ -526,6 +531,7 @@ def test_singleton_cp1_occurrence_realization_dependencies():
         "REF_CP1",
         "DEF_POINT",
         "DEF_BINARY_DISTINCTION",
+        "DEF_CP1_PROJECTIVE_EQUIVALENCE",
         "DEF_RELATIONAL_DISTINCTION",
         "DEF_RELATION_OCCURRENCE",
         "DEF_BINARY_REL",
@@ -1585,9 +1591,8 @@ def test_cp1_projective_claims_separate_raw_representation_from_quotient():
     claims = claim_map()
 
     assert claims["DEF_CP1_PROJECTIVE_EQUIVALENCE"].kind is ClaimKind.DEFINITION
-    assert "REF_CP1" in dependency_closure(
-        "DEF_CP1_PROJECTIVE_EQUIVALENCE"
-    )
+    assert dependency_closure("DEF_CP1_PROJECTIVE_EQUIVALENCE") == frozenset()
+    assert "DEF_CP1_PROJECTIVE_EQUIVALENCE" in dependency_closure("REF_CP1")
 
     assert claims["THM_CP1_GLOBAL_PHASE_QUOTIENT"].kind is ClaimKind.THEOREM
     closure = dependency_closure(
