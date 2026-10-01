@@ -969,35 +969,56 @@ bridge.
 
 ## Audit classification
 
-| Arrow | Pre-audit status |
+| Arrow | Current mega-audit status |
 |---|---|
 | \(L_1\to\mathcal P_E\) | PASS DEFINITIONAL |
 | \(\mathcal P_E\to\mathcal I_0\) | PASS DEFINITIONAL |
-| persistence predicate \(\to\) Boolean DISPERSION/STRUCTURE partition schema | PASS EXACT |
-| canonical non-degeneracy: both branches non-empty | PASS DEFINITIONAL |
-| \(\mathcal P_E+\mathcal I_0\to\) physical non-degeneracy of both branches | DERIVATION GATE |
-| non-degenerate first Hamlet complement \(\to\mathbb Z_2\) | PASS CONDITIONAL / EXACT |
-| non-degenerate \(|H_0|=2\to\ln2\) (Hartley) | PASS CONDITIONAL / EXACT |
+| persistence predicate \(\to\) DISPERSION/STRUCTURE schema | PASS EXACT |
+| first-Hamlet non-degeneracy | PASS DEFINITIONAL canon / physical derivation OPEN |
+| first-Hamlet complement \(\to Z_2^{\rm meta}\) | PASS CONDITIONAL / EXACT |
+| two persistence classes \(\to\ln2_{\rm meta}\) | PASS CONDITIONAL / EXACT |
 | \(\mathsf{Disp}\to\mathcal I_0\) | PASS DEFINITIONAL |
-| \(\mathsf{Struct}+\min|Adm|=1\to p^\star\) | PASS MODEL THEOREM |
-| bare singleton point \(\not\Rightarrow\) first Hamlet | PASS COUNTERMODEL |
-| optional complement-invariant measure \(\to(1/2,1/2)\) | PASS CONDITIONAL |
-| Shannon \(H(1/2,1/2)=\ln2\) | CONSISTENCY CHECK |
-| first-Hamlet \(\mathbb Z_2\to\{-1,+1\}\) | PASS EXACT |
+| \(\mathsf{Struct}\to R\) | PASS DEFINITIONAL STRUCTURAL TYPING |
+| bare minimum object support \(|Adm|=1\) | PASS MODEL THEOREM |
+| persistent relation reversal \(\to\{N,S\}\) | PASS EXACT |
+| \(\{N,S\}\to Z_2^{\rm role}\) | PASS EXACT |
+| \(|\{N,S\}|=2\to\ln2_{\rm role}\) | PASS EXACT / probability-free |
+| DISPERSION/STRUCTURE as CP1 basis | NO-GO |
+| source-minimal parity-law signature | FORMATION RULE / conditional law class |
+| dyad cardinality \(2\to E(n)=n/2\) inside that class | PASS CONDITIONAL / EXACT |
+| least odd \(a>1\to a=3\) | PASS EXACT |
+| least positive odd parity repair \(\to r=1\) | PASS EXACT |
+| source-minimal affine parity law \(\to\) Collatz | PASS CONDITIONAL / EXACT |
+| First Law/minimal relation \(\to\) source-minimal parity-law signature | DERIVATION GATE |
+| Collatz \(E/O\to PSL(2,\mathbb R)\) branch lift | PASS CONDITIONAL / EXACT |
+| Collatz \(E/O\to(-\ln2,+\ln3)\) signed log-Jacobians | PASS EXACT |
+| role \(Z_2\to\{-1,+1\}\) | PASS EXACT |
 | \((-1,+1)\to\zeta=0\) | PASS EXACT in normalized affine chart |
-| swap + polarity \(\to J^2=-I\) | PASS EXACT |
+| role swap + polarity \(\to J^2=-I\) | PASS EXACT |
 | \(J\to U(1)\) | PASS STANDARD |
 | \(\operatorname{Alg}_{\mathbb R}(S,P)\to M_2(\mathbb R)=\mathbb C_J\oplus S\mathbb C_J\simeq\mathbb C^2\) | PASS THEOREM |
 | unit operator module / common phase \(\to\mathbb{CP}^1\simeq S^2\) | PASS STANDARD |
-| Hamlet Pauli triple \(\to\mathfrak{su}(2)\) | PASS THEOREM |
+| role Pauli triple \(\to\mathfrak{su}(2)\) | PASS THEOREM |
 | Casimir \(3/4\to j=1/2\) | PASS STANDARD |
 | \(SU(2)\) rotation \(2\pi\to-I,\ 4\pi\to+I\) | PASS THEOREM |
 | projective geometry \(\to\gamma_B\) | STANDARD GEOMETRIC HOLONOMY |
-| canonical horizontal operator loop \(\to -1\) holonomy | PASS THEOREM |
-| Berry \(-1\) \(\leftrightarrow\) spinor \(-I\) | CONSISTENCY CLOSURE |
+| canonical horizontal role orbit \(\to -1\) holonomy | PASS THEOREM |
+| Berry \(-1\leftrightarrow\) spinor \(-I\) | CONSISTENCY CLOSURE |
 | \(\gamma_B\to[\mathcal A_B]_{\rm gauge}\) | LOCAL/GAUGE-CONDITIONAL REPRESENTATION |
 
-The remaining strict gaps concern **dynamical instantiation** of a candidate
-differentiation, universal relational occurrence binding, and downstream
-physical identification. The algebraic first Hamlet itself is no longer an
-open gate.
+The earliest unresolved deterministic arrow is now
+
+\[
+\boxed{
+\text{upstream relational minimality}
+\stackrel{?}{\Longrightarrow}
+\text{source-minimal affine parity-law signature}.
+}
+\]
+
+Within that declared law class the Collatz coefficients \(2,3,+1\) are no
+longer free.
+
+Other open gates concern dynamical instantiation of the first persistence
+bifurcation and downstream physical identifications. No open gate is silently
+promoted.
