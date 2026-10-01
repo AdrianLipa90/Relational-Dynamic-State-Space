@@ -2047,6 +2047,78 @@ CLAIMS: tuple[Claim, ...] = (
         ("DER_CELL_RELATIVE_STATE_TO_MOIRE",),
     ),
 
+    Claim(
+        "DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",
+        ClaimKind.DEFINITION,
+        "The general orbital-fractal symbolic address carrier is the set of finite integer words Z^{<omega}. Existing binary RDSS occurrence words embed by preserving each -1/+1 branch symbol. The symbolic address is not by itself a claim of convergence to a geometric fractal point.",
+    ),
+    Claim(
+        "BRIDGE_OFHM_EULER_SYMBOLIC_BRANCH_SPACE",
+        ClaimKind.BRIDGE,
+        "Source bridge from Infinities@339d6c58 research/EULERS_INFINITY_V0_1.md: the Euler phase map E(z)=exp(i*pi*z) has countably many declared-Log inverse branches E_k^{-1}(w)=2k-(i/pi)Log(w), giving finite integer branch words and an exact symbolic infinite-address space while leaving geometric convergence and fractal dimension open.",
+        ("DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",),
+    ),
+    Claim(
+        "BRIDGE_OFHM_HILBERT_HOTEL_SHIFT",
+        ClaimKind.BRIDGE,
+        "Source bridge from Infinities@339d6c58 research/TIR_E6_FOURIER_HILBERT_HOTEL_CORE_V0_1.md: the countable address carrier admits a Hilbert-Hotel successor under an explicit enumeration rho:Z^{<omega}<->N, while the imported stable Hilbert-Hotel/Fredholm sector carries index +1. This stabilization shift is distinct from local branch refinement.",
+        ("DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",),
+    ),
+    Claim(
+        "BRIDGE_OFHM_BEES_RELATIVE_PHASE_COHERENCE",
+        ClaimKind.BRIDGE,
+        "Source bridge from GREMLIN@b0000828 spec/GREMLIN_HOLOGRAPHIC_ORBITAL_MEMORY_V0_1.md: local finite phase states may be compared by dimension-independent relative-phase coherence C=|d^{-1} sum_j exp(i(theta_j^X-theta_j^Y))|. The observable measures compatibility/coherence and does not establish truth or canon authority.",
+        ("DER_MOIRE",),
+    ),
+    Claim(
+        "DER_OFHM_MOIRE_COCYCLE",
+        ClaimKind.DERIVED,
+        "For scalar orbital phases the relative Moire phase M_ij=U_i U_j^{-1}=exp(i(theta_i-theta_j)) obeys M_ij M_jk=M_ik, M_ii=1 and M_ji=M_ij^{-1}.",
+        ("BRIDGE_OFHM_BEES_RELATIVE_PHASE_COHERENCE",),
+    ),
+    Claim(
+        "DER_OFHM_HILBERT_TRANSPORT",
+        ClaimKind.DERIVED,
+        "Multiplication of a finite Hilbert-fibre vector by the relative Moire phase defines transport T_ij v=M_ij v. Because M_ij lies in U(1), the transport preserves Hilbert norm and composes as T_ij T_jk=T_ik.",
+        ("DER_OFHM_MOIRE_COCYCLE", "REF_HILBERT_MOIRE_FIBRE"),
+    ),
+    Claim(
+        "DEF_OFHM_STATE",
+        ClaimKind.DEFINITION,
+        "A finite orbital-fractal Hilbert-Moire state is Psi=(a,l,theta,v,omega), where a is a finite countable branch address, l is an orbital label, theta is a U(1) angle, v is a non-zero finite Hilbert vector and omega is an optional angular-velocity coordinate for the second-order dynamics chart.",
+        ("DEF_OFHM_COUNTABLE_BRANCH_ADDRESS", "DER_OFHM_HILBERT_TRANSPORT"),
+    ),
+    Claim(
+        "BRIDGE_OFHM_BEES_IDT_DYNAMICS",
+        ClaimKind.BRIDGE,
+        "Source bridge from GREMLIN@b0000828 and Informational-Dynamics-of-Metatime@31f1a74d: the local sine-coupling current J_i=sum_j w_ij sin(theta_j-theta_i) supports both the normalized first-order BEES/Kuramoto reduction and the IDT second-order update theta'=theta+dt*omega, omega'=omega+dt*(-dV/dtheta-eta*omega+K*J+drive). This is a relational dynamics realization, not a physical-law claim.",
+        ("DEF_OFHM_STATE",),
+    ),
+    Claim(
+        "DER_OFHM_GENERAL_ALGEBRA",
+        ClaimKind.DERIVED,
+        "The general source-grounded orbital-fractal Hilbert-Moire algebra is the typed structure (A_F,rho,S_HH,R_k,M,H,T,J,D): finite symbolic address space, countable Hilbert-Hotel ranking/shift, local refinement, relative Moire cocycle, Hilbert fibres, norm-preserving transport, local coupling current and selected first- or second-order relational phase dynamics.",
+        (
+            "BRIDGE_OFHM_EULER_SYMBOLIC_BRANCH_SPACE",
+            "BRIDGE_OFHM_HILBERT_HOTEL_SHIFT",
+            "DER_OFHM_MOIRE_COCYCLE",
+            "DER_OFHM_HILBERT_TRANSPORT",
+            "BRIDGE_OFHM_BEES_IDT_DYNAMICS",
+        ),
+    ),
+    Claim(
+        "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
+        ClaimKind.DERIVATION_GATE,
+        "The finite symbolic OFHM algebra does not imply convergence of every infinite branch address, a canonical geometric limit set, a Hausdorff dimension or a unique continuum measure. Each stronger geometric-fractal statement requires a separate derivation.",
+        ("DER_OFHM_GENERAL_ALGEBRA",),
+    ),
+    Claim(
+        "GATE_OFHM_PHYSICAL_BINDING",
+        ClaimKind.DERIVATION_GATE,
+        "No specific material, quantum, spacetime or other physical substrate is identified solely by the OFHM algebra or its source bridges; physical binding and parameter calibration remain separate evidence-bearing derivation tasks.",
+        ("DER_OFHM_GENERAL_ALGEBRA",),
+    ),
+
 )
 
 
