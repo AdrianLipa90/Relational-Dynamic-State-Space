@@ -17,6 +17,12 @@ from rdss.existence_chain import (
     hamlet_j_orbit_derivative,
     hamlet_horizontal_residual,
     hamlet_projective_return_phase,
+    hamlet_operator_module_coordinates,
+    hamlet_operator_module_norm,
+    hamlet_operator_balanced_orbit,
+    hamlet_operator_balanced_orbit_derivative,
+    hamlet_operator_horizontal_residual,
+    hamlet_operator_to_real_branch_chart,
     exact_chain_sanity,
     hamlet_distribution,
     hamlet_information_nats,
@@ -128,4 +134,29 @@ def test_canonical_hamlet_j_orbit_is_horizontal_and_returns_with_minus_one() -> 
         assert isclose(hamlet_horizontal_residual(theta), 0.0, abs_tol=1e-12)
 
     assert hamlet_projective_return_phase() == -1.0
+
+def test_operator_algebra_module_realizes_c2_without_duplicate_branch_copy() -> None:
+    coords = hamlet_operator_module_coordinates(1.2, -0.7, 0.3, 2.1)
+    assert coords == (complex(1.2, 2.1), complex(-0.7, 0.3))
+    assert isclose(
+        hamlet_operator_module_norm(coords),
+        1.2**2 + 2.1**2 + (-0.7)**2 + 0.3**2,
+        abs_tol=1e-12,
+    )
+
+    for theta in (0.0, 0.17, 0.73, 1.31, 2.2, 3.0):
+        psi = hamlet_operator_balanced_orbit(theta)
+        dpsi = hamlet_operator_balanced_orbit_derivative(theta)
+        assert isclose(hamlet_operator_module_norm(psi), 1.0, abs_tol=1e-12)
+        direct = psi[0].conjugate() * dpsi[0] + psi[1].conjugate() * dpsi[1]
+        assert abs(direct) <= 1e-12
+        assert abs(hamlet_operator_horizontal_residual(theta)) <= 1e-12
+
+        chart = hamlet_operator_to_real_branch_chart(psi)
+        real_chart = tuple(complex(v) for v in hamlet_j_orbit(theta))
+        assert all(abs(a - b) <= 1e-12 for a, b in zip(chart, real_chart))
+
+    start = hamlet_operator_balanced_orbit(0.0)
+    end = hamlet_operator_balanced_orbit(3.141592653589793)
+    assert all(abs(e + a) <= 1e-12 for a, e in zip(start, end))
 
