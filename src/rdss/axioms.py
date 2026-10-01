@@ -79,6 +79,18 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_PRIMITIVE_INDISTINCTION", "DEF_DISTINCTION_PERSISTENCE_PREDICATE"),
     ),
     Claim(
+        "THM_RELATIONAL_DEFORMATION_POTENTIAL_IS_DOWNSTREAM",
+        ClaimKind.THEOREM,
+        "The existing RDSS relational deformation potential cannot serve as an upstream derivation of the first Hamlet: by definition it requires a supplied semantic weighting on an already explicit residual signature. Using it to derive DISPERSION/STRUCTURE would import downstream residual and weighting structure into the primitive persistence bifurcation.",
+        ("DEF_RELATIONAL_POTENTIAL", "PRIM_SEMANTIC_WEIGHTING"),
+    ),
+    Claim(
+        "THM_BINARY_CLOSURE_MODEL_IS_DOWNSTREAM",
+        ClaimKind.THEOREM,
+        "The existing occurrence/closure machinery cannot serve as an upstream derivation of the first Hamlet because its occurrence-address space is already the free-word construction over the binary alphabet B={-1,+1}. It therefore presupposes a binary branch structure rather than deriving one.",
+        ("DEF_OCCURRENCE_ADDRESS_SPACE",),
+    ),
+    Claim(
         "THM_FIRST_HAMLET_Z2",
         ClaimKind.THEOREM,
         "Complementation of the Boolean persistence predicate exchanges DISPERSION and STRUCTURE and squares to the identity. The two first-Hamlet classes therefore carry the canonical Z2 complement action.",
