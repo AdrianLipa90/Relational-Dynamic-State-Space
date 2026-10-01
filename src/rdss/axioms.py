@@ -211,16 +211,22 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_EXISTENCE_POTENTIAL", "REF_META0_SINGLETON_POINT_PRESENTATION", "THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER"),
     ),
     Claim(
-        "GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE",
-        ClaimKind.DERIVATION_GATE,
-        "Mega-audit target: the non-trivial Hamlet Z2 character already fixes the algebraic phase sign chi(g)=-1. What remains is to derive why the canonical primitive Berry loop realizes that non-trivial character, rather than the trivial +1 character.",
-        ("THM_Z2_SIGN_EMBEDS_U1", "REF_CP1_BERRY_GEOMETRIC_PHASE"),
+        "THM_HAMLET_CANONICAL_PROJECTIVE_LOOP",
+        ClaimKind.THEOREM,
+        "Let psi_0 be either normalized Hamlet branch basis vector and J=SP. The orbit psi(theta)=exp(theta J) psi_0 for 0<=theta<=pi preserves the symmetry-fixed norm, has <psi,dot(psi)>=0, reaches no earlier projective return, and ends at psi(pi)=-psi_0. Its projection to CP^1 is therefore a canonical primitive closed great-circle loop with a horizontal lift.",
+        ("THM_HAMLET_IMAGINARY_GENERATOR", "THM_HAMLET_UNIQUE_SYMMETRY_HERMITIAN_FORM", "THM_HAMLET_PROJECTIVE_CP1"),
+    ),
+    Claim(
+        "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE",
+        ClaimKind.THEOREM,
+        "The horizontal lift of the canonical Hamlet projective loop ends at -psi_0, so its Hopf/Berry holonomy is exactly the non-trivial order-two phase -1. This realizes the Hamlet sign character geometrically rather than assuming it.",
+        ("THM_HAMLET_CANONICAL_PROJECTIVE_LOOP", "THM_Z2_SIGN_EMBEDS_U1", "REF_CP1_BERRY_GEOMETRIC_PHASE"),
     ),
     Claim(
         "THM_EULER_BERRY_MINIMAL_SPIN_HALF",
         ClaimKind.THEOREM,
-        "Conditional on identifying the canonical primitive Berry loop with the unique non-trivial Hamlet Z2 character chi(g)=-1, the Berry relation gamma=2*pi*s selects the smallest positive sector s=1/2; the doubled 4*pi traversal returns to +1.",
-        ("REF_CP1_BERRY_GEOMETRIC_PHASE", "GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE"),
+        "For the canonical great-circle loop, the enclosed hemisphere has solid angle 2*pi and the derived Berry holonomy is -1. Under the standard spin-s coherent-state phase law exp(i*s*Omega), exp(i*2*pi*s)=-1, so the smallest positive allowed sector is s=1/2; the doubled 4*pi traversal returns to +1.",
+        ("REF_CP1_BERRY_GEOMETRIC_PHASE", "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE"),
     ),
     Claim(
         "META0",
