@@ -23,6 +23,8 @@ from rdss.existence_chain import (
     hamlet_operator_balanced_orbit_derivative,
     hamlet_operator_horizontal_residual,
     hamlet_operator_to_real_branch_chart,
+    hamlet_spinor_to_su2,
+    hamlet_bloch_coordinates,
     hamlet_pauli_matrices,
     hamlet_su2_generators,
     hamlet_su2_commutator_residual,
@@ -66,6 +68,8 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
     assert by_id["HALF_HALF_TO_LN2"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["IMAGINARY_GENERATOR_TO_U1"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["BINARY_PHASE_TO_CP1"].status is ExistenceChainStatus.STANDARD_GEOMETRY
+    assert by_id["HAMLET_S3_TO_SU2"].status is ExistenceChainStatus.STANDARD_GEOMETRY
+    assert by_id["HAMLET_SU2_QUOTIENT_TO_S2"].status is ExistenceChainStatus.STANDARD_GEOMETRY
     assert by_id["CP1_GEOMETRY_TO_BERRY_PHASE"].status is ExistenceChainStatus.STANDARD_GEOMETRY
     assert (
         by_id["BERRY_PHASE_TO_CONNECTION_POTENTIAL_CLASS"].status
@@ -183,4 +187,28 @@ def test_hamlet_pauli_su2_casimir_forces_half_representation_label() -> None:
     rot_4pi = hamlet_spinor_z_rotation(4.0 * 3.141592653589793)
     assert all(abs(value + 1.0) <= 1e-12 for value in rot_2pi)
     assert all(abs(value - 1.0) <= 1e-12 for value in rot_4pi)
+
+def test_spinor_s3_maps_to_su2_and_balanced_orbit_projects_to_equator() -> None:
+    for theta in (0.0, 0.17, 0.73, 1.31, 2.2, 3.0):
+        coords = hamlet_operator_balanced_orbit(theta)
+        matrix = hamlet_spinor_to_su2(coords)
+        z0, z1 = coords
+
+        assert abs(matrix[0][0] - z0) <= 1e-12
+        assert abs(matrix[1][0] - z1) <= 1e-12
+
+        col0_norm = abs(matrix[0][0]) ** 2 + abs(matrix[1][0]) ** 2
+        col1_norm = abs(matrix[0][1]) ** 2 + abs(matrix[1][1]) ** 2
+        inner = matrix[0][0].conjugate() * matrix[0][1] + matrix[1][0].conjugate() * matrix[1][1]
+        determinant = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+
+        assert isclose(col0_norm, 1.0, abs_tol=1e-12)
+        assert isclose(col1_norm, 1.0, abs_tol=1e-12)
+        assert abs(inner) <= 1e-12
+        assert abs(determinant - 1.0) <= 1e-12
+
+        x, y, z = hamlet_bloch_coordinates(coords)
+        assert isclose(x, __import__("math").cos(2.0 * theta), abs_tol=1e-12)
+        assert isclose(y, -__import__("math").sin(2.0 * theta), abs_tol=1e-12)
+        assert isclose(z, 0.0, abs_tol=1e-12)
 
