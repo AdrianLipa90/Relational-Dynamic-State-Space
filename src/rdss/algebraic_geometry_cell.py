@@ -83,8 +83,6 @@ class RelationalOctahedralCell:
     frame: OctahedralFrame
     positive: DynamicTetrahedronState
     negative: DynamicTetrahedronState
-    information_action: float = KAPPA_PHI
-
     def __post_init__(self) -> None:
         if self.positive.polarization is not Polarization.POSITIVE:
             raise ValueError("positive tetrahedron must carry + polarization")
@@ -92,10 +90,21 @@ class RelationalOctahedralCell:
             raise ValueError("negative tetrahedron must carry - polarization")
         if self.positive.label == self.negative.label:
             raise ValueError("the two dynamic tetrahedra must have distinct labels")
-        if not isfinite(float(self.information_action)):
-            raise ValueError("information_action must be finite")
-        if self.information_action <= 0.0:
-            raise ValueError("information_action must be positive")
+        if not isinstance(self.positive.phase, U1Phase):
+            raise TypeError("positive tetrahedron phase must be U1Phase")
+        if not isinstance(self.negative.phase, U1Phase):
+            raise TypeError("negative tetrahedron phase must be U1Phase")
+
+    @property
+    def information_action(self) -> float:
+        return KAPPA_PHI
+
+    @property
+    def stella_octangula_pair(
+        self,
+    ) -> tuple[DynamicTetrahedronState, DynamicTetrahedronState]:
+        """Symbolic two-tetrahedron compound before coordinate embedding."""
+        return (self.positive, self.negative)
 
     @property
     def relative_phase(self) -> float:
