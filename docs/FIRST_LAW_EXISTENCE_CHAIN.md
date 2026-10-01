@@ -204,6 +204,26 @@ must be realized as two distinct branch-relation occurrences on the admitted
 carrier, i.e. why the Hamlet carrier realizes the semantic content targeted by
 RA0_REL_STAR.
 
+### Canonical RDSS semantic route
+
+Strictly, the bare First-Law model does not force informationality. Canonical
+RDSS therefore states separately:
+
+\[
+\boxed{
+\text{realized existence state}
+:=
+\text{non-trivial information state}.
+}
+\]
+
+This is a definition, not another foundational law.
+
+With that definition the minimal realized state is binary and the canonical
+relational realization uses two distinct branch occurrences bound to the host.
+The strict mega-audit gates remain recorded in parallel so that this semantic
+choice is never mislabeled as a theorem from \(L_1\).
+
 ## 3. Balanced binary state and \(\ln2\)
 
 Conditional on exact exchange symmetry and normalization,
