@@ -288,7 +288,6 @@ def test_ra0_star_is_candidate_not_silent_replacement():
             "RA0_STAR",
             "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
-            "DEF_CP1_PROJECTIVE_EQUIVALENCE",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
         }
     )
@@ -511,6 +510,7 @@ def test_cp1_recursive_realization_is_reference_layer():
             "RR1",
             "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
+            "DEF_CP1_PROJECTIVE_EQUIVALENCE",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
         }
     )
