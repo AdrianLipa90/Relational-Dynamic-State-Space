@@ -182,6 +182,7 @@ from .existence_chain import (
     spin_half_full_return,
     spin_half_sign_return,
     u1_phase,
+    z2_nontrivial_u1_character,
 )
 from .phase import (
     U1Phase,
@@ -519,6 +520,7 @@ __all__ = [
     "spin_half_full_return",
     "spin_half_sign_return",
     "u1_phase",
+    "z2_nontrivial_u1_character",
     "U1Phase",
     "U1_TOLERANCE",
     "wrap_phase",
