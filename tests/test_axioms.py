@@ -1720,3 +1720,13 @@ def test_hamlet_abstract_binary_does_not_silently_assume_relational_binding() ->
     assert "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY" in binding_closure
     assert "DEF_RELATIONAL_DISTINCTION" in binding_closure
 
+def test_relation_direction_alone_does_not_supply_hamlet_branch_identity() -> None:
+    claims = claim_map()
+
+    assert claims["THM_RELATION_DIRECTION_NOT_BRANCH_DUPLICATION"].kind is ClaimKind.THEOREM
+    closure = dependency_closure("THM_RELATION_DIRECTION_NOT_BRANCH_DUPLICATION")
+    assert "DEF_BINARY_REL" in closure
+    assert "DEF_RELATION_OCCURRENCE" in closure
+    assert "DEF_CARRIER_OCCURRENCE_SEPARATION" in closure
+    assert "GATE_HAMLET_RELATIONAL_BINDING" not in closure
+
