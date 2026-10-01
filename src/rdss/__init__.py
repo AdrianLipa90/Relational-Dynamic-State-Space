@@ -212,6 +212,17 @@ from .existence_chain import (
     u1_phase,
     z2_nontrivial_real_character,
 )
+from .primitive_persistence import (
+    asymptotic_distinction,
+    distinction_flow,
+    distinction_potential,
+    distinction_potential_dissipation,
+    distinction_potential_gradient,
+    distinction_solution,
+    equilibrium_linear_rate,
+    persistence_equilibria,
+    persistence_regime,
+)
 from .phase import (
     U1Phase,
     U1_TOLERANCE,
@@ -577,6 +588,15 @@ __all__ = [
     "spin_half_sign_return",
     "u1_phase",
     "z2_nontrivial_real_character",
+    "asymptotic_distinction",
+    "distinction_flow",
+    "distinction_potential",
+    "distinction_potential_dissipation",
+    "distinction_potential_gradient",
+    "distinction_solution",
+    "equilibrium_linear_rate",
+    "persistence_equilibria",
+    "persistence_regime",
     "U1Phase",
     "U1_TOLERANCE",
     "wrap_phase",
