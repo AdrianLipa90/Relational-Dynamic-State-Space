@@ -761,87 +761,191 @@ chart, not a second construction.
 
 Status: PASS-THEOREM.
 
-## M15. Berry + Euler -> minimal spin one half
+## M15. Hamlet Pauli algebra -> SU(2) -> representation label one half
 
-The projected \(J\)-orbit is a great-circle loop on the Bloch sphere. It
-bounds a hemisphere, hence
+The half label no longer needs the spin-\(s\) Berry formula as an upstream
+premise.
+
+From the same Hamlet operators define
 
 \[
-\Omega=2\pi.
+\sigma_x=S,
+\qquad
+\sigma_z=-P,
+\qquad
+\sigma_y=-iJ.
 \]
 
-The horizontal-lift calculation already gives
+Because \(J=SP\), these satisfy the Pauli relations
 
 \[
-\operatorname{Hol}_{\rm Berry}=-1.
-\]
-
-Under the standard spin-\(s\) coherent-state geometric-phase law,
-
-\[
-e^{is\Omega}
+\sigma_k^2=I,
+\qquad
+[\sigma_i,\sigma_j]
 =
-e^{i2\pi s},
+2i\epsilon_{ijk}\sigma_k.
 \]
 
-so matching the derived holonomy gives
+Define
 
 \[
-e^{i2\pi s}=-1.
-\]
-
-Hence
-
-\[
-s\in\mathbb Z+\frac12
-\]
-
-and the smallest positive sector is
-
-\[
-\boxed{
-s_{\min}=\frac12.
-}
-\]
-
-The doubled traversal gives
-
-\[
-e^{i4\pi(1/2)}=+1.
-\]
-
-Status: PASS-CONDITIONAL on the standard spin-\(s\) coherent-state
-identification.
-
-The mathematical half-integer selection is closed. The remaining empirical
-question is whether a given physical realization of RDSS should be identified
-with actual angular momentum spin.
-
-## M16. First-pass causal graph
-
-The strongest current graph is
-
-\[
-L_1
-\rightarrow
-\mathcal P_E
-\rightarrow
-\boxed{\text{DISTINCTION GATE}}
-\rightarrow
-\mathbb Z_2.
+T_k=\frac{\sigma_k}{2}.
 \]
 
 Then
 
 \[
-\mathbb Z_2
-\rightarrow
-\left(\frac12,\frac12\right)
-\rightarrow
-\ln2,
+\boxed{
+[T_i,T_j]
+=
+i\epsilon_{ijk}T_k,
+}
 \]
 
-and
+so \(T_k\) furnish the defining two-dimensional representation of
+\(\mathfrak{su}(2)\).
+
+Its quadratic Casimir is
+
+\[
+\sum_k T_k^2
+=
+\frac34 I.
+\]
+
+With the standard non-negative representation label \(j\),
+
+\[
+j(j+1)=\frac34,
+\]
+
+hence uniquely
+
+\[
+\boxed{
+j=\frac12.
+}
+\]
+
+Status: PASS-STANDARD / exact representation-theoretic result.
+
+Exponentiating a normalized axis gives
+
+\[
+U(\theta)
+=
+\exp\left(
+-\frac{i\theta}{2}
+\,\mathbf n\cdot\boldsymbol\sigma
+\right),
+\]
+
+so
+
+\[
+\boxed{
+U(2\pi)=-I,
+\qquad
+U(4\pi)=+I.
+}
+\]
+
+Thus the \(2\pi/4\pi\) behavior is already fixed by the Hamlet-generated
+defining \(SU(2)\) representation.
+
+### Berry/Euler consistency closure
+
+Independently, the canonical horizontal projective loop derived in M14 has
+
+\[
+\operatorname{Hol}_{\rm Berry}=-1.
+\]
+
+Therefore the representation-theoretic \(2\pi\) sign and the Berry holonomy
+agree:
+
+\[
+\boxed{
+U(2\pi)=-I
+\quad\leftrightarrow\quad
+\operatorname{Hol}_{\rm Berry}=-1.
+}
+\]
+
+Euler's phase identity
+
+\[
+e^{i\pi}=-1
+\]
+
+is the common scalar closure, and the doubled traversal returns to \(+1\).
+
+The label \(j=\tfrac12\) is therefore derived before Berry matching; Berry
+provides an independent geometric consistency check. Interpreting this
+representation label as measured physical angular momentum remains a separate
+physical bridge.
+
+## M16. Current causal graph after the mega-audit pass
+
+The audit now separates the strict First-Law track from the canonical RDSS
+semantic track.
+
+### Strict track
+
+\[
+\boxed{
+L_1
+\rightarrow
+\mathcal P_E
+\rightarrow
+\min|\operatorname{Adm}|=1.
+}
+\]
+
+The bare singleton countermodel keeps open
+
+\[
+\boxed{
+\text{bare carrier}
+\not\Rightarrow
+\text{non-trivial informationality}
+}
+\]
+
+without an additional semantic definition.
+
+Likewise bare \(L_1\) does not yet prove universal RA0_REL_STAR relational
+binding.
+
+### Canonical RDSS track
+
+RDSS declares
+
+\[
+\text{RealizedExistence}_{\rm RDSS}
+:=
+\text{AdmittedNonTrivialInformationState}.
+\]
+
+Then
+
+\[
+|\Omega|_{\min}=2
+\rightarrow
+\operatorname{Aut}(\Omega)\cong\mathbb Z_2.
+\]
+
+The unique normalized \(Z_2\)-invariant probability gives
+
+\[
+\boxed{
+\left(\frac12,\frac12\right)
+\rightarrow
+\ln2.
+}
+\]
+
+The non-trivial real character supplies the polarity signs
 
 \[
 \mathbb Z_2
@@ -851,101 +955,130 @@ and
 \zeta=0.
 \]
 
-Next:
+On the free real binary carrier,
+
+\[
+S^2=P^2=I,
+\qquad
+SP=-PS,
+\]
+
+hence
 
 \[
 \boxed{
-\{-1,0,+1\}
-\not\Rightarrow
-i
+J=SP,
+\qquad
+J^2=-I.
 }
 \]
 
-without additional derivation of complex structure.
-
-Once that gate closes:
+The full operator algebra then gives
 
 \[
-i
-\rightarrow
-U(1)
-\rightarrow
-\text{normalized complex two-state projective carrier}
-\rightarrow
-\mathbb{CP}^{1}\simeq S^2
-\rightarrow
-\gamma_B
-\rightarrow
-[\mathcal A_B]_{\mathrm{gauge}}.
+\boxed{
+\mathcal A_H
+=
+\operatorname{Alg}_{\mathbb R}(S,P)
+=
+M_2(\mathbb R)
+=
+\mathbb C_J\oplus S\mathbb C_J
+\simeq
+\mathbb C^2.
+}
 \]
 
-In parallel,
+Its unit sphere modulo common right phase is
 
 \[
-\text{Hamlet non-triviality}
-\rightarrow
-\boxed{\text{PROJECTIVE SIGN GATE}}
-\rightarrow
-e^{i\gamma}=-1.
+\boxed{
+S^3/U(1)
+\cong
+\mathbb{CP}^1
+\cong
+S^2.
+}
 \]
 
-The two branches then meet:
+The balanced left-\(J\) orbit has
 
 \[
-\gamma_B
-+
-e^{i\gamma_B}=-1
-\rightarrow
-s_{\min}=\frac12.
+\operatorname{Hol}_{\rm Berry}=-1.
 \]
 
-## M17. First-pass verdict
+The same \(S,P,J\) generate the Pauli triple and therefore the defining
+\(SU(2)\) representation,
 
-Closed or conditionally closed:
+\[
+\boxed{
+j=\frac12,
+\qquad
+2\pi\mapsto-I,
+\qquad
+4\pi\mapsto+I.
+}
+\]
 
-- First Law -> modal existence potential: definitional.
-- First-Law model -> minimal admitted carrier cardinality one: model theorem.
-- non-trivial finite information -> minimal binary carrier: exact.
-- binary carrier -> \(Z_2\) swap symmetry: exact.
-- swap-invariant normalized weighting -> \(1/2,1/2\): exact conditional.
-- \(1/2,1/2\) -> \(\ln2\): exact.
-- \(Z_2\) -> real sign character \(\{-1,+1\}\): exact.
-- sign midpoint -> relational \(\zeta=0\): exact under normalized affine chart.
-- swap + polarity -> \(J^2=-I\): exact conditional on the Hamlet carrier.
-- \(J\) -> \(U(1)\): standard exact.
-- derived complex scalars + two branch symbols -> \(\mathbb C^2\): definitional.
-- swap/polarity symmetry -> Hermitian form up to scale: theorem.
-- normalization/projective quotient -> \(\mathbb{CP}^1\simeq S^2\): standard.
-- projective transport -> Berry phase: standard geometric holonomy.
-- canonical horizontal Hamlet loop -> Berry holonomy \(-1\): theorem.
-- Berry phase -> local gauge-potential/connection class: standard conditional.
-- hemisphere Berry law + derived \(-1\) -> minimal half-integer sector \(s=1/2\): conditional standard result.
+Finally,
 
-Open:
+\[
+\gamma_B[C]
+=
+\oint_C\mathcal A_B
+\pmod{2\pi}
+\]
 
-1. Why must the minimal realized carrier be a **non-trivial information
-   state** rather than a distinction-free singleton?
-2. Why must the abstract Hamlet \(Z_2\) alternatives be realized as
-   **relationally bound occurrence identities** rather than remain abstract
-   outcome labels?
-3. What licenses identification of the resulting projective/Berry
-   representation with **physical angular momentum spin** in a concrete
-   physical system?
-4. What, if anything, uniquely binds the primitive modal existence potential
-   \(\mathcal P_E\) to a later physical potential beyond the already-derived
-   geometric connection class \([\mathcal A_B]_{\rm gauge}\)?
+gives the local Berry connection/potential class up to gauge.
+
+## M17. Current verdict
+
+Closed or conditionally closed on the canonical RDSS track:
+
+- First Law -> modal existence potential: PASS-DEFINITIONAL.
+- non-trivial finite information -> minimal binary carrier: PASS-EXACT.
+- two-state automorphism group -> \(Z_2\): PASS-EXACT.
+- \(Z_2\)-invariant normalized weighting -> \(1/2,1/2\): PASS-EXACT.
+- \(1/2,1/2\) -> \(\ln2\): PASS-EXACT.
+- \(Z_2\) -> unique non-trivial real sign character: PASS-EXACT.
+- sign midpoint -> relational \(\zeta=0\): PASS-EXACT in the normalized chart.
+- swap + polarity -> \(J^2=-I\): PASS-EXACT.
+- \(J\) -> \(U(1)\): PASS-STANDARD.
+- \(\operatorname{Alg}_{\mathbb R}(S,P)\) -> \(M_2(\mathbb R)\): PASS-EXACT.
+- \(M_2(\mathbb R)=\mathbb C_J\oplus S\mathbb C_J\): PASS-EXACT.
+- unit operator module -> \(S^3/U(1)\cong\mathbb{CP}^1\cong S^2\): PASS-STANDARD.
+- canonical horizontal Hamlet loop -> Berry holonomy \(-1\): PASS-THEOREM.
+- Hamlet Pauli triple -> \(\mathfrak{su}(2)\): PASS-EXACT.
+- Casimir \(3/4\) -> representation label \(j=1/2\): PASS-STANDARD.
+- \(SU(2)\) defining rotation -> \(2\pi:-I,\ 4\pi:+I\): PASS-EXACT.
+- Berry phase -> local connection/potential class: PASS-CONDITIONAL up to gauge.
+
+Strict questions still open:
+
+1. Does bare \(L_1\), without canonical RDSS semantic definitions, force
+   non-trivial informationality rather than merely non-vacuity?
+2. Does bare \(L_1\) force universal relational occurrence binding
+   RA0_REL_STAR?
+3. What physical principle selects a concrete RDSS realization as actual
+   angular-momentum spin rather than merely the mathematical defining
+   \(SU(2)\) representation?
+4. Is there any unique physical bridge from primitive modal
+   \(\mathcal P_E\) to a later physical potential, beyond the geometric Berry
+   connection class already derived?
 
 Anti-circularity constraints retained:
 
-- standard Heisenberg/Robertson remains downstream of the pre-Hilbert Hamlet
-  construction;
-- Aharonov–Bohm remains external physical precedent, not the source of the
-  upstream phase geometry;
-- \(U(1)\) alone is not treated as CP1;
-- the two real Hamlet branches are not collapsed into one complex branch
-  dimension when forming \(\mathbb C^2\);
-- a Berry phase determines connection/potential information only up to gauge;
-- relational zero is not absolute nothingness;
-- the Bloch-ball centre is not a pure CP1 state.
+- standard Heisenberg/Robertson remains downstream of primitive Hamlet
+  uncertainty;
+- Aharonov--Bohm is external physical precedent, not the source of phase;
+- the canonical CP1 route uses the full Hamlet operator algebra and does not
+  introduce a second independent copy of the binary degree of freedom;
+- occurrence-address machinery is not a premise of the canonical spin chain;
+- legacy REF_CP1 is not a premise of the canonical CP1 construction;
+- Berry is not used to assume \(j=\tfrac12\); the half label is fixed by the
+  \(SU(2)\) Casimir before Berry matching;
+- a Berry phase determines connection/potential data only up to gauge;
+- bare carrier zero, relational \(\zeta=0\), and absolute nothingness remain
+  distinct typed concepts.
 
-No open gate is silently repaired.
+No open strict gate is silently promoted.
