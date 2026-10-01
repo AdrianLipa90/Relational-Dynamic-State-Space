@@ -133,6 +133,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_EXISTENCE_POTENTIAL", "THM_META0_MINIMAL_CARRIER_CARDINALITY", "REF_META0_SINGLETON_POINT_PRESENTATION"),
     ),
     Claim(
+        "THM_FIRST_LAW_NONEMPTY_NOT_BINARY",
+        ClaimKind.THEOREM,
+        "The bare singleton META0-admissible point presentation contains one admitted carrier and no hosted binary distinction. Therefore the First Law, modal existence potential and bare non-empty singleton carrier do not by themselves force Hamlet binary differentiation.",
+        ("DEF_EXISTENCE_POTENTIAL", "REF_META0_SINGLETON_POINT_PRESENTATION", "THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER"),
+    ),
+    Claim(
         "GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE",
         ClaimKind.DERIVATION_GATE,
         "Mega-audit target: derive why the primitive non-degenerate Hamlet binary closure corresponds to the non-trivial projective sign exp(i*gamma)=-1 on one primitive closed cycle rather than assuming that sign as an independent premise.",
