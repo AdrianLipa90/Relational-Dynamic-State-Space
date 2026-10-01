@@ -124,14 +124,14 @@ Hence, in the path-labelled occurrence semantics,
 }
 \]
 
-RR1 can therefore be demoted to a theorem **only if RA0*** is promoted as the intended foundational axiom.
+Historically this implication was treated as an axiom-reduction route. Under the current one-axiom ledger, it is instead a conditional implication between derivation gates: neither RR1 nor RA0* has axiom status.
 
-## Relationally bound one-axiom candidate
+## Historical relationally bound compression gate
 
 The current RA0* does not, by itself, prove RA0 because a hosted binary
 distinction is represented separately from primitive relational incidence.
 
-Introduce the stronger candidate
+Define the stronger historical derivation gate
 
 \[
 \boxed{
@@ -203,9 +203,9 @@ recursive RR1 hold, while RA0_REL_STAR fails. Hence
 }
 \]
 
-The one-object-level-axiom candidate therefore compresses the old pair by
+The historical compression gate therefore packages the old RA0+RR1 pair by
 adding genuine semantic structure; it is not equivalent to the old pair
-without that added binding.
+without that added binding. In the current ledger this is not a second axiom.
 
 The singleton executable witness is
 
