@@ -280,20 +280,36 @@ Association is quotient by the complete free durable-role pairing,
 }
 \]
 
-Dissociation is a three-fold fibre extension,
+Canonical dissociation is product with the complete non-identity operator sector
+
+\[
+\mathcal A_* = \{S,P,J\},
+\qquad
+|\mathcal A_*|=3,
+\]
+
+so
 
 \[
 \boxed{
-|X\times F_3|=3|X|,
+|X\times\mathcal A_*|=3|X|.
 }
 \]
 
-and repair is adjoining one singleton,
+Canonical repair restores the unique operator direction omitted from that
+active sector,
+
+\[
+\{I\},
+\qquad
+|\{I\}|=1,
+\]
+
+hence
 
 \[
 \boxed{
-|X\sqcup\{\star\}|=|X|+1.
-}
+|X\sqcup\{I\}|=|X|+1.
 \]
 
 Therefore parity fixes the deterministic branch:
@@ -308,9 +324,10 @@ n/2,&n\text{ even},\\
 }
 \]
 
-The algebraic Collatz normalization is therefore closed. The remaining gate is
-only whether the intended natural dynamics is physically/foundationally bound
-to this exact relational-cardinality normalization.
+The algebraic Collatz normalization is therefore closed directly in the
+named relation-role operator sectors. The remaining gate is only whether the
+intended primitive natural dynamics is physically/foundationally bound to
+this exact relational-cardinality normalization.
 
 Their exact signed local scale signatures are
 
