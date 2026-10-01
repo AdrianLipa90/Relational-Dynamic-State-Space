@@ -1606,3 +1606,17 @@ def test_unique_foundational_axiom_is_a0() -> None:
     assert claims["RR1"].kind is ClaimKind.DERIVATION_GATE
     assert claims["RA0_STAR"].kind is ClaimKind.DERIVATION_GATE
     assert claims["RA0_REL_STAR"].kind is ClaimKind.DERIVATION_GATE
+
+
+def test_algebraic_geometric_cell_claims_do_not_add_axioms() -> None:
+    claims = claim_map()
+
+    assert claims["DEF_STATIC_OCTAHEDRAL_FRAME"].kind is ClaimKind.DEFINITION
+    assert claims["GATE_EULER_SPIN_HALF_POLARIZATION"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["DEF_DYNAMIC_TETRAHEDRAL_PAIR"].kind is ClaimKind.DEFINITION
+    assert claims["GATE_STELLA_OCTANGULA_EMBEDDING"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["DEF_OCTAHEDRAL_FACE_ADJACENCY_COMPLEX"].kind is ClaimKind.DEFINITION
+    assert claims["REF_ALGEBRAIC_GEOMETRIC_INFORMATION_CELL"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["GATE_CELL_RELATIVE_STATE_TO_MOIRE"].kind is ClaimKind.DERIVATION_GATE
+
+    assert tuple(claim.id for claim in foundational_axioms()) == ("A0",)
