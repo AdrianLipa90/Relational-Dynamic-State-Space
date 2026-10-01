@@ -157,12 +157,12 @@ But there is no primitive relation incident to \(a\). Therefore
 
 Because the admitted domain is non-empty, this is not a vacuity effect.
 
-The stronger RA0_REL_STAR candidate exists precisely to add the missing
-relation binding.
+The historical RA0_REL_STAR strengthening exists precisely to add the missing
+relation binding. In the current ledger it is a derivation gate, not an axiom.
 
-## Candidate axiom
+## Historical strengthened derivation gate
 
-The candidate is:
+The strengthened gate is:
 
 \[
 \boxed{
@@ -244,11 +244,11 @@ Hence
 }
 \]
 
-This implication is stronger than required because the candidate supplies outgoing incidence, while RA0 itself is orientation-neutral.
+This implication is stronger than required because the strengthened gate supplies outgoing incidence, while RA0 itself is orientation-neutral.
 
 ## RR1 theorem
 
-The same candidate supplies two branch occurrence slots whose endpoint carriers are admitted.
+The same strengthened gate supplies two branch occurrence slots whose endpoint carriers are admitted.
 
 The rule therefore re-applies at every admitted child occurrence.
 
@@ -276,17 +276,20 @@ Consequently,
 }
 \]
 
-With META0 retained as the model-formation rule, the candidate reduced foundation is
+This provides a conditional compression of the historical RA0+RR1 pair.
+It does not replace the current foundation. The current foundation remains
 
 \[
 \boxed{
+A_0
+\Longrightarrow
 \mathrm{META0}
-\triangleright
-\mathrm{RA0}^{\mathrm{rel}*}.
+\Longrightarrow
+\text{derived structure / explicit derivation gates}.
 }
 \]
 
-This is a genuine one-object-level-axiom candidate.
+RA0_REL_STAR is therefore a strengthened derivation gate, not a second axiom.
 
 ## What has not been proved
 
@@ -477,11 +480,11 @@ Together with the forward implication,
 \mathrm{RA0}+\mathrm{RR1},
 \]
 
-this proves that the one-object-level-axiom candidate is a genuine strengthening in the expanded language. The reduction in axiom count is purchased by explicit distinction-to-relation binding.
+this proves that the historical compression gate is a genuine strengthening in the expanded language. Under the current one-axiom ledger this affects conditional structure, not the axiom count.
 
-## Promotion condition
+## Derivation-closing condition
 
-RA0_REL_STAR may replace the current pair RA0+RR1 only if the project explicitly accepts the following semantic identification:
+RA0_REL_STAR may discharge the historical RA0/RR1 closure package only if the project explicitly derives or accepts the following semantic identification:
 
 \[
 \boxed{
@@ -491,12 +494,15 @@ RA0_REL_STAR may replace the current pair RA0+RR1 only if the project explicitly
 }
 \]
 
-Until that identification is promoted, the canonical foundation remains
+Until that identification is closed, RA0_REL_STAR remains a derivation gate.
+The canonical foundation remains
 
 \[
 \boxed{
+A_0
+\Longrightarrow
 \mathrm{META0}
-\triangleright
-(\mathrm{RA0}+\mathrm{RR1}).
+\Longrightarrow
+\text{derived structure / explicit derivation gates}.
 }
 \]
