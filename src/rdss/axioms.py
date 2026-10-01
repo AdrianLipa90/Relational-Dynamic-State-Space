@@ -99,7 +99,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW",
         ClaimKind.REFERENCE_REALIZATION,
-        "A minimal noncircular persistence envelope is d_dot=d(mu-d)=-dW/dd on d>=0 with W(d;mu)=-mu*d^2/2+d^3/3. Here mu is only an effective signed balance coordinate; it is not treated as a primitive external control."
+        "A minimal noncircular persistence envelope is d_dot=d(mu-d)=-dW/dd on d>=0 with W(d;mu)=-mu*d^2/2+d^3/3. Here mu is only an effective signed balance coordinate; it is not treated as a primitive external control.",
         ("DEF_REFERENCE_DISTINCTION_AMPLITUDE",),
     ),
     Claim(
