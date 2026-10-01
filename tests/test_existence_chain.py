@@ -8,6 +8,8 @@ from rdss.existence_chain import (
     RELATIONAL_ZETA_ZERO,
     ExistenceChainStatus,
     binary_entropy_nats,
+    branch_swap,
+    branch_word_swap,
     exact_chain_sanity,
     hamlet_distribution,
     hamlet_information_nats,
@@ -54,6 +56,11 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
 
 
 def test_hamlet_symmetry_gives_half_half_and_ln2() -> None:
+    assert branch_swap(-1) == 1
+    assert branch_swap(1) == -1
+    assert branch_swap(branch_swap(-1)) == -1
+    assert branch_word_swap((-1, 1, -1)) == (1, -1, 1)
+    assert branch_word_swap(branch_word_swap((-1, 1, -1))) == (-1, 1, -1)
     assert hamlet_distribution() == (0.5, 0.5)
     assert isclose(binary_entropy_nats(0.5), log(2.0), abs_tol=1e-15)
     assert isclose(hamlet_information_nats(), LN2, abs_tol=1e-15)
