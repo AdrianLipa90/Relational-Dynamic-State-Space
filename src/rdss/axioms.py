@@ -38,16 +38,39 @@ CLAIMS: tuple[Claim, ...] = (
         ("A0",),
     ),
     Claim(
+        "DEF_NONTRIVIAL_INFORMATION_STATE",
+        ClaimKind.DEFINITION,
+        "A non-trivial finite information state is a state with a finite outcome set containing at least two distinguishable alternatives; a one-outcome state has no internal distinction capacity.",
+    ),
+    Claim(
+        "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY",
+        ClaimKind.DERIVATION_GATE,
+        "Mega-audit target: derive that the minimal realized carrier selected by the First-Law/META0 model-formation route must be a non-trivial information state rather than a merely non-empty but distinction-free carrier.",
+        ("GATE_L1_EXISTENCE_POTENTIAL", "THM_META0_MINIMAL_CARRIER_CARDINALITY", "DEF_NONTRIVIAL_INFORMATION_STATE"),
+    ),
+    Claim(
+        "THM_MINIMAL_INFORMATION_STATE_BINARY",
+        ClaimKind.THEOREM,
+        "Every non-trivial finite information state has at least two distinguishable alternatives, and the lower bound is attained by a two-element outcome set.",
+        ("DEF_NONTRIVIAL_INFORMATION_STATE",),
+    ),
+    Claim(
+        "THM_TWO_STATE_AUTOMORPHISM_Z2",
+        ClaimKind.THEOREM,
+        "The automorphism group of an unlabelled two-element outcome set consists of identity and swap, hence is S2 congruent to Z2.",
+        ("THM_MINIMAL_INFORMATION_STATE_BINARY",),
+    ),
+    Claim(
         "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",
         ClaimKind.DERIVATION_GATE,
-        "Pre-audit Hamlet uncertainty target: an unresolved existence potential with no preferred orientation yields the minimal exhaustive opposition {-1,+1}. This is a relational pre-observable uncertainty statement, not yet the standard Heisenberg x-p inequality.",
-        ("GATE_L1_EXISTENCE_POTENTIAL",),
+        "Hamlet uncertainty is the pre-observable minimal binary realization obtained if the existence-potential informationality gate closes: the minimal non-trivial outcome set has automorphism group Z2. It is not yet the standard Heisenberg x-p inequality.",
+        ("GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY", "THM_MINIMAL_INFORMATION_STATE_BINARY", "THM_TWO_STATE_AUTOMORPHISM_Z2"),
     ),
     Claim(
         "THM_HAMLET_HALF_HALF",
         ClaimKind.THEOREM,
-        "Conditional on an exhaustive binary opposition with exact exchange symmetry and no preferred orientation, normalization forces p_-=p_+=1/2.",
-        ("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",),
+        "For a normalized weighting on the two-state Hamlet carrier that is invariant under its non-trivial swap automorphism, invariance and normalization uniquely force p_-=p_+=1/2.",
+        ("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY", "THM_TWO_STATE_AUTOMORPHISM_Z2"),
     ),
     Claim(
         "THM_HAMLET_LN2",
