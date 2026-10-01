@@ -262,6 +262,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_BINARY_REL", "DEF_CARRIER_OCCURRENCE_SEPARATION"),
     ),
     Claim(
+        "THM_RELATION_DIRECTION_NOT_BRANCH_DUPLICATION",
+        ClaimKind.THEOREM,
+        "The source/target direction of a primitive typed relation value does not by itself generate two distinct branch occurrences. In particular, for a singleton self-relation r:a->a, endpoint reversal leaves the relation-value endpoints unchanged; distinct +/- occurrence identity requires explicit occurrence-address or branch-slot data.",
+        ("DEF_BINARY_REL", "DEF_RELATION_OCCURRENCE", "DEF_CARRIER_OCCURRENCE_SEPARATION"),
+    ),
+    Claim(
         "DEF_OCCURRENCE_PATH",
         ClaimKind.DEFINITION,
         "An occurrence-aware relation path is composable in both carrier value and occurrence address, with a consistent carrier assigned to each occurrence address.",
