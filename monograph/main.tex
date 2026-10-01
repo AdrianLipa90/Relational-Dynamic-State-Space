@@ -48,46 +48,73 @@ algebra.
 
 \section{Pre-audit existence causal skeleton}
 
-Before the logical-causal mega-audit, RDSS freezes the causal structure as a
-dependency graph rather than one overloaded linear chain.
+The logical-causal mega-audit distinguishes strict entailment from canonical
+RDSS semantics. These two tracks must not be conflated.
 
-The foundational/modal branch is
+\subsection{Strict First-Law entailment}
+
+The First Law excludes absolute nothingness and induces the non-vacuity
+formation rule. With the explicit bare singleton witness,
 \[
 \boxed{
 \neg\mathcal N
 \rightarrow
 \mathcal P_E
 \rightarrow
-\text{minimal admitted carrier}.
+\min|\operatorname{Adm}|=1.
 }
 \]
-The first arrow is definitional for a purely modal existence potential, while
-the model-formation route gives the exact bare minimum
-\[
-\boxed{\min |\operatorname{Adm}|=1.}
-\]
+Here \(\mathcal P_E\) is only the modal existence potential; it is not yet a
+physical potential, field, force or energy.
 
-The first genuinely open upstream step is
+A bare singleton carrier supplies a countermodel to the stronger implication
+\[
+\text{non-vacuity}
+\Rightarrow
+\text{non-trivial informationality}.
+\]
+Therefore the strict arrow
 \[
 \boxed{
-\text{minimal realized point}
+\text{minimal point}
 \rightarrow
-\text{non-trivial information state}.
+\text{non-trivial information state}
 }
 \]
-A bare singleton countermodel shows that non-vacuity alone does not force this
-step.
+remains a derivation gate.
 
-Conditional on non-trivial informationality, the smallest finite outcome set
-has two elements and
+Likewise, an abstract binary carrier does not by itself prove the universal
+relational-incidence statement RA0\_REL\_STAR.
+
+\subsection{Canonical RDSS semantics}
+
+RDSS separately defines a realized existence state to be an admitted
+non-trivial information state:
 \[
-\operatorname{Aut}(\Omega_2)
+\boxed{
+\text{RealizedExistence}_{\rm RDSS}
+:=
+\text{AdmittedNonTrivialInformationState}.
+}
+\]
+This is a definition of the theory's realized-state vocabulary, not a second
+foundational law and not a theorem claimed from bare \(L_1\).
+
+Under this definition, the smallest finite realized state has two
+distinguishable alternatives:
+\[
+|\Omega|_{\min}=2,
+\qquad
+\operatorname{Aut}(\Omega)
 \cong
 S_2
 \cong
 \mathbb Z_2.
 \]
-The canonical swap-invariant normalized weighting is
+Canonical relational-information semantics represents those alternatives as
+distinct occurrence identities bound to their host.
+
+The unique normalized branch-swap invariant weighting is
 \[
 \left(\frac12,\frac12\right),
 \]
@@ -96,22 +123,26 @@ hence Shannon information in nats is
 \boxed{\ln2.}
 \]
 
-The binary branch algebra supplies two canonical involutions on
+\subsection{Hamlet algebra and the imaginary generator}
+
+Let
 \[
-V_B=\mathbb R e_-\oplus\mathbb R e_+:
+V_B=\mathbb R e_-\oplus\mathbb R e_+
 \]
+be the free real span of the two Hamlet branches. Define branch swap and
+polarity by
 \[
 S e_b=e_{-b},
 \qquad
 P e_b=b\,e_b.
 \]
-They satisfy
+Then
 \[
 S^2=P^2=I,
 \qquad
 SP=-PS.
 \]
-Therefore
+Consequently
 \[
 \boxed{
 J:=SP,
@@ -119,8 +150,9 @@ J:=SP,
 J^2=-I.
 }
 \]
-Thus the imaginary generator is derived as a real-linear complex structure,
-unique up to the orientation change \(J\mapsto-J\).
+The imaginary generator is therefore realized as a real-linear complex
+structure downstream of the binary branch algebra, unique up to
+\(J\mapsto-J\).
 
 Exponentiation gives
 \[
@@ -128,16 +160,23 @@ e^{\phi J}
 =
 \cos\phi\,I+\sin\phi\,J,
 \]
-hence
+and hence
 \[
 \boxed{
 SO(2)\simeq U(1).
 }
 \]
 
-The real algebra \(\operatorname{span}_{\mathbb R}\{I,J\}\) is isomorphic to
-\(\mathbb C\). Keeping scalar phase and branch identity distinct gives the
-free complex branch space
+\subsection{Complex branch space and potential sphere}
+
+The real algebra
+\[
+\mathbb C_J
+=
+\operatorname{span}_{\mathbb R}\{I,J\}
+\]
+is isomorphic to \(\mathbb C\). Scalar phase and branch identity are kept
+distinct by forming
 \[
 \boxed{
 \mathcal H_B
@@ -148,10 +187,10 @@ free complex branch space
 }
 \]
 
-A positive-definite Hermitian form invariant under both Hamlet symmetries
-\(S\) and \(P\) is a positive scalar multiple of the identity; normalization
-fixes the scale. Therefore the normalized carrier is \(S^3\), and quotienting
-global phase gives
+A positive-definite Hermitian form invariant under both \(S\) and \(P\) is a
+positive scalar multiple of the identity; normalization fixes the scale.
+Thus the normalized state carrier is \(S^3\), and quotienting common phase
+gives
 \[
 \boxed{
 S^3/U(1)
@@ -162,28 +201,34 @@ S^2.
 }
 \]
 
-For either branch pole \(\psi_0\), the canonical orbit
+Relational \(\zeta=0\) is the centre of the ambient Bloch-ball chart, not
+absolute nothingness and not a pure CP1 state.
+
+\subsection{Berry holonomy and spin-half selection}
+
+For either normalized branch pole \(\psi_0\), consider
 \[
-\psi(\theta)
-=
-e^{\theta J}\psi_0,
+\psi(\theta)=e^{\theta J}\psi_0,
 \qquad
-0\le\theta\le\pi
+0\le\theta\le\pi.
 \]
-is horizontal:
+The symmetry-fixed Hermitian form gives
 \[
-\langle\psi,\dot\psi\rangle=0.
+\langle\psi,\dot\psi\rangle=0,
 \]
-At the first projective return,
+so this is a horizontal lift of its projective loop. The first projective
+return satisfies
 \[
 \psi(\pi)=-\psi_0.
 \]
-Hence the Hopf/Berry holonomy of the projected primitive loop is
+Therefore
 \[
-\boxed{-1.}
+\boxed{
+\operatorname{Hol}_{\rm Berry}(C_H)=-1.
+}
 \]
 
-The projected loop is a Bloch-sphere great circle bounding a hemisphere,
+The projected path is a great circle bounding a hemisphere,
 \[
 \Omega=2\pi.
 \]
@@ -191,17 +236,23 @@ Under the standard spin-\(s\) coherent-state Berry law,
 \[
 e^{is\Omega}
 =
--1,
+e^{i2\pi s}
+=
+-1.
 \]
-so
+Hence
 \[
+s\in\mathbb Z+\frac12,
+\qquad
 \boxed{
 s_{\min}=\frac12.
 }
 \]
 The doubled traversal returns to \(+1\) after \(4\pi\).
 
-The Berry phase also admits a local connection representation
+\subsection{Phase and potential}
+
+The Berry phase admits a local connection representation
 \[
 \gamma_B[C]
 =
@@ -210,28 +261,22 @@ The Berry phase also admits a local connection representation
 \qquad
 \mathcal A_B\mapsto\mathcal A_B+d\chi.
 \]
-Thus phase carries potential/connection information only up to gauge. The
-primitive existence potential \(\mathcal P_E\) and the later Berry connection
-\(\mathcal A_B\) remain distinct semantic objects.
+Thus phase contains local connection/potential information only up to gauge.
+The primitive modal existence potential and the later Berry connection are
+different typed objects:
+\[
+\boxed{
+\mathcal P_E\neq\mathcal A_B.
+}
+\]
 
-The remaining foundational gates are now concentrated at two earlier points:
-\[
-\boxed{
-\text{point}
-\rightarrow
-\text{non-trivial informationality}
-}
-\]
-and
-\[
-\boxed{
-\text{abstract Hamlet } \mathbb Z_2
-\rightarrow
-\text{relationally bound occurrence structure}.
-}
-\]
-The physical identification of the final projective representation with
-measured angular momentum spin is a separate downstream bridge.
+The remaining strict foundational questions are therefore concentrated
+upstream: whether bare \(L_1\) entails non-trivial informationality and whether
+bare \(L_1\) entails universal relational branch binding. The downstream
+canonical RDSS chain remains mathematically closed under its declared semantic
+definitions, while physical identification of the resulting projective
+representation with measured angular momentum spin remains a separate
+empirical bridge.
 
 \section{Scope}
 
