@@ -424,7 +424,163 @@ So the Collatz numerical coefficients
 are generated from the same relation-role algebra independently of the
 source-minimal parity argument.
 
-Status: COEFFICIENT PROVENANCE DOUBLE-CLOSED.
+Status: COEFFICIENT PROVENANCE DOUBLE-CLOSED by the source-minimal and Gaussian routes.
+
+### Third coefficient route: operator dimension and universal repair
+
+The durable relation-role carrier has
+
+\[
+q=2.
+\]
+
+Its full real operator algebra is
+
+\[
+M_q(\mathbb R),
+\qquad
+\dim_{\mathbb R}M_q(\mathbb R)=q^2=4.
+\]
+
+Removing the one-dimensional identity line leaves
+
+\[
+\boxed{
+q^2-1=3
+}
+\]
+
+non-identity directions. Thus the same relation algebra independently supplies
+
+\[
+\boxed{
+\text{association divisor}=2,
+\qquad
+\text{dissociation multiplicity}=3.
+}
+\]
+
+Now take the dissociation multiplier \(m=q^2-1\). Modulo \(q\),
+
+\[
+m\equiv-1.
+\]
+
+A single constant repair \(r\) that sends every nonzero residue \(a\) to the
+divisible class would require
+
+\[
+-a+r\equiv0\pmod q
+\]
+
+for every nonzero \(a\). This is possible only when there is a single nonzero
+residue class, i.e. for
+
+\[
+\boxed{q=2}.
+\]
+
+Then
+
+\[
+\boxed{r=1}
+\]
+
+is the unique minimal positive repair.
+
+Therefore the Collatz coefficient triple
+
+\[
+\boxed{(2,3,1)}
+\]
+
+is now **triple-closed**:
+
+\[
+\text{source-minimal parity}
+=
+\text{Gaussian/Bombelli}
+=
+\text{operator dimension + universal repair}.
+\]
+
+Status: PASS-CONDITIONAL / EXACT inside the declared relational arithmetic
+semantics.
+
+### Active seed and L-constant certificate
+
+The first active arithmetic state is taken to carry each non-identity
+operator direction exactly once. Therefore
+
+\[
+\boxed{
+n_0=q^2-1=3.
+}
+\]
+
+This seed is no longer numerically selected independently of the relation
+algebra.
+
+The exact Collatz trajectory begins
+
+\[
+\boxed{
+3\to10\to5.
+}
+\]
+
+Hence the first completed dissociation--repair--association cycle reaches
+
+\[
+\boxed{5}.
+\]
+
+Independently, the Gaussian generator has
+
+\[
+N(2+J)=5.
+\]
+
+Thus
+
+\[
+\boxed{L_5=5}
+\]
+
+is reached simultaneously by the Collatz and Gaussian routes.
+
+The complete finite trajectory from the same seed is
+
+\[
+3\to10\to5\to16\to8\to4\to2\to1,
+\]
+
+with exact depth
+
+\[
+\boxed{7}.
+\]
+
+Therefore
+
+\[
+\boxed{
+L_4=2,\qquad
+L_5=5,\qquad
+L_3=7,
+}
+\]
+
+and
+
+\[
+\boxed{
+L_3=L_4+L_5.
+}
+\]
+
+Status: PASS-EXACT for the finite arithmetic certificate, conditional only on
+the explicit active-seed integerization rule.
 
 ### L-constant branch
 
