@@ -103,6 +103,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE", "DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION", "THM_CANONICAL_REALIZED_EXISTENCE_BINARY"),
     ),
     Claim(
+        "THM_CANONICAL_REALIZED_EXISTENCE_RELATIONAL_BINARY",
+        ClaimKind.THEOREM,
+        "Under the canonical RDSS definitions of realized existence and relational-information realization, the minimal realized existence state is binary and its two distinguishable alternatives are represented by two distinct branch-occurrence identities bound relationally to their host. This is a theorem of the chosen semantics, not a proof that bare L1 entails RA0_REL_STAR for every admitted carrier.",
+        ("DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE", "DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION", "THM_CANONICAL_REALIZED_EXISTENCE_BINARY", "REF_CANONICAL_HAMLET_RELATIONAL_REALIZATION"),
+    ),
+    Claim(
         "THM_BINARY_BRANCH_SWAP_INVOLUTION",
         ClaimKind.THEOREM,
         "On the primitive branch alphabet B={-1,+1}, sigma(b)=-b is the unique non-trivial involution. It extends letterwise to an involutive automorphism of the finite-word address space B* and exchanges the two depth-one Hamlet branches.",
@@ -117,8 +123,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_HAMLET_HALF_HALF",
         ClaimKind.THEOREM,
-        "Conditional on the Hamlet binary-differentiation gate, the canonical swap-invariant normalized probability is uniquely p_-=p_+=1/2.",
-        ("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY", "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY"),
+        "Under canonical RDSS realized-existence semantics, the minimal binary Hamlet carrier has a unique normalized weighting invariant under branch swap, namely p_-=p_+=1/2. The separate strict L1-to-informationality gate remains open.",
+        ("THM_CANONICAL_REALIZED_EXISTENCE_BINARY", "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY"),
     ),
     Claim(
         "THM_HAMLET_LN2",
@@ -135,8 +141,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "DEF_HAMLET_REAL_LINEAR_SPAN",
         ClaimKind.DEFINITION,
-        "For the ordered Hamlet branch basis (e_-,e_+), let V_B=R e_- direct-sum R e_+ be the free real linear span. The normalized branch weights form an affine simplex inside this span; no complex scalar is assumed.",
-        ("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY", "THM_HAMLET_HALF_HALF"),
+        "For the ordered canonical Hamlet branch basis (e_-,e_+), let V_B=R e_- direct-sum R e_+ be the free real linear span. The normalized branch weights form an affine simplex inside this span; no complex scalar is assumed.",
+        ("THM_CANONICAL_REALIZED_EXISTENCE_BINARY", "THM_HAMLET_HALF_HALF"),
     ),
     Claim(
         "THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE",
