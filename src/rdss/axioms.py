@@ -61,6 +61,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_MINIMAL_INFORMATION_STATE_BINARY",),
     ),
     Claim(
+        "THM_Z2_UNIQUE_NONTRIVIAL_U1_CHARACTER",
+        ClaimKind.THEOREM,
+        "Let g be the non-trivial element of Z2. Any one-dimensional unitary character satisfies chi(g)^2=1. The non-trivial character cannot send g to +1, therefore uniquely chi(g)=-1 in U(1).",
+        ("THM_TWO_STATE_AUTOMORPHISM_Z2",),
+    ),
+    Claim(
         "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",
         ClaimKind.DERIVATION_GATE,
         "Hamlet uncertainty is the pre-observable minimal abstract binary realization obtained if the existence-potential informationality gate closes: a minimal non-trivial outcome set with automorphism group Z2. It is not yet the standard Heisenberg x-p inequality and does not yet assume relational branch binding.",
@@ -99,8 +105,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_HAMLET_RELATIONAL_ZETA_ZERO",
         ClaimKind.THEOREM,
-        "Under the normalized orientation chart {-1,+1}, the relational centre is zeta=(-1+1)/2=0. This represented relational zero is not absolute nothingness.",
-        ("THM_HAMLET_HALF_HALF",),
+        "Under the normalized sign-character chart {-1,+1}, the relational centre is zeta=(-1+1)/2=0. This represented relational zero is not absolute nothingness and does not depend on assigning probabilities.",
+        ("THM_Z2_UNIQUE_NONTRIVIAL_U1_CHARACTER",),
     ),
     Claim(
         "GATE_HAMLET_IMAGINARY_GENERATOR",
@@ -159,13 +165,13 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE",
         ClaimKind.DERIVATION_GATE,
-        "Mega-audit target: derive why the primitive non-degenerate Hamlet binary closure corresponds to the non-trivial projective sign exp(i*gamma)=-1 on one primitive closed cycle rather than assuming that sign as an independent premise.",
-        ("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY", "REF_CP1_BERRY_GEOMETRIC_PHASE"),
+        "Mega-audit target: the non-trivial Hamlet Z2 character already fixes the algebraic phase sign chi(g)=-1. What remains is to derive why the canonical primitive Berry loop realizes that non-trivial character, rather than the trivial +1 character.",
+        ("THM_Z2_UNIQUE_NONTRIVIAL_U1_CHARACTER", "REF_CP1_BERRY_GEOMETRIC_PHASE"),
     ),
     Claim(
         "THM_EULER_BERRY_MINIMAL_SPIN_HALF",
         ClaimKind.THEOREM,
-        "Conditional on the CP^1/Bloch-sphere Berry phase gamma=2*pi*s and the Hamlet-derived non-trivial projective sign closure exp(i*gamma)=-1, the smallest positive allowed sector is s=1/2; the doubled 4*pi traversal returns to +1.",
+        "Conditional on identifying the canonical primitive Berry loop with the unique non-trivial Hamlet Z2 character chi(g)=-1, the Berry relation gamma=2*pi*s selects the smallest positive sector s=1/2; the doubled 4*pi traversal returns to +1.",
         ("REF_CP1_BERRY_GEOMETRIC_PHASE", "GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE"),
     ),
     Claim(
