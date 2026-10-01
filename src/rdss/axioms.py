@@ -1135,6 +1135,49 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_REFERENCE_CORPUS", "REF_CP1_PROJECTIVE_CHART_QUOTIENT"),
     ),
 
+    Claim(
+        "DEF_STATIC_OCTAHEDRAL_FRAME",
+        ClaimKind.DEFINITION,
+        "A local static octahedral frame is a six-vertex, eight-face combinatorial cage whose cell identity, vertices and faces remain fixed while local dynamic state changes.",
+        ("DEF_POINT",),
+    ),
+    Claim(
+        "GATE_EULER_SPIN_HALF_POLARIZATION",
+        ClaimKind.DERIVATION_GATE,
+        "The target Euler/Berry spin closure maps the two relational poles to an opposite-polarization spin-1/2 pair with 2*pi sign return and 4*pi full return. RDSS records this as a derivation gate until its complete local proof/provenance is closed.",
+        ("REF_CP1", "REF_U1_PHASE_VALUE"),
+    ),
+    Claim(
+        "DEF_DYNAMIC_TETRAHEDRAL_PAIR",
+        ClaimKind.DEFINITION,
+        "The dynamic local 3D sector is represented by two tetrahedral states carrying opposite polarization, U(1) phase and angular state inside one static octahedral frame; no coordinate embedding is imposed by this definition.",
+        ("DEF_STATIC_OCTAHEDRAL_FRAME", "GATE_EULER_SPIN_HALF_POLARIZATION"),
+    ),
+    Claim(
+        "GATE_STELLA_OCTANGULA_EMBEDDING",
+        ClaimKind.DERIVATION_GATE,
+        "The intended two-tetrahedron compound is Stella Octangula; the exact coordinate embedding into the static octahedral cage remains an explicit derivation gate rather than an assumed geometric identity.",
+        ("DEF_DYNAMIC_TETRAHEDRAL_PAIR",),
+    ),
+    Claim(
+        "DEF_OCTAHEDRAL_FACE_ADJACENCY_COMPLEX",
+        ClaimKind.DEFINITION,
+        "A static octahedral cell complex is a set of fixed octahedral frames joined by one-to-one face adjacencies; this combinatorial definition does not assert a Euclidean space-filling tiling by regular octahedra alone.",
+        ("DEF_STATIC_OCTAHEDRAL_FRAME",),
+    ),
+    Claim(
+        "REF_ALGEBRAIC_GEOMETRIC_INFORMATION_CELL",
+        ClaimKind.REFERENCE_REALIZATION,
+        "The executable algebraic-geometric information cell combines one static octahedral frame with one opposite-polarization dynamic tetrahedral pair and binds its local information action to kappa=ln(2)/(24*pi).",
+        ("DEF_DYNAMIC_TETRAHEDRAL_PAIR", "DEF_OCTAHEDRAL_FACE_ADJACENCY_COMPLEX", "DER_KAPPA_RADIAN_CHART"),
+    ),
+    Claim(
+        "GATE_CELL_RELATIVE_STATE_TO_MOIRE",
+        ClaimKind.DERIVATION_GATE,
+        "The target next step is to derive the moire field/coupling from relative phase, polarization and angular state of dynamic tetrahedral pairs across adjacent static faces; no neighbour-coupling law is assumed yet.",
+        ("REF_ALGEBRAIC_GEOMETRIC_INFORMATION_CELL", "DER_MOIRE"),
+    ),
+
 )
 
 
