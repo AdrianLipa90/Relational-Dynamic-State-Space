@@ -20,6 +20,14 @@ from .algebraic_geometry_cell import (
     spin_half_phase_sign,
     squared_distance,
 )
+from .cell_transport import (
+    FaceFrameTransport,
+    MoireEdgeState,
+    StellaRelativeState,
+    TransportedFaceAdjacency,
+    moire_edge_state,
+    stella_relative_state,
+)
 from .algebra import (
     OccurrenceAddress,
     RelationalPoint,
@@ -365,6 +373,12 @@ __all__ = [
     "RelationalCubicCell",
     "spin_half_phase_sign",
     "squared_distance",
+    "FaceFrameTransport",
+    "MoireEdgeState",
+    "StellaRelativeState",
+    "TransportedFaceAdjacency",
+    "moire_edge_state",
+    "stella_relative_state",
     "AmbiguousBridgeError",
     "BridgeComparison",
     "BridgeDirection",
