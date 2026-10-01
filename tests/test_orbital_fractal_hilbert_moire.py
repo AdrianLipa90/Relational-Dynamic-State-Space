@@ -5,6 +5,7 @@ import pytest
 from rdss.orbital_fractal_hilbert_moire import (
     CountableBranchAddress,
     HILBERT_HOTEL_FREDHOLM_INDEX,
+    OFHM_RULE_DEPENDENCIES,
     OrbitalFractalHilbertMoireState,
     bees_overdamped_phase_step,
     binary_occurrence_to_countable,
@@ -174,3 +175,18 @@ def test_idt_second_order_step_matches_declared_discrete_rule():
         + drive
     )
     assert next_state.angular_velocity == pytest.approx(expected_velocity)
+
+
+def test_ofhm_dependency_graph_matches_source_derivation_order():
+    assert OFHM_RULE_DEPENDENCIES["symbolic_fractal_boundary"] == (
+        "euler_symbolic_branch_space",
+        "hilbert_hotel_shift",
+    )
+    assert OFHM_RULE_DEPENDENCIES["moire_cocycle"] == (
+        "bees_relative_phase_coherence",
+    )
+    assert OFHM_RULE_DEPENDENCIES["hilbert_transport"] == ("moire_cocycle",)
+    assert OFHM_RULE_DEPENDENCIES["phase_dynamics"] == (
+        "bees_local_coupling",
+        "idt_phase_update",
+    )
