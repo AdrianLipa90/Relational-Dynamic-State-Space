@@ -1663,6 +1663,9 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["DEF_PRIMITIVE_INDISTINCTION"].kind is ClaimKind.DEFINITION
     assert claims["DEF_DISTINCTION_PERSISTENCE_PREDICATE"].kind is ClaimKind.DEFINITION
     assert claims["THM_FIRST_HAMLET_DISPERSION_STRUCTURE"].kind is ClaimKind.THEOREM
+    assert claims["DEF_CANONICAL_FIRST_HAMLET_NONDEGENERATE"].kind is ClaimKind.DEFINITION
+    assert claims["THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES"].kind is ClaimKind.THEOREM
+    assert claims["GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_FIRST_HAMLET_Z2"].kind is ClaimKind.THEOREM
     assert claims["THM_FIRST_HAMLET_HARTLEY_LN2"].kind is ClaimKind.THEOREM
     assert claims["THM_DISPERSION_RETURNS_INDISTINCTION"].kind is ClaimKind.THEOREM
@@ -1985,4 +1988,20 @@ def test_spin_closure_uses_swap_invariant_amplitude_not_probability_half_half() 
     assert "THM_HAMLET_HALF_HALF" not in closure
     assert "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY" not in closure
     assert "THM_FIRST_HAMLET_HARTLEY_LN2" not in closure
+
+def test_hartley_ln2_requires_two_nonempty_first_hamlet_branches() -> None:
+    claims = claim_map()
+
+    schema_closure = dependency_closure("THM_FIRST_HAMLET_DISPERSION_STRUCTURE")
+    assert "DEF_CANONICAL_FIRST_HAMLET_NONDEGENERATE" not in schema_closure
+
+    two_branch_closure = dependency_closure("THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES")
+    assert "DEF_CANONICAL_FIRST_HAMLET_NONDEGENERATE" in two_branch_closure
+
+    ln2_closure = dependency_closure("THM_FIRST_HAMLET_HARTLEY_LN2")
+    assert "THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES" in ln2_closure
+    assert "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0" not in ln2_closure
+
+    strict_gate = claims["GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0"]
+    assert strict_gate.kind is ClaimKind.DERIVATION_GATE
 
