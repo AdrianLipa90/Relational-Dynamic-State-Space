@@ -842,3 +842,122 @@ Structural monograph audit on this head:
 - display delimiters: 297 open / 297 close.
 
 Full repository pytest and actual LaTeX compilation remain NOT YET RUN on an exact complete checkout of this branch.
+
+
+## Algebraic-geometric information-cell milestone — 2026-10-01
+
+This section supersedes earlier current-state counts while preserving previous
+milestone snapshots as provenance.
+
+Current branch source/static baseline:
+
+- branch: \`feat/canonical-normal-form-v0.1\`;
+- branch distance from main: 311 commits ahead, 0 behind;
+- changed files versus main: 59;
+- claim entries: 190;
+- foundational AXIOM claims: exactly one, \`A0\`;
+- package-root exports: 287;
+- duplicate claim IDs observed: 0;
+- duplicate package exports observed: 0;
+- missing exports from the algebraic-geometric cell public API: 0;
+- missing algebraic-geometric cell claim IDs: 0;
+- dedicated algebraic-geometric cell test functions: 10;
+- bare standalone Markdown math delimiters in the audited changed documentation: 0.
+
+### One-axiom migration
+
+The claim ledger now enforces
+
+\[
+\boxed{
+\operatorname{AXIOMS}=\{A_0\}.
+}
+\]
+
+\`META0\` is a formation rule downstream of \(A_0\). Historical \`RA0\`,
+\`RR1\`, \`RA0_STAR\`, and \`RA0_REL_STAR\` identifiers are retained as
+derivation gates so existing conditional results remain addressable without
+being promoted to additional axioms.
+
+The architecture, axiom audit, non-vacuity gate, closure audit, relational
+admissibility gate, and relational distinction-binding gate were migrated to
+the same classification.
+
+### Algebraic-geometric cell layer
+
+The new executable reference layer is
+\`src/rdss/algebraic_geometry_cell.py\`.
+
+It separates:
+
+\[
+\text{static sector}
+=
+\text{octahedral frame + face adjacency},
+\]
+
+from
+
+\[
+\text{dynamic sector}
+=
+\text{oppositely polarized tetrahedral pair + }U(1)\text{ phase/angular state}.
+\]
+
+The static frame is not moved by dynamic state updates. The global static
+object is represented as a face-adjacency complex, not as an unsupported claim
+that congruent regular octahedra alone tile Euclidean three-space.
+
+The local information action is bound to the pre-existing canonical value
+
+\[
+\boxed{
+\kappa=\frac{\ln 2}{24\pi}
+}
+\]
+
+through \`KAPPA_PHI\`; no second information-action constant is introduced.
+
+The standard regular two-tetrahedron compound is registered as a Stella
+Octangula reference realization with a regular central octahedral intersection.
+The exact coordinate binding of the abstract dynamic tetrahedra to the chosen
+static frame remains an explicit derivation gate.
+
+### TIR reference direction
+
+TIR was used **read only** as a public reference source. The Euler--Berry
+spin-\(1/2\) / polarization closure is imported into RDSS as
+
+\`BRIDGE_TIR_EULER_BERRY_SPIN_HALF_POLARIZATION\`.
+
+No write to TIR was performed by this milestone.
+
+### NOEMA / tether
+
+The canonical first-turn autoboot was re-materialized from Library, the
+continuity checkpoint sequence 14630 was imported, and the post-boot guard
+reported:
+
+- \`tether_status=ACTIVE\`;
+- \`failures=[]\`.
+
+### Validation boundary
+
+SOURCE/STATIC checks for the surfaces above: **PASS**.
+
+Full repository \`pytest\`: **NOT RUN on an exact complete checkout of this
+branch**.
+
+Actual LaTeX compilation: **NOT RUN on an exact complete checkout of this
+branch**.
+
+No GitHub Actions run or combined status was observed for the checked write
+commit, so no CI PASS is claimed.
+
+The next formal gates are:
+
+1. exact coordinate binding of the dynamic tetrahedral pair to the static
+   octahedral frame;
+2. global geometric realization of the face-adjacency complex;
+3. neighbour coupling across a shared static face;
+4. derivation of the moiré field from relative phase/polarization/angular state.
