@@ -17,6 +17,7 @@ from rdss.existence_chain import (
     spin_half_full_return,
     spin_half_sign_return,
     u1_phase,
+    z2_nontrivial_u1_character,
 )
 
 
@@ -37,7 +38,7 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
     assert by_id["BINARY_TO_Z2_AUTOMORPHISM"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["EXISTENCE_POTENTIAL_TO_HAMLET"].status is ExistenceChainStatus.DERIVATION_GATE
     assert by_id["HAMLET_TO_HALF_HALF"].status is ExistenceChainStatus.CONDITIONAL_EXACT
-    assert by_id["Z2_TO_SIGN_CHARACTER"].status is ExistenceChainStatus.STANDARD_GEOMETRY
+    assert by_id["Z2_TO_SIGN_CHARACTER"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["ORIENTATION_TO_IMAGINARY_GENERATOR"].status is ExistenceChainStatus.DERIVATION_GATE
 
     assert by_id["HALF_HALF_TO_LN2"].status is ExistenceChainStatus.EXACT_IDENTITY
@@ -68,6 +69,12 @@ def test_hamlet_symmetry_gives_half_half_and_ln2() -> None:
 
 def test_relational_zero_is_midpoint_not_absolute_nothingness_marker() -> None:
     assert relational_zero_center(-1.0, 1.0) == RELATIONAL_ZETA_ZERO == 0.0
+
+
+def test_z2_nontrivial_character_fixes_minus_one_phase() -> None:
+    assert z2_nontrivial_u1_character(1) == 1 + 0j
+    assert z2_nontrivial_u1_character(-1) == -1 + 0j
+    assert z2_nontrivial_u1_character(-1) ** 2 == 1 + 0j
 
 
 def test_imaginary_generator_and_u1_phase_are_exact() -> None:
