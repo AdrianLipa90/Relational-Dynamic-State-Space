@@ -2,7 +2,7 @@ from math import isclose, pi
 
 import pytest
 
-from rdss.algebraic_geometry_cell import (
+from rdss import (
     OCTAHEDRON_FACE_COUNT,
     OCTAHEDRON_VERTEX_COUNT,
     SPIN_HALF,
@@ -32,13 +32,13 @@ def cell(cell_id: str, plus: float = 0.0, minus: float = 0.0) -> RelationalOctah
         positive=DynamicTetrahedronState(
             f"{cell_id}:T+",
             Polarization.POSITIVE,
-            U1Phase(plus),
+            U1Phase.from_angle(plus),
             angular_offset=0.125,
         ),
         negative=DynamicTetrahedronState(
             f"{cell_id}:T-",
             Polarization.NEGATIVE,
-            U1Phase(minus),
+            U1Phase.from_angle(minus),
             angular_offset=-0.125,
         ),
     )
@@ -56,6 +56,7 @@ def test_dynamic_tetrahedral_pair_carries_opposite_polarization_and_spin_half() 
     assert item.negative.polarization == -1
     assert item.positive.spin == SPIN_HALF
     assert item.negative.spin == SPIN_HALF
+    assert item.stella_octangula_pair == (item.positive, item.negative)
 
 
 def test_static_frame_is_unchanged_when_dynamic_state_changes() -> None:
@@ -65,13 +66,13 @@ def test_static_frame_is_unchanged_when_dynamic_state_changes() -> None:
         positive=DynamicTetrahedronState(
             "c0:T+",
             Polarization.POSITIVE,
-            U1Phase(pi / 3.0),
+            U1Phase.from_angle(pi / 3.0),
             angular_offset=0.25,
         ),
         negative=DynamicTetrahedronState(
             "c0:T-",
             Polarization.NEGATIVE,
-            U1Phase(-pi / 5.0),
+            U1Phase.from_angle(-pi / 5.0),
             angular_offset=-0.25,
         ),
     )
