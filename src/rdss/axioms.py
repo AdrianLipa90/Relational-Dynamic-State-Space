@@ -1184,10 +1184,34 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_DYNAMIC_TETRAHEDRAL_PAIR", "REF_OCTAHEDRAL_RELATIONAL_CORE", "DEF_CUBIC_FACE_ADJACENCY_COMPLEX", "DER_KAPPA_RADIAN_CHART"),
     ),
     Claim(
-        "GATE_CELL_RELATIVE_STATE_TO_MOIRE",
+        "DEF_CUBIC_FACE_FRAME_TRANSPORT",
+        ClaimKind.DEFINITION,
+        "A glued cubic face carries an explicit right-to-left signed-permutation frame transport. The transport maps the source cube to the target cube and must map the declared right face exactly onto the declared left face.",
+        ("DEF_CUBIC_FACE_ADJACENCY_COMPLEX",),
+    ),
+    Claim(
+        "DER_STELLA_SECTOR_TRANSPORT",
+        ClaimKind.DERIVED,
+        "For the cubic Stella partition xyz=+/-1, a signed-permutation face transport acts on the tetrahedral sector by the character eta=product(signs): eta=+1 preserves T+ and T-, while eta=-1 exchanges them.",
+        ("DEF_STELLA_CUBIC_VERTEX_PARTITION", "DEF_CUBIC_FACE_FRAME_TRANSPORT"),
+    ),
+    Claim(
+        "DEF_STELLA_RELATIVE_STATE",
+        ClaimKind.DEFINITION,
+        "The gauge-reduced local Stella state is the relative U(1) phase delta=U+ U-^{-1} together with the within-cell angular offset theta+ - theta-. A common U(1) phase shift of both sectors leaves delta invariant.",
+        ("DEF_DYNAMIC_TETRAHEDRAL_PAIR", "REF_U1_PHASE_VALUE"),
+    ),
+    Claim(
+        "DER_CELL_RELATIVE_STATE_TO_MOIRE",
+        ClaimKind.DERIVED,
+        "For an oriented glued face e=(n,m) with Stella-sector character eta, the phase-edge mismatch is Xi_e=delta_n delta_m^{-eta}. The construction is relational and gauge-reduced and introduces no time-evolution or interaction-energy law.",
+        ("DEF_CUBIC_FACE_FRAME_TRANSPORT", "DER_STELLA_SECTOR_TRANSPORT", "DEF_STELLA_RELATIVE_STATE", "DER_MOIRE"),
+    ),
+    Claim(
+        "GATE_MOIRE_DYNAMICAL_LAW",
         ClaimKind.DERIVATION_GATE,
-        "The next target is to derive the moire field/coupling from relative U(1) phase, polarization and angular state of tetrahedral sectors across adjacent static cubic faces; no neighbour-coupling law is assumed yet.",
-        ("REF_ALGEBRAIC_GEOMETRIC_INFORMATION_CELL", "DER_MOIRE"),
+        "A dynamical neighbour-coupling law, interaction energy, continuum field equation, or physical identification of the edge mismatch is not inferred from the geometric Moire edge state and remains an explicit downstream derivation gate.",
+        ("DER_CELL_RELATIVE_STATE_TO_MOIRE",),
     ),
 
 )
