@@ -128,16 +128,13 @@ s_{\min}=\frac12.
 The order is normative for the audit. In particular, the Berry/phase-potential
 layer must not be reversed into an upstream cause of the existence potential.
 
-## 1. Existence potential
+## 1. Existence potential and minimal point
 
-After absolute nothingness is excluded, the candidate primitive remainder is
+After absolute nothingness is excluded, define the primitive modal remainder as
 
 \[
 \boxed{\mathcal P_E}.
 \]
-
-At this stage \(\mathcal P_E\) is not assigned mass, energy, force, spacetime
-location, field equation or numerical magnitude.
 
 The arrow
 
@@ -145,25 +142,67 @@ The arrow
 \neg\mathcal N\rightarrow\mathcal P_E
 \]
 
-is recorded as a derivation gate until the mega-audit establishes whether it
-is genuinely forced or only a definitional complement of nothingness.
+is now classified as definitional, provided \(\mathcal P_E\) remains purely
+modal/admissible and is not silently physicalized.
 
-## 2. Hamlet uncertainty
-
-“To be / not to be” is used as a mnemonic for the primitive unresolved
-relational orientation. It is not itself a proof and it is not yet the
-standard Heisenberg/Robertson uncertainty relation.
-
-The candidate minimal non-degenerate distinction is
+Separately, the First-Law model-formation route gives a non-empty admitted
+domain and a bare singleton-point witness, so
 
 \[
-\mathcal P_E
-\rightarrow
-\mathbb Z_2.
+\boxed{
+\min |Adm|=1.
+}
 \]
 
-Neither branch represents absolute nothingness. The two branches are opposite
-realizable orientations of the same existence potential.
+Thus the unscaled point is the minimal carrier realization of non-vacuity.
+
+## 2. Point -> informationality -> Hamlet
+
+The bare singleton point does **not** itself force a binary distinction. RDSS
+contains an explicit bare singleton presentation with no relational or binary
+structure, so
+
+\[
+\boxed{
+\text{minimal point}
+\not\Rightarrow
+\text{non-trivial information}
+}
+\]
+
+under the current semantics.
+
+The first open causal gate is therefore
+
+\[
+\boxed{
+\text{minimal realized point}
+\rightarrow
+\text{non-trivial information state}.
+}
+\]
+
+Once informational non-triviality is admitted, the smallest finite outcome
+space has exactly two distinguishable alternatives:
+
+\[
+|\Omega|_{\min}=2.
+\]
+
+Its automorphism group is
+
+\[
+\boxed{
+\operatorname{Aut}(\Omega)\cong S_2\cong\mathbb Z_2.
+}
+\]
+
+This is the abstract Hamlet carrier.
+
+A second, separate relational-binding gate asks why those abstract alternatives
+must be realized as two distinct branch-relation occurrences on the admitted
+carrier, i.e. why the Hamlet carrier realizes the semantic content targeted by
+RA0_REL_STAR.
 
 ## 3. Balanced binary state and \(\ln2\)
 
@@ -425,9 +464,12 @@ Hamlet-to-projective-sign closure; that sign is not silently assumed.
 
 | Arrow | Pre-audit status |
 |---|---|
-| \(L_1\to\mathcal P_E\) | DERIVATION GATE |
-| \(\mathcal P_E\to\mathbb Z_2\) | DERIVATION GATE |
-| symmetry \(\to(1/2,1/2)\) | PASS CONDITIONAL |
+| \(L_1\to\mathcal P_E\) | PASS DEFINITIONAL |
+| First-Law model \(\to\min|Adm|=1\) | PASS MODEL THEOREM |
+| minimal point \(\to\) non-trivial information | DERIVATION GATE |
+| information \(\to |\Omega|_{\min}=2\to\mathbb Z_2\) | PASS CONDITIONAL / EXACT |
+| abstract \(\mathbb Z_2\to\) relational branch binding | DERIVATION GATE |
+| branch-swap invariance \(\to(1/2,1/2)\) | PASS CONDITIONAL / EXACT |
 | \((1/2,1/2)\to\ln2\) | EXACT IDENTITY |
 | \(\mathbb Z_2\to\{-1,+1\}\) | PASS CONDITIONAL |
 | \((-1,+1)\to\zeta=0\) | EXACT under normalized affine chart |
