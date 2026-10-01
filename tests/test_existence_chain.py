@@ -23,6 +23,12 @@ from rdss.existence_chain import (
     hamlet_operator_balanced_orbit_derivative,
     hamlet_operator_horizontal_residual,
     hamlet_operator_to_real_branch_chart,
+    hamlet_pauli_matrices,
+    hamlet_su2_generators,
+    hamlet_su2_commutator_residual,
+    hamlet_su2_casimir_value,
+    hamlet_su2_representation_label,
+    hamlet_spinor_z_rotation,
     exact_chain_sanity,
     hamlet_distribution,
     hamlet_information_nats,
@@ -66,6 +72,8 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
         is ExistenceChainStatus.CONDITIONAL_STANDARD_RESULT
     )
     assert by_id["HAMLET_TO_PROJECTIVE_SIGN_CLOSURE"].status is ExistenceChainStatus.CONDITIONAL_EXACT
+    assert by_id["HAMLET_PAULI_TO_SU2"].status is ExistenceChainStatus.CONDITIONAL_EXACT
+    assert by_id["SU2_CASIMIR_TO_HALF"].status is ExistenceChainStatus.CONDITIONAL_STANDARD_RESULT
     assert (
         by_id["BERRY_EULER_HAMLET_TO_SPIN_HALF"].status
         is ExistenceChainStatus.CONDITIONAL_STANDARD_RESULT
@@ -159,4 +167,20 @@ def test_operator_algebra_module_realizes_c2_without_duplicate_branch_copy() -> 
     start = hamlet_operator_balanced_orbit(0.0)
     end = hamlet_operator_balanced_orbit(3.141592653589793)
     assert all(abs(e + a) <= 1e-12 for a, e in zip(start, end))
+
+def test_hamlet_pauli_su2_casimir_forces_half_representation_label() -> None:
+    sigma_x, sigma_y, sigma_z = hamlet_pauli_matrices()
+    assert sigma_x == ((0j, 1 + 0j), (1 + 0j, 0j))
+    assert sigma_z == ((1 + 0j, 0j), (0j, -1 + 0j))
+    assert sigma_y == ((0j, -1j), (1j, 0j))
+
+    assert len(hamlet_su2_generators()) == 3
+    assert hamlet_su2_commutator_residual() <= 1e-12
+    assert isclose(hamlet_su2_casimir_value(), 0.75, abs_tol=1e-12)
+    assert isclose(hamlet_su2_representation_label(), 0.5, abs_tol=1e-12)
+
+    rot_2pi = hamlet_spinor_z_rotation(2.0 * 3.141592653589793)
+    rot_4pi = hamlet_spinor_z_rotation(4.0 * 3.141592653589793)
+    assert all(abs(value + 1.0) <= 1e-12 for value in rot_2pi)
+    assert all(abs(value - 1.0) <= 1e-12 for value in rot_4pi)
 
