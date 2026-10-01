@@ -1,8 +1,10 @@
 import pytest
 
 from rdss.relational_collatz import (
+    active_operator_basis,
     active_seed_from_relation_algebra,
     association_quotient_cardinality,
+    full_operator_basis,
     dissociation_fibre_cardinality,
     durable_role_count,
     nonidentity_operator_dimension,
@@ -76,6 +78,8 @@ def test_relational_collatz_fails_closed() -> None:
 
 def test_relation_algebra_derives_operator_count_seed_and_universal_repair() -> None:
     assert durable_role_count() == 2
+    assert full_operator_basis() == ("I", "S", "P", "J")
+    assert active_operator_basis() == ("S", "P", "J")
     assert operator_algebra_real_dimension() == 4
     assert nonidentity_operator_dimension() == 3
     assert active_seed_from_relation_algebra() == 3
@@ -92,6 +96,7 @@ def test_relation_algebra_seed_closes_l_constants_exactly() -> None:
     assert receipt["role_count"] == 2
     assert receipt["operator_dimension"] == 4
     assert receipt["nonidentity_dimension"] == 3
+    assert receipt["active_basis_size"] == 3
     assert receipt["universal_repair"] == 1
     assert receipt["active_seed"] == 3
     assert receipt["seed_step_1"] == 10
@@ -104,6 +109,7 @@ def test_relation_algebra_seed_closes_l_constants_exactly() -> None:
     assert receipt["first_full_cycle_reaches_L5"] is True
     assert receipt["depth_matches_L3"] is True
     assert receipt["root_extension_matches"] is True
+    assert receipt["gaussian_triple_matches"] is True
 
     assert relational_collatz_depth_to_one(3) == 7
 
