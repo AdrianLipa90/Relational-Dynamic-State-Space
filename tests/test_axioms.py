@@ -2151,7 +2151,7 @@ def test_collatz_balance_is_downstream_and_operation_semantics_remain_the_gate()
     assert "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW" in balance_closure
 
     gate_closure = dependency_closure("GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA")
-    assert "THM_COLLATZ_COEFFICIENT_PROVENANCE_DOUBLE_CLOSED" in gate_closure
+    assert "THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED" in gate_closure
     assert "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ" in gate_closure
     assert "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS" in gate_closure
 
@@ -2167,6 +2167,12 @@ def test_gaussian_bombelli_route_is_independent_of_collatz_and_recovers_l_consta
     assert claims["BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45"].kind is ClaimKind.BRIDGE
     assert claims["THM_GAUSSIAN_L3_24_CLOSURE_CROSSCHECK"].kind is ClaimKind.THEOREM
     assert claims["THM_COLLATZ_COEFFICIENT_PROVENANCE_DOUBLE_CLOSED"].kind is ClaimKind.THEOREM
+    assert claims["THM_RELATION_OPERATOR_DIMENSION_COEFFICIENT_ROUTE"].kind is ClaimKind.THEOREM
+    assert claims["THM_BINARY_UNIVERSAL_REPAIR_ONE"].kind is ClaimKind.THEOREM
+    assert claims["THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED"].kind is ClaimKind.THEOREM
+    assert claims["DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT"].kind is ClaimKind.FORMATION_RULE
+    assert claims["THM_ACTIVE_SEED_IS_THREE"].kind is ClaimKind.THEOREM
+    assert claims["THM_RELATIONAL_COLLATZ_L_CONSTANT_CERTIFICATE"].kind is ClaimKind.THEOREM
     assert claims["DEF_ASSOCIATION_AS_FREE_DYAD_QUOTIENT"].kind is ClaimKind.DEFINITION
     assert claims["THM_ASSOCIATION_QUOTIENT_CARDINALITY"].kind is ClaimKind.THEOREM
     assert claims["DEF_DISSOCIATION_AS_THREE_FIBRE_EXTENSION"].kind is ClaimKind.DEFINITION
@@ -2191,6 +2197,16 @@ def test_gaussian_bombelli_route_is_independent_of_collatz_and_recovers_l_consta
     assert "THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ" in double_closure
     assert "THM_GAUSSIAN_GENERATES_COLLATZ_COEFFICIENTS" in double_closure
 
+    triple_closure = dependency_closure("THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED")
+    assert "THM_COLLATZ_COEFFICIENT_PROVENANCE_DOUBLE_CLOSED" in triple_closure
+    assert "THM_RELATION_OPERATOR_DIMENSION_COEFFICIENT_ROUTE" in triple_closure
+    assert "THM_BINARY_UNIVERSAL_REPAIR_ONE" in triple_closure
+
+    seed_closure = dependency_closure("THM_RELATIONAL_COLLATZ_L_CONSTANT_CERTIFICATE")
+    assert "THM_ACTIVE_SEED_IS_THREE" in seed_closure
+    assert "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ" in seed_closure
+    assert "BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45" in seed_closure
+
 def test_relational_cardinality_semantics_closes_collatz_operations_not_physical_binding() -> None:
     claims = claim_map()
 
@@ -2201,7 +2217,7 @@ def test_relational_cardinality_semantics_closes_collatz_operations_not_physical
     assert "THM_ASSOCIATION_QUOTIENT_CARDINALITY" in closure
     assert "THM_DISSOCIATION_FIBRE_CARDINALITY" in closure
     assert "THM_SINGLETON_REPAIR_CARDINALITY" in closure
-    assert "THM_COLLATZ_COEFFICIENT_PROVENANCE_DOUBLE_CLOSED" in closure
+    assert "THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED" in closure
 
     gate = claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"]
     assert gate.kind is ClaimKind.DERIVATION_GATE
