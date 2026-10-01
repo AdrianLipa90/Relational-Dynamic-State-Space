@@ -77,141 +77,165 @@ The independent model-formation theorem
 is retained only as a cardinality fact. Its bare singleton witness is not
 placed upstream of the first Hamlet.
 
-\subsection{First Hamlet: dispersion or structure}
+\subsection{First Hamlet: persistence only}
 
 Define the Boolean persistence predicate \(\operatorname{Persist}\) on a
-candidate differentiation. Its two exhaustive classes are
+candidate differentiation:
 \[
-\mathsf{Disp}
-=
-\neg\operatorname{Persist},
+\mathsf{Disp}=\neg\operatorname{Persist},
 \qquad
-\mathsf{Struct}
-=
-\operatorname{Persist}.
+\mathsf{Struct}=\operatorname{Persist}.
 \]
 
-The persistence predicate supplies the exhaustive Boolean labels
-\[
-\{\mathsf{Disp},\mathsf{Struct}\},
-\]
-but this alone does not prove that both preimages are non-empty.
+The two labels are exhaustive and disjoint. Canonical RDSS uses the
+non-degenerate case in which both classes are admissible. Their complement is
+a valid meta-\(\mathbb Z_2\), and their two-class Hartley count is a valid
+conditional meta value \(\ln2\).
 
-Canonical RDSS defines the first Hamlet as the non-degenerate bifurcation
+However,
 \[
 \boxed{
-H_0
-=
-\{\mathsf{Disp},\mathsf{Struct}\},
+\mathsf{Disp}\rightarrow\mathcal I_0
+}
+\]
+leaves no persistent distinction. Therefore
+\(\{\mathsf{Disp},\mathsf{Struct}\}\) is not the internal two-state carrier
+used for the downstream projective geometry.
+
+\subsection{Structure branch and the minimal persistent relation}
+
+The independent one-carrier result remains
+\[
+\min|\operatorname{Adm}|=1.
+\]
+It is a statement about minimum object support only.
+
+On the STRUCTURE branch a distinction persists. Canonical relational typing
+therefore uses the minimal non-trivial persistent structure
+\[
+\boxed{
+\mathsf{Struct}\rightarrow R:s\to t.
+}
+\]
+
+For a non-self-collapsed relation define orientation reversal
+\[
+J_R:(s,t;R)\mapsto(t,s;R^{-1}),
 \qquad
-\mathsf{Disp}\neq\varnothing,
-\quad
-\mathsf{Struct}\neq\varnothing.
-}
+J_R^2=I.
 \]
 
-A separate dynamics gate asks whether this non-degeneracy follows from
-\(\mathcal P_E+\mathcal I_0\) in nature rather than from the canonical
-definition.
-
-The first Hamlet precedes the non-trivial point.
-
-Complementation exchanges the two admitted classes and squares to identity,
-so
+Its orbit is exactly
 \[
 \boxed{
-H_0\ \text{carries a canonical }\mathbb Z_2\text{ action}.
+\mathcal O_{J_R}=\{N,S\}.
 }
 \]
 
-For this non-degenerate first Hamlet,
-\[
-|H_0|=2,
-\]
-Hartley information in nats is
+These are the durable two roles used by the downstream algebra. They are not
+the persistence outcomes DISPERSION and STRUCTURE.
+
+The identity and reversal form
 \[
 \boxed{
-I_H
-=
-\ln|H_0|
-=
-\ln2.
+\{I,J_R\}\cong\mathbb Z_2,
 }
 \]
-No probability measure is used in this step.
-
-The two branches satisfy
-\[
-\mathsf{Disp}
-\rightarrow
-\mathcal I_0,
-\]
-while
-\[
-\mathsf{Struct}
-\Rightarrow
-\text{persistent distinction}.
-\]
-
-Combining the STRUCTURE branch with the independent one-carrier minimum gives
-the minimal non-trivial information-point realization
+and probability-free Hartley counting gives
 \[
 \boxed{
-\mathsf{Struct}
-+
-\min|\operatorname{Adm}|=1
-\rightarrow
-p^\star.
+I_R=\ln|\{N,S\}|=\ln2.
 }
 \]
-The non-trivial point is therefore downstream of the first Hamlet.
 
-The old bare singleton witness remains a valid counterexample to
+\subsection{Conditional source-minimal derivation of the Collatz branches}
+
+The deterministic coefficient problem is split into an exact conditional
+theorem and one inheritance gate.
+
+Declare the candidate source-minimal parity-law signature:
+
+\begin{enumerate}
+\item one primitive association step removes one factor equal to the durable
+      role cardinality \(b=|\{N,S\}|\);
+\item the primitive odd dissociation/repair branch is affine
+      \(O(n)=an+r\);
+\item \(a>1\) is an odd integer, so multiplication preserves odd parity before
+      repair;
+\item \(r>0\) is odd, so repair flips parity and reopens association;
+\item no larger unsourced integer coefficient is used when a smaller one
+      satisfies the same typed role.
+\end{enumerate}
+
+Since
 \[
-\text{bare point}\Rightarrow\text{internal binary structure},
+|\{N,S\}|=2,
 \]
-but that no longer blocks the causal chain because the binary persistence
-partition is established before the point.
-
-\subsection{Collatz association/dissociation as the persistence balance}
-
-The reference persistence flow
+the association branch is
 \[
-\dot d=d(\mu-d)
-\]
-is retained only as a continuous envelope. Its signed coordinate \(\mu\) is
-not primitive.
-
-For a positive odd information state \(n\), define
-
-\[
-\mathsf D(n)=3n
-\]
-
-as dissociation,
-
-\[
-\mathsf R(3n)=3n+1
-\]
-
-as missing-element completion/repair, and maximal association by
-
-\[
-\mathsf A(3n+1)
-=
-\frac{3n+1}{2^{\nu_2(3n+1)}}.
+\boxed{
+E(n)=\frac n2.
+}
 \]
 
-The accelerated odd Collatz cycle is therefore
-
+Among odd integers strictly greater than one,
 \[
+\boxed{
+a_{\min}=3.
+}
+\]
+
+For odd \(a\) and odd \(n\), \(an\) is odd. The least positive odd additive
+repair that flips parity is
+\[
+\boxed{
+r_{\min}=1.
+}
+\]
+
+Therefore, conditional on the declared source-minimal law signature,
+\[
+\boxed{
+E(n)=\frac n2,
+\qquad
+O(n)=3n+1.
+}
+\]
+
+Thus the standard unreduced Collatz map is the unique member of this declared
+minimal affine parity-law class.
+
+The remaining foundational gate is not a coefficient fit. It is the
+inheritance statement
+\[
+\boxed{
+\text{First Law + minimal persistent relation}
+\stackrel{?}{\Longrightarrow}
+\text{source-minimal affine parity-law signature}.
+}
+\]
+
+Determinism alone does not prove this arrow: infinitely many deterministic
+maps exist. Current TIR source-minimality results support the same dependency
+discipline but retain propagation of minimality to a primitive law signature
+as an explicit inheritance gate.
+
+\subsection{Collatz association/dissociation downstream}
+
+Once the conditional branch theorem is admitted, the odd accelerated cycle is
+\[
+n
+\xrightarrow{\mathsf D}
+3n
+\xrightarrow{\mathsf R}
+3n+1
+\xrightarrow{\mathsf A}
 T_C(n)
 =
 \frac{3n+1}{2^{\nu_2(3n+1)}}.
 \]
 
-Its exact local association-minus-dissociation balance is
-
+The exact local association-minus-dissociation balance is
 \[
 \boxed{
 \mu_C(n)
@@ -224,78 +248,33 @@ Its exact local association-minus-dissociation balance is
 }
 \]
 
-Each association step contributes \(+\ln2\). The combined
-dissociation/repair step contributes
-\[
--\ln\frac{3n+1}{n}.
-\]
-
-The continuous reference envelope may therefore use
-
+The unreduced affine branches have signed local log-Jacobians
 \[
 \boxed{
-\mu=\mu_C(n)
+\sigma_E=-\ln2,
+\qquad
+\sigma_O=+\ln3.
 }
 \]
 
-rather than an independent control parameter.
-
-Locally,
-
+Their projective matrices may be represented by
 \[
-\mu_C(n)>0
-\]
-
-means association dominates the scale balance and realizes the STRUCTURE
-reference regime, while
-
-\[
-\mu_C(n)<0
-\]
-
-means dissociation dominates and realizes DISPERSION. The equality
-\[
-\mu_C(n)=0
-\]
-is the critical boundary.
-
-Examples are
-
-\[
-T_C(3)=5,
+M_E\sim
+\begin{pmatrix}
+1&0\\
+0&2
+\end{pmatrix},
 \qquad
-\mu_C(3)=\ln(3/5)<0,
+M_O\sim
+\begin{pmatrix}
+3&1\\
+0&1
+\end{pmatrix},
 \]
+and determinant-one normalization gives an \(SL(2,\mathbb R)\) lift, hence a
+\(PSL(2,\mathbb R)\) projective action.
 
-\[
-T_C(5)=1,
-\qquad
-\mu_C(5)=\ln5>0,
-\]
-
-and
-
-\[
-T_C(1)=1,
-\qquad
-\mu_C(1)=0.
-\]
-
-These are local exact identities only. No global Collatz-convergence theorem
-is assumed or claimed.
-
-The remaining strict bridge is
-
-\[
-\boxed{
-\mathcal P_E+\mathcal I_0
-\rightarrow
-n,
-}
-\]
-
-namely why primitive indistinction is represented by a particular positive
-odd Collatz information state and how that initial state is selected.
+No global Collatz-convergence theorem is assumed.
 
 \subsection{Probability as a downstream consistency check}
 
