@@ -279,6 +279,65 @@ RA0_REL_STAR / relational-binding gate.
 
 Thus representation does not enter the derivation of the first Hamlet itself.
 
+## M2e. Existing RDSS dynamics modules cannot close the upstream gate
+
+Two tempting existing modules were audited explicitly.
+
+### Relational deformation potential
+
+The current relational potential is defined only after supplying
+
+\[
+\text{explicit residual signature}
++
+\text{semantic weights}
++
+p\text{-functional}.
+\]
+
+Therefore
+
+\[
+\boxed{
+V_R
+\not\Rightarrow
+\text{first Hamlet upstream}.
+}
+\]
+
+Using it to derive DISPERSION/STRUCTURE would import a residual coordinate
+system and weighting profile that are logically downstream of primitive
+indistinction.
+
+Status: NO-GO-AS-UPSTREAM-CAUSE.
+
+### Binary closure / occurrence machinery
+
+The current closure machinery defines occurrence addresses over
+
+\[
+B=\{-1,+1\}
+\]
+
+and branch-relation occurrences explicitly carry branch slots \(\pm1\).
+
+Therefore
+
+\[
+\boxed{
+\text{closure.py}
+\not\Rightarrow
+\text{first binary Hamlet upstream}.
+}
+\]
+
+It already presupposes the binary structure it would be asked to derive.
+
+Status: NO-GO-AS-UPSTREAM-CAUSE.
+
+These modules remain valid downstream realizations after the first Hamlet has
+been established.
+
 ## M3. Standard Heisenberg remains downstream
 
 The Robertson relation
