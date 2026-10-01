@@ -831,16 +831,19 @@ bridge.
 | Arrow | Pre-audit status |
 |---|---|
 | \(L_1\to\mathcal P_E\) | PASS DEFINITIONAL |
-| First-Law model \(\to\min|Adm|=1\) | PASS MODEL THEOREM |
-| minimal point \(\to\) non-trivial information | DERIVATION GATE |
-| information \(\to |\Omega|_{\min}=2\to\mathbb Z_2\) | PASS CONDITIONAL / EXACT |
-| abstract \(\mathbb Z_2\to\) relational branch binding | DERIVATION GATE |
-| branch-swap invariance \(\to(1/2,1/2)\) | PASS CONDITIONAL / EXACT |
-| \((1/2,1/2)\to\ln2\) | EXACT IDENTITY |
-| \(\mathbb Z_2\to\{-1,+1\}\) | PASS CONDITIONAL |
-| \((-1,+1)\to\zeta=0\) | EXACT under normalized affine chart |
-| swap + polarity \(\to J^2=-I\) | PASS CONDITIONAL / EXACT |
-| \(J\to U(1)\) | STANDARD EXACT |
+| \(\mathcal P_E\to\mathcal I_0\) | PASS DEFINITIONAL |
+| persistence predicate \(\to\{\mathsf{Disp},\mathsf{Struct}\}\) | PASS EXACT |
+| first Hamlet complement \(\to\mathbb Z_2\) | PASS EXACT |
+| \(|H_0|=2\to\ln2\) (Hartley) | PASS EXACT |
+| \(\mathsf{Disp}\to\mathcal I_0\) | PASS DEFINITIONAL |
+| \(\mathsf{Struct}+\min|Adm|=1\to p^\star\) | PASS MODEL THEOREM |
+| bare singleton point \(\not\Rightarrow\) first Hamlet | PASS COUNTERMODEL |
+| optional complement-invariant measure \(\to(1/2,1/2)\) | PASS CONDITIONAL |
+| Shannon \(H(1/2,1/2)=\ln2\) | CONSISTENCY CHECK |
+| first-Hamlet \(\mathbb Z_2\to\{-1,+1\}\) | PASS EXACT |
+| \((-1,+1)\to\zeta=0\) | PASS EXACT in normalized affine chart |
+| swap + polarity \(\to J^2=-I\) | PASS EXACT |
+| \(J\to U(1)\) | PASS STANDARD |
 | \(\operatorname{Alg}_{\mathbb R}(S,P)\to M_2(\mathbb R)=\mathbb C_J\oplus S\mathbb C_J\simeq\mathbb C^2\) | PASS THEOREM |
 | unit operator module / common phase \(\to\mathbb{CP}^1\simeq S^2\) | PASS STANDARD |
 | Hamlet Pauli triple \(\to\mathfrak{su}(2)\) | PASS THEOREM |
@@ -851,5 +854,7 @@ bridge.
 | Berry \(-1\) \(\leftrightarrow\) spinor \(-I\) | CONSISTENCY CLOSURE |
 | \(\gamma_B\to[\mathcal A_B]_{\rm gauge}\) | LOCAL/GAUGE-CONDITIONAL REPRESENTATION |
 
-No audit result is pre-declared. A failed arrow must remain failed rather than
-being repaired by an unlabelled premise.
+The remaining strict gaps concern **dynamical instantiation** of a candidate
+differentiation, universal relational occurrence binding, and downstream
+physical identification. The algebraic first Hamlet itself is no longer an
+open gate.
