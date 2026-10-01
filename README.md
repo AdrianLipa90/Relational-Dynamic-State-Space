@@ -90,6 +90,44 @@ I_H=\ln2
 
 without any probability assignment.
 
+The strict dynamics gate now has a non-circular Collatz realization. For a
+positive odd information state \(n\),
+
+\[
+n
+\xrightarrow{\mathsf D}
+3n
+\xrightarrow{\mathsf R}
+3n+1
+\xrightarrow{\mathsf A}
+T_C(n)
+=
+\frac{3n+1}{2^{\nu_2(3n+1)}}.
+\]
+
+Here \(\mathsf D\) is dissociation, \(\mathsf R\) is missing-element repair,
+and \(\mathsf A\) is maximal association by every available factor two.
+
+The effective persistence balance is no longer free:
+
+\[
+\boxed{
+\mu_C(n)
+=
+\nu_2(3n+1)\ln2
+-
+\ln\frac{3n+1}{n}
+=
+\ln\frac{n}{T_C(n)}.
+}
+\]
+
+Thus \(\mu_C>0\) means association dominates locally, \(\mu_C<0\) means
+dissociation dominates, and \(\mu_C=0\) is critical. The continuous reference
+flow \( \dot d=d(\mu-d) \) may use \(\mu=\mu_C(n)\); the remaining strict
+bridge is why primitive indistinction is represented by a particular Collatz
+state \(n\). No global Collatz-convergence claim is used.
+
 The branches then separate:
 
 \[
