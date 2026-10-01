@@ -326,6 +326,104 @@ p\rightarrow H_0
 
 is rejected.
 
+### Collatz association/dissociation realization
+
+The free control parameter is removed from the canonical reference dynamics.
+
+For a positive odd information state \(n\),
+
+\[
+\mathsf D(n)=3n,
+\qquad
+\mathsf R(3n)=3n+1,
+\]
+
+and maximal association is
+
+\[
+\mathsf A(3n+1)
+=
+\frac{3n+1}{2^{\nu_2(3n+1)}}.
+\]
+
+Define the accelerated local cycle
+
+\[
+T_C(n)
+=
+\frac{3n+1}{2^{\nu_2(3n+1)}}.
+\]
+
+Its exact association-minus-dissociation balance is
+
+\[
+\boxed{
+\mu_C(n)
+=
+\nu_2(3n+1)\ln2
+-
+\ln\frac{3n+1}{n}
+=
+\ln\frac{n}{T_C(n)}.
+}
+\]
+
+Every association step contributes \(+\ln2\) to this balance. The
+dissociation/repair part contributes
+\(-\ln((3n+1)/n)\).
+
+Hence:
+
+\[
+\mu_C(n)>0
+\Rightarrow
+\text{association-dominant / STRUCTURE reference regime},
+\]
+
+\[
+\mu_C(n)<0
+\Rightarrow
+\text{dissociation-dominant / DISPERSION reference regime},
+\]
+
+and
+
+\[
+\mu_C(n)=0
+\Rightarrow
+\text{critical local balance}.
+\]
+
+Examples:
+
+\[
+n=3:\quad T_C(3)=5,\quad \mu_C(3)=\ln(3/5)<0,
+\]
+
+\[
+n=5:\quad T_C(5)=1,\quad \mu_C(5)=\ln5>0,
+\]
+
+\[
+n=1:\quad T_C(1)=1,\quad \mu_C(1)=0.
+\]
+
+This is a local exact identity only. It does not assume or prove global
+Collatz convergence.
+
+The remaining strict bridge is
+
+\[
+\boxed{
+\mathcal P_E+\mathcal I_0
+\rightarrow
+n,
+}
+\]
+
+i.e. why primitive indistinction should be represented by a particular
+positive odd Collatz information state.
+
 ### Upstream dynamics no-go
 
 Existing RDSS modules do not close the strict first-Hamlet dynamics gate:
