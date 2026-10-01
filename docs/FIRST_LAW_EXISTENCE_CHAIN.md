@@ -491,15 +491,13 @@ x^3-15x-4=0.
 
 ### Collatz association/dissociation realization
 
-There are now two independent coefficient routes.
+There are now three independent coefficient routes.
 
 The source-minimal parity-law route gives
 
 \[
-2,\qquad3,\qquad1
+2,\qquad3,\qquad1.
 \]
-
-as the least coefficients satisfying the declared parity-local roles.
 
 The Gaussian route gives the same triple through
 
@@ -511,7 +509,80 @@ The Gaussian route gives the same triple through
 \operatorname{ImCoeff}(g)=1.
 \]
 
-Hence numerical coefficient provenance is double-closed.
+The operator-dimension route starts only from the durable dyad:
+
+\[
+q=|\{N,S\}|=2,
+\]
+
+\[
+\dim_{\mathbb R}M_q(\mathbb R)=q^2=4,
+\]
+
+so removing the identity line leaves
+
+\[
+\boxed{q^2-1=3}
+\]
+
+non-identity directions. This independently recovers the dissociation
+multiplicity.
+
+For multiplier \(q^2-1\), a single constant repair that maps every nonzero
+residue class modulo \(q\) back to the divisible class exists only when
+\(q=2\). The unique minimal positive repair is then
+
+\[
+\boxed{+1}.
+\]
+
+Thus
+
+\[
+\boxed{
+(2,3,1)
+}
+\]
+
+is **triple-closed**.
+
+The same non-identity operator count gives the canonical active seed
+
+\[
+\boxed{n_0=3}.
+\]
+
+The exact finite Collatz trajectory begins
+
+\[
+3\to10\to5,
+\]
+
+so the first completed dissociation--repair--association cycle reaches
+
+\[
+\boxed{L_5=5}.
+\]
+
+The exact depth from \(3\) to \(1\) is
+
+\[
+\boxed{7=L_3},
+\]
+
+while the durable role count is
+
+\[
+\boxed{2=L_4}.
+\]
+
+Hence the single relational core yields the exact certificate
+
+\[
+\boxed{
+(L_3,L_4,L_5)=(7,2,5).
+}
+\]
 
 The operation semantics also close canonically at finite-cardinality level.
 
