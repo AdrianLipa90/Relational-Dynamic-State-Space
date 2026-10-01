@@ -21,6 +21,7 @@ TESTS = ROOT / "tests"
 MONOGRAPH = ROOT / "monograph" / "main.tex"
 
 AUDITED_DOCS = (
+    ROOT / "docs" / "ALGEBRAIC_GEOMETRIC_CELL_MAP.md",
     ROOT / "README.md",
     ROOT / "docs" / "ARCHITECTURE.md",
     ROOT / "docs" / "AXIOM_AUDIT.md",
@@ -101,6 +102,7 @@ def package_exports() -> set[str]:
 
 def audit_layer_ownership() -> dict[str, int]:
     module_paths = {
+        "algebraic_geometry_cell": SRC / "rdss" / "algebraic_geometry_cell.py",
         "core": SRC / "rdss" / "algebra.py",
         "canonical": SRC / "rdss" / "canonical.py",
         "certificate_scan": SRC / "rdss" / "certificate_scan.py",
@@ -173,6 +175,7 @@ def audit_claim_graph() -> dict[str, int]:
 
 def audit_test_imports() -> None:
     module_defs = {
+        "rdss.algebraic_geometry_cell": public_defs(SRC / "rdss" / "algebraic_geometry_cell.py"),
         "rdss.algebra": public_defs(SRC / "rdss" / "algebra.py"),
         "rdss.axioms": public_defs(SRC / "rdss" / "axioms.py"),
         "rdss.canonical": public_defs(SRC / "rdss" / "canonical.py"),
