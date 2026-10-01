@@ -507,8 +507,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION",
         ClaimKind.BRIDGE,
-        "TIR First Distinction / Canonical Derivation Spine proves the source-clean typing min(object)=point and min(nontrivial structure)=relation, with relation endpoints treated as roles rather than independent primitive substances.",
-        ("A0", "THM_STRUCTURE_BRANCH_MINIMAL_INFORMATION_POINT"),
+        "TIR First Distinction / Canonical Derivation Spine proves the source-clean typing min(object)=point and min(nontrivial structure)=relation, with relation endpoints treated as roles rather than independent primitive substances. The imported minimum-structure theorem is sourced directly from A0 and does not inherit the separate RDSS bare-singleton non-vacuity witness.",
+        ("A0",),
     ),
     Claim(
         "DEF_STRUCTURE_AS_PERSISTENT_RELATION",
