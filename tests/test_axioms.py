@@ -2170,9 +2170,10 @@ def test_gaussian_bombelli_route_is_independent_of_collatz_and_recovers_l_consta
     assert claims["THM_RELATION_OPERATOR_DIMENSION_COEFFICIENT_ROUTE"].kind is ClaimKind.THEOREM
     assert claims["THM_BINARY_UNIVERSAL_REPAIR_ONE"].kind is ClaimKind.THEOREM
     assert claims["THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED"].kind is ClaimKind.THEOREM
-    assert claims["DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT"].kind is ClaimKind.FORMATION_RULE
+    assert claims["DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT"].kind is ClaimKind.DEFINITION
     assert claims["THM_ACTIVE_SEED_IS_THREE"].kind is ClaimKind.THEOREM
     assert claims["THM_RELATIONAL_COLLATZ_L_CONSTANT_CERTIFICATE"].kind is ClaimKind.THEOREM
+    assert claims["THM_L_CONSTANT_PROVENANCE_CROSSCHECK"].kind is ClaimKind.THEOREM
     assert claims["DEF_ASSOCIATION_AS_FREE_DYAD_QUOTIENT"].kind is ClaimKind.DEFINITION
     assert claims["THM_ASSOCIATION_QUOTIENT_CARDINALITY"].kind is ClaimKind.THEOREM
     assert claims["DEF_DISSOCIATION_AS_THREE_FIBRE_EXTENSION"].kind is ClaimKind.DEFINITION
@@ -2205,7 +2206,11 @@ def test_gaussian_bombelli_route_is_independent_of_collatz_and_recovers_l_consta
     seed_closure = dependency_closure("THM_RELATIONAL_COLLATZ_L_CONSTANT_CERTIFICATE")
     assert "THM_ACTIVE_SEED_IS_THREE" in seed_closure
     assert "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ" in seed_closure
-    assert "BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45" in seed_closure
+    assert "BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45" not in seed_closure
+
+    l_crosscheck = dependency_closure("THM_L_CONSTANT_PROVENANCE_CROSSCHECK")
+    assert "THM_RELATIONAL_COLLATZ_L_CONSTANT_CERTIFICATE" in l_crosscheck
+    assert "BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45" in l_crosscheck
 
 def test_relational_cardinality_semantics_closes_collatz_operations_not_physical_binding() -> None:
     claims = claim_map()
