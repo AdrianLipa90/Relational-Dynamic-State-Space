@@ -7,13 +7,20 @@ used as the external static cage. The corrected geometry uses a static cube,
 the Stella Octangula as the two tetrahedral sectors on the cube vertices, and
 the octahedron as the internal relational core.
 
-No additional axioms are introduced.
+No additional foundational laws are introduced.
 
 ## Foundation contract
 
-RDSS enforces a one-axiom foundation. The unique foundational axiom is
-\(A_0\). Every other item is a definition, theorem/derived result, reference
-realization, bridge, structural primitive, or explicit derivation gate.
+RDSS enforces a one-law foundation. The historical identifier \(A_0\) names
+the **First Law of Existence** and is classified as `FOUNDATIONAL_LAW`, not
+as an arbitrary axiom. Every other item is a definition, theorem/derived
+result, reference realization, bridge, structural primitive, or explicit
+derivation gate.
+
+The frozen pre-audit causal route from the First Law through existence
+potential, Hamlet uncertainty, \(\ln2\), relational zero, \(i\), \(U(1)\),
+\(\mathbb{CP}^1\), Berry/Euler and the minimal spin-half sector is specified
+in `docs/FIRST_LAW_EXISTENCE_CHAIN.md`.
 
 The public TIR repository is used as a **read-only reference source**. RDSS may
 import verified formal consequences from TIR; this document does not authorize
@@ -366,7 +373,7 @@ The corrected map is registered as:
 - \`DER_CELL_RELATIVE_STATE_TO_MOIRE\` — derived result;
 - \`GATE_MOIRE_DYNAMICAL_LAW\` — downstream derivation gate.
 
-The foundational axiom inventory remains exactly
+The foundational-law inventory remains exactly
 
 \[
 \boxed{\{A_0\}}.
