@@ -78,7 +78,8 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
     assert by_id["RELATION_ROLE_TO_Z2"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["RELATION_ROLE_TO_LN2"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["BARE_POINT_NOT_FIRST_HAMLET"].status is ExistenceChainStatus.MODEL_THEOREM
-    assert by_id["COLLATZ_FROM_RELATION_ALGEBRA_GATE"].status is ExistenceChainStatus.DERIVATION_GATE
+    assert by_id["SOURCE_MINIMAL_PARITY_LAW_TO_COLLATZ"].status is ExistenceChainStatus.CONDITIONAL_EXACT
+    assert by_id["SOURCE_MINIMALITY_INHERITANCE_GATE"].status is ExistenceChainStatus.DERIVATION_GATE
     assert by_id["COLLATZ_BRANCHES_TO_PSL2"].status is ExistenceChainStatus.CONDITIONAL_EXACT
     assert by_id["COLLATZ_BRANCHES_TO_LOG_SIGNATURE"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["Z2_TO_SIGN_CHARACTER"].status is ExistenceChainStatus.EXACT_IDENTITY
