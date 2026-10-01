@@ -1137,6 +1137,20 @@ Successful final workflow run: `36930538220`, job `110598411166`.
 Temporary workflow instrumentation was removed after execution; it is not part
 of the retained RDSS feature surface.
 
-Actual LaTeX compilation has **NOT YET BEEN RUN** on this branch. The monograph
-text is integrated, but compilation status remains separate from source
-integration.
+Actual LaTeX compilation was executed after the full green Python/static
+validation. The first compile attempt exposed one undefined `\\Log` command in
+the new OFHM section. It was repaired as `\\operatorname{Log}` in commit
+`974aaa72c4f3a09d884e30309877921eeb888e0a`.
+
+Final LaTeX execution receipt:
+
+- workflow run `36931181928`, job `110600509332`;
+- `pdflatex` pass 1: **PASS**;
+- `pdflatex` pass 2: **PASS**;
+- generated `monograph/main.pdf`: 42 pages, 448058 bytes on the second pass;
+- fatal TeX errors: 0;
+- undefined control sequences: 0.
+
+The compile still reports several pre-existing overfull-box layout warnings.
+They are typographic warnings, not compile failures, and are not silently
+classified as fixed.
