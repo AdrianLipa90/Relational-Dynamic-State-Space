@@ -6,9 +6,9 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 
 | ID | Class | Statement | Direct dependencies |
 |---|---|---|---|
-| META0 | FORMATION RULE | Absolute nothingness has no object-language denotation; admissible RTOFA models have a non-empty admitted carrier domain. | — |
+| A0 | AXIOM | Absolute nothing cannot be realized or denoted because there is nothing relative to which it could be distinguished or related. | — |\n| META0 | FORMATION RULE | Non-reification/non-vacuity model rule induced by A0. | A0 |
 | EX0 | THEOREM | Every admissible RTOFA model contains at least one admitted relational carrier. | META0 |
-| RA0 | AXIOM | Every admitted observable is incident to at least one primitive relation, as source or target. | — |
+| RA0 | DERIVATION GATE | Target relational-admissibility statement retained for compatibility; its complete derivation from A0 remains open in the current kernel. | A0 |
 | DEF_POINT | DEFINITION | The minimal algebraic carrier is an unscaled point. | — |
 | DEF_OCCURRENCE_ADDRESS_SPACE | DEFINITION | Occurrence addresses are finite words over {-1,+1}, with concatenation and the empty word. | — |
 | DEF_CARRIER_OCCURRENCE_SEPARATION | DEFINITION | Carrier values and occurrence addresses are distinct semantic sorts; relation values are typed on carriers while branch-aware identity is carried by OccurrenceAddress. | DEF_POINT, DEF_OCCURRENCE_ADDRESS_SPACE |
@@ -30,10 +30,10 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 | THM_VALUE_CLOSED_NOT_OCCURRENCE_CLOSED | THEOREM | The singleton countermodel proves the converse closure implication fails. | REF_VALUE_CLOSED_OCCURRENCE_OPEN_COUNTERMODEL |
 | DEF_BINARY_DISTINCTION | DEFINITION | A hosted binary distinction has two distinct branch-occurrence slots (-,+); non-degeneracy is occurrence/address-level and does not require different carrier labels. | DEF_POINT, DEF_OCCURRENCE_ADDRESS_SPACE |
 | DEF_RELATIONAL_DISTINCTION | DEFINITION | A relationally bound distinction equips the two branch-occurrence slots with explicit primitive branch-relation occurrences; occurrence identity includes the branch slot, so the underlying relation values may coincide. | DEF_BINARY_DISTINCTION, DEF_RELATION_OCCURRENCE |
-| RR1 | AXIOM | At every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction; the rule re-applies at every finite refinement depth. | DEF_POINT, DEF_BINARY_DISTINCTION |
+| RR1 | DERIVATION GATE | Target recursive-closure statement retained for compatibility; its complete derivation from A0 remains open in the current kernel. | A0, DEF_POINT, DEF_BINARY_DISTINCTION |
 | THM_RR1_REALIZES_FINITE_WORDS | THEOREM | Under RR1 every finite binary address word from an admitted root is realized by a path-labelled occurrence. | RR1, DEF_OCCURRENCE_ADDRESS_SPACE |
-| RA0_STAR | CANDIDATE AXIOM | Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_BINARY_DISTINCTION |
-| RA0_REL_STAR | CANDIDATE AXIOM | Every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted. | DEF_POINT, DEF_RELATIONAL_DISTINCTION |
+| RA0_STAR | DERIVATION GATE | Historical strengthened closure statement; not an axiom. | DEF_POINT, DEF_BINARY_DISTINCTION |
+| RA0_REL_STAR | DERIVATION GATE | Historical relationally bound strengthened closure statement; not an axiom. | DEF_POINT, DEF_RELATIONAL_DISTINCTION |
 | THM_RA0_STAR_FROM_RA0_REL_STAR | THEOREM | Forgetting explicit branch-relation binding from an RA0_REL_STAR model yields an RA0_STAR model with the same admitted carriers and branch-occurrence structure. | RA0_REL_STAR |
 | THM_RA0_FROM_RA0_REL_STAR | THEOREM | RA0_REL_STAR implies relational admissibility because each admitted host has branch-relation incidence. | RA0_REL_STAR |
 | THM_RR1_FROM_RA0_REL_STAR | THEOREM | RA0_REL_STAR generates recursive binary refinement to arbitrary finite depth. | RA0_REL_STAR |
@@ -97,9 +97,9 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 
 ## Audit conclusions
 
-1. **META0 is logically prior to the object-level axioms.** It is a model-formation meta-axiom: absolute nothingness is not reified, and intended RTOFA models have non-empty admitted carrier domains.
-2. **EX0 is a theorem of META0, not an extra ontological axiom.** A raw empty mathematical presentation may satisfy universal formulas vacuously, but it is excluded from the intended model class.
-3. **RA0 and RR1 remain independent object-level foundational assumptions in the current kernel.** RA0 requires orientation-neutral relational incidence; it does not force recursive refinement.
+1. **A0 is the unique axiom.** No other claim in the ledger has axiom status.
+2. **META0 is a formation rule induced by A0.** EX0 is a theorem of that model-formation rule, not an extra ontological axiom.
+3. **RA0 and RR1 are derivation gates, not axioms.** Existing conditional theorems may depend on them while the full derivations from A0 are still audited explicitly.
 4. **Binary relation typing is explicit.** It is part of the signature rather than a hidden consequence of RA0.
 5. **Carrier values and occurrence addresses are separate sorts.** `OccurrenceAddress` carries branch identity; `RelationalPoint` carries a carrier/reference-coordinate value. The binary coordinate retained by `RelationalPoint` is a reference realization, not the canonical occurrence identity.
 6. **Binary distinction non-degeneracy is occurrence-level.** The two branch slots \((-),(+)\) are distinct occurrences even when both carry the same carrier label. Carrier-label inequality is not required.
@@ -113,7 +113,7 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 14. **Topological winding depends on that U(1) representation and an explicit closure check, not on Zero Axis.**
 15. **Zero Axis is an independent imported bridge.** Its finite inverse projective lift is optional and occurs only after a U(1) phase has already been supplied.
 16. **Associativity, commutativity and exact refinement self-similarity remain testable properties.**
-17. **RA0_REL_STAR is a stronger one-object-level-axiom candidate.** It differs from RA0* by explicitly binding binary distinction slots to primitive relation occurrences; only this stronger candidate currently carries explicit theorems to both RA0 and RR1.
+17. **RA0_REL_STAR is a historical strengthened derivation gate.** It differs from RA0* by explicitly binding binary distinction slots to primitive relation occurrences; only this stronger candidate currently carries explicit theorems to both RA0 and RR1.
 18. **Carrier cardinality and occurrence cardinality are independent scales.** A singleton carrier presentation can generate \(2^{N+1}-1\) distinct path-labelled occurrences through depth \(N\), and the full finite-word address space is countably infinite.
 19. **Underlying relation-value cardinality can also be minimal.** Two distinct branch occurrences may project to one self-relation value, so the minimal singleton RA0_REL_STAR model simultaneously attains \(|\operatorname{Adm}|=1\) and \(|\operatorname{RelVal}|=1\).
 20. **Occurrence addresses form a free monoid.** The finite words \(\{-1,+1\}^{*}\) compose by concatenation with the empty word as identity; `OccurrenceAddress.advance` is the canonical right action, and RR1 realizes every finite word from an admitted root.
@@ -124,15 +124,22 @@ This audit separates **model-formation rules**, **axioms**, **definitions**, **s
 
 \[
 \boxed{
+A_0
+\;\Longrightarrow\;
 \mathrm{META0}
-\;\triangleright\;
-(\mathrm{RA0}+\mathrm{RR1})
+\;\Longrightarrow\;
+\text{derived structure / explicit derivation gates}
 }
 \]
 
-META0 belongs to model formation rather than the object language. RA0 and RR1 are the current object-level axioms. EX0 is a theorem of META0.
+`A0` is the only axiom. `META0` is a formation rule. `RA0`, `RR1`,
+`RA0_STAR`, and `RA0_REL_STAR` are retained as named derivation gates so
+that old executable results remain addressable without promoting missing
+proofs to assumptions.
 
-This deliberately small foundation does **not** mean that the rest of the signature follows from these statements; the remaining ingredients are typed definitions, independent structural primitives, realizations, derivations, or bridges.
+Definitions, structural primitives, reference realizations and bridges remain
+typed by their actual role. None acquires axiom status merely because a
+downstream implementation requires it.
 
 ## Open reduction targets
 
@@ -162,7 +169,7 @@ Third, if hosted distinction is explicitly bound to primitive branch-relation oc
 }
 \]
 
-This is the current executable one-object-level-axiom candidate under META0. It remains unpromoted because the distinction-to-relation binding is additional formal content.
+This remains an executable conditional closure gate. It is not a second axiom; the distinction-to-relation binding must ultimately be derived from A0 or remain explicitly unresolved.
 
 Neither reduction is performed by rhetoric; each requires an explicit change of formal status.
 
@@ -177,13 +184,13 @@ The old statement RA0 remains too weak:
 \mathrm{RA0}\not\Rightarrow\mathrm{RR1}.
 \]
 
-The strengthened candidate RA0* adds non-degenerate binary distinction and endpoint admissibility. Under those explicit clauses, recursive refinement is a theorem:
+The historical strengthened gate RA0* adds non-degenerate binary distinction and endpoint admissibility. Under those explicit clauses, recursive refinement is a theorem:
 
 \[
 \boxed{\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}}.
 \]
 
-This is not a free derivation from old RA0; it is a stronger foundational statement. The cyclic finite witness also shows
+This is not a free derivation from old RA0; it is a stronger conditional statement and therefore remains a derivation gate. The cyclic finite witness also shows
 
 \[
 \mathrm{RA0}^{*}\not\Rightarrow\mathrm{NOVELTY},
