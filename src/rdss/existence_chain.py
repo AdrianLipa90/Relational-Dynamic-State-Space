@@ -133,11 +133,11 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ),
     ExistenceChainStep(
         "ORIENTATION_TO_IMAGINARY_GENERATOR",
-        "real opposition {-1,+1}",
-        "orthogonal generator i",
-        ExistenceChainStatus.DERIVATION_GATE,
-        "i^2=-1",
-        "Mega-audit must test whether orthogonal complex structure is uniquely forced.",
+        "ordered Hamlet real branch span with swap S and polarity P",
+        "real complex-structure generator J",
+        ExistenceChainStatus.CONDITIONAL_EXACT,
+        "J=SP, S^2=P^2=I, SP=-PS => J^2=-I",
+        "Exact on the free real two-branch span; reversing branch orientation sends J to -J, i.e. complex conjugation.",
     ),
     ExistenceChainStep(
         "IMAGINARY_GENERATOR_TO_U1",
@@ -230,12 +230,32 @@ def relational_zero_center(negative: float = -1.0, positive: float = 1.0) -> flo
     return (float(negative) + float(positive)) / 2.0
 
 
-def z2_nontrivial_u1_character(element: int) -> complex:
-    """Unique non-trivial unitary character of multiplicative Z2={+1,-1}."""
+def z2_nontrivial_real_character(element: int) -> float:
+    """Unique non-trivial real character of multiplicative Z2={+1,-1}."""
 
     if element not in (-1, 1):
         raise ValueError("Z2 element must be -1 or +1")
-    return complex(element)
+    return float(element)
+
+
+def branch_swap_vector(vector: tuple[float, float]) -> tuple[float, float]:
+    """Swap the ordered (-,+) branch coordinates."""
+
+    minus, plus = map(float, vector)
+    return (plus, minus)
+
+
+def branch_polarity_vector(vector: tuple[float, float]) -> tuple[float, float]:
+    """Apply P e_b=b e_b in the ordered (-,+) basis."""
+
+    minus, plus = map(float, vector)
+    return (-minus, plus)
+
+
+def hamlet_complex_structure(vector: tuple[float, float]) -> tuple[float, float]:
+    """Apply J=SP, a real-linear complex structure with J^2=-I."""
+
+    return branch_swap_vector(branch_polarity_vector(vector))
 
 
 def u1_phase(phi: float) -> complex:
@@ -269,9 +289,10 @@ def exact_chain_sanity() -> bool:
             branch_word_swap(branch_word_swap((-1, 1, -1))) == (-1, 1, -1),
             isclose(hamlet_information_nats(), LN2),
             isclose(relational_zero_center(), RELATIONAL_ZETA_ZERO),
-            z2_nontrivial_u1_character(1) == 1 + 0j,
-            z2_nontrivial_u1_character(-1) == -1 + 0j,
-            z2_nontrivial_u1_character(-1) ** 2 == 1 + 0j,
+            z2_nontrivial_real_character(1) == 1.0,
+            z2_nontrivial_real_character(-1) == -1.0,
+            z2_nontrivial_real_character(-1) ** 2 == 1.0,
+            hamlet_complex_structure(hamlet_complex_structure((2.0, -3.0))) == (-2.0, 3.0),
             IMAGINARY_GENERATOR * IMAGINARY_GENERATOR == -1,
             isclose(abs(u1_phase(0.731)), 1.0),
             spin_half_sign_return(),
