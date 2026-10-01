@@ -1680,14 +1680,15 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["REF_CP1_BERRY_GEOMETRIC_PHASE"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["REF_BERRY_PHASE_CONNECTION_POTENTIAL_CLASS"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["BRIDGE_EXISTENCE_POTENTIAL_AHARONOV_BOHM"].kind is ClaimKind.BRIDGE
-    assert claims["GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["THM_HAMLET_CANONICAL_PROJECTIVE_LOOP"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_PROJECTIVE_SIGN_CLOSURE"].kind is ClaimKind.THEOREM
     assert claims["THM_EULER_BERRY_MINIMAL_SPIN_HALF"].kind is ClaimKind.THEOREM
 
     spin_closure = dependency_closure("THM_EULER_BERRY_MINIMAL_SPIN_HALF")
     assert "DEF_EXISTENCE_POTENTIAL" in spin_closure
     assert "THM_HAMLET_IMAGINARY_GENERATOR" in spin_closure
     assert "REF_CP1_BERRY_GEOMETRIC_PHASE" in spin_closure
-    assert "GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE" in spin_closure
+    assert "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE" in spin_closure
     assert "REF_BERRY_PHASE_CONNECTION_POTENTIAL_CLASS" not in spin_closure
 
 def test_hamlet_binary_factorization_exposes_single_information_gate() -> None:
@@ -1747,11 +1748,12 @@ def test_z2_nontrivial_character_closes_algebraic_minus_one_not_berry_loop_mappi
     assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in sign_closure
     assert "REF_CP1_BERRY_GEOMETRIC_PHASE" not in sign_closure
 
-    loop_gate = claims["GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE"]
-    assert loop_gate.kind is ClaimKind.DERIVATION_GATE
-    loop_closure = dependency_closure("GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE")
+    loop_gate = claims["THM_HAMLET_PROJECTIVE_SIGN_CLOSURE"]
+    assert loop_gate.kind is ClaimKind.THEOREM
+    loop_closure = dependency_closure("THM_HAMLET_PROJECTIVE_SIGN_CLOSURE")
     assert "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER" in loop_closure
     assert "THM_Z2_SIGN_EMBEDS_U1" in loop_closure
+    assert "THM_HAMLET_CANONICAL_PROJECTIVE_LOOP" in loop_closure
     assert "REF_CP1_BERRY_GEOMETRIC_PHASE" in loop_closure
 
 def test_hamlet_swap_and_polarity_generate_complex_structure_without_upstream_u1() -> None:
