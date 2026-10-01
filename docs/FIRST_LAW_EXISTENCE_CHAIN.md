@@ -596,25 +596,36 @@ Association is quotient by a complete free durable-role pairing:
 }
 \]
 
-Dissociation is three-fold fibre extension:
+Canonical dissociation uses the complete non-identity operator sector
+
+\[
+\mathcal A_*=\{S,P,J\},
+\qquad
+|\mathcal A_*|=3,
+\]
+
+so
 
 \[
 \boxed{
-\mathsf D(X)=X\times F_3,
+\mathsf D(X)=X\times\mathcal A_*,
 \qquad
 |\mathsf D(X)|=3|X|.
 }
 \]
 
-Repair is adjoining one singleton:
+Canonical repair restores the unique omitted identity direction:
 
 \[
 \boxed{
-\mathsf R(X)=X\sqcup\{\star\},
+\mathsf R(X)=X\sqcup\{I\},
 \qquad
 |\mathsf R(X)|=|X|+1.
 }
 \]
+
+Thus \(\times3\) and \(+1\) are the cardinalities of the non-identity and
+identity sectors of the same four-dimensional relation-role operator algebra.
 
 Even cardinality admits complete association immediately. Odd cardinality
 does not; after three-fold dissociation it remains odd, and singleton repair
