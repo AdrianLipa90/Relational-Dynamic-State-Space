@@ -1673,7 +1673,7 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_EULER_BERRY_MINIMAL_SPIN_HALF"].kind is ClaimKind.THEOREM
 
     spin_closure = dependency_closure("THM_EULER_BERRY_MINIMAL_SPIN_HALF")
-    assert "GATE_L1_EXISTENCE_POTENTIAL" in spin_closure
+    assert "DEF_EXISTENCE_POTENTIAL" in spin_closure
     assert "GATE_HAMLET_IMAGINARY_GENERATOR" in spin_closure
     assert "REF_CP1_BERRY_GEOMETRIC_PHASE" in spin_closure
     assert "GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE" in spin_closure
@@ -1687,4 +1687,19 @@ def test_hamlet_binary_factorization_exposes_single_information_gate() -> None:
     assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in closure
     assert "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY" in closure
     assert "THM_META0_MINIMAL_CARRIER_CARDINALITY" in closure
+
+def test_first_law_reaches_singleton_but_not_binary_without_extra_gate() -> None:
+    claims = claim_map()
+
+    assert claims["THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER"].kind is ClaimKind.THEOREM
+    carrier_closure = dependency_closure("THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER")
+    assert "A0" in carrier_closure
+    assert "META0" in carrier_closure
+    assert "REF_META0_SINGLETON_POINT_PRESENTATION" in carrier_closure
+
+    assert claims["THM_FIRST_LAW_NONEMPTY_NOT_BINARY"].kind is ClaimKind.THEOREM
+    no_binary_closure = dependency_closure("THM_FIRST_LAW_NONEMPTY_NOT_BINARY")
+    assert "REF_META0_SINGLETON_POINT_PRESENTATION" in no_binary_closure
+    assert "DEF_EXISTENCE_POTENTIAL" in no_binary_closure
+    assert "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY" not in no_binary_closure
 
