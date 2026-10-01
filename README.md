@@ -152,14 +152,51 @@ so the projective Berry holonomy is derived as
 \boxed{-1}.
 \]
 
-The hemisphere relation \(\Omega=2\pi\) then gives, under the standard
-spin-\(s\) Berry law,
+The same Hamlet operators also generate the Pauli triple
 
 \[
-e^{i2\pi s}=-1
-\quad\Longrightarrow\quad
-\boxed{s_{\min}=\frac12}.
+\sigma_x=S,
+\qquad
+\sigma_z=-P,
+\qquad
+\sigma_y=-iJ.
 \]
+
+With \(T_k=\sigma_k/2\),
+
+\[
+[T_i,T_j]=i\epsilon_{ijk}T_k,
+\]
+
+so this is the defining two-dimensional \(\mathfrak{su}(2)\) representation.
+Its Casimir is
+
+\[
+\sum_kT_k^2=\frac34I,
+\]
+
+and therefore the standard non-negative representation label satisfies
+
+\[
+j(j+1)=\frac34
+\quad\Longrightarrow\quad
+\boxed{j=\frac12}.
+\]
+
+Exponentiation gives independently
+
+\[
+\boxed{
+U(2\pi)=-I,
+\qquad
+U(4\pi)=+I.
+}
+\]
+
+Thus the half representation is derived from the Hamlet operator algebra
+before Berry matching. The independently derived Berry holonomy
+\(\operatorname{Hol}_{\rm Berry}=-1\) is the geometric consistency closure,
+not the premise that creates \(j=\tfrac12\).
 
 The Berry phase also yields a local connection/potential representative only
 up to gauge,
