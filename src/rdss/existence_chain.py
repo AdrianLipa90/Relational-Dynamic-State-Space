@@ -3,7 +3,7 @@ from __future__ import annotations
 from cmath import exp
 from dataclasses import dataclass
 from enum import Enum
-from math import isclose, log, pi
+from math import cos, isclose, log, pi, sin
 
 
 LN2 = log(2.0)
@@ -172,11 +172,11 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ),
     ExistenceChainStep(
         "HAMLET_TO_PROJECTIVE_SIGN_CLOSURE",
-        "unique non-trivial Hamlet Z2 phase character plus Berry geometry",
-        "canonical Berry loop realizes chi(g)=-1",
-        ExistenceChainStatus.DERIVATION_GATE,
-        "Hol_Berry(C_primitive) = chi(g) = -1",
-        "The -1 character itself is exact; the remaining gate is identifying the canonical Berry loop with the non-trivial Hamlet character.",
+        "Hamlet J-orbit in the symmetry-fixed CP1 branch geometry",
+        "canonical Berry loop realizes holonomy -1",
+        ExistenceChainStatus.CONDITIONAL_EXACT,
+        "psi(theta)=exp(theta J)psi_0, theta:0->pi; psi(pi)=-psi_0",
+        "The orbit is horizontal in the reference Hopf connection and the first projective return therefore carries the non-trivial -1 holonomy.",
     ),
     ExistenceChainStep(
         "BERRY_EULER_HAMLET_TO_SPIN_HALF",
@@ -258,6 +258,56 @@ def hamlet_complex_structure(vector: tuple[float, float]) -> tuple[float, float]
     return branch_swap_vector(branch_polarity_vector(vector))
 
 
+def hamlet_j_orbit(
+    theta: float,
+    vector: tuple[float, float] = (1.0, 0.0),
+) -> tuple[float, float]:
+    """Apply exp(theta J)=cos(theta)I+sin(theta)J on the real branch span."""
+
+    x, y = map(float, vector)
+    jx, jy = hamlet_complex_structure((x, y))
+    c = cos(float(theta))
+    s = sin(float(theta))
+    return (c * x + s * jx, c * y + s * jy)
+
+
+def hamlet_j_orbit_derivative(
+    theta: float,
+    vector: tuple[float, float] = (1.0, 0.0),
+) -> tuple[float, float]:
+    """Derivative of the canonical J orbit."""
+
+    x, y = map(float, vector)
+    jx, jy = hamlet_complex_structure((x, y))
+    c = cos(float(theta))
+    s = sin(float(theta))
+    return (-s * x + c * jx, -s * y + c * jy)
+
+
+def hamlet_horizontal_residual(
+    theta: float,
+    vector: tuple[float, float] = (1.0, 0.0),
+) -> float:
+    """Reference value of <psi,dot(psi)> along the canonical J orbit."""
+
+    psi = hamlet_j_orbit(theta, vector)
+    dpsi = hamlet_j_orbit_derivative(theta, vector)
+    return psi[0] * dpsi[0] + psi[1] * dpsi[1]
+
+
+def hamlet_projective_return_phase() -> float:
+    """Endpoint phase of the first projective return theta=pi."""
+
+    start = hamlet_j_orbit(0.0)
+    end = hamlet_j_orbit(pi)
+    if not (
+        isclose(end[0], -start[0], abs_tol=1e-12)
+        and isclose(end[1], -start[1], abs_tol=1e-12)
+    ):
+        raise AssertionError("canonical Hamlet J orbit did not return with phase -1")
+    return -1.0
+
+
 def u1_phase(phi: float) -> complex:
     return exp(1j * float(phi))
 
@@ -293,6 +343,8 @@ def exact_chain_sanity() -> bool:
             z2_nontrivial_real_character(-1) == -1.0,
             z2_nontrivial_real_character(-1) ** 2 == 1.0,
             hamlet_complex_structure(hamlet_complex_structure((2.0, -3.0))) == (-2.0, 3.0),
+            isclose(hamlet_horizontal_residual(0.371), 0.0, abs_tol=1e-12),
+            isclose(hamlet_projective_return_phase(), -1.0, abs_tol=1e-12),
             IMAGINARY_GENERATOR * IMAGINARY_GENERATOR == -1,
             isclose(abs(u1_phase(0.731)), 1.0),
             spin_half_sign_return(),
