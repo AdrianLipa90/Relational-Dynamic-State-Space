@@ -16,29 +16,55 @@ where \((p,q)\) is tensor rank, \(\omega\in\{-1,+1\}^{*}\) is the exact path-lab
 \mathbb K_{\sigma,\omega}=\mathcal A_{\sigma,\omega}^{0,0}.
 \]
 
-## One-axiom foundation
+## First Law foundation
 
-The claim ledger now enforces exactly one foundational axiom:
+The claim ledger now carries exactly one foundational law. The historical
+identifier `A0` is retained for compatibility, but its canonical status is
+`FOUNDATIONAL_LAW`:
 
 \[
 \boxed{
-A_0:
-\text{ absolute nothing cannot be realized or denoted because there is nothing relative to which it could be distinguished or related.}
+L_1:
+\text{ absolute nothingness is not a realizable state because it contains no object, distinction or relation by which it could be established as a state.}
 }
 \]
 
-No other claim in the repository has axiom status.
+No canonical RDSS claim has axiom status.
 
-`META0` is a model-formation rule induced by \\(A_0\\), not another axiom.
-`RA0` and `RR1` retain their historical identifiers because downstream
-results depend on them, but they are now classified as **DERIVATION GATE**.
-They may be used conditionally by existing theorems while their complete
-derivations from \\(A_0\\) are made explicit. The same applies to the older
-`RA0_STAR` and `RA0_REL_STAR` closure candidates: they are no longer
-classified as axioms.
+`META0` is a model-formation rule induced by the First Law, not a second
+foundational premise. `RA0`, `RR1`, `RA0_STAR`, and
+`RA0_REL_STAR` retain historical identifiers for dependency compatibility
+but remain explicit **DERIVATION GATE** claims.
 
-This bookkeeping prevents an unproved bridge from being hidden as a second
-foundational assumption.
+The pre-audit causal skeleton is frozen as
+
+\[
+\neg\mathcal N
+\rightarrow
+\mathcal P_E
+\rightarrow
+\text{Hamlet uncertainty}
+\rightarrow
+(1/2,1/2)
+\rightarrow
+\ln2
+\rightarrow
+(-1,\zeta=0,+1)
+\rightarrow
+i
+\rightarrow
+U(1)
+\rightarrow
+\mathbb{CP}^{1}\simeq S^2
+\rightarrow
+\text{Berry/Euler}
+\rightarrow
+s=1/2.
+\]
+
+The unresolved arrows are labelled as derivation gates rather than silently
+promoted. See `docs/FIRST_LAW_EXISTENCE_CHAIN.md` for the frozen order and
+mega-audit status of every arrow.
 
 The minimal algebraic carrier is an unscaled point \(p\). Algebraic zero is not identified with absence of relation.
 
