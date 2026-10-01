@@ -1661,6 +1661,7 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"].kind is ClaimKind.THEOREM
     assert claims["GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY"].kind is ClaimKind.DERIVATION_GATE
     assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["THM_CANONICAL_REALIZED_EXISTENCE_RELATIONAL_BINARY"].kind is ClaimKind.THEOREM
     assert claims["THM_BINARY_BRANCH_SWAP_INVOLUTION"].kind is ClaimKind.THEOREM
     assert claims["THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_HALF_HALF"].kind is ClaimKind.THEOREM
@@ -1691,16 +1692,22 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE" in spin_closure
     assert "REF_BERRY_PHASE_CONNECTION_POTENTIAL_CLASS" not in spin_closure
 
-def test_hamlet_binary_factorization_exposes_single_information_gate() -> None:
+def test_canonical_hamlet_chain_is_closed_while_strict_information_gate_remains_open() -> None:
     closure = dependency_closure("THM_HAMLET_HALF_HALF")
 
-    assert "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY" in closure
+    assert "THM_CANONICAL_REALIZED_EXISTENCE_BINARY" in closure
+    assert "DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE" in closure
     assert "THM_MINIMAL_INFORMATION_STATE_BINARY" in closure
     assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in closure
     assert "THM_BINARY_BRANCH_SWAP_INVOLUTION" in closure
     assert "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY" in closure
-    assert "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY" in closure
-    assert "THM_META0_MINIMAL_CARRIER_CARDINALITY" in closure
+
+    assert "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY" not in closure
+    assert "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY" not in closure
+
+    strict_closure = dependency_closure("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY")
+    assert "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY" in strict_closure
+    assert "THM_META0_MINIMAL_CARRIER_CARDINALITY" in strict_closure
 
 def test_first_law_reaches_singleton_but_not_binary_without_extra_gate() -> None:
     claims = claim_map()
@@ -1827,4 +1834,20 @@ def test_canonical_relational_information_realization_does_not_close_strict_bind
 
     assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
     assert "GATE_HAMLET_RELATIONAL_BINDING" not in ref_closure
+
+def test_canonical_relational_binary_is_semantic_theorem_not_strict_ra0_rel_star_proof() -> None:
+    claims = claim_map()
+
+    theorem = claims["THM_CANONICAL_REALIZED_EXISTENCE_RELATIONAL_BINARY"]
+    assert theorem.kind is ClaimKind.THEOREM
+
+    closure = dependency_closure("THM_CANONICAL_REALIZED_EXISTENCE_RELATIONAL_BINARY")
+    assert "DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE" in closure
+    assert "DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION" in closure
+    assert "THM_CANONICAL_REALIZED_EXISTENCE_BINARY" in closure
+    assert "REF_CANONICAL_HAMLET_RELATIONAL_REALIZATION" in closure
+
+    assert "RA0_REL_STAR" not in closure
+    assert claims["RA0_REL_STAR"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
 
