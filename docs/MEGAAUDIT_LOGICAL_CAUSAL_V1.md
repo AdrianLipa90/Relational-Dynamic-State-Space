@@ -52,151 +52,221 @@ field strength, force law, metric or spacetime dynamics remains unsupported.
 
 Status of a physicalized \(\mathcal P_E\): OPEN-GATE.
 
-## M1a. First Law -> minimal non-trivial carrier
+## M1a. Existence potential -> primitive indistinction
 
-The existing model-formation chain already gives
+Before any stable distinction has been established, RDSS denotes the
+existence-potential condition by
 
 \[
-\mathrm{META0}\Rightarrow |Adm|\ge 1.
+\boxed{\mathcal I_0}.
 \]
 
-RDSS also contains a bare admissible singleton-point presentation with no
-extra relational, geometric or dynamical structure. Therefore the lower bound
-is attained:
+This is **primitive indistinction**:
+
+\[
+\mathcal P_E+\text{no persistent distinction}.
+\]
+
+It is not absolute nothingness because the modal existence potential already
+exists.
+
+Status: PASS-DEFINITIONAL.
+
+## M2. Primitive indistinction -> first Hamlet
+
+Introduce only one Boolean question about a candidate differentiation:
+
+\[
+\operatorname{Persist}?
+\]
+
+The outcome classes are
+
+\[
+\mathsf{Disp}
+=
+\neg\operatorname{Persist},
+\]
+
+and
+
+\[
+\mathsf{Struct}
+=
+\operatorname{Persist}.
+\]
+
+By excluded middle these two classes are exhaustive, and by contradiction they
+are disjoint:
 
 \[
 \boxed{
-\min |Adm|=1.
+H_0
+=
+\{\mathsf{Disp},\mathsf{Struct}\}.
 }
 \]
 
-Status: PASS-MODEL-THEOREM.
+This is the first Hamlet.
 
-The unscaled point is a reference realization of this one-carrier minimum. It
-is not a second foundational premise.
+Crucially, it occurs **before** selection of a non-trivial point carrier.
 
-## M2. Point -> non-trivial informationality
+Status: PASS-EXACT once the persistence predicate is defined.
 
-This is now the first genuinely open upstream arrow.
+The complement operation exchanges the two classes and squares to identity:
 
-The bare singleton countermodel contains exactly one admitted point and no
-hosted binary distinction. Therefore
+\[
+c(\mathsf{Disp})=\mathsf{Struct},
+\qquad
+c(\mathsf{Struct})=\mathsf{Disp},
+\qquad
+c^2=1.
+\]
+
+Therefore the first Hamlet carries the canonical
+
+\[
+\boxed{\mathbb Z_2}
+\]
+
+complement action.
+
+## M2a. First Hamlet -> ln2 without probabilities
+
+Because
+
+\[
+|H_0|=2,
+\]
+
+Hartley information in nats is
 
 \[
 \boxed{
-L_1+\mathrm{META0}+\text{minimal point}
-\not\Rightarrow
-\text{non-trivial information state}
+I_H
+=
+\ln |H_0|
+=
+\ln2.
 }
 \]
 
-under the current semantics.
+Status: PASS-EXACT.
 
-Status: OPEN-GATE, with explicit countermodel.
+No probability measure, Born rule, equiprobability assumption or
+\(1/2,1/2\) weighting is required for this step.
 
-The missing statement is precisely:
+This is now the foundational route to \(\ln2\).
 
-\[
-\boxed{
-\text{why must realized existence be informationally non-trivial?}
-}
-\]
+## M2b. Dispersion and structure branches
 
-This gate is recorded as GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY.
+### Dispersion
 
-## M2a. Informationality -> minimal binary carrier
-
-RDSS defines a non-trivial finite information state as one with at least two
-distinguishable alternatives. Hence the exact minimum is
+By definition,
 
 \[
-\boxed{
-|\Omega|_{\min}=2.
-}
-\]
-
-For an unlabelled two-element set,
-
-\[
-\operatorname{Aut}(\Omega)
-\cong
-S_2
-\cong
-\mathbb Z_2.
-\]
-
-Status: PASS-CONDITIONAL / exact after informationality is admitted.
-
-This is the mathematically clean Hamlet carrier.
-
-## M2b. Abstract Hamlet Z2 -> relational binding
-
-An abstract two-state carrier does not yet imply that its two alternatives
-are realized as distinct relation occurrences hosted by the admitted carrier.
-
-The existing RDSS target for that stronger statement is RA0_REL_STAR:
-one admitted carrier hosts a relationally bound binary distinction with two
-distinct branch occurrences.
-
-Status: OPEN-GATE.
-
-The audit therefore keeps abstract binary symmetry separate from relational
-binding instead of silently identifying them.
-
-## M2c. Canonical RDSS semantic closure
-
-The strict logical result remains:
-
-\[
-L_1+\mathrm{META0}
-\not\Rightarrow
-\text{non-trivial informationality}
-\]
-
-because the bare singleton countermodel exists.
-
-RDSS nevertheless fixes a separate **semantic definition** for its canonical
-realized-state layer:
-
-\[
-\boxed{
-\text{realized existence state}
-:=
-\text{admitted non-trivial information state}.
-}
-\]
-
-The ledger identifier is DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE.
-
-Under that definition,
-
-\[
-\text{minimal realized state}
+\mathsf{Disp}
 \Rightarrow
-|\Omega|=2
-\Rightarrow
-\operatorname{Aut}(\Omega)\cong\mathbb Z_2.
+\text{no persistent distinction}.
 \]
 
-Likewise, canonical relational-information semantics represents the two
-alternatives as distinct occurrence identities bound to their host by branch
-relations.
-
-This gives an executable/reference Hamlet realization without changing the
-strict proof status:
+Therefore the state returns to primitive indistinction:
 
 \[
 \boxed{
-\text{canonical semantics}
-\neq
-\text{theorem from }L_1.
+\mathsf{Disp}
+\rightarrow
+\mathcal I_0.
 }
 \]
 
-The one-law foundation is therefore preserved, while the mega-audit keeps the
-remaining logical gap visible.
+This is not a return to absolute nothingness.
 
-## M3. Standard Heisenberg is downstream, not the upstream cause
+### Structure
+
+By definition,
+
+\[
+\mathsf{Struct}
+\Rightarrow
+\text{a persistent distinction exists}.
+\]
+
+The independent META0 model theorem already proves that one admitted carrier
+is the exact minimum:
+
+\[
+\min|\operatorname{Adm}|=1.
+\]
+
+Combining persistence with that minimum gives the minimal non-trivial
+information-point realization:
+
+\[
+\boxed{
+\mathsf{Struct}
++
+\min|\operatorname{Adm}|=1
+\rightarrow
+p^\star.
+}
+\]
+
+Here \(p^\star\) is typed as a **non-trivial information point**. It is not the
+bare singleton point used only as a non-vacuity witness.
+
+Therefore the corrected causal direction is
+
+\[
+\boxed{
+\text{first Hamlet}
+\rightarrow
+\text{STRUCTURE}
+\rightarrow
+p^\star,
+}
+\]
+
+not
+
+\[
+p\rightarrow\text{Hamlet}.
+\]
+
+Status: PASS-MODEL-THEOREM for the minimal point realization, conditional on
+the STRUCTURE branch.
+
+## M2c. Bare singleton countermodel remains valid
+
+The old bare singleton presentation is still useful, but only for a different
+claim:
+
+\[
+\boxed{
+\min|\operatorname{Adm}|=1.
+}
+\]
+
+It contains no internal binary distinction and therefore proves that a
+**bare** point is not itself the first Hamlet.
+
+This no longer creates a gap in the canonical causal chain because the first
+Hamlet now precedes the non-trivial point.
+
+## M2d. Relational occurrence representation
+
+The algebraic first Hamlet exists as the two classes
+\(\{\mathsf{Disp},\mathsf{Struct}\}\) independently of any occurrence-address
+implementation.
+
+Canonical RDSS may represent those two alternatives as distinct relational
+occurrence identities. The stronger universal claim that bare foundational
+structure must realize them in precisely that form remains the separate
+RA0_REL_STAR / relational-binding gate.
+
+Thus representation does not enter the derivation of the first Hamlet itself.
+
+## M3. Standard Heisenberg remains downstream
 
 The Robertson relation
 
@@ -212,71 +282,55 @@ The Robertson relation
 already assumes a quantum state, operators, expectation values and commutator
 structure.
 
-Therefore standard Heisenberg/Robertson uncertainty cannot create the first
-binary carrier without circularity.
+Therefore standard Heisenberg/Robertson uncertainty is not used to create the
+first Hamlet.
 
-Status: NO-GO-AS-STATED upstream.
-
-Possible downstream role:
+The formal first Hamlet is already obtained from the persistence dichotomy:
 
 \[
-\text{Hamlet relational uncertainty}
+\mathcal P_E+\mathcal I_0
 \rightarrow
-\text{quantum carrier}
-\rightarrow
-\text{Heisenberg/Robertson realization}.
+\{\mathsf{Disp},\mathsf{Struct}\}.
 \]
 
-## M4. Hamlet Z2 symmetry -> half-half
+A later physical dynamics may be tested against Heisenberg/Robertson, but that
+is downstream.
 
-On the primitive branch alphabet
+Status: NO-GO-AS-UPSTREAM-CAUSE.
 
-\[
-B=\{-1,+1\}
-\]
+## M4. Optional complement-invariant probability
 
-there is a canonical non-trivial involution
-
-\[
-\sigma(b)=-b.
-\]
-
-It extends letterwise to an involutive automorphism of the finite-word address
-space \(B^*\).
-
-For normalized non-negative depth-one weights, invariance under this swap gives
+If a normalized non-negative probability measure is later placed on the first
+Hamlet and required to be invariant under complement exchange, then
 
 \[
-p_-=p_+,
+p_{\mathsf{Disp}}=p_{\mathsf{Struct}},
 \qquad
-p_-+p_+=1,
-\]
-
-so uniquely
-
-\[
-\boxed{
-p_-=p_+=\frac12.
-}
-\]
-
-Status: PASS-CONDITIONAL / exact once the Hamlet binary carrier is admitted.
-
-No independent principle of indifference is required; the uniform weighting
-is the unique normalized weighting invariant under the canonical branch swap.
-
-## M5. Half-half -> ln2
-
-For Shannon entropy in nats,
-
-\[
-H(p)=-\sum_j p_j\ln p_j,
+p_{\mathsf{Disp}}+p_{\mathsf{Struct}}=1,
 \]
 
 so
 
 \[
-H\left(\frac12,\frac12\right)
+\boxed{
+p_{\mathsf{Disp}}
+=
+p_{\mathsf{Struct}}
+=
+\frac12.
+}
+\]
+
+Status: PASS-CONDITIONAL.
+
+This is **not** required for the fundamental \(\ln2\).
+
+## M5. Shannon consistency check
+
+For the optional complement-invariant measure,
+
+\[
+H_{\rm Shannon}
 =
 -\frac12\ln\frac12
 -\frac12\ln\frac12
@@ -284,10 +338,20 @@ H\left(\frac12,\frac12\right)
 \boxed{\ln2}.
 \]
 
-Status: PASS-STANDARD / exact identity.
+Therefore
 
-This does not by itself prove that Shannon entropy is the unique possible
-foundational information functional.
+\[
+\boxed{
+H_{\rm Hartley}(H_0)
+=
+H_{\rm Shannon}(1/2,1/2)
+=
+\ln2.
+}
+\]
+
+The Shannon equality is a downstream consistency check; Hartley counting is
+the probability-free foundational result.
 
 ## M6. Binary distinction -> normalized signs
 
