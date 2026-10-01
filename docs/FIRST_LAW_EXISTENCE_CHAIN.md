@@ -75,23 +75,39 @@ Here
   persist;
 - \(\mathsf{Struct}\) is the class in which a distinction persists.
 
-The first Hamlet is therefore
+The Boolean persistence predicate therefore supplies the partition schema
+
+\[
+\{\mathsf{Disp},\mathsf{Struct}\}.
+\]
+
+This schema is exhaustive, but it does not by itself prove that both classes
+are non-empty. Canonical RDSS defines the **first Hamlet** as the
+non-degenerate case
 
 \[
 \boxed{
-H_0=\{\mathsf{Disp},\mathsf{Struct}\}.
+H_0=\{\mathsf{Disp},\mathsf{Struct}\},
+\qquad
+\mathsf{Disp}\neq\varnothing,
+\quad
+\mathsf{Struct}\neq\varnothing.
 }
 \]
 
+A separate strict dynamics gate asks whether this non-degeneracy follows from
+\(\mathcal P_E+\mathcal I_0\) in nature rather than from the canonical
+definition.
+
 It precedes the non-trivial point.
 
-Because
+For the canonical non-degenerate first Hamlet,
 
 \[
 |H_0|=2,
 \]
 
-the probability-free Hartley information is immediately
+the probability-free Hartley information is
 
 \[
 \boxed{
