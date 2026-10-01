@@ -1651,14 +1651,16 @@ def test_algebraic_geometric_cell_claims_do_not_add_axioms() -> None:
 def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     claims = claim_map()
 
-    assert claims["GATE_L1_EXISTENCE_POTENTIAL"].kind is ClaimKind.DERIVATION_GATE
-    assert claims["GATE_L1_EXISTENCE_POTENTIAL"].depends_on == ("A0",)
+    assert claims["DEF_EXISTENCE_POTENTIAL"].kind is ClaimKind.DEFINITION
+    assert claims["DEF_EXISTENCE_POTENTIAL"].depends_on == ("A0",)
 
     assert claims["DEF_NONTRIVIAL_INFORMATION_STATE"].kind is ClaimKind.DEFINITION
     assert claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_MINIMAL_INFORMATION_STATE_BINARY"].kind is ClaimKind.THEOREM
     assert claims["THM_TWO_STATE_AUTOMORPHISM_Z2"].kind is ClaimKind.THEOREM
     assert claims["GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["THM_BINARY_BRANCH_SWAP_INVOLUTION"].kind is ClaimKind.THEOREM
+    assert claims["THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_HALF_HALF"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_LN2"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_RELATIONAL_ZETA_ZERO"].kind is ClaimKind.THEOREM
@@ -1685,6 +1687,8 @@ def test_hamlet_binary_factorization_exposes_single_information_gate() -> None:
     assert "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY" in closure
     assert "THM_MINIMAL_INFORMATION_STATE_BINARY" in closure
     assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in closure
+    assert "THM_BINARY_BRANCH_SWAP_INVOLUTION" in closure
+    assert "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY" in closure
     assert "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY" in closure
     assert "THM_META0_MINIMAL_CARRIER_CARDINALITY" in closure
 
