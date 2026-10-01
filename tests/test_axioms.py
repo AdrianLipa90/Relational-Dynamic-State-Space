@@ -1672,6 +1672,7 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_IMAGINARY_GENERATOR_U1"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_COMPLEX_SCALAR_ALGEBRA"].kind is ClaimKind.THEOREM
     assert claims["DEF_HAMLET_COMPLEX_BRANCH_SPACE"].kind is ClaimKind.DEFINITION
+    assert claims["THM_HAMLET_UNIQUE_SYMMETRY_HERMITIAN_FORM"].kind is ClaimKind.THEOREM
     assert claims["REF_HAMLET_COUNTING_HERMITIAN_FORM"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["THM_HAMLET_PROJECTIVE_CP1"].kind is ClaimKind.THEOREM
     assert claims["REF_EXISTENCE_POTENTIAL_CP1_SPHERE"].kind is ClaimKind.REFERENCE_REALIZATION
@@ -1781,10 +1782,16 @@ def test_cp1_factorization_keeps_scalar_phase_and_branch_dimension_distinct() ->
     assert "THM_HAMLET_COMPLEX_SCALAR_ALGEBRA" in branch_closure
     assert "THM_MINIMAL_INFORMATION_STATE_BINARY" in branch_closure
 
+    assert claims["THM_HAMLET_UNIQUE_SYMMETRY_HERMITIAN_FORM"].kind is ClaimKind.THEOREM
+    hermitian_closure = dependency_closure("THM_HAMLET_UNIQUE_SYMMETRY_HERMITIAN_FORM")
+    assert "THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE" in hermitian_closure
+    assert "THM_HAMLET_HALF_HALF" in hermitian_closure
+
     assert claims["REF_HAMLET_COUNTING_HERMITIAN_FORM"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["THM_HAMLET_PROJECTIVE_CP1"].kind is ClaimKind.THEOREM
     cp1_closure = dependency_closure("THM_HAMLET_PROJECTIVE_CP1")
     assert "DEF_HAMLET_COMPLEX_BRANCH_SPACE" in cp1_closure
+    assert "THM_HAMLET_UNIQUE_SYMMETRY_HERMITIAN_FORM" in cp1_closure
     assert "REF_HAMLET_COUNTING_HERMITIAN_FORM" in cp1_closure
     assert "THM_IMAGINARY_GENERATOR_U1" in cp1_closure
 
