@@ -3,7 +3,7 @@ from __future__ import annotations
 from cmath import exp
 from dataclasses import dataclass
 from enum import Enum
-from math import cos, isclose, log, pi, sin
+from math import cos, isclose, log, pi, sin, sqrt
 
 
 LN2 = log(2.0)
@@ -172,11 +172,11 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ),
     ExistenceChainStep(
         "BINARY_PHASE_TO_CP1",
-        "normalized complex two-state carrier modulo common U(1) phase",
+        "full Hamlet operator algebra A_H=M2(R)=C_J direct-sum S C_J",
         "CP1 / Bloch sphere",
         ExistenceChainStatus.STANDARD_GEOMETRY,
-        "CP1 ~= S2",
-        "The bridge requires the normalized complex two-state carrier; U(1) alone is insufficient.",
+        "unit(A_H)=S3; S3/right-U(1) ~= CP1 ~= S2",
+        "Canonical route: complex dimension two is the right C_J-module rank of the full S/P operator algebra, avoiding a second independent copy of the binary degree of freedom.",
     ),
     ExistenceChainStep(
         "CP1_GEOMETRY_TO_BERRY_PHASE",
@@ -332,6 +332,60 @@ def hamlet_projective_return_phase() -> float:
     return -1.0
 
 
+def hamlet_operator_module_coordinates(
+    a: float,
+    b: float,
+    c: float,
+    d: float,
+) -> tuple[complex, complex]:
+    """Coordinates for A=aI+bS+cP+dJ as A=z0+S z1 over C_J."""
+
+    return (complex(float(a), float(d)), complex(float(b), float(c)))
+
+
+def hamlet_operator_module_norm(coords: tuple[complex, complex]) -> float:
+    """Normalized Frobenius norm squared in C_J^2 coordinates."""
+
+    z0, z1 = coords
+    return abs(z0) ** 2 + abs(z1) ** 2
+
+
+def hamlet_operator_balanced_orbit(theta: float) -> tuple[complex, complex]:
+    """Canonical balanced left-J orbit in the right C_J-module chart."""
+
+    phase = exp(1j * float(theta))
+    inv_phase = exp(-1j * float(theta))
+    scale = 1.0 / sqrt(2.0)
+    return (scale * phase, scale * inv_phase)
+
+
+def hamlet_operator_balanced_orbit_derivative(
+    theta: float,
+) -> tuple[complex, complex]:
+    """Derivative of the canonical balanced operator-module orbit."""
+
+    z0, z1 = hamlet_operator_balanced_orbit(theta)
+    return (1j * z0, -1j * z1)
+
+
+def hamlet_operator_horizontal_residual(theta: float) -> complex:
+    """Hermitian horizontal residual <Psi,dot(Psi)>."""
+
+    psi = hamlet_operator_balanced_orbit(theta)
+    dpsi = hamlet_operator_balanced_orbit_derivative(theta)
+    return psi[0].conjugate() * dpsi[0] + psi[1].conjugate() * dpsi[1]
+
+
+def hamlet_operator_to_real_branch_chart(
+    coords: tuple[complex, complex],
+) -> tuple[complex, complex]:
+    """Fixed unitary chart mapping operator coordinates to the real J-orbit chart."""
+
+    z0, z1 = coords
+    scale = 1.0 / sqrt(2.0)
+    return (scale * (z0 + z1), scale * 1j * (z0 - z1))
+
+
 def u1_phase(phi: float) -> complex:
     return exp(1j * float(phi))
 
@@ -369,6 +423,15 @@ def exact_chain_sanity() -> bool:
             hamlet_complex_structure(hamlet_complex_structure((2.0, -3.0))) == (-2.0, 3.0),
             isclose(hamlet_horizontal_residual(0.371), 0.0, abs_tol=1e-12),
             isclose(hamlet_projective_return_phase(), -1.0, abs_tol=1e-12),
+            isclose(hamlet_operator_module_norm(hamlet_operator_balanced_orbit(0.731)), 1.0, abs_tol=1e-12),
+            abs(hamlet_operator_horizontal_residual(0.731)) <= 1e-12,
+            all(
+                abs(a - b) <= 1e-12
+                for a, b in zip(
+                    hamlet_operator_to_real_branch_chart(hamlet_operator_balanced_orbit(0.731)),
+                    tuple(complex(v) for v in hamlet_j_orbit(0.731)),
+                )
+            ),
             IMAGINARY_GENERATOR * IMAGINARY_GENERATOR == -1,
             isclose(abs(u1_phase(0.731)), 1.0),
             spin_half_sign_return(),
