@@ -1708,8 +1708,9 @@ def test_canonical_hamlet_chain_is_closed_while_strict_information_gate_remains_
     assert "DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE" in closure
     assert "THM_MINIMAL_INFORMATION_STATE_BINARY" in closure
     assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in closure
-    assert "THM_BINARY_BRANCH_SWAP_INVOLUTION" in closure
     assert "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY" in closure
+    assert "THM_BINARY_BRANCH_SWAP_INVOLUTION" not in closure
+    assert "DEF_OCCURRENCE_ADDRESS_SPACE" not in closure
 
     assert "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY" not in closure
     assert "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY" not in closure
@@ -1780,7 +1781,9 @@ def test_hamlet_swap_and_polarity_generate_complex_structure_without_upstream_u1
     assert claims["THM_HAMLET_IMAGINARY_GENERATOR"].kind is ClaimKind.THEOREM
 
     j_closure = dependency_closure("THM_HAMLET_IMAGINARY_GENERATOR")
-    assert "THM_BINARY_BRANCH_SWAP_INVOLUTION" in j_closure
+    assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in j_closure
+    assert "THM_BINARY_BRANCH_SWAP_INVOLUTION" not in j_closure
+    assert "DEF_OCCURRENCE_ADDRESS_SPACE" not in j_closure
     assert "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER" in j_closure
     assert "THM_IMAGINARY_GENERATOR_U1" not in j_closure
     assert "REF_U1_PHASE_VALUE" not in j_closure
@@ -1884,4 +1887,11 @@ def test_canonical_cp1_uses_full_hamlet_operator_algebra_without_binary_duplicat
 
     loop_closure = dependency_closure("THM_HAMLET_CANONICAL_PROJECTIVE_LOOP")
     assert "THM_HAMLET_OPERATOR_PROJECTIVE_CP1" in loop_closure
+
+def test_canonical_spin_chain_is_independent_of_occurrence_address_representation() -> None:
+    closure = dependency_closure("THM_EULER_BERRY_MINIMAL_SPIN_HALF")
+
+    assert "DEF_OCCURRENCE_ADDRESS_SPACE" not in closure
+    assert "THM_OCCURRENCE_ADDRESS_FREE_MONOID" not in closure
+    assert "THM_BINARY_BRANCH_SWAP_INVOLUTION" not in closure
 
