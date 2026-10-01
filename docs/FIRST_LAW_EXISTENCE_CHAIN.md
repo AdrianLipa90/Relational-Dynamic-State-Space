@@ -454,52 +454,104 @@ SO(2)\simeq U(1).
 
 Thus the phase orbit is downstream of the two Hamlet involutions.
 
-## 7. Complex branch space and potential sphere
+## 7. Full Hamlet operator algebra and potential sphere
 
-The real operator algebra
+The mega-audit replaces the potentially duplicative free-branch construction
+as the canonical route.
 
-\[
-\operatorname{span}_{\mathbb R}\{I,J\}
-\]
-
-with \(J^2=-I\) is isomorphic to \(\mathbb C\). Denote this derived scalar
-algebra by \(\mathbb C_J\).
-
-The two Hamlet branches are then kept as two **independent branch basis
-states** by forming the free complex branch space
+The swap and polarity operators generate
 
 \[
 \boxed{
-\mathcal H_B
+\mathcal A_H
 =
-\mathbb C_J[B]
-\simeq
-\mathbb C^2.
+\operatorname{Alg}_{\mathbb R}(S,P)
+=
+M_2(\mathbb R)
 }
 \]
 
-This separation is essential: the \(J\)-plane supplies complex scalars while
-the two branch labels supply complex dimension two.
-
-The Hamlet swap \(S\) and polarity \(P\) also constrain the Hermitian
-geometry. Any positive-definite Hermitian form invariant under both symmetries
-is a positive scalar multiple of the identity. The normalized branch-weight
-convention fixes the scale, giving the canonical counting/\(\ell^2\) form
+with real basis
 
 \[
-\langle\psi,\phi\rangle
+\{I,S,P,J\},
+\qquad
+J=SP.
+\]
+
+The derived complex scalar algebra is
+
+\[
+\mathbb C_J
 =
-\sum_{b\in B}
-\overline{\psi_b}\phi_b.
+\operatorname{span}_{\mathbb R}\{I,J\}
+\simeq\mathbb C.
 \]
 
-Therefore normalized states satisfy
+Since
 
 \[
-|\alpha|^2+|\beta|^2=1,
+SJ=P,
 \]
 
-so the unit carrier is \(S^3\). Quotienting common phase gives
+the same full operator algebra decomposes as the right complex module
+
+\[
+\boxed{
+\mathcal A_H
+=
+\mathbb C_J\oplus S\mathbb C_J
+\simeq
+\mathbb C_J^2.
+}
+\]
+
+Thus complex dimension two is obtained from the full Hamlet operator algebra
+itself; no independent second copy of the binary carrier is introduced.
+
+With the normalized Frobenius form
+
+\[
+(A,B)_F
+=
+\frac12\operatorname{Tr}(A^TB),
+\]
+
+the basis \(\{I,S,P,J\}\) is orthonormal. Writing
+
+\[
+A=z_0+Sz_1,
+\qquad
+z_0,z_1\in\mathbb C_J,
+\]
+
+gives
+
+\[
+\|A\|_F^2
+=
+|z_0|^2+|z_1|^2.
+\]
+
+Right multiplication by \(e^{\phi J}\) is common phase:
+
+\[
+(z_0,z_1)
+\mapsto
+(z_0e^{i\phi},z_1e^{i\phi}).
+\]
+
+Therefore
+
+\[
+\boxed{
+\|A\|_F=1
+\Rightarrow
+S^3,
+}
+\]
+
+and quotienting the common right phase gives
 
 \[
 \boxed{
@@ -511,10 +563,13 @@ S^2.
 }
 \]
 
-This is the RDSS potential-sphere geometry.
+This is now the canonical RDSS potential-sphere construction.
+
+The older free complex branch-space presentation remains an equivalent
+reference chart only.
 
 In the ambient Bloch-ball chart, relational \(\zeta=0\) is the centre. It is
-not itself a pure-state point on the \(\mathbb{CP}^1\) surface.
+not a pure-state point on the \(\mathbb{CP}^1\) surface.
 
 ## 8. Geometry gives Berry phase
 
@@ -589,31 +644,49 @@ Aharonov–Bohm remains a downstream physical precedent for the principle that
 potential/connection information may be physically encoded in phase. It does
 not generate the upstream RDSS phase structure.
 
-## 10. Canonical Hamlet loop -> Berry sign -> minimal spin one half
+## 10. Canonical Hamlet operator loop -> Berry sign -> minimal spin one half
 
-Choose either normalized branch pole \(\psi_0\). The canonical orbit generated
-by \(J\) is
-
-\[
-\psi(\theta)=e^{\theta J}\psi_0,
-\qquad
-0\le\theta\le\pi.
-\]
-
-The symmetry-fixed Hermitian form gives
+In the right-\(\mathbb C_J\) module chart, choose the normalized balanced
+Hamlet state
 
 \[
-\langle\psi,\dot\psi\rangle=0,
+\Psi_0
+=
+\frac{I+S}{\sqrt2}
+\quad\longleftrightarrow\quad
+\frac1{\sqrt2}(1,1).
 \]
 
-so this is a horizontal lift of its projective path. At the endpoint,
+Left \(J\)-evolution gives
 
 \[
-\psi(\pi)=e^{\pi J}\psi_0=-\psi_0.
+\boxed{
+\Psi(\theta)
+=
+e^{\theta J}\Psi_0
+\quad\longleftrightarrow\quad
+\frac1{\sqrt2}
+(e^{i\theta},e^{-i\theta}).
+}
 \]
 
-The ray has therefore returned to itself while the horizontal lift has picked
-up the phase
+The two terms cancel in the Berry connection:
+
+\[
+\langle\Psi,\dot\Psi\rangle
+=
+\frac12(i-i)
+=
+0.
+\]
+
+Thus the lift is horizontal. At the first projective return,
+
+\[
+\Psi(\pi)=-\Psi_0,
+\]
+
+hence
 
 \[
 \boxed{
@@ -621,14 +694,31 @@ up the phase
 }
 \]
 
-The projected Bloch-sphere path is the primitive great-circle loop and bounds
-a hemisphere,
+The fixed unitary chart
+
+\[
+\frac1{\sqrt2}
+\begin{pmatrix}
+1&1\\
+i&-i
+\end{pmatrix}
+\]
+
+maps this to the earlier real chart
+
+\[
+(\cos\theta,-\sin\theta),
+\]
+
+so both descriptions are the same projective great-circle orbit.
+
+The loop bounds a hemisphere,
 
 \[
 \Omega=2\pi.
 \]
 
-Using the standard spin-\(s\) coherent-state Berry law,
+Under the standard spin-\(s\) coherent-state Berry law,
 
 \[
 e^{is\Omega}
@@ -638,28 +728,17 @@ e^{i2\pi s}
 -1.
 \]
 
-Hence
+Therefore
 
 \[
 s\in\mathbb Z+\frac12,
-\]
-
-and the smallest positive sector is
-
-\[
+\qquad
 \boxed{
 s_{\min}=\frac12.
 }
 \]
 
-The doubled traversal gives
-
-\[
-e^{i4\pi(1/2)}=+1.
-\]
-
-The \(-1\) sign is therefore no longer an independent premise; it is the
-holonomy of the canonical horizontal Hamlet \(J\)-orbit.
+The doubled traversal gives \(+1\) after \(4\pi\).
 
 ## Audit classification
 
