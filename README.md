@@ -16,67 +16,29 @@ where \((p,q)\) is tensor rank, \(\omega\in\{-1,+1\}^{*}\) is the exact path-lab
 \mathbb K_{\sigma,\omega}=\mathcal A_{\sigma,\omega}^{0,0}.
 \]
 
-## Foundational split
+## One-axiom foundation
 
-The axiom audit distinguishes claims by role instead of labeling every useful construction an axiom.
-
-The current minimal axiom set is
+The claim ledger now enforces exactly one foundational axiom:
 
 \[
 \boxed{
-\mathrm{META0}
-\;\triangleright\;
-(\mathrm{RA0}+\mathrm{RR1})
-}.
-\]
-
-Here \(\mathrm{META0}\) is a **model-formation meta-axiom**, not an object-level proposition.
-
-**META0 — non-reification and model non-vacuity**
-
-Absolute nothingness has no denotation in the RTOFA object language. In particular, it is not represented by a carrier, state, relation, zero, or by the empty set. The empty set is already a mathematical object.
-
-The intended model class is therefore restricted by definition to non-empty admitted carrier domains:
-
-\[
-\boxed{
-\mathfrak M\in\operatorname{Mod}(\mathrm{RTOFA})
-\Longrightarrow
-\operatorname{Adm}^{\mathfrak M}\neq\varnothing.
+A_0:
+\text{ absolute nothing cannot be realized or denoted because there is nothing relative to which it could be distinguished or related.}
 }
 \]
 
-Consequently
+No other claim in the repository has axiom status.
 
-\[
-\boxed{
-\mathrm{EX0}:
-\exists p\,\operatorname{Adm}(p)
-}
-\]
+`META0` is a model-formation rule induced by (A_0), not another axiom.
+`RA0` and `RR1` retain their historical identifiers because downstream
+results depend on them, but they are now classified as **DERIVATION GATE**.
+They may be used conditionally by existing theorems while their complete
+derivations from (A_0) are made explicit. The same applies to the older
+`RA0_STAR` and `RA0_REL_STAR` closure candidates: they are no longer
+classified as candidate axioms.
 
-is a theorem of the model-formation semantics, not an additional ontological axiom.
-
-A raw empty mathematical presentation is still useful metamathematically: RA0, RR1, and RA0* can be vacuously true on it. But that presentation is not an admissible RTOFA model and is not identified with “absolute nothing.”
-
-**RA0 — relational admissibility**
-
-Once a carrier is admitted, it is not defined as an observable independently of relation:
-
-\[
-\operatorname{Adm}(x)
-\Longrightarrow
-\exists\,y,r:
-\bigl(
-\operatorname{Rel}_r(x,y)
-\lor
-\operatorname{Rel}_r(y,x)
-\bigr).
-\]
-
-**RR1 — recursive relational closure**
-
-At every admitted path-labelled occurrence, a selected relational point may itself carry a further non-degenerate binary distinction, and the same rule re-applies at every finite refinement depth. Non-degeneracy is occurrence-level: the branch slots \((-),(+)\) are distinct even when both carry the same underlying carrier label. Thus a singleton witness \(D(a)=(a,a)\) is allowed. This is the explicit extra assumption that generates the fractal/refinement tower; it is not silently claimed to follow from RA0.
+This bookkeeping prevents an unproved bridge from being hidden as a second
+foundational assumption.
 
 The minimal algebraic carrier is an unscaled point \(p\). Algebraic zero is not identified with absence of relation.
 
@@ -698,7 +660,7 @@ The kernel does **not** assume:
 - Zero Axis as an axiom of the general algebra;
 - any physical identification without a separate bridge theorem.
 
-See `docs/ARCHITECTURE.md` for module layering, `docs/FOUNDATIONAL_NONVACUITY_GATE.md` for META0/non-vacuity semantics, `docs/RELATIONAL_ADMISSIBILITY_REDUCTION_GATE.md` for the RA0 definitional-reduction question, `docs/RELATIONAL_DISTINCTION_BINDING_GATE.md` for the one-object-level-axiom candidate, `docs/RELATIONAL_POTENTIAL.md` for the semantic deformation scalar, `docs/SEMANTIC_WEIGHTING_GATE.md` for the open weight-derivation problem, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary, and `docs/VALIDATION_STATUS.md` for current verification status.
+See `docs/ARCHITECTURE.md` for module layering, `docs/FOUNDATIONAL_NONVACUITY_GATE.md` for META0/non-vacuity semantics, `docs/RELATIONAL_ADMISSIBILITY_REDUCTION_GATE.md` for the RA0 definitional-reduction question, `docs/RELATIONAL_DISTINCTION_BINDING_GATE.md` for the historical relational-distinction derivation gate, `docs/RELATIONAL_POTENTIAL.md` for the semantic deformation scalar, `docs/SEMANTIC_WEIGHTING_GATE.md` for the open weight-derivation problem, `docs/AXIOM_AUDIT.md` for the typed dependency ledger, `docs/INDEPENDENCE_WITNESSES.md` for finite countermodels, `docs/COHERENCE_MATRIX.md` for compatibility laws, `docs/INDEXED_TENSOR_GATE.md` for the contraction/tensor realization boundary, `docs/MONOIDAL_COHERENCE_GATE.md` for the non-strict pentagon/hexagon boundary, and `docs/VALIDATION_STATUS.md` for current verification status.
 
 ## Layer architecture
 
@@ -882,7 +844,7 @@ See `docs/AXIOM_CLOSURE_AUDIT.md`. The distinction-to-relation reduction is isol
 
 The private RDSS reference kernel now includes an explicit extension layer for
 the centered relational chart, a Hilbert--Moire fibre realization and the
-canonical information normalization. It does not replace META0, RA0, RR1,
+canonical information normalization. It does not replace A0, the META0 formation rule, the RA0/RR1 derivation gates,
 the existing Moire operator, Zero-Axis bridge, CP1 realization or U(1)
 holonomy interfaces.
 
