@@ -19,6 +19,8 @@ class ExistenceChainStatus(str, Enum):
     EXACT_IDENTITY = "exact_identity"
     STANDARD_GEOMETRY = "standard_geometry"
     CONDITIONAL_STANDARD_RESULT = "conditional_standard_result"
+    MODEL_THEOREM = "model_theorem"
+    CONDITIONAL_EXACT = "conditional_exact"
 
 
 @dataclass(frozen=True)
@@ -59,20 +61,51 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "Mega-audit must test whether P_E is genuinely forced rather than renamed non-vacuity.",
     ),
     ExistenceChainStep(
-        "EXISTENCE_POTENTIAL_TO_HAMLET",
-        "existence potential P_E",
-        "unresolved binary orientation",
+        "L1_MODEL_TO_MINIMAL_POINT",
+        "First-Law/META0 admitted model",
+        "one-carrier minimal point realization",
+        ExistenceChainStatus.MODEL_THEOREM,
+        "min |Adm| = 1",
+        "This is a bare model-formation minimum, not a physical collapse of P_E.",
+    ),
+    ExistenceChainStep(
+        "POINT_TO_INFORMATIONALITY",
+        "minimal realized point carrier",
+        "non-trivial information state",
         ExistenceChainStatus.DERIVATION_GATE,
-        "P_E -> {+1,-1} with no preferred sign",
-        "This is the relational 'to be / not to be' uncertainty step, not yet the Heisenberg x-p relation.",
+        "point -> information-bearing distinction",
+        "This is now the single upstream Hamlet gate: why must bare existence be informationally non-trivial?",
+    ),
+    ExistenceChainStep(
+        "INFORMATIONALITY_TO_BINARY",
+        "non-trivial finite information state",
+        "minimal two-alternative carrier",
+        ExistenceChainStatus.CONDITIONAL_EXACT,
+        "min |Omega| = 2",
+        "Exact from the definition of non-trivial finite information once informationality is admitted.",
+    ),
+    ExistenceChainStep(
+        "BINARY_TO_Z2_AUTOMORPHISM",
+        "unlabelled two-alternative carrier",
+        "swap symmetry Z2",
+        ExistenceChainStatus.EXACT_IDENTITY,
+        "Aut({a,b}) = S2 ~= Z2",
+    ),
+    ExistenceChainStep(
+        "EXISTENCE_POTENTIAL_TO_HAMLET",
+        "existence potential P_E through an informationally non-trivial minimal realization",
+        "Hamlet Z2 uncertainty",
+        ExistenceChainStatus.DERIVATION_GATE,
+        "P_E -> point -> information -> 2 outcomes -> Z2",
+        "Only the point-to-informationality arrow remains genuinely open in this factorization.",
     ),
     ExistenceChainStep(
         "HAMLET_TO_HALF_HALF",
-        "unresolved symmetric binary orientation",
+        "Z2-symmetric Hamlet carrier",
         "balanced probabilities",
-        ExistenceChainStatus.EXACT_IDENTITY,
-        "p_+=p_-=1/2",
-        "Exact once binary exhaustivity and no preferred orientation are admitted.",
+        ExistenceChainStatus.CONDITIONAL_EXACT,
+        "swap-invariant normalized weighting -> p_+=p_-=1/2",
+        "The unique normalized weighting invariant under the non-trivial swap is uniform.",
     ),
     ExistenceChainStep(
         "HALF_HALF_TO_LN2",
@@ -80,6 +113,14 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "one-bit Shannon information in nats",
         ExistenceChainStatus.EXACT_IDENTITY,
         "H(1/2,1/2)=ln(2)",
+    ),
+    ExistenceChainStep(
+        "Z2_TO_SIGN_CHARACTER",
+        "Hamlet symmetry Z2",
+        "normalized real sign character {-1,+1}",
+        ExistenceChainStatus.STANDARD_GEOMETRY,
+        "rho(nontrivial element)=-1, rho(identity)=+1",
+        "The sign opposition is structural; its overall numerical scale is a normalization choice.",
     ),
     ExistenceChainStep(
         "ORIENTATION_TO_RELATIONAL_ZERO",
