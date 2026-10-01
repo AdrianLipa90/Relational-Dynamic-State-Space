@@ -146,8 +146,26 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE",
         ClaimKind.DERIVATION_GATE,
-        "Strict bridge target: derive why primitive existence potential plus indistinction is represented by a positive odd Collatz information state n and how the initial n is selected. The local Collatz balance is exact once n is given, but this state-binding is not yet derived from P_E alone.",
-        ("DEF_EXISTENCE_POTENTIAL", "DEF_PRIMITIVE_INDISTINCTION", "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE"),
+        "LEGACY/SUPERSEDED target: directly binding primitive indistinction to a Collatz integer skips the persistent-relation layer and is not canonical after the TIR/RDSS causal audit.",
+        ("DEF_PRIMITIVE_INDISTINCTION", "THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER"),
+    ),
+    Claim(
+        "GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA",
+        ClaimKind.DERIVATION_GATE,
+        "Deterministic audit target: derive uniquely the Collatz branch operators E:n->n/2 and O:n->3n+1, including the coefficients 2, 3 and repair +1, from the already-derived persistent relation-role algebra plus admitted arithmetic/closure rules, without importing the Collatz rule as an independent primitive.",
+        ("THM_RELATION_ORIENTATION_Z2", "THM_RELATION_ROLE_HARTLEY_LN2", "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE"),
+    ),
+    Claim(
+        "REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT",
+        ClaimKind.REFERENCE_REALIZATION,
+        "Once the Collatz branches are admitted, E(x)=x/2 and O(x)=3x+1 have projective matrices diag(1,2) and [[3,1],[0,1]]. Determinant-one normalization places both in SL(2,R), hence their projective actions lie in PSL(2,R). This is downstream of the open branch-derivation gate.",
+        ("DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE",),
+    ),
+    Claim(
+        "THM_COLLATZ_BRANCH_SIGNED_LOG_JACOBIANS",
+        ClaimKind.THEOREM,
+        "For the admitted affine Collatz branch maps, the exact signed log-Jacobians are sigma_E=-ln(2) for E(x)=x/2 and sigma_O=+ln(3) for O(x)=3x+1. These are local association/dissociation scale signatures and do not derive the branch maps themselves.",
+        ("DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE",),
     ),
     Claim(
         "THM_FIRST_HAMLET_Z2",
@@ -178,6 +196,48 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.THEOREM,
         "On the STRUCTURE branch, a persistent distinction exists. Combining that persistent distinction with the exact one-carrier minimum yields the minimal non-trivial information-point realization. Thus the non-trivial point is downstream of the first Hamlet, not its prerequisite.",
         ("THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES", "THM_META0_MINIMAL_CARRIER_CARDINALITY", "DEF_NONTRIVIAL_INFORMATION_POINT"),
+    ),
+    Claim(
+        "DEF_STRUCTURE_AS_PERSISTENT_RELATION",
+        ClaimKind.DEFINITION,
+        "Canonical RDSS structural typing: a persistent non-trivial distinction is represented minimally by an admitted relation R with ordered source and target roles. The roles are structural positions of one relation and need not be independent primitive substances.",
+        ("THM_STRUCTURE_BRANCH_MINIMAL_INFORMATION_POINT", "DEF_BINARY_REL"),
+    ),
+    Claim(
+        "THM_STRUCTURE_BRANCH_MINIMAL_RELATION",
+        ClaimKind.THEOREM,
+        "The STRUCTURE branch supplies a persistent distinction; under DEF_STRUCTURE_AS_PERSISTENT_RELATION its minimal non-trivial structural realization is a relation R. Thus the first persistent relational object is downstream of the first Hamlet.",
+        ("THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES", "DEF_STRUCTURE_AS_PERSISTENT_RELATION"),
+    ),
+    Claim(
+        "DEF_RELATION_ORIENTATION_REVERSAL",
+        ClaimKind.DEFINITION,
+        "For a non-self-collapsed persistent relation R:s->t, orientation reversal J_R sends (s,t;R) to (t,s;R^{-1}) and satisfies J_R^2=id.",
+        ("THM_STRUCTURE_BRANCH_MINIMAL_RELATION", "DEF_BINARY_REL"),
+    ),
+    Claim(
+        "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT",
+        ClaimKind.THEOREM,
+        "For a non-self-collapsed persistent relation, orientation reversal has exactly two structural roles N=[s->t] and S=[t->s]. These are the persistent binary roles used by the downstream algebra; they are not the earlier DISPERSION/STRUCTURE persistence outcomes.",
+        ("DEF_RELATION_ORIENTATION_REVERSAL",),
+    ),
+    Claim(
+        "THM_RELATION_ORIENTATION_Z2",
+        ClaimKind.THEOREM,
+        "The identity and orientation reversal on the persistent two-role orbit form Z2. This is the canonical durable binary symmetry for the downstream sign, complex-structure and projective geometry chain.",
+        ("THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT",),
+    ),
+    Claim(
+        "THM_RELATION_ROLE_HARTLEY_LN2",
+        ClaimKind.THEOREM,
+        "The persistent orientation-role orbit has exactly two elements, hence its Hartley information in nats is ln(2). This structural ln(2) is exact once the non-self-collapsed relation exists and does not require a probability measure.",
+        ("THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT",),
+    ),
+    Claim(
+        "THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER",
+        ClaimKind.THEOREM,
+        "The DISPERSION/STRUCTURE first Hamlet is a persistence classification, not the canonical internal two-state carrier of the projective geometry: DISPERSION leaves no persistent distinction. Therefore the downstream linear, complex, U(1), CP1, Berry and spin constructions must use the persistent relation-role orbit {N,S}, not {DISPERSION,STRUCTURE}.",
+        ("THM_FIRST_HAMLET_DISPERSION_STRUCTURE", "THM_DISPERSION_RETURNS_INDISTINCTION", "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT"),
     ),
     Claim(
         "DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE",
@@ -213,7 +273,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER",
         ClaimKind.THEOREM,
         "Let g be the non-trivial element of Z2. Any one-dimensional real character satisfies chi(g)^2=1. The non-trivial character cannot send g to +1, therefore uniquely chi(g)=-1 in R^x. No complex phase structure is used in this step.",
-        ("THM_FIRST_HAMLET_Z2",),
+        ("THM_RELATION_ORIENTATION_Z2",),
     ),
     Claim(
         "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",
@@ -255,12 +315,12 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY",
         ClaimKind.THEOREM,
         "On an unlabelled two-element outcome set, the unique normalized non-negative probability invariant under its non-trivial automorphism is uniform: p_-=p_+=1/2. This is an abstract Z2 result and does not depend on the occurrence-address representation.",
-        ("THM_FIRST_HAMLET_Z2",),
+        ("THM_RELATION_ORIENTATION_Z2",),
     ),
     Claim(
         "THM_HAMLET_HALF_HALF",
         ClaimKind.THEOREM,
-        "If a normalized probability measure on the first-Hamlet two-class space is required to be invariant under complement exchange, the unique measure is uniform: p_DISPERSION=p_STRUCTURE=1/2. This probability result is downstream and is not needed for the fundamental ln(2) Hartley information.",
+        "Legacy/meta result: if a normalized probability measure is placed on the first-Hamlet persistence classes and required to be complement-invariant, it is uniform. This meta weighting is not used by the durable relation-role geometry.",
         ("THM_FIRST_HAMLET_Z2", "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY"),
     ),
     Claim(
@@ -272,7 +332,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_HAMLET_RELATIONAL_ZETA_ZERO",
         ClaimKind.THEOREM,
-        "Under the normalized sign-character chart {-1,+1}, the relational centre is zeta=(-1+1)/2=0. This represented relational zero is not absolute nothingness and does not depend on assigning probabilities.",
+        "Under the normalized sign-character chart of the persistent relation roles {-1,+1}, the relational centre is zeta=(-1+1)/2=0. This represented relational zero is not absolute nothingness and does not depend on persistence-class probabilities."
         ("THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER",),
     ),
     Claim(
@@ -284,19 +344,19 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "DEF_HAMLET_REAL_LINEAR_SPAN",
         ClaimKind.DEFINITION,
-        "For the ordered first-Hamlet basis (e_Disp,e_Struct), let V_H=R e_Disp direct-sum R e_Struct be the free real linear span. No probability measure or complex scalar is assumed in this definition.",
-        ("THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES", "THM_FIRST_HAMLET_Z2"),
+        "Legacy identifier, canonical content: for the ordered persistent relation-role basis (e_N,e_S), let V_H=R e_N direct-sum R e_S be the free real linear span. DISPERSION/STRUCTURE are not used as this vector-space basis.",
+        ("THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT", "THM_RELATION_ORIENTATION_Z2", "THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER"),
     ),
     Claim(
         "THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE",
         ClaimKind.THEOREM,
-        "On V_B define swap S e_b=e_{-b} and polarity P e_b=b e_b. Then S^2=P^2=I and SP=-PS.",
-        ("DEF_HAMLET_REAL_LINEAR_SPAN", "THM_FIRST_HAMLET_Z2", "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"),
+        "On the persistent relation-role span define swap S(e_N)=e_S, S(e_S)=e_N and polarity P(e_N)=-e_N, P(e_S)=+e_S. Then S^2=P^2=I and SP=-PS.",
+        ("DEF_HAMLET_REAL_LINEAR_SPAN", "THM_RELATION_ORIENTATION_Z2", "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"),
     ),
     Claim(
         "THM_FIRST_HAMLET_SWAP_INVARIANT_UNIT_VECTOR",
         ClaimKind.THEOREM,
-        "On the real first-Hamlet span, the +1 eigenspace of branch swap S is one-dimensional and spanned by e_Disp+e_Struct. Unit normalization therefore fixes the canonical swap-invariant vector Psi_0=(e_Disp+e_Struct)/sqrt(2), unique up to overall sign/phase. The equal amplitudes are geometric and do not assume a probability distribution.",
+        "Legacy identifier, canonical content: on the persistent relation-role span, the +1 eigenspace of role swap S is one-dimensional and spanned by e_N+e_S. Unit normalization fixes Psi_0=(e_N+e_S)/sqrt(2), unique up to overall sign/phase; no probability premise is used."
         ("DEF_HAMLET_REAL_LINEAR_SPAN", "THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE"),
     ),
     Claim(
