@@ -313,6 +313,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_HAMLET_OPERATOR_PROJECTIVE_CP1", "THM_HAMLET_HALF_HALF", "THM_HAMLET_IMAGINARY_GENERATOR"),
     ),
     Claim(
+        "THM_HAMLET_BALANCED_ORBIT_BLOCH_EQUATOR",
+        ClaimKind.THEOREM,
+        "For the balanced canonical module orbit, the Bloch coordinates are (cos(2 theta), -sin(2 theta), 0). Thus theta from 0 to pi traverses the equator exactly once and bounds a hemisphere with solid angle magnitude 2*pi.",
+        ("THM_HAMLET_CANONICAL_PROJECTIVE_LOOP", "THM_HAMLET_SU2_U1_QUOTIENT_S2"),
+    ),
+    Claim(
         "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE",
         ClaimKind.THEOREM,
         "The horizontal lift of the canonical Hamlet projective loop ends at -psi_0, so its Hopf/Berry holonomy is exactly the non-trivial order-two phase -1. This realizes the Hamlet sign character geometrically rather than assuming it.",
@@ -322,7 +328,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_EULER_BERRY_MINIMAL_SPIN_HALF",
         ClaimKind.THEOREM,
         "The Hamlet Pauli algebra gives the defining su(2) representation with Casimir j(j+1)=3/4, hence j=1/2, and its exponentiated rotations satisfy 2*pi -> -I and 4*pi -> +I. The independently derived canonical Berry loop has the same -1 holonomy, with Euler phase exp(i*pi)=-1. Thus representation-theoretic half-spin and Berry/Euler closure agree without using the spin-s Berry formula as an upstream premise. Physical angular-momentum identification remains a separate bridge.",
-        ("THM_HAMLET_SU2_CASIMIR_HALF", "THM_HAMLET_SPINOR_2PI_4PI_RETURN", "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE"),
+        ("THM_HAMLET_SU2_CASIMIR_HALF", "THM_HAMLET_SPINOR_2PI_4PI_RETURN", "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE", "THM_HAMLET_BALANCED_ORBIT_BLOCH_EQUATOR"),
     ),
     Claim(
         "META0",
