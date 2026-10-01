@@ -117,8 +117,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY",
         ClaimKind.THEOREM,
-        "For normalized non-negative depth-one weights (p_-,p_+) on B={-1,+1}, invariance under the canonical branch-swap involution uniquely forces p_-=p_+=1/2.",
-        ("THM_BINARY_BRANCH_SWAP_INVOLUTION",),
+        "On an unlabelled two-element outcome set, the unique normalized non-negative probability invariant under its non-trivial automorphism is uniform: p_-=p_+=1/2. This is an abstract Z2 result and does not depend on the occurrence-address representation.",
+        ("THM_TWO_STATE_AUTOMORPHISM_Z2",),
     ),
     Claim(
         "THM_HAMLET_HALF_HALF",
@@ -148,7 +148,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE",
         ClaimKind.THEOREM,
         "On V_B define swap S e_b=e_{-b} and polarity P e_b=b e_b. Then S^2=P^2=I and SP=-PS.",
-        ("DEF_HAMLET_REAL_LINEAR_SPAN", "THM_BINARY_BRANCH_SWAP_INVOLUTION", "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"),
+        ("DEF_HAMLET_REAL_LINEAR_SPAN", "THM_TWO_STATE_AUTOMORPHISM_Z2", "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"),
     ),
     Claim(
         "THM_HAMLET_IMAGINARY_GENERATOR",
