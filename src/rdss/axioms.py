@@ -247,6 +247,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_COLLATZ_COEFFICIENT_PROVENANCE_DOUBLE_CLOSED", "THM_RELATION_OPERATOR_DIMENSION_COEFFICIENT_ROUTE", "THM_BINARY_UNIVERSAL_REPAIR_ONE"),
     ),
     Claim(
+        "THM_L_CONSTANTS_SINGLE_GENERATOR_CLOSURE",
+        ClaimKind.THEOREM,
+        "Let q=2 be the durable relation-role cardinality and g=q+J=2+J the primitive Gaussian generator. Then L4=q=2, L5=N(g)=q^2+1=5, and under the independently established TIR root-extension closure L3=L4+L5=q^2+q+1=7. The same generator gives Re(g^2)=3, g^4=-7+24J and the Bombelli cubic certificate, while the relational Collatz route independently reproduces the same triple.",
+        ("THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT", "THM_MINIMAL_RELATION_ROLE_GAUSSIAN_GENERATOR", "THM_GAUSSIAN_L45_SOURCE", "BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45"),
+    ),
+    Claim(
         "DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT",
         ClaimKind.DEFINITION,
         "The active operator sector is the canonical real operator basis with the identity direction removed. Since the full basis is {I,S,P,J}, the active sector is {S,P,J}; its cardinality defines the active arithmetic seed n_0. No independent numerical seed is selected.",
@@ -307,16 +313,46 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_REPAIR_AS_SINGLETON_COPRODUCT",),
     ),
     Claim(
+        "DEF_DISSOCIATION_AS_ACTIVE_OPERATOR_PRODUCT",
+        ClaimKind.DEFINITION,
+        "Canonical dissociation semantics: resolve each carrier element against the complete non-identity operator sector A_*={S,P,J} of the durable two-role algebra. Thus dissociation is the finite product X times A_*, not an anonymous three-element fibre.",
+        ("THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R", "DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT"),
+    ),
+    Claim(
+        "THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY",
+        ClaimKind.THEOREM,
+        "The active operator sector A_*={S,P,J} has cardinality three, hence |X times A_*|=3|X|. Therefore canonical dissociation is n->3n.",
+        ("DEF_DISSOCIATION_AS_ACTIVE_OPERATOR_PRODUCT", "THM_ACTIVE_SEED_IS_THREE"),
+    ),
+    Claim(
+        "DEF_REPAIR_AS_IDENTITY_RESTORATION",
+        ClaimKind.DEFINITION,
+        "Canonical repair semantics: after active-sector dissociation, restore the unique operator direction omitted from A_*, namely the identity I. This is disjoint union with the one-element identity sector {I}.",
+        ("DEF_DISSOCIATION_AS_ACTIVE_OPERATOR_PRODUCT", "THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R"),
+    ),
+    Claim(
+        "THM_IDENTITY_REPAIR_CARDINALITY",
+        ClaimKind.THEOREM,
+        "The omitted identity sector has cardinality one, so restoring it changes cardinality n->n+1. The repair unit is therefore the unique missing identity direction, not an anonymous singleton.",
+        ("DEF_REPAIR_AS_IDENTITY_RESTORATION",),
+    ),
+    Claim(
         "THM_PARITY_FORCES_COLLATZ_BRANCH_SELECTION",
         ClaimKind.THEOREM,
         "A complete free two-role pairing requires even cardinality. Hence even n admits immediate association n->n/2. For odd n, three-fold dissociation preserves oddness, and singleton repair gives 3n+1 which is even and therefore reopens association. The parity branch is thus fixed by admissibility of the free dyad quotient.",
-        ("THM_ASSOCIATION_QUOTIENT_CARDINALITY", "THM_DISSOCIATION_FIBRE_CARDINALITY", "THM_SINGLETON_REPAIR_CARDINALITY"),
+        ("THM_ASSOCIATION_QUOTIENT_CARDINALITY", "THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY", "THM_IDENTITY_REPAIR_CARDINALITY"),
     ),
     Claim(
         "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ",
         ClaimKind.THEOREM,
         "Under the quotient/product/coproduct semantics, the deterministic cardinality update is C(n)=n/2 for even n and C(n)=3n+1 for odd n. This is exactly the standard unreduced Collatz map, now derived as a finite relational-cardinality normalization.",
         ("THM_PARITY_FORCES_COLLATZ_BRANCH_SELECTION",),
+    ),
+    Claim(
+        "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP",
+        ClaimKind.THEOREM,
+        "The durable relation-role algebra fixes all three canonical cardinality operations: free Z2 quotient gives /2, product with the complete non-identity operator sector {S,P,J} gives x3, and restoration of the unique omitted identity direction {I} gives +1. Parity admissibility then selects the unique deterministic update n/2 for even n and 3n+1 for odd n.",
+        ("THM_ASSOCIATION_QUOTIENT_CARDINALITY", "THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY", "THM_IDENTITY_REPAIR_CARDINALITY", "THM_PARITY_FORCES_COLLATZ_BRANCH_SELECTION"),
     ),
     Claim(
         "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS",
@@ -334,7 +370,7 @@ CLAIMS: tuple[Claim, ...] = (
         "GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA",
         ClaimKind.DERIVATION_GATE,
         "Refined deterministic gate: numerical coefficients and finite-cardinality operation semantics are now algebraically closed. The remaining burden is the physical/foundational binding asserting that primitive natural dynamics instantiates this relational-cardinality normalization.",
-        ("THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
+        ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
     ),
     Claim(
         "REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT",
