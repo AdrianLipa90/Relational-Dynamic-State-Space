@@ -124,7 +124,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER",
         ClaimKind.THEOREM,
         "Let g be the non-trivial element of Z2. Any one-dimensional real character satisfies chi(g)^2=1. The non-trivial character cannot send g to +1, therefore uniquely chi(g)=-1 in R^x. No complex phase structure is used in this step.",
-        ("THM_TWO_STATE_AUTOMORPHISM_Z2",),
+        ("THM_FIRST_HAMLET_Z2",),
     ),
     Claim(
         "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",
@@ -166,7 +166,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY",
         ClaimKind.THEOREM,
         "On an unlabelled two-element outcome set, the unique normalized non-negative probability invariant under its non-trivial automorphism is uniform: p_-=p_+=1/2. This is an abstract Z2 result and does not depend on the occurrence-address representation.",
-        ("THM_TWO_STATE_AUTOMORPHISM_Z2",),
+        ("THM_FIRST_HAMLET_Z2",),
     ),
     Claim(
         "THM_HAMLET_HALF_HALF",
@@ -202,7 +202,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE",
         ClaimKind.THEOREM,
         "On V_B define swap S e_b=e_{-b} and polarity P e_b=b e_b. Then S^2=P^2=I and SP=-PS.",
-        ("DEF_HAMLET_REAL_LINEAR_SPAN", "THM_TWO_STATE_AUTOMORPHISM_Z2", "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"),
+        ("DEF_HAMLET_REAL_LINEAR_SPAN", "THM_FIRST_HAMLET_Z2", "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"),
     ),
     Claim(
         "THM_HAMLET_IMAGINARY_GENERATOR",
