@@ -46,7 +46,7 @@ CLAIMS: tuple[Claim, ...] = (
         "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY",
         ClaimKind.DERIVATION_GATE,
         "Mega-audit target: derive that the minimal realized carrier selected by the First-Law/META0 model-formation route must be a non-trivial information state rather than a merely non-empty but distinction-free carrier.",
-        ("GATE_L1_EXISTENCE_POTENTIAL", "THM_META0_MINIMAL_CARRIER_CARDINALITY", "DEF_NONTRIVIAL_INFORMATION_STATE"),
+        ("DEF_EXISTENCE_POTENTIAL", "THM_META0_MINIMAL_CARRIER_CARDINALITY", "DEF_NONTRIVIAL_INFORMATION_STATE"),
     ),
     Claim(
         "THM_MINIMAL_INFORMATION_STATE_BINARY",
@@ -63,14 +63,26 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",
         ClaimKind.DERIVATION_GATE,
-        "Hamlet uncertainty is the pre-observable minimal binary realization obtained if the existence-potential informationality gate closes: the minimal non-trivial outcome set has automorphism group Z2. It is not yet the standard Heisenberg x-p inequality.",
-        ("GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY", "THM_MINIMAL_INFORMATION_STATE_BINARY", "THM_TWO_STATE_AUTOMORPHISM_Z2"),
+        "Hamlet uncertainty is the pre-observable minimal relational binary realization obtained if the existence-potential informationality gate closes. Its formal RDSS closure target is the RA0_REL_STAR structure: one admitted carrier hosting two distinct branch-relation occurrences. It is not yet the standard Heisenberg x-p inequality.",
+        ("GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY", "THM_MINIMAL_INFORMATION_STATE_BINARY", "THM_TWO_STATE_AUTOMORPHISM_Z2", "RA0_REL_STAR"),
+    ),
+    Claim(
+        "THM_BINARY_BRANCH_SWAP_INVOLUTION",
+        ClaimKind.THEOREM,
+        "On the primitive branch alphabet B={-1,+1}, sigma(b)=-b is the unique non-trivial involution. It extends letterwise to an involutive automorphism of the finite-word address space B* and exchanges the two depth-one Hamlet branches.",
+        ("DEF_OCCURRENCE_ADDRESS_SPACE", "THM_OCCURRENCE_ADDRESS_FREE_MONOID"),
+    ),
+    Claim(
+        "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY",
+        ClaimKind.THEOREM,
+        "For normalized non-negative depth-one weights (p_-,p_+) on B={-1,+1}, invariance under the canonical branch-swap involution uniquely forces p_-=p_+=1/2.",
+        ("THM_BINARY_BRANCH_SWAP_INVOLUTION",),
     ),
     Claim(
         "THM_HAMLET_HALF_HALF",
         ClaimKind.THEOREM,
-        "For a normalized weighting on the two-state Hamlet carrier that is invariant under its non-trivial swap automorphism, invariance and normalization uniquely force p_-=p_+=1/2.",
-        ("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY", "THM_TWO_STATE_AUTOMORPHISM_Z2"),
+        "Conditional on the Hamlet binary-differentiation gate, the canonical swap-invariant normalized probability is uniquely p_-=p_+=1/2.",
+        ("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY", "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY"),
     ),
     Claim(
         "THM_HAMLET_LN2",
