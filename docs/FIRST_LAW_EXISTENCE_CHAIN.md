@@ -326,6 +326,17 @@ p\rightarrow H_0
 
 is rejected.
 
+### Upstream dynamics no-go
+
+Existing RDSS modules do not close the strict first-Hamlet dynamics gate:
+
+- the relational deformation potential already requires an explicit residual
+  signature and semantic weighting;
+- the recursive closure/occurrence machinery already requires the binary
+  alphabet \(\{-1,+1\}\).
+
+Using either upstream would be circular. They remain downstream tools only.
+
 ## 3. First Hamlet and \(\ln2\)
 
 The first Hamlet has two exhaustive classes, therefore Hartley information in
