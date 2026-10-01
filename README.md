@@ -36,60 +36,128 @@ foundational premise. `RA0`, `RR1`, `RA0_STAR`, and
 `RA0_REL_STAR` retain historical identifiers for dependency compatibility
 but remain explicit **DERIVATION GATE** claims.
 
-The pre-audit causal skeleton is frozen as
+The mega-audit now keeps two tracks separate.
+
+The **strict L1 entailment track** is
 
 \[
 \neg\mathcal N
 \rightarrow
 \mathcal P_E
 \rightarrow
-\text{Hamlet uncertainty}
+\min|\operatorname{Adm}|=1,
+\]
+
+after which the implication
+
+\[
+\boxed{
+\text{bare minimal point}
+\rightarrow
+\text{non-trivial informationality}
+}
+\]
+
+remains an explicit derivation gate. A bare singleton model is the current
+countermodel to claiming that this follows from non-vacuity alone.
+
+The **canonical RDSS semantic track** defines a realized existence state to be
+an admitted non-trivial information state. Under that explicit definition,
+
+\[
+\boxed{
+\text{realized existence}
+\rightarrow
+|\Omega|_{\min}=2
 \rightarrow
 \mathbb Z_2
 \rightarrow
 \left(\frac12,\frac12\right)
 \rightarrow
-\ln2,
+\ln2.
+}
 \]
 
-together with
+The downstream algebra is then closed through
 
 \[
 \mathbb Z_2
 \rightarrow
-\{-1,+1\}
-\rightarrow
-\zeta=0
-\rightarrow
-i
+\{-1,+1\},
+\qquad
+S^2=P^2=I,
+\qquad
+SP=-PS,
+\]
+
+so that
+
+\[
+\boxed{
+J:=SP,\qquad J^2=-I,
+}
+\]
+
+followed by
+
+\[
+J
 \rightarrow
 U(1)
 \rightarrow
+\mathbb C^2
+\rightarrow
 \mathbb{CP}^{1}\simeq S^2
 \rightarrow
-\gamma_B
-\rightarrow
-[\mathcal A_B]_{\mathrm{gauge}},
+\gamma_B.
 \]
 
-while the spin branch requires the separate Hamlet-to-projective-sign gate:
+For the canonical horizontal Hamlet orbit,
 
 \[
-\text{Hamlet non-triviality}
-\rightarrow
-e^{i\gamma}=-1
-\rightarrow
-\text{Berry/Euler selection}
-\rightarrow
-s_{\min}=\frac12.
+\psi(\theta)=e^{\theta J}\psi_0,
+\qquad
+0\le\theta\le\pi,
 \]
 
-The primitive existence potential \(\mathcal P_E\) and the later Berry
-connection/potential \(\mathcal A_B\) are distinct semantic objects.
+one has
 
-The unresolved arrows are labelled as derivation gates rather than silently
-promoted. See `docs/FIRST_LAW_EXISTENCE_CHAIN.md` for the frozen order and
-mega-audit status of every arrow.
+\[
+\psi(\pi)=-\psi_0,
+\]
+
+so the projective Berry holonomy is derived as
+
+\[
+\boxed{-1}.
+\]
+
+The hemisphere relation \(\Omega=2\pi\) then gives, under the standard
+spin-\(s\) Berry law,
+
+\[
+e^{i2\pi s}=-1
+\quad\Longrightarrow\quad
+\boxed{s_{\min}=\frac12}.
+\]
+
+The Berry phase also yields a local connection/potential representative only
+up to gauge,
+
+\[
+\gamma_B[C]
+=
+\oint_C\mathcal A_B
+\pmod{2\pi},
+\]
+
+and the primitive existence potential \(\mathcal P_E\) remains distinct from
+the later Berry connection \(\mathcal A_B\).
+
+Thus the strict logical gaps are not hidden, while the canonical RDSS chain is
+executable downstream of its declared semantics. See
+\`docs/FIRST_LAW_EXISTENCE_CHAIN.md\` and
+\`docs/MEGAAUDIT_LOGICAL_CAUSAL_V1.md\`.
 
 The minimal algebraic carrier is an unscaled point \(p\). Algebraic zero is not identified with absence of relation.
 
