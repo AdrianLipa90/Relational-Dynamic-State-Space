@@ -143,6 +143,59 @@ Status: OPEN-GATE.
 The audit therefore keeps abstract binary symmetry separate from relational
 binding instead of silently identifying them.
 
+## M2c. Canonical RDSS semantic closure
+
+The strict logical result remains:
+
+\[
+L_1+\mathrm{META0}
+\not\Rightarrow
+\text{non-trivial informationality}
+\]
+
+because the bare singleton countermodel exists.
+
+RDSS nevertheless fixes a separate **semantic definition** for its canonical
+realized-state layer:
+
+\[
+\boxed{
+\text{realized existence state}
+:=
+\text{admitted non-trivial information state}.
+}
+\]
+
+The ledger identifier is DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE.
+
+Under that definition,
+
+\[
+\text{minimal realized state}
+\Rightarrow
+|\Omega|=2
+\Rightarrow
+\operatorname{Aut}(\Omega)\cong\mathbb Z_2.
+\]
+
+Likewise, canonical relational-information semantics represents the two
+alternatives as distinct occurrence identities bound to their host by branch
+relations.
+
+This gives an executable/reference Hamlet realization without changing the
+strict proof status:
+
+\[
+\boxed{
+\text{canonical semantics}
+\neq
+\text{theorem from }L_1.
+}
+\]
+
+The one-law foundation is therefore preserved, while the mega-audit keeps the
+remaining logical gap visible.
+
 ## M3. Standard Heisenberg is downstream, not the upstream cause
 
 The Robertson relation
