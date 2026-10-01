@@ -1100,11 +1100,16 @@ gives the local Berry connection/potential class up to gauge.
 Closed or conditionally closed on the canonical RDSS track:
 
 - First Law -> modal existence potential: PASS-DEFINITIONAL.
-- non-trivial finite information -> minimal binary carrier: PASS-EXACT.
-- two-state automorphism group -> \(Z_2\): PASS-EXACT.
-- \(Z_2\)-invariant normalized weighting -> \(1/2,1/2\): PASS-EXACT.
-- \(1/2,1/2\) -> \(\ln2\): PASS-EXACT.
-- \(Z_2\) -> unique non-trivial real sign character: PASS-EXACT.
+- existence potential before stable distinction -> primitive indistinction: PASS-DEFINITIONAL.
+- persistence predicate -> first Hamlet \(\{\mathsf{Disp},\mathsf{Struct}\}\): PASS-EXACT.
+- first-Hamlet complement -> \(Z_2\): PASS-EXACT.
+- two first-Hamlet classes -> Hartley \(\ln2\): PASS-EXACT, probability-free.
+- DISPERSION -> primitive indistinction: PASS-DEFINITIONAL.
+- STRUCTURE + one-carrier minimum -> non-trivial information point \(p^\star\): PASS-MODEL-THEOREM.
+- bare singleton point is not sufficient to generate first Hamlet: PASS-COUNTERMODEL.
+- optional complement-invariant normalized weighting -> \(1/2,1/2\): PASS-CONDITIONAL.
+- Shannon entropy at \(1/2,1/2\) -> \(\ln2\): CONSISTENCY CHECK.
+- first-Hamlet \(Z_2\) -> unique non-trivial real sign character: PASS-EXACT.
 - sign midpoint -> relational \(\zeta=0\): PASS-EXACT in the normalized chart.
 - swap + polarity -> \(J^2=-I\): PASS-EXACT.
 - \(J\) -> \(U(1)\): PASS-STANDARD.
@@ -1119,30 +1124,27 @@ Closed or conditionally closed on the canonical RDSS track:
 
 Strict questions still open:
 
-1. Does bare \(L_1\), without canonical RDSS semantic definitions, force
-   non-trivial informationality rather than merely non-vacuity?
-2. Does bare \(L_1\) force universal relational occurrence binding
-   RA0_REL_STAR?
-3. What physical principle selects a concrete RDSS realization as actual
-   angular-momentum spin rather than merely the mathematical defining
-   \(SU(2)\) representation?
-4. Is there any unique physical bridge from primitive modal
-   \(\mathcal P_E\) to a later physical potential, beyond the geometric Berry
-   connection class already derived?
+1. What physical/dynamical law instantiates a candidate differentiation of
+   \(\mathcal P_E+\mathcal I_0\)? The formal DISPERSION/STRUCTURE partition is
+   exact, but an actual dynamics is a separate claim.
+2. Does bare foundational structure force universal relational occurrence
+   binding RA0_REL_STAR, or is the current occurrence realization only the
+   canonical RDSS representation?
+3. What licenses identification of the derived \(j=1/2\) representation with
+   measured physical angular momentum in a concrete system?
+4. What physical bridge, if any, relates primitive modal potential
+   \(\mathcal P_E\) to the later Berry connection class
+   \([\mathcal A_B]_{\mathrm{gauge}}\)?
 
 Anti-circularity constraints retained:
 
-- standard Heisenberg/Robertson remains downstream of primitive Hamlet
-  uncertainty;
-- Aharonov--Bohm is external physical precedent, not the source of phase;
-- the canonical CP1 route uses the full Hamlet operator algebra and does not
-  introduce a second independent copy of the binary degree of freedom;
-- occurrence-address machinery is not a premise of the canonical spin chain;
-- legacy REF_CP1 is not a premise of the canonical CP1 construction;
-- Berry is not used to assume \(j=\tfrac12\); the half label is fixed by the
-  \(SU(2)\) Casimir before Berry matching;
-- a Berry phase determines connection/potential data only up to gauge;
-- bare carrier zero, relational \(\zeta=0\), and absolute nothingness remain
-  distinct typed concepts.
+- standard Heisenberg/Robertson remains downstream of the first-Hamlet algebra;
+- Aharonov–Bohm remains external physical precedent, not the source of the upstream phase geometry;
+- \(\ln2\) is not derived from a probability assumption;
+- the non-trivial point is downstream of STRUCTURE, not upstream of the first Hamlet;
+- \(U(1)\) alone is not treated as CP1;
+- the canonical CP1 route uses the full Hamlet operator algebra and does not duplicate the binary degree of freedom;
+- Berry phase determines connection information only up to gauge;
+- relational zero is not absolute nothingness.
 
-No open strict gate is silently promoted.
+No open gate is silently repaired.
