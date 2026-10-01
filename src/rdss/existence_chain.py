@@ -179,6 +179,22 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "Canonical route: complex dimension two is the right C_J-module rank of the full S/P operator algebra, avoiding a second independent copy of the binary degree of freedom.",
     ),
     ExistenceChainStep(
+        "HAMLET_S3_TO_SU2",
+        "unit Hamlet operator module S3",
+        "SU(2)",
+        ExistenceChainStatus.STANDARD_GEOMETRY,
+        "(z0,z1) gives the canonical SU(2) matrix",
+        "The unit spinor pair parametrizes SU(2) bijectively.",
+    ),
+    ExistenceChainStep(
+        "HAMLET_SU2_QUOTIENT_TO_S2",
+        "SU(2) with common right U(1) phase",
+        "CP1 / potential sphere S2",
+        ExistenceChainStatus.STANDARD_GEOMETRY,
+        "SU(2)/U(1) ~= CP1 ~= S2",
+        "The projective sphere and the SU(2) homogeneous-space sphere are the same quotient geometry.",
+    ),
+    ExistenceChainStep(
         "CP1_GEOMETRY_TO_BERRY_PHASE",
         "CP1 projective geometry with parallel transport",
         "Berry geometric holonomy phase",
@@ -402,6 +418,38 @@ def hamlet_operator_to_real_branch_chart(
     return (scale * (z0 + z1), scale * 1j * (z0 - z1))
 
 
+def hamlet_spinor_to_su2(
+    coords: tuple[complex, complex],
+) -> tuple[tuple[complex, complex], tuple[complex, complex]]:
+    """Map a normalized spinor pair to its canonical SU(2) matrix."""
+
+    z0, z1 = coords
+    norm = abs(z0) ** 2 + abs(z1) ** 2
+    if not isclose(norm, 1.0, abs_tol=1e-12):
+        raise ValueError("spinor coordinates must have unit norm")
+    return (
+        (z0, -z1.conjugate()),
+        (z1, z0.conjugate()),
+    )
+
+
+def hamlet_bloch_coordinates(
+    coords: tuple[complex, complex],
+) -> tuple[float, float, float]:
+    """Bloch/Hopf map from a normalized Hamlet module spinor to S2."""
+
+    z0, z1 = coords
+    norm = abs(z0) ** 2 + abs(z1) ** 2
+    if not isclose(norm, 1.0, abs_tol=1e-12):
+        raise ValueError("spinor coordinates must have unit norm")
+    cross = z0.conjugate() * z1
+    return (
+        float(2.0 * cross.real),
+        float(2.0 * cross.imag),
+        float(abs(z0) ** 2 - abs(z1) ** 2),
+    )
+
+
 def _matmul2(
     left: tuple[tuple[complex, complex], tuple[complex, complex]],
     right: tuple[tuple[complex, complex], tuple[complex, complex]],
@@ -570,6 +618,17 @@ def exact_chain_sanity() -> bool:
                     hamlet_operator_to_real_branch_chart(hamlet_operator_balanced_orbit(0.731)),
                     tuple(complex(v) for v in hamlet_j_orbit(0.731)),
                 )
+            ),
+            isclose(
+                abs(hamlet_spinor_to_su2(hamlet_operator_balanced_orbit(0.731))[0][0]) ** 2
+                + abs(hamlet_spinor_to_su2(hamlet_operator_balanced_orbit(0.731))[1][0]) ** 2,
+                1.0,
+                abs_tol=1e-12,
+            ),
+            isclose(
+                hamlet_bloch_coordinates(hamlet_operator_balanced_orbit(0.731))[2],
+                0.0,
+                abs_tol=1e-12,
             ),
             IMAGINARY_GENERATOR * IMAGINARY_GENERATOR == -1,
             hamlet_su2_commutator_residual() <= 1e-12,
