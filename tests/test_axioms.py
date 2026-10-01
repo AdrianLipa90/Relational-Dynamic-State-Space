@@ -1749,6 +1749,17 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE" in spin_closure
     assert "REF_BERRY_PHASE_CONNECTION_POTENTIAL_CLASS" not in spin_closure
 
+def test_structure_to_relation_uses_tir_minimum_structure_theorem() -> None:
+    claims = claim_map()
+
+    assert claims["BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION"].kind is ClaimKind.BRIDGE
+    assert claims["THM_STRUCTURE_BRANCH_MINIMAL_RELATION"].kind is ClaimKind.THEOREM
+
+    closure = dependency_closure("THM_STRUCTURE_BRANCH_MINIMAL_RELATION")
+    assert "BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION" in closure
+    assert "DEF_STRUCTURE_AS_PERSISTENT_RELATION" not in closure
+
+
 def test_first_hamlet_selects_persistence_then_structure_yields_durable_relation_roles() -> None:
     claims = claim_map()
 
