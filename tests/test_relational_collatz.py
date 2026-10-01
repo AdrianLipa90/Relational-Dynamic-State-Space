@@ -3,6 +3,9 @@ import pytest
 from rdss.relational_collatz import (
     active_operator_basis,
     active_seed_from_relation_algebra,
+    identity_operator_basis,
+    dissociation_active_sector_cardinality,
+    identity_repair_cardinality,
     association_quotient_cardinality,
     full_operator_basis,
     dissociation_fibre_cardinality,
@@ -27,6 +30,20 @@ def test_association_is_exact_free_dyad_quotient_cardinality() -> None:
 
     with pytest.raises(ValueError):
         association_quotient_cardinality(3)
+
+
+def test_canonical_dissociation_uses_full_active_operator_sector() -> None:
+    assert full_operator_basis() == ("I", "S", "P", "J")
+    assert identity_operator_basis() == ("I",)
+    assert active_operator_basis() == ("S", "P", "J")
+
+    assert dissociation_active_sector_cardinality(1) == 3
+    assert dissociation_active_sector_cardinality(5) == 15
+    assert dissociation_active_sector_cardinality(7) == 21
+
+    assert identity_repair_cardinality(3) == 4
+    assert identity_repair_cardinality(9) == 10
+    assert identity_repair_cardinality(15) == 16
 
 
 def test_dissociation_is_three_fibre_extension() -> None:
@@ -98,6 +115,7 @@ def test_relation_algebra_seed_closes_l_constants_exactly() -> None:
     assert receipt["nonidentity_dimension"] == 3
     assert receipt["active_basis_size"] == 3
     assert receipt["universal_repair"] == 1
+    assert receipt["identity_basis_size"] == 1
     assert receipt["active_seed"] == 3
     assert receipt["seed_step_1"] == 10
     assert receipt["seed_step_2"] == 5
