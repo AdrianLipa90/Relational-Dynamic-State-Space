@@ -31,6 +31,13 @@ class FirstHamletOutcome(str, Enum):
     STRUCTURE = "structure"
 
 
+class RelationRole(str, Enum):
+    """Persistent orientation roles of one non-self-collapsed relation."""
+
+    NORTH = "N"
+    SOUTH = "S"
+
+
 @dataclass(frozen=True)
 class ExistencePotential:
     """Symbolic non-null possibility left after absolute nothingness is excluded.
@@ -99,19 +106,20 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "derive non-empty Dispersion and Structure preimages from dynamics",
     ),
     ExistenceChainStep(
-        "FIRST_HAMLET_TO_Z2",
+        "FIRST_HAMLET_META_Z2",
         "non-degenerate first Hamlet {DISPERSION, STRUCTURE}",
-        "complement action Z2",
+        "meta complement action Z2",
         ExistenceChainStatus.CONDITIONAL_EXACT,
         "complement^2 = identity",
+        "This classifies persistence outcomes only. It is not the durable two-state carrier used by the projective geometry.",
     ),
     ExistenceChainStep(
-        "FIRST_HAMLET_TO_LN2",
+        "FIRST_HAMLET_META_LN2",
         "two non-empty admissible first-Hamlet classes",
-        "Hartley information ln(2)",
+        "meta Hartley information ln(2)",
         ExistenceChainStatus.CONDITIONAL_EXACT,
-        "H_0 = ln |Omega_H| = ln(2)",
-        "Probability-free, but conditional on non-degeneracy or an independent proof that both branches are admissible.",
+        "H_meta = ln(2)",
+        "A valid meta count, but not the canonical downstream structural ln(2).",
     ),
     ExistenceChainStep(
         "DISPERSION_TO_INDISTINCTION",
@@ -119,7 +127,7 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "primitive indistinction I_0",
         ExistenceChainStatus.DEFINITIONAL,
         "not Persist -> no stable distinction -> I_0",
-        "Dispersion is not absolute nothingness.",
+        "Dispersion is not absolute nothingness and supplies no persistent projective basis state.",
     ),
     ExistenceChainStep(
         "STRUCTURE_TO_INFORMATION_POINT",
@@ -127,7 +135,38 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "minimal non-trivial information point",
         ExistenceChainStatus.MODEL_THEOREM,
         "Persist + min |Adm|=1 -> minimal information-point realization",
-        "The non-trivial point is downstream of the first Hamlet; the bare singleton point remains only a non-vacuity witness.",
+        "Retained carrier result; the durable binary geometry is derived from the persistent relation, not from this point alone.",
+    ),
+    ExistenceChainStep(
+        "STRUCTURE_TO_PERSISTENT_RELATION",
+        "STRUCTURE branch with persistent distinction",
+        "minimal persistent non-trivial relation R",
+        ExistenceChainStatus.DEFINITIONAL,
+        "persistent distinction := minimally represented by ordered relation R:s->t",
+        "This is the structural handoff aligned with the canonical TIR distinction between minimum object and minimum non-trivial structure.",
+    ),
+    ExistenceChainStep(
+        "RELATION_TO_ORIENTATION_ROLE_DYAD",
+        "non-self-collapsed persistent relation R",
+        "orientation roles {N,S}",
+        ExistenceChainStatus.EXACT_IDENTITY,
+        "J_R(s,t;R)=(t,s;R^-1), J_R^2=id",
+        "The two durable roles belong to one relation and are distinct from DISPERSION/STRUCTURE.",
+    ),
+    ExistenceChainStep(
+        "RELATION_ROLE_TO_Z2",
+        "persistent orientation roles {N,S}",
+        "durable orientation Z2",
+        ExistenceChainStatus.EXACT_IDENTITY,
+        "{id,J_R} ~= Z2",
+    ),
+    ExistenceChainStep(
+        "RELATION_ROLE_TO_LN2",
+        "two persistent orientation roles",
+        "structural Hartley information ln(2)",
+        ExistenceChainStatus.EXACT_IDENTITY,
+        "H_role = ln |{N,S}| = ln(2)",
+        "This is the canonical structural ln(2) for the durable downstream algebra.",
     ),
     ExistenceChainStep(
         "BARE_POINT_NOT_FIRST_HAMLET",
@@ -135,43 +174,43 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "no forced internal binary distinction",
         ExistenceChainStatus.MODEL_THEOREM,
         "bare point != first Hamlet",
-        "This preserves the singleton countermodel and blocks the old point-to-informationality causal order.",
+        "The point supplies minimum object cardinality only.",
     ),
     ExistenceChainStep(
-        "CANONICAL_HAMLET_RELATIONAL_REALIZATION",
-        "first-Hamlet alternatives",
-        "two distinct relational branch-occurrence identities",
-        ExistenceChainStatus.DEFINITIONAL,
-        "DISPERSION/STRUCTURE -> distinct occurrence identities bound to host",
-        "Canonical RDSS representation semantics; universal foundational entailment remains a separate gate.",
+        "COLLATZ_FROM_RELATION_ALGEBRA_GATE",
+        "persistent relation-role algebra plus arithmetic closure",
+        "Collatz branch operators E:n->n/2 and O:n->3n+1",
+        ExistenceChainStatus.DERIVATION_GATE,
+        "derive coefficients 2,3,+1 uniquely",
+        "TIR validates the branches and their geometry once admitted, but their unique derivation from the upstream relation algebra remains open.",
     ),
     ExistenceChainStep(
-        "HAMLET_TO_HALF_HALF",
-        "first Hamlet with complement-invariant normalized probability",
-        "balanced probabilities",
+        "COLLATZ_BRANCHES_TO_PSL2",
+        "admitted Collatz affine branches E and O",
+        "PSL(2,R) branch representation",
         ExistenceChainStatus.CONDITIONAL_EXACT,
-        "complement invariance -> p_D=p_S=1/2",
-        "This is downstream and is not needed for the fundamental ln(2) Hartley information.",
+        "M_E~diag(1,2), M_O~[[3,1],[0,1]]; determinant normalization -> SL(2,R)",
+        "Exact once the Collatz branch maps are admitted.",
     ),
     ExistenceChainStep(
-        "SHANNON_LN2_CONSISTENCY",
-        "balanced first-Hamlet probabilities",
-        "Shannon entropy ln(2)",
+        "COLLATZ_BRANCHES_TO_LOG_SIGNATURE",
+        "admitted Collatz affine branches",
+        "signed local scale signatures",
         ExistenceChainStatus.EXACT_IDENTITY,
-        "H_Shannon(1/2,1/2)=ln(2)",
-        "Consistency check with the already-derived Hartley ln(2).",
+        "sigma_E=-ln(2), sigma_O=+ln(3)",
+        "Association/dissociation scale signatures; they do not derive the branches themselves.",
     ),
     ExistenceChainStep(
         "Z2_TO_SIGN_CHARACTER",
-        "Hamlet symmetry Z2",
+        "persistent relation-role symmetry Z2",
         "normalized real sign character {-1,+1}",
         ExistenceChainStatus.EXACT_IDENTITY,
         "chi(g)^2=1 and chi nontrivial => chi(g)=-1",
-        "This is the unique non-trivial one-dimensional real character of Z2; no upstream U(1) structure is assumed.",
+        "No upstream U(1) structure is assumed.",
     ),
     ExistenceChainStep(
         "ORIENTATION_TO_RELATIONAL_ZERO",
-        "normalized orientations {-1,+1}",
+        "persistent relation-role signs {-1,+1}",
         "relational centre zeta=0",
         ExistenceChainStatus.EXACT_IDENTITY,
         "zeta=(-1+1)/2=0",
@@ -179,11 +218,11 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ),
     ExistenceChainStep(
         "ORIENTATION_TO_IMAGINARY_GENERATOR",
-        "ordered Hamlet real branch span with swap S and polarity P",
+        "ordered persistent relation-role span with swap S and polarity P",
         "real complex-structure generator J",
         ExistenceChainStatus.CONDITIONAL_EXACT,
         "J=SP, S^2=P^2=I, SP=-PS => J^2=-I",
-        "Exact on the free real two-branch span; reversing branch orientation sends J to -J, i.e. complex conjugation.",
+        "Exact on the durable two-role real span. DISPERSION/STRUCTURE are not used as the vector-space basis.",
     ),
     ExistenceChainStep(
         "IMAGINARY_GENERATOR_TO_U1",
@@ -194,7 +233,7 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ),
     ExistenceChainStep(
         "BINARY_PHASE_TO_CP1",
-        "full Hamlet operator algebra A_H=M2(R)=C_J direct-sum S C_J",
+        "full persistent relation-role operator algebra A_H=M2(R)=C_J direct-sum S C_J",
         "CP1 / Bloch sphere",
         ExistenceChainStatus.STANDARD_GEOMETRY,
         "unit(A_H)=S3; S3/right-U(1) ~= CP1 ~= S2",
@@ -202,7 +241,7 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ),
     ExistenceChainStep(
         "HAMLET_S3_TO_SU2",
-        "unit Hamlet operator module S3",
+        "unit persistent relation-role operator module S3",
         "SU(2)",
         ExistenceChainStatus.STANDARD_GEOMETRY,
         "(z0,z1) gives the canonical SU(2) matrix",
@@ -234,7 +273,7 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ),
     ExistenceChainStep(
         "HAMLET_TO_PROJECTIVE_SIGN_CLOSURE",
-        "Hamlet J-orbit in the symmetry-fixed CP1 branch geometry",
+        "relation-role J-orbit in the symmetry-fixed CP1 branch geometry",
         "canonical Berry loop realizes holonomy -1",
         ExistenceChainStatus.CONDITIONAL_EXACT,
         "psi(theta)=exp(theta J)psi_0, theta:0->pi; psi(pi)=-psi_0",
@@ -242,7 +281,7 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ),
     ExistenceChainStep(
         "HAMLET_PAULI_TO_SU2",
-        "Hamlet swap/polarity/complex structure",
+        "relation-role swap/polarity/complex structure",
         "standard su(2) defining generators",
         ExistenceChainStatus.CONDITIONAL_EXACT,
         "sigma_x=S, sigma_z=-P, sigma_y=-iJ; T_k=sigma_k/2",
@@ -250,7 +289,7 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ),
     ExistenceChainStep(
         "SU2_CASIMIR_TO_HALF",
-        "Hamlet defining su(2) representation",
+        "relation-role defining su(2) representation",
         "representation label j=1/2",
         ExistenceChainStatus.CONDITIONAL_STANDARD_RESULT,
         "sum T_k^2=3I/4=j(j+1)I -> j=1/2",
@@ -258,13 +297,38 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ),
     ExistenceChainStep(
         "BERRY_EULER_HAMLET_TO_SPIN_HALF",
-        "Hamlet su(2) half representation plus Berry/Euler closure",
+        "relation-role su(2) half representation plus Berry/Euler closure",
         "consistent half-spin / 2pi-sign / 4pi-return structure",
         ExistenceChainStatus.CONDITIONAL_STANDARD_RESULT,
         "j=1/2; U(2*pi)=-I; U(4*pi)=I; Hol_Berry=-1",
         "The half label is fixed by the su(2) Casimir; Berry/Euler supplies an independent geometric consistency check.",
     ),
 )
+
+
+def relation_roles() -> tuple[RelationRole, RelationRole]:
+    """Persistent orientation-role dyad of one non-self-collapsed relation."""
+
+    return (RelationRole.NORTH, RelationRole.SOUTH)
+
+
+def relation_role_reverse(role: RelationRole) -> RelationRole:
+    """Orientation reversal on the persistent relation-role dyad."""
+
+    return RelationRole.SOUTH if role is RelationRole.NORTH else RelationRole.NORTH
+
+
+def relation_role_hartley_nats() -> float:
+    """Probability-free information of the durable two-role orbit."""
+
+    return hartley_information_nats(len(relation_roles()))
+
+
+def relation_role_swap_invariant_unit_vector() -> tuple[float, float]:
+    """Normalized +1 eigenvector of persistent role reversal."""
+
+    scale = 1.0 / sqrt(2.0)
+    return (scale, scale)
 
 
 def first_hamlet_outcomes() -> tuple[FirstHamletOutcome, FirstHamletOutcome]:
@@ -316,10 +380,9 @@ def branch_word_swap(word: tuple[int, ...]) -> tuple[int, ...]:
 
 
 def first_hamlet_swap_invariant_unit_vector() -> tuple[float, float]:
-    """Normalized +1 eigenvector of the first-Hamlet swap operator."""
+    """Legacy API alias for the durable relation-role swap-invariant vector."""
 
-    scale = 1.0 / sqrt(2.0)
-    return (scale, scale)
+    return relation_role_swap_invariant_unit_vector()
 
 
 def hamlet_distribution() -> tuple[float, float]:
@@ -450,7 +513,7 @@ def hamlet_operator_balanced_orbit(theta: float) -> tuple[complex, complex]:
 
     phase = exp(1j * float(theta))
     inv_phase = exp(-1j * float(theta))
-    left, right = first_hamlet_swap_invariant_unit_vector()
+    left, right = relation_role_swap_invariant_unit_vector()
     return (left * phase, right * inv_phase)
 
 
@@ -666,9 +729,12 @@ def exact_chain_sanity() -> bool:
             branch_swap(branch_swap(1)) == 1,
             branch_word_swap(branch_word_swap((-1, 1, -1))) == (-1, 1, -1),
             isclose(first_hamlet_hartley_nats(), LN2),
+            relation_role_reverse(relation_role_reverse(RelationRole.NORTH)) is RelationRole.NORTH,
+            relation_role_reverse(relation_role_reverse(RelationRole.SOUTH)) is RelationRole.SOUTH,
+            isclose(relation_role_hartley_nats(), LN2),
             all(
                 isclose(value, 1.0 / sqrt(2.0), abs_tol=1e-12)
-                for value in first_hamlet_swap_invariant_unit_vector()
+                for value in relation_role_swap_invariant_unit_vector()
             ),
             isclose(hamlet_information_nats(), LN2),
             isclose(relational_zero_center(), RELATIONAL_ZETA_ZERO),
