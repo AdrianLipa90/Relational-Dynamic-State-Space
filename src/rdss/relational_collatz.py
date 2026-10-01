@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from .existence_chain import relation_roles
+
 
 def _positive_integer(value: int, name: str = "cardinality") -> int:
     if isinstance(value, bool) or not isinstance(value, int):
@@ -80,7 +82,7 @@ def odd_branch_reopens_association(cardinality: int) -> bool:
 def durable_role_count() -> int:
     """Cardinality of the persistent relation-role orbit."""
 
-    return 2
+    return len(relation_roles())
 
 
 def full_operator_basis() -> tuple[str, str, str, str]:
