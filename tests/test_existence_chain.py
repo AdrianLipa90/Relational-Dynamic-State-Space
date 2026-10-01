@@ -41,8 +41,11 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
     assert by_id["L1_TO_EXISTENCE_POTENTIAL"].status is ExistenceChainStatus.DEFINITIONAL
     assert by_id["L1_MODEL_TO_MINIMAL_POINT"].status is ExistenceChainStatus.MODEL_THEOREM
     assert by_id["POINT_TO_INFORMATIONALITY"].status is ExistenceChainStatus.DERIVATION_GATE
+    assert by_id["CANONICAL_REALIZED_EXISTENCE_INFORMATIONALITY"].status is ExistenceChainStatus.DEFINITIONAL
     assert by_id["INFORMATIONALITY_TO_BINARY"].status is ExistenceChainStatus.CONDITIONAL_EXACT
     assert by_id["BINARY_TO_Z2_AUTOMORPHISM"].status is ExistenceChainStatus.EXACT_IDENTITY
+    assert by_id["CANONICAL_REALIZED_EXISTENCE_TO_HAMLET"].status is ExistenceChainStatus.CONDITIONAL_EXACT
+    assert by_id["CANONICAL_HAMLET_RELATIONAL_REALIZATION"].status is ExistenceChainStatus.DEFINITIONAL
     assert by_id["EXISTENCE_POTENTIAL_TO_HAMLET"].status is ExistenceChainStatus.DERIVATION_GATE
     assert by_id["HAMLET_TO_HALF_HALF"].status is ExistenceChainStatus.CONDITIONAL_EXACT
     assert by_id["Z2_TO_SIGN_CHARACTER"].status is ExistenceChainStatus.EXACT_IDENTITY
