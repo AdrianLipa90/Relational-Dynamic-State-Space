@@ -4,7 +4,15 @@ import pytest
 
 from rdss.primitive_persistence import (
     asymptotic_distinction,
+    collatz_associate,
+    collatz_association_balance,
+    collatz_association_cycle,
+    collatz_complete,
+    collatz_dissociate,
+    collatz_log_gain,
+    collatz_persistence_regime,
     distinction_flow,
+    distinction_flow_from_collatz,
     distinction_potential,
     distinction_potential_dissipation,
     distinction_potential_gradient,
@@ -70,3 +78,68 @@ def test_reference_flow_fails_closed_on_invalid_domain() -> None:
         distinction_solution(0.1, 1.0, -1.0)
     with pytest.raises(ValueError):
         distinction_potential(float("nan"), 1.0)
+
+def test_collatz_association_dissociation_cycle_is_exact() -> None:
+    assert collatz_dissociate(3) == 9
+    assert collatz_complete(9) == 10
+    assert collatz_associate(10) == (5, 1)
+
+    assert collatz_association_cycle(1) == (1, 2)
+    assert collatz_association_cycle(3) == (5, 1)
+    assert collatz_association_cycle(5) == (1, 4)
+    assert collatz_association_cycle(7) == (11, 1)
+    assert collatz_association_cycle(9) == (7, 2)
+
+
+def test_collatz_balance_is_negative_local_log_gain() -> None:
+    for n in (1, 3, 5, 7, 9, 15, 21, 27):
+        assert isclose(
+            collatz_association_balance(n),
+            -collatz_log_gain(n),
+            rel_tol=0.0,
+            abs_tol=1e-15,
+        )
+
+
+def test_collatz_balance_classifies_association_and_dissociation_dominance() -> None:
+    assert collatz_persistence_regime(1) == "critical"
+    assert collatz_persistence_regime(3) == "dispersion"
+    assert collatz_persistence_regime(5) == "structure"
+    assert collatz_persistence_regime(7) == "dispersion"
+    assert collatz_persistence_regime(9) == "structure"
+
+    assert collatz_association_balance(3) < 0.0
+    assert collatz_association_balance(5) > 0.0
+    assert isclose(collatz_association_balance(1), 0.0, abs_tol=1e-15)
+
+
+def test_collatz_derived_control_drives_reference_persistence_flow() -> None:
+    d = 0.25
+    assert distinction_flow_from_collatz(d, 3) < distinction_flow(d, 0.0)
+    assert distinction_flow_from_collatz(d, 5) > distinction_flow(d, 0.0)
+
+
+def test_collatz_local_balance_makes_no_global_convergence_claim() -> None:
+    # Local exact identity only: mu_C(n) = ln(n / T_C(n)).
+    from math import log
+
+    for n in (3, 5, 7, 9, 11, 13):
+        next_state, _ = collatz_association_cycle(n)
+        assert isclose(
+            collatz_association_balance(n),
+            log(n / next_state),
+            rel_tol=0.0,
+            abs_tol=1e-15,
+        )
+
+
+def test_collatz_helpers_fail_closed() -> None:
+    with pytest.raises(ValueError):
+        collatz_dissociate(2)
+    with pytest.raises(ValueError):
+        collatz_association_cycle(0)
+    with pytest.raises(ValueError):
+        collatz_associate(9)
+    with pytest.raises(TypeError):
+        collatz_association_cycle(True)
+
