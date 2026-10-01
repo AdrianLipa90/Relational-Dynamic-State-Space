@@ -66,15 +66,21 @@ H_0
 where DISPERSION means that a candidate distinction does not persist and
 STRUCTURE means that it does.
 
+The Boolean predicate supplies these two exhaustive labels, but by itself does
+not prove that both preimages are non-empty. Canonical RDSS therefore defines
+the **first Hamlet** as the non-degenerate bifurcation in which both
+DISPERSION and STRUCTURE are admissible possibilities. Deriving that
+non-degeneracy from a concrete physical dynamics remains an explicit gate.
+
 This first Hamlet occurs **before** selection of a non-trivial point.
 
-Because
+For the canonical non-degenerate first Hamlet,
 
 \[
 |H_0|=2,
 \]
 
-Hartley information is already
+Hartley information is
 
 \[
 \boxed{
