@@ -301,6 +301,13 @@ def branch_word_swap(word: tuple[int, ...]) -> tuple[int, ...]:
     return tuple(branch_swap(branch) for branch in word)
 
 
+def first_hamlet_swap_invariant_unit_vector() -> tuple[float, float]:
+    """Normalized +1 eigenvector of the first-Hamlet swap operator."""
+
+    scale = 1.0 / sqrt(2.0)
+    return (scale, scale)
+
+
 def hamlet_distribution() -> tuple[float, float]:
     """Unique normalized depth-one weights invariant under branch swap."""
 
@@ -425,12 +432,12 @@ def hamlet_operator_module_norm(coords: tuple[complex, complex]) -> float:
 
 
 def hamlet_operator_balanced_orbit(theta: float) -> tuple[complex, complex]:
-    """Canonical balanced left-J orbit in the right C_J-module chart."""
+    """Canonical swap-invariant left-J orbit in the right C_J-module chart."""
 
     phase = exp(1j * float(theta))
     inv_phase = exp(-1j * float(theta))
-    scale = 1.0 / sqrt(2.0)
-    return (scale * phase, scale * inv_phase)
+    left, right = first_hamlet_swap_invariant_unit_vector()
+    return (left * phase, right * inv_phase)
 
 
 def hamlet_operator_balanced_orbit_derivative(
@@ -645,6 +652,10 @@ def exact_chain_sanity() -> bool:
             branch_swap(branch_swap(1)) == 1,
             branch_word_swap(branch_word_swap((-1, 1, -1))) == (-1, 1, -1),
             isclose(first_hamlet_hartley_nats(), LN2),
+            all(
+                isclose(value, 1.0 / sqrt(2.0), abs_tol=1e-12)
+                for value in first_hamlet_swap_invariant_unit_vector()
+            ),
             isclose(hamlet_information_nats(), LN2),
             isclose(relational_zero_center(), RELATIONAL_ZETA_ZERO),
             z2_nontrivial_real_character(1) == 1.0,
