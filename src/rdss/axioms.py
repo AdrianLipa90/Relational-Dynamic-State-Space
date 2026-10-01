@@ -226,7 +226,7 @@ CLAIMS: tuple[Claim, ...] = (
         "REF_EXISTENCE_POTENTIAL_CP1_SPHERE",
         ClaimKind.REFERENCE_REALIZATION,
         "The CP^1 ~= S^2 geometry of the unit Hamlet operator module A_H=C_J^2 modulo common right U(1) phase is the canonical RDSS potential-sphere realization. The older free complex branch-space construction is retained only as an equivalent reference chart.",
-        ("THM_HAMLET_OPERATOR_PROJECTIVE_CP1", "REF_CP1"),
+        ("THM_HAMLET_OPERATOR_PROJECTIVE_CP1",),
     ),
     Claim(
         "REF_RELATIONAL_ZETA_POTENTIAL_SPHERE_CENTER",
@@ -444,8 +444,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "REF_CP1",
         ClaimKind.REFERENCE_REALIZATION,
-        "A minimal complex binary distinction may be represented by two projectively distinct CP^1 states with Fubini-Study metric.",
-        ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
+        "Legacy/reference realization: a minimal complex binary distinction may be represented by projectively distinct CP^1 states with Fubini-Study metric. This realizes the generic projective-equivalence definition and is not a premise of the canonical Hamlet operator-algebra derivation.",
+        ("DEF_POINT", "DEF_BINARY_DISTINCTION", "DEF_CP1_PROJECTIVE_EQUIVALENCE"),
     ),
     Claim(
         "REF_CP1_REFINEMENT",
@@ -1384,7 +1384,6 @@ CLAIMS: tuple[Claim, ...] = (
         "DEF_CP1_PROJECTIVE_EQUIVALENCE",
         ClaimKind.DEFINITION,
         "For nonzero complex two-component representatives psi=(alpha,beta) and phi=(gamma,delta), CP1 projective equivalence is psi~phi iff there exists lambda!=0 with phi=lambda psi; equivalently alpha*delta-beta*gamma=0. For normalized representatives, every such lambda has unit modulus and is a global phase.",
-        ("REF_CP1",),
     ),
     Claim(
         "THM_CP1_GLOBAL_PHASE_QUOTIENT",
