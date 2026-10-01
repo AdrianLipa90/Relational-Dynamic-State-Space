@@ -5,7 +5,8 @@ from enum import Enum
 
 
 class ClaimKind(str, Enum):
-    AXIOM = "axiom"
+    AXIOM = "axiom"  # legacy compatibility; no canonical RDSS claim uses this kind
+    FOUNDATIONAL_LAW = "foundational_law"
     DEFINITION = "definition"
     STRUCTURAL_PRIMITIVE = "structural_primitive"
     REFERENCE_REALIZATION = "reference_realization"
@@ -27,8 +28,74 @@ class Claim:
 CLAIMS: tuple[Claim, ...] = (
     Claim(
         "A0",
-        ClaimKind.AXIOM,
-        "Relational non-realizability of absolute nothingness: absolute nothing cannot be realized or denoted because there is nothing relative to which it could be distinguished or related.",
+        ClaimKind.FOUNDATIONAL_LAW,
+        "First Law of Existence (legacy identifier A0): absolute nothingness is not a realizable state because it contains no object, distinction or relation by which it could be established as a state.",
+    ),
+    Claim(
+        "GATE_L1_EXISTENCE_POTENTIAL",
+        ClaimKind.DERIVATION_GATE,
+        "Pre-audit causal target: once absolute nothingness is excluded by the First Law of Existence, the only remaining primitive possibility is an existence potential P_E. P_E is not yet a material object, energy, force, field or spacetime quantity.",
+        ("A0",),
+    ),
+    Claim(
+        "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",
+        ClaimKind.DERIVATION_GATE,
+        "Pre-audit Hamlet uncertainty target: an unresolved existence potential with no preferred orientation yields the minimal exhaustive opposition {-1,+1}. This is a relational pre-observable uncertainty statement, not yet the standard Heisenberg x-p inequality.",
+        ("GATE_L1_EXISTENCE_POTENTIAL",),
+    ),
+    Claim(
+        "THM_HAMLET_HALF_HALF",
+        ClaimKind.THEOREM,
+        "Conditional on an exhaustive binary opposition with exact exchange symmetry and no preferred orientation, normalization forces p_-=p_+=1/2.",
+        ("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",),
+    ),
+    Claim(
+        "THM_HAMLET_LN2",
+        ClaimKind.THEOREM,
+        "For the balanced Hamlet distribution (1/2,1/2), binary Shannon entropy in nats is exactly H=ln(2).",
+        ("THM_HAMLET_HALF_HALF",),
+    ),
+    Claim(
+        "THM_HAMLET_RELATIONAL_ZETA_ZERO",
+        ClaimKind.THEOREM,
+        "Under the normalized orientation chart {-1,+1}, the relational centre is zeta=(-1+1)/2=0. This represented relational zero is not absolute nothingness.",
+        ("THM_HAMLET_HALF_HALF",),
+    ),
+    Claim(
+        "GATE_HAMLET_IMAGINARY_GENERATOR",
+        ClaimKind.DERIVATION_GATE,
+        "Pre-audit causal target: the real opposition {-1,+1} together with its relational zero forces an orthogonal complex generator i satisfying i^2=-1. The mega-audit must test uniqueness and whether any hidden orientation/metric assumption is required.",
+        ("THM_HAMLET_RELATIONAL_ZETA_ZERO",),
+    ),
+    Claim(
+        "THM_IMAGINARY_GENERATOR_U1",
+        ClaimKind.THEOREM,
+        "Once a complex generator i with i^2=-1 is admitted, u(phi)=exp(i phi) has unit modulus and composes additively in phase, giving the standard U(1) phase orbit.",
+        ("GATE_HAMLET_IMAGINARY_GENERATOR",),
+    ),
+    Claim(
+        "BRIDGE_EXISTENCE_POTENTIAL_AHARONOV_BOHM",
+        ClaimKind.BRIDGE,
+        "Aharonov-Bohm is used as a standard phase-potential reference: a connection/potential can carry non-trivial loop phase even where the local classical field vanishes. This bridge does not identify P_E with the electromagnetic vector potential.",
+        ("GATE_L1_EXISTENCE_POTENTIAL", "THM_IMAGINARY_GENERATOR_U1"),
+    ),
+    Claim(
+        "REF_EXISTENCE_POTENTIAL_CP1_SPHERE",
+        ClaimKind.REFERENCE_REALIZATION,
+        "Given the balanced complex two-state carrier, its non-zero normalized representatives modulo common U(1) phase form CP^1, diffeomorphic to the Bloch sphere S^2. This is the reference potential-sphere realization; U(1) alone is not sufficient.",
+        ("THM_HAMLET_HALF_HALF", "THM_IMAGINARY_GENERATOR_U1", "REF_CP1", "DEF_CP1_PROJECTIVE_EQUIVALENCE"),
+    ),
+    Claim(
+        "REF_RELATIONAL_ZETA_POTENTIAL_SPHERE_CENTER",
+        ClaimKind.REFERENCE_REALIZATION,
+        "In the ambient three-coordinate Bloch-sphere chart, relational zeta=0 is the centre of the potential sphere, not a pure-state point on the CP^1 surface and not absolute nothingness.",
+        ("THM_HAMLET_RELATIONAL_ZETA_ZERO", "REF_EXISTENCE_POTENTIAL_CP1_SPHERE"),
+    ),
+    Claim(
+        "THM_EULER_BERRY_MINIMAL_SPIN_HALF",
+        ClaimKind.THEOREM,
+        "Conditional on the CP^1/Bloch-sphere realization, the equatorial hemisphere Berry phase gamma=2*pi*s and primitive Euler sign closure exp(i*gamma)=-1 select the minimal positive sector s=1/2; the doubled 4*pi traversal returns to +1.",
+        ("REF_EXISTENCE_POTENTIAL_CP1_SPHERE", "REF_U1_PHASE_VALUE"),
     ),
     Claim(
         "META0",
@@ -1144,8 +1211,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "BRIDGE_TIR_EULER_BERRY_SPIN_HALF_POLARIZATION",
         ClaimKind.BRIDGE,
-        "Read-only TIR reference bridge importing the formal/symbolic Euler-Berry closure to the primitive spin-1/2 sector, including 2*pi sign return, 4*pi full return and closure of the spin polarization pair onto the relational poles. This does not assert a universal physical spin assignment.",
-        ("REF_CP1", "REF_U1_PHASE_VALUE"),
+        "Read-only TIR provenance bridge for the Euler-Berry closure already represented inside RDSS by THM_EULER_BERRY_MINIMAL_SPIN_HALF, including 2*pi sign return, 4*pi full return and closure of the spin polarization pair onto the relational poles. This does not assert a universal physical spin assignment.",
+        ("THM_EULER_BERRY_MINIMAL_SPIN_HALF",),
     ),
     Claim(
         "DEF_STELLA_CUBIC_VERTEX_PARTITION",
@@ -1264,8 +1331,16 @@ def validate_dependency_dag() -> None:
         visit(node)
 
 
+def foundational_laws() -> tuple[Claim, ...]:
+    return tuple(
+        claim for claim in CLAIMS if claim.kind is ClaimKind.FOUNDATIONAL_LAW
+    )
+
+
 def foundational_axioms() -> tuple[Claim, ...]:
-    return tuple(claim for claim in CLAIMS if claim.kind is ClaimKind.AXIOM)
+    """Backward-compatible alias for callers written before the law migration."""
+
+    return foundational_laws()
 
 
 
