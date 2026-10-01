@@ -57,26 +57,44 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_FIRST_HAMLET_DISPERSION_STRUCTURE",
         ClaimKind.THEOREM,
-        "The persistence predicate partitions every candidate differentiation outcome into exactly two exhaustive and disjoint classes: DISPERSION (not Persist), which leaves no stable distinction, and STRUCTURE (Persist), which leaves a stable distinction. This Boolean bifurcation is the first Hamlet and occurs before any non-trivial point carrier is selected.",
+        "The persistence predicate has Boolean codomain {DISPERSION, STRUCTURE}: every candidate differentiation is classified exhaustively and exclusively as not-Persist or Persist. This theorem establishes the two-class partition schema before any non-trivial point carrier is selected; it does not by itself prove that both preimages are non-empty.",
         ("DEF_DISTINCTION_PERSISTENCE_PREDICATE",),
+    ),
+    Claim(
+        "DEF_CANONICAL_FIRST_HAMLET_NONDEGENERATE",
+        ClaimKind.DEFINITION,
+        "Canonical RDSS first-Hamlet semantics uses the non-degenerate persistence bifurcation: both DISPERSION and STRUCTURE are admitted possibilities, so both Boolean preimages are non-empty.",
+        ("THM_FIRST_HAMLET_DISPERSION_STRUCTURE",),
+    ),
+    Claim(
+        "THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES",
+        ClaimKind.THEOREM,
+        "Under canonical non-degenerate first-Hamlet semantics, the actual admissible outcome space has exactly two non-empty elements/classes, DISPERSION and STRUCTURE.",
+        ("DEF_CANONICAL_FIRST_HAMLET_NONDEGENERATE",),
+    ),
+    Claim(
+        "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0",
+        ClaimKind.DERIVATION_GATE,
+        "Strict dynamics gate: derive from primitive existence potential plus indistinction, without adopting the canonical non-degeneracy definition, that both DISPERSION and STRUCTURE are dynamically admissible/non-empty possibilities.",
+        ("DEF_PRIMITIVE_INDISTINCTION", "DEF_DISTINCTION_PERSISTENCE_PREDICATE"),
     ),
     Claim(
         "THM_FIRST_HAMLET_Z2",
         ClaimKind.THEOREM,
         "Complementation of the Boolean persistence predicate exchanges DISPERSION and STRUCTURE and squares to the identity. The two first-Hamlet classes therefore carry the canonical Z2 complement action.",
-        ("THM_FIRST_HAMLET_DISPERSION_STRUCTURE",),
+        ("THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES",),
     ),
     Claim(
         "THM_FIRST_HAMLET_HARTLEY_LN2",
         ClaimKind.THEOREM,
         "The first Hamlet has exactly two exhaustive outcome classes, so Hartley information in nats is H_0=ln|Omega_H|=ln(2). No probability assignment is required.",
-        ("THM_FIRST_HAMLET_DISPERSION_STRUCTURE",),
+        ("THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES",),
     ),
     Claim(
         "THM_DISPERSION_RETURNS_INDISTINCTION",
         ClaimKind.THEOREM,
         "By the definition of DISPERSION, no stable distinction remains; the resulting state is therefore again primitive indistinction I_0 within existence potential, not absolute nothingness.",
-        ("DEF_PRIMITIVE_INDISTINCTION", "THM_FIRST_HAMLET_DISPERSION_STRUCTURE"),
+        ("DEF_PRIMITIVE_INDISTINCTION", "THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES"),
     ),
     Claim(
         "DEF_NONTRIVIAL_INFORMATION_POINT",
@@ -88,13 +106,13 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_STRUCTURE_BRANCH_MINIMAL_INFORMATION_POINT",
         ClaimKind.THEOREM,
         "On the STRUCTURE branch, a persistent distinction exists. Combining that persistent distinction with the exact one-carrier minimum yields the minimal non-trivial information-point realization. Thus the non-trivial point is downstream of the first Hamlet, not its prerequisite.",
-        ("THM_FIRST_HAMLET_DISPERSION_STRUCTURE", "THM_META0_MINIMAL_CARRIER_CARDINALITY", "DEF_NONTRIVIAL_INFORMATION_POINT"),
+        ("THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES", "THM_META0_MINIMAL_CARRIER_CARDINALITY", "DEF_NONTRIVIAL_INFORMATION_POINT"),
     ),
     Claim(
         "DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE",
         ClaimKind.DEFINITION,
         "Canonical RDSS semantics: the STRUCTURE branch of the first Hamlet is the realized non-trivial information state because it contains a persistent distinction; the DISPERSION branch returns to primitive indistinction I_0.",
-        ("THM_FIRST_HAMLET_DISPERSION_STRUCTURE", "DEF_NONTRIVIAL_INFORMATION_STATE"),
+        ("THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES", "DEF_NONTRIVIAL_INFORMATION_STATE"),
     ),
     Claim(
         "THM_CANONICAL_REALIZED_EXISTENCE_BINARY",
@@ -130,7 +148,7 @@ CLAIMS: tuple[Claim, ...] = (
         "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",
         ClaimKind.DERIVATION_GATE,
         "Legacy strict-dynamics gate: physically instantiate the already-defined first Hamlet DISPERSION/STRUCTURE bifurcation from primitive existence potential. The canonical algebraic Hamlet is THM_FIRST_HAMLET_DISPERSION_STRUCTURE plus THM_FIRST_HAMLET_Z2 and does not require this gate.",
-        ("GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY", "THM_FIRST_HAMLET_DISPERSION_STRUCTURE", "THM_FIRST_HAMLET_Z2"),
+        ("GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY", "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0", "THM_FIRST_HAMLET_Z2"),
     ),
     Claim(
         "GATE_HAMLET_RELATIONAL_BINDING",
@@ -196,7 +214,7 @@ CLAIMS: tuple[Claim, ...] = (
         "DEF_HAMLET_REAL_LINEAR_SPAN",
         ClaimKind.DEFINITION,
         "For the ordered first-Hamlet basis (e_Disp,e_Struct), let V_H=R e_Disp direct-sum R e_Struct be the free real linear span. No probability measure or complex scalar is assumed in this definition.",
-        ("THM_FIRST_HAMLET_DISPERSION_STRUCTURE", "THM_FIRST_HAMLET_Z2"),
+        ("THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES", "THM_FIRST_HAMLET_Z2"),
     ),
     Claim(
         "THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE",
