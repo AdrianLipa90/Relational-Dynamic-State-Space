@@ -2128,30 +2128,56 @@ def test_reference_persistence_flow_is_consistency_witness_not_foundational_deri
     strict_closure = dependency_closure("GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0")
     assert "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW" not in strict_closure
 
-    bind_gate = claims["GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE"]
-    assert bind_gate.kind is ClaimKind.DERIVATION_GATE
-    bind_closure = dependency_closure("GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE")
-    assert "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW" in bind_closure
-    assert "DEF_EXISTENCE_POTENTIAL" in bind_closure
-    assert "DEF_PRIMITIVE_INDISTINCTION" in bind_closure
+    legacy_gate = claims["GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE"]
+    assert legacy_gate.kind is ClaimKind.DERIVATION_GATE
+    legacy_closure = dependency_closure("GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE")
+    assert "DEF_PRIMITIVE_INDISTINCTION" in legacy_closure
+    assert "THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER" in legacy_closure
+    assert "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW" not in legacy_closure
 
-def test_collatz_balance_replaces_free_mu_but_state_binding_remains_open() -> None:
+def test_collatz_balance_is_downstream_and_operation_semantics_remain_the_gate() -> None:
     claims = claim_map()
 
     assert claims["DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE"].kind is ClaimKind.DEFINITION
     assert claims["THM_COLLATZ_ASSOCIATION_BALANCE"].kind is ClaimKind.THEOREM
     assert claims["REF_COLLATZ_DERIVED_PERSISTENCE_CONTROL"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES"].kind is ClaimKind.THEOREM
+    assert claims["THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ"].kind is ClaimKind.THEOREM
+    assert claims["GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"].kind is ClaimKind.DERIVATION_GATE
 
     balance_closure = dependency_closure("THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES")
     assert "THM_COLLATZ_ASSOCIATION_BALANCE" in balance_closure
     assert "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW" in balance_closure
 
-    gate = claims["GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE"]
-    assert gate.kind is ClaimKind.DERIVATION_GATE
-    gate_closure = dependency_closure("GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE")
-    assert "DEF_EXISTENCE_POTENTIAL" in gate_closure
-    assert "DEF_PRIMITIVE_INDISTINCTION" in gate_closure
-    assert "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE" in gate_closure
-    assert "THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES" not in gate_closure
+    gate_closure = dependency_closure("GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA")
+    assert "THM_COLLATZ_COEFFICIENT_PROVENANCE_DOUBLE_CLOSED" in gate_closure
+    assert "GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS" in gate_closure
+
+
+def test_gaussian_bombelli_route_is_independent_of_collatz_and_recovers_l_constants() -> None:
+    claims = claim_map()
+
+    assert claims["DEF_RELATION_ROLE_GAUSSIAN_LIFT_CLASS"].kind is ClaimKind.DEFINITION
+    assert claims["THM_MINIMAL_RELATION_ROLE_GAUSSIAN_GENERATOR"].kind is ClaimKind.THEOREM
+    assert claims["THM_GAUSSIAN_GENERATES_COLLATZ_COEFFICIENTS"].kind is ClaimKind.THEOREM
+    assert claims["THM_GAUSSIAN_BOMBELLI_LADDER"].kind is ClaimKind.THEOREM
+    assert claims["THM_GAUSSIAN_L45_SOURCE"].kind is ClaimKind.THEOREM
+    assert claims["BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45"].kind is ClaimKind.BRIDGE
+    assert claims["THM_GAUSSIAN_L3_24_CLOSURE_CROSSCHECK"].kind is ClaimKind.THEOREM
+    assert claims["THM_COLLATZ_COEFFICIENT_PROVENANCE_DOUBLE_CLOSED"].kind is ClaimKind.THEOREM
+
+    gaussian_closure = dependency_closure("THM_GAUSSIAN_GENERATES_COLLATZ_COEFFICIENTS")
+    assert "THM_HAMLET_IMAGINARY_GENERATOR" in gaussian_closure
+    assert "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT" in gaussian_closure
+    assert "THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ" not in gaussian_closure
+    assert "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE" not in gaussian_closure
+
+    l_closure = dependency_closure("THM_GAUSSIAN_L3_24_CLOSURE_CROSSCHECK")
+    assert "THM_GAUSSIAN_BOMBELLI_LADDER" in l_closure
+    assert "BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45" in l_closure
+
+    double_closure = dependency_closure("THM_COLLATZ_COEFFICIENT_PROVENANCE_DOUBLE_CLOSED")
+    assert "THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ" in double_closure
+    assert "THM_GAUSSIAN_GENERATES_COLLATZ_COEFFICIENTS" in double_closure
 
