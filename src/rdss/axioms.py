@@ -32,9 +32,9 @@ CLAIMS: tuple[Claim, ...] = (
         "First Law of Existence (legacy identifier A0): absolute nothingness is not a realizable state because it contains no object, distinction or relation by which it could be established as a state.",
     ),
     Claim(
-        "GATE_L1_EXISTENCE_POTENTIAL",
-        ClaimKind.DERIVATION_GATE,
-        "Pre-audit causal target: once absolute nothingness is excluded by the First Law of Existence, the only remaining primitive possibility is an existence potential P_E. P_E is not yet a material object, energy, force, field or spacetime quantity.",
+        "DEF_EXISTENCE_POTENTIAL",
+        ClaimKind.DEFINITION,
+        "Existence potential P_E is the modal/admissible possibility remaining after absolute nothingness is excluded by the First Law. P_E is not a material object, energy, force, field, spacetime quantity or Berry/gauge connection.",
         ("A0",),
     ),
     Claim(
@@ -125,6 +125,12 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.BRIDGE,
         "Aharonov-Bohm is retained only as an independent physical precedent for the phase-potential relation: gauge-potential data can carry observable loop phase even when the classical local field vanishes along the accessible path. It is downstream evidence and does not derive P_E, i, U(1), or the Berry connection.",
         ("REF_BERRY_PHASE_CONNECTION_POTENTIAL_CLASS",),
+    ),
+    Claim(
+        "THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER",
+        ClaimKind.THEOREM,
+        "The First-Law model-formation route gives a non-empty admitted domain, and the explicit bare singleton point presentation attains the lower bound; therefore the exact minimal admitted-carrier cardinality is one. The unscaled point is a reference realization of that minimum, not an extra foundational premise.",
+        ("DEF_EXISTENCE_POTENTIAL", "THM_META0_MINIMAL_CARRIER_CARDINALITY", "REF_META0_SINGLETON_POINT_PRESENTATION"),
     ),
     Claim(
         "GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE",
