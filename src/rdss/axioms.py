@@ -99,7 +99,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW",
         ClaimKind.REFERENCE_REALIZATION,
-        "A minimal noncircular persistence realization is d_dot=d(mu-d)=-dW/dd on d>=0 with W(d;mu)=-mu*d^2/2+d^3/3. The control parameter mu is supplied by the realization and is not derived from P_E.",
+        "A minimal noncircular persistence envelope is d_dot=d(mu-d)=-dW/dd on d>=0 with W(d;mu)=-mu*d^2/2+d^3/3. Here mu is only an effective signed balance coordinate; it is not treated as a primitive external control."
         ("DEF_REFERENCE_DISTINCTION_AMPLITUDE",),
     ),
     Claim(
@@ -121,10 +121,33 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_REF_PERSISTENCE_FLOW_DISPERSION", "THM_REF_PERSISTENCE_FLOW_STRUCTURE", "THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES"),
     ),
     Claim(
-        "GATE_BIND_PERSISTENCE_CONTROL_TO_EXISTENCE_POTENTIAL",
+        "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE",
+        ClaimKind.DEFINITION,
+        "For a positive odd state n, the local Collatz information cycle is D:n->3n (dissociation), R:3n->3n+1 (missing-element completion/repair), followed by maximal association A:(3n+1)->(3n+1)/2^nu2(3n+1). The resulting accelerated odd map is T_C(n)=(3n+1)/2^nu2(3n+1). No global Collatz-convergence claim is assumed.",
+    ),
+    Claim(
+        "THM_COLLATZ_ASSOCIATION_BALANCE",
+        ClaimKind.THEOREM,
+        "For one accelerated odd Collatz cycle, the exact local association-minus-dissociation balance is mu_C(n)=nu2(3n+1)*ln(2)-ln((3n+1)/n)=ln(n/T_C(n)). Positive mu_C means net association/contraction, negative mu_C means net dissociation/expansion, and zero is locally critical.",
+        ("DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE",),
+    ),
+    Claim(
+        "REF_COLLATZ_DERIVED_PERSISTENCE_CONTROL",
+        ClaimKind.REFERENCE_REALIZATION,
+        "In the primitive persistence envelope, set the effective balance coordinate mu equal to the exact Collatz association balance mu_C(n). Then the sign of the continuous persistence envelope is derived from discrete association/dissociation rather than supplied as a free control parameter.",
+        ("THM_COLLATZ_ASSOCIATION_BALANCE", "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW"),
+    ),
+    Claim(
+        "THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES",
+        ClaimKind.THEOREM,
+        "Under the Collatz-derived persistence realization, mu_C(n)>0 drives the STRUCTURE regime of the reference envelope, mu_C(n)<0 drives DISPERSION, and mu_C(n)=0 is critical. Examples are exact locally: n=3 gives dispersion, n=5 gives structure, and n=1 is critical for the accelerated odd cycle.",
+        ("REF_COLLATZ_DERIVED_PERSISTENCE_CONTROL", "THM_REF_PERSISTENCE_FLOW_DISPERSION", "THM_REF_PERSISTENCE_FLOW_STRUCTURE"),
+    ),
+    Claim(
+        "GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE",
         ClaimKind.DERIVATION_GATE,
-        "Strict bridge target: derive or empirically identify the origin and sign freedom of the reference control parameter mu from primitive existence potential P_E and indistinction I_0. Until this bridge is closed, the reference flow is a consistency witness rather than a foundational dynamics theorem.",
-        ("DEF_EXISTENCE_POTENTIAL", "DEF_PRIMITIVE_INDISTINCTION", "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW"),
+        "Strict bridge target: derive why primitive existence potential plus indistinction is represented by a positive odd Collatz information state n and how the initial n is selected. The local Collatz balance is exact once n is given, but this state-binding is not yet derived from P_E alone.",
+        ("DEF_EXISTENCE_POTENTIAL", "DEF_PRIMITIVE_INDISTINCTION", "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE"),
     ),
     Claim(
         "THM_FIRST_HAMLET_Z2",
