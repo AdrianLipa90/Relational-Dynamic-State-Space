@@ -584,11 +584,11 @@ geometric holonomy. The associated \(U(1)\) phase is the Berry phase:
 }
 \]
 
-For a spin-coherent sphere one may write, up to orientation convention,
-
-\[
-\gamma_B=s\Omega.
-\]
+For a spin-coherent sphere one may also write, up to orientation convention,
+\(\gamma_B=s\Omega\), but RDSS no longer uses that formula to derive the
+half representation label. The half label is obtained independently from the
+Hamlet-generated \(SU(2)\) algebra in Section 10 and Berry is used as a
+geometric consistency closure.
 
 The causal reading in RDSS is geometric:
 
@@ -644,10 +644,97 @@ Aharonov–Bohm remains a downstream physical precedent for the principle that
 potential/connection information may be physically encoded in phase. It does
 not generate the upstream RDSS phase structure.
 
-## 10. Canonical Hamlet operator loop -> Berry sign -> minimal spin one half
+## 10. Hamlet Pauli/SU(2) half representation and Berry closure
 
-In the right-\(\mathbb C_J\) module chart, choose the normalized balanced
-Hamlet state
+The same Hamlet operators give the Pauli triple
+
+\[
+\boxed{
+\sigma_x=S,
+\qquad
+\sigma_z=-P,
+\qquad
+\sigma_y=-iJ.
+}
+\]
+
+They satisfy
+
+\[
+\sigma_k^2=I,
+\qquad
+[\sigma_i,\sigma_j]
+=
+2i\epsilon_{ijk}\sigma_k.
+\]
+
+With
+
+\[
+T_k=\frac{\sigma_k}{2},
+\]
+
+we obtain
+
+\[
+\boxed{
+[T_i,T_j]
+=
+i\epsilon_{ijk}T_k,
+}
+\]
+
+the defining two-dimensional representation of \(\mathfrak{su}(2)\).
+
+The quadratic Casimir is
+
+\[
+\sum_k T_k^2
+=
+\frac34 I.
+\]
+
+For the standard non-negative representation label \(j\),
+
+\[
+j(j+1)=\frac34,
+\]
+
+hence
+
+\[
+\boxed{
+j=\frac12.
+}
+\]
+
+This fixes the half representation **before** Berry matching.
+
+Exponentiating a normalized axis gives
+
+\[
+U(\theta)
+=
+\exp\left(
+-\frac{i\theta}{2}
+\mathbf n\cdot\boldsymbol\sigma
+\right),
+\]
+
+so
+
+\[
+\boxed{
+U(2\pi)=-I,
+\qquad
+U(4\pi)=+I.
+}
+\]
+
+### Independent Berry/Euler closure
+
+In the right-\(\mathbb C_J\) module chart, the normalized balanced Hamlet
+state is
 
 \[
 \Psi_0
@@ -660,39 +747,40 @@ Hamlet state
 Left \(J\)-evolution gives
 
 \[
-\boxed{
 \Psi(\theta)
-=
-e^{\theta J}\Psi_0
-\quad\longleftrightarrow\quad
+\longleftrightarrow
 \frac1{\sqrt2}
 (e^{i\theta},e^{-i\theta}).
-}
 \]
 
-The two terms cancel in the Berry connection:
+Its Berry horizontal residual vanishes:
 
 \[
-\langle\Psi,\dot\Psi\rangle
-=
-\frac12(i-i)
-=
-0.
+\langle\Psi,\dot\Psi\rangle=0.
 \]
 
-Thus the lift is horizontal. At the first projective return,
+At the first projective return,
 
 \[
 \Psi(\pi)=-\Psi_0,
 \]
 
-hence
+so
 
 \[
 \boxed{
 \operatorname{Hol}_{\rm Berry}=-1.
 }
 \]
+
+Thus the Berry sign agrees with the \(SU(2)\) spinor sign at \(2\pi\), while
+Euler's
+
+\[
+e^{i\pi}=-1
+\]
+
+is the common scalar closure. The doubled traversal returns to \(+1\).
 
 The fixed unitary chart
 
@@ -704,41 +792,17 @@ i&-i
 \end{pmatrix}
 \]
 
-maps this to the earlier real chart
+maps the operator orbit to
 
 \[
 (\cos\theta,-\sin\theta),
 \]
 
-so both descriptions are the same projective great-circle orbit.
+so the two orbit descriptions are exactly equivalent.
 
-The loop bounds a hemisphere,
-
-\[
-\Omega=2\pi.
-\]
-
-Under the standard spin-\(s\) coherent-state Berry law,
-
-\[
-e^{is\Omega}
-=
-e^{i2\pi s}
-=
--1.
-\]
-
-Therefore
-
-\[
-s\in\mathbb Z+\frac12,
-\qquad
-\boxed{
-s_{\min}=\frac12.
-}
-\]
-
-The doubled traversal gives \(+1\) after \(4\pi\).
+The physical identification of the mathematical \(j=\tfrac12\)
+representation with measured angular momentum remains a separate downstream
+bridge.
 
 ## Audit classification
 
@@ -755,13 +819,15 @@ The doubled traversal gives \(+1\) after \(4\pi\).
 | \((-1,+1)\to\zeta=0\) | EXACT under normalized affine chart |
 | swap + polarity \(\to J^2=-I\) | PASS CONDITIONAL / EXACT |
 | \(J\to U(1)\) | STANDARD EXACT |
-| derived complex scalars + two branch basis states \(\to\mathbb C^2\) | PASS DEFINITIONAL |
-| Hamlet symmetries \(\to\) Hermitian form up to scale | PASS THEOREM |
-| normalized projective quotient \(\to\mathbb{CP}^1\simeq S^2\) | PASS STANDARD |
+| \(\operatorname{Alg}_{\mathbb R}(S,P)\to M_2(\mathbb R)=\mathbb C_J\oplus S\mathbb C_J\simeq\mathbb C^2\) | PASS THEOREM |
+| unit operator module / common phase \(\to\mathbb{CP}^1\simeq S^2\) | PASS STANDARD |
+| Hamlet Pauli triple \(\to\mathfrak{su}(2)\) | PASS THEOREM |
+| Casimir \(3/4\to j=1/2\) | PASS STANDARD |
+| \(SU(2)\) rotation \(2\pi\to-I,\ 4\pi\to+I\) | PASS THEOREM |
 | projective geometry \(\to\gamma_B\) | STANDARD GEOMETRIC HOLONOMY |
-| canonical horizontal \(J\)-loop \(\to -1\) holonomy | PASS THEOREM |
+| canonical horizontal operator loop \(\to -1\) holonomy | PASS THEOREM |
+| Berry \(-1\) \(\leftrightarrow\) spinor \(-I\) | CONSISTENCY CLOSURE |
 | \(\gamma_B\to[\mathcal A_B]_{\rm gauge}\) | LOCAL/GAUGE-CONDITIONAL REPRESENTATION |
-| Berry hemisphere + derived \(-1\) \(\to s_{\min}=1/2\) | PASS CONDITIONAL |
 
 No audit result is pre-declared. A failed arrow must remain failed rather than
 being repaired by an unlabelled premise.
