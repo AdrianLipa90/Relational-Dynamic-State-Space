@@ -1673,7 +1673,11 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_REF_PERSISTENCE_FLOW_DISPERSION"].kind is ClaimKind.THEOREM
     assert claims["THM_REF_PERSISTENCE_FLOW_STRUCTURE"].kind is ClaimKind.THEOREM
     assert claims["THM_REF_PERSISTENCE_FLOW_REALIZES_BOTH_HAMLET_REGIMES"].kind is ClaimKind.THEOREM
-    assert claims["GATE_BIND_PERSISTENCE_CONTROL_TO_EXISTENCE_POTENTIAL"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE"].kind is ClaimKind.DEFINITION
+    assert claims["THM_COLLATZ_ASSOCIATION_BALANCE"].kind is ClaimKind.THEOREM
+    assert claims["REF_COLLATZ_DERIVED_PERSISTENCE_CONTROL"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES"].kind is ClaimKind.THEOREM
+    assert claims["GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_FIRST_HAMLET_Z2"].kind is ClaimKind.THEOREM
     assert claims["THM_FIRST_HAMLET_HARTLEY_LN2"].kind is ClaimKind.THEOREM
     assert claims["THM_DISPERSION_RETURNS_INDISTINCTION"].kind is ClaimKind.THEOREM
@@ -2048,10 +2052,30 @@ def test_reference_persistence_flow_is_consistency_witness_not_foundational_deri
     strict_closure = dependency_closure("GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0")
     assert "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW" not in strict_closure
 
-    bind_gate = claims["GATE_BIND_PERSISTENCE_CONTROL_TO_EXISTENCE_POTENTIAL"]
+    bind_gate = claims["GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE"]
     assert bind_gate.kind is ClaimKind.DERIVATION_GATE
-    bind_closure = dependency_closure("GATE_BIND_PERSISTENCE_CONTROL_TO_EXISTENCE_POTENTIAL")
+    bind_closure = dependency_closure("GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE")
     assert "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW" in bind_closure
     assert "DEF_EXISTENCE_POTENTIAL" in bind_closure
     assert "DEF_PRIMITIVE_INDISTINCTION" in bind_closure
+
+def test_collatz_balance_replaces_free_mu_but_state_binding_remains_open() -> None:
+    claims = claim_map()
+
+    assert claims["DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE"].kind is ClaimKind.DEFINITION
+    assert claims["THM_COLLATZ_ASSOCIATION_BALANCE"].kind is ClaimKind.THEOREM
+    assert claims["REF_COLLATZ_DERIVED_PERSISTENCE_CONTROL"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES"].kind is ClaimKind.THEOREM
+
+    balance_closure = dependency_closure("THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES")
+    assert "THM_COLLATZ_ASSOCIATION_BALANCE" in balance_closure
+    assert "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW" in balance_closure
+
+    gate = claims["GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE"]
+    assert gate.kind is ClaimKind.DERIVATION_GATE
+    gate_closure = dependency_closure("GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE")
+    assert "DEF_EXISTENCE_POTENTIAL" in gate_closure
+    assert "DEF_PRIMITIVE_INDISTINCTION" in gate_closure
+    assert "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE" in gate_closure
+    assert "THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES" not in gate_closure
 
