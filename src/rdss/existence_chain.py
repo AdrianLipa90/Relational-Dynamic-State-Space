@@ -189,8 +189,22 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
 )
 
 
+def branch_swap(branch: int) -> int:
+    """Canonical involution of the primitive binary alphabet {-1,+1}."""
+
+    if branch not in (-1, 1):
+        raise ValueError("branch must be -1 or +1")
+    return -branch
+
+
+def branch_word_swap(word: tuple[int, ...]) -> tuple[int, ...]:
+    """Extend branch swap letterwise to the finite-word address space."""
+
+    return tuple(branch_swap(branch) for branch in word)
+
+
 def hamlet_distribution() -> tuple[float, float]:
-    """Canonical unbiased two-orientation distribution."""
+    """Unique normalized depth-one weights invariant under branch swap."""
 
     return (0.5, 0.5)
 
@@ -242,6 +256,9 @@ def exact_chain_sanity() -> bool:
         (
             isclose(p_minus, 0.5),
             isclose(p_plus, 0.5),
+            branch_swap(branch_swap(-1)) == -1,
+            branch_swap(branch_swap(1)) == 1,
+            branch_word_swap(branch_word_swap((-1, 1, -1))) == (-1, 1, -1),
             isclose(hamlet_information_nats(), LN2),
             isclose(relational_zero_center(), RELATIONAL_ZETA_ZERO),
             IMAGINARY_GENERATOR * IMAGINARY_GENERATOR == -1,
