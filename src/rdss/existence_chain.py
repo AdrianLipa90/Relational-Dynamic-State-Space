@@ -119,9 +119,9 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "Z2_TO_SIGN_CHARACTER",
         "Hamlet symmetry Z2",
         "normalized real sign character {-1,+1}",
-        ExistenceChainStatus.STANDARD_GEOMETRY,
-        "rho(nontrivial element)=-1, rho(identity)=+1",
-        "The sign opposition is structural; its overall numerical scale is a normalization choice.",
+        ExistenceChainStatus.EXACT_IDENTITY,
+        "chi(g)^2=1 and chi nontrivial => chi(g)=-1",
+        "This is the unique non-trivial one-dimensional unitary character of Z2.",
     ),
     ExistenceChainStep(
         "ORIENTATION_TO_RELATIONAL_ZERO",
@@ -172,11 +172,11 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ),
     ExistenceChainStep(
         "HAMLET_TO_PROJECTIVE_SIGN_CLOSURE",
-        "Hamlet binary non-triviality",
-        "primitive projective sign closure",
+        "unique non-trivial Hamlet Z2 phase character plus Berry geometry",
+        "canonical Berry loop realizes chi(g)=-1",
         ExistenceChainStatus.DERIVATION_GATE,
-        "non-trivial branch closure -> exp(i*gamma)=-1",
-        "Mega-audit must derive, not assume, why one primitive closed cycle carries the non-trivial sign.",
+        "Hol_Berry(C_primitive) = chi(g) = -1",
+        "The -1 character itself is exact; the remaining gate is identifying the canonical Berry loop with the non-trivial Hamlet character.",
     ),
     ExistenceChainStep(
         "BERRY_EULER_HAMLET_TO_SPIN_HALF",
@@ -230,6 +230,14 @@ def relational_zero_center(negative: float = -1.0, positive: float = 1.0) -> flo
     return (float(negative) + float(positive)) / 2.0
 
 
+def z2_nontrivial_u1_character(element: int) -> complex:
+    """Unique non-trivial unitary character of multiplicative Z2={+1,-1}."""
+
+    if element not in (-1, 1):
+        raise ValueError("Z2 element must be -1 or +1")
+    return complex(element)
+
+
 def u1_phase(phi: float) -> complex:
     return exp(1j * float(phi))
 
@@ -261,6 +269,9 @@ def exact_chain_sanity() -> bool:
             branch_word_swap(branch_word_swap((-1, 1, -1))) == (-1, 1, -1),
             isclose(hamlet_information_nats(), LN2),
             isclose(relational_zero_center(), RELATIONAL_ZETA_ZERO),
+            z2_nontrivial_u1_character(1) == 1 + 0j,
+            z2_nontrivial_u1_character(-1) == -1 + 0j,
+            z2_nontrivial_u1_character(-1) ** 2 == 1 + 0j,
             IMAGINARY_GENERATOR * IMAGINARY_GENERATOR == -1,
             isclose(abs(u1_phase(0.731)), 1.0),
             spin_half_sign_return(),
