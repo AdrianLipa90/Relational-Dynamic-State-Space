@@ -17,7 +17,7 @@ import verified formal consequences from TIR; this document does not authorize
 writes to TIR.
 
 Reference provenance for the spin/polarization bridge:
-\`The-Fundamental-Theory-of-Informational-Relations/TIR/foundations/TIR_CANONICAL_DERIVATION_SPINE_V0_1.md\`,
+`The-Fundamental-Theory-of-Informational-Relations/TIR/foundations/TIR_CANONICAL_DERIVATION_SPINE_V0_1.md`,
 Euler--Berry spin closure and polarization sections. The imported scope is
 formal/symbolic; it is not promoted into a universal claim about physical spin.
 
@@ -159,7 +159,7 @@ The local canonical information action is the existing RDSS constant
 \]
 
 The executable construction binds each local cell to the existing
-\`KAPPA_PHI\` value rather than defining a second constant.
+`KAPPA_PHI` value rather than defining a second constant.
 
 ## Open derivation gates
 
@@ -178,13 +178,13 @@ These gates are the next formal work. They are not new axioms.
 
 The executable map is registered without adding an axiom:
 
-- \`DEF_STATIC_OCTAHEDRAL_FRAME\` — definition;
-- \`BRIDGE_TIR_EULER_BERRY_SPIN_HALF_POLARIZATION\` — read-only TIR bridge;
-- \`DEF_DYNAMIC_TETRAHEDRAL_PAIR\` — definition;
-- \`REF_STELLA_OCTANGULA_STANDARD_COMPOUND\` — reference realization;
-- \`GATE_DYNAMIC_TETRAHEDRA_STATIC_FRAME_EMBEDDING\` — derivation gate;
-- \`DEF_OCTAHEDRAL_FACE_ADJACENCY_COMPLEX\` — definition;
-- \`REF_ALGEBRAIC_GEOMETRIC_INFORMATION_CELL\` — reference realization;
-- \`GATE_CELL_RELATIVE_STATE_TO_MOIRE\` — derivation gate.
+- `DEF_STATIC_OCTAHEDRAL_FRAME` — definition;
+- `BRIDGE_TIR_EULER_BERRY_SPIN_HALF_POLARIZATION` — read-only TIR bridge;
+- `DEF_DYNAMIC_TETRAHEDRAL_PAIR` — definition;
+- `REF_STELLA_OCTANGULA_STANDARD_COMPOUND` — reference realization;
+- `GATE_DYNAMIC_TETRAHEDRA_STATIC_FRAME_EMBEDDING` — derivation gate;
+- `DEF_OCTAHEDRAL_FACE_ADJACENCY_COMPLEX` — definition;
+- `REF_ALGEBRAIC_GEOMETRIC_INFORMATION_CELL` — reference realization;
+- `GATE_CELL_RELATIVE_STATE_TO_MOIRE` — derivation gate.
 
 The foundational axiom inventory remains exactly \(\{A_0\}\).
