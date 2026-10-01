@@ -319,6 +319,7 @@ from .orbital_information import (
 )
 from .orbital_fractal_hilbert_moire import (
     HILBERT_HOTEL_FREDHOLM_INDEX,
+    OFHM_RULE_DEPENDENCIES,
     SOURCE_REFERENCES as OFHM_SOURCE_REFERENCES,
     CountableBranchAddress,
     OrbitalFractalHilbertMoireState,
@@ -944,5 +945,6 @@ __all__ = [
     "phase_coherence_overlap",
     "phase_coupling_current",
     "relative_moire_phase",
+    "OFHM_RULE_DEPENDENCIES",
 
 ]
