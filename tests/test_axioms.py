@@ -1683,6 +1683,7 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_BARE_CARRIER_POINT_DISTINCT_FROM_RELATIONAL_ZETA"].kind is ClaimKind.THEOREM
     assert claims["DEF_HAMLET_REAL_LINEAR_SPAN"].kind is ClaimKind.DEFINITION
     assert claims["THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE"].kind is ClaimKind.THEOREM
+    assert claims["THM_FIRST_HAMLET_SWAP_INVARIANT_UNIT_VECTOR"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_IMAGINARY_GENERATOR"].kind is ClaimKind.THEOREM
     assert claims["THM_IMAGINARY_GENERATOR_U1"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_COMPLEX_SCALAR_ALGEBRA"].kind is ClaimKind.THEOREM
@@ -1976,4 +1977,12 @@ def test_s3_su2_and_hopf_quotient_are_inside_canonical_spin_closure() -> None:
     spin_closure = dependency_closure("THM_EULER_BERRY_MINIMAL_SPIN_HALF")
     assert "THM_HAMLET_BALANCED_ORBIT_BLOCH_EQUATOR" in spin_closure
     assert "THM_HAMLET_SU2_U1_QUOTIENT_S2" in spin_closure
+
+def test_spin_closure_uses_swap_invariant_amplitude_not_probability_half_half() -> None:
+    closure = dependency_closure("THM_EULER_BERRY_MINIMAL_SPIN_HALF")
+
+    assert "THM_FIRST_HAMLET_SWAP_INVARIANT_UNIT_VECTOR" in closure
+    assert "THM_HAMLET_HALF_HALF" not in closure
+    assert "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY" not in closure
+    assert "THM_FIRST_HAMLET_HARTLEY_LN2" not in closure
 
