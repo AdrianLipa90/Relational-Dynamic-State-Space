@@ -321,6 +321,25 @@ def test_ra0_rel_star_is_candidate_with_two_explicit_theorems():
     assert dependency_closure("THM_RR1_FROM_RA0_REL_STAR") == base
 
 
+def test_bare_meta0_minimal_point_cardinality_is_exact():
+    claims = claim_map()
+
+    assert claims["THM_META0_CARDINALITY_LOWER_BOUND"].kind is ClaimKind.THEOREM
+    assert claims["REF_META0_SINGLETON_POINT_PRESENTATION"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["THM_META0_MINIMAL_CARRIER_CARDINALITY"].kind is ClaimKind.THEOREM
+
+    closure = dependency_closure("THM_META0_MINIMAL_CARRIER_CARDINALITY")
+    assert closure == frozenset(
+        {
+            "A0",
+            "META0",
+            "DEF_POINT",
+            "THM_META0_CARDINALITY_LOWER_BOUND",
+            "REF_META0_SINGLETON_POINT_PRESENTATION",
+        }
+    )
+
+
 def test_singleton_foundation_minimality_splits_lower_bound_and_attainability():
     claims = claim_map()
 
