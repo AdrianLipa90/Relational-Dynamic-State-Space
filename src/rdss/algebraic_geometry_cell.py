@@ -8,12 +8,45 @@ from .orbital_information import KAPPA_PHI
 from .phase import U1Phase, wrap_phase
 
 
-OCTAHEDRON_VERTEX_COUNT = 6
-OCTAHEDRON_FACE_COUNT = 8
+CUBE_VERTEX_COUNT = 8
+CUBE_FACE_COUNT = 6
 TETRAHEDRON_VERTEX_COUNT = 4
+OCTAHEDRAL_CORE_VERTEX_COUNT = 6
+
 SPIN_HALF = 0.5
 SPINOR_SIGN_RETURN = 2.0 * pi
 SPINOR_FULL_RETURN = 4.0 * pi
+
+CubeVertex = tuple[int, int, int]
+CoreVertex = tuple[int, int, int]
+
+CUBE_VERTICES: tuple[CubeVertex, ...] = tuple(
+    (x, y, z)
+    for x in (-1, 1)
+    for y in (-1, 1)
+    for z in (-1, 1)
+)
+CUBE_FACES: tuple[str, ...] = ("x-", "x+", "y-", "y+", "z-", "z+")
+
+TETRAHEDRON_POSITIVE_VERTICES: tuple[CubeVertex, ...] = tuple(
+    vertex
+    for vertex in CUBE_VERTICES
+    if vertex[0] * vertex[1] * vertex[2] == 1
+)
+TETRAHEDRON_NEGATIVE_VERTICES: tuple[CubeVertex, ...] = tuple(
+    vertex
+    for vertex in CUBE_VERTICES
+    if vertex[0] * vertex[1] * vertex[2] == -1
+)
+
+OCTAHEDRAL_CORE_VERTICES: tuple[CoreVertex, ...] = (
+    (-1, 0, 0),
+    (1, 0, 0),
+    (0, -1, 0),
+    (0, 1, 0),
+    (0, 0, -1),
+    (0, 0, 1),
+)
 
 
 class Polarization(IntEnum):
@@ -22,42 +55,34 @@ class Polarization(IntEnum):
 
 
 @dataclass(frozen=True)
-class OctahedralFrame:
-    """Static local cage used only as a combinatorial/geometric frame.
+class CubicFrame:
+    """Static local cage for the Stella Octangula support geometry.
 
-    Coordinates are intentionally absent. This object records the agreed
-    static octahedral frame without imposing an embedding that has not yet
-    been derived.
+    The canonical local embedding is the cube with vertices
+    (±1, ±1, ±1). The frame is structural and does not move when local
+    tetrahedral state variables change.
     """
 
     cell_id: str
-    vertices: tuple[str, ...]
-    faces: tuple[str, ...]
+    vertices: tuple[CubeVertex, ...] = CUBE_VERTICES
+    faces: tuple[str, ...] = CUBE_FACES
 
     def __post_init__(self) -> None:
         if not self.cell_id.strip():
             raise ValueError("cell_id must be non-empty")
-        if len(self.vertices) != OCTAHEDRON_VERTEX_COUNT:
-            raise ValueError("an octahedral frame must expose exactly 6 vertices")
-        if len(set(self.vertices)) != len(self.vertices):
-            raise ValueError("octahedral frame vertices must be unique")
-        if any(not vertex.strip() for vertex in self.vertices):
-            raise ValueError("octahedral frame vertices must be non-empty")
-        if len(self.faces) != OCTAHEDRON_FACE_COUNT:
-            raise ValueError("an octahedral frame must expose exactly 8 faces")
-        if len(set(self.faces)) != len(self.faces):
-            raise ValueError("octahedral frame faces must be unique")
-        if any(not face.strip() for face in self.faces):
-            raise ValueError("octahedral frame faces must be non-empty")
+        if tuple(self.vertices) != CUBE_VERTICES:
+            raise ValueError("cubic frame must use the canonical 8 cube vertices")
+        if tuple(self.faces) != CUBE_FACES:
+            raise ValueError("cubic frame must use the canonical 6 cube faces")
 
 
 @dataclass(frozen=True)
 class DynamicTetrahedronState:
-    """Dynamic tetrahedral degree of freedom inside one static frame.
+    """Dynamic state carried by one fixed tetrahedral support.
 
-    The object records only state variables already fixed by the current
-    algebraic-geometric map: polarization, U(1) phase and an angular offset.
-    No vertex-to-frame coordinate embedding is assumed here.
+    The support vertices are fixed cube vertices. Dynamics are carried by
+    polarization, U(1) phase and angular state; this object does not move the
+    support geometry.
     """
 
     label: str
@@ -68,6 +93,8 @@ class DynamicTetrahedronState:
     def __post_init__(self) -> None:
         if not self.label.strip():
             raise ValueError("tetrahedron label must be non-empty")
+        if not isinstance(self.phase, U1Phase):
+            raise TypeError("tetrahedron phase must be U1Phase")
         if not isfinite(float(self.angular_offset)):
             raise ValueError("angular_offset must be finite")
 
@@ -75,25 +102,37 @@ class DynamicTetrahedronState:
     def spin(self) -> float:
         return SPIN_HALF
 
+    @property
+    def support_vertices(self) -> tuple[CubeVertex, ...]:
+        if self.polarization is Polarization.POSITIVE:
+            return TETRAHEDRON_POSITIVE_VERTICES
+        if self.polarization is Polarization.NEGATIVE:
+            return TETRAHEDRON_NEGATIVE_VERTICES
+        raise ValueError("unsupported polarization")
+
 
 @dataclass(frozen=True)
-class RelationalOctahedralCell:
-    """Closed local cell: static octahedral cage plus dynamic tetrahedral pair."""
+class RelationalCubicCell:
+    """Closed local cell: static cube, Stella pair, octahedral core."""
 
-    frame: OctahedralFrame
+    frame: CubicFrame
     positive: DynamicTetrahedronState
     negative: DynamicTetrahedronState
+
     def __post_init__(self) -> None:
         if self.positive.polarization is not Polarization.POSITIVE:
             raise ValueError("positive tetrahedron must carry + polarization")
         if self.negative.polarization is not Polarization.NEGATIVE:
             raise ValueError("negative tetrahedron must carry - polarization")
         if self.positive.label == self.negative.label:
-            raise ValueError("the two dynamic tetrahedra must have distinct labels")
-        if not isinstance(self.positive.phase, U1Phase):
-            raise TypeError("positive tetrahedron phase must be U1Phase")
-        if not isinstance(self.negative.phase, U1Phase):
-            raise TypeError("negative tetrahedron phase must be U1Phase")
+            raise ValueError("the two tetrahedral states must have distinct labels")
+        if set(self.positive.support_vertices) & set(self.negative.support_vertices):
+            raise ValueError("Stella tetrahedral supports must be disjoint")
+        if (
+            set(self.positive.support_vertices)
+            | set(self.negative.support_vertices)
+        ) != set(self.frame.vertices):
+            raise ValueError("Stella vertices must exhaust the cubic frame vertices")
 
     @property
     def information_action(self) -> float:
@@ -103,8 +142,18 @@ class RelationalOctahedralCell:
     def stella_octangula_pair(
         self,
     ) -> tuple[DynamicTetrahedronState, DynamicTetrahedronState]:
-        """Symbolic two-tetrahedron compound before coordinate embedding."""
         return (self.positive, self.negative)
+
+    @property
+    def stella_octangula_vertices(self) -> frozenset[CubeVertex]:
+        return frozenset(
+            self.positive.support_vertices + self.negative.support_vertices
+        )
+
+    @property
+    def octahedral_core_vertices(self) -> tuple[CoreVertex, ...]:
+        """Canonical central octahedral core of the standard Stella embedding."""
+        return OCTAHEDRAL_CORE_VERTICES
 
     @property
     def relative_phase(self) -> float:
@@ -117,7 +166,7 @@ class RelationalOctahedralCell:
 
 @dataclass(frozen=True)
 class FaceAdjacency:
-    """Face-to-face adjacency of two distinct static octahedral frames."""
+    """Face-to-face adjacency of two distinct static cubic frames."""
 
     left_cell: str
     left_face: str
@@ -134,15 +183,10 @@ class FaceAdjacency:
 
 
 @dataclass(frozen=True)
-class OctahedralCellComplex:
-    """Static adjacency graph of octahedral frames.
+class CubicCellComplex:
+    """Static face-adjacency complex of cubic information cells."""
 
-    This is deliberately a face-adjacency complex, not a claim that regular
-    octahedra alone tile Euclidean 3-space. Euclidean realization remains a
-    separate derivation gate.
-    """
-
-    cells: tuple[RelationalOctahedralCell, ...]
+    cells: tuple[RelationalCubicCell, ...]
     adjacencies: tuple[FaceAdjacency, ...]
 
     def __post_init__(self) -> None:
@@ -157,9 +201,9 @@ class OctahedralCellComplex:
             left_frame = by_id[adjacency.left_cell].frame
             right_frame = by_id[adjacency.right_cell].frame
             if adjacency.left_face not in left_frame.faces:
-                raise ValueError("left adjacency references an unknown face")
+                raise ValueError("left adjacency references an unknown cube face")
             if adjacency.right_face not in right_frame.faces:
-                raise ValueError("right adjacency references an unknown face")
+                raise ValueError("right adjacency references an unknown cube face")
 
             left_key = (adjacency.left_cell, adjacency.left_face)
             right_key = (adjacency.right_cell, adjacency.right_face)
@@ -169,7 +213,7 @@ class OctahedralCellComplex:
             used_faces.add(right_key)
 
     @property
-    def static_frames(self) -> tuple[OctahedralFrame, ...]:
+    def static_frames(self) -> tuple[CubicFrame, ...]:
         return tuple(cell.frame for cell in self.cells)
 
     @property
@@ -181,12 +225,15 @@ class OctahedralCellComplex:
         )
 
 
-def spin_half_phase_sign(rotation: float, tolerance: float = 1e-12) -> int:
-    """Reference spin-1/2 sign under integral 2*pi turns.
+def squared_distance(
+    left: tuple[int, int, int],
+    right: tuple[int, int, int],
+) -> int:
+    return sum((a - b) ** 2 for a, b in zip(left, right))
 
-    Returns +1 for 4*pi-equivalent rotations and -1 for 2*pi-equivalent
-    rotations. Non-integral 2*pi rotations are rejected rather than rounded.
-    """
+
+def spin_half_phase_sign(rotation: float, tolerance: float = 1e-12) -> int:
+    """Reference spin-1/2 sign under integral 2*pi turns."""
 
     value = float(rotation)
     tol = float(tolerance)
