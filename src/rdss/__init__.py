@@ -1,5 +1,19 @@
 """General relational tensor-scalar orbital-fractal algebra reference kernel."""
 
+from .algebraic_geometry_cell import (
+    OCTAHEDRON_FACE_COUNT,
+    OCTAHEDRON_VERTEX_COUNT,
+    SPIN_HALF,
+    SPINOR_FULL_RETURN,
+    SPINOR_SIGN_RETURN,
+    DynamicTetrahedronState,
+    FaceAdjacency,
+    OctahedralCellComplex,
+    OctahedralFrame,
+    Polarization,
+    RelationalOctahedralCell,
+    spin_half_phase_sign,
+)
 from .algebra import (
     OccurrenceAddress,
     RelationalPoint,
@@ -327,6 +341,18 @@ from .zero_axis import (
 )
 
 __all__ = [
+    "OCTAHEDRON_FACE_COUNT",
+    "OCTAHEDRON_VERTEX_COUNT",
+    "SPIN_HALF",
+    "SPINOR_FULL_RETURN",
+    "SPINOR_SIGN_RETURN",
+    "DynamicTetrahedronState",
+    "FaceAdjacency",
+    "OctahedralCellComplex",
+    "OctahedralFrame",
+    "Polarization",
+    "RelationalOctahedralCell",
+    "spin_half_phase_sign",
     "AmbiguousBridgeError",
     "BridgeComparison",
     "BridgeDirection",
