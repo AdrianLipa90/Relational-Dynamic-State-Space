@@ -1659,6 +1659,7 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_MINIMAL_INFORMATION_STATE_BINARY"].kind is ClaimKind.THEOREM
     assert claims["THM_TWO_STATE_AUTOMORPHISM_Z2"].kind is ClaimKind.THEOREM
     assert claims["GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_BINARY_BRANCH_SWAP_INVOLUTION"].kind is ClaimKind.THEOREM
     assert claims["THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_HALF_HALF"].kind is ClaimKind.THEOREM
@@ -1706,4 +1707,16 @@ def test_first_law_reaches_singleton_but_not_binary_without_extra_gate() -> None
     assert "REF_META0_SINGLETON_POINT_PRESENTATION" in no_binary_closure
     assert "DEF_EXISTENCE_POTENTIAL" in no_binary_closure
     assert "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY" not in no_binary_closure
+
+def test_hamlet_abstract_binary_does_not_silently_assume_relational_binding() -> None:
+    claims = claim_map()
+
+    abstract_closure = dependency_closure("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY")
+    assert "RA0_REL_STAR" not in abstract_closure
+    assert "DEF_RELATIONAL_DISTINCTION" not in abstract_closure
+
+    assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
+    binding_closure = dependency_closure("GATE_HAMLET_RELATIONAL_BINDING")
+    assert "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY" in binding_closure
+    assert "DEF_RELATIONAL_DISTINCTION" in binding_closure
 
