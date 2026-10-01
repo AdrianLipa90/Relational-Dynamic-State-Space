@@ -35,8 +35,14 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
     assert by_id["HALF_HALF_TO_LN2"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["IMAGINARY_GENERATOR_TO_U1"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["BINARY_PHASE_TO_CP1"].status is ExistenceChainStatus.STANDARD_GEOMETRY
+    assert by_id["CP1_GEOMETRY_TO_BERRY_PHASE"].status is ExistenceChainStatus.STANDARD_GEOMETRY
     assert (
-        by_id["CP1_BERRY_EULER_TO_SPIN_HALF"].status
+        by_id["BERRY_PHASE_TO_CONNECTION_POTENTIAL_CLASS"].status
+        is ExistenceChainStatus.CONDITIONAL_STANDARD_RESULT
+    )
+    assert by_id["HAMLET_TO_PROJECTIVE_SIGN_CLOSURE"].status is ExistenceChainStatus.DERIVATION_GATE
+    assert (
+        by_id["BERRY_EULER_HAMLET_TO_SPIN_HALF"].status
         is ExistenceChainStatus.CONDITIONAL_STANDARD_RESULT
     )
 
