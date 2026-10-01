@@ -355,15 +355,203 @@ coordinates and semantic weighting.
 
 Status: both remain downstream realizations only.
 
-## M2f. Collatz is downstream of the durable relation-role algebra
+## M2f. Gaussian/Bombelli source and Collatz coefficient closure
 
-TIR supplies exact mathematics once the Collatz branches are admitted:
+The durable relation-role orbit has cardinality two and its operator algebra
+already contains a real complex structure
+
+\[
+J^2=-I.
+\]
+
+Define the integral non-real lift class
+
+\[
+G_k=2I+kJ,
+\qquad
+k\in\mathbb Z\setminus\{0\}.
+\]
+
+Minimizing \(|k|\) gives, uniquely up to conjugation,
+
+\[
+\boxed{
+g=2+J.
+}
+\]
+
+This is a model theorem inside the declared integral lift class, not a new
+physical postulate.
+
+Exact arithmetic gives
+
+\[
+g^2=3+4J,
+\]
+
+\[
+g^3=2+11J,
+\]
+
+\[
+g^4=-7+24J,
+\]
+
+and
+
+\[
+g\bar g=5.
+\]
+
+Therefore
+
+\[
+\boxed{
+\Re g=2,
+\qquad
+\operatorname{ImCoeff}(g)=1,
+\qquad
+\Re(g^2)=3.
+}
+\]
+
+So the Collatz numerical coefficients
+
+\[
+2,\qquad3,\qquad+1
+\]
+
+are generated from the same relation-role algebra independently of the
+source-minimal parity argument.
+
+Status: COEFFICIENT PROVENANCE DOUBLE-CLOSED.
+
+### L-constant branch
+
+The same generator supplies
+
+\[
+\boxed{
+L_4=\Re g=2,
+\qquad
+L_5=N(g)=5.
+}
+\]
+
+TIR independently establishes the tetrahedral root-extension closure
+
+\[
+L_3=L_4+L_5.
+\]
+
+Hence
+
+\[
+\boxed{
+(L_3,L_4,L_5)=(7,2,5).
+}
+\]
+
+This is a second provenance path for the TIR L-triple, independent of the
+historical Collatz-depth/twin-prime assignment.
+
+The identity
+
+\[
+\boxed{
+g^4=-7+24J
+}
+\]
+
+then becomes an exact closure check:
+
+\[
+|\Re(g^4)|=L_3,
+\qquad
+\operatorname{ImCoeff}(g^4)=24.
+\]
+
+The \(24\) is not used to define \(L_3\), and it does not by itself derive
+\(\kappa\). TIR already has independent \(24\) provenance from
+
+\[
+|S_4|=24
+\]
+
+and
+
+\[
+3\dim\mathfrak{su}(3)=3\cdot8=24.
+\]
+
+Thus the Gaussian occurrence is a third integer closure check.
+
+### Bombelli closure
+
+Because
+
+\[
+g^3=2+11J,
+\qquad
+\bar g^3=2-11J,
+\]
+
+\[
+g+\bar g=4,
+\qquad
+g\bar g=5,
+\]
+
+the Cardano identity gives
+
+\[
+x^3-3(g\bar g)x-(g^3+\bar g^3)=0,
+\]
+
+hence
+
+\[
+\boxed{
+x^3-15x-4=0,
+\qquad
+x=4.
+}
+\]
+
+Status: PASS-EXACT.
+
+### Remaining Collatz gate
+
+The source-minimal parity-law route independently yields the same coefficient
+triple. Therefore the remaining deterministic problem is **not**
+
+\[
+\text{where do }2,3,+1\text{ come from?}
+\]
+
+That numerical problem is closed twice.
+
+The remaining gate is operation semantics:
+
+\[
+\boxed{
+\text{upstream relational dynamics}
+\stackrel{?}{\Longrightarrow}
+\mathsf A=\div2,\quad
+\mathsf D=\times3,\quad
+\mathsf R=+1.
+}
+\]
+
+Conditional on that assignment,
 
 \[
 E(n)=\frac n2,
 \qquad
-O(n)=3n+1.
+O(n)=3n+1
 \]
+
+and all existing downstream Collatz results remain exact.
 
 Their signed local log-Jacobians are
 
@@ -375,73 +563,18 @@ Their signed local log-Jacobians are
 }
 \]
 
-The projective branch matrices are
-
-\[
-M_E\sim
-\begin{pmatrix}
-1&0\\
-0&2
-\end{pmatrix},
-\qquad
-M_O\sim
-\begin{pmatrix}
-3&1\\
-0&1
-\end{pmatrix},
-\]
-
-whose positive-determinant normalizations lie in \(SL(2,\mathbb R)\), hence
-act in \(PSL(2,\mathbb R)\).
-
-For the accelerated odd cycle,
-
-\[
-T_C(n)
-=
-\frac{3n+1}{2^{\nu_2(3n+1)}},
-\]
-
-the local association-minus-dissociation balance remains the exact identity
+Their projective matrices lift to \(PSL(2,\mathbb R)\), and the accelerated
+odd-cycle balance remains
 
 \[
 \boxed{
 \mu_C(n)
 =
-\ln\frac{n}{T_C(n)}
-=
-\nu_2(3n+1)\ln2
--
-\ln\frac{3n+1}{n}.
+\ln\frac{n}{T_C(n)}.
 }
 \]
 
-All of this is downstream mathematics.
-
-The deterministic open gate is now narrower and earlier:
-
-\[
-\boxed{
-R+\{N,S\}+\text{admitted arithmetic/closure}
-\stackrel{?}{\Longrightarrow}
-E(n)=n/2,\quad O(n)=3n+1.
-}
-\]
-
-In particular, a complete derivation must force
-
-\[
-2,\qquad3,\qquad+1
-\]
-
-rather than import them from the standard Collatz definition.
-
-Current TIR validates the branch-word algebra, parity grammar, phase doubling,
-Möbius/\(PSL(2,\mathbb R)\) lift and \(\ln2/\ln3\) scale signatures **after**
-the branch maps are supplied. It does not yet prove the above uniqueness
-arrow.
-
-Status: RELATION ALGEBRA -> COLLATZ BRANCH OPERATORS = OPEN-GATE.
+No global Collatz-convergence theorem enters this result.
 
 ## M3. Standard Heisenberg remains downstream
 
