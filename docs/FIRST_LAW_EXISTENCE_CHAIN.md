@@ -50,13 +50,9 @@ Therefore
 \boxed{\mathcal P_E\neq\mathcal A_B}.
 \]
 
-## Frozen causal order: strict versus canonical
+## Frozen causal order
 
-The mega-audit keeps two non-interchangeable tracks.
-
-### Strict entailment track
-
-From the First Law and its model-formation rule:
+The corrected causal order is
 
 \[
 \boxed{
@@ -64,65 +60,52 @@ From the First Law and its model-formation rule:
 \rightarrow
 \mathcal P_E
 \rightarrow
-\min|\operatorname{Adm}|=1.
-}
-\]
-
-The next implication is **not** currently a theorem:
-
-\[
-\boxed{
-\text{bare minimal point}
-\not\Rightarrow
-\text{non-trivial information}
-}
-\]
-
-because RDSS has an explicit bare singleton countermodel. Therefore the strict
-gate
-
-\[
-\text{point}\rightarrow\text{informationality}
-\]
-
-remains visible.
-
-Likewise, an abstract binary outcome set does not by itself prove the
-universal relational-incidence claim RA0_REL_STAR.
-
-### Canonical RDSS semantic track
-
-RDSS separately defines
-
-\[
-\boxed{
-\text{realized existence state}
-:=
-\text{admitted non-trivial information state}.
-}
-\]
-
-This is a semantic definition, not a second foundational law. Under that
-definition the minimal realized state has
-
-\[
-|\Omega|_{\min}=2,
-\qquad
-\operatorname{Aut}(\Omega)\cong S_2\cong\mathbb Z_2.
-\]
-
-Canonical relational-information semantics represents the two alternatives
-as distinct occurrence identities bound to their host.
-
-The downstream canonical route is then
-
-\[
-\boxed{
-\mathbb Z_2
+\mathcal I_0
 \rightarrow
-\left(\frac12,\frac12\right)
+\{\mathsf{Disp},\mathsf{Struct}\}.
+}
+\]
+
+Here
+
+- \(\mathcal P_E\) is primitive existence potential;
+- \(\mathcal I_0\) is primitive indistinction: existence potential with no
+  persistent distinction yet established;
+- \(\mathsf{Disp}\) is the class in which a candidate distinction does not
+  persist;
+- \(\mathsf{Struct}\) is the class in which a distinction persists.
+
+The first Hamlet is therefore
+
+\[
+\boxed{
+H_0=\{\mathsf{Disp},\mathsf{Struct}\}.
+}
+\]
+
+It precedes the non-trivial point.
+
+Because
+
+\[
+|H_0|=2,
+\]
+
+the probability-free Hartley information is immediately
+
+\[
+\boxed{
+I_H=\ln|H_0|=\ln2.
+}
+\]
+
+The two branches then separate:
+
+\[
+\boxed{
+\mathsf{Disp}
 \rightarrow
-\ln2
+\mathcal I_0
 }
 \]
 
@@ -130,6 +113,32 @@ and
 
 \[
 \boxed{
+\mathsf{Struct}
+\rightarrow
+p^\star,
+}
+\]
+
+where \(p^\star\) is the minimal non-trivial information-point realization.
+
+The bare singleton point used in the model-formation proof remains a separate
+typed object. It proves only
+
+\[
+\min|\operatorname{Adm}|=1
+\]
+
+and is not the cause of the first Hamlet.
+
+The complement action on \(H_0\) gives
+
+\[
+\boxed{\mathbb Z_2}.
+\]
+
+The downstream canonical algebra is
+
+\[
 \mathbb Z_2
 \rightarrow
 \{-1,+1\}
@@ -138,195 +147,208 @@ and
 \rightarrow
 (S,P)
 \rightarrow
-J=SP,\ J^2=-I
+J=SP,\quad J^2=-I
 \rightarrow
 U(1).
-}
 \]
 
-Keeping scalar phase and branch identity distinct gives
+The full Hamlet operator algebra is
 
 \[
 \boxed{
-\mathbb C_J[B]\simeq\mathbb C^2
-\rightarrow
-\mathbb{CP}^1\simeq S^2.
+\mathcal A_H
+=
+\operatorname{Alg}_{\mathbb R}(S,P)
+=
+M_2(\mathbb R)
+=
+\mathbb C_J\oplus S\mathbb C_J
+\simeq
+\mathbb C^2.
 }
 \]
 
-The canonical horizontal orbit
+Its unit sphere modulo common right phase gives
 
 \[
-\psi(\theta)=e^{\theta J}\psi_0,
-\qquad
-0\le\theta\le\pi
+\boxed{
+S^3/U(1)
+\cong
+\mathbb{CP}^1
+\cong
+S^2.
+}
 \]
 
-satisfies
+The canonical horizontal Hamlet orbit has holonomy
 
 \[
-\langle\psi,\dot\psi\rangle=0,
-\qquad
-\psi(\pi)=-\psi_0,
+\boxed{-1},
 \]
 
-so its projective Berry holonomy is
+and the independently derived Hamlet \(SU(2)\) algebra has Casimir label
 
 \[
-\boxed{-1}.
+\boxed{j=\frac12}.
 \]
 
-For the corresponding great-circle hemisphere,
+The Berry/Euler closure agrees with the same \(2\pi\) sign and \(4\pi\)
+return.
 
-\[
-\Omega=2\pi,
-\]
+## 1. Existence potential and primitive indistinction
 
-and the standard spin-\(s\) Berry law selects
-
-\[
-\boxed{s_{\min}=\frac12}.
-\]
-
-Finally,
-
-\[
-\gamma_B[C]
-=
-\oint_C\mathcal A_B
-\pmod{2\pi}
-\]
-
-represents Berry phase through a local connection only up to gauge. The
-primitive modal potential \(\mathcal P_E\) and the geometric connection
-\(\mathcal A_B\) remain distinct.
-
-## 1. Existence potential and minimal point
-
-After absolute nothingness is excluded, define the primitive modal remainder as
+After absolute nothingness is excluded, define
 
 \[
 \boxed{\mathcal P_E}.
 \]
 
-The arrow
-
-\[
-\neg\mathcal N\rightarrow\mathcal P_E
-\]
-
-is now classified as definitional, provided \(\mathcal P_E\) remains purely
-modal/admissible and is not silently physicalized.
-
-Separately, the First-Law model-formation route gives a non-empty admitted
-domain and a bare singleton-point witness, so
+Before any persistent distinction has been established, the condition is
 
 \[
 \boxed{
-\min |Adm|=1.
+\mathcal I_0
+=
+\mathcal P_E
++\text{no persistent distinction}.
 }
 \]
 
-Thus the unscaled point is the minimal carrier realization of non-vacuity.
+Primitive indistinction is not absolute nothingness because
+\(\mathcal P_E\) is already present.
 
-## 2. Point -> informationality -> Hamlet
+## 2. First Hamlet: dispersion or structure
 
-The bare singleton point does **not** itself force a binary distinction. RDSS
-contains an explicit bare singleton presentation with no relational or binary
-structure, so
+Define the Boolean persistence predicate
 
 \[
-\boxed{
-\text{minimal point}
-\not\Rightarrow
-\text{non-trivial information}
-}
+\operatorname{Persist}.
 \]
 
-under the current semantics.
-
-The first open causal gate is therefore
+Then every candidate differentiation belongs to exactly one of two classes:
 
 \[
-\boxed{
-\text{minimal realized point}
-\rightarrow
-\text{non-trivial information state}.
-}
-\]
-
-Once informational non-triviality is admitted, the smallest finite outcome
-space has exactly two distinguishable alternatives:
-
-\[
-|\Omega|_{\min}=2.
-\]
-
-Its automorphism group is
-
-\[
-\boxed{
-\operatorname{Aut}(\Omega)\cong S_2\cong\mathbb Z_2.
-}
-\]
-
-This is the abstract Hamlet carrier.
-
-A second, separate relational-binding gate asks why those abstract alternatives
-must be realized as two distinct branch-relation occurrences on the admitted
-carrier, i.e. why the Hamlet carrier realizes the semantic content targeted by
-RA0_REL_STAR.
-
-### Canonical RDSS semantic route
-
-Strictly, the bare First-Law model does not force informationality. Canonical
-RDSS therefore states separately:
-
-\[
-\boxed{
-\text{realized existence state}
-:=
-\text{non-trivial information state}.
-}
-\]
-
-This is a definition, not another foundational law.
-
-With that definition the minimal realized state is binary and the canonical
-relational realization uses two distinct branch occurrences bound to the host.
-The strict mega-audit gates remain recorded in parallel so that this semantic
-choice is never mislabeled as a theorem from \(L_1\).
-
-## 3. Balanced binary state and \(\ln2\)
-
-Conditional on exact exchange symmetry and normalization,
-
-\[
-p_-+p_+=1,
+\mathsf{Disp}
+=
+\neg\operatorname{Persist},
 \qquad
-p_-=p_+,
+\mathsf{Struct}
+=
+\operatorname{Persist}.
 \]
 
-so
+Therefore
 
 \[
 \boxed{
-p_-=p_+=\frac12.
+H_0
+=
+\{\mathsf{Disp},\mathsf{Struct}\}.
 }
 \]
 
-Shannon entropy in nats then gives
+This is the first Hamlet.
+
+Complementation exchanges the classes and squares to identity, giving the
+canonical \(Z_2\) action.
+
+### Dispersion branch
 
 \[
-H
-=
--\frac12\ln\frac12
--\frac12\ln\frac12
-=
-\boxed{\ln2}.
+\mathsf{Disp}
+\Rightarrow
+\text{no stable distinction}
+\Rightarrow
+\boxed{\mathcal I_0}.
 \]
 
-Thus \(\ln2\) is downstream of the balanced first distinction.
+This is a return to indistinction, not to nothingness.
+
+### Structure branch
+
+\[
+\mathsf{Struct}
+\Rightarrow
+\text{persistent distinction}.
+\]
+
+The separate model theorem gives the exact minimum
+
+\[
+\min|\operatorname{Adm}|=1.
+\]
+
+Hence the minimal structured realization is
+
+\[
+\boxed{
+p^\star
+=
+\text{one carrier + persistent distinction state}.
+}
+\]
+
+This is the non-trivial information point.
+
+Thus
+
+\[
+\boxed{
+H_0
+\rightarrow
+\mathsf{Struct}
+\rightarrow
+p^\star.
+}
+\]
+
+The old causal direction
+
+\[
+p\rightarrow H_0
+\]
+
+is rejected.
+
+## 3. First Hamlet and \(\ln2\)
+
+The first Hamlet has two exhaustive classes, therefore Hartley information in
+nats is
+
+\[
+\boxed{
+I_H
+=
+\ln 2.
+}
+\]
+
+No probability measure is required.
+
+If a normalized probability is later required to be invariant under the
+complement exchange, then uniquely
+
+\[
+p_{\mathsf{Disp}}
+=
+p_{\mathsf{Struct}}
+=
+\frac12.
+\]
+
+Shannon entropy then gives the same value:
+
+\[
+H_{\rm Shannon}
+=
+-\frac12\ln\frac12
+-\frac12\ln\frac12
+=
+\ln2.
+\]
+
+Thus \(1/2,1/2\) is a downstream consistency result, not the premise from which
+the foundational \(\ln2\) is obtained.
 
 ## 4. Relational signs and relational zeta zero
 
