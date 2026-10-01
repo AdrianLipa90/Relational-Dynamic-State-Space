@@ -62,8 +62,10 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
     assert by_id["L1_TO_EXISTENCE_POTENTIAL"].status is ExistenceChainStatus.DEFINITIONAL
     assert by_id["POTENTIAL_TO_PRIMITIVE_INDISTINCTION"].status is ExistenceChainStatus.DEFINITIONAL
     assert by_id["INDISTINCTION_TO_FIRST_HAMLET"].status is ExistenceChainStatus.EXACT_IDENTITY
-    assert by_id["FIRST_HAMLET_TO_Z2"].status is ExistenceChainStatus.EXACT_IDENTITY
-    assert by_id["FIRST_HAMLET_TO_LN2"].status is ExistenceChainStatus.EXACT_IDENTITY
+    assert by_id["CANONICAL_FIRST_HAMLET_NONDEGENERATE"].status is ExistenceChainStatus.DEFINITIONAL
+    assert by_id["STRICT_FIRST_HAMLET_NONDEGENERACY_GATE"].status is ExistenceChainStatus.DERIVATION_GATE
+    assert by_id["FIRST_HAMLET_TO_Z2"].status is ExistenceChainStatus.CONDITIONAL_EXACT
+    assert by_id["FIRST_HAMLET_TO_LN2"].status is ExistenceChainStatus.CONDITIONAL_EXACT
     assert by_id["DISPERSION_TO_INDISTINCTION"].status is ExistenceChainStatus.DEFINITIONAL
     assert by_id["STRUCTURE_TO_INFORMATION_POINT"].status is ExistenceChainStatus.MODEL_THEOREM
     assert by_id["BARE_POINT_NOT_FIRST_HAMLET"].status is ExistenceChainStatus.MODEL_THEOREM
