@@ -10,6 +10,9 @@ from rdss.existence_chain import (
     binary_entropy_nats,
     branch_swap,
     branch_word_swap,
+    branch_swap_vector,
+    branch_polarity_vector,
+    hamlet_complex_structure,
     exact_chain_sanity,
     hamlet_distribution,
     hamlet_information_nats,
@@ -17,7 +20,7 @@ from rdss.existence_chain import (
     spin_half_full_return,
     spin_half_sign_return,
     u1_phase,
-    z2_nontrivial_u1_character,
+    z2_nontrivial_real_character,
 )
 
 
@@ -39,7 +42,7 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
     assert by_id["EXISTENCE_POTENTIAL_TO_HAMLET"].status is ExistenceChainStatus.DERIVATION_GATE
     assert by_id["HAMLET_TO_HALF_HALF"].status is ExistenceChainStatus.CONDITIONAL_EXACT
     assert by_id["Z2_TO_SIGN_CHARACTER"].status is ExistenceChainStatus.EXACT_IDENTITY
-    assert by_id["ORIENTATION_TO_IMAGINARY_GENERATOR"].status is ExistenceChainStatus.DERIVATION_GATE
+    assert by_id["ORIENTATION_TO_IMAGINARY_GENERATOR"].status is ExistenceChainStatus.CONDITIONAL_EXACT
 
     assert by_id["HALF_HALF_TO_LN2"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["IMAGINARY_GENERATOR_TO_U1"].status is ExistenceChainStatus.EXACT_IDENTITY
@@ -71,10 +74,18 @@ def test_relational_zero_is_midpoint_not_absolute_nothingness_marker() -> None:
     assert relational_zero_center(-1.0, 1.0) == RELATIONAL_ZETA_ZERO == 0.0
 
 
-def test_z2_nontrivial_character_fixes_minus_one_phase() -> None:
-    assert z2_nontrivial_u1_character(1) == 1 + 0j
-    assert z2_nontrivial_u1_character(-1) == -1 + 0j
-    assert z2_nontrivial_u1_character(-1) ** 2 == 1 + 0j
+def test_z2_nontrivial_real_character_fixes_minus_one_sign() -> None:
+    assert z2_nontrivial_real_character(1) == 1.0
+    assert z2_nontrivial_real_character(-1) == -1.0
+    assert z2_nontrivial_real_character(-1) ** 2 == 1.0
+
+
+def test_swap_and_polarity_generate_real_complex_structure() -> None:
+    vector = (2.0, -3.0)
+    assert branch_swap_vector(vector) == (-3.0, 2.0)
+    assert branch_polarity_vector(vector) == (-2.0, -3.0)
+    assert hamlet_complex_structure(vector) == (-3.0, -2.0)
+    assert hamlet_complex_structure(hamlet_complex_structure(vector)) == (-2.0, 3.0)
 
 
 def test_imaginary_generator_and_u1_phase_are_exact() -> None:
