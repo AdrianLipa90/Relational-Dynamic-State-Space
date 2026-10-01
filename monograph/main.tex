@@ -3270,6 +3270,214 @@ The exact chart identities, the bridge assumptions, and the still-open
 complex-structure gate are intentionally kept separate in the executable claim
 ledger.
 
+\section{General orbital-fractal Hilbert--Moir\'e algebra}
+
+The finite Hilbert--Moir\'e chart above is now extended by a source-grounded
+general algebra. The source repositories are used read-only; RDSS owns the
+resulting typed synthesis.
+
+The Euler branch source supplies the phase map
+\[
+\mathcal E(z)=e^{i\pi z}
+\]
+and, on a declared logarithm branch, the inverse family
+\[
+\boxed{
+\mathcal E_k^{-1}(w)
+=
+2k-\frac{i}{\pi}\Log w,
+\qquad k\in\mathbb Z.
+}
+\]
+Finite branch histories therefore live in
+\[
+\boxed{
+\mathcal A_{\mathrm F}
+=
+\mathbb Z^{<\omega}.
+}
+\]
+The existing binary RDSS occurrence words embed by preserving every
+\(-1/+1\) branch symbol.
+
+An explicit enumeration
+\[
+\rho:\mathbb Z^{<\omega}\longleftrightarrow\mathbb N
+\]
+provides the Hilbert--Hotel successor
+\[
+\boxed{
+S_{\mathrm{HH}}(a)
+=
+\rho^{-1}\!\left(\rho(a)+1\right).
+}
+\]
+This stabilization shift is distinct from local refinement
+\[
+R_k(a)=a\frown k.
+\]
+Together, Euler symbolic branching and Hilbert--Hotel countability define the
+symbolic fractal-boundary algebra
+\[
+\boxed{
+\mathcal B_{\mathrm F}
+=
+\left(
+\mathbb Z^{<\omega},
+R_k,
+S_{\mathrm{HH}}
+\right).
+}
+\]
+The term symbolic boundary does not assert convergence of every infinite
+address, a Hausdorff dimension, or a unique geometric limit measure.
+
+The GREMLIN/BEES memory source supplies the dimension-independent local
+relative-phase coherence
+\[
+\boxed{
+C(X,Y)
+=
+\left|
+\frac1d
+\sum_{r=1}^{d}
+e^{i(\theta_r^X-\theta_r^Y)}
+\right|.
+}
+\]
+For scalar orbital phases the relative Moir\'e element is
+\[
+M_{ij}=U_iU_j^{-1}=e^{i(\theta_i-\theta_j)}.
+\]
+It obeys the exact cocycle identities
+\[
+\boxed{
+M_{ij}M_{jk}=M_{ik},
+\qquad
+M_{ii}=1,
+\qquad
+M_{ji}=M_{ij}^{-1}.
+}
+\]
+
+Hence finite Hilbert-fibre transport is downstream of the Moir\'e cocycle:
+\[
+\boxed{
+T_{ij}v=M_{ij}v.
+}
+\]
+Because \(M_{ij}\in U(1)\),
+\[
+\|T_{ij}v\|=\|v\|,
+\qquad
+T_{ij}T_{jk}=T_{ik}.
+\]
+Thus the Hilbert transport law adds no independent phase assumption once the
+relative Moir\'e structure is admitted.
+
+A finite combined state is
+\[
+\boxed{
+\Psi=(a,\ell,\theta,v,\omega),
+}
+\]
+where \(a\in\mathbb Z^{<\omega}\), \(\ell\) is an orbital label,
+\(\theta\in\mathbb R/2\pi\mathbb Z\), \(v\neq0\) is a finite Hilbert vector,
+and \(\omega\) is the angular-velocity coordinate used by the second-order
+dynamic chart.
+
+The same GREMLIN/BEES phase sector supplies a local sine-coupling current
+\[
+\boxed{
+J_i
+=
+\sum_j w_{ij}\sin(\theta_j-\theta_i).
+}
+\]
+Its normalized first-order reduction is
+\[
+\dot\theta_i
+=
+K
+\frac{
+\sum_j w_{ij}\sin(\theta_j-\theta_i)
+}{
+\sum_j w_{ij}
+}.
+\]
+The IDT source supplies the second-order discrete form
+\[
+\boxed{
+\theta_i^{n+1}
+=
+\theta_i^n+\Delta t\,\omega_i^n,
+}
+\]
+\[
+\boxed{
+\omega_i^{n+1}
+=
+\omega_i^n
++
+\Delta t
+\left(
+-\partial_{\theta_i}V
+-\eta\omega_i^n
++KJ_i^n
++D_i^n
+\right).
+}
+\]
+
+The resulting source-grounded algebra is therefore
+\[
+\boxed{
+\mathfrak A_{\mathrm{OFHM}}
+=
+(
+\mathcal A_{\mathrm F},
+\rho,
+S_{\mathrm{HH}},
+R_k,
+M,
+\mathcal H,
+T,
+J,
+\mathcal D
+).
+}
+\]
+Its dependency order is fixed:
+\[
+\boxed{
+\text{Euler}
++
+\text{Hilbert--Hotel}
+\Rightarrow
+\mathcal B_{\mathrm F},
+}
+\]
+\[
+\boxed{
+\text{BEES}
+\Rightarrow
+M
+\Rightarrow
+T,
+}
+\]
+and
+\[
+\boxed{
+\text{BEES}
++
+\text{IDT}
+\Rightarrow
+\mathcal D.
+}
+\]
+This section adds no foundational law and no physical-substrate claim.
+
 \section{Explicit non-assumptions}
 
 The general algebra does not assume:
