@@ -277,86 +277,178 @@ Crucial invariant:
 
 A relationally represented zero cannot be absolute nothingness.
 
-## M8. Real opposition -> imaginary generator
+## M8. Hamlet swap + polarity -> complex structure
 
-Target:
+The two-state Hamlet carrier supplies two canonical involutions on the free
+real branch span
 
 \[
-\{-1,0,+1\}
-\rightarrow
-i,
+V_B=\mathbb R e_-\oplus\mathbb R e_+.
+\]
+
+Branch swap:
+
+\[
+S e_b=e_{-b},
 \qquad
-i^2=-1.
+S^2=I.
 \]
 
-A real binary opposition alone does not uniquely force a complex structure.
-To obtain \(i\) as an orthogonal quarter-turn generator one needs additional
-structure equivalent to an oriented two-dimensional real carrier with a
-compatible complex structure \(J^2=-I\), or an independently derived
-equivalent.
-
-Status: OPEN-GATE.
-
-This remains one of the sharpest mathematical gaps.
-
-## M9. Imaginary generator -> U(1)
-
-Once \(i^2=-1\) and a real phase parameter \(\phi\) are supplied,
+Branch polarity:
 
 \[
-u(\phi)=e^{i\phi}
-\]
-
-obeys
-
-\[
-|u(\phi)|=1,
+P e_b=b\,e_b,
 \qquad
-u(\phi_1)u(\phi_2)=u(\phi_1+\phi_2).
+P^2=I.
 \]
 
-Status: PASS-STANDARD.
-
-The unresolved debt is upstream: deriving the complex generator and continuous
-phase parameter.
-
-## M10. U(1) is not yet the sphere
-
-A phase orbit alone does not imply \(\mathbb{CP}^1\). A normalized complex
-two-component carrier is additionally required:
+Because swap reverses polarity,
 
 \[
-(\alpha,\beta)\in\mathbb C^2\setminus\{0\},
+SP=-PS.
+\]
+
+Define
+
+\[
+\boxed{
+J:=SP.
+}
+\]
+
+Then
+
+\[
+J^2
+=
+SPSP
+=
+-S^2P^2
+=
+\boxed{-I}.
+\]
+
+Status: PASS-CONDITIONAL / exact once the Hamlet binary carrier is admitted.
+
+No metric is required for the algebraic identity \(J^2=-I\). Reversal of the
+ordered branch convention maps \(J\to-J\), the expected conjugate complex
+orientation.
+
+This closes the earlier imaginary-generator gate.
+
+## M9. Complex structure -> U(1)
+
+Since \(J^2=-I\),
+
+\[
+e^{\phi J}
+=
+\cos\phi\,I+\sin\phi\,J.
+\]
+
+Therefore
+
+\[
+e^{\phi_1J}e^{\phi_2J}
+=
+e^{(\phi_1+\phi_2)J}
+\]
+
+and the generated one-parameter group is
+
+\[
+\boxed{
+SO(2)\simeq U(1).
+}
+\]
+
+Status: PASS-STANDARD / exact.
+
+The algebra
+
+\[
+\operatorname{span}_{\mathbb R}\{I,J\}
+\]
+
+is isomorphic to \(\mathbb C\), so complex scalar structure is now downstream
+of the Hamlet binary algebra rather than an upstream assumption.
+
+## M10. Derived complex scalars + two branches -> CP1 / S2
+
+A single real two-branch span equipped with \(J\) is only one complex
+dimension. It must not be confused with a two-level complex state carrier.
+
+RDSS therefore keeps the two roles separate:
+
+\[
+\mathbb C_J
+=
+\operatorname{span}_{\mathbb R}\{I,J\},
+\]
+
+and
+
+\[
+\boxed{
+\mathcal H_B
+=
+\mathbb C_J[B]
+\simeq
+\mathbb C^2,
+}
+\]
+
+the free complex vector space on the two Hamlet branch symbols.
+
+This is a standard algebraic construction and prevents the hidden
+dimension-collapse error \(\mathbb R^2\cong\mathbb C^1\not\cong\mathbb C^2\).
+
+### Symmetry-fixed Hermitian form
+
+Let \(H\) be a positive-definite Hermitian form on \(\mathcal H_B\).
+Invariance under branch swap \(S\) and polarity \(P\) forces
+
+\[
+H=aI,
 \qquad
-|\alpha|^2+|\beta|^2=1.
+a>0.
 \]
 
-After quotienting common phase,
+Indeed swap invariance equalizes the two diagonal entries and makes the
+off-diagonal coefficient real, while polarity invariance forces that
+off-diagonal coefficient to vanish.
+
+The normalized branch convention fixes \(a=1\). Hence
 
 \[
-(\alpha,\beta)\sim e^{i\chi}(\alpha,\beta),
+\boxed{
+\langle\psi,\phi\rangle
+=
+\sum_{b\in B}
+\overline{\psi_b}\phi_b.
+}
 \]
 
-one obtains
+Status: PASS-THEOREM up to the conventional positive overall scale, fixed by
+normalization.
+
+The normalized state space is therefore \(S^3\), and quotienting common phase
+gives
 
 \[
 \boxed{
 S^3/U(1)
 \cong
-\mathbb{CP}^{1}
+\mathbb{CP}^1
 \cong
 S^2.
 }
 \]
 
-Status: PASS-STANDARD once the complex two-state carrier and normalization are
-supplied.
+Status: PASS-STANDARD.
 
-The derivation of that carrier/norm from earlier RDSS structure remains an
-audit target.
-
-The relational zero \(\zeta=0\) may be the centre of the ambient Bloch-ball
-chart, but it is not a pure-state point on the \(\mathbb{CP}^1\) surface.
+The relational zero \(\zeta=0\) is the centre of the ambient Bloch-ball chart,
+not a pure point of the CP1 surface.
 
 ## M11. Projective geometry -> Berry phase
 
@@ -469,68 +561,95 @@ Status: REFERENCE-ONLY.
 Its correct role is external confirmation of the significance of the
 phase-potential relation.
 
-## M14. Hamlet -> projective sign closure
+## M14. Canonical Hamlet orbit -> projective Berry sign
 
-For spin-half to be genuinely forced by the Hamlet branch, RDSS must derive
-the non-trivial projective sign
+Let \(\psi_0\) be either normalized branch pole and let
 
 \[
-\boxed{
-e^{i\gamma}=-1
-}
+\psi(\theta)
+=
+e^{\theta J}\psi_0,
+\qquad
+0\le\theta\le\pi.
 \]
 
-from primitive binary non-degeneracy/exchange, rather than inserting the sign
-as an independent condition.
-
-Target:
+Because \(J\) is skew with respect to the symmetry-fixed Hermitian form,
 
 \[
-\boxed{
-\text{Hamlet non-triviality}
-\rightarrow
-\text{non-trivial projective sign closure}.
-}
+\langle\psi,\dot\psi\rangle=0.
 \]
 
-Status: OPEN-GATE.
+Thus \(\psi(\theta)\) is a horizontal lift for the reference Hopf/Berry
+connection.
 
-This is the direct causal bridge between Hamlet uncertainty and the later
-spin-half selection.
-
-## M15. Berry + Euler + Hamlet sign -> spin one half
-
-For an equatorial hemisphere,
+At the first projective return,
 
 \[
-\Omega=2\pi.
-\]
-
-With
-
-\[
-\gamma_B=s\Omega=2\pi s
-\]
-
-and the Hamlet-derived non-trivial sign closure
-
-\[
-e^{i\gamma_B}=-1,
-\]
-
-we obtain
-
-\[
-e^{i2\pi s}=-1,
+e^{\pi J}=-I,
 \]
 
 so
 
 \[
-s\in\mathbb Z+\frac12.
+\psi(\pi)=-\psi_0.
 \]
 
-The smallest positive sector is
+The base ray is closed while the horizontal lift differs by
+
+\[
+\boxed{-1}.
+\]
+
+Therefore
+
+\[
+\boxed{
+\operatorname{Hol}_{\rm Berry}(C_H)=-1.
+}
+\]
+
+Status: PASS-THEOREM inside the constructed CP1/Hopf reference geometry.
+
+This closes the previous projective-sign gate. The algebraic non-trivial
+\(Z_2\) sign and the geometric Berry sign now agree on the canonical Hamlet
+loop rather than being identified by fiat.
+
+## M15. Berry + Euler -> minimal spin one half
+
+The projected \(J\)-orbit is a great-circle loop on the Bloch sphere. It
+bounds a hemisphere, hence
+
+\[
+\Omega=2\pi.
+\]
+
+The horizontal-lift calculation already gives
+
+\[
+\operatorname{Hol}_{\rm Berry}=-1.
+\]
+
+Under the standard spin-\(s\) coherent-state geometric-phase law,
+
+\[
+e^{is\Omega}
+=
+e^{i2\pi s},
+\]
+
+so matching the derived holonomy gives
+
+\[
+e^{i2\pi s}=-1.
+\]
+
+Hence
+
+\[
+s\in\mathbb Z+\frac12
+\]
+
+and the smallest positive sector is
 
 \[
 \boxed{
@@ -544,11 +663,12 @@ The doubled traversal gives
 e^{i4\pi(1/2)}=+1.
 \]
 
-Status: PASS-CONDITIONAL.
+Status: PASS-CONDITIONAL on the standard spin-\(s\) coherent-state
+identification.
 
-This is a selection theorem. The physical identification of the selected
-representation with measured angular momentum spin remains a separate
-physical bridge.
+The mathematical half-integer selection is closed. The remaining empirical
+question is whether a given physical realization of RDSS should be identified
+with actual angular momentum spin.
 
 ## M16. First-pass causal graph
 
@@ -636,35 +756,49 @@ s_{\min}=\frac12.
 
 Closed or conditionally closed:
 
-- First Law: LAW.
-- minimal binary once distinction is required: cardinality two.
-- symmetric binary -> \(1/2,1/2\): PASS-CONDITIONAL.
-- half-half -> \(\ln2\): exact.
-- \(\mathbb Z_2\) -> sign representation: PASS-CONDITIONAL.
-- sign midpoint -> relational zero: exact under normalized chart.
-- \(i\) -> \(U(1)\): standard exact.
-- complex two-state projective quotient -> \(\mathbb{CP}^1\simeq S^2\): standard.
+- First Law -> modal existence potential: definitional.
+- First-Law model -> minimal admitted carrier cardinality one: model theorem.
+- non-trivial finite information -> minimal binary carrier: exact.
+- binary carrier -> \(Z_2\) swap symmetry: exact.
+- swap-invariant normalized weighting -> \(1/2,1/2\): exact conditional.
+- \(1/2,1/2\) -> \(\ln2\): exact.
+- \(Z_2\) -> real sign character \(\{-1,+1\}\): exact.
+- sign midpoint -> relational \(\zeta=0\): exact under normalized affine chart.
+- swap + polarity -> \(J^2=-I\): exact conditional on the Hamlet carrier.
+- \(J\) -> \(U(1)\): standard exact.
+- derived complex scalars + two branch symbols -> \(\mathbb C^2\): definitional.
+- swap/polarity symmetry -> Hermitian form up to scale: theorem.
+- normalization/projective quotient -> \(\mathbb{CP}^1\simeq S^2\): standard.
 - projective transport -> Berry phase: standard geometric holonomy.
-- Berry phase -> local gauge-potential/connection class: standard conditional representation.
-- Berry/Euler + non-trivial sign -> minimal spin half: PASS-CONDITIONAL.
+- canonical horizontal Hamlet loop -> Berry holonomy \(-1\): theorem.
+- Berry phase -> local gauge-potential/connection class: standard conditional.
+- hemisphere Berry law + derived \(-1\) -> minimal half-integer sector \(s=1/2\): conditional standard result.
 
 Open:
 
-1. Why must existence potential differentiate/actualize?
-2. Why is the first distinction ontic rather than merely epistemic?
-3. What uniquely forces the complex structure \(i\)?
-4. What derives the normalized complex two-state carrier required for CP1?
-5. Why does Hamlet non-triviality force the projective sign \(-1\) on the primitive loop?
-6. What licenses identification of the resulting representation with physical angular momentum spin?
+1. Why must the minimal realized carrier be a **non-trivial information
+   state** rather than a distinction-free singleton?
+2. Why must the abstract Hamlet \(Z_2\) alternatives be realized as
+   **relationally bound occurrence identities** rather than remain abstract
+   outcome labels?
+3. What licenses identification of the resulting projective/Berry
+   representation with **physical angular momentum spin** in a concrete
+   physical system?
+4. What, if anything, uniquely binds the primitive modal existence potential
+   \(\mathcal P_E\) to a later physical potential beyond the already-derived
+   geometric connection class \([\mathcal A_B]_{\rm gauge}\)?
 
-Anti-circularity constraints:
+Anti-circularity constraints retained:
 
-- standard Heisenberg/Robertson cannot create the pre-Hilbert Hamlet carrier;
-- Aharonov–Bohm cannot create the upstream phase geometry;
-- \(U(1)\) alone does not imply CP1;
-- a Berry phase determines potential/connection information only up to gauge;
+- standard Heisenberg/Robertson remains downstream of the pre-Hilbert Hamlet
+  construction;
+- Aharonov–Bohm remains external physical precedent, not the source of the
+  upstream phase geometry;
+- \(U(1)\) alone is not treated as CP1;
+- the two real Hamlet branches are not collapsed into one complex branch
+  dimension when forming \(\mathbb C^2\);
+- a Berry phase determines connection/potential information only up to gauge;
 - relational zero is not absolute nothingness;
-- the Bloch-ball centre is not a pure CP1 state;
-- spin-half is not promoted until the Hamlet-to-projective-sign gate closes.
+- the Bloch-ball centre is not a pure CP1 state.
 
 No open gate is silently repaired.
