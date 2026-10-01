@@ -1672,6 +1672,7 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_HAMLET_HALF_HALF"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_LN2"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_RELATIONAL_ZETA_ZERO"].kind is ClaimKind.THEOREM
+    assert claims["THM_BARE_CARRIER_POINT_DISTINCT_FROM_RELATIONAL_ZETA"].kind is ClaimKind.THEOREM
     assert claims["DEF_HAMLET_REAL_LINEAR_SPAN"].kind is ClaimKind.DEFINITION
     assert claims["THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_IMAGINARY_GENERATOR"].kind is ClaimKind.THEOREM
@@ -1894,4 +1895,20 @@ def test_canonical_spin_chain_is_independent_of_occurrence_address_representatio
     assert "DEF_OCCURRENCE_ADDRESS_SPACE" not in closure
     assert "THM_OCCURRENCE_ADDRESS_FREE_MONOID" not in closure
     assert "THM_BINARY_BRANCH_SWAP_INVOLUTION" not in closure
+
+def test_bare_nonvacuity_point_is_not_the_relational_zeta_point() -> None:
+    claims = claim_map()
+
+    assert claims["THM_BARE_CARRIER_POINT_DISTINCT_FROM_RELATIONAL_ZETA"].kind is ClaimKind.THEOREM
+    closure = dependency_closure("THM_BARE_CARRIER_POINT_DISTINCT_FROM_RELATIONAL_ZETA")
+    assert "THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER" in closure
+    assert "THM_HAMLET_RELATIONAL_ZETA_ZERO" in closure
+
+
+def test_canonical_spin_chain_does_not_depend_on_bare_singleton_point() -> None:
+    closure = dependency_closure("THM_EULER_BERRY_MINIMAL_SPIN_HALF")
+
+    assert "THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER" not in closure
+    assert "REF_META0_SINGLETON_POINT_PRESENTATION" not in closure
+    assert "DEF_POINT" not in closure
 
