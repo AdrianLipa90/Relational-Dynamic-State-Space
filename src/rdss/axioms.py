@@ -2065,6 +2065,14 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",),
     ),
     Claim(
+        "DER_OFHM_SYMBOLIC_FRACTAL_BOUNDARY",
+        ClaimKind.DERIVED,
+        "The OFHM symbolic fractal-boundary algebra is the combination of the Euler integer-branch symbolic space with the Hilbert-Hotel countable enumeration/shift: (Z^{<omega}, R_k, S_HH). It is a symbolic/operator boundary and does not assert convergence of every infinite address to a geometric point.",
+        (
+            "DER_OFHM_SYMBOLIC_FRACTAL_BOUNDARY",
+        ),
+    ),
+    Claim(
         "BRIDGE_OFHM_BEES_RELATIVE_PHASE_COHERENCE",
         ClaimKind.BRIDGE,
         "Source bridge from GREMLIN@b0000828 spec/GREMLIN_HOLOGRAPHIC_ORBITAL_MEMORY_V0_1.md: local finite phase states may be compared by dimension-independent relative-phase coherence C=|d^{-1} sum_j exp(i(theta_j^X-theta_j^Y))|. The observable measures compatibility/coherence and does not establish truth or canon authority.",
