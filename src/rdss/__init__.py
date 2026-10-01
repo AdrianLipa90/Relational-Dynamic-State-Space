@@ -253,9 +253,11 @@ from .gaussian_bombelli import (
     minimal_relation_role_gaussian_generator,
 )
 from .relational_collatz import (
+    active_operator_basis,
     active_seed_from_relation_algebra,
     association_quotient_cardinality,
     durable_role_count,
+    full_operator_basis,
     nonidentity_operator_dimension,
     operator_algebra_real_dimension,
     dissociation_fibre_cardinality,
@@ -669,9 +671,11 @@ __all__ = [
     "gaussian_recurrence_term",
     "l_constants_from_gaussian_and_root_extension",
     "minimal_relation_role_gaussian_generator",
+    "active_operator_basis",
     "active_seed_from_relation_algebra",
     "association_quotient_cardinality",
     "durable_role_count",
+    "full_operator_basis",
     "nonidentity_operator_dimension",
     "operator_algebra_real_dimension",
     "dissociation_fibre_cardinality",
