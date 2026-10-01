@@ -63,8 +63,14 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",
         ClaimKind.DERIVATION_GATE,
-        "Hamlet uncertainty is the pre-observable minimal relational binary realization obtained if the existence-potential informationality gate closes. Its formal RDSS closure target is the RA0_REL_STAR structure: one admitted carrier hosting two distinct branch-relation occurrences. It is not yet the standard Heisenberg x-p inequality.",
-        ("GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY", "THM_MINIMAL_INFORMATION_STATE_BINARY", "THM_TWO_STATE_AUTOMORPHISM_Z2", "RA0_REL_STAR"),
+        "Hamlet uncertainty is the pre-observable minimal abstract binary realization obtained if the existence-potential informationality gate closes: a minimal non-trivial outcome set with automorphism group Z2. It is not yet the standard Heisenberg x-p inequality and does not yet assume relational branch binding.",
+        ("GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY", "THM_MINIMAL_INFORMATION_STATE_BINARY", "THM_TWO_STATE_AUTOMORPHISM_Z2"),
+    ),
+    Claim(
+        "GATE_HAMLET_RELATIONAL_BINDING",
+        ClaimKind.DERIVATION_GATE,
+        "Mega-audit target: derive that the abstract Hamlet Z2 alternatives are not merely labels but are realized as two distinct relational branch occurrences hosted by the admitted carrier, thereby supplying the semantic content required by the existing RA0_REL_STAR closure candidate.",
+        ("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY", "DEF_RELATIONAL_DISTINCTION"),
     ),
     Claim(
         "THM_BINARY_BRANCH_SWAP_INVOLUTION",
