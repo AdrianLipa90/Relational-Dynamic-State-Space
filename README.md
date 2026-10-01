@@ -29,13 +29,13 @@ A_0:
 
 No other claim in the repository has axiom status.
 
-`META0` is a model-formation rule induced by (A_0), not another axiom.
+`META0` is a model-formation rule induced by \\(A_0\\), not another axiom.
 `RA0` and `RR1` retain their historical identifiers because downstream
 results depend on them, but they are now classified as **DERIVATION GATE**.
 They may be used conditionally by existing theorems while their complete
-derivations from (A_0) are made explicit. The same applies to the older
+derivations from \\(A_0\\) are made explicit. The same applies to the older
 `RA0_STAR` and `RA0_REL_STAR` closure candidates: they are no longer
-classified as candidate axioms.
+classified as axioms.
 
 This bookkeeping prevents an unproved bridge from being hidden as a second
 foundational assumption.
