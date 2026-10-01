@@ -256,9 +256,77 @@ equivalent reference chart.
 Relational \(\zeta=0\) is the centre of the ambient Bloch-ball chart, not
 absolute nothingness and not a pure CP1 state.
 
-\subsection{Berry holonomy and spin-half selection}
+\subsection{Hamlet SU(2), half representation and Berry closure}
 
-In the right-\(\mathbb C_J\) module chart choose the normalized balanced state
+The same Hamlet operators define the Pauli triple
+\[
+\sigma_x=S,
+\qquad
+\sigma_z=-P,
+\qquad
+\sigma_y=-iJ.
+\]
+They obey
+\[
+\sigma_k^2=I,
+\qquad
+[\sigma_i,\sigma_j]
+=
+2i\epsilon_{ijk}\sigma_k.
+\]
+With
+\[
+T_k=\frac{\sigma_k}{2},
+\]
+we therefore have
+\[
+\boxed{
+[T_i,T_j]
+=
+i\epsilon_{ijk}T_k,
+}
+\]
+the defining two-dimensional representation of \(\mathfrak{su}(2)\).
+
+Its quadratic Casimir is
+\[
+\sum_kT_k^2
+=
+\frac34I.
+\]
+For the standard non-negative representation label \(j\),
+\[
+j(j+1)=\frac34,
+\]
+hence
+\[
+\boxed{
+j=\frac12.
+}
+\]
+
+Exponentiating a normalized axis gives
+\[
+U(\theta)
+=
+\exp\left(
+-\frac{i\theta}{2}
+\mathbf n\cdot\boldsymbol\sigma
+\right),
+\]
+so
+\[
+\boxed{
+U(2\pi)=-I,
+\qquad
+U(4\pi)=+I.
+}
+\]
+
+The half representation and its \(2\pi/4\pi\) behavior are therefore derived
+from the Hamlet operator algebra before Berry matching.
+
+Independently, in the right-\(\mathbb C_J\) module chart choose
 \[
 \Psi_0
 =
@@ -266,20 +334,15 @@ In the right-\(\mathbb C_J\) module chart choose the normalized balanced state
 \quad\longleftrightarrow\quad
 \frac1{\sqrt2}(1,1).
 \]
-
 Left multiplication by \(e^{\theta J}\) gives
 \[
-\boxed{
 \Psi(\theta)
 \longleftrightarrow
 \frac1{\sqrt2}
 \left(
 e^{i\theta},
 e^{-i\theta}
-\right),
-\qquad
-0\le\theta\le\pi.
-}
+\right).
 \]
 The Hermitian horizontal residual vanishes:
 \[
@@ -291,9 +354,9 @@ The Hermitian horizontal residual vanishes:
 \]
 At the first projective return,
 \[
-\Psi(\pi)=-\Psi_0.
+\Psi(\pi)=-\Psi_0,
 \]
-Therefore
+and therefore
 \[
 \boxed{
 \operatorname{Hol}_{\rm Berry}(C_H)=-1.
@@ -302,41 +365,37 @@ Therefore
 
 The fixed unitary chart
 \[
-U=
+U_H=
 \frac1{\sqrt2}
 \begin{pmatrix}
 1&1\\
 i&-i
 \end{pmatrix}
 \]
-maps this orbit to
+maps the operator-module orbit to
 \[
 (\cos\theta,-\sin\theta),
 \]
-so the operator-module orbit and the earlier real \(J\)-orbit are the same
-projective great circle in different coordinates.
+so this is the earlier real \(J\)-orbit in an equivalent chart.
 
-The great circle bounds a hemisphere,
+Thus the representation-theoretic spinor sign and the geometric Berry sign
+close on the same value,
 \[
-\Omega=2\pi.
-\]
-Under the standard spin-\(s\) coherent-state Berry law,
-\[
-e^{is\Omega}
-=
-e^{i2\pi s}
-=
--1,
-\]
-hence
-\[
-s\in\mathbb Z+\frac12,
-\qquad
 \boxed{
-s_{\min}=\frac12.
+U(2\pi)=-I
+\quad\leftrightarrow\quad
+\operatorname{Hol}_{\rm Berry}=-1,
 }
 \]
-The doubled traversal returns to \(+1\) after \(4\pi\).
+while Euler's scalar phase
+\[
+e^{i\pi}=-1
+\]
+provides the common scalar closure. The doubled traversal returns to \(+1\).
+
+The mathematical representation label \(j=\tfrac12\) is therefore fixed
+before Berry matching. Identifying this representation with measured physical
+angular momentum remains a separate empirical bridge.
 
 \subsection{Phase and potential}
 
