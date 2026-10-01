@@ -1660,6 +1660,14 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["DEF_EXISTENCE_POTENTIAL"].depends_on == ("A0",)
 
     assert claims["DEF_NONTRIVIAL_INFORMATION_STATE"].kind is ClaimKind.DEFINITION
+    assert claims["DEF_PRIMITIVE_INDISTINCTION"].kind is ClaimKind.DEFINITION
+    assert claims["DEF_DISTINCTION_PERSISTENCE_PREDICATE"].kind is ClaimKind.DEFINITION
+    assert claims["THM_FIRST_HAMLET_DISPERSION_STRUCTURE"].kind is ClaimKind.THEOREM
+    assert claims["THM_FIRST_HAMLET_Z2"].kind is ClaimKind.THEOREM
+    assert claims["THM_FIRST_HAMLET_HARTLEY_LN2"].kind is ClaimKind.THEOREM
+    assert claims["THM_DISPERSION_RETURNS_INDISTINCTION"].kind is ClaimKind.THEOREM
+    assert claims["DEF_NONTRIVIAL_INFORMATION_POINT"].kind is ClaimKind.DEFINITION
+    assert claims["THM_STRUCTURE_BRANCH_MINIMAL_INFORMATION_POINT"].kind is ClaimKind.THEOREM
     assert claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_MINIMAL_INFORMATION_STATE_BINARY"].kind is ClaimKind.THEOREM
     assert claims["THM_TWO_STATE_AUTOMORPHISM_Z2"].kind is ClaimKind.THEOREM
@@ -1709,23 +1717,40 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE" in spin_closure
     assert "REF_BERRY_PHASE_CONNECTION_POTENTIAL_CLASS" not in spin_closure
 
-def test_canonical_hamlet_chain_is_closed_while_strict_information_gate_remains_open() -> None:
+def test_first_hamlet_precedes_point_and_fundamental_ln2_is_probability_free() -> None:
+    claims = claim_map()
+
+    hamlet_closure = dependency_closure("THM_FIRST_HAMLET_DISPERSION_STRUCTURE")
+    assert "DEF_PRIMITIVE_INDISTINCTION" in hamlet_closure
+    assert "DEF_DISTINCTION_PERSISTENCE_PREDICATE" in hamlet_closure
+    assert "THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER" not in hamlet_closure
+    assert "DEF_POINT" not in hamlet_closure
+
+    ln2_closure = dependency_closure("THM_FIRST_HAMLET_HARTLEY_LN2")
+    assert "THM_FIRST_HAMLET_DISPERSION_STRUCTURE" in ln2_closure
+    assert "THM_HAMLET_HALF_HALF" not in ln2_closure
+    assert "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY" not in ln2_closure
+
+    structure_closure = dependency_closure("THM_STRUCTURE_BRANCH_MINIMAL_INFORMATION_POINT")
+    assert "THM_FIRST_HAMLET_DISPERSION_STRUCTURE" in structure_closure
+    assert "THM_META0_MINIMAL_CARRIER_CARDINALITY" in structure_closure
+    assert "DEF_NONTRIVIAL_INFORMATION_POINT" in structure_closure
+
+    assert claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY"].kind is ClaimKind.DERIVATION_GATE
+
+
+def test_half_half_is_downstream_of_first_hamlet_not_foundation_for_ln2() -> None:
     closure = dependency_closure("THM_HAMLET_HALF_HALF")
-
-    assert "THM_CANONICAL_REALIZED_EXISTENCE_BINARY" in closure
-    assert "DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE" in closure
-    assert "THM_MINIMAL_INFORMATION_STATE_BINARY" in closure
-    assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in closure
+    assert "THM_FIRST_HAMLET_Z2" in closure
     assert "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY" in closure
-    assert "THM_BINARY_BRANCH_SWAP_INVOLUTION" not in closure
-    assert "DEF_OCCURRENCE_ADDRESS_SPACE" not in closure
-
     assert "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY" not in closure
     assert "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY" not in closure
+    assert "DEF_OCCURRENCE_ADDRESS_SPACE" not in closure
 
-    strict_closure = dependency_closure("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY")
-    assert "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY" in strict_closure
-    assert "THM_META0_MINIMAL_CARRIER_CARDINALITY" in strict_closure
+    shannon_closure = dependency_closure("THM_HAMLET_LN2")
+    assert "THM_FIRST_HAMLET_HARTLEY_LN2" in shannon_closure
+    assert "THM_HAMLET_HALF_HALF" in shannon_closure
 
 def test_first_law_reaches_singleton_but_not_binary_without_extra_gate() -> None:
     claims = claim_map()
@@ -1742,16 +1767,16 @@ def test_first_law_reaches_singleton_but_not_binary_without_extra_gate() -> None
     assert "DEF_EXISTENCE_POTENTIAL" in no_binary_closure
     assert "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY" not in no_binary_closure
 
-def test_hamlet_abstract_binary_does_not_silently_assume_relational_binding() -> None:
+def test_first_hamlet_does_not_silently_assume_relational_binding() -> None:
     claims = claim_map()
 
-    abstract_closure = dependency_closure("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY")
+    abstract_closure = dependency_closure("THM_FIRST_HAMLET_Z2")
     assert "RA0_REL_STAR" not in abstract_closure
     assert "DEF_RELATIONAL_DISTINCTION" not in abstract_closure
 
     assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
     binding_closure = dependency_closure("GATE_HAMLET_RELATIONAL_BINDING")
-    assert "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY" in binding_closure
+    assert "THM_FIRST_HAMLET_Z2" in binding_closure
     assert "DEF_RELATIONAL_DISTINCTION" in binding_closure
 
 def test_relation_direction_alone_does_not_supply_hamlet_branch_identity() -> None:
@@ -1770,7 +1795,7 @@ def test_z2_nontrivial_character_closes_algebraic_minus_one_not_berry_loop_mappi
     assert claims["THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"].kind is ClaimKind.THEOREM
     assert claims["THM_Z2_SIGN_EMBEDS_U1"].kind is ClaimKind.THEOREM
     sign_closure = dependency_closure("THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER")
-    assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in sign_closure
+    assert "THM_FIRST_HAMLET_Z2" in sign_closure
     assert "REF_CP1_BERRY_GEOMETRIC_PHASE" not in sign_closure
 
     loop_gate = claims["THM_HAMLET_PROJECTIVE_SIGN_CLOSURE"]
@@ -1789,7 +1814,7 @@ def test_hamlet_swap_and_polarity_generate_complex_structure_without_upstream_u1
     assert claims["THM_HAMLET_IMAGINARY_GENERATOR"].kind is ClaimKind.THEOREM
 
     j_closure = dependency_closure("THM_HAMLET_IMAGINARY_GENERATOR")
-    assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in j_closure
+    assert "THM_FIRST_HAMLET_Z2" in j_closure
     assert "THM_BINARY_BRANCH_SWAP_INVOLUTION" not in j_closure
     assert "DEF_OCCURRENCE_ADDRESS_SPACE" not in j_closure
     assert "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER" in j_closure
@@ -1824,19 +1849,18 @@ def test_cp1_factorization_keeps_scalar_phase_and_branch_dimension_distinct() ->
     assert "REF_HAMLET_COUNTING_HERMITIAN_FORM" in cp1_closure
     assert "THM_IMAGINARY_GENERATOR_U1" in cp1_closure
 
-def test_canonical_information_semantics_is_definition_not_l1_theorem() -> None:
+def test_structure_branch_defines_realized_information_and_point_is_downstream() -> None:
     claims = claim_map()
 
     assert claims["DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE"].kind is ClaimKind.DEFINITION
     semantic_closure = dependency_closure("DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE")
-    assert "A0" in semantic_closure
+    assert "THM_FIRST_HAMLET_DISPERSION_STRUCTURE" in semantic_closure
     assert "DEF_NONTRIVIAL_INFORMATION_STATE" in semantic_closure
 
     assert claims["THM_CANONICAL_REALIZED_EXISTENCE_BINARY"].kind is ClaimKind.THEOREM
     binary_closure = dependency_closure("THM_CANONICAL_REALIZED_EXISTENCE_BINARY")
-    assert "DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE" in binary_closure
-    assert "THM_MINIMAL_INFORMATION_STATE_BINARY" in binary_closure
-    assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in binary_closure
+    assert "THM_FIRST_HAMLET_Z2" in binary_closure
+    assert "THM_STRUCTURE_BRANCH_MINIMAL_INFORMATION_POINT" in binary_closure
 
     strict_gate = claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"]
     assert strict_gate.kind is ClaimKind.DERIVATION_GATE
