@@ -150,3 +150,18 @@ The following are deliberately **not** silently assumed:
 4. the derivation of the moire field from those relative local states.
 
 These gates are the next formal work. They are not new axioms.
+
+
+## Claim-ledger binding
+
+The executable map is registered without adding an axiom:
+
+- `DEF_STATIC_OCTAHEDRAL_FRAME` — definition;
+- `GATE_EULER_SPIN_HALF_POLARIZATION` — derivation gate;
+- `DEF_DYNAMIC_TETRAHEDRAL_PAIR` — definition;
+- `GATE_STELLA_OCTANGULA_EMBEDDING` — derivation gate;
+- `DEF_OCTAHEDRAL_FACE_ADJACENCY_COMPLEX` — definition;
+- `REF_ALGEBRAIC_GEOMETRIC_INFORMATION_CELL` — reference realization;
+- `GATE_CELL_RELATIVE_STATE_TO_MOIRE` — derivation gate.
+
+The foundational axiom inventory remains exactly `{A0}`.
