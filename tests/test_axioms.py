@@ -1797,3 +1797,34 @@ def test_cp1_factorization_keeps_scalar_phase_and_branch_dimension_distinct() ->
     assert "REF_HAMLET_COUNTING_HERMITIAN_FORM" in cp1_closure
     assert "THM_IMAGINARY_GENERATOR_U1" in cp1_closure
 
+def test_canonical_information_semantics_is_definition_not_l1_theorem() -> None:
+    claims = claim_map()
+
+    assert claims["DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE"].kind is ClaimKind.DEFINITION
+    semantic_closure = dependency_closure("DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE")
+    assert "A0" in semantic_closure
+    assert "DEF_NONTRIVIAL_INFORMATION_STATE" in semantic_closure
+
+    assert claims["THM_CANONICAL_REALIZED_EXISTENCE_BINARY"].kind is ClaimKind.THEOREM
+    binary_closure = dependency_closure("THM_CANONICAL_REALIZED_EXISTENCE_BINARY")
+    assert "DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE" in binary_closure
+    assert "THM_MINIMAL_INFORMATION_STATE_BINARY" in binary_closure
+    assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in binary_closure
+
+    strict_gate = claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"]
+    assert strict_gate.kind is ClaimKind.DERIVATION_GATE
+
+
+def test_canonical_relational_information_realization_does_not_close_strict_binding_gate() -> None:
+    claims = claim_map()
+
+    assert claims["DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION"].kind is ClaimKind.DEFINITION
+    assert claims["REF_CANONICAL_HAMLET_RELATIONAL_REALIZATION"].kind is ClaimKind.REFERENCE_REALIZATION
+
+    ref_closure = dependency_closure("REF_CANONICAL_HAMLET_RELATIONAL_REALIZATION")
+    assert "DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION" in ref_closure
+    assert "DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE" in ref_closure
+
+    assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
+    assert "GATE_HAMLET_RELATIONAL_BINDING" not in ref_closure
+
