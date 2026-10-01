@@ -1641,15 +1641,18 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_HAMLET_RELATIONAL_ZETA_ZERO"].kind is ClaimKind.THEOREM
     assert claims["GATE_HAMLET_IMAGINARY_GENERATOR"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_IMAGINARY_GENERATOR_U1"].kind is ClaimKind.THEOREM
-    assert claims["BRIDGE_EXISTENCE_POTENTIAL_AHARONOV_BOHM"].kind is ClaimKind.BRIDGE
     assert claims["REF_EXISTENCE_POTENTIAL_CP1_SPHERE"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["REF_RELATIONAL_ZETA_POTENTIAL_SPHERE_CENTER"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["REF_CP1_BERRY_GEOMETRIC_PHASE"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["REF_BERRY_PHASE_CONNECTION_POTENTIAL_CLASS"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["BRIDGE_EXISTENCE_POTENTIAL_AHARONOV_BOHM"].kind is ClaimKind.BRIDGE
+    assert claims["GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_EULER_BERRY_MINIMAL_SPIN_HALF"].kind is ClaimKind.THEOREM
 
-    assert "GATE_L1_EXISTENCE_POTENTIAL" in dependency_closure(
-        "THM_EULER_BERRY_MINIMAL_SPIN_HALF"
-    )
-    assert "GATE_HAMLET_IMAGINARY_GENERATOR" in dependency_closure(
-        "THM_EULER_BERRY_MINIMAL_SPIN_HALF"
-    )
+    spin_closure = dependency_closure("THM_EULER_BERRY_MINIMAL_SPIN_HALF")
+    assert "GATE_L1_EXISTENCE_POTENTIAL" in spin_closure
+    assert "GATE_HAMLET_IMAGINARY_GENERATOR" in spin_closure
+    assert "REF_CP1_BERRY_GEOMETRIC_PHASE" in spin_closure
+    assert "GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE" in spin_closure
+    assert "REF_BERRY_PHASE_CONNECTION_POTENTIAL_CLASS" not in spin_closure
 
