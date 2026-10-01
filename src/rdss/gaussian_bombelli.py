@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from .existence_chain import relation_roles
+
 
 @dataclass(frozen=True)
 class GaussianPair:
@@ -46,7 +48,8 @@ def minimal_relation_role_gaussian_generator() -> GaussianPair:
     Up to conjugation this gives 2 + J.
     """
 
-    return GaussianPair(2, 1)
+    q = len(relation_roles())
+    return GaussianPair(q, 1)
 
 
 def bombelli_ladder() -> tuple[GaussianPair, GaussianPair, GaussianPair, GaussianPair]:
