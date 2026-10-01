@@ -62,60 +62,33 @@ The corrected causal order is
 \rightarrow
 \mathcal I_0
 \rightarrow
-\{\mathsf{Disp},\mathsf{Struct}\}.
+H_{\rm persist}
+\rightarrow
+\mathsf{Struct}
+\rightarrow
+R
+\rightarrow
+\{N,S\}
+\rightarrow
+Z_2
+\rightarrow
+\ln2.
 }
 \]
 
 Here
 
 - \(\mathcal P_E\) is primitive existence potential;
-- \(\mathcal I_0\) is primitive indistinction: existence potential with no
-  persistent distinction yet established;
-- \(\mathsf{Disp}\) is the class in which a candidate distinction does not
-  persist;
-- \(\mathsf{Struct}\) is the class in which a distinction persists.
+- \(\mathcal I_0\) is primitive indistinction;
+- \(H_{\rm persist}=\{\mathsf{Disp},\mathsf{Struct}\}\) is the first Hamlet,
+  classifying whether a candidate distinction persists;
+- \(R\) is the minimal persistent non-trivial relation on the STRUCTURE branch;
+- \(\{N,S\}\) are the two orientation roles of one non-self-collapsed relation.
 
-The Boolean persistence predicate therefore supplies the partition schema
-
-\[
-\{\mathsf{Disp},\mathsf{Struct}\}.
-\]
-
-This schema is exhaustive, but it does not by itself prove that both classes
-are non-empty. Canonical RDSS defines the **first Hamlet** as the
-non-degenerate case
-
-\[
-\boxed{
-H_0=\{\mathsf{Disp},\mathsf{Struct}\},
-\qquad
-\mathsf{Disp}\neq\varnothing,
-\quad
-\mathsf{Struct}\neq\varnothing.
-}
-\]
-
-A separate strict dynamics gate asks whether this non-degeneracy follows from
-\(\mathcal P_E+\mathcal I_0\) in nature rather than from the canonical
-definition.
-
-It precedes the non-trivial point.
-
-For the canonical non-degenerate first Hamlet,
-
-\[
-|H_0|=2,
-\]
-
-the probability-free Hartley information is
-
-\[
-\boxed{
-I_H=\ln|H_0|=\ln2.
-}
-\]
-
-The two branches then separate:
+The first Hamlet itself has a complement involution and therefore a meta
+\(Z_2\). If both persistence classes are non-empty it also has the conditional
+meta Hartley value \(\ln2\). Neither object is used as the internal
+projective-state carrier, because
 
 \[
 \boxed{
@@ -125,37 +98,57 @@ The two branches then separate:
 }
 \]
 
-and
+leaves no persistent distinction.
+
+The STRUCTURE branch gives
 
 \[
 \boxed{
 \mathsf{Struct}
 \rightarrow
-p^\star,
+R.
 }
 \]
 
-where \(p^\star\) is the minimal non-trivial information-point realization.
-
-The bare singleton point used in the model-formation proof remains a separate
-typed object. It proves only
+For the persistent relation,
 
 \[
-\min|\operatorname{Adm}|=1
+J_R:(s,t;R)\mapsto(t,s;R^{-1}),
+\qquad
+J_R^2=I,
 \]
 
-and is not the cause of the first Hamlet.
-
-The complement action on \(H_0\) gives
+and therefore
 
 \[
-\boxed{\mathbb Z_2}.
+\boxed{
+\mathcal O_{J_R}=\{N,S\}.
+}
 \]
 
-The downstream canonical algebra is
+This is the durable binary carrier. Its reversal symmetry is the canonical
+structural \(Z_2\), and
 
 \[
-\mathbb Z_2
+\boxed{
+I_R=\ln|\mathcal O_{J_R}|=\ln2
+}
+\]
+
+without a probability premise.
+
+The one-carrier minimum remains a separate cardinality result. A bare point is
+not the source of the binary geometry.
+
+The downstream structural algebra is
+
+\[
+\boxed{
+R
+\rightarrow
+\{N,S\}
+\rightarrow
+Z_2
 \rightarrow
 \{-1,+1\}
 \rightarrow
@@ -166,9 +159,10 @@ The downstream canonical algebra is
 J=SP,\quad J^2=-I
 \rightarrow
 U(1).
+}
 \]
 
-The full Hamlet operator algebra is
+The full operator algebra on the durable relation-role span is
 
 \[
 \boxed{
@@ -196,20 +190,42 @@ S^2.
 }
 \]
 
-The canonical horizontal Hamlet orbit has holonomy
+The existing legacy HAMLET_* names are retained for API compatibility, but
+their canonical vector-space carrier is now \(\{N,S\}\), not
+\(\{\mathsf{Disp},\mathsf{Struct}\}\).
+
+The Collatz layer is downstream. Once the branch maps
 
 \[
-\boxed{-1},
+E(n)=n/2,
+\qquad
+O(n)=3n+1
 \]
 
-and the independently derived Hamlet \(SU(2)\) algebra has Casimir label
+are admitted, their exact local signed scale signatures are
 
 \[
-\boxed{j=\frac12}.
+\boxed{
+\sigma_E=-\ln2,
+\qquad
+\sigma_O=+\ln3,
+}
 \]
 
-The Berry/Euler closure agrees with the same \(2\pi\) sign and \(4\pi\)
-return.
+and their Möbius matrices lift to \(PSL(2,\mathbb R)\).
+
+The unresolved deterministic gate is now
+
+\[
+\boxed{
+R+\text{durable relation-role algebra}
+\stackrel{?}{\Longrightarrow}
+E(n)=n/2,\quad O(n)=3n+1.
+}
+\]
+
+That gate must derive the coefficients \(2\), \(3\) and repair \(+1\) rather
+than import them.
 
 ## 1. Existence potential and primitive indistinction
 
