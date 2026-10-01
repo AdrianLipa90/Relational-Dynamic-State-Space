@@ -323,6 +323,18 @@ CLAIMS: tuple[Claim, ...] = (
         ("META0",),
     ),
     Claim(
+        "REF_META0_SINGLETON_POINT_PRESENTATION",
+        ClaimKind.REFERENCE_REALIZATION,
+        "A bare META0-admissible presentation may contain exactly one admitted unscaled RelationalPoint and no additional relational, geometric or dynamical structure.",
+        ("META0", "DEF_POINT"),
+    ),
+    Claim(
+        "THM_META0_MINIMAL_CARRIER_CARDINALITY",
+        ClaimKind.THEOREM,
+        "The META0 non-empty lower bound together with the singleton-point witness gives the exact bare-model minimum |Adm|=1. This is a model-formation result, not a physical collapse or dynamics claim.",
+        ("THM_META0_CARDINALITY_LOWER_BOUND", "REF_META0_SINGLETON_POINT_PRESENTATION"),
+    ),
+    Claim(
         "REF_SINGLETON_RA0_REL_STAR_MODEL",
         ClaimKind.REFERENCE_REALIZATION,
         "The recursive singleton self-relational model is an explicit admissible model of META0 plus RA0_REL_STAR with |Adm| = 1.",
