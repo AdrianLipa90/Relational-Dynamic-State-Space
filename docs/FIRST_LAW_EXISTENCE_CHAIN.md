@@ -513,19 +513,56 @@ The Gaussian route gives the same triple through
 
 Hence numerical coefficient provenance is double-closed.
 
-What remains open is the operation-semantic inheritance:
+The operation semantics also close canonically at finite-cardinality level.
+
+Association is quotient by a complete free durable-role pairing:
 
 \[
 \boxed{
-\text{relation algebra}
-\stackrel{?}{\Longrightarrow}
-\text{association}=\div2,\quad
-\text{dissociation}=\times3,\quad
-\text{repair}=+1.
+\mathsf A(X)=X/Z_2,
+\qquad
+|\mathsf A(X)|=|X|/2.
 }
 \]
 
-Conditional on that operation signature, the Collatz cycle is
+Dissociation is three-fold fibre extension:
+
+\[
+\boxed{
+\mathsf D(X)=X\times F_3,
+\qquad
+|\mathsf D(X)|=3|X|.
+}
+\]
+
+Repair is adjoining one singleton:
+
+\[
+\boxed{
+\mathsf R(X)=X\sqcup\{\star\},
+\qquad
+|\mathsf R(X)|=|X|+1.
+}
+\]
+
+Even cardinality admits complete association immediately. Odd cardinality
+does not; after three-fold dissociation it remains odd, and singleton repair
+makes it even. Therefore the deterministic cardinality law is exactly
+
+\[
+\boxed{
+C(n)=
+\begin{cases}
+n/2,&n\text{ even},\\
+3n+1,&n\text{ odd}.
+\end{cases}
+}
+\]
+
+The remaining gate is no longer algebraic. It is only whether primitive
+natural dynamics is bound to this exact relational-cardinality normalization.
+
+The resulting Collatz cycle is
 
 \[
 \mathsf D(n)=3n,
@@ -572,10 +609,10 @@ Existing RDSS modules do not close the strict first-Hamlet dynamics gate:
 
 Using either upstream would be circular. They remain downstream tools only.
 
-## 3. First Hamlet and \(\ln2\)
+## 3. Two distinct \(\ln2\) levels
 
-The first Hamlet has two exhaustive classes, therefore Hartley information in
-nats is
+The persistence Hamlet has two exhaustive classes and therefore carries a
+valid conditional meta-Hartley value
 
 \[
 \boxed{
