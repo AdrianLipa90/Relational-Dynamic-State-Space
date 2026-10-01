@@ -156,6 +156,19 @@ def universal_constant_repair(role_count: int = 2) -> int:
     return min(repairs)
 
 
+def minimal_nontrivial_dissociation_seed() -> int:
+    """Least positive non-unit cardinality that cannot immediately associate."""
+
+    q = durable_role_count()
+    if q != 2:
+        raise ValueError("canonical minimal dissociation seed is defined for the durable dyad")
+    candidate = 2
+    while True:
+        if candidate > 1 and candidate % q != 0:
+            return candidate
+        candidate += 1
+
+
 def active_seed_from_relation_algebra() -> int:
     """Canonical active seed: cardinality of the non-identity operator sector."""
 
@@ -194,7 +207,8 @@ def relational_l_constant_certificate() -> dict[str, int | bool]:
 
     from .gaussian_bombelli import l_constants_from_gaussian_and_root_extension
 
-    seed = active_seed_from_relation_algebra()
+    seed = minimal_nontrivial_dissociation_seed()
+    operator_seed = active_seed_from_relation_algebra()
     first = relational_collatz_step(seed)
     second = relational_collatz_step(first)
 
@@ -213,6 +227,8 @@ def relational_l_constant_certificate() -> dict[str, int | bool]:
         "association_divisor": l4,
         "dissociation_multiplier": nonidentity_operator_dimension(),
         "active_seed": seed,
+        "operator_seed": operator_seed,
+        "seed_routes_match": seed == operator_seed,
         "seed_step_1": first,
         "seed_step_2": second,
         "depth_to_one": l3,
