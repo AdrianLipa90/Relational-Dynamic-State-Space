@@ -1678,11 +1678,21 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["REF_COLLATZ_DERIVED_PERSISTENCE_CONTROL"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES"].kind is ClaimKind.THEOREM
     assert claims["GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["THM_COLLATZ_BRANCH_SIGNED_LOG_JACOBIANS"].kind is ClaimKind.THEOREM
     assert claims["THM_FIRST_HAMLET_Z2"].kind is ClaimKind.THEOREM
     assert claims["THM_FIRST_HAMLET_HARTLEY_LN2"].kind is ClaimKind.THEOREM
     assert claims["THM_DISPERSION_RETURNS_INDISTINCTION"].kind is ClaimKind.THEOREM
     assert claims["DEF_NONTRIVIAL_INFORMATION_POINT"].kind is ClaimKind.DEFINITION
     assert claims["THM_STRUCTURE_BRANCH_MINIMAL_INFORMATION_POINT"].kind is ClaimKind.THEOREM
+    assert claims["DEF_STRUCTURE_AS_PERSISTENT_RELATION"].kind is ClaimKind.DEFINITION
+    assert claims["THM_STRUCTURE_BRANCH_MINIMAL_RELATION"].kind is ClaimKind.THEOREM
+    assert claims["DEF_RELATION_ORIENTATION_REVERSAL"].kind is ClaimKind.DEFINITION
+    assert claims["THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT"].kind is ClaimKind.THEOREM
+    assert claims["THM_RELATION_ORIENTATION_Z2"].kind is ClaimKind.THEOREM
+    assert claims["THM_RELATION_ROLE_HARTLEY_LN2"].kind is ClaimKind.THEOREM
+    assert claims["THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER"].kind is ClaimKind.THEOREM
     assert claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_MINIMAL_INFORMATION_STATE_BINARY"].kind is ClaimKind.THEOREM
     assert claims["THM_TWO_STATE_AUTOMORPHISM_Z2"].kind is ClaimKind.THEOREM
@@ -1733,27 +1743,34 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE" in spin_closure
     assert "REF_BERRY_PHASE_CONNECTION_POTENTIAL_CLASS" not in spin_closure
 
-def test_first_hamlet_precedes_point_and_fundamental_ln2_is_probability_free() -> None:
+def test_first_hamlet_selects_persistence_then_structure_yields_durable_relation_roles() -> None:
     claims = claim_map()
 
     hamlet_closure = dependency_closure("THM_FIRST_HAMLET_DISPERSION_STRUCTURE")
     assert "DEF_PRIMITIVE_INDISTINCTION" in hamlet_closure
     assert "DEF_DISTINCTION_PERSISTENCE_PREDICATE" in hamlet_closure
-    assert "THM_FIRST_LAW_MINIMAL_NONTRIVIAL_CARRIER" not in hamlet_closure
     assert "DEF_POINT" not in hamlet_closure
 
-    ln2_closure = dependency_closure("THM_FIRST_HAMLET_HARTLEY_LN2")
-    assert "THM_FIRST_HAMLET_DISPERSION_STRUCTURE" in ln2_closure
-    assert "THM_HAMLET_HALF_HALF" not in ln2_closure
-    assert "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY" not in ln2_closure
-
-    structure_closure = dependency_closure("THM_STRUCTURE_BRANCH_MINIMAL_INFORMATION_POINT")
+    structure_closure = dependency_closure("THM_STRUCTURE_BRANCH_MINIMAL_RELATION")
     assert "THM_FIRST_HAMLET_DISPERSION_STRUCTURE" in structure_closure
-    assert "THM_META0_MINIMAL_CARRIER_CARDINALITY" in structure_closure
-    assert "DEF_NONTRIVIAL_INFORMATION_POINT" in structure_closure
+    assert "THM_STRUCTURE_BRANCH_MINIMAL_INFORMATION_POINT" in structure_closure
+    assert "DEF_BINARY_REL" in structure_closure
+
+    role_closure = dependency_closure("THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT")
+    assert "THM_STRUCTURE_BRANCH_MINIMAL_RELATION" in role_closure
+    assert "DEF_RELATION_ORIENTATION_REVERSAL" in role_closure
+
+    durable_ln2 = dependency_closure("THM_RELATION_ROLE_HARTLEY_LN2")
+    assert "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT" in durable_ln2
+    assert "THM_HAMLET_HALF_HALF" not in durable_ln2
+    assert "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY" not in durable_ln2
+
+    no_carrier = dependency_closure("THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER")
+    assert "THM_DISPERSION_RETURNS_INDISTINCTION" in no_carrier
+    assert "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT" in no_carrier
 
     assert claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"].kind is ClaimKind.DERIVATION_GATE
-    assert claims["GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"].kind is ClaimKind.DERIVATION_GATE
 
 
 def test_half_half_is_downstream_of_first_hamlet_not_foundation_for_ln2() -> None:
@@ -1811,7 +1828,8 @@ def test_z2_nontrivial_character_closes_algebraic_minus_one_not_berry_loop_mappi
     assert claims["THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"].kind is ClaimKind.THEOREM
     assert claims["THM_Z2_SIGN_EMBEDS_U1"].kind is ClaimKind.THEOREM
     sign_closure = dependency_closure("THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER")
-    assert "THM_FIRST_HAMLET_Z2" in sign_closure
+    assert "THM_RELATION_ORIENTATION_Z2" in sign_closure
+    assert "THM_FIRST_HAMLET_Z2" not in sign_closure
     assert "REF_CP1_BERRY_GEOMETRIC_PHASE" not in sign_closure
 
     loop_gate = claims["THM_HAMLET_PROJECTIVE_SIGN_CLOSURE"]
@@ -1830,7 +1848,9 @@ def test_hamlet_swap_and_polarity_generate_complex_structure_without_upstream_u1
     assert claims["THM_HAMLET_IMAGINARY_GENERATOR"].kind is ClaimKind.THEOREM
 
     j_closure = dependency_closure("THM_HAMLET_IMAGINARY_GENERATOR")
-    assert "THM_FIRST_HAMLET_Z2" in j_closure
+    assert "THM_RELATION_ORIENTATION_Z2" in j_closure
+    assert "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT" in j_closure
+    assert "THM_FIRST_HAMLET_Z2" not in j_closure
     assert "THM_BINARY_BRANCH_SWAP_INVOLUTION" not in j_closure
     assert "DEF_OCCURRENCE_ADDRESS_SPACE" not in j_closure
     assert "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER" in j_closure
@@ -1839,6 +1859,35 @@ def test_hamlet_swap_and_polarity_generate_complex_structure_without_upstream_u1
 
     u1_closure = dependency_closure("THM_IMAGINARY_GENERATOR_U1")
     assert "THM_HAMLET_IMAGINARY_GENERATOR" in u1_closure
+
+def test_projective_geometry_uses_durable_relation_roles_not_persistence_classes() -> None:
+    cp1_closure = dependency_closure("THM_HAMLET_OPERATOR_PROJECTIVE_CP1")
+    spin_closure = dependency_closure("THM_EULER_BERRY_MINIMAL_SPIN_HALF")
+
+    for closure in (cp1_closure, spin_closure):
+        assert "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT" in closure
+        assert "THM_RELATION_ORIENTATION_Z2" in closure
+        assert "THM_FIRST_HAMLET_Z2" not in closure
+        assert "THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER" in closure
+
+
+def test_collatz_is_downstream_of_relation_roles_but_branch_derivation_remains_open() -> None:
+    claims = claim_map()
+
+    gate = claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"]
+    assert gate.kind is ClaimKind.DERIVATION_GATE
+    gate_closure = dependency_closure("GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA")
+    assert "THM_RELATION_ORIENTATION_Z2" in gate_closure
+    assert "THM_RELATION_ROLE_HARTLEY_LN2" in gate_closure
+    assert "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE" in gate_closure
+
+    psl2 = dependency_closure("REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT")
+    assert "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE" in psl2
+    assert "GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA" not in psl2
+
+    sig = dependency_closure("THM_COLLATZ_BRANCH_SIGNED_LOG_JACOBIANS")
+    assert "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE" in sig
+
 
 def test_cp1_factorization_keeps_scalar_phase_and_branch_dimension_distinct() -> None:
     claims = claim_map()
