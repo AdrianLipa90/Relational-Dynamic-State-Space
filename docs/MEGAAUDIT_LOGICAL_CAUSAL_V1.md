@@ -1114,9 +1114,11 @@ Closed or conditionally closed on the canonical RDSS track:
 
 - First Law -> modal existence potential: PASS-DEFINITIONAL.
 - existence potential before stable distinction -> primitive indistinction: PASS-DEFINITIONAL.
-- persistence predicate -> first Hamlet \(\{\mathsf{Disp},\mathsf{Struct}\}\): PASS-EXACT.
-- first-Hamlet complement -> \(Z_2\): PASS-EXACT.
-- two first-Hamlet classes -> Hartley \(\ln2\): PASS-EXACT, probability-free.
+- persistence predicate -> Boolean DISPERSION/STRUCTURE partition schema: PASS-EXACT.
+- canonical first-Hamlet non-degeneracy (both preimages non-empty): PASS-DEFINITIONAL.
+- physical derivation of that non-degeneracy from \(\mathcal P_E+\mathcal I_0\): OPEN-GATE.
+- non-degenerate first-Hamlet complement -> \(Z_2\): PASS-CONDITIONAL / EXACT.
+- two non-empty first-Hamlet classes -> Hartley \(\ln2\): PASS-CONDITIONAL / EXACT, probability-free.
 - DISPERSION -> primitive indistinction: PASS-DEFINITIONAL.
 - STRUCTURE + one-carrier minimum -> non-trivial information point \(p^\star\): PASS-MODEL-THEOREM.
 - bare singleton point is not sufficient to generate first Hamlet: PASS-COUNTERMODEL.
