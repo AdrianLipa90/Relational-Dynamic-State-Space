@@ -1934,6 +1934,21 @@ def test_active_seed_three_is_double_closed() -> None:
     assert "DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT" in closure
 
 
+def test_gaussian_integer_lattice_is_downstream_of_phase_winding() -> None:
+    claims = claim_map()
+
+    assert claims["BRIDGE_TIR_CLOSED_PHASE_WINDING_INTEGERS"].kind is ClaimKind.BRIDGE
+    assert claims["THM_RELATION_ROLE_GAUSSIAN_INTEGER_LATTICE"].kind is ClaimKind.THEOREM
+
+    lattice_closure = dependency_closure("THM_RELATION_ROLE_GAUSSIAN_INTEGER_LATTICE")
+    assert "THM_HAMLET_COMPLEX_SCALAR_ALGEBRA" in lattice_closure
+    assert "BRIDGE_TIR_CLOSED_PHASE_WINDING_INTEGERS" in lattice_closure
+    assert "THM_IMAGINARY_GENERATOR_U1" in lattice_closure
+
+    lift_closure = dependency_closure("THM_MINIMAL_RELATION_ROLE_GAUSSIAN_GENERATOR")
+    assert "THM_RELATION_ROLE_GAUSSIAN_INTEGER_LATTICE" in lift_closure
+
+
 def test_l_constants_have_single_gaussian_generator_closure() -> None:
     claims = claim_map()
 
