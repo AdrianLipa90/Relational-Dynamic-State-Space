@@ -13,6 +13,10 @@ from rdss.existence_chain import (
     branch_swap_vector,
     branch_polarity_vector,
     hamlet_complex_structure,
+    hamlet_j_orbit,
+    hamlet_j_orbit_derivative,
+    hamlet_horizontal_residual,
+    hamlet_projective_return_phase,
     exact_chain_sanity,
     hamlet_distribution,
     hamlet_information_nats,
@@ -52,7 +56,7 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
         by_id["BERRY_PHASE_TO_CONNECTION_POTENTIAL_CLASS"].status
         is ExistenceChainStatus.CONDITIONAL_STANDARD_RESULT
     )
-    assert by_id["HAMLET_TO_PROJECTIVE_SIGN_CLOSURE"].status is ExistenceChainStatus.DERIVATION_GATE
+    assert by_id["HAMLET_TO_PROJECTIVE_SIGN_CLOSURE"].status is ExistenceChainStatus.CONDITIONAL_EXACT
     assert (
         by_id["BERRY_EULER_HAMLET_TO_SPIN_HALF"].status
         is ExistenceChainStatus.CONDITIONAL_STANDARD_RESULT
@@ -101,3 +105,24 @@ def test_spin_half_has_2pi_sign_return_and_4pi_full_return() -> None:
 
 def test_exact_chain_sanity_does_not_claim_open_gates_closed() -> None:
     assert exact_chain_sanity()
+
+def test_canonical_hamlet_j_orbit_is_horizontal_and_returns_with_minus_one() -> None:
+    start = hamlet_j_orbit(0.0)
+    mid = hamlet_j_orbit(3.141592653589793 / 2.0)
+    end = hamlet_j_orbit(3.141592653589793)
+
+    assert isclose(start[0], 1.0, abs_tol=1e-12)
+    assert isclose(start[1], 0.0, abs_tol=1e-12)
+    assert isclose(mid[0], 0.0, abs_tol=1e-12)
+    assert isclose(abs(mid[1]), 1.0, abs_tol=1e-12)
+    assert isclose(end[0], -1.0, abs_tol=1e-12)
+    assert isclose(end[1], 0.0, abs_tol=1e-12)
+
+    for theta in (0.0, 0.17, 0.73, 1.31, 2.2, 3.0):
+        psi = hamlet_j_orbit(theta)
+        dpsi = hamlet_j_orbit_derivative(theta)
+        assert isclose(psi[0] * dpsi[0] + psi[1] * dpsi[1], 0.0, abs_tol=1e-12)
+        assert isclose(hamlet_horizontal_residual(theta), 0.0, abs_tol=1e-12)
+
+    assert hamlet_projective_return_phase() == -1.0
+
