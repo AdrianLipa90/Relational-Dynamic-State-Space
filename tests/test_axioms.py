@@ -1658,7 +1658,7 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_MINIMAL_INFORMATION_STATE_BINARY"].kind is ClaimKind.THEOREM
     assert claims["THM_TWO_STATE_AUTOMORPHISM_Z2"].kind is ClaimKind.THEOREM
-    assert claims["THM_Z2_UNIQUE_NONTRIVIAL_U1_CHARACTER"].kind is ClaimKind.THEOREM
+    assert claims["THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"].kind is ClaimKind.THEOREM
     assert claims["GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY"].kind is ClaimKind.DERIVATION_GATE
     assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_BINARY_BRANCH_SWAP_INVOLUTION"].kind is ClaimKind.THEOREM
@@ -1666,7 +1666,9 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_HAMLET_HALF_HALF"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_LN2"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_RELATIONAL_ZETA_ZERO"].kind is ClaimKind.THEOREM
-    assert claims["GATE_HAMLET_IMAGINARY_GENERATOR"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["DEF_HAMLET_REAL_LINEAR_SPAN"].kind is ClaimKind.DEFINITION
+    assert claims["THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_IMAGINARY_GENERATOR"].kind is ClaimKind.THEOREM
     assert claims["THM_IMAGINARY_GENERATOR_U1"].kind is ClaimKind.THEOREM
     assert claims["REF_EXISTENCE_POTENTIAL_CP1_SPHERE"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["REF_RELATIONAL_ZETA_POTENTIAL_SPHERE_CENTER"].kind is ClaimKind.REFERENCE_REALIZATION
@@ -1678,7 +1680,7 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
 
     spin_closure = dependency_closure("THM_EULER_BERRY_MINIMAL_SPIN_HALF")
     assert "DEF_EXISTENCE_POTENTIAL" in spin_closure
-    assert "GATE_HAMLET_IMAGINARY_GENERATOR" in spin_closure
+    assert "THM_HAMLET_IMAGINARY_GENERATOR" in spin_closure
     assert "REF_CP1_BERRY_GEOMETRIC_PHASE" in spin_closure
     assert "GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE" in spin_closure
     assert "REF_BERRY_PHASE_CONNECTION_POTENTIAL_CLASS" not in spin_closure
@@ -1734,14 +1736,31 @@ def test_relation_direction_alone_does_not_supply_hamlet_branch_identity() -> No
 def test_z2_nontrivial_character_closes_algebraic_minus_one_not_berry_loop_mapping() -> None:
     claims = claim_map()
 
-    assert claims["THM_Z2_UNIQUE_NONTRIVIAL_U1_CHARACTER"].kind is ClaimKind.THEOREM
-    sign_closure = dependency_closure("THM_Z2_UNIQUE_NONTRIVIAL_U1_CHARACTER")
+    assert claims["THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"].kind is ClaimKind.THEOREM
+    assert claims["THM_Z2_SIGN_EMBEDS_U1"].kind is ClaimKind.THEOREM
+    sign_closure = dependency_closure("THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER")
     assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in sign_closure
     assert "REF_CP1_BERRY_GEOMETRIC_PHASE" not in sign_closure
 
     loop_gate = claims["GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE"]
     assert loop_gate.kind is ClaimKind.DERIVATION_GATE
     loop_closure = dependency_closure("GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE")
-    assert "THM_Z2_UNIQUE_NONTRIVIAL_U1_CHARACTER" in loop_closure
+    assert "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER" in loop_closure
     assert "REF_CP1_BERRY_GEOMETRIC_PHASE" in loop_closure
+
+def test_hamlet_swap_and_polarity_generate_complex_structure_without_upstream_u1() -> None:
+    claims = claim_map()
+
+    assert claims["DEF_HAMLET_REAL_LINEAR_SPAN"].kind is ClaimKind.DEFINITION
+    assert claims["THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_IMAGINARY_GENERATOR"].kind is ClaimKind.THEOREM
+
+    j_closure = dependency_closure("THM_HAMLET_IMAGINARY_GENERATOR")
+    assert "THM_BINARY_BRANCH_SWAP_INVOLUTION" in j_closure
+    assert "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER" in j_closure
+    assert "THM_IMAGINARY_GENERATOR_U1" not in j_closure
+    assert "REF_U1_PHASE_VALUE" not in j_closure
+
+    u1_closure = dependency_closure("THM_IMAGINARY_GENERATOR_U1")
+    assert "THM_HAMLET_IMAGINARY_GENERATOR" in u1_closure
 
