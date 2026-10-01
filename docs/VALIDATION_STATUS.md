@@ -961,3 +961,80 @@ The next formal gates are:
 2. global geometric realization of the face-adjacency complex;
 3. neighbour coupling across a shared static face;
 4. derivation of the moiré field from relative phase/polarization/angular state.
+
+
+## Cubic Stella correction milestone — 2026-10-01
+
+This milestone supersedes the immediately preceding local-cell geometry in
+which the octahedron was used as the external static cage.
+
+Corrected geometry:
+
+\[
+\boxed{
+Q_n
+\supset
+(T_{+,n}\cup T_{-,n})
+\supset
+O_n
+}
+\]
+
+where \(Q_n\) is the static cube, the two complementary tetrahedral supports
+form the Stella Octangula, and \(O_n\) is the internal octahedral relational
+core.
+
+Canonical cube support:
+
+\[
+V(Q_n)=\{(\pm1,\pm1,\pm1)\}.
+\]
+
+The eight cube vertices are partitioned by the parity sign \(xyz=\pm1\) into
+two disjoint four-vertex supports. Source/reference geometry checks confirm:
+
+- 8 total cube vertices;
+- 4 vertices in each tetrahedral support;
+- supports disjoint;
+- support union equals the full cube vertex set;
+- all six pairwise squared distances within each tetrahedral support equal 8;
+- the canonical octahedral core has 6 vertices
+  \((\pm1,0,0),(0,\pm1,0),(0,0,\pm1)\);
+- from each core vertex, four other core vertices lie at squared distance 2
+  and the antipodal vertex lies at squared distance 4.
+
+The dynamic/static distinction is now explicit: the cube vertices and
+tetrahedral support vertices are static; local dynamics live in U(1) phase,
+spin/polarization and angular state carried by the two tetrahedral sectors.
+
+Source/static inventory at this milestone, before this receipt commit:
+
+- branch distance from main: 319 commits ahead, 0 behind;
+- claim entries: 191;
+- foundational AXIOM claims: exactly one, \`A0\`;
+- package-root exports: 293;
+- duplicate claim IDs: 0;
+- duplicate package exports: 0;
+- stale octahedral-cage claim IDs in the active ledger: 0;
+- stale octahedral-cage public API exports: 0;
+- dedicated algebraic-geometric cell tests: 13;
+- bare standalone Markdown math delimiters in the corrected cell-map document: 0.
+
+The previous coordinate-placement gate is closed by the canonical cubic vertex
+partition. Open work begins downstream at the neighbour-coupling and moiré
+derivation.
+
+TIR remains read-only; no write to TIR was performed.
+
+NOEMA/AUX tether guard at this milestone:
+
+- \`tether_status=ACTIVE\`;
+- \`failures=[]\`.
+
+Validation boundary:
+
+- source/static consistency for the corrected surfaces: **PASS**;
+- independent coordinate sanity-check: **PASS**;
+- full repository pytest on an exact complete checkout: **NOT RUN**;
+- actual LaTeX compilation on the final exact head: **NOT RUN**;
+- CI PASS is not claimed.
