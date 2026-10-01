@@ -11,6 +11,11 @@ from rdss.primitive_persistence import (
     collatz_dissociate,
     collatz_log_gain,
     collatz_persistence_regime,
+    minimal_nontrivial_odd_multiplier,
+    minimal_positive_odd_repair,
+    source_minimal_association_divisor,
+    source_minimal_collatz_coefficients,
+    source_minimal_parity_step,
     distinction_flow,
     distinction_flow_from_collatz,
     distinction_potential,
@@ -142,4 +147,37 @@ def test_collatz_helpers_fail_closed() -> None:
         collatz_associate(9)
     with pytest.raises(TypeError):
         collatz_association_cycle(True)
+
+def test_source_minimal_coefficients_are_exactly_two_three_one() -> None:
+    assert source_minimal_association_divisor(2) == 2
+    assert minimal_nontrivial_odd_multiplier() == 3
+    assert minimal_positive_odd_repair() == 1
+    assert source_minimal_collatz_coefficients(2) == (2, 3, 1)
+
+
+def test_source_minimal_parity_step_equals_unreduced_collatz_on_positive_integers() -> None:
+    for n in range(1, 1001):
+        expected = n // 2 if n % 2 == 0 else 3 * n + 1
+        assert source_minimal_parity_step(n) == expected
+
+
+def test_existing_collatz_helpers_use_source_minimal_coefficients() -> None:
+    divisor, multiplier, repair = source_minimal_collatz_coefficients()
+    for n in (1, 3, 5, 7, 9, 11, 27):
+        assert collatz_dissociate(n) == multiplier * n
+        assert collatz_complete(collatz_dissociate(n)) == multiplier * n + repair
+    assert divisor == 2
+
+
+def test_source_minimal_signature_fails_closed_outside_canonical_dyad() -> None:
+    with pytest.raises(ValueError):
+        source_minimal_collatz_coefficients(1)
+    with pytest.raises(ValueError):
+        source_minimal_collatz_coefficients(3)
+    with pytest.raises(ValueError):
+        source_minimal_parity_step(5, role_count=3)
+    with pytest.raises(ValueError):
+        source_minimal_parity_step(0)
+    with pytest.raises(TypeError):
+        source_minimal_parity_step(True)
 
