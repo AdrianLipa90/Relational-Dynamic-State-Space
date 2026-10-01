@@ -248,8 +248,8 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT",
-        ClaimKind.FORMATION_RULE,
-        "Canonical arithmetic seed rule: the first active positive integer state carries each non-identity real operator direction of the minimal persistent relation-role algebra exactly once, so n_0 is dim_R(M_2(R))-1.",
+        ClaimKind.DEFINITION,
+        "The active operator sector is the canonical real operator basis with the identity direction removed. Since the full basis is {I,S,P,J}, the active sector is {S,P,J}; its cardinality defines the active arithmetic seed n_0. No independent numerical seed is selected.",
         ("THM_RELATION_OPERATOR_DIMENSION_COEFFICIENT_ROUTE",),
     ),
     Claim(
@@ -261,8 +261,14 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_RELATIONAL_COLLATZ_L_CONSTANT_CERTIFICATE",
         ClaimKind.THEOREM,
-        "For the derived Collatz map and active seed n_0=3, the first two ordinary steps are 3->10->5, the exact finite depth from 3 to 1 is 7, and the durable role count is 2. Together with the Gaussian/root-extension closure this yields the exact relational certificate (L3,L4,L5)=(7,2,5).",
-        ("THM_ACTIVE_SEED_IS_THREE", "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ", "BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45"),
+        "For the derived Collatz map and active seed n_0=3, define L4 as the durable role count 2, L5 as the first completed dissociation-repair-association successor 3->10->5, and L3 as the exact finite depth of the same seed from 3 to 1, namely 7. Thus the relational Collatz core derives (L3,L4,L5)=(7,2,5) directly. The Gaussian/root-extension route is an independent crosscheck rather than a premise of these values.",
+        ("THM_ACTIVE_SEED_IS_THREE", "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ"),
+    ),
+    Claim(
+        "THM_L_CONSTANT_PROVENANCE_CROSSCHECK",
+        ClaimKind.THEOREM,
+        "The relational Collatz derivation (depth, role count, first completed odd cycle) and the independent Gaussian/root-extension derivation produce the identical triple (L3,L4,L5)=(7,2,5).",
+        ("THM_RELATIONAL_COLLATZ_L_CONSTANT_CERTIFICATE", "BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45"),
     ),
     Claim(
         "DEF_ASSOCIATION_AS_FREE_DYAD_QUOTIENT",
