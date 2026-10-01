@@ -505,16 +505,22 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES", "THM_META0_MINIMAL_CARRIER_CARDINALITY", "DEF_NONTRIVIAL_INFORMATION_POINT"),
     ),
     Claim(
+        "BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION",
+        ClaimKind.BRIDGE,
+        "TIR First Distinction / Canonical Derivation Spine proves the source-clean typing min(object)=point and min(nontrivial structure)=relation, with relation endpoints treated as roles rather than independent primitive substances.",
+        ("A0", "THM_STRUCTURE_BRANCH_MINIMAL_INFORMATION_POINT"),
+    ),
+    Claim(
         "DEF_STRUCTURE_AS_PERSISTENT_RELATION",
         ClaimKind.DEFINITION,
-        "Canonical RDSS structural typing: a persistent non-trivial distinction is represented minimally by an admitted relation R with ordered source and target roles. The roles are structural positions of one relation and need not be independent primitive substances.",
-        ("THM_STRUCTURE_BRANCH_MINIMAL_INFORMATION_POINT", "DEF_BINARY_REL"),
+        "Legacy/local alias for the bridged TIR result: a persistent non-trivial distinction is represented by an admitted relation R with ordered source and target roles.",
+        ("BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION", "DEF_BINARY_REL"),
     ),
     Claim(
         "THM_STRUCTURE_BRANCH_MINIMAL_RELATION",
         ClaimKind.THEOREM,
-        "The STRUCTURE branch supplies a persistent distinction; under DEF_STRUCTURE_AS_PERSISTENT_RELATION its minimal non-trivial structural realization is a relation R. Thus the first persistent relational object is downstream of the first Hamlet.",
-        ("THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES", "DEF_STRUCTURE_AS_PERSISTENT_RELATION"),
+        "The STRUCTURE branch supplies a persistent distinction; the TIR minimum-structure theorem fixes the minimal non-trivial structural realization as a relation R. Thus the first persistent relational object is downstream of the first Hamlet without making relational minimality a fresh RDSS definition.",
+        ("THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES", "BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION"),
     ),
     Claim(
         "DEF_RELATION_ORIENTATION_REVERSAL",
