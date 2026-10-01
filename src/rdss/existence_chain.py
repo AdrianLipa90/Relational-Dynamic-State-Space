@@ -24,6 +24,13 @@ class ExistenceChainStatus(str, Enum):
     CONDITIONAL_EXACT = "conditional_exact"
 
 
+class FirstHamletOutcome(str, Enum):
+    """First persistence bifurcation of primitive indistinction."""
+
+    DISPERSION = "dispersion"
+    STRUCTURE = "structure"
+
+
 @dataclass(frozen=True)
 class ExistencePotential:
     """Symbolic non-null possibility left after absolute nothingness is excluded.
@@ -62,82 +69,83 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "P_E is the modal/admissible complement of absolute nothingness; no physical potential is implied.",
     ),
     ExistenceChainStep(
-        "L1_MODEL_TO_MINIMAL_POINT",
-        "First-Law/META0 admitted model",
-        "one-carrier minimal point realization",
-        ExistenceChainStatus.MODEL_THEOREM,
-        "min |Adm| = 1",
-        "This is a bare model-formation minimum, not a physical collapse of P_E.",
-    ),
-    ExistenceChainStep(
-        "POINT_TO_INFORMATIONALITY",
-        "minimal realized point carrier",
-        "non-trivial information state",
-        ExistenceChainStatus.DERIVATION_GATE,
-        "point -> information-bearing distinction",
-        "This is now the single upstream Hamlet gate: why must bare existence be informationally non-trivial?",
-    ),
-    ExistenceChainStep(
-        "CANONICAL_REALIZED_EXISTENCE_INFORMATIONALITY",
-        "canonical RDSS realized-existence semantics",
-        "non-trivial information state",
+        "POTENTIAL_TO_PRIMITIVE_INDISTINCTION",
+        "existence potential P_E before any persistent distinction",
+        "primitive indistinction I_0",
         ExistenceChainStatus.DEFINITIONAL,
-        "RealizedExistence_RDSS := admitted non-trivial information state",
-        "This closes the canonical theory path by definition while leaving the strict L1-only entailment gate open.",
+        "P_E with no established persistent distinction := I_0",
+        "I_0 is not nothingness; existence potential is already present.",
     ),
     ExistenceChainStep(
-        "INFORMATIONALITY_TO_BINARY",
-        "non-trivial finite information state",
-        "minimal two-alternative carrier",
-        ExistenceChainStatus.CONDITIONAL_EXACT,
-        "min |Omega| = 2",
-        "Exact from the definition of non-trivial finite information once informationality is admitted.",
-    ),
-    ExistenceChainStep(
-        "BINARY_TO_Z2_AUTOMORPHISM",
-        "unlabelled two-alternative carrier",
-        "swap symmetry Z2",
+        "INDISTINCTION_TO_FIRST_HAMLET",
+        "P_E in primitive indistinction I_0 with a persistence predicate",
+        "first Hamlet {DISPERSION, STRUCTURE}",
         ExistenceChainStatus.EXACT_IDENTITY,
-        "Aut({a,b}) = S2 ~= Z2",
+        "Persist or not Persist",
+        "The Boolean persistence predicate partitions candidate differentiation outcomes into exactly two exhaustive disjoint classes.",
     ),
     ExistenceChainStep(
-        "CANONICAL_REALIZED_EXISTENCE_TO_HAMLET",
-        "canonical realized non-trivial information state",
-        "minimal Hamlet Z2 carrier",
-        ExistenceChainStatus.CONDITIONAL_EXACT,
-        "definition + min |Omega|=2 + Aut(Omega_2)=Z2",
-        "Closed inside canonical RDSS semantics; this is distinct from the strict L1-to-informationality question.",
+        "FIRST_HAMLET_TO_Z2",
+        "first Hamlet {DISPERSION, STRUCTURE}",
+        "complement action Z2",
+        ExistenceChainStatus.EXACT_IDENTITY,
+        "complement^2 = identity",
+    ),
+    ExistenceChainStep(
+        "FIRST_HAMLET_TO_LN2",
+        "two exhaustive first-Hamlet classes",
+        "Hartley information ln(2)",
+        ExistenceChainStatus.EXACT_IDENTITY,
+        "H_0 = ln |Omega_H| = ln(2)",
+        "No probability distribution is required.",
+    ),
+    ExistenceChainStep(
+        "DISPERSION_TO_INDISTINCTION",
+        "DISPERSION branch",
+        "primitive indistinction I_0",
+        ExistenceChainStatus.DEFINITIONAL,
+        "not Persist -> no stable distinction -> I_0",
+        "Dispersion is not absolute nothingness.",
+    ),
+    ExistenceChainStep(
+        "STRUCTURE_TO_INFORMATION_POINT",
+        "STRUCTURE branch",
+        "minimal non-trivial information point",
+        ExistenceChainStatus.MODEL_THEOREM,
+        "Persist + min |Adm|=1 -> minimal information-point realization",
+        "The non-trivial point is downstream of the first Hamlet; the bare singleton point remains only a non-vacuity witness.",
+    ),
+    ExistenceChainStep(
+        "BARE_POINT_NOT_FIRST_HAMLET",
+        "bare singleton non-vacuity witness",
+        "no forced internal binary distinction",
+        ExistenceChainStatus.MODEL_THEOREM,
+        "bare point != first Hamlet",
+        "This preserves the singleton countermodel and blocks the old point-to-informationality causal order.",
     ),
     ExistenceChainStep(
         "CANONICAL_HAMLET_RELATIONAL_REALIZATION",
-        "canonical Hamlet alternatives",
+        "first-Hamlet alternatives",
         "two distinct relational branch-occurrence identities",
         ExistenceChainStatus.DEFINITIONAL,
-        "distinguishable alternatives -> distinct occurrence identities bound to host",
-        "Canonical relational-information semantics; the universal RA0_REL_STAR entailment from bare L1 remains open.",
-    ),
-    ExistenceChainStep(
-        "EXISTENCE_POTENTIAL_TO_HAMLET",
-        "existence potential P_E through an informationally non-trivial minimal realization",
-        "Hamlet Z2 uncertainty",
-        ExistenceChainStatus.DERIVATION_GATE,
-        "P_E -> point -> information -> 2 outcomes -> Z2",
-        "Only the point-to-informationality arrow remains genuinely open in this factorization.",
+        "DISPERSION/STRUCTURE -> distinct occurrence identities bound to host",
+        "Canonical RDSS representation semantics; universal foundational entailment remains a separate gate.",
     ),
     ExistenceChainStep(
         "HAMLET_TO_HALF_HALF",
-        "Z2-symmetric Hamlet carrier",
+        "first Hamlet with complement-invariant normalized probability",
         "balanced probabilities",
         ExistenceChainStatus.CONDITIONAL_EXACT,
-        "swap-invariant normalized weighting -> p_+=p_-=1/2",
-        "Closed on the canonical Hamlet carrier. The strict L1-only informationality gate is tracked separately and is not a dependency of this downstream theorem.",
+        "complement invariance -> p_D=p_S=1/2",
+        "This is downstream and is not needed for the fundamental ln(2) Hartley information.",
     ),
     ExistenceChainStep(
-        "HALF_HALF_TO_LN2",
-        "balanced binary probabilities",
-        "one-bit Shannon information in nats",
+        "SHANNON_LN2_CONSISTENCY",
+        "balanced first-Hamlet probabilities",
+        "Shannon entropy ln(2)",
         ExistenceChainStatus.EXACT_IDENTITY,
-        "H(1/2,1/2)=ln(2)",
+        "H_Shannon(1/2,1/2)=ln(2)",
+        "Consistency check with the already-derived Hartley ln(2).",
     ),
     ExistenceChainStep(
         "Z2_TO_SIGN_CHARACTER",
@@ -243,6 +251,40 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "The half label is fixed by the su(2) Casimir; Berry/Euler supplies an independent geometric consistency check.",
     ),
 )
+
+
+def first_hamlet_outcomes() -> tuple[FirstHamletOutcome, FirstHamletOutcome]:
+    """Exhaustive first-Hamlet persistence classes."""
+
+    return (FirstHamletOutcome.DISPERSION, FirstHamletOutcome.STRUCTURE)
+
+
+def first_hamlet_classify(persists: bool) -> FirstHamletOutcome:
+    """Classify a candidate differentiation by persistence."""
+
+    return FirstHamletOutcome.STRUCTURE if bool(persists) else FirstHamletOutcome.DISPERSION
+
+
+def first_hamlet_complement(outcome: FirstHamletOutcome) -> FirstHamletOutcome:
+    """Boolean complement on the first Hamlet."""
+
+    return (
+        FirstHamletOutcome.STRUCTURE
+        if outcome is FirstHamletOutcome.DISPERSION
+        else FirstHamletOutcome.DISPERSION
+    )
+
+
+def hartley_information_nats(cardinality: int) -> float:
+    """Hartley information ln(N) for a finite non-empty outcome space."""
+
+    if cardinality < 1:
+        raise ValueError("cardinality must be positive")
+    return log(float(cardinality))
+
+
+def first_hamlet_hartley_nats() -> float:
+    return hartley_information_nats(len(first_hamlet_outcomes()))
 
 
 def branch_swap(branch: int) -> int:
@@ -602,6 +644,7 @@ def exact_chain_sanity() -> bool:
             branch_swap(branch_swap(-1)) == -1,
             branch_swap(branch_swap(1)) == 1,
             branch_word_swap(branch_word_swap((-1, 1, -1))) == (-1, 1, -1),
+            isclose(first_hamlet_hartley_nats(), LN2),
             isclose(hamlet_information_nats(), LN2),
             isclose(relational_zero_center(), RELATIONAL_ZETA_ZERO),
             z2_nontrivial_real_character(1) == 1.0,
