@@ -176,11 +176,16 @@ def audit_claim_graph() -> dict[str, int]:
 def audit_test_imports() -> None:
     module_defs = {
         "rdss.algebraic_geometry_cell": public_defs(SRC / "rdss" / "algebraic_geometry_cell.py") | {
-            "OCTAHEDRON_FACE_COUNT",
-            "OCTAHEDRON_VERTEX_COUNT",
+            "CUBE_FACE_COUNT",
+            "CUBE_VERTEX_COUNT",
+            "CUBE_VERTICES",
+            "OCTAHEDRAL_CORE_VERTEX_COUNT",
+            "OCTAHEDRAL_CORE_VERTICES",
             "SPIN_HALF",
             "SPINOR_FULL_RETURN",
             "SPINOR_SIGN_RETURN",
+            "TETRAHEDRON_NEGATIVE_VERTICES",
+            "TETRAHEDRON_POSITIVE_VERTICES",
         },
         "rdss.algebra": public_defs(SRC / "rdss" / "algebra.py"),
         "rdss.axioms": public_defs(SRC / "rdss" / "axioms.py"),
