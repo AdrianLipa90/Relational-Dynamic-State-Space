@@ -1678,6 +1678,12 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["REF_COLLATZ_DERIVED_PERSISTENCE_CONTROL"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES"].kind is ClaimKind.THEOREM
     assert claims["GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["DEF_SOURCE_MINIMAL_PARITY_DYNAMICS_SIGNATURE"].kind is ClaimKind.FORMATION_RULE
+    assert claims["THM_DYAD_FORCES_ASSOCIATION_DIVISOR_TWO"].kind is ClaimKind.THEOREM
+    assert claims["THM_MINIMAL_ODD_DISSOCIATION_MULTIPLIER_THREE"].kind is ClaimKind.THEOREM
+    assert claims["THM_MINIMAL_POSITIVE_ODD_REPAIR_ONE"].kind is ClaimKind.THEOREM
+    assert claims["THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ"].kind is ClaimKind.THEOREM
+    assert claims["GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS"].kind is ClaimKind.DERIVATION_GATE
     assert claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"].kind is ClaimKind.DERIVATION_GATE
     assert claims["REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["THM_COLLATZ_BRANCH_SIGNED_LOG_JACOBIANS"].kind is ClaimKind.THEOREM
@@ -1869,6 +1875,27 @@ def test_projective_geometry_uses_durable_relation_roles_not_persistence_classes
         assert "THM_RELATION_ORIENTATION_Z2" in closure
         assert "THM_FIRST_HAMLET_Z2" not in closure
         assert "THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER" in closure
+
+
+def test_source_minimal_collatz_theorem_is_conditional_and_inheritance_gate_stays_open() -> None:
+    claims = claim_map()
+
+    theorem = claims["THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ"]
+    assert theorem.kind is ClaimKind.THEOREM
+    closure = dependency_closure("THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ")
+    assert "DEF_SOURCE_MINIMAL_PARITY_DYNAMICS_SIGNATURE" in closure
+    assert "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT" in closure
+    assert "GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS" not in closure
+
+    gate = claims["GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS"]
+    assert gate.kind is ClaimKind.DERIVATION_GATE
+    gate_closure = dependency_closure("GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS")
+    assert "A0" in gate_closure
+    assert "THM_STRUCTURE_BRANCH_MINIMAL_RELATION" in gate_closure
+    assert "DEF_SOURCE_MINIMAL_PARITY_DYNAMICS_SIGNATURE" in gate_closure
+
+    collatz_def = claims["DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE"]
+    assert "THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ" in collatz_def.depends_on
 
 
 def test_collatz_is_downstream_of_relation_roles_but_branch_derivation_remains_open() -> None:
