@@ -1898,6 +1898,39 @@ def test_source_minimal_collatz_theorem_is_conditional_and_inheritance_gate_stay
     assert "THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ" in collatz_def.depends_on
 
 
+def test_canonical_collatz_operations_use_named_operator_sectors() -> None:
+    claims = claim_map()
+
+    assert claims["DEF_DISSOCIATION_AS_ACTIVE_OPERATOR_PRODUCT"].kind is ClaimKind.DEFINITION
+    assert claims["THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY"].kind is ClaimKind.THEOREM
+    assert claims["DEF_REPAIR_AS_IDENTITY_RESTORATION"].kind is ClaimKind.DEFINITION
+    assert claims["THM_IDENTITY_REPAIR_CARDINALITY"].kind is ClaimKind.THEOREM
+    assert claims["THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP"].kind is ClaimKind.THEOREM
+
+    collatz_closure = dependency_closure("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP")
+    assert "THM_ASSOCIATION_QUOTIENT_CARDINALITY" in collatz_closure
+    assert "THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY" in collatz_closure
+    assert "THM_IDENTITY_REPAIR_CARDINALITY" in collatz_closure
+    assert "THM_PARITY_FORCES_COLLATZ_BRANCH_SELECTION" in collatz_closure
+
+    # Generic F3/singleton helpers are retained, but the canonical theorem
+    # must not depend on them.
+    assert "DEF_DISSOCIATION_AS_THREE_FIBRE_EXTENSION" not in collatz_closure
+    assert "DEF_REPAIR_AS_SINGLETON_COPRODUCT" not in collatz_closure
+
+
+def test_l_constants_have_single_gaussian_generator_closure() -> None:
+    claims = claim_map()
+
+    theorem = claims["THM_L_CONSTANTS_SINGLE_GENERATOR_CLOSURE"]
+    assert theorem.kind is ClaimKind.THEOREM
+    closure = dependency_closure("THM_L_CONSTANTS_SINGLE_GENERATOR_CLOSURE")
+    assert "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT" in closure
+    assert "THM_MINIMAL_RELATION_ROLE_GAUSSIAN_GENERATOR" in closure
+    assert "THM_GAUSSIAN_L45_SOURCE" in closure
+    assert "BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45" in closure
+
+
 def test_collatz_is_downstream_of_relation_roles_but_branch_derivation_remains_open() -> None:
     claims = claim_map()
 
@@ -2170,6 +2203,7 @@ def test_gaussian_bombelli_route_is_independent_of_collatz_and_recovers_l_consta
     assert claims["THM_RELATION_OPERATOR_DIMENSION_COEFFICIENT_ROUTE"].kind is ClaimKind.THEOREM
     assert claims["THM_BINARY_UNIVERSAL_REPAIR_ONE"].kind is ClaimKind.THEOREM
     assert claims["THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED"].kind is ClaimKind.THEOREM
+    assert claims["THM_L_CONSTANTS_SINGLE_GENERATOR_CLOSURE"].kind is ClaimKind.THEOREM
     assert claims["DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT"].kind is ClaimKind.DEFINITION
     assert claims["THM_ACTIVE_SEED_IS_THREE"].kind is ClaimKind.THEOREM
     assert claims["THM_RELATIONAL_COLLATZ_L_CONSTANT_CERTIFICATE"].kind is ClaimKind.THEOREM
