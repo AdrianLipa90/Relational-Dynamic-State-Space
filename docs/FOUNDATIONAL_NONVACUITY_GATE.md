@@ -2,7 +2,7 @@
 
 ## Status
 
-**RESOLVED at the model-formation level by META0.**
+**RESOLVED at the model-formation level by the unique axiom A0 through META0.**
 
 The previous version treated
 
@@ -26,9 +26,9 @@ is **not** absolute nothingness. It is a mathematical object: the empty set.
 
 Likewise, an empty first-order/finite presentation is still a mathematical structure. It may be used as a metamathematical witness, but it is not identified with absolute nothingness.
 
-## META0 — formation meta-axiom
+## A0 and the META0 formation rule
 
-RTOFA therefore uses the model-formation rule
+RTOFA has one axiom, A0. Its model-theoretic non-reification consequence is recorded by the formation rule
 
 \[
 \boxed{
@@ -42,7 +42,7 @@ RTOFA therefore uses the model-formation rule
 }
 \]
 
-META0 is logically prior to the object-level relational axioms. It says what counts as an admissible model; it does not introduce a new object called “nothing.”
+META0 is not another axiom. It records a model-class consequence of A0; RA0 and RR1 are now explicit derivation gates rather than object-level axioms.
 
 ## EX0 becomes a theorem of the model class
 
@@ -114,40 +114,38 @@ There is no contradiction:
 }
 \]
 
-## Canonical foundation after META0
+## Canonical one-axiom foundation
 
 The foundational stratification is now
 
 \[
 \boxed{
+A_0
+\Longrightarrow
 \mathrm{META0}
-\;\triangleright\;
-(\mathrm{RA0}+\mathrm{RR1}).
+\Longrightarrow
+\{\mathrm{EX0},\text{ explicit derivation gates}\}.
 }
 \]
 
 Here:
 
-- META0 is the model-formation meta-axiom;
-- RA0 is relational admissibility inside an admitted model;
-- RR1 is recursive relational closure;
-- EX0 is a theorem of META0.
+- A0 is the unique axiom;
+- META0 is a model-formation rule induced by A0;
+- EX0 is a theorem of META0;
+- RA0, RR1, RA0_STAR and RA0_REL_STAR are named derivation gates, not axioms.
 
-The stronger closure candidate RA0* remains separate:
-
-\[
-\mathrm{RA0}^{*}\Rightarrow\mathrm{RR1}
-\]
-
-under its explicit binary-distinction and endpoint-admissibility clauses.
-
-META0 is still required at the model-class level; RA0* alone is universally quantified and can be vacuously true on an empty raw presentation.
+The historical countermodels remain useful because they show that particular
+old formalizations of admissibility or recursive closure do not follow merely
+from weaker intermediate statements. They no longer justify adding another
+axiom; instead they identify exactly where the derivation from A0 must be
+strengthened.
 
 ## Meaning of “forced”
 
 The word **forced** here has a precise scope.
 
-META0 is not claimed to be a theorem of every possible logical formalism. Logics with empty domains can be defined.
+A0 is the unique foundational commitment of RTOFA; META0 is its chosen model-formation realization. This is not claimed to be forced in every possible logical formalism. Logics with empty domains can be defined.
 
 Rather, META0 is constitutive of RTOFA semantics:
 
