@@ -14,6 +14,7 @@ class ClaimKind(str, Enum):
     CANDIDATE_AXIOM = "candidate_axiom"
     THEOREM = "theorem"
     FORMATION_RULE = "formation_rule"
+    DERIVATION_GATE = "derivation_gate"
 
 
 @dataclass(frozen=True)
@@ -26,9 +27,15 @@ class Claim:
 
 CLAIMS: tuple[Claim, ...] = (
     Claim(
+        "A0",
+        ClaimKind.AXIOM,
+        "Relational non-realizability of absolute nothingness: absolute nothing cannot be realized or denoted because there is nothing relative to which it could be distinguished or related.",
+    ),
+    Claim(
         "META0",
         ClaimKind.FORMATION_RULE,
-        "Non-reification/non-vacuity rule: absolute nothingness has no denotation in the RTOFA object language, and admissible RTOFA models have a non-empty admitted carrier domain.",
+        "Non-reification/non-vacuity rule induced by A0: absolute nothingness has no denotation in the RTOFA object language, and admissible RTOFA models have a non-empty admitted carrier domain.",
+        ("A0",),
     ),
     Claim(
         "EX0",
@@ -38,8 +45,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RA0",
-        ClaimKind.AXIOM,
-        "Relational admissibility: every admitted observable is incident to at least one primitive relation, as source or target.",
+        ClaimKind.DERIVATION_GATE,
+        "Relational admissibility target: every admitted observable is incident to at least one primitive relation, as source or target. This is not an additional axiom; its complete derivation from A0 remains an explicit gate in the current kernel.",
+        ("A0",),
     ),
     Claim(
         "DEF_POINT",
@@ -166,9 +174,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RR1",
-        ClaimKind.AXIOM,
-        "Recursive relational closure: at every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction, so the rule re-applies at each finite refinement depth.",
-        ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
+        ClaimKind.DERIVATION_GATE,
+        "Recursive relational closure target: at every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction, so the rule re-applies at each finite refinement depth. This is not an additional axiom; its complete derivation from A0 remains an explicit gate.",
+        ("A0", "DEF_POINT", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "THM_RR1_REALIZES_FINITE_WORDS",
@@ -196,13 +204,13 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RA0_STAR",
-        ClaimKind.CANDIDATE_AXIOM,
+        ClaimKind.DERIVATION_GATE,
         "Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers.",
         ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "RA0_REL_STAR",
-        ClaimKind.CANDIDATE_AXIOM,
+        ClaimKind.DERIVATION_GATE,
         "Every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted carriers.",
         ("DEF_POINT", "DEF_RELATIONAL_DISTINCTION"),
     ),
