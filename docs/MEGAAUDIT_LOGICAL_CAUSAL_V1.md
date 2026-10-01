@@ -96,24 +96,36 @@ and
 \operatorname{Persist}.
 \]
 
-By excluded middle these two classes are exhaustive, and by contradiction they
-are disjoint:
+By excluded middle the labels are exhaustive, and by contradiction they are
+disjoint. This establishes the Boolean partition schema, but not yet the
+non-emptiness of both preimages.
+
+Canonical RDSS defines the first Hamlet as the non-degenerate case
 
 \[
 \boxed{
 H_0
 =
-\{\mathsf{Disp},\mathsf{Struct}\}.
+\{\mathsf{Disp},\mathsf{Struct}\},
+\qquad
+\mathsf{Disp}\neq\varnothing,
+\quad
+\mathsf{Struct}\neq\varnothing.
 }
 \]
 
-This is the first Hamlet.
+The strict dynamics question is whether that non-degeneracy can be derived
+from \(\mathcal P_E+\mathcal I_0\) rather than declared canonically.
 
-Crucially, it occurs **before** selection of a non-trivial point carrier.
+Crucially, the first Hamlet still occurs **before** selection of a
+non-trivial point carrier.
 
-Status: PASS-EXACT once the persistence predicate is defined.
+Status:
+- Boolean partition schema: PASS-EXACT.
+- canonical non-degeneracy: PASS-DEFINITIONAL.
+- physical/dynamical derivation of non-degeneracy: OPEN-GATE.
 
-The complement operation exchanges the two classes and squares to identity:
+The complement operation exchanges the two admitted classes and squares to identity:
 
 \[
 c(\mathsf{Disp})=\mathsf{Struct},
@@ -151,10 +163,11 @@ I_H
 }
 \]
 
-Status: PASS-EXACT.
+Status: PASS-CONDITIONAL / exact for the non-degenerate first Hamlet.
 
 No probability measure, Born rule, equiprobability assumption or
-\(1/2,1/2\) weighting is required for this step.
+\(1/2,1/2\) weighting is required; only the two-branch non-degeneracy is
+needed.
 
 This is now the foundational route to \(\ln2\).
 
