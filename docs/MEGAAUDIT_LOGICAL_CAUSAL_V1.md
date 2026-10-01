@@ -338,6 +338,100 @@ Status: NO-GO-AS-UPSTREAM-CAUSE.
 These modules remain valid downstream realizations after the first Hamlet has
 been established.
 
+## M2f. Collatz association/dissociation replaces free persistence control
+
+The earlier continuous envelope
+
+\[
+\dot d=d(\mu-d)
+\]
+
+is retained only as a reference persistence dynamics. Its signed coordinate
+\(\mu\) is no longer treated as primitive.
+
+For a positive odd state \(n\), define
+
+\[
+\mathsf D:n\mapsto3n,
+\]
+
+\[
+\mathsf R:3n\mapsto3n+1,
+\]
+
+and maximal association
+
+\[
+\mathsf A:
+3n+1
+\mapsto
+\frac{3n+1}{2^{\nu_2(3n+1)}}.
+\]
+
+Then
+
+\[
+T_C(n)
+=
+\frac{3n+1}{2^{\nu_2(3n+1)}}
+\]
+
+and the exact local log balance is
+
+\[
+\boxed{
+\mu_C(n)
+=
+-\ln\frac{T_C(n)}{n}
+=
+\nu_2(3n+1)\ln2-\ln\frac{3n+1}{n}.
+}
+\]
+
+Status: PASS-EXACT for each supplied positive odd \(n\).
+
+The interpretation inside the reference persistence envelope is:
+
+\[
+\mu_C>0
+\Rightarrow
+\text{association dominates}
+\Rightarrow
+\text{STRUCTURE regime},
+\]
+
+\[
+\mu_C<0
+\Rightarrow
+\text{dissociation dominates}
+\Rightarrow
+\text{DISPERSION regime}.
+\]
+
+At \(n=1\),
+
+\[
+T_C(1)=1,
+\qquad
+\mu_C(1)=0,
+\]
+
+so the accelerated odd cycle is locally critical.
+
+No global Collatz convergence statement enters this result.
+
+The remaining open arrow is no longer “where does \(\mu\) come from?” but
+
+\[
+\boxed{
+\mathcal P_E+\mathcal I_0
+\stackrel{?}{\longrightarrow}
+n.
+}
+\]
+
+Status: OPEN-GATE for primitive-state binding.
+
 ## M3. Standard Heisenberg remains downstream
 
 The Robertson relation
