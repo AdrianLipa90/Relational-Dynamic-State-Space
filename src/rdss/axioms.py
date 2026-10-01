@@ -123,7 +123,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE",
         ClaimKind.DEFINITION,
-        "For a positive odd state n, the local Collatz information cycle is D:n->3n (dissociation), R:3n->3n+1 (missing-element completion/repair), followed by maximal association A:(3n+1)->(3n+1)/2^nu2(3n+1). The resulting accelerated odd map is T_C(n)=(3n+1)/2^nu2(3n+1). No global Collatz-convergence claim is assumed.",
+        "Downstream canonical definition after the conditional source-minimal theorem: for a positive odd state n, D:n->3n (dissociation), R:3n->3n+1 (minimal parity repair), followed by maximal association A:(3n+1)->(3n+1)/2^nu2(3n+1). The resulting accelerated odd map is T_C(n)=(3n+1)/2^nu2(3n+1). No global Collatz-convergence claim is assumed.",
+        ("THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ",),
     ),
     Claim(
         "THM_COLLATZ_ASSOCIATION_BALANCE",
