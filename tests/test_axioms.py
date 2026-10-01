@@ -1658,6 +1658,7 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_MINIMAL_INFORMATION_STATE_BINARY"].kind is ClaimKind.THEOREM
     assert claims["THM_TWO_STATE_AUTOMORPHISM_Z2"].kind is ClaimKind.THEOREM
+    assert claims["THM_Z2_UNIQUE_NONTRIVIAL_U1_CHARACTER"].kind is ClaimKind.THEOREM
     assert claims["GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY"].kind is ClaimKind.DERIVATION_GATE
     assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_BINARY_BRANCH_SWAP_INVOLUTION"].kind is ClaimKind.THEOREM
@@ -1729,4 +1730,18 @@ def test_relation_direction_alone_does_not_supply_hamlet_branch_identity() -> No
     assert "DEF_RELATION_OCCURRENCE" in closure
     assert "DEF_CARRIER_OCCURRENCE_SEPARATION" in closure
     assert "GATE_HAMLET_RELATIONAL_BINDING" not in closure
+
+def test_z2_nontrivial_character_closes_algebraic_minus_one_not_berry_loop_mapping() -> None:
+    claims = claim_map()
+
+    assert claims["THM_Z2_UNIQUE_NONTRIVIAL_U1_CHARACTER"].kind is ClaimKind.THEOREM
+    sign_closure = dependency_closure("THM_Z2_UNIQUE_NONTRIVIAL_U1_CHARACTER")
+    assert "THM_TWO_STATE_AUTOMORPHISM_Z2" in sign_closure
+    assert "REF_CP1_BERRY_GEOMETRIC_PHASE" not in sign_closure
+
+    loop_gate = claims["GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE"]
+    assert loop_gate.kind is ClaimKind.DERIVATION_GATE
+    loop_closure = dependency_closure("GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE")
+    assert "THM_Z2_UNIQUE_NONTRIVIAL_U1_CHARACTER" in loop_closure
+    assert "REF_CP1_BERRY_GEOMETRIC_PHASE" in loop_closure
 
