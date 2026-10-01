@@ -1919,6 +1919,21 @@ def test_canonical_collatz_operations_use_named_operator_sectors() -> None:
     assert "DEF_REPAIR_AS_SINGLETON_COPRODUCT" not in collatz_closure
 
 
+def test_active_seed_three_is_double_closed() -> None:
+    claims = claim_map()
+
+    assert claims["DEF_MINIMAL_NONTRIVIAL_DISSOCIATION_SEED"].kind is ClaimKind.DEFINITION
+    assert claims["THM_MINIMAL_NONTRIVIAL_DISSOCIATION_SEED_IS_THREE"].kind is ClaimKind.THEOREM
+    assert claims["THM_ACTIVE_SEED_IS_THREE"].kind is ClaimKind.THEOREM
+    assert claims["THM_ACTIVE_SEED_PROVENANCE_DOUBLE_CLOSED"].kind is ClaimKind.THEOREM
+
+    closure = dependency_closure("THM_ACTIVE_SEED_PROVENANCE_DOUBLE_CLOSED")
+    assert "THM_MINIMAL_NONTRIVIAL_DISSOCIATION_SEED_IS_THREE" in closure
+    assert "THM_ACTIVE_SEED_IS_THREE" in closure
+    assert "THM_ASSOCIATION_QUOTIENT_CARDINALITY" in closure
+    assert "DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT" in closure
+
+
 def test_l_constants_have_single_gaussian_generator_closure() -> None:
     claims = claim_map()
 
