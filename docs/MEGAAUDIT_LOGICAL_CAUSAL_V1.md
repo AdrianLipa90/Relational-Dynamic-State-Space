@@ -1474,11 +1474,17 @@ Closed or conditionally closed on the canonical RDSS track:
 - durable role orbit -> structural \(Z_2\): PASS-EXACT.
 - durable two-role orbit -> structural Hartley \(\ln2\): PASS-EXACT and probability-free.
 - persistence classes used as CP1 basis: NO-GO; removed from canonical geometry.
-- source-minimal affine parity-law class -> \(E(n)=n/2,\ O(n)=3n+1\): PASS-CONDITIONAL / EXACT.
-- coefficient \(2\): exact from durable dyad cardinality inside the declared association rule.
-- coefficient \(3\): exact least non-trivial positive odd multiplier.
-- repair \(+1\): exact least positive odd parity-flipping repair.
-- upstream relational minimality -> source-minimal parity-law signature: OPEN INHERITANCE GATE.
+- minimal Gaussian lift of durable dyad + \(J^2=-I\) -> \(g=2+J\) up to conjugation: PASS-MODEL-THEOREM inside the integral lift class.
+- Gaussian ladder -> \(g^2=3+4J,\ g^3=2+11J,\ g^4=-7+24J\): PASS-EXACT.
+- Gaussian source -> Collatz coefficient values \((2,3,+1)\): PASS-EXACT.
+- Gaussian source + TIR root-extension closure -> \((L_3,L_4,L_5)=(7,2,5)\): PASS-CONDITIONAL / EXACT.
+- source-minimal parity-law route -> the same Collatz coefficient values: PASS-CONDITIONAL / EXACT.
+- Collatz coefficient provenance from the two independent routes: DOUBLE-CLOSED.
+- association as free dyad quotient -> \(n/2\): PASS-EXACT.
+- dissociation as three-fibre extension -> \(3n\): PASS-EXACT.
+- repair as singleton coproduct -> \(n+1\): PASS-EXACT.
+- parity admissibility + quotient/product/coproduct semantics -> standard Collatz map: PASS-EXACT.
+- relational-cardinality Collatz normalization -> primitive natural dynamics: OPEN FOUNDATIONAL/PHYSICAL BINDING GATE.
 - admitted Collatz branches -> projective \(PSL(2,\mathbb R)\) lift: PASS-CONDITIONAL / EXACT.
 - admitted Collatz branches -> signed local log-Jacobians \((-\ln2,+\ln3)\): PASS-EXACT.
 - durable role \(Z_2\) -> unique non-trivial real sign character: PASS-EXACT.
@@ -1497,9 +1503,9 @@ Strict questions still open:
 
 1. Derive, rather than define canonically, that both persistence regimes are
    dynamically admissible from \(\mathcal P_E+\mathcal I_0\).
-2. Derive that upstream First-Law/minimal-relation dependency rules force the
-   source-minimal affine parity-law construction language. Determinism alone
-   does not select one map from all deterministic maps.
+2. Establish whether primitive natural dynamics is actually instantiated by
+   the exact relational-cardinality normalization. The algebraic Collatz map
+   itself is closed; this remaining question is a binding claim.
 3. Determine whether the free real linearization of the durable role dyad is
    itself forced by the primitive relation or remains the minimal canonical
    linear realization. The current operator-algebra results are exact once
