@@ -426,68 +426,128 @@ The algebra
 is isomorphic to \(\mathbb C\), so complex scalar structure is now downstream
 of the Hamlet binary algebra rather than an upstream assumption.
 
-## M10. Derived complex scalars + two branches -> CP1 / S2
+## M10. Full Hamlet operator algebra -> complex dimension two -> CP1
 
-A single real two-branch span equipped with \(J\) is only one complex
-dimension. It must not be confused with a two-level complex state carrier.
+The earlier free-module presentation
+\[
+\mathbb C_J[B]
+\]
+is mathematically valid, but the mega-audit flags a possible explanatory
+duplication: the same binary carrier first helps generate \(J\), then appears
+again as an independent complex basis.
 
-RDSS therefore keeps the two roles separate:
+The canonical route avoids this.
 
+In the ordered real branch basis,
+\[
+S=
+\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix},
+\qquad
+P=
+\begin{pmatrix}
+-1&0\\
+0&1
+\end{pmatrix},
+\qquad
+J=SP=
+\begin{pmatrix}
+0&1\\
+-1&0
+\end{pmatrix}.
+\]
+
+The four matrices
+\[
+\{I,S,P,J\}
+\]
+are linearly independent and therefore form a basis of
+\[
+\boxed{
+\mathcal A_H
+=
+\operatorname{Alg}_{\mathbb R}(S,P)
+=
+M_2(\mathbb R).
+}
+\]
+
+Let
 \[
 \mathbb C_J
 =
-\operatorname{span}_{\mathbb R}\{I,J\},
+\operatorname{span}_{\mathbb R}\{I,J\}
+\simeq\mathbb C.
 \]
 
-and
-
+Since
 \[
-\boxed{
-\mathcal H_B
-=
-\mathbb C_J[B]
-\simeq
-\mathbb C^2,
-}
+SJ=P,
 \]
-
-the free complex vector space on the two Hamlet branch symbols.
-
-This is a standard algebraic construction and prevents the hidden
-dimension-collapse error \(\mathbb R^2\cong\mathbb C^1\not\cong\mathbb C^2\).
-
-### Symmetry-fixed Hermitian form
-
-Let \(H\) be a positive-definite Hermitian form on \(\mathcal H_B\).
-Invariance under branch swap \(S\) and polarity \(P\) forces
-
+every element of \(\mathcal A_H\) has the unique form
 \[
-H=aI,
+A=z_0+Sz_1,
 \qquad
-a>0.
+z_0,z_1\in\mathbb C_J.
 \]
 
-Indeed swap invariance equalizes the two diagonal entries and makes the
-off-diagonal coefficient real, while polarity invariance forces that
-off-diagonal coefficient to vanish.
-
-The normalized branch convention fixes \(a=1\). Hence
-
+Hence
 \[
 \boxed{
-\langle\psi,\phi\rangle
+\mathcal A_H
 =
-\sum_{b\in B}
-\overline{\psi_b}\phi_b.
+\mathbb C_J\oplus S\mathbb C_J
+\simeq
+\mathbb C_J^2.
 }
 \]
 
-Status: PASS-THEOREM up to the conventional positive overall scale, fixed by
-normalization.
+Status: PASS-THEOREM.
 
-The normalized state space is therefore \(S^3\), and quotienting common phase
-gives
+The complex dimension two is therefore the module rank of the **full Hamlet
+operator algebra**, not a second independent copy of the binary degree of
+freedom.
 
+### Canonical norm and common phase
+
+With normalized Frobenius form
+\[
+(A,B)_F
+=
+\frac12\operatorname{Tr}(A^TB),
+\]
+the basis \(\{I,S,P,J\}\) is orthonormal.
+
+For
+\[
+A=z_0+Sz_1
+\]
+this gives
+\[
+\|A\|_F^2
+=
+|z_0|^2+|z_1|^2.
+\]
+
+Right multiplication by
+\[
+e^{\phi J}
+\]
+preserves this norm and acts in module coordinates as
+\[
+(z_0,z_1)
+\mapsto
+(z_0e^{i\phi},z_1e^{i\phi}),
+\]
+which is exactly common \(U(1)\) phase.
+
+Thus the unit sphere is
+\[
+S^3
+\]
+and
 \[
 \boxed{
 S^3/U(1)
@@ -498,10 +558,10 @@ S^2.
 }
 \]
 
-Status: PASS-STANDARD.
+Status: PASS-STANDARD / exact quotient.
 
-The relational zero \(\zeta=0\) is the centre of the ambient Bloch-ball chart,
-not a pure point of the CP1 surface.
+The older free complex branch-space construction is retained only as an
+equivalent reference presentation, not the canonical causal derivation.
 
 ## M11. Projective geometry -> Berry phase
 
@@ -614,46 +674,68 @@ Status: REFERENCE-ONLY.
 Its correct role is external confirmation of the significance of the
 phase-potential relation.
 
-## M14. Canonical Hamlet orbit -> projective Berry sign
+## M14. Canonical Hamlet operator orbit -> projective Berry sign
 
-Let \(\psi_0\) be either normalized branch pole and let
-
+Use the right-\(\mathbb C_J\) module coordinates of
 \[
-\psi(\theta)
+\mathcal A_H
 =
-e^{\theta J}\psi_0,
-\qquad
-0\le\theta\le\pi.
+\mathbb C_J\oplus S\mathbb C_J.
 \]
 
-Because \(J\) is skew with respect to the symmetry-fixed Hermitian form,
-
+The normalized balanced state is
 \[
-\langle\psi,\dot\psi\rangle=0.
+\Psi_0
+=
+\frac{I+S}{\sqrt2}
+\quad\longleftrightarrow\quad
+\frac1{\sqrt2}(1,1).
 \]
 
-Thus \(\psi(\theta)\) is a horizontal lift for the reference Hopf/Berry
-connection.
-
-At the first projective return,
-
+Left multiplication by \(e^{\theta J}\) acts differently on the two right
+module components because
 \[
-e^{\pi J}=-I,
-\]
-
-so
-
-\[
-\psi(\pi)=-\psi_0.
-\]
-
-The base ray is closed while the horizontal lift differs by
-
-\[
-\boxed{-1}.
+JS=-SJ.
 \]
 
 Therefore
+\[
+\boxed{
+\Psi(\theta)
+\longleftrightarrow
+\frac1{\sqrt2}
+\left(
+e^{i\theta},
+e^{-i\theta}
+\right).
+}
+\]
+
+Its Hermitian horizontal residual is
+\[
+\langle\Psi,\dot\Psi\rangle
+=
+\frac12(i-i)
+=
+0.
+\]
+
+At
+\[
+\theta=\pi
+\]
+we have
+\[
+\Psi(\pi)=-\Psi_0.
+\]
+
+Thus the ray has returned while its horizontal lift differs by
+
+\[
+\boxed{-1},
+\]
+
+so
 
 \[
 \boxed{
@@ -661,11 +743,23 @@ Therefore
 }
 \]
 
-Status: PASS-THEOREM inside the constructed CP1/Hopf reference geometry.
+A fixed unitary chart
+\[
+U=
+\frac1{\sqrt2}
+\begin{pmatrix}
+1&1\\
+i&-i
+\end{pmatrix}
+\]
+maps this orbit to
+\[
+(\cos\theta,-\sin\theta),
+\]
+showing that it is exactly the earlier real \(J\)-orbit in an equivalent
+chart, not a second construction.
 
-This closes the previous projective-sign gate. The algebraic non-trivial
-\(Z_2\) sign and the geometric Berry sign now agree on the canonical Hamlet
-loop rather than being identified by fiat.
+Status: PASS-THEOREM.
 
 ## M15. Berry + Euler -> minimal spin one half
 
