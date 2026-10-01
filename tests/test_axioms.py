@@ -2230,3 +2230,37 @@ def test_relational_cardinality_semantics_closes_collatz_operations_not_physical
     assert "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ" in gate_closure
     assert "A0" in gate_closure
 
+def test_collatz_dyadic_phase_is_downstream_of_collatz_and_u1_embedding_is_separate() -> None:
+    claims = claim_map()
+
+    for claim_id in (
+        "DEF_COLLATZ_PARITY_ITINERARY",
+        "THM_COLLATZ_PARITY_FORBIDS_11",
+        "DEF_COLLATZ_DYADIC_NORMALIZED_PHASE",
+        "THM_COLLATZ_DYADIC_SHIFT_IS_DOUBLING",
+        "THM_COLLATZ_TERMINAL_CYCLE_LENGTH_THREE",
+        "THM_COLLATZ_TERMINAL_PHASE_DENOMINATOR_SEVEN",
+        "THM_COLLATZ_TERMINAL_PHASE_ANCHORS",
+        "THM_COLLATZ_PHASE_DENOMINATOR_EQUALS_L3",
+        "THM_COLLATZ_ADMISSIBLE_WORD_COUNT_FIBONACCI",
+    ):
+        assert claims[claim_id].kind in {ClaimKind.DEFINITION, ClaimKind.THEOREM}
+
+    assert claims["BRIDGE_COLLATZ_NORMALIZED_PHASE_TO_U1"].kind is ClaimKind.BRIDGE
+
+    phase_closure = dependency_closure("THM_COLLATZ_DYADIC_SHIFT_IS_DOUBLING")
+    assert "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ" in phase_closure
+    assert "THM_IMAGINARY_GENERATOR_U1" not in phase_closure
+    assert "THM_HAMLET_OPERATOR_PROJECTIVE_CP1" not in phase_closure
+
+    terminal_closure = dependency_closure("THM_COLLATZ_PHASE_DENOMINATOR_EQUALS_L3")
+    assert "THM_COLLATZ_TERMINAL_PHASE_DENOMINATOR_SEVEN" in terminal_closure
+    assert "THM_RELATIONAL_COLLATZ_L_CONSTANT_CERTIFICATE" in terminal_closure
+
+    u1_bridge = dependency_closure("BRIDGE_COLLATZ_NORMALIZED_PHASE_TO_U1")
+    assert "THM_COLLATZ_DYADIC_SHIFT_IS_DOUBLING" in u1_bridge
+    assert "THM_IMAGINARY_GENERATOR_U1" in u1_bridge
+
+    grammar = dependency_closure("THM_COLLATZ_ADMISSIBLE_WORD_COUNT_FIBONACCI")
+    assert "THM_COLLATZ_PARITY_FORBIDS_11" in grammar
+
