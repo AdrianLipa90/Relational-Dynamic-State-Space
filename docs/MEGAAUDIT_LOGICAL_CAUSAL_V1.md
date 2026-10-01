@@ -33,51 +33,115 @@ RDSS relational zero \(\zeta=0\).
 \neg\mathcal N\rightarrow\mathcal P_E.
 \]
 
-The safe minimal reading is modal:
+Define the primitive existence potential minimally as
 
 \[
 \boxed{
 \mathcal P_E
 :=
-\text{admissible possibility remaining after absolute nothingness is excluded}.
+\text{the modal/admissible possibility remaining after absolute nothingness is excluded}.
 }
 \]
 
-Status: PASS-DEFINITIONAL on this minimal reading.
+On that reading the arrow is closed by definition.
 
-A stronger reading in which \(\mathcal P_E\) already has physical magnitude,
-energy, field strength or dynamics is not licensed by \(L_1\).
+Status: PASS-DEFINITIONAL.
 
-Status of any physicalized \(\mathcal P_E\): OPEN-GATE.
+A stronger physical reading in which \(\mathcal P_E\) already carries energy,
+field strength, force law, metric or spacetime dynamics remains unsupported.
 
-## M2. Existence potential -> Hamlet distinction
+Status of a physicalized \(\mathcal P_E\): OPEN-GATE.
 
-The intended primitive uncertainty is pre-observable and pre-Hilbert:
+## M1a. First Law -> minimal non-trivial carrier
+
+The existing model-formation chain already gives
 
 \[
-\mathcal P_E
-\rightarrow
-\text{unresolved realization/orientation}.
+\mathrm{META0}\Rightarrow |Adm|\ge 1.
 \]
 
-Minimal non-degeneracy gives two alternatives only after a distinction is
-required:
+RDSS also contains a bare admissible singleton-point presentation with no
+extra relational, geometric or dynamical structure. Therefore the lower bound
+is attained:
 
 \[
 \boxed{
-\text{non-degenerate minimal distinction}
-\Rightarrow
-\mathbb Z_2.
+\min |Adm|=1.
 }
 \]
 
-The still-open question is why undifferentiated existence potential must
-actualize/differentiate at all.
+Status: PASS-MODEL-THEOREM.
+
+The unscaled point is a reference realization of this one-carrier minimum. It
+is not a second foundational premise.
+
+## M2. Point -> non-trivial informationality
+
+This is now the first genuinely open upstream arrow.
+
+The bare singleton countermodel contains exactly one admitted point and no
+hosted binary distinction. Therefore
+
+\[
+\boxed{
+L_1+\mathrm{META0}+\text{minimal point}
+\not\Rightarrow
+\text{non-trivial information state}
+}
+\]
+
+under the current semantics.
+
+Status: OPEN-GATE, with explicit countermodel.
+
+The missing statement is precisely:
+
+\[
+\boxed{
+\text{why must realized existence be informationally non-trivial?}
+}
+\]
+
+This gate is recorded as GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY.
+
+## M2a. Informationality -> minimal binary carrier
+
+RDSS defines a non-trivial finite information state as one with at least two
+distinguishable alternatives. Hence the exact minimum is
+
+\[
+\boxed{
+|\Omega|_{\min}=2.
+}
+\]
+
+For an unlabelled two-element set,
+
+\[
+\operatorname{Aut}(\Omega)
+\cong
+S_2
+\cong
+\mathbb Z_2.
+\]
+
+Status: PASS-CONDITIONAL / exact after informationality is admitted.
+
+This is the mathematically clean Hamlet carrier.
+
+## M2b. Abstract Hamlet Z2 -> relational binding
+
+An abstract two-state carrier does not yet imply that its two alternatives
+are realized as distinct relation occurrences hosted by the admitted carrier.
+
+The existing RDSS target for that stronger statement is RA0_REL_STAR:
+one admitted carrier hosts a relationally bound binary distinction with two
+distinct branch occurrences.
 
 Status: OPEN-GATE.
 
-“Hamlet uncertainty” names this primitive relational uncertainty. It must not
-yet be identified with the standard Heisenberg/Robertson inequality.
+The audit therefore keeps abstract binary symmetry separate from relational
+binding instead of silently identifying them.
 
 ## M3. Standard Heisenberg is downstream, not the upstream cause
 
@@ -95,8 +159,8 @@ The Robertson relation
 already assumes a quantum state, operators, expectation values and commutator
 structure.
 
-Therefore using standard Heisenberg/Robertson uncertainty to create the first
-binary carrier would be causally circular.
+Therefore standard Heisenberg/Robertson uncertainty cannot create the first
+binary carrier without circularity.
 
 Status: NO-GO-AS-STATED upstream.
 
@@ -110,17 +174,32 @@ Possible downstream role:
 \text{Heisenberg/Robertson realization}.
 \]
 
-## M4. Hamlet symmetry -> half-half
+## M4. Hamlet Z2 symmetry -> half-half
 
-Assume:
+On the primitive branch alphabet
 
 \[
-p_-+p_+=1,
-\qquad
-p_-=p_+.
+B=\{-1,+1\}
 \]
 
-Then uniquely
+there is a canonical non-trivial involution
+
+\[
+\sigma(b)=-b.
+\]
+
+It extends letterwise to an involutive automorphism of the finite-word address
+space \(B^*\).
+
+For normalized non-negative depth-one weights, invariance under this swap gives
+
+\[
+p_-=p_+,
+\qquad
+p_-+p_+=1,
+\]
+
+so uniquely
 
 \[
 \boxed{
@@ -128,10 +207,10 @@ p_-=p_+=\frac12.
 }
 \]
 
-Status: PASS-CONDITIONAL.
+Status: PASS-CONDITIONAL / exact once the Hamlet binary carrier is admitted.
 
-The equality is forced by exchange symmetry; the existence of a normalized
-weight/probability measure is an explicit premise.
+No independent principle of indifference is required; the uniform weighting
+is the unique normalized weighting invariant under the canonical branch swap.
 
 ## M5. Half-half -> ln2
 
