@@ -694,27 +694,33 @@ two-role \(Z_2\):
 
 A complete free pairing exists only for even finite cardinality.
 
-Dissociation is independent three-fold fibre extension:
+Canonical dissociation is product with the actual non-identity operator sector
 
 \[
 \boxed{
-\mathsf D(X)=X\times F_3,
+\mathcal A_*=\{S,P,J\},
 \qquad
-|F_3|=3,
+\mathsf D(X)=X\times\mathcal A_*,
 \qquad
 |\mathsf D(X)|=3|X|.
 }
 \]
 
-Repair is adjoining one missing distinguishable unit by disjoint union:
+Canonical repair restores the actual omitted identity direction
 
 \[
 \boxed{
-\mathsf R(X)=X\sqcup\{\star\},
+\mathcal I=\{I\},
+\qquad
+\mathsf R(X)=X\sqcup\mathcal I,
 \qquad
 |\mathsf R(X)|=|X|+1.
 }
 \]
+
+The older anonymous \(F_3\) and singleton models remain equivalent
+cardinality realizations, but they are no longer dependencies of the
+canonical Collatz theorem.
 
 Therefore parity fixes the branch.
 
