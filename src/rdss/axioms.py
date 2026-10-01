@@ -74,12 +74,6 @@ CLAIMS: tuple[Claim, ...] = (
         ("GATE_HAMLET_IMAGINARY_GENERATOR",),
     ),
     Claim(
-        "BRIDGE_EXISTENCE_POTENTIAL_AHARONOV_BOHM",
-        ClaimKind.BRIDGE,
-        "Aharonov-Bohm is used as a standard phase-potential reference: a connection/potential can carry non-trivial loop phase even where the local classical field vanishes. This bridge does not identify P_E with the electromagnetic vector potential.",
-        ("GATE_L1_EXISTENCE_POTENTIAL", "THM_IMAGINARY_GENERATOR_U1"),
-    ),
-    Claim(
         "REF_EXISTENCE_POTENTIAL_CP1_SPHERE",
         ClaimKind.REFERENCE_REALIZATION,
         "Given the balanced complex two-state carrier, its non-zero normalized representatives modulo common U(1) phase form CP^1, diffeomorphic to the Bloch sphere S^2. This is the reference potential-sphere realization; U(1) alone is not sufficient.",
@@ -92,10 +86,34 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_HAMLET_RELATIONAL_ZETA_ZERO", "REF_EXISTENCE_POTENTIAL_CP1_SPHERE"),
     ),
     Claim(
+        "REF_CP1_BERRY_GEOMETRIC_PHASE",
+        ClaimKind.REFERENCE_REALIZATION,
+        "On the CP^1 projective-state geometry, parallel transport around a closed loop carries a Berry geometric holonomy phase in U(1). The phase is treated as geometric holonomy, not as a force law.",
+        ("REF_EXISTENCE_POTENTIAL_CP1_SPHERE", "REF_U1_PHASE_VALUE"),
+    ),
+    Claim(
+        "REF_BERRY_PHASE_CONNECTION_POTENTIAL_CLASS",
+        ClaimKind.REFERENCE_REALIZATION,
+        "A Berry holonomy phase admits local representation by a U(1) connection one-form A_B whose closed-loop integral reproduces the phase modulo 2*pi. A_B is gauge-dependent; the phase fixes connection data only up to gauge and does not determine a unique physical potential.",
+        ("REF_CP1_BERRY_GEOMETRIC_PHASE",),
+    ),
+    Claim(
+        "BRIDGE_EXISTENCE_POTENTIAL_AHARONOV_BOHM",
+        ClaimKind.BRIDGE,
+        "Aharonov-Bohm is retained only as an independent physical precedent for the phase-potential relation: gauge-potential data can carry observable loop phase even when the classical local field vanishes along the accessible path. It is downstream evidence and does not derive P_E, i, U(1), or the Berry connection.",
+        ("REF_BERRY_PHASE_CONNECTION_POTENTIAL_CLASS",),
+    ),
+    Claim(
+        "GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE",
+        ClaimKind.DERIVATION_GATE,
+        "Mega-audit target: derive why the primitive non-degenerate Hamlet binary closure corresponds to the non-trivial projective sign exp(i*gamma)=-1 on one primitive closed cycle rather than assuming that sign as an independent premise.",
+        ("GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY", "REF_CP1_BERRY_GEOMETRIC_PHASE"),
+    ),
+    Claim(
         "THM_EULER_BERRY_MINIMAL_SPIN_HALF",
         ClaimKind.THEOREM,
-        "Conditional on the CP^1/Bloch-sphere realization, the equatorial hemisphere Berry phase gamma=2*pi*s and primitive Euler sign closure exp(i*gamma)=-1 select the minimal positive sector s=1/2; the doubled 4*pi traversal returns to +1.",
-        ("REF_EXISTENCE_POTENTIAL_CP1_SPHERE", "REF_U1_PHASE_VALUE"),
+        "Conditional on the CP^1/Bloch-sphere Berry phase gamma=2*pi*s and the Hamlet-derived non-trivial projective sign closure exp(i*gamma)=-1, the smallest positive allowed sector is s=1/2; the doubled 4*pi traversal returns to +1.",
+        ("REF_CP1_BERRY_GEOMETRIC_PHASE", "GATE_HAMLET_PROJECTIVE_SIGN_CLOSURE"),
     ),
     Claim(
         "META0",
