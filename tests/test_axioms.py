@@ -141,7 +141,7 @@ def test_recursive_refinement_is_independent_foundational_axiom():
     claims = claim_map()
     assert claims["RR1"].kind is ClaimKind.DERIVATION_GATE
     assert "RA0" not in dependency_closure("RR1")
-    assert set(claims["RR1"].depends_on) == {"DEF_POINT", "DEF_BINARY_DISTINCTION"}
+    assert set(claims["RR1"].depends_on) == {"A0", "DEF_POINT", "DEF_BINARY_DISTINCTION"}
 
 
 def test_structural_primitives_do_not_silently_depend_on_ra0():
@@ -161,6 +161,7 @@ def test_moire_is_derived_from_orbital_primitive():
 def test_refinement_residual_depends_on_refinement_and_product():
     assert dependency_closure("DEF_REFINEMENT_RESIDUAL") == frozenset(
         {
+            "A0",
             "PRIM_REFINEMENT_MAP",
             "RR1",
             "DEF_POINT",
@@ -323,7 +324,8 @@ def test_singleton_foundation_minimality_splits_lower_bound_and_attainability():
 
     assert claims["THM_META0_CARDINALITY_LOWER_BOUND"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_META0_CARDINALITY_LOWER_BOUND") == frozenset(
-        {"META0"}
+        {
+            "A0","META0"}
     )
 
     assert claims["REF_SINGLETON_RA0_REL_STAR_MODEL"].kind is ClaimKind.REFERENCE_REALIZATION
@@ -345,6 +347,7 @@ def test_singleton_foundation_minimality_splits_lower_bound_and_attainability():
     assert claims["THM_SINGLETON_FOUNDATION_MINIMALITY"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_SINGLETON_FOUNDATION_MINIMALITY") == frozenset(
         {
+            "A0",
             "THM_META0_CARDINALITY_LOWER_BOUND",
             "REF_SINGLETON_RA0_REL_STAR_MODEL",
             "META0",
@@ -367,7 +370,8 @@ def test_current_canonical_axioms_remain_ra0_and_rr1_until_promotion():
 
 def test_bilinearity_residual_has_only_product_and_module_dependencies():
     assert dependency_closure("DEF_BILINEARITY_RESIDUAL") == frozenset(
-        {"PRIM_PRODUCT", "PRIM_MODULE"}
+        {
+            "A0","PRIM_PRODUCT", "PRIM_MODULE"}
     )
 
 
@@ -439,6 +443,7 @@ def test_remaining_first_order_naturality_dependencies():
     )
     assert dependency_closure("DEF_REFINEMENT_SCALE_COHERENCE") == frozenset(
         {
+            "A0",
             "PRIM_REFINEMENT_MAP",
             "RR1",
             "DEF_POINT",
@@ -450,6 +455,7 @@ def test_remaining_first_order_naturality_dependencies():
     )
     assert dependency_closure("DEF_REFINEMENT_ORBIT_COHERENCE") == frozenset(
         {
+            "A0",
             "PRIM_REFINEMENT_MAP",
             "RR1",
             "DEF_POINT",
@@ -462,7 +468,8 @@ def test_remaining_first_order_naturality_dependencies():
 
 def test_tensor_monoidal_coherence_dependencies():
     assert dependency_closure("DEF_TENSOR_MONOIDAL_COHERENCE") == frozenset(
-        {"PRIM_TENSOR_PRODUCT", "PRIM_MODULE"}
+        {
+            "A0","PRIM_TENSOR_PRODUCT", "PRIM_MODULE"}
     )
 
 
@@ -580,14 +587,14 @@ def test_typed_zero_depends_on_exact_sector_primitives():
 def test_meta0_is_model_formation_rule_not_object_level_nothing():
     claims = claim_map()
     assert claims["META0"].kind is ClaimKind.FORMATION_RULE
-    assert claims["META0"].depends_on == ()
+    assert claims["META0"].depends_on == ("A0",)
     assert tuple(claim.id for claim in formation_rules()) == ("META0",)
 
 
 def test_ex0_is_theorem_of_model_formation_not_extra_object_axiom():
     claims = claim_map()
     assert claims["EX0"].kind is ClaimKind.THEOREM
-    assert dependency_closure("EX0") == frozenset({"META0"})
+    assert dependency_closure("EX0") == frozenset({"A0", "META0"})
     assert "EX0" not in {claim.id for claim in foundational_axioms()}
 
 
@@ -599,6 +606,7 @@ def test_ra0_rr1_do_not_imply_ra0_rel_star():
     assert claims["REF_RA0_RR1_UNBOUND_MODEL"].kind is ClaimKind.REFERENCE_REALIZATION
     assert dependency_closure("REF_RA0_RR1_UNBOUND_MODEL") == frozenset(
         {
+            "A0",
             "META0",
             "RA0",
             "RR1",
@@ -611,6 +619,7 @@ def test_ra0_rr1_do_not_imply_ra0_rel_star():
     assert claims["THM_RA0_RR1_NOT_RA0_REL_STAR"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_RA0_RR1_NOT_RA0_REL_STAR") == frozenset(
         {
+            "A0",
             "REF_RA0_RR1_UNBOUND_MODEL",
             "META0",
             "RA0",
@@ -628,6 +637,7 @@ def test_binary_occurrence_growth_and_countability_theorems():
     assert claims["THM_BINARY_OCCURRENCE_COUNT"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_BINARY_OCCURRENCE_COUNT") == frozenset(
         {
+            "A0",
             "RR1",
             "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
@@ -638,6 +648,7 @@ def test_binary_occurrence_growth_and_countability_theorems():
     assert claims["THM_FINITE_WORD_OCCURRENCE_COUNTABILITY"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_FINITE_WORD_OCCURRENCE_COUNTABILITY") == frozenset(
         {
+            "A0",
             "THM_BINARY_OCCURRENCE_COUNT",
             "RR1",
             "DEF_POINT",
@@ -671,6 +682,7 @@ def test_ideal_occurrence_boundary_claims():
     assert claims["THM_RR1_REALIZES_BOUNDARY_PREFIX_CHAINS"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_RR1_REALIZES_BOUNDARY_PREFIX_CHAINS") == frozenset(
         {
+            "A0",
             "RR1",
             "DEF_BINARY_DISTINCTION",
             "DEF_POINT",
@@ -685,6 +697,7 @@ def test_relation_value_cardinality_minimality():
 
     base = frozenset(
         {
+            "A0",
             "META0",
             "RA0_REL_STAR",
             "DEF_POINT",
@@ -718,6 +731,7 @@ def test_relation_occurrence_cardinality_minimality():
 
     base = frozenset(
         {
+            "A0",
             "META0",
             "RA0_REL_STAR",
             "DEF_POINT",
@@ -758,7 +772,8 @@ def test_occurrence_address_free_monoid_and_refinement_action_dependencies():
 
     assert claims["THM_OCCURRENCE_ADDRESS_FREE_MONOID"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_OCCURRENCE_ADDRESS_FREE_MONOID") == frozenset(
-        {"DEF_OCCURRENCE_ADDRESS_SPACE"}
+        {
+            "A0","DEF_OCCURRENCE_ADDRESS_SPACE"}
     )
 
     assert claims["THM_REFINEMENT_RIGHT_ACTION"].kind is ClaimKind.THEOREM
