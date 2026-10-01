@@ -175,9 +175,33 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_HAMLET_IMAGINARY_GENERATOR",),
     ),
     Claim(
+        "THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R",
+        ClaimKind.THEOREM,
+        "In the ordered Hamlet branch basis, I, swap S, polarity P and J=SP are linearly independent and span the full four-real-dimensional matrix algebra M_2(R). Their multiplication closes with S^2=P^2=I, SP=-PS and J^2=-I.",
+        ("THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE", "THM_HAMLET_IMAGINARY_GENERATOR"),
+    ),
+    Claim(
+        "THM_HAMLET_OPERATOR_ALGEBRA_C2_MODULE",
+        ClaimKind.THEOREM,
+        "Let C_J=span_R{I,J}. Because S J=P, the full Hamlet operator algebra decomposes exactly as the right C_J-module A_H=C_J direct-sum S C_J. Hence A_H has complex dimension two and is canonically isomorphic to C_J^2 without introducing a second independent copy of the Hamlet branch degree of freedom.",
+        ("THM_HAMLET_COMPLEX_SCALAR_ALGEBRA", "THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R"),
+    ),
+    Claim(
+        "THM_HAMLET_OPERATOR_FROBENIUS_NORM",
+        ClaimKind.THEOREM,
+        "With normalized Frobenius form (A,B)=Tr(A^T B)/2, the basis {I,S,P,J} is orthonormal. Under A=z_0+S z_1 with z_0,z_1 in C_J, the induced norm is |z_0|^2+|z_1|^2 and right multiplication by exp(phi J) preserves the norm and acts as common U(1) phase on both complex coordinates.",
+        ("THM_HAMLET_OPERATOR_ALGEBRA_C2_MODULE", "THM_IMAGINARY_GENERATOR_U1"),
+    ),
+    Claim(
+        "THM_HAMLET_OPERATOR_PROJECTIVE_CP1",
+        ClaimKind.THEOREM,
+        "The unit-norm sphere in the Hamlet operator module A_H=C_J^2 is S^3. Quotienting the free right action of exp(phi J) gives S^3/U(1), canonically CP^1 and diffeomorphic to S^2. This is the canonical no-duplication route to the RDSS potential sphere.",
+        ("THM_HAMLET_OPERATOR_ALGEBRA_C2_MODULE", "THM_HAMLET_OPERATOR_FROBENIUS_NORM", "DEF_CP1_PROJECTIVE_EQUIVALENCE", "THM_IMAGINARY_GENERATOR_U1"),
+    ),
+    Claim(
         "DEF_HAMLET_COMPLEX_BRANCH_SPACE",
         ClaimKind.DEFINITION,
-        "Using the derived complex scalar algebra C_J, the free complex vector space on the two Hamlet branches is H_B=C_J[B], of complex dimension two. This keeps branch identity and scalar phase as distinct factors rather than collapsing the two real branches into one complex dimension.",
+        "Alternative reference presentation: using the derived complex scalar algebra C_J, the free complex vector space on two labelled Hamlet outcomes is H_B=C_J[B]. The mega-audit no longer uses this construction as the canonical derivation of complex dimension two because it can obscure reuse of the same binary degree of freedom; the operator-algebra module A_H supplies the canonical route.",
         ("THM_HAMLET_COMPLEX_SCALAR_ALGEBRA", "THM_MINIMAL_INFORMATION_STATE_BINARY"),
     ),
     Claim(
@@ -201,8 +225,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "REF_EXISTENCE_POTENTIAL_CP1_SPHERE",
         ClaimKind.REFERENCE_REALIZATION,
-        "The CP^1 ~= S^2 projective geometry of the normalized complex Hamlet branch space is used as the RDSS reference potential-sphere realization. The projective geometry is exact for the supplied branch-space construction; its physical identification remains a separate bridge.",
-        ("THM_HAMLET_PROJECTIVE_CP1", "REF_CP1"),
+        "The CP^1 ~= S^2 geometry of the unit Hamlet operator module A_H=C_J^2 modulo common right U(1) phase is the canonical RDSS potential-sphere realization. The older free complex branch-space construction is retained only as an equivalent reference chart.",
+        ("THM_HAMLET_OPERATOR_PROJECTIVE_CP1", "REF_CP1"),
     ),
     Claim(
         "REF_RELATIONAL_ZETA_POTENTIAL_SPHERE_CENTER",
@@ -243,8 +267,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_HAMLET_CANONICAL_PROJECTIVE_LOOP",
         ClaimKind.THEOREM,
-        "Let psi_0 be either normalized Hamlet branch basis vector and J=SP. The orbit psi(theta)=exp(theta J) psi_0 for 0<=theta<=pi preserves the symmetry-fixed norm, has <psi,dot(psi)>=0, reaches no earlier projective return, and ends at psi(pi)=-psi_0. Its projection to CP^1 is therefore a canonical primitive closed great-circle loop with a horizontal lift.",
-        ("THM_HAMLET_IMAGINARY_GENERATOR", "THM_HAMLET_UNIQUE_SYMMETRY_HERMITIAN_FORM", "THM_HAMLET_PROJECTIVE_CP1"),
+        "In A_H=C_J direct-sum S C_J take the normalized balanced state Psi_0=(I+S)/sqrt(2). Left multiplication by exp(theta J) gives complex module coordinates (exp(i theta), exp(-i theta))/sqrt(2). For 0<=theta<=pi this orbit is norm-preserving and horizontal, its projective image is a primitive great-circle loop, and Psi(pi)=-Psi_0. A fixed unitary chart sends it to the earlier real branch orbit (cos theta,-sin theta).",
+        ("THM_HAMLET_OPERATOR_PROJECTIVE_CP1", "THM_HAMLET_HALF_HALF", "THM_HAMLET_IMAGINARY_GENERATOR"),
     ),
     Claim(
         "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE",
