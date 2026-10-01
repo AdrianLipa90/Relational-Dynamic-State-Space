@@ -1682,6 +1682,9 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_HAMLET_OPERATOR_ALGEBRA_C2_MODULE"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_OPERATOR_FROBENIUS_NORM"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_OPERATOR_PROJECTIVE_CP1"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_S3_SU2_BIJECTION"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_SU2_U1_QUOTIENT_S2"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_BALANCED_ORBIT_BLOCH_EQUATOR"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_PAULI_TRIPLE"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_SU2_GENERATORS"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_SU2_CASIMIR_HALF"].kind is ClaimKind.THEOREM
@@ -1934,4 +1937,19 @@ def test_half_representation_label_is_derived_from_hamlet_su2_before_berry_match
     assert "THM_HAMLET_SU2_CASIMIR_HALF" in final_closure
     assert "THM_HAMLET_SPINOR_2PI_4PI_RETURN" in final_closure
     assert "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE" in final_closure
+
+def test_s3_su2_and_hopf_quotient_are_inside_canonical_spin_closure() -> None:
+    claims = claim_map()
+
+    assert claims["THM_HAMLET_S3_SU2_BIJECTION"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_SU2_U1_QUOTIENT_S2"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_BALANCED_ORBIT_BLOCH_EQUATOR"].kind is ClaimKind.THEOREM
+
+    quotient_closure = dependency_closure("THM_HAMLET_SU2_U1_QUOTIENT_S2")
+    assert "THM_HAMLET_S3_SU2_BIJECTION" in quotient_closure
+    assert "THM_HAMLET_OPERATOR_PROJECTIVE_CP1" in quotient_closure
+
+    spin_closure = dependency_closure("THM_EULER_BERRY_MINIMAL_SPIN_HALF")
+    assert "THM_HAMLET_BALANCED_ORBIT_BLOCH_EQUATOR" in spin_closure
+    assert "THM_HAMLET_SU2_U1_QUOTIENT_S2" in spin_closure
 
