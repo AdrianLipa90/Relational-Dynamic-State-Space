@@ -265,73 +265,163 @@ zeta function and it is not absolute nothingness:
 }
 \]
 
-## 5. Imaginary generator
+## 5. Imaginary generator from the two Hamlet involutions
 
-The candidate next arrow is
-
-\[
-\{-1,0,+1\}
-\rightarrow
-i,
-\qquad
-i^2=-1.
-\]
-
-The intended role of \(i\) is an orthogonal phase generator relative to the
-real opposition. Whether the required orientation, metric or complex
-structure is itself forced remains an explicit mega-audit gate.
-
-## 6. Phase orbit
-
-Once the complex generator is available,
+Let \(B=\{-1,+1\}\) be the ordered Hamlet branch set and let
 
 \[
-u(\phi)=e^{i\phi}
+V_B=\mathbb R e_-\oplus\mathbb R e_+
 \]
 
-satisfies
+be its free real linear span.
+
+Two canonical involutions act on this span:
 
 \[
-|u(\phi)|=1,
-\qquad
-u(\phi_1)u(\phi_2)=u(\phi_1+\phi_2),
+S e_b=e_{-b}
 \]
 
-giving the standard \(U(1)\) phase orbit.
-
-## 7. Potential sphere
-
-For a normalized complex two-state carrier
+for branch swap and
 
 \[
-|\psi\rangle
-=
-\alpha|-\rangle+\beta|+\rangle,
-\qquad
-|\alpha|^2+|\beta|^2=1,
+P e_b=b\,e_b
 \]
 
-with common phase quotient
+for branch polarity.
+
+They satisfy
 
 \[
-|\psi\rangle\sim e^{i\chi}|\psi\rangle,
+S^2=P^2=I
 \]
 
-the projective state space is
+and
+
+\[
+SP=-PS.
+\]
+
+Therefore
 
 \[
 \boxed{
-\mathbb{CP}^{1}\simeq S^2.
+J:=SP
 }
 \]
 
-This is the RDSS reference realization of the potential sphere.
+obeys
 
-\(U(1)\) alone does not imply \(\mathbb{CP}^1\); the normalized complex
-two-state carrier remains an explicit premise.
+\[
+J^2
+=
+SPSP
+=
+-S^2P^2
+=
+\boxed{-I}.
+\]
+
+So the algebraic role of the imaginary generator is not inserted by hand:
+
+\[
+\boxed{
+i\;\widehat{=}\;J.
+}
+\]
+
+Reversing the branch ordering sends \(J\mapsto-J\), which is the expected
+complex-conjugation/orientation ambiguity rather than a new algebraic
+structure.
+
+## 6. Phase orbit
+
+Because \(J^2=-I\),
+
+\[
+e^{\phi J}
+=
+\cos\phi\,I+\sin\phi\,J.
+\]
+
+Hence
+
+\[
+e^{\phi_1J}e^{\phi_2J}
+=
+e^{(\phi_1+\phi_2)J},
+\]
+
+and the generated one-parameter rotation group is
+
+\[
+\boxed{
+SO(2)\simeq U(1).
+}
+\]
+
+Thus the phase orbit is downstream of the two Hamlet involutions.
+
+## 7. Complex branch space and potential sphere
+
+The real operator algebra
+
+\[
+\operatorname{span}_{\mathbb R}\{I,J\}
+\]
+
+with \(J^2=-I\) is isomorphic to \(\mathbb C\). Denote this derived scalar
+algebra by \(\mathbb C_J\).
+
+The two Hamlet branches are then kept as two **independent branch basis
+states** by forming the free complex branch space
+
+\[
+\boxed{
+\mathcal H_B
+=
+\mathbb C_J[B]
+\simeq
+\mathbb C^2.
+}
+\]
+
+This separation is essential: the \(J\)-plane supplies complex scalars while
+the two branch labels supply complex dimension two.
+
+The Hamlet swap \(S\) and polarity \(P\) also constrain the Hermitian
+geometry. Any positive-definite Hermitian form invariant under both symmetries
+is a positive scalar multiple of the identity. The normalized branch-weight
+convention fixes the scale, giving the canonical counting/\(\ell^2\) form
+
+\[
+\langle\psi,\phi\rangle
+=
+\sum_{b\in B}
+\overline{\psi_b}\phi_b.
+\]
+
+Therefore normalized states satisfy
+
+\[
+|\alpha|^2+|\beta|^2=1,
+\]
+
+so the unit carrier is \(S^3\). Quotienting common phase gives
+
+\[
+\boxed{
+S^3/U(1)
+\cong
+\mathbb{CP}^{1}
+\cong
+S^2.
+}
+\]
+
+This is the RDSS potential-sphere geometry.
 
 In the ambient Bloch-ball chart, relational \(\zeta=0\) is the centre. It is
-not a pure-state point on the \(\mathbb{CP}^1\) surface.
+not itself a pure-state point on the \(\mathbb{CP}^1\) surface.
 
 ## 8. Geometry gives Berry phase
 
@@ -406,44 +496,62 @@ Aharonov–Bohm remains a downstream physical precedent for the principle that
 potential/connection information may be physically encoded in phase. It does
 not generate the upstream RDSS phase structure.
 
-## 10. Hamlet + Berry/Euler -> minimal spin one half
+## 10. Canonical Hamlet loop -> Berry sign -> minimal spin one half
 
-The remaining causal gate is to derive the non-trivial projective sign from
-Hamlet binary non-triviality:
+Choose either normalized branch pole \(\psi_0\). The canonical orbit generated
+by \(J\) is
+
+\[
+\psi(\theta)=e^{\theta J}\psi_0,
+\qquad
+0\le\theta\le\pi.
+\]
+
+The symmetry-fixed Hermitian form gives
+
+\[
+\langle\psi,\dot\psi\rangle=0,
+\]
+
+so this is a horizontal lift of its projective path. At the endpoint,
+
+\[
+\psi(\pi)=e^{\pi J}\psi_0=-\psi_0.
+\]
+
+The ray has therefore returned to itself while the horizontal lift has picked
+up the phase
 
 \[
 \boxed{
-\text{Hamlet non-triviality}
-\rightarrow
-e^{i\gamma}=-1.
+\operatorname{Hol}_{\rm Berry}=-1.
 }
 \]
 
-Once this sign closure is supplied, an equatorial hemisphere has
+The projected Bloch-sphere path is the primitive great-circle loop and bounds
+a hemisphere,
 
 \[
-\Omega=2\pi
+\Omega=2\pi.
 \]
 
-and the Berry relation gives
+Using the standard spin-\(s\) coherent-state Berry law,
 
 \[
-\gamma_B=2\pi s.
+e^{is\Omega}
+=
+e^{i2\pi s}
+=
+-1.
 \]
 
-Then
-
-\[
-e^{i2\pi s}=-1
-\]
-
-selects
+Hence
 
 \[
 s\in\mathbb Z+\frac12,
 \]
 
-whose smallest positive value is
+and the smallest positive sector is
 
 \[
 \boxed{
@@ -457,8 +565,8 @@ The doubled traversal gives
 e^{i4\pi(1/2)}=+1.
 \]
 
-Thus the spin-half result is conditional on a successful derivation of the
-Hamlet-to-projective-sign closure; that sign is not silently assumed.
+The \(-1\) sign is therefore no longer an independent premise; it is the
+holonomy of the canonical horizontal Hamlet \(J\)-orbit.
 
 ## Audit classification
 
@@ -473,13 +581,15 @@ Hamlet-to-projective-sign closure; that sign is not silently assumed.
 | \((1/2,1/2)\to\ln2\) | EXACT IDENTITY |
 | \(\mathbb Z_2\to\{-1,+1\}\) | PASS CONDITIONAL |
 | \((-1,+1)\to\zeta=0\) | EXACT under normalized affine chart |
-| real opposition \(\to i\) | DERIVATION GATE |
-| \(i\to U(1)\) | STANDARD EXACT |
-| complex binary quotient \(\to\mathbb{CP}^1\simeq S^2\) | STANDARD GEOMETRY |
+| swap + polarity \(\to J^2=-I\) | PASS CONDITIONAL / EXACT |
+| \(J\to U(1)\) | STANDARD EXACT |
+| derived complex scalars + two branch basis states \(\to\mathbb C^2\) | PASS DEFINITIONAL |
+| Hamlet symmetries \(\to\) Hermitian form up to scale | PASS THEOREM |
+| normalized projective quotient \(\to\mathbb{CP}^1\simeq S^2\) | PASS STANDARD |
 | projective geometry \(\to\gamma_B\) | STANDARD GEOMETRIC HOLONOMY |
+| canonical horizontal \(J\)-loop \(\to -1\) holonomy | PASS THEOREM |
 | \(\gamma_B\to[\mathcal A_B]_{\rm gauge}\) | LOCAL/GAUGE-CONDITIONAL REPRESENTATION |
-| Hamlet \(\to e^{i\gamma}=-1\) | DERIVATION GATE |
-| Berry/Euler + sign closure \(\to s_{\min}=1/2\) | PASS CONDITIONAL |
+| Berry hemisphere + derived \(-1\) \(\to s_{\min}=1/2\) | PASS CONDITIONAL |
 
 No audit result is pre-declared. A failed arrow must remain failed rather than
 being repaired by an unlabelled premise.
