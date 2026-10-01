@@ -41,16 +41,17 @@ def singleton_repair_cardinality(cardinality: int) -> int:
 
 
 def relational_collatz_step(cardinality: int) -> int:
-    """Deterministic cardinality normalization from association/dissociation.
+    """Deterministic cardinality normalization from the relation-role algebra.
 
     Even n: quotient by the free durable-role Z2 pairing -> n/2.
-    Odd n: three-fibre dissociation followed by singleton repair -> 3n+1.
+    Odd n: product with the full non-identity operator sector {S,P,J},
+    then restore the unique missing identity direction {I} -> 3n+1.
     """
 
     n = _positive_integer(cardinality)
     if n % 2 == 0:
         return association_quotient_cardinality(n)
-    return singleton_repair_cardinality(dissociation_fibre_cardinality(n, 3))
+    return identity_repair_cardinality(dissociation_active_sector_cardinality(n))
 
 
 def standard_collatz_step(cardinality: int) -> int:
@@ -92,6 +93,26 @@ def active_operator_basis() -> tuple[str, str, str]:
     """Non-identity sector of the canonical operator basis."""
 
     return tuple(label for label in full_operator_basis() if label != "I")
+
+
+def identity_operator_basis() -> tuple[str]:
+    """The unique identity direction omitted from the active sector."""
+
+    return ("I",)
+
+
+def dissociation_active_sector_cardinality(cardinality: int) -> int:
+    """Canonical dissociation: product with the full non-identity operator sector."""
+
+    n = _positive_integer(cardinality)
+    return n * len(active_operator_basis())
+
+
+def identity_repair_cardinality(cardinality: int) -> int:
+    """Canonical repair: adjoin the unique missing identity direction."""
+
+    n = _positive_integer(cardinality)
+    return n + len(identity_operator_basis())
 
 
 def operator_algebra_real_dimension(role_count: int = 2) -> int:
@@ -186,6 +207,7 @@ def relational_l_constant_certificate() -> dict[str, int | bool]:
         "nonidentity_dimension": nonidentity_operator_dimension(),
         "active_basis_size": len(active_operator_basis()),
         "universal_repair": universal_constant_repair(),
+        "identity_basis_size": len(identity_operator_basis()),
         "association_divisor": l4,
         "dissociation_multiplier": nonidentity_operator_dimension(),
         "active_seed": seed,
