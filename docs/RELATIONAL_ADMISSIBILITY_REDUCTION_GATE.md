@@ -149,21 +149,27 @@ Consequently:
 
 Thus route B is a genuine definitional reduction, not a proof of old RA0 from META0.
 
-## Promotion condition
+## Derivation-closing condition
 
-RA0 may be demoted from AXIOM to THEOREM/DEFINITION only if the project explicitly accepts relationally defined admissibility as the intended semantics of \(\operatorname{Adm}\).
+Historically this section determined whether RA0 could be demoted from AXIOM.
+That classification is superseded. RA0 is now an explicit derivation gate
+downstream of the unique axiom \(A_0\).
 
-Until then:
+If relationally defined admissibility is accepted and justified as the intended
+semantics of \(\operatorname{Adm}\), then the RA0 gate closes by definitional
+expansion. This does not create or remove an axiom.
+
+The canonical foundation remains
 
 \[
 \boxed{
+A_0
+\Longrightarrow
 \mathrm{META0}
-\triangleright
-(\mathrm{RA0}+\mathrm{RR1})
+\Longrightarrow
+\text{derived structure / explicit derivation gates}.
 }
 \]
-
-remains canonical.
 
 ## Why this matters
 
