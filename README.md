@@ -45,11 +45,21 @@ The pre-audit causal skeleton is frozen as
 \rightarrow
 \text{Hamlet uncertainty}
 \rightarrow
-(1/2,1/2)
+\mathbb Z_2
 \rightarrow
-\ln2
+\left(\frac12,\frac12\right)
 \rightarrow
-(-1,\zeta=0,+1)
+\ln2,
+\]
+
+together with
+
+\[
+\mathbb Z_2
+\rightarrow
+\{-1,+1\}
+\rightarrow
+\zeta=0
 \rightarrow
 i
 \rightarrow
@@ -57,10 +67,25 @@ U(1)
 \rightarrow
 \mathbb{CP}^{1}\simeq S^2
 \rightarrow
-\text{Berry/Euler}
+\gamma_B
 \rightarrow
-s=1/2.
+[\mathcal A_B]_{\mathrm{gauge}},
 \]
+
+while the spin branch requires the separate Hamlet-to-projective-sign gate:
+
+\[
+\text{Hamlet non-triviality}
+\rightarrow
+e^{i\gamma}=-1
+\rightarrow
+\text{Berry/Euler selection}
+\rightarrow
+s_{\min}=\frac12.
+\]
+
+The primitive existence potential \(\mathcal P_E\) and the later Berry
+connection/potential \(\mathcal A_B\) are distinct semantic objects.
 
 The unresolved arrows are labelled as derivation gates rather than silently
 promoted. See `docs/FIRST_LAW_EXISTENCE_CHAIN.md` for the frozen order and
