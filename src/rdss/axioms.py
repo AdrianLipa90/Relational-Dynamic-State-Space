@@ -229,6 +229,42 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ", "THM_GAUSSIAN_GENERATES_COLLATZ_COEFFICIENTS"),
     ),
     Claim(
+        "THM_RELATION_OPERATOR_DIMENSION_COEFFICIENT_ROUTE",
+        ClaimKind.THEOREM,
+        "The persistent relation-role carrier has q=2 roles and its full real operator algebra is M_2(R) of dimension q^2=4. Removing the one-dimensional identity line leaves q^2-1=3 non-identity operator directions. Therefore the same durable relation algebra independently supplies association divisor 2 and dissociation multiplicity 3.",
+        ("THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT", "THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R"),
+    ),
+    Claim(
+        "THM_BINARY_UNIVERSAL_REPAIR_ONE",
+        ClaimKind.THEOREM,
+        "For q roles and multiplier m=q^2-1, modulo q one has m congruent to -1. A residue-independent repair that maps every nonzero residue class into the divisible class can exist only when q=2, which has one nonzero residue class. The minimal positive repair is then uniquely r=1.",
+        ("THM_RELATION_OPERATOR_DIMENSION_COEFFICIENT_ROUTE",),
+    ),
+    Claim(
+        "THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED",
+        ClaimKind.THEOREM,
+        "The coefficient triple (2,3,1) is recovered independently by source-minimal parity arithmetic, the primitive Gaussian/Bombelli generator g=2+J, and the persistent relation-role operator dimension plus universal binary repair.",
+        ("THM_COLLATZ_COEFFICIENT_PROVENANCE_DOUBLE_CLOSED", "THM_RELATION_OPERATOR_DIMENSION_COEFFICIENT_ROUTE", "THM_BINARY_UNIVERSAL_REPAIR_ONE"),
+    ),
+    Claim(
+        "DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT",
+        ClaimKind.FORMATION_RULE,
+        "Canonical arithmetic seed rule: the first active positive integer state carries each non-identity real operator direction of the minimal persistent relation-role algebra exactly once, so n_0 is dim_R(M_2(R))-1.",
+        ("THM_RELATION_OPERATOR_DIMENSION_COEFFICIENT_ROUTE",),
+    ),
+    Claim(
+        "THM_ACTIVE_SEED_IS_THREE",
+        ClaimKind.THEOREM,
+        "Under the active-seed rule, dim_R(M_2(R))=4 with one identity direction, so n_0=4-1=3.",
+        ("DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT",),
+    ),
+    Claim(
+        "THM_RELATIONAL_COLLATZ_L_CONSTANT_CERTIFICATE",
+        ClaimKind.THEOREM,
+        "For the derived Collatz map and active seed n_0=3, the first two ordinary steps are 3->10->5, the exact finite depth from 3 to 1 is 7, and the durable role count is 2. Together with the Gaussian/root-extension closure this yields the exact relational certificate (L3,L4,L5)=(7,2,5).",
+        ("THM_ACTIVE_SEED_IS_THREE", "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ", "BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45"),
+    ),
+    Claim(
         "DEF_ASSOCIATION_AS_FREE_DYAD_QUOTIENT",
         ClaimKind.DEFINITION,
         "Cardinality semantics for association: a finite carrier equipped with a fixed-point-free action of the durable relation-role Z2 is reduced to its orbit quotient. Every orbit has size two, so association identifies each durable role pair into one quotient element.",
