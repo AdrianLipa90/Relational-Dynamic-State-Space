@@ -309,7 +309,7 @@ nor
 \mathrm{RA0}^{\mathrm{rel}*}.
 \]
 
-The candidate therefore remains a strengthening of the current object-level foundation, not a theorem forced by META0 or old RA0.
+The strengthened gate therefore remains a conditional structure not forced by META0 or old RA0; it has no independent axiom status.
 
 Likewise, no claim is made that every mathematical notion of distinction must be relation-bound in this exact manner.
 
