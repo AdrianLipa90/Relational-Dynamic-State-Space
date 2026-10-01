@@ -169,268 +169,279 @@ No probability measure, Born rule, equiprobability assumption or
 \(1/2,1/2\) weighting is required; only the two-branch non-degeneracy is
 needed.
 
-This is now the foundational route to \(\ln2\).
+This is a valid **meta** information count for the non-degenerate persistence
+classification. It is not the canonical structural \(\ln2\) used downstream
+by the projective geometry.
 
 ## M2b. Dispersion and structure branches
 
 ### Dispersion
 
-By definition,
-
 \[
 \mathsf{Disp}
 \Rightarrow
-\text{no persistent distinction}.
+\text{no persistent distinction}
+\Rightarrow
+\boxed{\mathcal I_0}.
 \]
 
-Therefore the state returns to primitive indistinction:
-
-\[
-\boxed{
-\mathsf{Disp}
-\rightarrow
-\mathcal I_0.
-}
-\]
-
-This is not a return to absolute nothingness.
+Therefore DISPERSION cannot supply one basis vector of a persistent internal
+two-state geometry.
 
 ### Structure
-
-By definition,
 
 \[
 \mathsf{Struct}
 \Rightarrow
-\text{a persistent distinction exists}.
+\text{persistent distinction}.
 \]
 
-The independent META0 model theorem already proves that one admitted carrier
-is the exact minimum:
+The independent META0 theorem still gives the minimum object-carrier
+cardinality
 
 \[
 \min|\operatorname{Adm}|=1.
 \]
 
-Combining persistence with that minimum gives the minimal non-trivial
-information-point realization:
+This is only a carrier statement.
+
+For non-trivial structure, canonical RDSS now follows the TIR typing:
 
 \[
 \boxed{
-\mathsf{Struct}
-+
-\min|\operatorname{Adm}|=1
-\rightarrow
-p^\star.
+\min(\text{persistent non-trivial structure})
+=
+R.
 }
 \]
 
-Here \(p^\star\) is typed as a **non-trivial information point**. It is not the
-bare singleton point used only as a non-vacuity witness.
-
-Therefore the corrected causal direction is
+Thus
 
 \[
 \boxed{
 \text{first Hamlet}
 \rightarrow
-\text{STRUCTURE}
+\mathsf{Struct}
 \rightarrow
-p^\star,
+R.
 }
 \]
 
-not
+A bare point and a persistent relation are different typed minima.
+
+Status:
+- minimum object/carrier cardinality one: PASS-MODEL-THEOREM;
+- STRUCTURE handoff to persistent relation: PASS-DEFINITIONAL structural
+  typing;
+- physical mechanism producing the STRUCTURE branch: still gated upstream.
+
+## M2c. Persistent relation -> durable binary orbit
+
+For a non-self-collapsed relation
 
 \[
-p\rightarrow\text{Hamlet}.
+R:s\to t,
 \]
 
-Status: PASS-MODEL-THEOREM for the minimal point realization, conditional on
-the STRUCTURE branch.
+define orientation reversal
 
-## M2c. Bare singleton countermodel remains valid
+\[
+J_R:(s,t;R)\mapsto(t,s;R^{-1}),
+\qquad
+J_R^2=I.
+\]
 
-The old bare singleton presentation is still useful, but only for a different
-claim:
+The orbit contains exactly two structural roles:
 
 \[
 \boxed{
-\min|\operatorname{Adm}|=1.
+\mathcal O_{J_R}
+=
+\{N,S\}.
 }
 \]
 
-It contains no internal binary distinction and therefore proves that a
-**bare** point is not itself the first Hamlet.
-
-This no longer creates a gap in the canonical causal chain because the first
-Hamlet now precedes the non-trivial point.
-
-## M2d. Relational occurrence representation
-
-The algebraic first Hamlet exists as the two classes
-\(\{\mathsf{Disp},\mathsf{Struct}\}\) independently of any occurrence-address
-implementation.
-
-Canonical RDSS may represent those two alternatives as distinct relational
-occurrence identities. The stronger universal claim that bare foundational
-structure must realize them in precisely that form remains the separate
-RA0_REL_STAR / relational-binding gate.
-
-Thus representation does not enter the derivation of the first Hamlet itself.
-
-## M2e. Existing RDSS dynamics modules cannot close the upstream gate
-
-Two tempting existing modules were audited explicitly.
-
-### Relational deformation potential
-
-The current relational potential is defined only after supplying
-
-\[
-\text{explicit residual signature}
-+
-\text{semantic weights}
-+
-p\text{-functional}.
-\]
+These are not the earlier persistence outcomes.
 
 Therefore
 
 \[
 \boxed{
-V_R
-\not\Rightarrow
-\text{first Hamlet upstream}.
+\{I,J_R\}
+\cong
+Z_2.
 }
 \]
 
-Using it to derive DISPERSION/STRUCTURE would import a residual coordinate
-system and weighting profile that are logically downstream of primitive
-indistinction.
+This is the durable \(Z_2\) used by the downstream sign, complex-structure,
+projective and spin layers.
 
-Status: NO-GO-AS-UPSTREAM-CAUSE.
-
-### Binary closure / occurrence machinery
-
-The current closure machinery defines occurrence addresses over
+Because
 
 \[
-B=\{-1,+1\}
+|\mathcal O_{J_R}|=2,
 \]
 
-and branch-relation occurrences explicitly carry branch slots \(\pm1\).
-
-Therefore
+the structural Hartley information is
 
 \[
 \boxed{
-\text{closure.py}
-\not\Rightarrow
-\text{first binary Hamlet upstream}.
+I_R=\ln2.
 }
 \]
 
-It already presupposes the binary structure it would be asked to derive.
+Status: PASS-EXACT once the non-self-collapsed persistent relation is admitted.
 
-Status: NO-GO-AS-UPSTREAM-CAUSE.
+## M2d. Critical no-go: persistence classes are not the CP1 basis
 
-These modules remain valid downstream realizations after the first Hamlet has
-been established.
-
-## M2f. Collatz association/dissociation replaces free persistence control
-
-The earlier continuous envelope
+The previous audit path used
 
 \[
-\dot d=d(\mu-d)
+\{\mathsf{Disp},\mathsf{Struct}\}
 \]
 
-is retained only as a reference persistence dynamics. Its signed coordinate
-\(\mu\) is no longer treated as primitive.
+as the real two-branch span feeding \(J\), \(U(1)\) and \(\mathbb{CP}^1\).
 
-For a positive odd state \(n\), define
+That is rejected.
+
+Reason:
 
 \[
-\mathsf D:n\mapsto3n,
+\mathsf{Disp}\rightarrow\mathcal I_0
 \]
+
+contains no persistent distinction, so DISPERSION cannot simultaneously be a
+persistent basis state of the internal projective carrier.
+
+The corrected chain is
 
 \[
-\mathsf R:3n\mapsto3n+1,
+\boxed{
+H_{\rm persist}
+\rightarrow
+\mathsf{Struct}
+\rightarrow
+R
+\rightarrow
+\{N,S\}
+\rightarrow
+Z_2
+\rightarrow
+J
+\rightarrow
+U(1)
+\rightarrow
+\mathbb{CP}^1.
+}
 \]
 
-and maximal association
+Status: OLD PERSISTENCE-CLASS PROJECTIVE CARRIER = NO-GO.
+
+Legacy HAMLET_* code identifiers are retained only for compatibility.
+
+## M2e. Existing RDSS occurrence machinery remains downstream
+
+The current occurrence-address machinery already assumes
 
 \[
-\mathsf A:
-3n+1
-\mapsto
-\frac{3n+1}{2^{\nu_2(3n+1)}}.
+B=\{-1,+1\}.
 \]
 
-Then
+It therefore cannot derive the first persistence bifurcation or the durable
+relation-role dyad upstream without circularity.
+
+Likewise the relational deformation potential already requires residual
+coordinates and semantic weighting.
+
+Status: both remain downstream realizations only.
+
+## M2f. Collatz is downstream of the durable relation-role algebra
+
+TIR supplies exact mathematics once the Collatz branches are admitted:
+
+\[
+E(n)=\frac n2,
+\qquad
+O(n)=3n+1.
+\]
+
+Their signed local log-Jacobians are
+
+\[
+\boxed{
+\sigma_E=-\ln2,
+\qquad
+\sigma_O=+\ln3.
+}
+\]
+
+The projective branch matrices are
+
+\[
+M_E\sim
+\begin{pmatrix}
+1&0\\
+0&2
+\end{pmatrix},
+\qquad
+M_O\sim
+\begin{pmatrix}
+3&1\\
+0&1
+\end{pmatrix},
+\]
+
+whose positive-determinant normalizations lie in \(SL(2,\mathbb R)\), hence
+act in \(PSL(2,\mathbb R)\).
+
+For the accelerated odd cycle,
 
 \[
 T_C(n)
 =
-\frac{3n+1}{2^{\nu_2(3n+1)}}
+\frac{3n+1}{2^{\nu_2(3n+1)}},
 \]
 
-and the exact local log balance is
+the local association-minus-dissociation balance remains the exact identity
 
 \[
 \boxed{
 \mu_C(n)
 =
--\ln\frac{T_C(n)}{n}
+\ln\frac{n}{T_C(n)}
 =
-\nu_2(3n+1)\ln2-\ln\frac{3n+1}{n}.
+\nu_2(3n+1)\ln2
+-
+\ln\frac{3n+1}{n}.
 }
 \]
 
-Status: PASS-EXACT for each supplied positive odd \(n\).
+All of this is downstream mathematics.
 
-The interpretation inside the reference persistence envelope is:
-
-\[
-\mu_C>0
-\Rightarrow
-\text{association dominates}
-\Rightarrow
-\text{STRUCTURE regime},
-\]
-
-\[
-\mu_C<0
-\Rightarrow
-\text{dissociation dominates}
-\Rightarrow
-\text{DISPERSION regime}.
-\]
-
-At \(n=1\),
-
-\[
-T_C(1)=1,
-\qquad
-\mu_C(1)=0,
-\]
-
-so the accelerated odd cycle is locally critical.
-
-No global Collatz convergence statement enters this result.
-
-The remaining open arrow is no longer “where does \(\mu\) come from?” but
+The deterministic open gate is now narrower and earlier:
 
 \[
 \boxed{
-\mathcal P_E+\mathcal I_0
-\stackrel{?}{\longrightarrow}
-n.
+R+\{N,S\}+\text{admitted arithmetic/closure}
+\stackrel{?}{\Longrightarrow}
+E(n)=n/2,\quad O(n)=3n+1.
 }
 \]
 
-Status: OPEN-GATE for primitive-state binding.
+In particular, a complete derivation must force
+
+\[
+2,\qquad3,\qquad+1
+\]
+
+rather than import them from the standard Collatz definition.
+
+Current TIR validates the branch-word algebra, parity grammar, phase doubling,
+Möbius/\(PSL(2,\mathbb R)\) lift and \(\ln2/\ln3\) scale signatures **after**
+the branch maps are supplied. It does not yet prove the above uniqueness
+arrow.
+
+Status: RELATION ALGEBRA -> COLLATZ BRANCH OPERATORS = OPEN-GATE.
 
 ## M3. Standard Heisenberg remains downstream
 
