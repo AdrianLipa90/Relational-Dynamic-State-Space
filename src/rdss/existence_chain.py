@@ -78,6 +78,14 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "This is now the single upstream Hamlet gate: why must bare existence be informationally non-trivial?",
     ),
     ExistenceChainStep(
+        "CANONICAL_REALIZED_EXISTENCE_INFORMATIONALITY",
+        "canonical RDSS realized-existence semantics",
+        "non-trivial information state",
+        ExistenceChainStatus.DEFINITIONAL,
+        "RealizedExistence_RDSS := admitted non-trivial information state",
+        "This closes the canonical theory path by definition while leaving the strict L1-only entailment gate open.",
+    ),
+    ExistenceChainStep(
         "INFORMATIONALITY_TO_BINARY",
         "non-trivial finite information state",
         "minimal two-alternative carrier",
@@ -93,6 +101,22 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "Aut({a,b}) = S2 ~= Z2",
     ),
     ExistenceChainStep(
+        "CANONICAL_REALIZED_EXISTENCE_TO_HAMLET",
+        "canonical realized non-trivial information state",
+        "minimal Hamlet Z2 carrier",
+        ExistenceChainStatus.CONDITIONAL_EXACT,
+        "definition + min |Omega|=2 + Aut(Omega_2)=Z2",
+        "Closed inside canonical RDSS semantics; this is distinct from the strict L1-to-informationality question.",
+    ),
+    ExistenceChainStep(
+        "CANONICAL_HAMLET_RELATIONAL_REALIZATION",
+        "canonical Hamlet alternatives",
+        "two distinct relational branch-occurrence identities",
+        ExistenceChainStatus.DEFINITIONAL,
+        "distinguishable alternatives -> distinct occurrence identities bound to host",
+        "Canonical relational-information semantics; the universal RA0_REL_STAR entailment from bare L1 remains open.",
+    ),
+    ExistenceChainStep(
         "EXISTENCE_POTENTIAL_TO_HAMLET",
         "existence potential P_E through an informationally non-trivial minimal realization",
         "Hamlet Z2 uncertainty",
@@ -106,7 +130,7 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "balanced probabilities",
         ExistenceChainStatus.CONDITIONAL_EXACT,
         "swap-invariant normalized weighting -> p_+=p_-=1/2",
-        "The unique normalized weighting invariant under the non-trivial swap is uniform.",
+        "Closed on the canonical Hamlet carrier. The strict L1-only informationality gate is tracked separately and is not a dependency of this downstream theorem.",
     ),
     ExistenceChainStep(
         "HALF_HALF_TO_LN2",
@@ -121,7 +145,7 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "normalized real sign character {-1,+1}",
         ExistenceChainStatus.EXACT_IDENTITY,
         "chi(g)^2=1 and chi nontrivial => chi(g)=-1",
-        "This is the unique non-trivial one-dimensional unitary character of Z2.",
+        "This is the unique non-trivial one-dimensional real character of Z2; no upstream U(1) structure is assumed.",
     ),
     ExistenceChainStep(
         "ORIENTATION_TO_RELATIONAL_ZERO",
