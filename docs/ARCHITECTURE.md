@@ -161,6 +161,30 @@ Contains concrete realizations that may represent parts of the core:
 
 A reference realization is executable and tested but is not thereby a theorem forced by the core axioms.
 
+## Layer 5a — General orbital-fractal Hilbert-Moiré algebra
+
+`src/rdss/orbital_fractal_hilbert_moire.py`
+
+This source-grounded synthesis imports general rules from read-only Infinities,
+GREMLIN and Informational-Dynamics-of-Metatime references while keeping RDSS
+as the owning algebraic layer.
+
+It contains:
+
+- finite countable symbolic branch addresses \\(\\mathbb Z^{<\\omega}\\);
+- an explicit countable ranking and Hilbert-Hotel successor distinct from local refinement;
+- Euler inverse-branch realization on a declared complex-Log branch;
+- dimension-independent BEES relative-phase coherence;
+- the exact U(1) Moiré cocycle \\(M_{ij}M_{jk}=M_{ik}\\);
+- norm-preserving Hilbert-fibre transport \\(T_{ij}v=M_{ij}v\\);
+- first-order BEES/Kuramoto and second-order IDT relational phase updates.
+
+The layer is finite and executable. It does not promote arbitrary infinite
+symbolic addresses to convergent geometric fractal points and does not attach
+the algebra to a physical substrate without a separate binding derivation.
+
+See `docs/GENERAL_ORBITAL_FRACTAL_HILBERT_MOIRE_ALGEBRA.md`.
+
 ## Layer 6 — Zero Axis bridge
 
 \`src/rdss/zero_axis.py\`
