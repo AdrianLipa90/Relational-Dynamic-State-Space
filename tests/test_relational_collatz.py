@@ -6,6 +6,7 @@ from rdss.relational_collatz import (
     identity_operator_basis,
     dissociation_active_sector_cardinality,
     identity_repair_cardinality,
+    minimal_nontrivial_dissociation_seed,
     association_quotient_cardinality,
     full_operator_basis,
     dissociation_fibre_cardinality,
@@ -93,6 +94,13 @@ def test_relational_collatz_fails_closed() -> None:
     with pytest.raises(ValueError):
         dissociation_fibre_cardinality(3, 1)
 
+def test_minimal_nontrivial_nonassociable_seed_is_three() -> None:
+    assert minimal_nontrivial_dissociation_seed() == 3
+    assert association_quotient_cardinality(2) == 1
+    with pytest.raises(ValueError):
+        association_quotient_cardinality(3)
+
+
 def test_relation_algebra_derives_operator_count_seed_and_universal_repair() -> None:
     assert durable_role_count() == 2
     assert full_operator_basis() == ("I", "S", "P", "J")
@@ -117,6 +125,8 @@ def test_relation_algebra_seed_closes_l_constants_exactly() -> None:
     assert receipt["universal_repair"] == 1
     assert receipt["identity_basis_size"] == 1
     assert receipt["active_seed"] == 3
+    assert receipt["operator_seed"] == 3
+    assert receipt["seed_routes_match"] is True
     assert receipt["seed_step_1"] == 10
     assert receipt["seed_step_2"] == 5
     assert receipt["depth_to_one"] == 7
