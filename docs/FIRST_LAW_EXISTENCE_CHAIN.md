@@ -1,288 +1,443 @@
 # First Law of Existence — pre-audit causal chain
 
 Status: CANONICAL PRE-AUDIT SKELETON  
-Branch: `feat/canonical-normal-form-v0.1`  
+Branch: feat/canonical-normal-form-v0.1  
 Purpose: freeze the agreed causal order before the logical-causal mega-audit.
 
 ## L1 — First Law of Existence
 
-The canonical foundational statement is no longer described as an arbitrary
-axiom.
-
-[
-oxed{
-L_1:quad
-	ext{absolute nothingness is not a realizable state}
+\[
+\boxed{
+L_1:\quad
+\text{absolute nothingness is not a realizable state}
 }
-]
+\]
 
 Absolute nothingness contains no object, distinction or relation by which it
-could be established as a state. The historical claim identifier `A0` is
-retained for repository compatibility, but its canonical kind is
-`FOUNDATIONAL_LAW`.
+could be established as a state. The historical claim identifier A0 is retained
+for repository compatibility, but its canonical kind is FOUNDATIONAL_LAW.
 
-The empty set, algebraic zero and relational zero are mathematical objects and
-must never be identified with absolute nothingness.
+The empty set, algebraic zero, a zero vector, zero phase and relational zero
+are mathematical objects and must never be identified with absolute
+nothingness.
+
+## Two different meanings of potential
+
+The word potential occurs twice and the two objects must remain distinct.
+
+First:
+
+\[
+\boxed{\mathcal P_E}
+\]
+
+is the primitive existence potential left after absolute nothingness is
+excluded. It is modal/foundational and carries no physical magnitude, field
+strength or force law.
+
+Later:
+
+\[
+\boxed{\mathcal A_B}
+\]
+
+is a local phase-connection/potential representative associated with Berry
+holonomy. It is gauge-dependent and belongs to the geometric phase layer.
+
+Therefore
+
+\[
+\boxed{\mathcal P_E\neq\mathcal A_B}.
+\]
 
 ## Frozen causal order
 
-The chain to be mega-audited is
+The main pre-audit route is
 
-[
-oxed{
-
-egmathcal N
-ightarrow
-mathcal P_E
-ightarrow
-	ext{Hamlet uncertainty}
-ightarrow
-left(rac12,rac12ight)
-ightarrow
-ln 2
-ightarrow
-(-1,zeta=0,+1)
-ightarrow
-i
-ightarrow
-U(1)
-ightarrow
-mathbb{CP}^{1}simeq S^2
-ightarrow
-	ext{Berry/Euler}
-ightarrow
-s=rac12
+\[
+\boxed{
+\neg\mathcal N
+\rightarrow
+\mathcal P_E
+\rightarrow
+\text{Hamlet uncertainty}
+\rightarrow
+\mathbb Z_2
+\rightarrow
+\left(\frac12,\frac12\right)
+\rightarrow
+\ln 2
 }
-]
+\]
 
-The order is normative for the audit. It must not be reversed into
-`point -> potential` or `i -> existence`.
+together with the sign branch
+
+\[
+\boxed{
+\mathbb Z_2
+\rightarrow
+\{-1,+1\}
+\rightarrow
+\zeta=0
+\rightarrow
+i
+\rightarrow
+U(1)
+}
+\]
+
+and then the projective/geometric branch
+
+\[
+\boxed{
+U(1)
++\text{normalized complex two-state carrier}
+\rightarrow
+\mathbb{CP}^{1}\simeq S^2
+\rightarrow
+\text{geometric holonomy}
+\rightarrow
+\gamma_B
+}
+\]
+
+followed by
+
+\[
+\boxed{
+\gamma_B
+\rightarrow
+[\mathcal A_B]_{\mathrm{gauge}}
+}
+\]
+
+and, independently,
+
+\[
+\boxed{
+\text{Hamlet non-triviality}
+\rightarrow
+\text{projective sign closure}
+\rightarrow
+\text{Berry/Euler selection}
+\rightarrow
+s_{\min}=\frac12.
+}
+\]
+
+The order is normative for the audit. In particular, the Berry/phase-potential
+layer must not be reversed into an upstream cause of the existence potential.
 
 ## 1. Existence potential
 
 After absolute nothingness is excluded, the candidate primitive remainder is
-the existence potential
 
-[
-oxed{mathcal P_E}.
-]
+\[
+\boxed{\mathcal P_E}.
+\]
 
-At this stage (mathcal P_E) is not assigned mass, energy, force, spacetime
+At this stage \(\mathcal P_E\) is not assigned mass, energy, force, spacetime
 location, field equation or numerical magnitude.
 
 The arrow
 
-[
+\[
+\neg\mathcal N\rightarrow\mathcal P_E
+\]
 
-egmathcal Nightarrowmathcal P_E
-]
-
-is intentionally recorded as a **derivation gate** until the mega-audit proves
-that this is a genuine consequence rather than a renaming of non-vacuity.
+is recorded as a derivation gate until the mega-audit establishes whether it
+is genuinely forced or only a definitional complement of nothingness.
 
 ## 2. Hamlet uncertainty
 
-The phrase “to be / not to be” is used as a mnemonic for the primitive
-relational uncertainty of orientation. It is not a quotation used as a proof
-and it is not yet the canonical Heisenberg (Delta x,Delta p) relation.
+“To be / not to be” is used as a mnemonic for the primitive unresolved
+relational orientation. It is not itself a proof and it is not yet the
+standard Heisenberg/Robertson uncertainty relation.
 
-The candidate transition is
+The candidate minimal non-degenerate distinction is
 
-[
-mathcal P_E
-ightarrow
-{-1,+1}
-]
+\[
+\mathcal P_E
+\rightarrow
+\mathbb Z_2.
+\]
 
-with no preferred sign.
+Neither branch represents absolute nothingness. The two branches are opposite
+realizable orientations of the same existence potential.
 
-The two signs represent opposite realizable orientations of existence
-potential. Neither sign represents absolute nothingness.
+## 3. Balanced binary state and \(\ln2\)
 
-## 3. Balanced binary state and (ln 2)
+Conditional on exact exchange symmetry and normalization,
 
-Conditional on an exhaustive binary opposition with exact exchange symmetry,
-
-[
+\[
 p_-+p_+=1,
-qquad
+\qquad
 p_-=p_+,
-]
+\]
 
 so
 
-[
-oxed{p_-=p_+=rac12}.
-]
+\[
+\boxed{
+p_-=p_+=\frac12.
+}
+\]
 
-Binary Shannon entropy then gives the exact identity
+Shannon entropy in nats then gives
 
-[
+\[
 H
 =
--rac12lnrac12
--rac12lnrac12
+-\frac12\ln\frac12
+-\frac12\ln\frac12
 =
-oxed{ln2}.
-]
+\boxed{\ln2}.
+\]
 
-Thus (ln2) is downstream of the balanced first distinction, not an
-independent constant inserted later.
+Thus \(\ln2\) is downstream of the balanced first distinction.
 
-## 4. Relational zeta zero
+## 4. Relational signs and relational zeta zero
 
-Under the normalized orientation chart,
+The non-trivial real character of \(\mathbb Z_2\) gives the normalized sign
+representation
 
-[
-oxed{
-zeta
+\[
+\boxed{\{-1,+1\}}.
+\]
+
+Its affine midpoint is
+
+\[
+\boxed{
+\zeta
 =
-rac{-1+1}{2}
+\frac{-1+1}{2}
 =
 0.
 }
-]
+\]
 
-Here (zeta) names the relational zero centre. It is **not** the Riemann zeta
-function and it is **not** absolute nothingness.
+Here \(\zeta\) names the RDSS relational zero centre. It is not the Riemann
+zeta function and it is not absolute nothingness:
 
-[
-oxed{0
-eqmathcal N}.
-]
-
-A represented zero already participates in a relation.
+\[
+\boxed{
+0\neq\mathcal N.
+}
+\]
 
 ## 5. Imaginary generator
 
-The next candidate causal arrow is
+The candidate next arrow is
 
-[
-{-1,0,+1}
-ightarrow i,
-qquad
+\[
+\{-1,0,+1\}
+\rightarrow
+i,
+\qquad
 i^2=-1.
-]
+\]
 
-The intended role of (i) is the orthogonal generator of phase relative to
-the real opposition. Whether orthogonality and the complex structure are
-uniquely forced, or require a hidden metric/orientation assumption, is an
-explicit mega-audit target.
+The intended role of \(i\) is an orthogonal phase generator relative to the
+real opposition. Whether the required orientation, metric or complex
+structure is itself forced remains an explicit mega-audit gate.
 
 ## 6. Phase orbit
 
-Once (i^2=-1) is available,
+Once the complex generator is available,
 
-[
-u(phi)=e^{iphi}
-]
+\[
+u(\phi)=e^{i\phi}
+\]
 
-obeys
+satisfies
 
-[
-|u(phi)|=1,
-qquad
-u(phi_1)u(phi_2)=u(phi_1+phi_2),
-]
+\[
+|u(\phi)|=1,
+\qquad
+u(\phi_1)u(\phi_2)=u(\phi_1+\phi_2),
+\]
 
-which is the standard (U(1)) phase orbit.
-
-The Aharonov–Bohm effect is retained as a standard reference showing why
-potential/connection and loop phase may be primary even when the naive local
-force picture is silent. RDSS does **not** identify (mathcal P_E) with the
-electromagnetic vector potential.
+giving the standard \(U(1)\) phase orbit.
 
 ## 7. Potential sphere
 
 For a normalized complex two-state carrier
 
-[
-|psiangle
+\[
+|\psi\rangle
 =
-alpha|-angle+eta|+angle,
-qquad
-|alpha|^2+|eta|^2=1,
-]
+\alpha|-\rangle+\beta|+\rangle,
+\qquad
+|\alpha|^2+|\beta|^2=1,
+\]
 
 with common phase quotient
 
-[
-|psianglesim e^{ichi}|psiangle,
-]
+\[
+|\psi\rangle\sim e^{i\chi}|\psi\rangle,
+\]
 
 the projective state space is
 
-[
-oxed{
-mathbb{CP}^{1}simeq S^2.
+\[
+\boxed{
+\mathbb{CP}^{1}\simeq S^2.
 }
-]
+\]
 
-This is the RDSS reference realization of the **sphere of potential**.
+This is the RDSS reference realization of the potential sphere.
 
-(U(1)) alone does not imply (mathbb{CP}^1); the normalized complex
-two-state carrier is part of the bridge and must remain visible in the audit.
+\(U(1)\) alone does not imply \(\mathbb{CP}^1\); the normalized complex
+two-state carrier remains an explicit premise.
 
-In the ambient Bloch-sphere chart, relational (zeta=0) is the centre of the
-sphere. It is not a pure-state point on the (mathbb{CP}^1) surface.
+In the ambient Bloch-ball chart, relational \(\zeta=0\) is the centre. It is
+not a pure-state point on the \(\mathbb{CP}^1\) surface.
 
-## 8. Berry + Euler -> spin one half
+## 8. Geometry gives Berry phase
 
-For the equatorial loop of the Bloch sphere, one hemisphere subtends
+Parallel transport of the projective state around a closed loop gives
+geometric holonomy. The associated \(U(1)\) phase is the Berry phase:
 
-[
-Omega=2pi.
-]
+\[
+\boxed{
+\gamma_B
+=
+\operatorname{Hol}_C.
+}
+\]
 
-Under the standard Berry relation for spin sector (s),
+For a spin-coherent sphere one may write, up to orientation convention,
 
-[
-gamma_B=sOmega=2pi s.
-]
+\[
+\gamma_B=s\Omega.
+\]
 
-The primitive non-trivial Euler sign closure is
+The causal reading in RDSS is geometric:
 
-[
-e^{igamma_B}=-1.
-]
+\[
+\boxed{
+\mathbb{CP}^1/S^2
+\rightarrow
+\text{parallel transport}
+\rightarrow
+\text{holonomy}
+\rightarrow
+\gamma_B.
+}
+\]
 
-Therefore
+## 9. Phase gives a potential/connection class
 
-[
-e^{i2pi s}=-1,
-]
+Once a geometric phase/holonomy is present, it admits a local connection
+representation
 
-whose smallest positive solution is
+\[
+\boxed{
+\gamma_B[C]
+=
+\oint_C \mathcal A_B
+\pmod{2\pi}.
+}
+\]
 
-[
-oxed{s=rac12}.
-]
+The local one-form \(\mathcal A_B\) is not unique:
+
+\[
+\mathcal A_B
+\mapsto
+\mathcal A_B+d\chi
+\]
+
+leaves closed-loop holonomy unchanged.
+
+Therefore phase determines connection/potential information only up to gauge:
+
+\[
+\boxed{
+\gamma_B
+\rightarrow
+[\mathcal A_B]_{\mathrm{gauge}},
+}
+\]
+
+not a unique physical potential.
+
+Aharonov–Bohm remains a downstream physical precedent for the principle that
+potential/connection information may be physically encoded in phase. It does
+not generate the upstream RDSS phase structure.
+
+## 10. Hamlet + Berry/Euler -> minimal spin one half
+
+The remaining causal gate is to derive the non-trivial projective sign from
+Hamlet binary non-triviality:
+
+\[
+\boxed{
+\text{Hamlet non-triviality}
+\rightarrow
+e^{i\gamma}=-1.
+}
+\]
+
+Once this sign closure is supplied, an equatorial hemisphere has
+
+\[
+\Omega=2\pi
+\]
+
+and the Berry relation gives
+
+\[
+\gamma_B=2\pi s.
+\]
+
+Then
+
+\[
+e^{i2\pi s}=-1
+\]
+
+selects
+
+\[
+s\in\mathbb Z+\frac12,
+\]
+
+whose smallest positive value is
+
+\[
+\boxed{
+s_{\min}=\frac12.
+}
+\]
 
 The doubled traversal gives
 
-[
-e^{i4pi(1/2)}=+1.
-]
+\[
+e^{i4\pi(1/2)}=+1.
+\]
 
-This step is recorded as a **conditional standard result**: the algebra is
-exact once the CP1/Bloch-sphere carrier, Berry law and primitive sign-closure
-condition are supplied.
+Thus the spin-half result is conditional on a successful derivation of the
+Hamlet-to-projective-sign closure; that sign is not silently assumed.
 
 ## Audit classification
 
-The mega-audit must treat the arrows differently:
-
 | Arrow | Pre-audit status |
 |---|---|
-| (L_1	omathcal P_E) | DERIVATION GATE |
-| (mathcal P_E	o{-1,+1}) | DERIVATION GATE |
-| symmetry (	o(1/2,1/2)) | EXACT CONDITIONAL IDENTITY |
-| ((1/2,1/2)	oln2) | EXACT IDENTITY |
-| ((-1,+1)	ozeta=0) | EXACT IDENTITY under normalization |
-| real opposition (	o i) | DERIVATION GATE |
-| (i	o U(1)) | EXACT STANDARD IDENTITY |
-| binary complex quotient (	omathbb{CP}^1simeq S^2) | STANDARD GEOMETRY |
-| CP1 + Berry + Euler (	o s=1/2) | CONDITIONAL STANDARD RESULT |
+| \(L_1\to\mathcal P_E\) | DERIVATION GATE |
+| \(\mathcal P_E\to\mathbb Z_2\) | DERIVATION GATE |
+| symmetry \(\to(1/2,1/2)\) | PASS CONDITIONAL |
+| \((1/2,1/2)\to\ln2\) | EXACT IDENTITY |
+| \(\mathbb Z_2\to\{-1,+1\}\) | PASS CONDITIONAL |
+| \((-1,+1)\to\zeta=0\) | EXACT under normalized affine chart |
+| real opposition \(\to i\) | DERIVATION GATE |
+| \(i\to U(1)\) | STANDARD EXACT |
+| complex binary quotient \(\to\mathbb{CP}^1\simeq S^2\) | STANDARD GEOMETRY |
+| projective geometry \(\to\gamma_B\) | STANDARD GEOMETRIC HOLONOMY |
+| \(\gamma_B\to[\mathcal A_B]_{\rm gauge}\) | LOCAL/GAUGE-CONDITIONAL REPRESENTATION |
+| Hamlet \(\to e^{i\gamma}=-1\) | DERIVATION GATE |
+| Berry/Euler + sign closure \(\to s_{\min}=1/2\) | PASS CONDITIONAL |
 
 No audit result is pre-declared. A failed arrow must remain failed rather than
-being repaired by inserting an unlabelled premise.
+being repaired by an unlabelled premise.
