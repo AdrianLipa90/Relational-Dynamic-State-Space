@@ -173,6 +173,130 @@ The old bare singleton witness remains a valid counterexample to
 but that no longer blocks the causal chain because the binary persistence
 partition is established before the point.
 
+\subsection{Collatz association/dissociation as the persistence balance}
+
+The reference persistence flow
+\[
+\dot d=d(\mu-d)
+\]
+is retained only as a continuous envelope. Its signed coordinate \(\mu\) is
+not primitive.
+
+For a positive odd information state \(n\), define
+
+\[
+\mathsf D(n)=3n
+\]
+
+as dissociation,
+
+\[
+\mathsf R(3n)=3n+1
+\]
+
+as missing-element completion/repair, and maximal association by
+
+\[
+\mathsf A(3n+1)
+=
+\frac{3n+1}{2^{\nu_2(3n+1)}}.
+\]
+
+The accelerated odd Collatz cycle is therefore
+
+\[
+T_C(n)
+=
+\frac{3n+1}{2^{\nu_2(3n+1)}}.
+\]
+
+Its exact local association-minus-dissociation balance is
+
+\[
+\boxed{
+\mu_C(n)
+=
+\nu_2(3n+1)\ln2
+-
+\ln\frac{3n+1}{n}
+=
+\ln\frac{n}{T_C(n)}.
+}
+\]
+
+Each association step contributes \(+\ln2\). The combined
+dissociation/repair step contributes
+\[
+-\ln\frac{3n+1}{n}.
+\]
+
+The continuous reference envelope may therefore use
+
+\[
+\boxed{
+\mu=\mu_C(n)
+}
+\]
+
+rather than an independent control parameter.
+
+Locally,
+
+\[
+\mu_C(n)>0
+\]
+
+means association dominates the scale balance and realizes the STRUCTURE
+reference regime, while
+
+\[
+\mu_C(n)<0
+\]
+
+means dissociation dominates and realizes DISPERSION. The equality
+\[
+\mu_C(n)=0
+\]
+is the critical boundary.
+
+Examples are
+
+\[
+T_C(3)=5,
+\qquad
+\mu_C(3)=\ln(3/5)<0,
+\]
+
+\[
+T_C(5)=1,
+\qquad
+\mu_C(5)=\ln5>0,
+\]
+
+and
+
+\[
+T_C(1)=1,
+\qquad
+\mu_C(1)=0.
+\]
+
+These are local exact identities only. No global Collatz-convergence theorem
+is assumed or claimed.
+
+The remaining strict bridge is
+
+\[
+\boxed{
+\mathcal P_E+\mathcal I_0
+\rightarrow
+n,
+}
+\]
+
+namely why primitive indistinction is represented by a particular positive
+odd Collatz information state and how that initial state is selected.
+
 \subsection{Probability as a downstream consistency check}
 
 If a normalized probability on \(H_0\) is later required to be invariant under
