@@ -4,15 +4,17 @@
 
 **OPEN by design.**
 
-The current object-level foundation treats
+Historically this gate treated
 
 \[
 \operatorname{Adm}
 \]
 
-as a primitive predicate and keeps RA0 as an axiom.
-
-META0 settles non-reification and model non-vacuity, but it does not by itself force relational incidence.
+as a primitive predicate and kept RA0 as a separate object-level assumption.
+The current claim ledger instead has exactly one axiom, \(A_0\), and
+classifies RA0 as a derivation gate. META0 is the downstream model-formation
+rule. The countermodel below is retained because it still proves that META0
+alone does not force relational incidence.
 
 ## Countermodel: META0 non-vacuity without RA0
 
@@ -48,7 +50,7 @@ Therefore, when \(\operatorname{Adm}\) is primitive,
 
 This is an important independence result: non-vacuity is not relationality.
 
-## Current route A — primitive admissibility
+## Historical route A — primitive admissibility
 
 Keep
 
@@ -72,21 +74,23 @@ primitive and retain
 }
 \]
 
-as an object-level axiom.
+as a primitive relational-admissibility derivation gate.
 
-Then the canonical stratification remains
+In the current ledger this route does not alter the unique foundation:
 
 \[
 \boxed{
+A_0
+\Longrightarrow
 \mathrm{META0}
-\triangleright
-(\mathrm{RA0}+\mathrm{RR1}).
+\Longrightarrow
+\text{explicit derivation gates}.
 }
 \]
 
 This route preserves the ability to talk about admitted carriers before imposing relational incidence.
 
-## Candidate route B — define admissibility relationally
+## Alternative route B — define admissibility relationally
 
 Instead define a relational admissibility predicate by
 
@@ -118,13 +122,9 @@ Under this definition,
 
 is true by definitional expansion. RA0 would no longer be an independent axiom.
 
-The object-level foundation could then reduce schematically to
-
-\[
-\mathrm{RR1}
-\]
-
-under META0, or to the stronger candidate RA0* if RA0* is chosen as the recursive closure principle.
+This can discharge the RA0 derivation gate by definition. It does not change
+the axiom count: \(A_0\) remains the unique axiom, while RR1/RA0* remain
+downstream derivation targets.
 
 ## Cost of route B
 
