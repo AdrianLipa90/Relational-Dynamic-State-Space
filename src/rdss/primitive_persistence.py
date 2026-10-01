@@ -104,6 +104,60 @@ def asymptotic_distinction(control: float) -> float:
     return max(mu, 0.0)
 
 
+def _positive_integer(value: int, name: str = "state") -> int:
+    if isinstance(value, bool) or not isinstance(value, int):
+        raise TypeError(f"{name} must be an integer")
+    if value <= 0:
+        raise ValueError(f"{name} must be positive")
+    return value
+
+
+def source_minimal_association_divisor(role_count: int = 2) -> int:
+    """Primitive association divisor from the durable role cardinality."""
+
+    count = _positive_integer(role_count, "role_count")
+    if count < 2:
+        raise ValueError("role_count must be at least two for a non-trivial dyad")
+    return count
+
+
+def minimal_nontrivial_odd_multiplier() -> int:
+    """Least positive odd integer strictly greater than one."""
+
+    return 3
+
+
+def minimal_positive_odd_repair() -> int:
+    """Least positive odd additive repair, hence the least parity-flipping repair."""
+
+    return 1
+
+
+def source_minimal_collatz_coefficients(role_count: int = 2) -> tuple[int, int, int]:
+    """Return (association_divisor, odd_multiplier, odd_repair).
+
+    For the canonical durable relation-role dyad role_count=2 this is
+    exactly (2,3,1). This function implements the conditional source-minimal
+    formation rule; it does not prove that the formation rule is forced by
+    the First Law.
+    """
+
+    divisor = source_minimal_association_divisor(role_count)
+    if divisor != 2:
+        raise ValueError("canonical Collatz closure requires the durable dyad cardinality two")
+    return (divisor, minimal_nontrivial_odd_multiplier(), minimal_positive_odd_repair())
+
+
+def source_minimal_parity_step(state: int, role_count: int = 2) -> int:
+    """Conditional source-minimal parity law on positive integers."""
+
+    n = _positive_integer(state)
+    divisor, multiplier, repair = source_minimal_collatz_coefficients(role_count)
+    if n % divisor == 0:
+        return n // divisor
+    return multiplier * n + repair
+
+
 def _positive_odd_integer(value: int, name: str = "state") -> int:
     if isinstance(value, bool) or not isinstance(value, int):
         raise TypeError(f"{name} must be an integer")
@@ -131,7 +185,8 @@ def collatz_dissociate(state: int) -> int:
     """Dissociation operator D(n)=3n on a positive odd state."""
 
     n = _positive_odd_integer(state)
-    return 3 * n
+    _, multiplier, _ = source_minimal_collatz_coefficients()
+    return multiplier * n
 
 
 def collatz_complete(dissociated: int) -> int:
@@ -141,7 +196,8 @@ def collatz_complete(dissociated: int) -> int:
         raise TypeError("dissociated must be an integer")
     if dissociated <= 0 or dissociated % 2 == 0:
         raise ValueError("dissociated state must be positive odd")
-    return dissociated + 1
+    _, _, repair = source_minimal_collatz_coefficients()
+    return dissociated + repair
 
 
 def collatz_associate(completed: int) -> tuple[int, int]:
