@@ -253,6 +253,18 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT", "THM_MINIMAL_RELATION_ROLE_GAUSSIAN_GENERATOR", "THM_GAUSSIAN_L45_SOURCE", "BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45"),
     ),
     Claim(
+        "DEF_MINIMAL_NONTRIVIAL_DISSOCIATION_SEED",
+        ClaimKind.DEFINITION,
+        "Define the source-minimal dissociation seed as the least positive finite cardinality n>1 for which the complete free durable-role Z2 association quotient is unavailable.",
+        ("THM_ASSOCIATION_QUOTIENT_CARDINALITY",),
+    ),
+    Claim(
+        "THM_MINIMAL_NONTRIVIAL_DISSOCIATION_SEED_IS_THREE",
+        ClaimKind.THEOREM,
+        "For the durable dyad q=2, complete association exists exactly at even cardinality. After excluding the unit n=1, n=2 associates immediately while n=3 is the least cardinality that cannot. Therefore the source-minimal dissociation seed is uniquely n_0=3.",
+        ("DEF_MINIMAL_NONTRIVIAL_DISSOCIATION_SEED", "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT"),
+    ),
+    Claim(
         "DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT",
         ClaimKind.DEFINITION,
         "The active operator sector is the canonical real operator basis with the identity direction removed. Since the full basis is {I,S,P,J}, the active sector is {S,P,J}; its cardinality defines the active arithmetic seed n_0. No independent numerical seed is selected.",
@@ -265,10 +277,16 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT",),
     ),
     Claim(
+        "THM_ACTIVE_SEED_PROVENANCE_DOUBLE_CLOSED",
+        ClaimKind.THEOREM,
+        "The arithmetic seed n_0=3 is obtained independently as the least non-unit cardinality that cannot immediately associate and as the cardinality of the non-identity operator sector {S,P,J}. The two routes agree exactly.",
+        ("THM_MINIMAL_NONTRIVIAL_DISSOCIATION_SEED_IS_THREE", "THM_ACTIVE_SEED_IS_THREE"),
+    ),
+    Claim(
         "THM_RELATIONAL_COLLATZ_L_CONSTANT_CERTIFICATE",
         ClaimKind.THEOREM,
         "For the derived Collatz map and active seed n_0=3, define L4 as the durable role count 2, L5 as the first completed dissociation-repair-association successor 3->10->5, and L3 as the exact finite depth of the same seed from 3 to 1, namely 7. Thus the relational Collatz core derives (L3,L4,L5)=(7,2,5) directly. The Gaussian/root-extension route is an independent crosscheck rather than a premise of these values.",
-        ("THM_ACTIVE_SEED_IS_THREE", "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ"),
+        ("THM_ACTIVE_SEED_PROVENANCE_DOUBLE_CLOSED", "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ"),
     ),
     Claim(
         "THM_L_CONSTANT_PROVENANCE_CROSSCHECK",
