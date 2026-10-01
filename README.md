@@ -145,8 +145,90 @@ Z_2
 }
 \]
 
-The Collatz layer is downstream of this relation-role algebra. The admitted
-branches are
+The same durable role algebra supplies \(J^2=-I\). In the integral scalar
+algebra, the minimal non-real lift of the role cardinality two is, up to
+conjugation,
+
+\[
+\boxed{
+g=2+J.
+}
+\]
+
+Then
+
+\[
+g^2=3+4J,
+\qquad
+g^3=2+11J,
+\qquad
+g^4=-7+24J,
+\qquad
+g\bar g=5.
+\]
+
+Thus the numerical Collatz coefficients are generated directly:
+
+\[
+\boxed{
+\Re g=2,\qquad
+\operatorname{ImCoeff}(g)=1,\qquad
+\Re(g^2)=3.
+}
+\]
+
+The same generator gives
+
+\[
+\boxed{
+L_4=2,\qquad
+L_5=5.
+}
+\]
+
+Using the independently established TIR tetrahedral root-extension closure
+
+\[
+L_3=L_4+L_5,
+\]
+
+we obtain
+
+\[
+\boxed{
+(L_3,L_4,L_5)=(7,2,5).
+}
+\]
+
+The identity
+
+\[
+\boxed{
+g^4=-7+24J
+}
+\]
+
+is an independent closure check: it reproduces \(-L_3\) and the integer \(24\)
+without defining either quantity.
+
+The Collatz layer is downstream. A separate source-minimal parity argument
+independently yields the same coefficient triple \(2,3,+1\). Therefore
+coefficient provenance is double-closed.
+
+The remaining deterministic gate is no longer numerical. It is the operation
+semantics:
+
+\[
+\boxed{
+\text{relation algebra}
+\stackrel{?}{\Longrightarrow}
+\mathsf A=\div2,\quad
+\mathsf D=\times3,\quad
+\mathsf R=+1.
+}
+\]
+
+Conditional on that operation signature,
 
 \[
 E(n)=\frac n2,
@@ -154,7 +236,7 @@ E(n)=\frac n2,
 O(n)=3n+1.
 \]
 
-Once admitted, they have exact signed local scale signatures
+Their exact signed local scale signatures are
 
 \[
 \boxed{
@@ -164,37 +246,8 @@ Once admitted, they have exact signed local scale signatures
 }
 \]
 
-and exact projective matrices
-
-\[
-M_E\sim
-\begin{pmatrix}
-1&0\\
-0&2
-\end{pmatrix},
-\qquad
-M_O\sim
-\begin{pmatrix}
-3&1\\
-0&1
-\end{pmatrix},
-\]
-
-whose determinant-one normalizations lie in \(SL(2,\mathbb R)\), hence act in
+and their determinant-normalized projective matrices lie in
 \(PSL(2,\mathbb R)\).
-
-The remaining deterministic gate is precise:
-
-\[
-\boxed{
-R+\text{relation-role algebra}
-\stackrel{?}{\Longrightarrow}
-E:n\mapsto n/2,\quad O:n\mapsto3n+1.
-}
-\]
-
-In particular, the coefficients \(2\), \(3\) and the repair \(+1\) are not
-silently treated as already derived.
 
 From the durable relation-role \(Z_2\), the non-trivial real character gives
 the normalized sign chart
