@@ -1668,6 +1668,12 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_RELATIONAL_DEFORMATION_POTENTIAL_IS_DOWNSTREAM"].kind is ClaimKind.THEOREM
     assert claims["THM_BINARY_CLOSURE_MODEL_IS_DOWNSTREAM"].kind is ClaimKind.THEOREM
+    assert claims["DEF_REFERENCE_DISTINCTION_AMPLITUDE"].kind is ClaimKind.DEFINITION
+    assert claims["REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["THM_REF_PERSISTENCE_FLOW_DISPERSION"].kind is ClaimKind.THEOREM
+    assert claims["THM_REF_PERSISTENCE_FLOW_STRUCTURE"].kind is ClaimKind.THEOREM
+    assert claims["THM_REF_PERSISTENCE_FLOW_REALIZES_BOTH_HAMLET_REGIMES"].kind is ClaimKind.THEOREM
+    assert claims["GATE_BIND_PERSISTENCE_CONTROL_TO_EXISTENCE_POTENTIAL"].kind is ClaimKind.DERIVATION_GATE
     assert claims["THM_FIRST_HAMLET_Z2"].kind is ClaimKind.THEOREM
     assert claims["THM_FIRST_HAMLET_HARTLEY_LN2"].kind is ClaimKind.THEOREM
     assert claims["THM_DISPERSION_RETURNS_INDISTINCTION"].kind is ClaimKind.THEOREM
@@ -2025,4 +2031,27 @@ def test_existing_potential_and_binary_closure_cannot_be_used_upstream_for_first
     assert "DEF_OCCURRENCE_ADDRESS_SPACE" not in first_hamlet_closure
     assert "THM_RELATIONAL_DEFORMATION_POTENTIAL_IS_DOWNSTREAM" not in first_hamlet_closure
     assert "THM_BINARY_CLOSURE_MODEL_IS_DOWNSTREAM" not in first_hamlet_closure
+
+def test_reference_persistence_flow_is_consistency_witness_not_foundational_derivation() -> None:
+    claims = claim_map()
+
+    both = claims["THM_REF_PERSISTENCE_FLOW_REALIZES_BOTH_HAMLET_REGIMES"]
+    assert both.kind is ClaimKind.THEOREM
+    both_closure = dependency_closure("THM_REF_PERSISTENCE_FLOW_REALIZES_BOTH_HAMLET_REGIMES")
+    assert "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW" in both_closure
+    assert "THM_REF_PERSISTENCE_FLOW_DISPERSION" in both_closure
+    assert "THM_REF_PERSISTENCE_FLOW_STRUCTURE" in both_closure
+    assert "THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES" in both_closure
+
+    strict_gate = claims["GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0"]
+    assert strict_gate.kind is ClaimKind.DERIVATION_GATE
+    strict_closure = dependency_closure("GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0")
+    assert "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW" not in strict_closure
+
+    bind_gate = claims["GATE_BIND_PERSISTENCE_CONTROL_TO_EXISTENCE_POTENTIAL"]
+    assert bind_gate.kind is ClaimKind.DERIVATION_GATE
+    bind_closure = dependency_closure("GATE_BIND_PERSISTENCE_CONTROL_TO_EXISTENCE_POTENTIAL")
+    assert "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW" in bind_closure
+    assert "DEF_EXISTENCE_POTENTIAL" in bind_closure
+    assert "DEF_PRIMITIVE_INDISTINCTION" in bind_closure
 
