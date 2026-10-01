@@ -11,7 +11,6 @@ class ClaimKind(str, Enum):
     REFERENCE_REALIZATION = "reference_realization"
     DERIVED = "derived"
     BRIDGE = "bridge"
-    CANDIDATE_AXIOM = "candidate_axiom"
     THEOREM = "theorem"
     FORMATION_RULE = "formation_rule"
     DERIVATION_GATE = "derivation_gate"
