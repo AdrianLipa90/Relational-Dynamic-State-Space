@@ -205,6 +205,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_HAMLET_REAL_LINEAR_SPAN", "THM_FIRST_HAMLET_Z2", "THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"),
     ),
     Claim(
+        "THM_FIRST_HAMLET_SWAP_INVARIANT_UNIT_VECTOR",
+        ClaimKind.THEOREM,
+        "On the real first-Hamlet span, the +1 eigenspace of branch swap S is one-dimensional and spanned by e_Disp+e_Struct. Unit normalization therefore fixes the canonical swap-invariant vector Psi_0=(e_Disp+e_Struct)/sqrt(2), unique up to overall sign/phase. The equal amplitudes are geometric and do not assume a probability distribution.",
+        ("DEF_HAMLET_REAL_LINEAR_SPAN", "THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE"),
+    ),
+    Claim(
         "THM_HAMLET_IMAGINARY_GENERATOR",
         ClaimKind.THEOREM,
         "The real-linear operator J=SP satisfies J^2=-I. Relative to the ordered branch basis this is the canonical complex-structure generator, unique up to J->-J under reversal of branch orientation; it realizes the algebraic role of i without assuming complex scalars upstream.",
@@ -358,7 +364,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_HAMLET_CANONICAL_PROJECTIVE_LOOP",
         ClaimKind.THEOREM,
         "In A_H=C_J direct-sum S C_J take the normalized balanced state Psi_0=(I+S)/sqrt(2). Left multiplication by exp(theta J) gives complex module coordinates (exp(i theta), exp(-i theta))/sqrt(2). For 0<=theta<=pi this orbit is norm-preserving and horizontal, its projective image is a primitive great-circle loop, and Psi(pi)=-Psi_0. A fixed unitary chart sends it to the earlier real branch orbit (cos theta,-sin theta).",
-        ("THM_HAMLET_OPERATOR_PROJECTIVE_CP1", "THM_HAMLET_HALF_HALF", "THM_HAMLET_IMAGINARY_GENERATOR"),
+        ("THM_HAMLET_OPERATOR_PROJECTIVE_CP1", "THM_FIRST_HAMLET_SWAP_INVARIANT_UNIT_VECTOR", "THM_HAMLET_IMAGINARY_GENERATOR"),
     ),
     Claim(
         "THM_HAMLET_BALANCED_ORBIT_BLOCH_EQUATOR",
