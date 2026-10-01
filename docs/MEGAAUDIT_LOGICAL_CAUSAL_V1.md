@@ -520,58 +520,111 @@ x=4.
 
 Status: PASS-EXACT.
 
-### Remaining Collatz gate
+### Relational-cardinality operation closure
 
-The source-minimal parity-law route independently yields the same coefficient
-triple. Therefore the remaining deterministic problem is **not**
+The numerical coefficient problem is already closed twice. The operation
+semantics can also be typed canonically at finite-cardinality level.
 
-\[
-\text{where do }2,3,+1\text{ come from?}
-\]
-
-That numerical problem is closed twice.
-
-The remaining gate is operation semantics:
+Association is the orbit quotient of a complete free action of the durable
+two-role \(Z_2\):
 
 \[
 \boxed{
-\text{upstream relational dynamics}
-\stackrel{?}{\Longrightarrow}
-\mathsf A=\div2,\quad
-\mathsf D=\times3,\quad
-\mathsf R=+1.
+\mathsf A(X)=X/Z_2,
+\qquad
+|\mathsf A(X)|=\frac{|X|}{2}.
 }
 \]
 
-Conditional on that assignment,
+A complete free pairing exists only for even finite cardinality.
 
-\[
-E(n)=\frac n2,
-\qquad
-O(n)=3n+1
-\]
-
-and all existing downstream Collatz results remain exact.
-
-Their signed local log-Jacobians are
+Dissociation is independent three-fold fibre extension:
 
 \[
 \boxed{
+\mathsf D(X)=X\times F_3,
+\qquad
+|F_3|=3,
+\qquad
+|\mathsf D(X)|=3|X|.
+}
+\]
+
+Repair is adjoining one missing distinguishable unit by disjoint union:
+
+\[
+\boxed{
+\mathsf R(X)=X\sqcup\{\star\},
+\qquad
+|\mathsf R(X)|=|X|+1.
+}
+\]
+
+Therefore parity fixes the branch.
+
+For even \(n\), complete association is available:
+
+\[
+\boxed{
+n\mapsto n/2.
+}
+\]
+
+For odd \(n\), complete dyad pairing is unavailable. Three-fold dissociation
+preserves oddness,
+
+\[
+3n\equiv1\pmod2,
+\]
+
+and singleton repair gives
+
+\[
+3n+1\equiv0\pmod2,
+\]
+
+which reopens the association quotient. Hence
+
+\[
+\boxed{
+C(n)=
+\begin{cases}
+n/2,&n\ \mathrm{even},\\
+3n+1,&n\ \mathrm{odd}.
+\end{cases}
+}
+\]
+
+Status: RELATIONAL CARDINALITY NORMALIZATION = COLLATZ / PASS-EXACT.
+
+Thus neither the coefficients nor the arithmetic operation assignment remain
+open at the algebraic cardinality level.
+
+The remaining gate is strictly stronger and explicitly typed:
+
+\[
+\boxed{
+\text{exact relational-cardinality normalization}
+\stackrel{?}{\Longrightarrow}
+\text{primitive natural dynamics}.
+}
+\]
+
+That is a foundational/physical binding question, not an algebraic gap.
+
+All downstream Collatz results remain exact once this normalization is used,
+including
+
+\[
 \sigma_E=-\ln2,
 \qquad
-\sigma_O=+\ln3.
-}
+\sigma_O=+\ln3,
 \]
 
-Their projective matrices lift to \(PSL(2,\mathbb R)\), and the accelerated
-odd-cycle balance remains
+the \(PSL(2,\mathbb R)\) lift, and
 
 \[
-\boxed{
-\mu_C(n)
-=
-\ln\frac{n}{T_C(n)}.
-}
+\mu_C(n)=\ln\frac{n}{T_C(n)}.
 \]
 
 No global Collatz-convergence theorem enters this result.
