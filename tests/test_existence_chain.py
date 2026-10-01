@@ -8,7 +8,12 @@ from rdss.existence_chain import (
     RELATIONAL_ZETA_ZERO,
     ExistenceChainStatus,
     FirstHamletOutcome,
+    RelationRole,
     binary_entropy_nats,
+    relation_roles,
+    relation_role_reverse,
+    relation_role_hartley_nats,
+    relation_role_swap_invariant_unit_vector,
     first_hamlet_outcomes,
     first_hamlet_classify,
     first_hamlet_complement,
@@ -64,14 +69,18 @@ def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
     assert by_id["INDISTINCTION_TO_FIRST_HAMLET"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["CANONICAL_FIRST_HAMLET_NONDEGENERATE"].status is ExistenceChainStatus.DEFINITIONAL
     assert by_id["STRICT_FIRST_HAMLET_NONDEGENERACY_GATE"].status is ExistenceChainStatus.DERIVATION_GATE
-    assert by_id["FIRST_HAMLET_TO_Z2"].status is ExistenceChainStatus.CONDITIONAL_EXACT
-    assert by_id["FIRST_HAMLET_TO_LN2"].status is ExistenceChainStatus.CONDITIONAL_EXACT
+    assert by_id["FIRST_HAMLET_META_Z2"].status is ExistenceChainStatus.CONDITIONAL_EXACT
+    assert by_id["FIRST_HAMLET_META_LN2"].status is ExistenceChainStatus.CONDITIONAL_EXACT
     assert by_id["DISPERSION_TO_INDISTINCTION"].status is ExistenceChainStatus.DEFINITIONAL
     assert by_id["STRUCTURE_TO_INFORMATION_POINT"].status is ExistenceChainStatus.MODEL_THEOREM
+    assert by_id["STRUCTURE_TO_PERSISTENT_RELATION"].status is ExistenceChainStatus.DEFINITIONAL
+    assert by_id["RELATION_TO_ORIENTATION_ROLE_DYAD"].status is ExistenceChainStatus.EXACT_IDENTITY
+    assert by_id["RELATION_ROLE_TO_Z2"].status is ExistenceChainStatus.EXACT_IDENTITY
+    assert by_id["RELATION_ROLE_TO_LN2"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["BARE_POINT_NOT_FIRST_HAMLET"].status is ExistenceChainStatus.MODEL_THEOREM
-    assert by_id["CANONICAL_HAMLET_RELATIONAL_REALIZATION"].status is ExistenceChainStatus.DEFINITIONAL
-    assert by_id["HAMLET_TO_HALF_HALF"].status is ExistenceChainStatus.CONDITIONAL_EXACT
-    assert by_id["SHANNON_LN2_CONSISTENCY"].status is ExistenceChainStatus.EXACT_IDENTITY
+    assert by_id["COLLATZ_FROM_RELATION_ALGEBRA_GATE"].status is ExistenceChainStatus.DERIVATION_GATE
+    assert by_id["COLLATZ_BRANCHES_TO_PSL2"].status is ExistenceChainStatus.CONDITIONAL_EXACT
+    assert by_id["COLLATZ_BRANCHES_TO_LOG_SIGNATURE"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["Z2_TO_SIGN_CHARACTER"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["ORIENTATION_TO_IMAGINARY_GENERATOR"].status is ExistenceChainStatus.CONDITIONAL_EXACT
     assert by_id["IMAGINARY_GENERATOR_TO_U1"].status is ExistenceChainStatus.EXACT_IDENTITY
@@ -111,14 +120,22 @@ def test_first_hamlet_is_dispersion_or_structure_and_hartley_ln2() -> None:
     assert isclose(first_hamlet_hartley_nats(), LN2, abs_tol=1e-15)
 
 
-def test_swap_invariant_unit_vector_is_amplitude_geometry_not_probability() -> None:
-    vector = first_hamlet_swap_invariant_unit_vector()
+def test_persistent_relation_roles_are_the_durable_binary_carrier() -> None:
+    assert relation_roles() == (RelationRole.NORTH, RelationRole.SOUTH)
+    assert relation_role_reverse(RelationRole.NORTH) is RelationRole.SOUTH
+    assert relation_role_reverse(RelationRole.SOUTH) is RelationRole.NORTH
+    assert relation_role_reverse(relation_role_reverse(RelationRole.NORTH)) is RelationRole.NORTH
+    assert isclose(relation_role_hartley_nats(), LN2, abs_tol=1e-15)
+
+    vector = relation_role_swap_invariant_unit_vector()
+    legacy_alias = first_hamlet_swap_invariant_unit_vector()
     scale = 1.0 / (2.0 ** 0.5)
+    assert vector == legacy_alias
     assert all(isclose(value, scale, abs_tol=1e-15) for value in vector)
     assert isclose(vector[0] ** 2 + vector[1] ** 2, 1.0, abs_tol=1e-15)
 
 
-def test_probability_half_half_is_downstream_consistency_not_ln2_premise() -> None:
+def test_meta_hamlet_probability_is_separate_from_durable_relation_role_geometry() -> None:
     assert branch_swap(-1) == 1
     assert branch_swap(1) == -1
     assert branch_swap(branch_swap(-1)) == -1
