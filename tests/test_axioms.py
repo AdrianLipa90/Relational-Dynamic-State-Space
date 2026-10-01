@@ -1672,6 +1672,10 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_HAMLET_IMAGINARY_GENERATOR"].kind is ClaimKind.THEOREM
     assert claims["THM_IMAGINARY_GENERATOR_U1"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_COMPLEX_SCALAR_ALGEBRA"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_OPERATOR_ALGEBRA_C2_MODULE"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_OPERATOR_FROBENIUS_NORM"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_OPERATOR_PROJECTIVE_CP1"].kind is ClaimKind.THEOREM
     assert claims["DEF_HAMLET_COMPLEX_BRANCH_SPACE"].kind is ClaimKind.DEFINITION
     assert claims["THM_HAMLET_UNIQUE_SYMMETRY_HERMITIAN_FORM"].kind is ClaimKind.THEOREM
     assert claims["REF_HAMLET_COUNTING_HERMITIAN_FORM"].kind is ClaimKind.REFERENCE_REALIZATION
@@ -1850,4 +1854,29 @@ def test_canonical_relational_binary_is_semantic_theorem_not_strict_ra0_rel_star
     assert "RA0_REL_STAR" not in closure
     assert claims["RA0_REL_STAR"].kind is ClaimKind.DERIVATION_GATE
     assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
+
+def test_canonical_cp1_uses_full_hamlet_operator_algebra_without_binary_duplication() -> None:
+    claims = claim_map()
+
+    assert claims["THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R"].kind is ClaimKind.THEOREM
+    m2_closure = dependency_closure("THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R")
+    assert "THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE" in m2_closure
+    assert "THM_HAMLET_IMAGINARY_GENERATOR" in m2_closure
+
+    assert claims["THM_HAMLET_OPERATOR_ALGEBRA_C2_MODULE"].kind is ClaimKind.THEOREM
+    c2_closure = dependency_closure("THM_HAMLET_OPERATOR_ALGEBRA_C2_MODULE")
+    assert "THM_HAMLET_COMPLEX_SCALAR_ALGEBRA" in c2_closure
+    assert "THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R" in c2_closure
+    assert "DEF_HAMLET_COMPLEX_BRANCH_SPACE" not in c2_closure
+
+    assert claims["THM_HAMLET_OPERATOR_FROBENIUS_NORM"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_OPERATOR_PROJECTIVE_CP1"].kind is ClaimKind.THEOREM
+
+    cp1_closure = dependency_closure("REF_EXISTENCE_POTENTIAL_CP1_SPHERE")
+    assert "THM_HAMLET_OPERATOR_PROJECTIVE_CP1" in cp1_closure
+    assert "THM_HAMLET_OPERATOR_ALGEBRA_C2_MODULE" in cp1_closure
+    assert "DEF_HAMLET_COMPLEX_BRANCH_SPACE" not in cp1_closure
+
+    loop_closure = dependency_closure("THM_HAMLET_CANONICAL_PROJECTIVE_LOOP")
+    assert "THM_HAMLET_OPERATOR_PROJECTIVE_CP1" in loop_closure
 
