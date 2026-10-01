@@ -38,6 +38,7 @@ from rdss.existence_chain import (
     hamlet_su2_representation_label,
     hamlet_spinor_z_rotation,
     exact_chain_sanity,
+    first_hamlet_swap_invariant_unit_vector,
     hamlet_distribution,
     hamlet_information_nats,
     relational_zero_center,
@@ -106,6 +107,13 @@ def test_first_hamlet_is_dispersion_or_structure_and_hartley_ln2() -> None:
     )
     assert isclose(hartley_information_nats(2), log(2.0), abs_tol=1e-15)
     assert isclose(first_hamlet_hartley_nats(), LN2, abs_tol=1e-15)
+
+
+def test_swap_invariant_unit_vector_is_amplitude_geometry_not_probability() -> None:
+    vector = first_hamlet_swap_invariant_unit_vector()
+    scale = 1.0 / (2.0 ** 0.5)
+    assert all(isclose(value, scale, abs_tol=1e-15) for value in vector)
+    assert isclose(vector[0] ** 2 + vector[1] ** 2, 1.0, abs_tol=1e-15)
 
 
 def test_probability_half_half_is_downstream_consistency_not_ln2_premise() -> None:
