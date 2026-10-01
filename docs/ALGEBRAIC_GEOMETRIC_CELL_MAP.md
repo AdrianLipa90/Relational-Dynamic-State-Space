@@ -2,24 +2,22 @@
 
 Status: **formal reference construction on the RDSS branch**.
 
-This document records only the structure agreed for the current dry
-formalization. It does not introduce additional axioms.
+This document supersedes the earlier local picture in which the octahedron was
+used as the external static cage. The corrected geometry uses a static cube,
+the Stella Octangula as the two tetrahedral sectors on the cube vertices, and
+the octahedron as the internal relational core.
+
+No additional axioms are introduced.
 
 ## Foundation contract
 
-RDSS now enforces a one-axiom foundation. The unique foundational axiom is
-\(A_0\), the relational non-realizability of absolute nothingness. Every other
-item is a definition, theorem/derived result, reference realization, bridge,
-structural primitive, or an explicitly open derivation gate.
+RDSS enforces a one-axiom foundation. The unique foundational axiom is
+\(A_0\). Every other item is a definition, theorem/derived result, reference
+realization, bridge, structural primitive, or explicit derivation gate.
 
 The public TIR repository is used as a **read-only reference source**. RDSS may
 import verified formal consequences from TIR; this document does not authorize
 writes to TIR.
-
-Reference provenance for the spin/polarization bridge:
-`The-Fundamental-Theory-of-Informational-Relations/TIR/foundations/TIR_CANONICAL_DERIVATION_SPINE_V0_1.md`,
-Euler--Berry spin closure and polarization sections. The imported scope is
-formal/symbolic; it is not promoted into a universal claim about physical spin.
 
 ## Dependency map
 
@@ -46,90 +44,111 @@ s=\frac12
 \Rightarrow
 (T_+,T_-)
 \Rightarrow
+\text{Stella Octangula}
+\Rightarrow
 \text{closed local cell}.
 \]
 
-Where a dependency is not proved directly inside RDSS but has public TIR
-provenance, it is represented by a read-only bridge. Where neither a local
-proof nor an imported reference closes the step, it remains an explicit
-derivation gate rather than being promoted to another axiom.
+The Euler--Berry spin/polarization step is imported through the read-only TIR
+reference bridge
+\`BRIDGE_TIR_EULER_BERRY_SPIN_HALF_POLARIZATION\`.
 
-## Local geometry
+## Static cubic cage
 
-The minimal regular 3D simplex is the tetrahedron. The two relational poles
-are represented by an oppositely polarized tetrahedral pair
+The local static cage is the canonical cube
 
 \[
-T_+(t),\qquad T_-(t).
+Q_n=\mathrm{const}
 \]
 
-The tetrahedra are the **dynamic** degrees of freedom.
-
-The standard regular two-tetrahedron compound is the Stella Octangula. In its
-standard embedding, the common central intersection of the two tetrahedra is a
-regular octahedron. RDSS records this as a reference realization; it does not
-silently equate that standard coordinate embedding with the still abstract
-dynamic cell implementation.
-
-Their local cage is a **static octahedral frame**
+with vertex set
 
 \[
-O_n=\mathrm{const}.
+V(Q_n)=\{(\pm1,\pm1,\pm1)\}.
 \]
 
-The implementation deliberately stores the octahedron only as a six-vertex,
-eight-face combinatorial frame. No coordinate binding of the dynamic
-tetrahedral vertices to that frame is imposed until it is derived.
+Thus
 
-A local cell is therefore represented as
+\[
+|V(Q_n)|=8.
+\]
+
+These eight vertices are the static support geometry of the local cell.
+
+## Stella Octangula as the vertex partition
+
+The cube vertices split canonically into two parity classes:
+
+\[
+V_+
+=
+\{(x,y,z)\in V(Q_n):xyz=+1\},
+\]
+
+\[
+V_-
+=
+\{(x,y,z)\in V(Q_n):xyz=-1\}.
+\]
+
+Each class contains four vertices:
+
+\[
+|V_+|=|V_-|=4,
+\qquad
+V_+\cap V_-=\varnothing,
+\qquad
+V_+\cup V_-=V(Q_n).
+\]
+
+Each support is a regular tetrahedron. In the canonical coordinates every
+pair of distinct vertices within one support has squared distance
+
+\[
+d^2=8.
+\]
+
+Therefore the two complementary supports define the standard oppositely
+oriented tetrahedral compound
 
 \[
 \boxed{
-\mathcal C_n(t)
-=
-\bigl(
-O_n;
-T_{+,n}(t),
-T_{-,n}(t)
-\bigr).
+T_+\cup T_-=\text{Stella Octangula}.
 }
 \]
 
-The dynamic tetrahedra carry opposite polarization, local \(U(1)\) phase and
-angular state. Through the read-only TIR Euler--Berry bridge, the reference
-spin sector is
-
-\[
-s=\frac12,
-\]
-
-with the symbolic spinorial closure
-
-\[
-2\pi\mapsto -1,
-\qquad
-4\pi\mapsto +1.
-\]
-
-## Static gluing
-
-Neighbouring static frames are related face-to-face:
-
-\[
-F_{n,a}\sim F_{m,b}.
-\]
-
-The executable object is a **face-adjacency complex**. It intentionally does
-not claim that congruent regular octahedra alone form a Euclidean
-space-filling honeycomb. A concrete Euclidean realization is a separate gate.
-
-This separation is essential:
+The key geometric correction is now explicit:
 
 \[
 \boxed{
-\text{static topology}
+V(T_+)\cup V(T_-)=V(Q_n).
+}
+\]
+
+The Stella vertices are the cage vertices; there is no longer an open
+coordinate-placement gate for these vertices.
+
+## What is dynamic
+
+The support geometry does not move.
+
+The local dynamic variables belong to the two tetrahedral sectors:
+
+\[
+T_{+,n}(t),\qquad T_{-,n}(t),
+\]
+
+where time dependence refers to state variables such as local \(U(1)\) phase,
+polarization/spin sector and angular state, not to motion of the cube
+vertices.
+
+Thus
+
+\[
+\boxed{
+\text{static support}
 =
-\{O_n,\text{ face adjacencies}\},
+Q_n
 }
 \]
 
@@ -137,54 +156,150 @@ while
 
 \[
 \boxed{
-\text{local dynamics}
+\text{dynamic state}
 =
-\{T_{+,n}(t),T_{-,n}(t)\}.
+\{\phi_{\pm,n}(t),P_{\pm,n},\theta_{\pm,n}(t)\}.
 }
 \]
 
-Changing phase, angular offset or polarization state of the dynamic sector
-does not move the static octahedral frame.
+Through the TIR reference bridge,
 
-## Information action
+\[
+s=\frac12,
+\qquad
+2\pi\mapsto-1,
+\qquad
+4\pi\mapsto+1.
+\]
 
-The local canonical information action is the existing RDSS constant
+## Internal octahedral relational core
+
+For the standard cubic Stella embedding, the common central intersection of
+the two tetrahedral solids is the regular octahedron
+
+\[
+O_n=T_{+,n}\cap T_{-,n}
+\]
+
+with canonical core vertices
+
+\[
+V(O_n)
+=
+\{
+(\pm1,0,0),
+(0,\pm1,0),
+(0,0,\pm1)
+\}.
+\]
+
+Therefore the octahedron is no longer the external cage. It is the internal
+relational core:
+
+\[
+\boxed{
+Q_n
+\supset
+(T_{+,n}\cup T_{-,n})
+\supset
+O_n.
+}
+\]
+
+The structural roles are now:
+
+\[
+\boxed{
+\text{cube}=\text{static cage / gluing support},
+}
+\]
+
+\[
+\boxed{
+\text{Stella Octangula}=\text{two tetrahedral state sectors},
+}
+\]
+
+\[
+\boxed{
+\text{octahedron}=\text{internal relational core}.
+}
+\]
+
+## Local information cell
+
+The corrected local cell is
+
+\[
+\boxed{
+\mathcal C_n(t)
+=
+\bigl(
+Q_n;
+T_{+,n}(t),
+T_{-,n}(t);
+O_n
+\bigr).
+}
+\]
+
+The local canonical information action remains the existing RDSS value
 
 \[
 \boxed{
 \kappa
 =
-\frac{\ln 2}{24\pi}.
+\frac{\ln2}{24\pi}.
 }
 \]
 
-The executable construction binds each local cell to the existing
-`KAPPA_PHI` value rather than defining a second constant.
+The executable construction uses the existing \`KAPPA_PHI\`; no second
+constant is introduced.
+
+## Static gluing
+
+Neighbouring cells are glued through static cube faces:
+
+\[
+F_{n,a}\sim F_{m,b}.
+\]
+
+The executable object is a cubic face-adjacency complex. Unlike the previous
+octahedral-cage draft, the canonical cubic support also has the standard
+Euclidean face-to-face lattice realization.
+
+Local tetrahedral phase/spin/angular state does not move a shared cube face.
 
 ## Open derivation gates
 
-The following are deliberately **not** silently assumed:
+The corrected geometry closes the previous vertex-embedding gate. The open
+formal work is now downstream:
 
-1. the exact coordinate binding of the dynamic tetrahedra to the chosen static
-   octahedral frame;
-2. the proof that the chosen octahedral face-adjacency complex has the intended
-   global geometric realization;
-3. the exact neighbour-coupling law for tetrahedral phase/orientation;
-4. the derivation of the moiré field from those relative local states.
+1. derive the neighbour-coupling law across a shared static cube face;
+2. determine how relative tetrahedral phase/polarization/angular state is
+   transported across that face;
+3. derive the resulting moiré field from those relative states;
+4. determine whether a higher-order dodecahedral/icosahedral organization
+   emerges from the cubic-cell dynamics rather than being imposed locally.
 
-These gates are the next formal work. They are not new axioms.
+These are derivation targets, not new axioms.
 
 ## Claim-ledger binding
 
-The executable map is registered without adding an axiom:
+The corrected map is registered as:
 
-- `DEF_STATIC_OCTAHEDRAL_FRAME` — definition;
-- `BRIDGE_TIR_EULER_BERRY_SPIN_HALF_POLARIZATION` — read-only TIR bridge;
-- `DEF_DYNAMIC_TETRAHEDRAL_PAIR` — definition;
-- `REF_STELLA_OCTANGULA_STANDARD_COMPOUND` — reference realization;
-- `GATE_DYNAMIC_TETRAHEDRA_STATIC_FRAME_EMBEDDING` — derivation gate;
-- `DEF_OCTAHEDRAL_FACE_ADJACENCY_COMPLEX` — definition;
-- `REF_ALGEBRAIC_GEOMETRIC_INFORMATION_CELL` — reference realization;
-- `GATE_CELL_RELATIVE_STATE_TO_MOIRE` — derivation gate.
+- \`DEF_STATIC_CUBIC_FRAME\` — definition;
+- \`BRIDGE_TIR_EULER_BERRY_SPIN_HALF_POLARIZATION\` — read-only TIR bridge;
+- \`DEF_STELLA_CUBIC_VERTEX_PARTITION\` — definition;
+- \`DEF_DYNAMIC_TETRAHEDRAL_PAIR\` — definition;
+- \`REF_STELLA_OCTANGULA_CUBIC_EMBEDDING\` — reference realization;
+- \`REF_OCTAHEDRAL_RELATIONAL_CORE\` — reference realization;
+- \`DEF_CUBIC_FACE_ADJACENCY_COMPLEX\` — definition;
+- \`REF_ALGEBRAIC_GEOMETRIC_INFORMATION_CELL\` — reference realization;
+- \`GATE_CELL_RELATIVE_STATE_TO_MOIRE\` — derivation gate.
 
-The foundational axiom inventory remains exactly \(\{A_0\}\).
+The foundational axiom inventory remains exactly
+
+\[
+\boxed{\{A_0\}}.
+\]
