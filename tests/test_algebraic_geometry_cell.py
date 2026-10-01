@@ -2,7 +2,7 @@ from math import isclose, pi
 
 import pytest
 
-from rdss import (
+from rdss.algebraic_geometry_cell import (
     OCTAHEDRON_FACE_COUNT,
     OCTAHEDRON_VERTEX_COUNT,
     SPIN_HALF,
