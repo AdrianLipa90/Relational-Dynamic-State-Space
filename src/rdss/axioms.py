@@ -2069,7 +2069,8 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.DERIVED,
         "The OFHM symbolic fractal-boundary algebra is the combination of the Euler integer-branch symbolic space with the Hilbert-Hotel countable enumeration/shift: (Z^{<omega}, R_k, S_HH). It is a symbolic/operator boundary and does not assert convergence of every infinite address to a geometric point.",
         (
-            "DER_OFHM_SYMBOLIC_FRACTAL_BOUNDARY",
+            "BRIDGE_OFHM_EULER_SYMBOLIC_BRANCH_SPACE",
+            "BRIDGE_OFHM_HILBERT_HOTEL_SHIFT",
         ),
     ),
     Claim(
@@ -2107,8 +2108,7 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.DERIVED,
         "The general source-grounded orbital-fractal Hilbert-Moire algebra is the typed structure (A_F,rho,S_HH,R_k,M,H,T,J,D): finite symbolic address space, countable Hilbert-Hotel ranking/shift, local refinement, relative Moire cocycle, Hilbert fibres, norm-preserving transport, local coupling current and selected first- or second-order relational phase dynamics.",
         (
-            "BRIDGE_OFHM_EULER_SYMBOLIC_BRANCH_SPACE",
-            "BRIDGE_OFHM_HILBERT_HOTEL_SHIFT",
+            "DER_OFHM_SYMBOLIC_FRACTAL_BOUNDARY",
             "DER_OFHM_MOIRE_COCYCLE",
             "DER_OFHM_HILBERT_TRANSPORT",
             "BRIDGE_OFHM_BEES_IDT_DYNAMICS",
