@@ -139,7 +139,7 @@ def test_relationally_bound_distinction_is_explicit_definition():
 
 def test_recursive_refinement_is_independent_foundational_axiom():
     claims = claim_map()
-    assert claims["RR1"].kind is ClaimKind.AXIOM
+    assert claims["RR1"].kind is ClaimKind.DERIVATION_GATE
     assert "RA0" not in dependency_closure("RR1")
     assert set(claims["RR1"].depends_on) == {"DEF_POINT", "DEF_BINARY_DISTINCTION"}
 
@@ -266,14 +266,14 @@ def test_winding_depends_on_explicit_holonomy_u1_representation():
 
 def test_foundational_axiom_set_is_small_and_explicit():
     ids = {claim.id for claim in foundational_axioms()}
-    assert ids == {"RA0", "RR1"}
+    assert ids == {"A0"}
 
 
 
 def test_ra0_star_is_candidate_not_silent_replacement():
     claims = claim_map()
 
-    assert claims["RA0_STAR"].kind is ClaimKind.CANDIDATE_AXIOM
+    assert claims["RA0_STAR"].kind is ClaimKind.DERIVATION_GATE
     assert set(claims["RA0_STAR"].depends_on) == {"DEF_POINT", "DEF_BINARY_DISTINCTION"}
     assert claims["THM_RR1_FROM_RA0_STAR"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_RR1_FROM_RA0_STAR") == frozenset(
@@ -289,7 +289,7 @@ def test_ra0_star_is_candidate_not_silent_replacement():
 def test_ra0_rel_star_is_candidate_with_two_explicit_theorems():
     claims = claim_map()
 
-    assert claims["RA0_REL_STAR"].kind is ClaimKind.CANDIDATE_AXIOM
+    assert claims["RA0_REL_STAR"].kind is ClaimKind.DERIVATION_GATE
     assert set(claims["RA0_REL_STAR"].depends_on) == {
         "DEF_POINT",
         "DEF_RELATIONAL_DISTINCTION",
@@ -361,7 +361,7 @@ def test_singleton_foundation_minimality_splits_lower_bound_and_attainability():
 
 def test_current_canonical_axioms_remain_ra0_and_rr1_until_promotion():
     ids = {claim.id for claim in foundational_axioms()}
-    assert ids == {"RA0", "RR1"}
+    assert ids == {"A0"}
 
 
 
@@ -1576,3 +1576,14 @@ def test_cp1_projective_claims_separate_raw_representation_from_quotient():
     }.isdisjoint(
         {claim.id for claim in foundational_axioms()}
     )
+
+
+def test_unique_foundational_axiom_is_a0() -> None:
+    claims = claim_map()
+    assert claims["A0"].kind is ClaimKind.AXIOM
+    assert claims["A0"].depends_on == ()
+    assert tuple(claim.id for claim in foundational_axioms()) == ("A0",)
+    assert claims["RA0"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["RR1"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["RA0_STAR"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["RA0_REL_STAR"].kind is ClaimKind.DERIVATION_GATE
