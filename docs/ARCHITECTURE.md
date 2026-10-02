@@ -99,7 +99,7 @@ Contains the scalar diagnostic layer built from explicit residual signatures and
 - \`semantic_potential_shift\`;
 - \`relational_attractor_set\`.
 
-The weighting profile is structural input. It is not inferred automatically from a semantic scale label. Automatic derivation of weights from a semantic graph/context remains the explicit gate documented in `docs/SEMANTIC_WEIGHTING_GATE.md`.
+The weighting profile is structural input. It is not inferred automatically from a semantic scale label. `THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL` proves by explicit counterexample that the current structural signature does not select a unique profile. `docs/SEMANTIC_WEIGHTING_GATE.md` is therefore a historical filename for a closed realization boundary, not an open derivation gate.
 
 The core statement is
 
@@ -139,6 +139,17 @@ typing. Historical \(\mathrm{RR1}\), \(\mathrm{RA0}^{*}\) and
 than universal proof obligations. The structural ledger has
 \(N_{\mathrm{DERIVATION\_GATE}}=0\); concrete OFHM physical binding is
 separately typed as one \(\mathrm{EVIDENCE\_GATE}\).
+
+Three older realization-specific documents are likewise closed by exact
+underdetermination rather than by hidden defaults:
+
+- semantic weights are not unique from a scale label/signature;
+- indexed contraction is not unique from total rank plus a flat payload;
+- non-strict associator/braiding data cannot be reconstructed after
+  parenthesization has been flattened.
+
+These are realization-input boundaries, not structural derivation gates. See
+`THM_REALIZATION_BOUNDARIES_CLOSED_BY_UNDERDETERMINATION`.
 
 ## Layer 4 — Generic phase representation
 
