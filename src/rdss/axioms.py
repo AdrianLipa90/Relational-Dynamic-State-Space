@@ -1201,9 +1201,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RR1",
-        ClaimKind.THEOREM,
-        "Conditional recursive-closure theorem: once RA0_REL_STAR holds globally on admitted/generated carriers, the relationally bound binary rule re-applies at each finite path-labelled occurrence and therefore generates recursive binary refinement to arbitrary finite depth.",
-        ("RA0_REL_STAR",),
+        ClaimKind.DERIVATION_GATE,
+        "Recursive relational closure target: at every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction, so the rule re-applies at each finite refinement depth. This weaker gate is not independent of the stronger RA0_REL_STAR target, because THM_RR1_FROM_RA0_REL_STAR already proves that RA0_REL_STAR discharges RR1.",
+        ("A0", "DEF_POINT", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "THM_RR1_REALIZES_FINITE_WORDS",
@@ -1231,15 +1231,15 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RA0_STAR",
-        ClaimKind.THEOREM,
-        "Conditional unbound-generativity theorem: RA0_REL_STAR implies that every admitted carrier hosts a non-degenerate binary distinction after forgetting explicit branch-relation binding.",
-        ("RA0_REL_STAR",),
+        ClaimKind.DERIVATION_GATE,
+        "Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers. This weaker gate is subsumed by RA0_REL_STAR via THM_RA0_STAR_FROM_RA0_REL_STAR and is therefore not an independent unresolved burden.",
+        ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "RA0_REL_STAR",
         ClaimKind.DERIVATION_GATE,
-        "Sole active relational-generativity gate: globalize the already-proved canonical-root property so that every subsequently admitted/generated carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted carriers. Local root closure is THM_CANONICAL_ROOT_LOCAL_RA0_REL_STAR; this gate concerns only universal recursive propagation.",
-        ("THM_CANONICAL_ROOT_LOCAL_RA0_REL_STAR", "DEF_RELATIONAL_DISTINCTION"),
+        "Strongest active relational-generativity gate: every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted carriers. THM_CANONICAL_ROOT_LOCAL_RA0_REL_STAR proves this property at the canonical root; the unresolved burden is its globalization. If closed, it also discharges the weaker RA0_STAR and RR1 gates.",
+        ("DEF_POINT", "DEF_RELATIONAL_DISTINCTION"),
     ),
     Claim(
         "THM_RA0_STAR_FROM_RA0_REL_STAR",
