@@ -115,19 +115,29 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         note="g=q+J with q=|{N,S}|=2; L3 bridge remains separately sourced.",
     ),
     ProvenanceNote(
-        surface="kappa reference normalization",
-        role="REFERENCE+DERIVED",
+        surface="kappa theorem from bipolar exchange",
+        role="BRIDGE+THM+DERIVED",
         claim_ids=(
-            "REF_KAPPA_MIXING_NORMALIZATION",
-            "REF_KAPPA_UNIFORM_INFORMATION_DENSITY",
+            "THM_BINARY_Z2_MAXIMUM_ENTROPY_LN2",
+            "THM_BIPOLAR_UNIQUE_INVARIANT_CHANNEL_WEIGHT",
+            "THM_BIPOLAR_CHANNEL_INFORMATION_UNIFORMIZATION",
+            "THM_BIPOLAR_HALF_TURN_MEASURE_EQUALS_TWELVE",
+            "THM_BIPOLAR_KAPPA_FORCED",
             "DER_KAPPA_NORMALIZED_TURN",
             "DER_KAPPA_RADIAN_CHART",
         ),
-        sources=(CANONICAL_FOUNDATIONAL_CONTRACT,),
+        sources=(
+            CANONICAL_FOUNDATIONAL_CONTRACT,
+            "docs/BIPOLAR_TETRAHEDRAL_EXCHANGE_BINDING.md",
+            "TIR@9783782570a2ccfa1fc42c99b605dad48e02aa78:"
+            "TIR/foundations/TIR_COEFFICIENT_MAGNITUDE_PARENT_EVALUATION_V0_1.md",
+        ),
         note=(
-            "kappa=ln(2)/(24*pi) is derived only inside the declared reference "
-            "normalization including constant information density; total information "
-            "and total turn measure alone do not force a constant density."
+            "Binary Z2 symmetry fixes maximum source entropy ln(2); the transitive "
+            "24-channel bipolar tetrahedral face-flavour orbit forces channel weight "
+            "1/24; the non-trivial Z2 phase is the half-turn pi. Therefore "
+            "kappa=ln(2)/(24*pi). Historical REF_KAPPA_* surfaces are retained only "
+            "for backward-compatible provenance."
         ),
     ),
     ProvenanceNote(
@@ -202,6 +212,24 @@ IMPLEMENTATION_PROVENANCE: dict[str, tuple[str, ...]] = {
     "tetrahedral_binding.tetrahedral_completion_cardinality": (
         "THM_TETRAHEDRAL_COMPLETION_CARDINALITY_3N_PLUS_1",
         "THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY",
+    ),
+    "bipolar_tetrahedral_exchange.bipolar_exchange_counts": (
+        "THM_BIPOLAR_STELLA_CENTRAL_INVERSION_PAIRS_ALL_FACES",
+        "THM_BIPOLAR_THREE_FLAVOUR_FACE_INCIDENCE_24",
+        "THM_BIPOLAR_EXCHANGE_SYMMETRY_IS_TRANSITIVE",
+        "THM_BIPOLAR_UNIQUE_INVARIANT_CHANNEL_WEIGHT",
+    ),
+    "bipolar_tetrahedral_exchange.selector_free_tetrahedral_odd_completion": (
+        "THM_TETRAHEDRAL_ACTIVE_FACE_ORBIT_FORCES_THREE",
+        "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING",
+    ),
+    "bipolar_tetrahedral_exchange.forced_kappa_from_bipolar_exchange": (
+        "THM_BINARY_Z2_MAXIMUM_ENTROPY_LN2",
+        "THM_BIPOLAR_CHANNEL_INFORMATION_UNIFORMIZATION",
+        "THM_BIPOLAR_KAPPA_FORCED",
+    ),
+    "bipolar_tetrahedral_exchange.forced_kappa_certificate": (
+        "THM_BIPOLAR_KAPPA_FORCED",
     ),
     "orbital_fractal_hilbert_moire.countable_word_rank": (
         "DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",
