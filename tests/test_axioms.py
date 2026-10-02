@@ -248,14 +248,14 @@ def test_moire_is_derived_from_orbital_primitive():
 def test_refinement_residual_depends_on_refinement_and_product():
     assert dependency_closure("DEF_REFINEMENT_RESIDUAL") == frozenset(
         {
-            "A0",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "PRIM_MODULE",
+            "PRIM_PRODUCT",
             "PRIM_REFINEMENT_MAP",
             "RR1",
-            "DEF_POINT",
-            "DEF_BINARY_DISTINCTION",
-            "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "PRIM_PRODUCT",
-            "PRIM_MODULE",
+            "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+            "THM_OCCURRENCE_ADDRESS_FREE_MONOID",
+            "THM_REFINEMENT_RIGHT_ACTION",
         }
     )
 
@@ -492,15 +492,15 @@ def test_cross_operation_coherence_dependencies_are_explicit():
     )
     assert dependency_closure("DEF_REFINEMENT_TRANSPORT_COHERENCE") == frozenset(
         {
-            "A0",
-            "PRIM_REFINEMENT_MAP",
-            "RR1",
-            "DEF_POINT",
-            "DEF_BINARY_DISTINCTION",
-            "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "PRIM_TRANSPORT",
             "DEF_BINARY_REL",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
             "PRIM_MODULE",
+            "PRIM_REFINEMENT_MAP",
+            "PRIM_TRANSPORT",
+            "RR1",
+            "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+            "THM_OCCURRENCE_ADDRESS_FREE_MONOID",
+            "THM_REFINEMENT_RIGHT_ACTION",
         }
     )
 
@@ -534,26 +534,26 @@ def test_remaining_first_order_naturality_dependencies():
     )
     assert dependency_closure("DEF_REFINEMENT_SCALE_COHERENCE") == frozenset(
         {
-            "A0",
-            "PRIM_REFINEMENT_MAP",
-            "RR1",
-            "DEF_POINT",
-            "DEF_BINARY_DISTINCTION",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "PRIM_SCALE",
             "PRIM_MODULE",
+            "PRIM_REFINEMENT_MAP",
+            "PRIM_SCALE",
+            "RR1",
+            "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+            "THM_OCCURRENCE_ADDRESS_FREE_MONOID",
+            "THM_REFINEMENT_RIGHT_ACTION",
         }
     )
     assert dependency_closure("DEF_REFINEMENT_ORBIT_COHERENCE") == frozenset(
         {
-            "A0",
+            "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "PRIM_MODULE",
+            "PRIM_ORBIT",
             "PRIM_REFINEMENT_MAP",
             "RR1",
-            "DEF_POINT",
-            "DEF_BINARY_DISTINCTION",
-            "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "PRIM_ORBIT",
-            "PRIM_MODULE",
+            "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+            "THM_OCCURRENCE_ADDRESS_FREE_MONOID",
+            "THM_REFINEMENT_RIGHT_ACTION",
         }
     )
 
@@ -570,13 +570,15 @@ def test_cp1_recursive_realization_is_reference_layer():
     assert claims["REF_CP1_REFINEMENT"].kind is ClaimKind.REFERENCE_REALIZATION
     assert dependency_closure("REF_CP1_REFINEMENT") == frozenset(
         {
-            "A0",
-            "REF_CP1",
-            "RR1",
-            "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
             "DEF_CP1_PROJECTIVE_EQUIVALENCE",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+            "REF_CP1",
+            "RR1",
+            "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+            "THM_OCCURRENCE_ADDRESS_FREE_MONOID",
+            "THM_REFINEMENT_RIGHT_ACTION",
         }
     )
 
@@ -719,23 +721,27 @@ def test_binary_occurrence_growth_and_countability_theorems():
     assert claims["THM_BINARY_OCCURRENCE_COUNT"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_BINARY_OCCURRENCE_COUNT") == frozenset(
         {
-            "A0",
-            "RR1",
-            "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+            "RR1",
+            "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+            "THM_OCCURRENCE_ADDRESS_FREE_MONOID",
+            "THM_REFINEMENT_RIGHT_ACTION",
         }
     )
 
     assert claims["THM_FINITE_WORD_OCCURRENCE_COUNTABILITY"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_FINITE_WORD_OCCURRENCE_COUNTABILITY") == frozenset(
         {
-            "A0",
-            "THM_BINARY_OCCURRENCE_COUNT",
-            "RR1",
-            "DEF_POINT",
             "DEF_BINARY_DISTINCTION",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_POINT",
+            "RR1",
+            "THM_BINARY_OCCURRENCE_COUNT",
+            "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+            "THM_OCCURRENCE_ADDRESS_FREE_MONOID",
+            "THM_REFINEMENT_RIGHT_ACTION",
         }
     )
 
@@ -764,12 +770,12 @@ def test_ideal_occurrence_boundary_claims():
     assert claims["THM_RR1_REALIZES_BOUNDARY_PREFIX_CHAINS"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_RR1_REALIZES_BOUNDARY_PREFIX_CHAINS") == frozenset(
         {
-            "A0",
-            "RR1",
-            "DEF_BINARY_DISTINCTION",
-            "DEF_POINT",
-            "DEF_OCCURRENCE_BOUNDARY",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
+            "DEF_OCCURRENCE_BOUNDARY",
+            "RR1",
+            "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+            "THM_OCCURRENCE_ADDRESS_FREE_MONOID",
+            "THM_REFINEMENT_RIGHT_ACTION",
         }
     )
 
@@ -865,11 +871,11 @@ def test_occurrence_address_free_monoid_and_refinement_action_dependencies():
     assert claims["THM_RR1_REALIZES_FINITE_WORDS"].kind is ClaimKind.THEOREM
     assert dependency_closure("THM_RR1_REALIZES_FINITE_WORDS") == frozenset(
         {
-            "A0",
-            "RR1",
-            "DEF_BINARY_DISTINCTION",
             "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "DEF_POINT",
+            "RR1",
+            "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+            "THM_OCCURRENCE_ADDRESS_FREE_MONOID",
+            "THM_REFINEMENT_RIGHT_ACTION",
         }
     )
 
