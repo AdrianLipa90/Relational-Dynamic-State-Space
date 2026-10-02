@@ -71,6 +71,21 @@ reported as conditional on that statement. No rhetorical phrase, geometric
 picture, numerical coincidence or successful software test promotes an OPEN
 edge to THM. This is the proof firewall used throughout the monograph.
 
+\section*{Metatheoretic environment}
+
+RTOFA is stated inside ordinary classical mathematical metatheory. Sets,
+functions, finite and countable cardinality, the natural/integer/real number
+systems, and standard results of linear algebra, topology and representation
+theory are available at the metalevel when explicitly invoked. They are
+proof infrastructure, not additional object-level physical laws of RTOFA.
+
+The monograph therefore makes no claim that the First Law of Existence
+\(A_0\) derives the surrounding foundations of mathematics. Whenever a
+downstream construction chooses a scalar field, topology, metric, measure,
+probability law, representation theorem or regularity class, that choice must
+appear as a DEF, BRIDGE, REFERENCE REALIZATION or OPEN condition before it is
+used.
+
 \section{First Law of Existence: canonical causal spine}
 
 The unique foundational law of RTOFA is called exactly the \emph{First Law
@@ -3320,7 +3335,7 @@ With one normalized half-turn per channel,
 \[
 \Delta q_\star=\frac12,
 \]
-the total turn measure is
+the total turn measure in this reference normalization is
 \[
 \boxed{
 Q_{\rm mix}
@@ -3330,7 +3345,24 @@ Q_{\rm mix}
 12.
 }
 \]
-Hence
+
+A constant coefficient does \emph{not} follow from the total information and
+total turn measure alone. The canonical \(\kappa\) chart therefore declares
+the additional reference condition
+\[
+\boxed{
+\frac{d\mathcal I}{dq}=\kappa_q=\text{constant},
+\qquad
+\int_{0}^{Q_{\rm mix}} d\mathcal I=\ln2.
+}
+\tag{REF-KAPPA-UNIFORMITY}
+\]
+This is the explicit uniform-information-density reference realization
+\texttt{REF\_KAPPA\_UNIFORM\_INFORMATION\_DENSITY}; it is not a theorem of
+\(A_0\). Without this condition only an integral constraint on a possibly
+non-uniform density is fixed.
+
+Under REF-KAPPA-UNIFORMITY,
 \[
 \boxed{
 \kappa_q
@@ -3338,7 +3370,7 @@ Hence
 \frac{\ln2}{12}.
 }
 \]
-The normalized-turn information one-form is
+The normalized-turn information one-form is then
 \[
 \boxed{
 d\mathcal I
@@ -3364,7 +3396,7 @@ d\mathcal I
 \frac{\ln2}{24\pi}.
 }
 \]
-Thus the canonical radian representation is
+Thus the canonical radian reference representation is
 \[
 \boxed{
 \kappa
@@ -3409,14 +3441,18 @@ Finite branch histories therefore live in
 The existing binary RDSS occurrence words embed by preserving every
 \(-1/+1\) branch symbol.
 
-An explicit enumeration
+Choose an explicit enumeration
 \[
-\rho:\mathbb Z^{<\omega}\longleftrightarrow\mathbb N
+\rho:\mathbb Z^{<\omega}\longleftrightarrow\mathbb N.
 \]
-provides the Hilbert--Hotel successor
+The executable reference uses the declared zigzag/Cantor word ranking. This is
+one enumeration coordinate, not a unique canonical ordering of
+\(\mathbb Z^{<\omega}\).
+
+Relative to the chosen \(\rho\), define the Hilbert--Hotel successor
 \[
 \boxed{
-S_{\mathrm{HH}}(a)
+S_{\mathrm{HH}}^{(\rho)}(a)
 =
 \rho^{-1}\!\left(\rho(a)+1\right).
 }
@@ -3425,6 +3461,15 @@ This stabilization shift is distinct from local refinement
 \[
 R_k(a)=a\frown k.
 \]
+No commutation law
+\(S_{\mathrm{HH}}^{(\rho)}R_k=R_kS_{\mathrm{HH}}^{(\rho)}\)
+is assumed; any such relation must be checked for the declared enumeration
+and branch.
+
+The finite-address carrier \(\mathbb Z^{<\omega}\) is the symbolic
+skeleton. The ideal infinite-address space is \(\mathbb Z^{\mathbb N}\);
+no claim that every infinite address converges to a geometric point is made.
+
 Together, Euler symbolic branching and Hilbert--Hotel countability define the
 symbolic fractal-boundary algebra
 \[
@@ -3441,8 +3486,9 @@ S_{\mathrm{HH}}
 The term symbolic boundary does not assert convergence of every infinite
 address, a Hausdorff dimension, or a unique geometric limit measure.
 
-The GREMLIN/BEES memory source supplies the dimension-independent local
-relative-phase coherence
+The GREMLIN/BEES memory source supplies underlying finite phase coordinates
+\(\theta_r\) and, as a separate diagnostic, the dimension-independent local
+coherence magnitude
 \[
 \boxed{
 C(X,Y)
@@ -3454,7 +3500,11 @@ e^{i(\theta_r^X-\theta_r^Y)}
 \right|.
 }
 \]
-For scalar orbital phases the relative Moir\'e element is
+The final absolute value is lossy. In general \(C(X,Y)\) does not determine
+the signed/complex relative phase and is never inverted to recover it.
+
+For scalar orbital phases, the relative Moir\'e element is constructed
+directly from the sourced phase coordinates:
 \[
 M_{ij}=U_iU_j^{-1}=e^{i(\theta_i-\theta_j)}.
 \]
@@ -3538,6 +3588,23 @@ The IDT source supplies the second-order discrete form
 }
 \]
 
+The executable domain is explicit:
+\[
+\Delta t>0,
+\qquad
+K\ge0,
+\qquad
+\eta\ge0,
+\qquad
+w_{ij}\ge0,
+\qquad
+\sum_j w_{ij}>0
+\]
+whenever a non-empty neighbor set is normalized. All supplied numerical data
+must be finite. If \(\partial_{\theta_i}V\) is interpreted as an actual
+derivative of a symbolic potential, differentiability of \(V\) on the
+relevant domain is an additional mathematical precondition.
+
 The resulting source-grounded algebra is therefore
 \[
 \boxed{
@@ -3568,13 +3635,15 @@ Its dependency order is fixed:
 \]
 \[
 \boxed{
-\text{BEES}
+\text{BEES phase data}
 \Rightarrow
 M
 \Rightarrow
 T,
 }
 \]
+while the scalar coherence magnitude \(C\) remains a lossy diagnostic rather
+than an upstream inverse representation of \(M\).
 and
 \[
 \boxed{
