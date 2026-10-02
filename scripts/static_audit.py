@@ -103,6 +103,7 @@ def package_exports() -> set[str]:
 def audit_layer_ownership() -> dict[str, int]:
     module_paths = {
         "algebraic_geometry_cell": SRC / "rdss" / "algebraic_geometry_cell.py",
+        "alternating_phase_dynamics": SRC / "rdss" / "alternating_phase_dynamics.py",
         "core": SRC / "rdss" / "algebra.py",
         "canonical": SRC / "rdss" / "canonical.py",
         "certificate_scan": SRC / "rdss" / "certificate_scan.py",
@@ -175,6 +176,7 @@ def audit_claim_graph() -> dict[str, int]:
 
 def audit_test_imports() -> None:
     module_defs = {
+        "rdss.alternating_phase_dynamics": public_defs(SRC / "rdss" / "alternating_phase_dynamics.py"),
         "rdss.algebraic_geometry_cell": public_defs(SRC / "rdss" / "algebraic_geometry_cell.py") | {
             "CUBE_FACE_COUNT",
             "CUBE_VERTEX_COUNT",
