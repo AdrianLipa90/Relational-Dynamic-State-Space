@@ -2055,7 +2055,8 @@ def test_collatz_structural_dynamics_is_closed_and_physical_binding_is_separate(
     physical_closure = dependency_closure(
         "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"
     )
-    assert "GATE_OFHM_PHYSICAL_BINDING" in physical_closure
+    assert "GATE_OFHM_PHYSICAL_BINDING" not in physical_closure
+    assert "GATE_OFHM_PHYSICAL_BINDING" in physical.statement
 
     psl2 = dependency_closure("REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT")
     assert "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE" in psl2
@@ -2379,7 +2380,8 @@ def test_relational_cardinality_semantics_closes_collatz_operations_not_physical
     assert gate.kind is ClaimKind.THEOREM
     gate_closure = dependency_closure("GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS")
     assert "THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED" in gate_closure
-    assert "GATE_OFHM_PHYSICAL_BINDING" in gate_closure
+    assert "GATE_OFHM_PHYSICAL_BINDING" not in gate_closure
+    assert "GATE_OFHM_PHYSICAL_BINDING" in gate.statement
 
 def test_collatz_dyadic_phase_is_downstream_of_collatz_and_u1_embedding_is_separate() -> None:
     claims = claim_map()
