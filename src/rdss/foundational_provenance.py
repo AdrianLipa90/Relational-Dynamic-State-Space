@@ -38,6 +38,33 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         ),
     ),
     ProvenanceNote(
+        surface="canonical relational-existence foundation closure",
+        role="BRIDGE+THM",
+        claim_ids=(
+            "BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",
+            "THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS",
+            "THM_CANONICAL_NONTRIVIAL_EXISTENCE_FORCES_DISTINCTION",
+            "RA0",
+            "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+            "THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED",
+        ),
+        sources=(
+            CANONICAL_FOUNDATIONAL_CONTRACT,
+            "docs/FOUNDATIONAL_CLOSURE_FRONTIER.md",
+            "TIR@9783782570a2ccfa1fc42c99b605dad48e02aa78:"
+            "TIR/foundations/TIR_CANONICAL_DERIVATION_SPINE_V0_1.md",
+            "TIR@9783782570a2ccfa1fc42c99b605dad48e02aa78:"
+            "TIR/provenance/TIR_FOUNDATION_PROOF_SOURCE_REGISTRY_V0_1.md",
+        ),
+        note=(
+            "TIR relational existence typing supplies Exist(x)->exists R_x and is "
+            "imported explicitly rather than attributed to A0 alone. Historical "
+            "First-Hamlet/RA0*/RR1/Collatz structural gates are discharged or "
+            "retyped as formation/provenance surfaces. Exactly the continuum-fractal "
+            "limit and physical-binding derivation gates remain open."
+        ),
+    ),
+    ProvenanceNote(
         surface="carrier/occurrence separation",
         role="DEF+REFERENCE",
         claim_ids=(
