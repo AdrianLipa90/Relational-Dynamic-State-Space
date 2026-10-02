@@ -11,6 +11,8 @@ from rdss.tetrahedral_binding import (
     operator_simplex_squared_distance,
     operator_simplex_volume,
     operator_stella_gram_isometry_holds,
+    sign_vertex_product,
+    stella_klein_four_certificate,
     tetrahedral_binding_certificate,
     tetrahedral_completion_cardinality,
 )
@@ -75,3 +77,20 @@ def test_tetrahedral_completion_is_three_n_plus_one_but_not_physical_binding() -
     assert receipt["regular_tetrahedron"] is True
     assert receipt["stella_isometry"] is True
     assert receipt["physical_dynamics_binding"] is False
+
+
+def test_positive_parity_tetrahedron_is_klein_four_sign_group() -> None:
+    receipt = stella_klein_four_certificate()
+    assert receipt["group_order"] == 4
+    assert receipt["identity_count"] == 1
+    assert receipt["nonidentity_count"] == 3
+    assert receipt["nonidentity_order"] == 2
+    assert receipt["closed"] is True
+    assert receipt["commutative"] is True
+    assert receipt["klein_four"] is True
+    assert receipt["operator_multiplication_identified"] is False
+
+    identity = (1, 1, 1)
+    for vertex in ACTIVE_SIGN_TETRAHEDRON.values():
+        assert sign_vertex_product(identity, vertex) == vertex
+        assert sign_vertex_product(vertex, identity) == vertex
