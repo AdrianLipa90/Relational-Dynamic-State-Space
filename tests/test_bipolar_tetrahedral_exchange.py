@@ -3,13 +3,20 @@ from rdss.bipolar_tetrahedral_exchange import (
     FACE_COUNT,
     FLAVOR_COUNT,
     POLARITY_COUNT,
+    ACTIVE_DUAL_FACES,
     bipolar_exchange_counts,
     directed_face_flavor_channels,
     exchange_symmetry_orbit,
     face_plane_constants,
+    invariant_active_face_subsets,
+    minimal_identity_face_closure_cardinality,
+    polarity_association_quotient_cardinality,
     half_turn_normalized_measure,
     polarity_exchange,
     polarity_face_pairing,
+    selector_free_active_exchange_cardinality,
+    selector_free_active_exchange_faces,
+    selector_free_tetrahedral_odd_completion,
     undirected_face_flavor_pairs,
     unique_invariant_channel_weight,
 )
@@ -56,17 +63,36 @@ def test_half_turn_measure_matches_existing_kappa_reference_count() -> None:
     assert half_turn_normalized_measure() == 12
 
 
+def test_selector_free_active_exchange_forces_three_and_identity_closure_forces_plus_one() -> None:
+    assert invariant_active_face_subsets() == (
+        frozenset(),
+        frozenset(ACTIVE_DUAL_FACES),
+    )
+    assert selector_free_active_exchange_faces() == frozenset(("S", "P", "J"))
+
+    for n in range(0, 33):
+        assert selector_free_active_exchange_cardinality(n) == 3 * n
+        assert minimal_identity_face_closure_cardinality(3 * n) == 3 * n + 1
+        assert selector_free_tetrahedral_odd_completion(n) == 3 * n + 1
+
+    for n in range(0, 34, 2):
+        assert polarity_association_quotient_cardinality(n) == n // 2
+
+
 def test_bipolar_exchange_receipt() -> None:
     receipt = bipolar_exchange_counts()
-    assert receipt == {
-        "tetrahedron_faces": 4,
-        "tetrahedron_edges": 6,
-        "flavors": 3,
-        "polarities": 2,
-        "face_pairs": 4,
-        "undirected_face_flavor_pairs": 12,
-        "directed_face_flavor_incidences": 24,
-        "symmetry_orbit_size": 24,
-        "symmetry_transitive": True,
-        "invariant_channel_weight": (1, 24),
-    }
+    assert receipt["tetrahedron_faces"] == 4
+    assert receipt["tetrahedron_edges"] == 6
+    assert receipt["flavors"] == 3
+    assert receipt["polarities"] == 2
+    assert receipt["face_pairs"] == 4
+    assert receipt["undirected_face_flavor_pairs"] == 12
+    assert receipt["directed_face_flavor_incidences"] == 24
+    assert receipt["symmetry_orbit_size"] == 24
+    assert receipt["symmetry_transitive"] is True
+    assert receipt["invariant_channel_weight"] == (1, 24)
+    assert receipt["invariant_active_face_subsets"] == (
+        frozenset(),
+        frozenset(ACTIVE_DUAL_FACES),
+    )
+    assert receipt["selector_free_active_faces"] == frozenset(ACTIVE_DUAL_FACES)
