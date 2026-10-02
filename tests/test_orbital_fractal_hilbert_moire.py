@@ -9,17 +9,23 @@ from rdss.orbital_fractal_hilbert_moire import (
     OrbitalFractalHilbertMoireState,
     bees_overdamped_phase_step,
     binary_occurrence_to_countable,
+    binary_prefix_hausdorff_dimension,
+    common_prefix_length,
+    cylinder_product_measure,
     countable_word_rank,
     countable_word_unrank,
     euler_branch_preimage,
     euler_inverse_branch,
     euler_phase,
+    geometric_symbol_probability,
     hilbert_norm,
     idt_phase_dynamics_step,
     moire_cocycle_error,
     moire_transport,
+    ofhm_geometric_limit_no_go_certificate,
     phase_coherence_overlap,
     phase_coupling_current,
+    prefix_ultrametric,
     relative_moire_phase,
 )
 
@@ -190,3 +196,70 @@ def test_ofhm_dependency_graph_matches_source_derivation_order():
         "bees_local_coupling",
         "idt_phase_update",
     )
+
+
+def test_prefix_ultrametric_is_ultrametric_on_reference_words():
+    words = (
+        (),
+        (0,),
+        (0, 1),
+        (0, 1, -2),
+        (0, 2),
+        (3,),
+        (-1, 4),
+    )
+    for a in words:
+        for b in words:
+            assert prefix_ultrametric(a, b) >= 0.0
+            assert prefix_ultrametric(a, b) == pytest.approx(
+                prefix_ultrametric(b, a)
+            )
+            if a == b:
+                assert prefix_ultrametric(a, b) == 0.0
+            for c in words:
+                assert prefix_ultrametric(a, c) <= max(
+                    prefix_ultrametric(a, b),
+                    prefix_ultrametric(b, c),
+                ) + 1e-15
+
+
+def test_common_prefix_length_and_metric_scale_are_explicit():
+    assert common_prefix_length((1, 2, 3), (1, 2, 9)) == 2
+    assert prefix_ultrametric((1, 2, 3), (1, 2, 9), contraction=0.5) == pytest.approx(0.25)
+    assert prefix_ultrametric((1, 2, 3), (1, 2, 9), contraction=0.25) == pytest.approx(0.0625)
+
+
+def test_distinct_full_support_product_measures_exist_on_same_cylinder_space():
+    assert geometric_symbol_probability(0, base=2.0) == pytest.approx(1.0 / 3.0)
+    assert geometric_symbol_probability(0, base=3.0) == pytest.approx(1.0 / 2.0)
+
+    # Closed-form distribution has full support and normalizes over Z.
+    for base in (2.0, 3.0):
+        partial = sum(
+            geometric_symbol_probability(k, base=base)
+            for k in range(-80, 81)
+        )
+        assert partial == pytest.approx(1.0, abs=1e-12)
+        assert cylinder_product_measure((0, 1, -1), base=base) > 0.0
+
+    assert cylinder_product_measure((0,), base=2.0) != pytest.approx(
+        cylinder_product_measure((0,), base=3.0)
+    )
+
+
+def test_embedded_binary_boundary_dimension_depends_on_prefix_metric_scale():
+    assert binary_prefix_hausdorff_dimension(contraction=0.5) == pytest.approx(1.0)
+    assert binary_prefix_hausdorff_dimension(contraction=0.25) == pytest.approx(0.5)
+
+
+def test_ofhm_geometric_limit_no_go_certificate():
+    receipt = ofhm_geometric_limit_no_go_certificate()
+    assert receipt["symbolic_boundary"] == "Z^N (Baire space)"
+    assert receipt["product_topology_compact"] is False
+    assert receipt["metric_selected_by_finite_ofhm"] is False
+    assert receipt["geometric_embedding_selected_by_finite_ofhm"] is False
+    assert receipt["distinct_full_support_product_measures"] is True
+    assert receipt["prefix_metric_dimension_not_unique"] is True
+    assert receipt["unique_geometric_limit_forced"] is False
+    assert receipt["unique_continuum_measure_forced"] is False
+    assert receipt["unique_hausdorff_dimension_forced"] is False
