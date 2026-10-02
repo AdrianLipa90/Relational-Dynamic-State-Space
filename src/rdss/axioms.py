@@ -29,9 +29,9 @@ class Claim:
 # They prevent descriptive prose from silently renaming or retyping the theory.
 CANONICAL_PROVENANCE: dict[str, str] = {
     "A0": (
-        "Canonical name: First Law of Existence. Legacy claim id: A0. "
-        "Do not rename this law from descriptive prose; phrases such as "
-        "'law of reality' describe its intended status and are not aliases."
+        "Canonical name: Law of Reality / Prawo Rzeczywistosci. Legacy executable "
+        "claim id: A0. The former phrase 'First Law of Existence' is retained only "
+        "as a backward-compatibility alias in code and must not replace the canonical name."
     ),
     "THM_FIRST_HAMLET_DISPERSION_STRUCTURE": (
         "First Hamlet is the persistence dichotomy DISPERSION/STRUCTURE. "
