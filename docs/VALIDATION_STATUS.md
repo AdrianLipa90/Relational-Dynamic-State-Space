@@ -1252,3 +1252,96 @@ These are explicit pending validations. They must not be replaced by GitHub
 Actions. The next accepted full validation requires a complete local checkout
 or local private-repository credential available to the NOEMA/PhaseNav
 toolchain.
+
+
+## Alternating half-time pendulum / Moiré-Kuramoto closure — 2026-10-02
+
+Branch: `feat/alternating-halfstep-pendulum-moire-kuramoto-v0.1`.
+
+Parent main:
+
+- RDSS `e1d2dda2ffbcbb38392869f94012cea03fffd751`.
+
+Frozen TIR parent:
+
+- `9783782570a2ccfa1fc42c99b605dad48e02aa78`;
+- `TIR_PRESPACETIME_STELLA_HALF_SUCCESSOR_V0_1.md`;
+- `TIR_STELLA_ALTERNATING_ROTATION_INFERENCE_V0_1.md`;
+- `TIR_RELATIONAL_PHASE_LAGRANGIAN_CORE_V0_1.md`;
+- `TIR_WHITE_THREAD_SPIN_LIFT_LYAPUNOV_V0_1.md`;
+- `TIR_KAPPA_FLAVOUR_MIXING_NORMALIZATION_V0_1.md`.
+
+Added:
+
+- `src/rdss/alternating_phase_dynamics.py`;
+- `tests/test_alternating_phase_dynamics.py`;
+- `docs/ALTERNATING_HALF_TIME_PENDULUM_MOIRE_KURAMOTO.md`;
+- theorem-level pendulum, frame-inertia and Moiré-Kuramoto claims;
+- monograph integration and pinned bibliography entries;
+- public API and implementation provenance.
+
+Exact structural closures encoded:
+
+[
+H^2=S,
+]
+
+[
+V_{leftrightarrow}
+=
+pikappa(1-cosDelta)
+=
+rac{ln2}{24}(1-cosDelta),
+]
+
+[
+F_++F_-=0,
+]
+
+[
+I_phiddotDelta+etadotDelta+2pikappasinDelta=0,
+]
+
+[
+D_2x_n=x_{n+1}-2x_n+x_{n-1},
+]
+
+and
+
+[
+eta_idot	heta_i
+=
+-partial_{	heta_i}V_{m M},
+]
+
+which is the gauge-twisted Kuramoto reduction of the same Moiré potential.
+
+Static connector audit on the branch after integration:
+
+- claim IDs: **380**;
+- duplicate claim IDs: **0**;
+- missing claim dependencies: **0**;
+- claim DAG cycles: **0**;
+- required new public exports missing: **0**;
+- pinned TIR/RDSS REF hashes missing from the implementation: **0**;
+- required LaTeX closure sections/citations missing: **0**.
+
+Mathematical spot checks executed in-session:
+
+- (pikappa=ln2/24): **PASS**;
+- one pair half-turn potential (V(pi)=ln2/12): **PASS**;
+- twelve pair half-turn budgets sum to (ln2): **PASS**;
+- opposite pair gradients sum to zero: **PASS**;
+- relative pendulum residual on constructed solution: **PASS**.
+
+Validation boundary:
+
+- full repository pytest on this exact branch head: **NOT RUN**;
+- local `scripts/static_audit.py` on a complete checkout: **NOT RUN**;
+- two-pass full monograph compilation on this exact branch head: **NOT RUN**;
+- GitHub Actions were **not** used and remain disallowed by the private-repository policy.
+
+The historical claim id `GATE_MOIRE_DYNAMICAL_LAW` is retained for
+provenance but is promoted to theorem-level closed status for the structural
+relational phase dynamics. Physical clock/substrate/continuum bindings remain
+separate.
