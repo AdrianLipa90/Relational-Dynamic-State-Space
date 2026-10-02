@@ -3,6 +3,7 @@
 \usepackage[a4paper,margin=2.5cm]{geometry}
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{microtype}
+\usepackage{xurl}
 \usepackage[hidelinks]{hyperref}
 
 \title{Relational Tensor--Scalar Orbital--Fractal Algebra\\
@@ -14,6 +15,8 @@
 \newcommand{\CP}{\mathbb{CP}^{1}}
 \newcommand{\FS}{\mathrm{FS}}
 \newcommand{\Zaxis}{\mathcal Z_{0}}
+\newcommand{\claimid}[1]{\nolinkurl{#1}}
+\newcommand{\codeid}[1]{\nolinkurl{#1}}
 
 \begin{document}
 \maketitle
@@ -211,7 +214,7 @@ For a candidate differentiation \(d\), define the Boolean predicate
 \]
 
 \paragraph{Theorem H.1 (First Hamlet partition schema; claim
-\texttt{THM\_FIRST\_HAMLET\_DISPERSION\_STRUCTURE}).}
+\claimid{THM_FIRST_HAMLET_DISPERSION_STRUCTURE}).}
 The predicate has exactly the Boolean codomain
 \[
 \boxed{H_0=\{\mathsf{Disp},\mathsf{Struct}\}.}
@@ -230,7 +233,7 @@ separately as
 \boxed{\mathrm{GATE\_FIRST\_HAMLET\_NONDEGENERACY\_FROM\_PE\_I0}.}
 \]
 When the explicitly declared canonical non-degenerate realization is used,
-the two-class Hartley value is
+the two-class Hartley value is \cite{Hartley1928}
 \[
 \boxed{H_{\rm Hartley}(H_0)=\ln2.}
 \]
@@ -246,7 +249,8 @@ leaves no persistent distinction.
 \subsection{Structure branch and the minimal persistent relation}
 
 The source-clean TIR minimum-structure result enters as the explicit BRIDGE
-(claim \texttt{BRIDGE\_TIR\_MIN\_NONTRIVIAL\_STRUCTURE\_IS\_RELATION})
+(claim \claimid{BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION})
+\cite{LipaTIR2026}
 \[
 \boxed{
 \mathrm{TIR}_{\min}:\quad
@@ -274,7 +278,7 @@ J_R^2=I.
 \]
 
 \paragraph{Theorem R.1 (durable binary role orbit; claim
-\texttt{THM\_RELATION\_ORIENTATION\_TWO\_ROLE\_ORBIT}).}
+\claimid{THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT}).}
 If the relation is not fixed by role reversal, then
 \[
 \boxed{
@@ -338,7 +342,7 @@ g=q+J=2+J.
 }
 \]
 The corresponding executable theorem is
-\texttt{THM\_MINIMAL\_RELATION\_ROLE\_GAUSSIAN\_GENERATOR}.
+\claimid{THM_MINIMAL_RELATION_ROLE_GAUSSIAN_GENERATOR}.
 
 The exact power ladder is
 \[
@@ -389,7 +393,8 @@ L_5=N(g)=5.
 \]
 
 Using the independently established TIR tetrahedral root-extension rule
-(claim \texttt{BRIDGE\_TIR\_ROOT\_EXTENSION\_L3\_FROM\_GAUSSIAN\_L45})
+(claim \claimid{BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45})
+\cite{LipaTIRLConstants2026}
 \[
 L_3=L_4+L_5,
 \]
@@ -411,7 +416,8 @@ does not define \(\kappa\); the TIR normalization already has separate
 provenance for \(24\) from the flavour-mixing incidence count and from
 \(|S_4|=24\).
 
-The Cardano--Bombelli cubic is recovered without an additional fit:
+The Cardano--Bombelli cubic is recovered without an additional fit
+\cite{Cardano1545,Bombelli1572}:
 \[
 g^3=2+11J,
 \qquad
@@ -611,7 +617,7 @@ cardinality models, but the canonical construction now names both sectors
 inside the same relation-role operator algebra.
 
 Hence parity selects the branch (executable closure:
-\texttt{THM\_RELATION\_ALGEBRA\_DETERMINISTICALLY\_GENERATES\_COLLATZ\_MAP}).
+\claimid{THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP}).
 An even carrier admits complete dyad association immediately. An odd carrier does not; three-fold dissociation
 preserves oddness and singleton repair makes the result even. Therefore
 \[
@@ -697,7 +703,7 @@ p_{\mathsf{Struct}}
 =
 \frac12.
 \]
-Shannon entropy therefore gives
+Shannon entropy therefore gives \cite{Shannon1948}
 \[
 H_{\rm Shannon}
 =
@@ -785,7 +791,7 @@ Therefore
 \boxed{J^2=-I.}
 \]
 This is the executable theorem
-\texttt{THM\_HAMLET\_IMAGINARY\_GENERATOR}.
+\claimid{THM_HAMLET_IMAGINARY_GENERATOR}.
 
 This proves the complex-structure relation without assuming an upstream
 imaginary scalar. Reversing the chosen orientation of the ordered role basis
@@ -904,6 +910,9 @@ Relational \(\zeta=0\) is the centre of the ambient Bloch-ball chart, not
 absolute nothingness and not a pure CP1 state.
 
 \subsection{Hamlet SU(2), half representation and Berry closure}
+
+The geometric-phase comparison below uses the standard Berry holonomy
+framework \cite{Berry1984}.
 
 The same Hamlet operators define the Pauli triple
 \[
@@ -2007,8 +2016,8 @@ Thus
 \]
 
 The executable kernel exposes this projection explicitly through
-\texttt{forget\_relation\_occurrence} and
-\texttt{forget\_occurrence\_path}.
+\codeid{forget_relation_occurrence} and
+\codeid{forget_occurrence_path}.
 
 \subsection{Value-level closure}
 
@@ -2118,8 +2127,8 @@ Its residual is
 
 The executable kernel represents these two levels separately:
 \texttt{RelationPath}/\texttt{TransportPath} at value level, and
-\texttt{RelationOccurrence}/\texttt{OccurrenceRelationPath}/
-\texttt{OccurrenceTransportPath} at occurrence level.
+\codeid{RelationOccurrence}/\codeid{OccurrenceRelationPath}/
+\codeid{OccurrenceTransportPath} at occurrence level.
 
 \subsection{Transport composition defect}
 
@@ -2222,8 +2231,8 @@ one has the exact equivalence
 \tag{ZA-BRIDGE}
 \]
 Hence the compactified Zero Axis has a natural unit-circle representation.
-This identity is imported from the companion Zero Axis model as a bridge and
-is not an axiom of the general relational algebra.
+This identity is imported from the companion Zero Axis model as a bridge
+\cite{LipaSOH2026} and is not an axiom of the general relational algebra.
 
 If an application has already supplied a verified finite phase
 \(u_{\gamma}\in U(1)\), the optional inverse projective lift is
@@ -2309,10 +2318,11 @@ refinement descendant reachable from a primitive relation endpoint can itself
 refine. A merely one-level refinement is not counted as RR1. Thus no
 dependency is silently promoted to a theorem.
 
-\section{One-axiom closure candidate}
+\section{Historical closure-compression candidate}
 
-The current canonical object-level foundation uses two explicit axioms under
-the prior model-formation rule META0:
+The historical pre-\(A_0\) compression programme treated RA0 and RR1 as
+two object-level derivation gates under the prior model-formation rule META0.
+In the current canonical stratification they are not foundational axioms:
 \[
 \boxed{
 \mathrm{META0}
@@ -2728,7 +2738,7 @@ Hence the total number of occurrences through depth \(N\) is
 \]
 
 The executable kernel exposes the same formula as
-\texttt{binary\_occurrence\_count\_through\_depth}.
+\codeid{binary_occurrence_count_through_depth}.
 
 The full address set over all finite depths is
 \[
@@ -2805,8 +2815,8 @@ At exact prefix depth \(n\), the boundary is partitioned into
 }
 \]
 such cylinders. The executable helpers
-\texttt{binary\_words\_at\_depth} and
-\texttt{binary\_boundary\_cylinder\_count} audit this finite prefix basis.
+\codeid{binary_words_at_depth} and
+\codeid{binary_boundary_cylinder_count} audit this finite prefix basis.
 
 The map
 \[
@@ -2911,8 +2921,8 @@ and
 
 The executable kernel represents this canonical address algebra through
 \texttt{OccurrenceAddress}. In particular,
-\texttt{OccurrenceAddress.advance} realizes concatenation and
-\texttt{OccurrenceAddress.refine} realizes the two one-generator extensions.
+\codeid{OccurrenceAddress.advance} realizes concatenation and
+\codeid{OccurrenceAddress.refine} realizes the two one-generator extensions.
 
 The word-length map
 \[
@@ -3027,9 +3037,9 @@ and the triangle inequality holds. Thus
 \]
 
 The reference kernel implements the order, meet, and metric through
-\texttt{OccurrenceAddress.is\_prefix\_of},
-\texttt{OccurrenceAddress.meet}, and
-\texttt{OccurrenceAddress.tree\_distance}.
+\codeid{OccurrenceAddress.is_prefix_of},
+\codeid{OccurrenceAddress.meet}, and
+\codeid{OccurrenceAddress.tree_distance}.
 
 This is a combinatorial metric forced by the occurrence-address structure.
 It is not identified with a physical distance, the Fubini--Study metric, a
@@ -3047,10 +3057,8 @@ Thus
 }
 \]
 
-This is a genuine strengthening: it adds distinction-to-relation binding.
-It is executable and theorem-tested but is not promoted as canonical.
-
-This is a genuine strengthening of RA0, not a proof from its old wording.
+This is a genuine strengthening of RA0: it adds distinction-to-relation
+binding and is not a proof from the old wording.
 RA0* explicitly adds binary non-degeneracy and endpoint admissibility. Those
 clauses are precisely what makes the induction valid.
 
@@ -3087,7 +3095,7 @@ derived from \(A_0\) through additional proved structure or remain an open
 derivation gate.
 
 Accordingly RA0* is retained only as a historical strengthened derivation
-gate and \(\mathrm{THM\_RR1\_FROM\_RA0\_STAR}\) as its conditional
+gate and \claimid{THM_RR1_FROM_RA0_STAR} as its conditional
 closure theorem. No promotion to a second axiom is permitted.
 
 \section{Minimal algebraic signature}
@@ -3320,7 +3328,8 @@ The balanced binary information unit is
 I_\star=\ln2.
 }
 \]
-The canonical reference normalization uses
+The canonical reference normalization uses the TIR normalization provenance
+\cite{LipaTIR2026}
 \[
 N_F=3,
 \qquad
@@ -3358,7 +3367,7 @@ the additional reference condition
 \tag{REF-KAPPA-UNIFORMITY}
 \]
 This is the explicit uniform-information-density reference realization
-\texttt{REF\_KAPPA\_UNIFORM\_INFORMATION\_DENSITY}; it is not a theorem of
+\claimid{REF_KAPPA_UNIFORM_INFORMATION_DENSITY}; it is not a theorem of
 \(A_0\). Without this condition only an integral constraint on a possibly
 non-uniform density is fixed.
 
@@ -3415,7 +3424,7 @@ ledger.
 
 The finite Hilbert--Moir\'e chart above is now extended by a source-grounded
 general algebra. The source repositories are used read-only; RDSS owns the
-resulting typed synthesis.
+resulting typed synthesis \cite{LipaInfinities2026,LipaGREMLIN2026,LipaIDT2026}.
 
 The Euler branch source supplies the phase map
 \[
@@ -3479,7 +3488,7 @@ symbolic fractal-boundary algebra
 \left(
 \mathbb Z^{<\omega},
 R_k,
-S_{\mathrm{HH}}
+S_{\mathrm{HH}}^{(\rho)}
 \right).
 }
 \]
@@ -3553,7 +3562,8 @@ J_i
 \sum_j w_{ij}\sin(\theta_j-\theta_i).
 }
 \]
-Its normalized first-order reduction is
+Its normalized first-order reduction is the standard Kuramoto-type phase
+coupling form \cite{Kuramoto1984}
 \[
 \dot\theta_i
 =
@@ -3643,8 +3653,7 @@ T,
 }
 \]
 while the scalar coherence magnitude \(C\) remains a lossy diagnostic rather
-than an upstream inverse representation of \(M\).
-and
+than an upstream inverse representation of \(M\). Finally,
 \[
 \boxed{
 \text{BEES}
@@ -3703,14 +3712,13 @@ The strict normalizer is idempotent by construction:
 A non-trivial reduction rule carries two independent classifications. Its
 semantic relation kind belongs to
 \[
-\{
-\mathrm{IDENTITY},
-\mathrm{EXACT\_EQUIVALENCE},
-\mathrm{ISOMORPHISM},
-\mathrm{REFERENCE\_REPRESENTATION},
-\mathrm{FORGETFUL\_PROJECTION},
-\mathrm{APPROXIMATION}
-\},
+\left\{
+\begin{aligned}
+&\mathrm{IDENTITY},\quad \mathrm{EXACT\_EQUIVALENCE},\quad \mathrm{ISOMORPHISM},\\
+&\mathrm{REFERENCE\_REPRESENTATION},\quad \mathrm{FORGETFUL\_PROJECTION},\\
+&\mathrm{APPROXIMATION}
+\end{aligned}
+\right\}.
 \]
 while its information effect belongs to
 \[
@@ -3979,14 +3987,13 @@ being coerced into an existing semantic family.
 Not every unresolved family pair represents the same mathematical task. The
 reference triage therefore classifies selected bridge problems into
 \[
-\{
-\mathrm{IMPLEMENTED\_LOSSLESS},
-\mathrm{IMPLEMENTED\_LOSSY},
-\mathrm{CONTEXT\_REQUIRED},
-\mathrm{MISSING\_INTERMEDIATE\_FAMILY},
-\mathrm{COMPOSITE\_NOT\_EQUIVALENT},
-\mathrm{NO\_BRIDGE\_CLAIM}
-\}.
+\left\{
+\begin{aligned}
+&\mathrm{IMPLEMENTED\_LOSSLESS},\quad \mathrm{IMPLEMENTED\_LOSSY},\\
+&\mathrm{CONTEXT\_REQUIRED},\quad \mathrm{MISSING\_INTERMEDIATE\_FAMILY},\\
+&\mathrm{COMPOSITE\_NOT\_EQUIVALENT},\quad \mathrm{NO\_BRIDGE\_CLAIM}
+\end{aligned}
+\right\}.
 \]
 
 The current triage contains eleven entries:
@@ -4364,5 +4371,70 @@ The initial executable kernel therefore tests the axiom dependency DAG, finite i
 typed algebraic zero, semantic coarse-graining, relative Moir\'e rotation,
 Zero-Axis unit-circle projection, derived winding, associator/commutator
 diagnostics, and refinement residuals.
+
+\section*{Source provenance}
+Internal bridge references are pinned by repository commit and source path so
+that imported claims can be audited independently of the RDSS claim ledger.
+Classical references are listed separately in the same bibliography.
+
+\begin{thebibliography}{99}
+\small
+
+\bibitem{LipaTIR2026}
+A. Lipa, \emph{The Fundamental Theory of Informational Relations}, main tree
+commit \codeid{9783782570a2ccfa1fc42c99b605dad48e02aa78}, 29 September 2026;
+see \codeid{TIR/CLAIM_HIERARCHY.md} and the foundations ledger.
+
+\bibitem{LipaTIRLConstants2026}
+A. Lipa, ``Platonic closure of the L-constants,'' in \emph{The Fundamental
+Theory of Informational Relations},
+\codeid{TIR/foundations/TIR_PLATONIC_L_CONSTANTS_CLOSURE_V0_1.md}, commit
+\codeid{9783782570a2ccfa1fc42c99b605dad48e02aa78}, 2026.
+
+\bibitem{LipaInfinities2026}
+A. Lipa, \emph{Infinities}, commit
+\codeid{339d6c58f3e7d86c67a4f758cd7416692f8f8280}, 2026; source files
+\codeid{research/EULERS_INFINITY_V0_1.md} and
+\codeid{research/TIR_E6_FOURIER_HILBERT_HOTEL_CORE_V0_1.md}.
+
+\bibitem{LipaGREMLIN2026}
+A. Lipa, \emph{GREMLIN}, commit
+\codeid{b0000828238e0cd244f5eb1fb679155315df372f}, 2026;
+\codeid{spec/GREMLIN_HOLOGRAPHIC_ORBITAL_MEMORY_V0_1.md}.
+
+\bibitem{LipaIDT2026}
+A. Lipa, \emph{Informational Dynamics of Metatime}, commit
+\codeid{31f1a74d65aeb5e107840fa9971b335c7f339504}, 2026;
+\codeid{CIEL-_SOT_Agent-main/docs/science/RELATIONAL_SEED_ORBIT_SOLVER_V0.md}.
+
+\bibitem{LipaSOH2026}
+A. Lipa, \emph{Secret of a Half}, commit
+\codeid{492dc2e31546f6fdce798801549d544d8cbda3b4}, 2026; claims
+\codeid{SOH-L012--SOH-L014} and
+\codeid{monograph/chapters/26_compactified_inverse_boundary_geometry.tex}.
+
+\bibitem{Hartley1928}
+R. V. L. Hartley, ``Transmission of Information,'' \emph{Bell System
+Technical Journal}, vol. 7, no. 3, pp. 535--563, 1928.
+
+\bibitem{Shannon1948}
+C. E. Shannon, ``A Mathematical Theory of Communication,'' \emph{Bell System
+Technical Journal}, vol. 27, pp. 379--423 and 623--656, 1948.
+
+\bibitem{Berry1984}
+M. V. Berry, ``Quantal Phase Factors Accompanying Adiabatic Changes,''
+\emph{Proceedings of the Royal Society A}, vol. 392, pp. 45--57, 1984.
+
+\bibitem{Kuramoto1984}
+Y. Kuramoto, \emph{Chemical Oscillations, Waves, and Turbulence}, Springer
+Series in Synergetics, vol. 19, Springer, 1984.
+
+\bibitem{Cardano1545}
+G. Cardano, \emph{Ars Magna}, Nuremberg, 1545.
+
+\bibitem{Bombelli1572}
+R. Bombelli, \emph{L'Algebra}, Bologna, 1572.
+
+\end{thebibliography}
 
 \end{document}
