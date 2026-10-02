@@ -64,6 +64,13 @@ CANONICAL_PROVENANCE: dict[str, str] = {
         "realization/crosscheck, not a non-circular proof of upstream relational binding "
         "or physical dynamics."
     ),
+    "THM_BIPOLAR_KAPPA_FORCED": (
+        "Canonical kappa provenance: binary Z2-invariant maximum entropy gives ln(2); "
+        "the transitive bipolar tetrahedral face-flavour orbit has 24 directed channels "
+        "and therefore unique invariant weight 1/24; the non-trivial Z2 phase is the "
+        "U(1) half-turn pi. Hence kappa=(ln(2)/24)/pi=ln(2)/(24*pi). "
+        "TIR N_F=3 parent: commit 9783782570a2ccfa1fc42c99b605dad48e02aa78."
+    ),
 }
 
 
@@ -860,8 +867,26 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_BIPOLAR_KAPPA_INCIDENCE_COUNT_CROSSCHECK",
         ClaimKind.THEOREM,
-        "The bipolar tetrahedral face-flavour derivation independently reproduces the incidence count 24 and normalized half-turn measure 12 used by REF_KAPPA_MIXING_NORMALIZATION. This closes the geometric count/measure crosscheck. It does not alone identify the total ln(2) information with a constant density on that measure; the information-density binding remains separately typed.",
-        ("THM_BIPOLAR_HALF_TURN_MEASURE_EQUALS_TWELVE", "REF_KAPPA_MIXING_NORMALIZATION"),
+        "The bipolar tetrahedral face-flavour derivation independently fixes the directed incidence count at 24 and the half-turn phase measure at 24*pi (12 normalized turns). This reproduces the historical REF_KAPPA_MIXING_NORMALIZATION count without using it as an upstream premise.",
+        ("THM_BIPOLAR_HALF_TURN_MEASURE_EQUALS_TWELVE",),
+    ),
+    Claim(
+        "THM_BINARY_Z2_MAXIMUM_ENTROPY_LN2",
+        ClaimKind.THEOREM,
+        "For the durable binary Z2 role carrier, symmetry fixes the normalized distribution to p_-=p_+=1/2. The binary Shannon entropy H(p)=-p ln p-(1-p) ln(1-p) is uniquely maximal at p=1/2, hence H_max=ln(2). This agrees with the independently probability-free Hartley value ln(2).",
+        ("THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY", "THM_RELATION_ROLE_HARTLEY_LN2"),
+    ),
+    Claim(
+        "THM_BIPOLAR_CHANNEL_INFORMATION_UNIFORMIZATION",
+        ClaimKind.THEOREM,
+        "The bipolar face-flavour incidence action is transitive on 24 directed channels. Therefore the unique normalized invariant scalar weighting is 1/24 per channel. Applying this invariant partition to the binary source information ln(2) gives the unique symmetry-preserving channel share Delta I=ln(2)/24.",
+        ("THM_BIPOLAR_UNIQUE_INVARIANT_CHANNEL_WEIGHT", "THM_BINARY_Z2_MAXIMUM_ENTROPY_LN2"),
+    ),
+    Claim(
+        "THM_BIPOLAR_KAPPA_FORCED",
+        ClaimKind.THEOREM,
+        "Each directed polarity exchange carries the non-trivial Z2 phase, which embeds in U(1) as a half-turn Delta phi=pi. Dividing the symmetry-forced information share Delta I=ln(2)/24 by this phase gives kappa=Delta I/Delta phi=ln(2)/(24*pi). No free channel weighting or fitted normalization remains in this derivation.",
+        ("THM_BIPOLAR_CHANNEL_INFORMATION_UNIFORMIZATION", "THM_BIPOLAR_HALF_TURN_MEASURE_EQUALS_TWELVE"),
     ),
     Claim(
         "THM_HAMLET_OPERATOR_PROJECTIVE_CP1",
@@ -1588,26 +1613,26 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "REF_KAPPA_MIXING_NORMALIZATION",
         ClaimKind.REFERENCE_REALIZATION,
-        "The canonical project normalization uses the reference incidence count 3*(3^2-1)=24 and one normalized half-turn per channel, giving total normalized turn measure 12. This incidence/half-turn package is reference normalization, not a theorem of A0.",
-        ("BRIDGE_CENTER_HALF_TURN",),
+        "Historical/reference kappa normalization surface: incidence count 24 and one half-turn per directed channel, giving 12 normalized turns. The same count and phase measure are now independently theorem-derived by the bipolar tetrahedral exchange chain.",
+        ("THM_BIPOLAR_KAPPA_INCIDENCE_COUNT_CROSSCHECK",),
     ),
     Claim(
         "REF_KAPPA_UNIFORM_INFORMATION_DENSITY",
         ClaimKind.REFERENCE_REALIZATION,
-        "On the canonical kappa reference chart only, balanced binary information ln(2) is represented by a constant information density over the total normalized-turn measure Q_mix=12: dI/dq=kappa_q and integral_0^12 dI=ln(2). Without this uniform-density reference condition only the integral constraint is fixed; a constant kappa_q is not forced.",
-        ("REF_KAPPA_MIXING_NORMALIZATION",),
+        "Historical/reference constant-density presentation of kappa. Its formerly free uniformity condition is superseded by THM_BIPOLAR_CHANNEL_INFORMATION_UNIFORMIZATION, which forces equal channel share from transitivity of the 24-channel orbit.",
+        ("THM_BIPOLAR_CHANNEL_INFORMATION_UNIFORMIZATION",),
     ),
     Claim(
         "DER_KAPPA_NORMALIZED_TURN",
         ClaimKind.DERIVED,
-        "Under REF_KAPPA_UNIFORM_INFORMATION_DENSITY, the constant normalized-turn information coefficient is kappa_q=ln(2)/12.",
-        ("REF_KAPPA_UNIFORM_INFORMATION_DENSITY",),
+        "From the theorem-level forced kappa chain, the coefficient per normalized turn q (where one half-turn is q=1/2) is kappa_q=ln(2)/12.",
+        ("THM_BIPOLAR_KAPPA_FORCED",),
     ),
     Claim(
         "DER_KAPPA_RADIAN_CHART",
         ClaimKind.DERIVED,
-        "Under phi=2*pi*q, the information one-form kappa_q dq is represented by kappa_phi dphi with kappa_phi=ln(2)/(24*pi).",
-        ("DER_KAPPA_NORMALIZED_TURN",),
+        "In the radian phase chart, the theorem-level coefficient is kappa_phi=ln(2)/(24*pi).",
+        ("THM_BIPOLAR_KAPPA_FORCED",),
     ),
     Claim(
         "BRIDGE_ORBITAL_COMPLEX_STRUCTURE",
