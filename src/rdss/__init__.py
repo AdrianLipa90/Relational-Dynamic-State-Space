@@ -28,6 +28,23 @@ from .cell_transport import (
     moire_edge_state,
     stella_relative_state,
 )
+from .tetrahedral_binding import (
+    ACTIVE_OPERATOR_LABELS,
+    ACTIVE_SIGN_TETRAHEDRON,
+    OPERATOR_SIMPLEX_LABELS,
+    OPERATOR_SIMPLEX_VERTICES,
+    active_sign_centered_gram,
+    centered_operator_vertex,
+    operator_simplex_centered_gram,
+    operator_simplex_edge_gram,
+    operator_simplex_is_regular_tetrahedron,
+    operator_simplex_squared_distance,
+    operator_simplex_volume,
+    operator_stella_gram_isometry_holds,
+    scaled_active_sign_vertex,
+    tetrahedral_binding_certificate,
+    tetrahedral_completion_cardinality,
+)
 from .algebra import (
     OccurrenceAddress,
     RelationalPoint,
