@@ -36,8 +36,8 @@ def test_canonical_names_and_provenance_are_locked():
     assert "/2" in collatz
     assert "x3" in collatz
     assert "+1" in collatz
-    assert "basis-direction set" in collatz
-    assert "not the set of all non-identity operators" in collatz
+    assert "basis-direction count" in collatz
+    assert "not the cardinality of all non-identity operators" in collatz
 
     gaussian = CANONICAL_PROVENANCE["THM_L_CONSTANTS_SINGLE_GENERATOR_CLOSURE"]
     assert "g=q+J=2+J" in gaussian
@@ -53,12 +53,12 @@ def test_kappa_constant_density_is_explicit_reference_condition():
 
     assert claims["REF_KAPPA_UNIFORM_INFORMATION_DENSITY"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["REF_KAPPA_UNIFORM_INFORMATION_DENSITY"].depends_on == (
-        "REF_KAPPA_MIXING_NORMALIZATION",
+        "THM_BIPOLAR_CHANNEL_INFORMATION_UNIFORMIZATION",
     )
     assert claims["DER_KAPPA_NORMALIZED_TURN"].depends_on == (
-        "REF_KAPPA_UNIFORM_INFORMATION_DENSITY",
+        "THM_BIPOLAR_KAPPA_FORCED",
     )
-    assert "not forced" in claims["REF_KAPPA_UNIFORM_INFORMATION_DENSITY"].statement
+    assert "superseded" in claims["REF_KAPPA_UNIFORM_INFORMATION_DENSITY"].statement.lower()
 
 
 def test_ofhm_moire_uses_phase_data_not_lossy_coherence_inverse():
@@ -2481,19 +2481,20 @@ def test_bipolar_tetrahedral_exchange_forces_selector_free_231_roles() -> None:
     assert "THM_BIPOLAR_STELLA_CENTRAL_INVERSION_PAIRS_ALL_FACES" in closure
 
     kappa_crosscheck = dependency_closure("THM_BIPOLAR_KAPPA_INCIDENCE_COUNT_CROSSCHECK")
-    assert "REF_KAPPA_MIXING_NORMALIZATION" in kappa_crosscheck
+    assert "REF_KAPPA_MIXING_NORMALIZATION" not in kappa_crosscheck
+    assert "THM_BIPOLAR_HALF_TURN_MEASURE_EQUALS_TWELVE" in kappa_crosscheck
     assert "THM_Z2_SIGN_EMBEDS_U1" in kappa_crosscheck
 
     gate = claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"]
     assert "selector-free bipolar tetrahedral operation-role selection" in gate.statement
     assert "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING" in gate.depends_on
 
-    assert "physical temporal-to-flavour sector identity remains outside" in claims[
-        "BRIDGE_TIR_THREE_FLAVOUR_C3_LABEL_CARRIER"
-    ].statement
-    assert "information-density binding remains separately typed" in claims[
-        "THM_BIPOLAR_KAPPA_INCIDENCE_COUNT_CROSSCHECK"
-    ].statement
+    flavour_bridge = claims["BRIDGE_TIR_THREE_FLAVOUR_C3_LABEL_CARRIER"].statement
+    assert "N_F=3" in flavour_bridge
+    assert "stronger physical sector identification/readout" in flavour_bridge
+    kappa_count = claims["THM_BIPOLAR_KAPPA_INCIDENCE_COUNT_CROSSCHECK"].statement
+    assert "without using it as an upstream premise" in kappa_count
+    assert claims["THM_BIPOLAR_KAPPA_FORCED"].kind is ClaimKind.THEOREM
 
 
 def test_kappa_is_theorem_derived_from_entropy_and_bipolar_symmetry() -> None:
