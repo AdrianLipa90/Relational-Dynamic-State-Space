@@ -813,7 +813,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "BRIDGE_TIR_THREE_FLAVOUR_C3_LABEL_CARRIER",
         ClaimKind.BRIDGE,
-        "Imported TIR representation result: the ordered family/flavour label carrier has an exact transitive C3 three-label representation, sourced from TIR/integration/TIR_IDT_MOD6PI_C3_PAULI_CROSSWALK_V0_1.md at TIR main commit 9783782570a2ccfa1fc42c99b605dad48e02aa78. This imports the three-label carrier only; physical temporal-to-flavour sector identity remains outside this RDSS theorem.",
+        "Imported closed TIR result: THREE_FLAVOUR_CARRIER is CLOSED with N_F=3, and TIR.FLAVOUR.STAGE66_SU3F_GENERATION is CLOSED on TIR main commit 9783782570a2ccfa1fc42c99b605dad48e02aa78. The ordered family/flavour carrier therefore contributes a sourced three-label C3 orbit to RDSS rather than a free cardinality assumption. The still-open TIR.FLAVOUR.PHYSICAL_BINDING concerns stronger physical sector identification/readout, not the already-closed flavour cardinality N_F=3.",
     ),
     Claim(
         "THM_BIPOLAR_STELLA_CENTRAL_INVERSION_PAIRS_ALL_FACES",
