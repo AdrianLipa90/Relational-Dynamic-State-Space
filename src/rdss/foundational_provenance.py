@@ -186,6 +186,47 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
             "This is downstream and does not close the primitive-dynamics gate."
         ),
     ),
+    ProvenanceNote(
+        surface="alternating half-time pendulum and Moire-Kuramoto closure",
+        role="BRIDGE+THM+DERIVED",
+        claim_ids=(
+            "BRIDGE_TIR_PRETIME_STELLA_HALF_SUCCESSOR",
+            "BRIDGE_TIR_WHITE_THREAD_PHASE_ACTION",
+            "THM_FRAME_FUZZY_HALF_SUCCESSOR",
+            "THM_CANONICAL_PAIR_INFORMATION_POTENTIAL",
+            "THM_BIPOLAR_PAIR_FORCE_ANTISYMMETRY",
+            "THM_BIPOLAR_RELATIVE_PENDULUM",
+            "THM_FRAME_SECOND_DIFFERENCE_UNIQUE",
+            "THM_FRAME_PENDULUM_SUCCESSOR",
+            "THM_MOIRE_INFORMATION_POTENTIAL",
+            "THM_MOIRE_KURAMOTO_CLOSURE",
+            "THM_PENDULUM_KURAMOTO_COMMON_PARENT",
+            "GATE_MOIRE_DYNAMICAL_LAW",
+        ),
+        sources=(
+            CANONICAL_FOUNDATIONAL_CONTRACT,
+            "docs/ALTERNATING_HALF_TIME_PENDULUM_MOIRE_KURAMOTO.md",
+            "TIR@9783782570a2ccfa1fc42c99b605dad48e02aa78:"
+            "TIR/foundations/TIR_PRESPACETIME_STELLA_HALF_SUCCESSOR_V0_1.md",
+            "TIR@9783782570a2ccfa1fc42c99b605dad48e02aa78:"
+            "TIR/foundations/TIR_STELLA_ALTERNATING_ROTATION_INFERENCE_V0_1.md",
+            "TIR@9783782570a2ccfa1fc42c99b605dad48e02aa78:"
+            "TIR/foundations/TIR_RELATIONAL_PHASE_LAGRANGIAN_CORE_V0_1.md",
+            "TIR@9783782570a2ccfa1fc42c99b605dad48e02aa78:"
+            "TIR/foundations/TIR_WHITE_THREAD_SPIN_LIFT_LYAPUNOV_V0_1.md",
+            "TIR@9783782570a2ccfa1fc42c99b605dad48e02aa78:"
+            "TIR/foundations/TIR_KAPPA_FLAVOUR_MIXING_NORMALIZATION_V0_1.md",
+            "RDSS@e1d2dda2ffbcbb38392869f94012cea03fffd751",
+        ),
+        note=(
+            "H is the exact structural half-successor and H^2=S. The canonical "
+            "12 undirected pairs inherit two directed information shares each; "
+            "normalizing the U(1) chordal mismatch at the half-turn fixes "
+            "V_pair=pi*kappa*(1-cos Delta). Opposite gradients give zero center "
+            "force and the relative pendulum; the same network potential gives "
+            "Kuramoto in the overdamped limit."
+        ),
+    ),
 )
 
 
@@ -230,6 +271,30 @@ IMPLEMENTATION_PROVENANCE: dict[str, tuple[str, ...]] = {
     ),
     "bipolar_tetrahedral_exchange.forced_kappa_certificate": (
         "THM_BIPOLAR_KAPPA_FORCED",
+    ),
+    "alternating_phase_dynamics.StellaHalfOccurrence.half_successor": (
+        "BRIDGE_TIR_PRETIME_STELLA_HALF_SUCCESSOR",
+        "THM_FRAME_FUZZY_HALF_SUCCESSOR",
+    ),
+    "alternating_phase_dynamics.canonical_pair_information_potential": (
+        "THM_CANONICAL_PAIR_INFORMATION_POTENTIAL",
+    ),
+    "alternating_phase_dynamics.bipolar_pair_forces": (
+        "THM_BIPOLAR_PAIR_FORCE_ANTISYMMETRY",
+    ),
+    "alternating_phase_dynamics.relative_pendulum_residual": (
+        "THM_BIPOLAR_RELATIVE_PENDULUM",
+    ),
+    "alternating_phase_dynamics.pendulum_frame_successor": (
+        "THM_FRAME_SECOND_DIFFERENCE_UNIQUE",
+        "THM_FRAME_PENDULUM_SUCCESSOR",
+    ),
+    "alternating_phase_dynamics.canonical_moire_information_potential": (
+        "THM_MOIRE_INFORMATION_POTENTIAL",
+    ),
+    "alternating_phase_dynamics.canonical_kuramoto_velocity": (
+        "THM_MOIRE_KURAMOTO_CLOSURE",
+        "THM_PENDULUM_KURAMOTO_COMMON_PARENT",
     ),
     "orbital_fractal_hilbert_moire.countable_word_rank": (
         "DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",
