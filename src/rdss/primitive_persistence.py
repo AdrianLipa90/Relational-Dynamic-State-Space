@@ -1,3 +1,11 @@
+"""Persistence and source-minimal parity reference implementation.
+
+Canonical contract: docs/CANONICAL_FOUNDATIONAL_CONTRACT.md §§3 and 6.
+The persistence flow is a REFERENCE REALIZATION, not the Law of Reality.
+Collatz coefficient routines implement the explicitly defined source-minimal
+parity class and are cross-checked independently by relational-cardinality
+and Gaussian/Bombelli routes.
+"""
 from __future__ import annotations
 
 from math import exp, isfinite, log
@@ -137,9 +145,10 @@ def source_minimal_collatz_coefficients(role_count: int = 2) -> tuple[int, int, 
     """Return (association_divisor, odd_multiplier, odd_repair).
 
     For the canonical durable relation-role dyad role_count=2 this is
-    exactly (2,3,1). This function implements the conditional source-minimal
-    formation rule; it does not prove that the formation rule is forced by
-    the First Law.
+    exactly (2,3,1). Provenance:
+    THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ.
+    This routine implements the explicitly declared source-minimal parity
+    class; it does not replace the independent relational-cardinality proof.
     """
 
     divisor = source_minimal_association_divisor(role_count)
@@ -149,7 +158,10 @@ def source_minimal_collatz_coefficients(role_count: int = 2) -> tuple[int, int, 
 
 
 def source_minimal_parity_step(state: int, role_count: int = 2) -> int:
-    """Conditional source-minimal parity law on positive integers."""
+    """Source-minimal parity law on positive integers within its declared class.
+
+    Provenance: THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ.
+    """
 
     n = _positive_integer(state)
     divisor, multiplier, repair = source_minimal_collatz_coefficients(role_count)
