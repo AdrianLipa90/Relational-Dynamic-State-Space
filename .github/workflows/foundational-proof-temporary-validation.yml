@@ -1,0 +1,36 @@
+name: Foundational proof temporary validation
+
+on:
+  push:
+    branches:
+      - feat/general-orbital-fractal-hilbert-moire-v0.1
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python test dependencies
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Full RDSS test suite
+        run: python -m pytest -q
+      - name: Static proof audit
+        run: python scripts/static_audit.py
+      - name: Install TeX
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq texlive-latex-extra
+      - name: Compile monograph twice
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error -output-directory=monograph monograph/main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error -output-directory=monograph monograph/main.tex
+      - name: Upload monograph
+        uses: actions/upload-artifact@v4
+        with:
+          name: RDSS-foundational-proof-monograph
+          path: monograph/main.pdf
+          if-no-files-found: error
