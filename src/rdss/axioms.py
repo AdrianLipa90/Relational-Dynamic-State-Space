@@ -452,7 +452,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED",
         ClaimKind.THEOREM,
         "Within the canonical relational carrier, the Collatz operation roles and branch selection are structurally closed: free Z2 association gives /2, the selector-free three-face active orbit gives x3, unique identity repair gives +1, and parity admissibility selects n/2 versus 3n+1. The separate question whether a particular external physical substrate instantiates this structural normalization belongs to physical binding, not to the RDSS structural derivation.",
-        ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING", "GATE_MOIRE_DYNAMICAL_LAW"),
+        ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING"),
     ),
     Claim(
         "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS",
