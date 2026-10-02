@@ -1252,3 +1252,73 @@ Required exact-head validation before merge:
 - two-pass LaTeX compilation;
 - no unresolved citations/references;
 - no hidden malformed control characters in maintained docs.
+
+
+## Foundational closure continuation audit — 2026-10-02
+
+Branch: `feat/foundational-closure-v0.1`.
+
+This continuation resumed the already-existing foundational-closure branch
+rather than creating a new line of work.
+
+Current connector-level exact-head structural audit:
+
+- claim entries: **392**;
+- `DERIVATION_GATE`: **0**;
+- `EVIDENCE_GATE`: **1**;
+- sole evidence gate: `GATE_OFHM_PHYSICAL_BINDING`;
+- duplicate claim IDs: **0**;
+- missing claim dependencies: **0**;
+- claim-DAG cycles: **0**;
+- stale current-status phrases asserting closed gates remain open: **0**.
+
+Narrative/provenance drift repaired:
+
+- tetrahedral crosscheck no longer says the historical primitive-dynamics gate
+  remains open;
+- the Collatz PSL(2,R) lift no longer points to an open branch-derivation gate;
+- the generic orbital-complex bridge is explicitly conditional rather than
+  reported as a foundational proof debt;
+- foundational provenance now records zero structural derivation gates;
+- Layer 3 architecture now types RA0 as theorem-level, RR1/RA0*/RA0_REL* as
+  formation schemas, and physical binding as `EVIDENCE_GATE`;
+- the frontier document status is
+  `STRUCTURAL_FOUNDATION_CLOSED / ONE EXTERNAL EVIDENCE FRONTIER`;
+- one stray unmatched Markdown display terminator in
+  `docs/FOUNDATIONAL_CLOSURE_FRONTIER.md` was removed;
+- the monograph was synchronized with the current RA0/RR1, kappa,
+  Moiré-Kuramoto and evidence-frontier status.
+
+Exact-head connector audit of `monograph/main.tex` after synchronization:
+
+- display-math delimiters: **502 open / 502 close**;
+- brace count: **1573 open / 1573 close**;
+- missing bibliography citation keys: **0**;
+- missing `\\claimid{...}` targets: **0**;
+- hidden control characters in maintained closure documents: **0**.
+
+Independent executable no-go checks on the new OFHM symbolic-boundary
+implementation:
+
+- (p_b(k)=((b-1)/(b+1))b^{-|k|}) normalized numerically to **1.0** for
+  (b=1.1,1.5,2,3,10) on a symmetric 2001-point truncation;
+- (mu_2([0])=1/3): **PASS**;
+- (mu_3([0])=1/2): **PASS**;
+- binary prefix dimension at (lambda=1/2): **1**;
+- binary prefix dimension at (lambda=1/4): **1/2**;
+- 20,000 randomized prefix-ultrametric triangle checks: maximum violation
+  **0.0**;
+- invalid metric-scale domain checks: **12/12 rejected**.
+
+Validation boundary remains explicit:
+
+- full repository pytest on a complete checkout of this exact current branch
+  head: **NOT RUN**;
+- actual `python scripts/static_audit.py` on a complete exact-head checkout:
+  **NOT RUN**;
+- Python compileall on the complete exact-head checkout: **NOT RUN**;
+- two-pass LaTeX compilation of the complete exact-head monograph:
+  **NOT RUN**.
+
+The connector-level structural and document audits above are not silently
+reported as substitutes for those pending full local execution checks.
