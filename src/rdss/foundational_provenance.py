@@ -255,7 +255,35 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
             "force and the relative pendulum; the same network potential gives "
             "Kuramoto in the overdamped limit."
         ),
-    ),
+    ),,
+    ProvenanceNote(
+        surface="OFHM symbolic-boundary no-go and physical evidence frontier",
+        role="DEF+THM+EVIDENCE_GATE",
+        claim_ids=(
+            "DEF_OFHM_IDEAL_BAIRE_BOUNDARY",
+            "THM_OFHM_IDEAL_BOUNDARY_IS_NONCOMPACT_BAIRE_SPACE",
+            "THM_OFHM_CONTINUUM_MEASURE_IS_NOT_UNIQUE",
+            "THM_OFHM_PREFIX_METRIC_SCALE_IS_NOT_CANONICAL",
+            "THM_OFHM_EXTERNAL_GEOMETRIC_LIMIT_REQUIRES_EXTRA_EMBEDDING",
+            "THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED",
+            "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
+            "THM_OFHM_PHYSICAL_BINDING_REQUIRES_EXTERNAL_EVIDENCE",
+            "GATE_OFHM_PHYSICAL_BINDING",
+        ),
+        sources=(
+            CANONICAL_FOUNDATIONAL_CONTRACT,
+            "docs/GENERAL_ORBITAL_FRACTAL_HILBERT_MOIRE_ALGEBRA.md",
+            "docs/FOUNDATIONAL_CLOSURE_FRONTIER.md",
+        ),
+        note=(
+            "The ideal symbolic boundary is Z^N with cylinder topology. It is Baire "
+            "space and noncompact. Explicit full-support product measures and compatible "
+            "prefix metrics witness that neither measure nor Hausdorff dimension is "
+            "selected by the symbolic carrier. External geometric embedding and concrete "
+            "physical realization require extra structure/evidence. Structural "
+            "DERIVATION_GATE count is zero; physical binding is typed EVIDENCE_GATE."
+        ),
+    )
 )
 
 
@@ -327,6 +355,17 @@ IMPLEMENTATION_PROVENANCE: dict[str, tuple[str, ...]] = {
     ),
     "orbital_fractal_hilbert_moire.countable_word_rank": (
         "DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",
+    ),
+    "orbital_fractal_hilbert_moire.prefix_ultrametric": (
+        "DEF_OFHM_IDEAL_BAIRE_BOUNDARY",
+        "THM_OFHM_PREFIX_METRIC_SCALE_IS_NOT_CANONICAL",
+    ),
+    "orbital_fractal_hilbert_moire.cylinder_product_measure": (
+        "THM_OFHM_CONTINUUM_MEASURE_IS_NOT_UNIQUE",
+    ),
+    "orbital_fractal_hilbert_moire.ofhm_geometric_limit_no_go_certificate": (
+        "THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED",
+        "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
     ),
     "orbital_fractal_hilbert_moire.euler_inverse_branch": (
         "BRIDGE_OFHM_EULER_SYMBOLIC_BRANCH_SPACE",
