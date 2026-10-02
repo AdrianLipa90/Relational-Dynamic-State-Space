@@ -183,7 +183,7 @@ def test_ofhm_dependency_graph_matches_source_derivation_order():
         "hilbert_hotel_shift",
     )
     assert OFHM_RULE_DEPENDENCIES["moire_cocycle"] == (
-        "bees_relative_phase_coherence",
+        "bees_phase_data",
     )
     assert OFHM_RULE_DEPENDENCIES["hilbert_transport"] == ("moire_cocycle",)
     assert OFHM_RULE_DEPENDENCIES["phase_dynamics"] == (
