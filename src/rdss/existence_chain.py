@@ -1,17 +1,17 @@
-"""Executable canonical derivation spine.
+"""Executable existence-chain reference for RDSS/RTOFA.
 
-Canonical naming and assumptions are frozen in
+Canonical naming/provenance:
+- foundational law name: First Law of Existence;
+- legacy executable claim id: A0;
+- descriptive phrases such as "law of reality" are status descriptions, not aliases;
+- DISPERSION/STRUCTURE are First-Hamlet persistence outcomes;
+- N/S are downstream durable relation roles;
+- J=SP, J^2=-I is derived on the durable N/S role basis.
+
+Authoritative claim dependencies live in src/rdss/axioms.py and
 docs/CANONICAL_FOUNDATIONAL_CONTRACT.md.
-
-Claim-ledger references used by this module live in src/rdss/axioms.py:
-- A0: Law of Reality / Prawo Rzeczywistosci;
-- THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT: durable N/S roles;
-- THM_RELATION_ROLE_HARTLEY_LN2: probability-free structural ln(2);
-- THM_HAMLET_IMAGINARY_GENERATOR: J=SP and J^2=-I.
-
-DISPERSION/STRUCTURE are persistence outcomes and must never be reused as
-the durable N/S projective carrier.
 """
+
 from __future__ import annotations
 
 from cmath import exp
@@ -74,25 +74,20 @@ class ExistenceChainStep:
     audit_note: str = ""
 
 
-LAW_OF_REALITY = (
-    "Law of Reality: absolute nothingness is not a realizable state because it "
-    "has no object, carrier, occurrence, distinction, relation or denotation by "
-    "which it could be established as a state."
+FIRST_LAW_OF_EXISTENCE = (
+    "Absolute nothingness is not a realizable state because it contains no "
+    "object, distinction or relation by which it could be established as a state."
 )
-
-# Backward-compatibility alias only. The canonical public name is
-# LAW_OF_REALITY; see docs/CANONICAL_FOUNDATIONAL_CONTRACT.md §1.
-FIRST_LAW_OF_EXISTENCE = LAW_OF_REALITY
 
 
 CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ExistenceChainStep(
-        "LR_TO_EXISTENCE_POTENTIAL",
-        "Law of Reality excludes absolute nothingness",
+        "L1_TO_EXISTENCE_POTENTIAL",
+        "not absolute nothingness",
         "existence potential P_E",
         ExistenceChainStatus.DEFINITIONAL,
         "not N -> P_E",
-        "P_E is the modal/admissible remainder after the Law of Reality excludes absolute nothingness; no physical potential is implied.",
+        "P_E is the modal/admissible complement of absolute nothingness; no physical potential is implied.",
     ),
     ExistenceChainStep(
         "POTENTIAL_TO_PRIMITIVE_INDISTINCTION",
@@ -115,14 +110,14 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "Boolean persistence partition schema",
         "first Hamlet with both DISPERSION and STRUCTURE admissible",
         ExistenceChainStatus.DEFINITIONAL,
-        "canonical RDSS first Hamlet := exhaustive Boolean persistence dichotomy",
+        "canonical RDSS first Hamlet := non-degenerate persistence bifurcation",
     ),
     ExistenceChainStep(
-        "FIRST_HAMLET_DYNAMIC_REALIZATION_GATE",
-        "Law of Reality + a concrete persistence dynamics",
-        "physical/dynamical realization of both logical persistence outcomes",
+        "STRICT_FIRST_HAMLET_NONDEGENERACY_GATE",
+        "P_E + I_0",
+        "both persistence branches dynamically admissible",
         ExistenceChainStatus.DERIVATION_GATE,
-        "derive when a chosen dynamics realizes each logical branch; the Boolean dichotomy itself is already exact",
+        "derive non-empty Dispersion and Structure preimages from dynamics",
     ),
     ExistenceChainStep(
         "FIRST_HAMLET_META_Z2",
@@ -162,7 +157,7 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "minimal persistent non-trivial relation R",
         ExistenceChainStatus.MODEL_THEOREM,
         "STRUCTURE + TIR minimum-structure bridge -> ordered relation R:s->t",
-        "This step imports the source-clean TIR minimum-structure theorem and is not a fresh RDSS definition.",
+        "Imported TIR bridge: minimum non-trivial persistent structure is relation. This is not a fresh RDSS definition.",
     ),
     ExistenceChainStep(
         "RELATION_TO_ORIENTATION_ROLE_DYAD",
