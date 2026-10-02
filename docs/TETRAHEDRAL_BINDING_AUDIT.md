@@ -100,6 +100,32 @@ isometric up to vertex permutation.
 
 This is a non-numerical exact equality of Gram matrices.
 
+## Exact Klein-four 1-2-3 signature
+
+The positive-parity Stella vertices are closed under componentwise sign
+multiplication. The vertex ((1,1,1)) is the unique identity and the other
+three vertices square to it. Therefore the sign-coordinate tetrahedron is
+
+[
+T_+cong V_4congmathbb Z_2	imesmathbb Z_2.
+]
+
+It carries the exact signature
+
+[
+1 	ext{identity},
+qquad
+3 	ext{non-identity elements},
+qquad
+operatorname{ord}(g)=2 	ext{for every }g
+e e.
+]
+
+This is a genuine (1,2,3) geometric/sign binding. It must not be confused
+with an algebra isomorphism to the Hamlet operator product: in the operator
+algebra (J^2=-I), whereas every non-identity element of the sign-coordinate
+(V_4) has square (+1).
+
 ## The 1+3 split and 3n+1
 
 The tetrahedron carries the already-derived semantic partition
