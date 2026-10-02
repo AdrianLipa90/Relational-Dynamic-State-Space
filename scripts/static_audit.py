@@ -188,7 +188,10 @@ def audit_test_imports() -> None:
             "TETRAHEDRON_POSITIVE_VERTICES",
         },
         "rdss.algebra": public_defs(SRC / "rdss" / "algebra.py"),
-        "rdss.axioms": public_defs(SRC / "rdss" / "axioms.py"),
+        "rdss.axioms": public_defs(SRC / "rdss" / "axioms.py") | {
+            "CANONICAL_PROVENANCE",
+            "CLAIMS",
+        },
         "rdss.canonical": public_defs(SRC / "rdss" / "canonical.py"),
         "rdss.certificate_scan": public_defs(SRC / "rdss" / "certificate_scan.py"),
         "rdss.corpus": public_defs(SRC / "rdss" / "corpus.py"),
