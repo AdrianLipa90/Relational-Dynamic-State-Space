@@ -595,7 +595,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_CANONICAL_NONTRIVIAL_EXISTENCE_FORCES_DISTINCTION",
         ClaimKind.THEOREM,
-        "For any admitted realized state that is non-trivial structurally, relational existence supplies a relation witness, TIR minimality selects a relation as the minimum non-trivial structure, and a non-self-collapsed relation carries the two orientation roles {N,S}. Thus non-trivial realized existence entails relational distinction in the canonical TIR/RDSS typing without identifying a bare singleton carrier with a binary state.",
+        "For an admitted realized state whose minimal non-trivial relational witness is non-self-collapsed, TIR minimality selects a relation as the minimum non-trivial structure and the relation carries the two orientation roles {N,S}. Thus this canonical non-self-collapsed relational sector entails a relational distinction. The theorem does not claim that a bare singleton carrier or an unlabelled self-relation is automatically binary.",
         ("THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS", "BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION", "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT"),
     ),
     Claim(
