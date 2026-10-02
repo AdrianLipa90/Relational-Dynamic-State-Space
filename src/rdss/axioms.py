@@ -457,8 +457,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS",
         ClaimKind.THEOREM,
-        "HISTORICAL STRUCTURAL GATE CLOSED. RDSS now derives the relational-cardinality Collatz dynamics internally. Any stronger assertion that a particular natural/material system instantiates this map is explicitly delegated to GATE_OFHM_PHYSICAL_BINDING rather than left as a structural mathematics gate.",
-        ("THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED", "GATE_OFHM_PHYSICAL_BINDING"),
+        "HISTORICAL STRUCTURAL GATE CLOSED. RDSS now derives the relational-cardinality Collatz dynamics internally. Any stronger assertion that a particular natural/material system instantiates this map is explicitly delegated to the separate GATE_OFHM_PHYSICAL_BINDING frontier and is not a premise of this theorem.",
+        ("THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED",),
     ),
     Claim(
         "GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS",
