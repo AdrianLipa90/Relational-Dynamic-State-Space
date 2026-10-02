@@ -1,3 +1,16 @@
+"""Relational-cardinality Collatz implementation with proof references.
+
+Canonical contract: docs/CANONICAL_FOUNDATIONAL_CONTRACT.md §§4–6.
+Claim anchors:
+- THM_ASSOCIATION_QUOTIENT_CARDINALITY
+- THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY
+- THM_IDENTITY_REPAIR_CARDINALITY
+- THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP
+
+The active set {S,P,J} means three distinguished non-identity BASIS
+DIRECTIONS of {I,S,P,J}; it is not the set of all non-identity matrices in
+M_2(R).
+"""
 from __future__ import annotations
 
 from .existence_chain import relation_roles
@@ -45,9 +58,10 @@ def singleton_repair_cardinality(cardinality: int) -> int:
 def relational_collatz_step(cardinality: int) -> int:
     """Deterministic cardinality normalization from the relation-role algebra.
 
+    Provenance: THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP.
     Even n: quotient by the free durable-role Z2 pairing -> n/2.
-    Odd n: product with the full non-identity operator sector {S,P,J},
-    then restore the unique missing identity direction {I} -> 3n+1.
+    Odd n: product with the three distinguished non-identity basis directions
+    {S,P,J}, then restore the unique omitted identity direction {I} -> 3n+1.
     """
 
     n = _positive_integer(cardinality)
@@ -92,7 +106,11 @@ def full_operator_basis() -> tuple[str, str, str, str]:
 
 
 def active_operator_basis() -> tuple[str, str, str]:
-    """Non-identity sector of the canonical operator basis."""
+    """Three distinguished non-identity directions of the canonical basis.
+
+    Provenance: THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R.
+    This does not enumerate all non-identity matrices in M_2(R).
+    """
 
     return tuple(label for label in full_operator_basis() if label != "I")
 
@@ -104,14 +122,20 @@ def identity_operator_basis() -> tuple[str]:
 
 
 def dissociation_active_sector_cardinality(cardinality: int) -> int:
-    """Canonical dissociation: product with the full non-identity operator sector."""
+    """Canonical dissociation: product with the three active basis directions.
+
+    Provenance: THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY.
+    """
 
     n = _positive_integer(cardinality)
     return n * len(active_operator_basis())
 
 
 def identity_repair_cardinality(cardinality: int) -> int:
-    """Canonical repair: adjoin the unique missing identity direction."""
+    """Canonical repair: adjoin the unique omitted identity basis direction.
+
+    Provenance: THM_IDENTITY_REPAIR_CARDINALITY.
+    """
 
     n = _positive_integer(cardinality)
     return n + len(identity_operator_basis())
