@@ -106,6 +106,46 @@ def operator_simplex_volume() -> Fraction:
     return Fraction(num_root, den_root * 6)
 
 
+def sign_vertex_product(left: Vector3, right: Vector3) -> Vector3:
+    """Componentwise product on the positive-parity tetrahedral sign vertices."""
+
+    if left not in ACTIVE_SIGN_TETRAHEDRON.values():
+        raise ValueError("left vertex is not in the positive-parity tetrahedron")
+    if right not in ACTIVE_SIGN_TETRAHEDRON.values():
+        raise ValueError("right vertex is not in the positive-parity tetrahedron")
+    return tuple(a * b for a, b in zip(left, right))  # type: ignore[return-value]
+
+
+def stella_klein_four_certificate() -> dict[str, object]:
+    """Exact V4 certificate for the positive-parity sign tetrahedron.
+
+    This is a group structure on sign coordinates. It is a geometric/sign
+    crosscheck and is not identified with the noncommutative operator product,
+    for which J^2=-I.
+    """
+
+    vertices = tuple(ACTIVE_SIGN_TETRAHEDRON.values())
+    identity = (1, 1, 1)
+    closure = all(sign_vertex_product(a, b) in vertices for a in vertices for b in vertices)
+    commutative = all(
+        sign_vertex_product(a, b) == sign_vertex_product(b, a)
+        for a in vertices
+        for b in vertices
+    )
+    nonidentity = tuple(vertex for vertex in vertices if vertex != identity)
+    order_two = all(sign_vertex_product(vertex, vertex) == identity for vertex in nonidentity)
+    return {
+        "group_order": len(vertices),
+        "identity_count": sum(vertex == identity for vertex in vertices),
+        "nonidentity_count": len(nonidentity),
+        "nonidentity_order": 2 if order_two else None,
+        "closed": closure,
+        "commutative": commutative,
+        "klein_four": closure and commutative and len(vertices) == 4 and len(nonidentity) == 3 and order_two,
+        "operator_multiplication_identified": False,
+    }
+
+
 def scaled_active_sign_vertex(label: OperatorLabel) -> tuple[Fraction, Fraction, Fraction]:
     """Stella tetrahedron vertex scaled by 1/2 to match the centered operator simplex."""
 
@@ -173,5 +213,6 @@ def tetrahedral_binding_certificate() -> dict[str, object]:
         "volume": operator_simplex_volume(),
         "regular_tetrahedron": operator_simplex_is_regular_tetrahedron(),
         "stella_isometry": operator_stella_gram_isometry_holds(),
+        "stella_v4": stella_klein_four_certificate(),
         "physical_dynamics_binding": False,
     }
