@@ -885,6 +885,127 @@ basis. Under
 |z_0|^2+|z_1|^2.
 \]
 
+\subsection{Minimal tetrahedral geometry of the operator basis}
+
+The already-derived Frobenius-orthonormal operator basis
+\[
+\mathcal B_H=\{I,S,P,J\}
+\]
+admits an exact minimal simplex realization without introducing another
+integer, operator or scale. Treat the four basis elements as four points of
+the real operator space. For any two distinct basis points \(E_a,E_b\),
+orthogonality gives the Pythagorean identity
+\[
+\boxed{
+\|E_a-E_b\|_F^2
+=
+\|E_a\|_F^2+\|E_b\|_F^2
+=
+1^2+1^2
+=
+2.
+}
+\]
+Thus all six edges have length \(\sqrt2\). The three edge vectors
+\(S-I\), \(P-I\), and \(J-I\) are linearly independent, so the four
+points form a regular tetrahedron.
+
+With centroid
+\[
+C=\frac{I+S+P+J}{4},
+\]
+the centered Gram matrix is
+\[
+\boxed{
+G_C=
+\begin{pmatrix}
+3/4&-1/4&-1/4&-1/4\\
+-1/4&3/4&-1/4&-1/4\\
+-1/4&-1/4&3/4&-1/4\\
+-1/4&-1/4&-1/4&3/4
+\end{pmatrix}.
+}
+\]
+Hence normalized distinct tetrahedral vertices satisfy
+\[
+\boxed{
+\widehat v_i\cdot\widehat v_j=-\frac13,
+\qquad i\ne j.
+}
+\]
+The edge Gram matrix from the identity vertex is
+\[
+G_E=
+\begin{pmatrix}
+2&1&1\\
+1&2&1\\
+1&1&2
+\end{pmatrix},
+\qquad
+\det G_E=4,
+\]
+so the induced tetrahedral three-volume is exactly
+\[
+\boxed{
+V_{\rm tet}
+=
+\frac{\sqrt{\det G_E}}{3!}
+=
+\frac13.
+}
+\]
+
+The centered operator tetrahedron is also exactly isometric to the existing
+positive-parity Stella support. The four Stella sign vertices
+\[
+(1,1,1),\quad
+(1,-1,-1),\quad
+(-1,1,-1),\quad
+(-1,-1,1)
+\]
+have, after scaling by \(1/2\), the same Gram matrix \(G_C\). This
+identification is unique only up to tetrahedral vertex permutation and does not
+add a new physical identification.
+
+The semantic partition of the operator tetrahedron is
+\[
+\boxed{
+\{I,S,P,J\}
+=
+\{I\}
+\sqcup
+\{S,P,J\},
+}
+\]
+namely one distinguished identity vertex and three active vertices. Therefore
+for any finite carrier set \(X\),
+\[
+\boxed{
+\left|
+(X\times\{S,P,J\})\sqcup\{I\}
+\right|
+=
+3|X|+1.
+}
+\]
+Under the already-defined dissociation-plus-identity-repair semantics, the
+tetrahedral completion therefore realizes exactly the odd affine Collatz
+cardinality \(3n+1\).
+
+This result is mathematically exact but its causal scope is important. The
+tetrahedral geometry is downstream of the durable relation-role algebra and
+the Frobenius normalization. It therefore cannot be used non-circularly to
+derive the earlier Hamlet-to-relation binding. Likewise, the exact geometric
+match to \(3n+1\) does not by itself prove that primitive natural dynamics
+must instantiate this completion. It closes a geometric realization and
+crosscheck of the \(1\oplus3\) coefficient structure; the independent
+primitive-dynamics binding gate remains open.
+
+The executable certificates are
+\claimid{THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON},
+\claimid{THM_HAMLET_OPERATOR_TETRAHEDRON_STELLA_ISOMETRY}, and
+\claimid{THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY}.
+
 Right multiplication by \(e^{\phi J}\) acts as
 \[
 (z_0,z_1)
