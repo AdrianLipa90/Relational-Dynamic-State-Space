@@ -2,44 +2,93 @@
 
 Status: canonical author-defined foundation for RDSS/RTOFA.
 
-This file exists so that foundational assumptions and their exact names do not
-depend on chat memory. Code, tests and the monograph should cite this file or
-the claim IDs below.
+This file exists so that foundational assumptions, exact names, proof status,
+provenance and execution policy do not depend on chat memory. Code, tests and
+the monograph should cite this file and/or the claim IDs in `src/rdss/axioms.py`.
 
-## 1. Law of Reality
+## 1. First Law of Existence
 
-Canonical name: **Law of Reality** (Polish: **Prawo Rzeczywistości**).
+Canonical name: **First Law of Existence**.
 
 Legacy executable claim ID: `A0`.
 
-Absolute nothingness is not a realizable state because it has no object,
-carrier, occurrence, distinction, relation or denotation by which it could be
-established as a state. Algebraic/relational zero is not absolute nothingness.
+Descriptive phrases such as **law of reality** / **prawo rzeczywistości**
+describe the intended status of the law. They are **not names, aliases or
+authorization to rename the law**.
+
+Canonical statement:
+
+> Absolute nothingness is not a realizable state because it contains no object,
+> distinction or relation by which it could be established as a state.
+
+Absolute nothingness is not an object of the object language. Algebraic or
+relational zero is not absolute nothingness:
 
 [
 0_R \neq \mathcal N.
 ]
 
-The Law of Reality is the unique foundational law. Everything downstream must
-be typed as definition, theorem, bridge, reference realization or open gate.
+The First Law of Existence is the unique foundational law. Everything
+downstream must be typed as definition, formation rule, theorem, bridge,
+reference realization or open derivation gate.
 
-## 2. Minimal distinction is occurrence-level
+## 2. Model formation and carrier non-vacuity
 
-Binary distinction does not require two primitive carrier substances. A
-single carrier may support two distinct relational occurrences/roles:
+`META0` is a formation rule downstream of `A0`, not a second law.
+
+It excludes empty admitted-carrier models from the canonical RTOFA model class.
+Consequently `EX0` gives at least one admitted carrier and the bare minimum
+carrier cardinality is one.
+
+A bare singleton proves carrier non-vacuity only. It does not by itself prove
+a persistent relation or two distinct primitive substances.
+
+## 3. Carrier identity is not occurrence identity
+
+A binary distinction does not require two primitive carrier substances.
+A single carrier may support two distinct relational occurrences/roles:
 
 [
 \omega_- \neq \omega_+,
 \qquad
-\pi(\omega_-)=\pi(\omega_+)=a.
+\operatorname{carrier}(\omega_-)
+=
+\operatorname{carrier}(\omega_+)=a.
 ]
 
-Equivalently a singleton may carry the two slots conventionally called
+Equivalently, a singleton may carry the two slots conventionally called
 up/down. Carrier identity and occurrence identity are distinct sorts.
 
-## 3. First Hamlet
+Canonical claim anchors include:
+- `DEF_CARRIER_OCCURRENCE_SEPARATION`;
+- `DEF_RELATIONAL_DISTINCTION`;
+- `REF_META0_SINGLETON_POINT_PRESENTATION`;
+- `REF_SINGLETON_RA0_REL_STAR_MODEL`.
 
-For a candidate distinction (d), persistence is Boolean:
+## 4. Existence potential and primitive indistinction
+
+[
+\mathcal P_E
+]
+
+is the modal/admissible possibility remaining after absolute nothingness is
+excluded by the First Law. It is not a material object, field, energy,
+spacetime quantity or Berry/gauge potential.
+
+Primitive indistinction is the condition in which this existence potential is
+present but no persistent internal distinction has yet been established:
+
+[
+\mathcal I_0
+=
+(\mathcal P_E,\ \text{no persistent distinction established}).
+]
+
+This notation must not smuggle in an additive operation.
+
+## 5. First Hamlet
+
+For a candidate differentiation (d), persistence is Boolean:
 
 [
 \mathsf{Disp}:=\neg\operatorname{Persist}(d),
@@ -47,31 +96,63 @@ For a candidate distinction (d), persistence is Boolean:
 \mathsf{Struct}:=\operatorname{Persist}(d).
 ]
 
-The First Hamlet is a persistence dichotomy, not the durable projective
-two-state carrier. Hartley counting of its two logical alternatives gives
-(ln 2) without a probability premise. Shannon (p=1/2) is downstream.
+The First Hamlet is the persistence dichotomy
+({\mathsf{Disp},\mathsf{Struct}}).
 
-## 4. Durable relation roles
+This proves the exhaustive Boolean partition schema. It does **not** by itself
+prove that both preimages are dynamically non-empty. The strict non-degeneracy
+step remains explicit unless separately proved.
 
-The STRUCTURE branch uses the TIR minimum-structure bridge:
-minimal non-trivial persistent structure = relation.
+The First Hamlet is **not** the durable projective two-state carrier.
 
-The durable role orbit is
+Hartley counting of the two logical alternatives gives (ln 2) without a
+probability premise when the non-degenerate two-class realization is used.
+Shannon (p=1/2) is downstream.
+
+## 6. Durable relation roles
+
+The STRUCTURE branch uses the independently established TIR minimum-structure
+bridge:
 
 [
-N=[s\to t],\qquad S=[t\to s].
+\min(\text{non-trivial persistent structure})=\text{relation}.
+]
+
+For a non-self-collapsed persistent relation, the durable orientation-role
+orbit is
+
+[
+N=[s\to t],
+\qquad
+S=[t\to s].
 ]
 
 These are roles/occurrences of one relation and need not be two primitive
 substances.
 
-## 5. Durable-role operator algebra
-
-The downstream linear carrier is built from (N/S), never from
-DISPERSION/STRUCTURE.
+The structural Hartley value
 
 [
-S^2=P^2=I,\qquad SP=-PS,\qquad J:=SP,\qquad J^2=-I.
+\ln |\{N,S\}|=\ln2
+]
+
+is distinct in provenance from the earlier First-Hamlet Hartley count.
+
+## 7. Durable-role operator algebra
+
+The downstream real linear carrier is built from (N/S), never from
+DISPERSION/STRUCTURE.
+
+On the ordered role basis:
+
+[
+S^2=P^2=I,
+\qquad
+SP=-PS,
+\qquad
+J:=SP,
+\qquad
+J^2=-I.
 ]
 
 Thus the imaginary generator is derived rather than assumed upstream.
@@ -79,56 +160,132 @@ Thus the imaginary generator is derived rather than assumed upstream.
 The distinguished operator basis is
 
 [
-\{I,S,P,J\},
+\{I,S,P,J\}.
 ]
 
-with three distinguished non-identity basis directions ({S,P,J}).
+The three active non-identity **basis directions** are
+
+[
+\{S,P,J\}.
+]
+
 This is not a claim that (M_2(\mathbb R)) has only three non-identity
 operators.
 
-## 6. Collatz semantics
+## 8. Collatz operation provenance
 
-Association: free durable-dyad quotient, (n\mapsto n/2) when admissible.
+Association is the free durable-dyad quotient:
 
-Dissociation: product with the three active basis directions,
-(n\mapsto3n).
+[
+n\mapsto n/2
+]
 
-Repair: restore the unique omitted identity direction,
-(3n\mapsto3n+1).
+when admissible.
+
+Dissociation is the finite product with the three active basis directions:
+
+[
+n\mapsto3n.
+]
+
+Repair restores the unique omitted identity direction:
+
+[
+3n\mapsto3n+1.
+]
 
 Hence the canonical relational-cardinality update is the unreduced Collatz
-map. This is an algebraic statement; identification with a particular
+map inside the declared operation semantics. Identification with a particular
 physical dynamics is a separate empirical bridge.
 
-## 7. Gaussian--Bombelli generator
+Never describe (2,3,1) as unsourced coefficients:
+- (2): durable role count;
+- (3): active non-identity basis-direction count;
+- (1): omitted identity repair.
 
-Let (q=|\{N,S\}|=2). In the derived integral complex lattice,
+## 9. Gaussian--Bombelli generator
+
+Let
 
 [
-g=q+J=2+J,\qquad \bar g=2-J.
+q=|\{N,S\}|=2.
 ]
 
-The exact identities include
+With the derived complex structure (J^2=-I), the canonical primitive
+Gaussian generator is
 
 [
-g^2=3+4J,\quad g^3=2+11J,\quad g^4=-7+24J,\quad g\bar g=5.
+g=q+J=2+J,
+\qquad
+\bar g=2-J.
 ]
 
-Thus the numerical values used in the Collatz/Bombelli closure have explicit
-provenance from the same durable-role algebra.
+Exact identities include
 
-## 8. Proof firewall
+[
+g^2=3+4J,
+\qquad
+g^3=2+11J,
+\qquad
+g^4=-7+24J,
+\qquad
+g\bar g=5.
+]
+
+Thus the numerical Collatz/Bombelli closure has explicit provenance from the
+same durable-role algebra.
+
+For the L constants:
+
+[
+L_4=2,
+\qquad
+L_5=5,
+]
+
+while (L_3=7) uses the separately sourced TIR root-extension bridge
+(L_3=L_4+L_5). Do not erase that bridge provenance.
+
+## 10. Projective geometry and spin
+
+Complex structure, (U(1)), (mathbb C_J^2), (mathbb{CP}^1),
+Fubini--Study geometry, (SU(2)), the (j=1/2) representation and Berry/Euler
+closure are downstream constructions.
+
+They are not upstream axioms. Any metric, normalization or representation
+theorem used in the route must be named and typed rather than silently
+imported.
+
+## 11. Proof firewall
 
 Every foundational dependency must be explicit. No hidden assumption may be
-promoted by prose, visualization, a successful test, or numerical agreement.
+promoted by prose, visualization, a successful software test or numerical
+agreement.
 
 Allowed epistemic roles are:
-
 - foundational law;
 - definition / formation rule;
 - theorem / derived result;
 - bridge / reference realization;
 - open derivation gate.
 
-A theorem with an open ancestor must be labeled conditional unless the open
-edge is removed by a proof.
+A theorem with an open ancestor must be labeled conditional unless that edge
+is closed by an explicit proof.
+
+## 12. Private-repository execution policy
+
+This repository is private. **Do not use GitHub Actions as a test, build,
+compile or validation backend.**
+
+Canonical execution path:
+1. local NOEMA/AUX tether must be verified first;
+2. local GREMLIN / PhaseNav / repository-native tooling is used for tests,
+   audits and compilation;
+3. the connected GitHub transport may be used to read/write private repository
+   files when the local runtime lacks private-repository credentials;
+4. GitHub transport is not authorization to create or run Actions workflows;
+5. temporary workflow files must not be introduced for validation.
+
+If local execution cannot proceed because a required local credential,
+checkout or tool is unavailable, report the blocker explicitly rather than
+silently substituting GitHub Actions.
