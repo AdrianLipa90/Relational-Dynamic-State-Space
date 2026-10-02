@@ -155,6 +155,26 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
             "with local refinement is assumed."
         ),
     ),
+    ProvenanceNote(
+        surface="operator tetrahedral binding",
+        role="THM+CROSSCHECK",
+        claim_ids=(
+            "THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON",
+            "THM_HAMLET_OPERATOR_TETRAHEDRON_STELLA_ISOMETRY",
+            "THM_TETRAHEDRAL_ONE_PLUS_THREE_SPLIT",
+            "THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY",
+            "THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE",
+        ),
+        sources=(
+            CANONICAL_FOUNDATIONAL_CONTRACT,
+            "docs/TETRAHEDRAL_BINDING_AUDIT.md",
+        ),
+        note=(
+            "The Frobenius-orthonormal basis {I,S,P,J} forms an exact regular "
+            "tetrahedron and geometrizes the existing 1+3 / 3n+1 structure. "
+            "This is downstream and does not close the primitive-dynamics gate."
+        ),
+    ),
 )
 
 
@@ -173,6 +193,15 @@ IMPLEMENTATION_PROVENANCE: dict[str, tuple[str, ...]] = {
         "THM_MINIMAL_RELATION_ROLE_GAUSSIAN_GENERATOR",
     ),
     "gaussian_bombelli.bombelli_ladder": ("THM_GAUSSIAN_BOMBELLI_LADDER",),
+    "tetrahedral_binding.tetrahedral_binding_certificate": (
+        "THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON",
+        "THM_HAMLET_OPERATOR_TETRAHEDRON_STELLA_ISOMETRY",
+        "THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE",
+    ),
+    "tetrahedral_binding.tetrahedral_completion_cardinality": (
+        "THM_TETRAHEDRAL_COMPLETION_CARDINALITY_3N_PLUS_1",
+        "THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY",
+    ),
     "orbital_fractal_hilbert_moire.countable_word_rank": (
         "DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",
     ),
