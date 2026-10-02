@@ -1473,14 +1473,20 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "REF_KAPPA_MIXING_NORMALIZATION",
         ClaimKind.REFERENCE_REALIZATION,
-        "The canonical project normalization uses the reference incidence count 3*(3^2-1)=24 and one normalized half-turn per channel, giving total normalized turn measure 12.",
+        "The canonical project normalization uses the reference incidence count 3*(3^2-1)=24 and one normalized half-turn per channel, giving total normalized turn measure 12. This incidence/half-turn package is reference normalization, not a theorem of A0.",
         ("BRIDGE_CENTER_HALF_TURN",),
+    ),
+    Claim(
+        "REF_KAPPA_UNIFORM_INFORMATION_DENSITY",
+        ClaimKind.REFERENCE_REALIZATION,
+        "On the canonical kappa reference chart only, balanced binary information ln(2) is represented by a constant information density over the total normalized-turn measure Q_mix=12: dI/dq=kappa_q and integral_0^12 dI=ln(2). Without this uniform-density reference condition only the integral constraint is fixed; a constant kappa_q is not forced.",
+        ("REF_KAPPA_MIXING_NORMALIZATION",),
     ),
     Claim(
         "DER_KAPPA_NORMALIZED_TURN",
         ClaimKind.DERIVED,
-        "With balanced binary information ln(2) and normalized turn measure 12, the normalized-turn information coefficient is kappa_q=ln(2)/12.",
-        ("REF_KAPPA_MIXING_NORMALIZATION",),
+        "Under REF_KAPPA_UNIFORM_INFORMATION_DENSITY, the constant normalized-turn information coefficient is kappa_q=ln(2)/12.",
+        ("REF_KAPPA_UNIFORM_INFORMATION_DENSITY",),
     ),
     Claim(
         "DER_KAPPA_RADIAN_CHART",
@@ -2095,7 +2101,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "BRIDGE_OFHM_HILBERT_HOTEL_SHIFT",
         ClaimKind.BRIDGE,
-        "Source bridge from Infinities@339d6c58 research/TIR_E6_FOURIER_HILBERT_HOTEL_CORE_V0_1.md: the countable address carrier admits a Hilbert-Hotel successor under an explicit enumeration rho:Z^{<omega}<->N, while the imported stable Hilbert-Hotel/Fredholm sector carries index +1. This stabilization shift is distinct from local branch refinement.",
+        "Source bridge from Infinities@339d6c58 research/TIR_E6_FOURIER_HILBERT_HOTEL_CORE_V0_1.md: the countable address carrier admits a Hilbert-Hotel successor after an explicit enumeration rho:Z^{<omega}<->N is chosen, while the imported stable Hilbert-Hotel/Fredholm sector carries index +1. The executable zigzag/Cantor ranking is one declared enumeration coordinate, not a unique canonical enumeration. The stabilization shift is distinct from local branch refinement and no commutation law with refinement is assumed.",
         ("DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",),
     ),
     Claim(
@@ -2108,16 +2114,22 @@ CLAIMS: tuple[Claim, ...] = (
         ),
     ),
     Claim(
+        "BRIDGE_OFHM_BEES_PHASE_DATA",
+        ClaimKind.BRIDGE,
+        "Source bridge from GREMLIN@b0000828 spec/GREMLIN_HOLOGRAPHIC_ORBITAL_MEMORY_V0_1.md: the underlying finite phase coordinates theta_j are available as relational phase data. These phase coordinates, not a coherence magnitude alone, are the data from which relative U(1) phase elements are constructed.",
+        ("DER_MOIRE",),
+    ),
+    Claim(
         "BRIDGE_OFHM_BEES_RELATIVE_PHASE_COHERENCE",
         ClaimKind.BRIDGE,
-        "Source bridge from GREMLIN@b0000828 spec/GREMLIN_HOLOGRAPHIC_ORBITAL_MEMORY_V0_1.md: local finite phase states may be compared by dimension-independent relative-phase coherence C=|d^{-1} sum_j exp(i(theta_j^X-theta_j^Y))|. The observable measures compatibility/coherence and does not establish truth or canon authority.",
-        ("DER_MOIRE",),
+        "From the sourced BEES phase data, local finite phase states may be compared by dimension-independent relative-phase coherence C=|d^{-1} sum_j exp(i(theta_j^X-theta_j^Y))|. Taking the absolute value is lossy: C measures compatibility/coherence and cannot in general reconstruct the relative U(1) phase.",
+        ("BRIDGE_OFHM_BEES_PHASE_DATA",),
     ),
     Claim(
         "DER_OFHM_MOIRE_COCYCLE",
         ClaimKind.DERIVED,
-        "For scalar orbital phases the relative Moire phase M_ij=U_i U_j^{-1}=exp(i(theta_i-theta_j)) obeys M_ij M_jk=M_ik, M_ii=1 and M_ji=M_ij^{-1}.",
-        ("BRIDGE_OFHM_BEES_RELATIVE_PHASE_COHERENCE",),
+        "For scalar orbital phase data the relative Moire phase M_ij=U_i U_j^{-1}=exp(i(theta_i-theta_j)) obeys M_ij M_jk=M_ik, M_ii=1 and M_ji=M_ij^{-1}. This derivation uses the phase coordinates directly and does not invert the lossy coherence scalar.",
+        ("BRIDGE_OFHM_BEES_PHASE_DATA",),
     ),
     Claim(
         "DER_OFHM_HILBERT_TRANSPORT",
@@ -2134,7 +2146,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "BRIDGE_OFHM_BEES_IDT_DYNAMICS",
         ClaimKind.BRIDGE,
-        "Source bridge from GREMLIN@b0000828 and Informational-Dynamics-of-Metatime@31f1a74d: the local sine-coupling current J_i=sum_j w_ij sin(theta_j-theta_i) supports both the normalized first-order BEES/Kuramoto reduction and the IDT second-order update theta'=theta+dt*omega, omega'=omega+dt*(-dV/dtheta-eta*omega+K*J+drive). This is a relational dynamics realization, not a physical-law claim.",
+        "Source bridge from GREMLIN@b0000828 and Informational-Dynamics-of-Metatime@31f1a74d: the local sine-coupling current J_i=sum_j w_ij sin(theta_j-theta_i) supports both the normalized first-order BEES/Kuramoto reduction and the IDT second-order update theta'=theta+dt*omega, omega'=omega+dt*(-dV/dtheta-eta*omega+K*J+drive). The executable domain requires finite data, dt>0, K>=0, eta>=0, non-negative weights with positive total weight when neighbors are present; a symbolic potential derivative additionally requires differentiability of V. This is a relational dynamics realization, not a physical-law claim.",
         ("DEF_OFHM_STATE",),
     ),
     Claim(
