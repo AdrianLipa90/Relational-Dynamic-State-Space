@@ -1,86 +1,87 @@
-# Semantic Weighting Derivation Gate
+# Semantic Weighting Realization Boundary
+
+Historical filename: `SEMANTIC_WEIGHTING_GATE.md`.
 
 ## Status
 
-**OPEN by design.**
+**CLOSED BY UNDERDETERMINATION / REALIZATION DATA REQUIRED.**
 
-The current RTOFA potential layer can evaluate an explicit semantic weighting profile
+The general RDSS potential layer evaluates an explicitly supplied semantic
+weighting profile
 
-\[
-W_\sigma
-=
-\{w_{\sigma i}\}_{i\in I},
-\]
+[
+W_sigma={w_{sigma i}}_{iin I},
+]
 
-but it does not derive those weights from the semantic scale label or scale graph.
+but the current structural signature does not select a unique such profile.
 
-## Current invariant
+This is no longer counted as an open derivation gate.
 
-The implemented direction is
+## Exact no-go witness
 
-\[
-\boxed{
-(D,W_\sigma,p)
-\longmapsto
-V_R^{(p)}.
+Fix the same semantic scale label, the same residual signature ((a,b)), the
+same order (p=1), and the same residual vector
+
+[
+D=(1,1).
+]
+
+Both positive profiles
+
+[
+W^{(1)}=(1,1),
+qquad
+W^{(2)}=(2,1)
+]
+
+satisfy the existing structural requirements, but
+
+[
+V_{W^{(1)}}(D)=2,
+qquad
+V_{W^{(2)}}(D)=3.
+]
+
+Therefore
+
+[
+oxed{
+(sigma,I,D,p)
+
+otRightarrow
+	ext{a unique }W_sigma.
 }
-\]
+]
 
-The non-implemented direction is
+The theorem-level ledger node is
 
-\[
-\boxed{
-(\Sigma,\text{relations},\text{context})
-\;\not\Rightarrow_{\rm current\ kernel}\;
-W_\sigma.
+`THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL`.
+
+The executable witness is
+`semantic_weighting_underdetermination_certificate()` in
+`src/rdss/realization_boundaries.py`.
+
+## Canonical interpretation
+
+The implemented direction remains
+
+[
+oxed{
+(D,W_sigma,p)longmapsto V_R^{(p)}.
 }
-\]
+]
 
-A scale label such as \(\sigma=\text{fruit}\) is therefore not numerically interpreted by itself.
+A concrete realization may additionally supply a typed law
 
-## Why this gate exists
+[
+mathcal W:
+(sigma,I,Gamma_{m sem},C)
+longrightarrow
+mathbb R_{ge0}^{I},
+]
 
-Inferring weights from semantic labels without an explicit rule would hide a large amount of model-specific structure inside what appears to be an algebraic definition.
+together with its own equivariance, normalization and fail-closed rules.
+Those are realization data, not missing consequences of the general algebra.
 
-A genuine derivation needs an explicit semantic weighting law, for example a typed map of the schematic form
-
-\[
-\mathcal W:
-(\sigma,I,\Gamma_{\rm sem},C)
-\longrightarrow
-\mathbb R_{\ge0}^{I},
-\]
-
-where
-
-- \(\sigma\) is the semantic scale/context;
-- \(I\) is the named residual signature;
-- \(\Gamma_{\rm sem}\) is whatever relational semantic structure the realization admits;
-- \(C\) is any additional declared context.
-
-The exact domain is deliberately not fixed by the general algebra.
-
-## Promotion conditions
-
-The gate may be promoted only after a concrete realization supplies:
-
-1. an explicit domain for semantic information;
-2. a deterministic or probabilistically specified weighting map \(\mathcal W\);
-3. invariance/equivariance rules under semantic relabelling where appropriate;
-4. normalization or scale conventions;
-5. fail-closed behavior for unknown/incompatible semantic inputs;
-6. exact and broken witnesses;
-7. tests showing that changing representation labels alone does not silently change weights;
-8. synchronized LaTeX and claim-ledger entries.
-
-## Non-conclusion
-
-This gate does not weaken the relational potential construction. It separates two problems:
-
-\[
-\text{derive semantic weights}
-\qquad\text{from}\qquad
-\text{evaluate a potential using supplied weights}.
-\]
-
-Only the second is part of the current reference kernel.
+Hence semantic weighting is an explicit input boundary, not an unresolved
+foundational or structural theorem.
