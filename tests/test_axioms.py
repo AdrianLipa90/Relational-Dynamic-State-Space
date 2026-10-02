@@ -19,10 +19,10 @@ def test_dependency_graph_is_acyclic_and_resolved():
 def test_canonical_names_and_provenance_are_locked():
     claims = claim_map()
 
-    assert "First Law of Existence" in claims["A0"].statement
-    assert "Canonical name: First Law of Existence" in CANONICAL_PROVENANCE["A0"]
-    assert "law of reality" in CANONICAL_PROVENANCE["A0"].lower()
-    assert "not aliases" in CANONICAL_PROVENANCE["A0"]
+    assert "Law of Reality" in claims["A0"].statement
+    assert "Canonical name: Law of Reality" in CANONICAL_PROVENANCE["A0"]
+    assert "Prawo Rzeczywistosci" in CANONICAL_PROVENANCE["A0"]
+    assert "backward-compatibility alias" in CANONICAL_PROVENANCE["A0"]
 
     first_hamlet = CANONICAL_PROVENANCE["THM_FIRST_HAMLET_DISPERSION_STRUCTURE"]
     assert "DISPERSION/STRUCTURE" in first_hamlet
@@ -50,8 +50,9 @@ def test_canonical_names_and_provenance_are_locked():
 def test_monograph_locks_canonical_name_and_basis_wording():
     monograph = Path("monograph/main.tex").read_text(encoding="utf-8")
 
-    assert "First Law of Existence" in monograph
-    assert "Law of Reality" not in monograph
+    assert "Law of Reality" in monograph
+    assert "Prawo Rzeczywisto" in monograph
+    assert "First Law of Existence" not in monograph
     assert "complete non-identity operator sector" not in monograph
     assert "three distinguished non-identity" in monograph
     assert "V_B=\\mathbb R e_-\\oplus\\mathbb R e_+" not in monograph
