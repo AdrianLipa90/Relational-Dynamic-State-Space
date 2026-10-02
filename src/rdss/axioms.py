@@ -26,15 +26,31 @@ class Claim:
 
 
 CLAIMS: tuple[Claim, ...] = (
+    # Canonical source: docs/CANONICAL_FOUNDATIONAL_CONTRACT.md §1.
+    # The public name is Law of Reality / Prawo Rzeczywistości. "A0" is only
+    # the legacy executable identifier and must not be used to rename the law.
     Claim(
         "A0",
         ClaimKind.FOUNDATIONAL_LAW,
-        "First Law of Existence (legacy identifier A0): absolute nothingness is not a realizable state because it contains no object, distinction or relation by which it could be established as a state.",
+        "Law of Reality (Prawo Rzeczywistosci; legacy executable id A0): absolute nothingness is not a realizable state because it has no object, carrier, occurrence, distinction, relation or denotation by which it could be established as a state. Algebraic/relational zero is not absolute nothingness.",
+    ),
+    # Canonical source: docs/CANONICAL_FOUNDATIONAL_CONTRACT.md §2.
+    Claim(
+        "DEF_LR_OCCURRENCE_CARRIER_SEPARATION",
+        ClaimKind.DEFINITION,
+        "In an LR-admissible realization, occurrence identity and carrier identity are distinct sorts. A carrier projection pi maps admitted relational occurrences to carriers, and two distinct occurrences may project to the same singleton carrier.",
+        ("A0",),
+    ),
+    Claim(
+        "THM_LR_SINGLETON_CAN_SUPPORT_BINARY_DISTINCTION",
+        ClaimKind.THEOREM,
+        "A binary relational distinction requires two distinct occurrences, not two distinct primitive carriers: omega_- != omega_+ may satisfy pi(omega_-)=pi(omega_+)=a. Therefore the minimum carrier support may be one while the distinction remains binary at occurrence level.",
+        ("DEF_LR_OCCURRENCE_CARRIER_SEPARATION",),
     ),
     Claim(
         "DEF_EXISTENCE_POTENTIAL",
         ClaimKind.DEFINITION,
-        "Existence potential P_E is the modal/admissible possibility remaining after absolute nothingness is excluded by the First Law. P_E is not a material object, energy, force, field, spacetime quantity or Berry/gauge connection.",
+        "Existence potential P_E is the modal/admissible possibility remaining after absolute nothingness is excluded by the Law of Reality. P_E is not a material object, energy, force, field, spacetime quantity or Berry/gauge connection.",
         ("A0",),
     ),
     Claim(
@@ -153,7 +169,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "DEF_SOURCE_MINIMAL_PARITY_DYNAMICS_SIGNATURE",
         ClaimKind.FORMATION_RULE,
-        "Candidate source-minimal arithmetic law signature on positive integers: (i) the primitive association branch removes exactly one factor equal to the cardinality b of the durable relation-role dyad; (ii) the primitive dissociation/repair branch is affine O(n)=a*n+r on odd n, with integer a>1 chosen odd so multiplication preserves odd parity before repair, and positive integer r chosen odd so repair flips parity and reopens association; (iii) no larger unsourced integer coefficient is admitted when a smaller coefficient satisfies the same typed role.",
+        "Defined source-minimal arithmetic law signature on positive integers: (i) the primitive association branch removes exactly one factor equal to the cardinality b of the durable relation-role dyad; (ii) the primitive dissociation/repair branch is affine O(n)=a*n+r on odd n, with integer a>1 chosen odd so multiplication preserves odd parity before repair, and positive integer r chosen odd so repair flips parity and reopens association; (iii) no larger unsourced integer coefficient is admitted when a smaller coefficient satisfies the same typed role.",
         ("THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT",),
     ),
     Claim(
@@ -846,11 +862,12 @@ CLAIMS: tuple[Claim, ...] = (
         "The Hamlet Pauli algebra gives the defining su(2) representation with Casimir j(j+1)=3/4, hence j=1/2, and its exponentiated rotations satisfy 2*pi -> -I and 4*pi -> +I. The independently derived canonical Berry loop has the same -1 holonomy, with Euler phase exp(i*pi)=-1. Thus representation-theoretic half-spin and Berry/Euler closure agree without using the spin-s Berry formula as an upstream premise. Physical angular-momentum identification remains a separate bridge.",
         ("THM_HAMLET_SU2_CASIMIR_HALF", "THM_HAMLET_SPINOR_2PI_4PI_RETURN", "THM_HAMLET_PROJECTIVE_SIGN_CLOSURE", "THM_HAMLET_BALANCED_ORBIT_BLOCH_EQUATOR"),
     ),
+    # Canonical source: docs/CANONICAL_FOUNDATIONAL_CONTRACT.md §§1–2.
     Claim(
         "META0",
         ClaimKind.FORMATION_RULE,
-        "Non-reification/non-vacuity rule induced by A0: absolute nothingness has no denotation in the RTOFA object language, and admissible RTOFA models have a non-empty admitted carrier domain.",
-        ("A0",),
+        "Model-formation unpacking of the Law of Reality: absolute nothingness has no denotation in the RTOFA object language, and every admissible RTOFA model has non-empty admitted occurrence support and therefore non-empty carrier support.",
+        ("A0", "DEF_LR_OCCURRENCE_CARRIER_SEPARATION"),
     ),
     Claim(
         "EX0",
@@ -858,11 +875,12 @@ CLAIMS: tuple[Claim, ...] = (
         "Model non-vacuity: every admissible RTOFA model contains at least one admitted relational carrier.",
         ("META0",),
     ),
+    # Canonical source: docs/CANONICAL_FOUNDATIONAL_CONTRACT.md §§1–2.
     Claim(
         "RA0",
-        ClaimKind.DERIVATION_GATE,
-        "Relational admissibility target: every admitted observable is incident to at least one primitive relation, as source or target. This is not an additional axiom; its complete derivation from A0 remains an explicit gate in the current kernel.",
-        ("A0",),
+        ClaimKind.THEOREM,
+        "Relational admissibility is the carrier projection of the relational witness required by the Law of Reality: every admitted observable is incident to at least one primitive relation, as source or target. Endpoint carrier labels may coincide when distinct occurrences share one singleton carrier.",
+        ("A0", "THM_LR_SINGLETON_CAN_SUPPORT_BINARY_DISTINCTION", "DEF_RELATIONAL_DISTINCTION"),
     ),
     Claim(
         "DEF_POINT",
