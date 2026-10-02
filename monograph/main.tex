@@ -1047,9 +1047,16 @@ F_i^+\longleftrightarrow F_i^-,
 \]
 No additional face selector is required.
 
-The imported TIR family/flavour representation supplies an abstract transitive
-three-label carrier \(\mathcal F_3\). The directed exchange-incidence set is
-therefore
+The imported TIR flavour sector already fixes the three-flavour carrier
+\cite{LipaTIRFlavour2026}:
+\[
+\boxed{N_F=3.}
+\]
+The current TIR dependency surface records
+\codeid{THREE_FLAVOUR_CARRIER = CLOSED -> N_F=3} and
+\codeid{TIR.FLAVOUR.STAGE66_SU3F_GENERATION = CLOSED}. Hence the factor three
+below is sourced from a closed TIR result rather than inserted as a free
+cardinality assumption. The directed exchange-incidence set is therefore
 \[
 \mathcal C
 =
@@ -1150,16 +1157,79 @@ phase. One half-turn per directed incidence gives
 24\cdot\frac12=12
 }
 \]
-normalized turns, equivalently total radian measure \(24\pi\). This
-independently reproduces the incidence and turn measure of the canonical
-\(\kappa\) normalization. It does not yet convert the separate constant
-information-density condition into a theorem.
+normalized turns, equivalently total radian measure \(24\pi\).
+
+The remaining information factor is fixed independently by the binary source.
+For the durable \(Z_2\) carrier, symmetry forces
+\[
+p_-=p_+=\frac12.
+\]
+For binary Shannon entropy \cite{Shannon1948},
+\[
+H(p)
+=
+-p\ln p-(1-p)\ln(1-p),
+\]
+the unique maximum occurs at \(p=\tfrac12\), giving
+\[
+\boxed{
+H_{\max}=\ln2.
+}
+\]
+This equals the independently obtained two-state Hartley value, so the source
+information is fixed at \(\ln2\), not fitted.
+
+Because the full bipolar face--flavour action is transitive on the 24 directed
+channels, invariant normalized weighting is unique:
+\[
+\boxed{
+w_c=\frac1{24}.
+}
+\]
+Therefore the symmetry-preserving information carried by one directed channel
+is
+\[
+\boxed{
+\Delta I
+=
+\frac{\ln2}{24}.
+}
+\]
+Each such polarity exchange is one half-turn,
+\[
+\boxed{
+\Delta\phi=\pi.
+}
+\]
+Consequently
+\[
+\boxed{
+\kappa
+=
+\frac{\Delta I}{\Delta\phi}
+=
+\frac{\ln2/24}{\pi}
+=
+\frac{\ln2}{24\pi}.
+}
+\]
+
+Thus the former constant-density reference convention is superseded at this
+level: channel uniformity is forced by transitivity of the 24-channel orbit,
+the numerator is forced by binary maximum entropy, and the angular denominator
+is forced by the non-trivial \(Z_2\) half-turn. The theorem-level executable
+claim is \claimid{THM_BIPOLAR_KAPPA_FORCED}. Historical
+\claimid{REF_KAPPA_MIXING_NORMALIZATION} and
+\claimid{REF_KAPPA_UNIFORM_INFORMATION_DENSITY} are retained only as
+backward-compatible provenance surfaces.
 
 The executable certificates include
 \claimid{THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON},
 \claimid{THM_HAMLET_OPERATOR_TETRAHEDRON_STELLA_ISOMETRY},
-\claimid{THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING}, and
-\claimid{THM_BIPOLAR_KAPPA_INCIDENCE_COUNT_CROSSCHECK}.
+\claimid{THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING},
+\claimid{THM_BINARY_Z2_MAXIMUM_ENTROPY_LN2},
+\claimid{THM_BIPOLAR_CHANNEL_INFORMATION_UNIFORMIZATION}, and
+\claimid{THM_BIPOLAR_KAPPA_FORCED}.
 
 Right multiplication by \(e^{\phi J}\) acts as
 \[
@@ -4666,6 +4736,15 @@ A. Lipa, ``Platonic closure of the L-constants,'' in \emph{The Fundamental
 Theory of Informational Relations},
 \codeid{TIR/foundations/TIR_PLATONIC_L_CONSTANTS_CLOSURE_V0_1.md}, commit
 \codeid{9783782570a2ccfa1fc42c99b605dad48e02aa78}, 2026.
+
+\bibitem{LipaTIRFlavour2026}
+A. Lipa, ``Three-flavour carrier and coefficient-parent dependency closure,''
+in \emph{The Fundamental Theory of Informational Relations},
+\codeid{TIR/foundations/TIR_COEFFICIENT_MAGNITUDE_PARENT_EVALUATION_V0_1.md}
+and \codeid{DEPENDENCY_EXPORT.json}, commit
+\codeid{9783782570a2ccfa1fc42c99b605dad48e02aa78}, 2026. The pinned dependency
+surface records \codeid{THREE_FLAVOUR_CARRIER = CLOSED -> N_F=3} and
+\codeid{TIR.FLAVOUR.STAGE66_SU3F_GENERATION = CLOSED}.
 
 \bibitem{LipaInfinities2026}
 A. Lipa, \emph{Infinities}, commit
