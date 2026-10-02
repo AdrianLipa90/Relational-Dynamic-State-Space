@@ -1727,7 +1727,7 @@ def test_algebraic_geometric_cell_claims_do_not_add_axioms() -> None:
     assert claims["DEF_CUBIC_FACE_FRAME_TRANSPORT"].kind is ClaimKind.DEFINITION
     assert claims["DER_STELLA_SECTOR_TRANSPORT"].kind is ClaimKind.DERIVED
     assert claims["DER_CELL_RELATIVE_STATE_TO_MOIRE"].kind is ClaimKind.DERIVED
-    assert claims["GATE_MOIRE_DYNAMICAL_LAW"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_MOIRE_DYNAMICAL_LAW"].kind is ClaimKind.THEOREM
 
     assert tuple(claim.id for claim in foundational_laws()) == ("A0",)
 
@@ -2525,3 +2525,43 @@ def test_kappa_is_theorem_derived_from_entropy_and_bipolar_symmetry() -> None:
     statement = claims["THM_BIPOLAR_KAPPA_FORCED"].statement
     assert "ln(2)/(24*pi)" in statement
     assert "No free channel weighting or fitted normalization" in statement
+
+
+def test_half_time_pendulum_and_moire_kuramoto_are_closed_structurally() -> None:
+    claims = claim_map()
+
+    expected = {
+        "BRIDGE_TIR_PRETIME_STELLA_HALF_SUCCESSOR": ClaimKind.BRIDGE,
+        "BRIDGE_TIR_WHITE_THREAD_PHASE_ACTION": ClaimKind.BRIDGE,
+        "THM_FRAME_FUZZY_HALF_SUCCESSOR": ClaimKind.THEOREM,
+        "THM_CANONICAL_PAIR_INFORMATION_POTENTIAL": ClaimKind.THEOREM,
+        "THM_BIPOLAR_PAIR_FORCE_ANTISYMMETRY": ClaimKind.THEOREM,
+        "THM_BIPOLAR_RELATIVE_PENDULUM": ClaimKind.THEOREM,
+        "THM_FRAME_SECOND_DIFFERENCE_UNIQUE": ClaimKind.THEOREM,
+        "THM_FRAME_PENDULUM_SUCCESSOR": ClaimKind.THEOREM,
+        "THM_MOIRE_INFORMATION_POTENTIAL": ClaimKind.THEOREM,
+        "THM_MOIRE_KURAMOTO_CLOSURE": ClaimKind.THEOREM,
+        "THM_PENDULUM_KURAMOTO_COMMON_PARENT": ClaimKind.THEOREM,
+        "GATE_MOIRE_DYNAMICAL_LAW": ClaimKind.THEOREM,
+    }
+    for claim_id, kind in expected.items():
+        assert claims[claim_id].kind is kind
+
+    pendulum = dependency_closure("THM_BIPOLAR_RELATIVE_PENDULUM")
+    assert "THM_BIPOLAR_KAPPA_FORCED" in pendulum
+    assert "BRIDGE_TIR_PRETIME_STELLA_HALF_SUCCESSOR" not in pendulum
+    assert "BRIDGE_TIR_WHITE_THREAD_PHASE_ACTION" in pendulum
+
+    frame = dependency_closure("THM_FRAME_PENDULUM_SUCCESSOR")
+    assert "BRIDGE_TIR_PRETIME_STELLA_HALF_SUCCESSOR" in frame
+    assert "THM_BIPOLAR_RELATIVE_PENDULUM" in frame
+    assert "THM_FRAME_SECOND_DIFFERENCE_UNIQUE" in frame
+
+    kuramoto = dependency_closure("THM_MOIRE_KURAMOTO_CLOSURE")
+    assert "DER_CELL_RELATIVE_STATE_TO_MOIRE" in kuramoto
+    assert "THM_CANONICAL_PAIR_INFORMATION_POTENTIAL" in kuramoto
+    assert "BRIDGE_TIR_WHITE_THREAD_PHASE_ACTION" in kuramoto
+
+    historical_gate = claims["GATE_MOIRE_DYNAMICAL_LAW"]
+    assert "CLOSED" in historical_gate.statement
+    assert "physical substrate" in historical_gate.statement
