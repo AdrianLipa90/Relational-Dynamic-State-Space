@@ -165,7 +165,6 @@ from .closure import (
 from .existence_chain import (
     CANONICAL_EXISTENCE_CHAIN,
     FIRST_LAW_OF_EXISTENCE,
-    LAW_OF_REALITY,
     IMAGINARY_GENERATOR,
     LN2,
     RELATIONAL_ZETA_ZERO,
@@ -640,7 +639,6 @@ __all__ = [
     "refinement_residual",
     "CANONICAL_EXISTENCE_CHAIN",
     "FIRST_LAW_OF_EXISTENCE",
-    "LAW_OF_REALITY",
     "IMAGINARY_GENERATOR",
     "LN2",
     "RELATIONAL_ZETA_ZERO",
