@@ -19,10 +19,10 @@ def test_dependency_graph_is_acyclic_and_resolved():
 def test_canonical_names_and_provenance_are_locked():
     claims = claim_map()
 
-    assert "Law of Reality" in claims["A0"].statement
-    assert "Canonical name: Law of Reality" in CANONICAL_PROVENANCE["A0"]
-    assert "Prawo Rzeczywistosci" in CANONICAL_PROVENANCE["A0"]
-    assert "backward-compatibility alias" in CANONICAL_PROVENANCE["A0"]
+    assert "First Law of Existence" in claims["A0"].statement
+    assert "Canonical name: First Law of Existence" in CANONICAL_PROVENANCE["A0"]
+    assert "law of reality" in CANONICAL_PROVENANCE["A0"].lower()
+    assert "not aliases" in CANONICAL_PROVENANCE["A0"]
 
     first_hamlet = CANONICAL_PROVENANCE["THM_FIRST_HAMLET_DISPERSION_STRUCTURE"]
     assert "DISPERSION/STRUCTURE" in first_hamlet
@@ -50,9 +50,8 @@ def test_canonical_names_and_provenance_are_locked():
 def test_monograph_locks_canonical_name_and_basis_wording():
     monograph = Path("monograph/main.tex").read_text(encoding="utf-8")
 
-    assert "Law of Reality" in monograph
-    assert "Prawo Rzeczywisto" in monograph
-    assert "First Law of Existence" not in monograph
+    assert "First Law of Existence" in monograph
+    assert "Law of Reality" not in monograph
     assert "complete non-identity operator sector" not in monograph
     assert "three distinguished non-identity" in monograph
     assert "V_B=\\mathbb R e_-\\oplus\\mathbb R e_+" not in monograph
@@ -318,9 +317,6 @@ def test_winding_depends_on_explicit_holonomy_u1_representation():
 def test_foundational_law_set_is_small_and_explicit():
     ids = {claim.id for claim in foundational_laws()}
     assert ids == {"A0"}
-    assert "Law of Reality" in claims["A0"].statement
-    assert claims["DEF_LR_OCCURRENCE_CARRIER_SEPARATION"].kind is ClaimKind.DEFINITION
-    assert claims["THM_LR_SINGLETON_CAN_SUPPORT_BINARY_DISTINCTION"].kind is ClaimKind.THEOREM
     assert foundational_axioms() == foundational_laws()
 
 
@@ -436,7 +432,7 @@ def test_singleton_foundation_minimality_splits_lower_bound_and_attainability():
         }
     )
 
-def test_current_canonical_foundation_is_the_law_of_reality():
+def test_current_canonical_foundation_is_the_first_law():
     ids = {claim.id for claim in foundational_laws()}
     assert ids == {"A0"}
 
@@ -663,7 +659,7 @@ def test_typed_zero_depends_on_exact_sector_primitives():
 def test_meta0_is_model_formation_rule_not_object_level_nothing():
     claims = claim_map()
     assert claims["META0"].kind is ClaimKind.FORMATION_RULE
-    assert claims["META0"].depends_on == ("A0", "DEF_LR_OCCURRENCE_CARRIER_SEPARATION")
+    assert claims["META0"].depends_on == ("A0",)
     assert set(claim.id for claim in formation_rules()) == {
         "META0",
         "DEF_SOURCE_MINIMAL_PARITY_DYNAMICS_SIGNATURE",
@@ -673,7 +669,7 @@ def test_meta0_is_model_formation_rule_not_object_level_nothing():
 def test_ex0_is_theorem_of_model_formation_not_extra_object_axiom():
     claims = claim_map()
     assert claims["EX0"].kind is ClaimKind.THEOREM
-    assert dependency_closure("EX0") == frozenset({"A0", "DEF_LR_OCCURRENCE_CARRIER_SEPARATION", "META0"})
+    assert dependency_closure("EX0") == frozenset({"A0", "META0"})
     assert "EX0" not in {claim.id for claim in foundational_axioms()}
 
 
@@ -1677,7 +1673,7 @@ def test_unique_foundational_law_is_a0_legacy_identifier() -> None:
     assert claims["A0"].depends_on == ()
     assert tuple(claim.id for claim in foundational_laws()) == ("A0",)
     assert tuple(claim.id for claim in foundational_axioms()) == ("A0",)
-    assert claims["RA0"].kind is ClaimKind.THEOREM
+    assert claims["RA0"].kind is ClaimKind.DERIVATION_GATE
     assert claims["RR1"].kind is ClaimKind.DERIVATION_GATE
     assert claims["RA0_STAR"].kind is ClaimKind.DERIVATION_GATE
     assert claims["RA0_REL_STAR"].kind is ClaimKind.DERIVATION_GATE
