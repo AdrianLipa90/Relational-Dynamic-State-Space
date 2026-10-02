@@ -42,6 +42,12 @@ CANONICAL_PROVENANCE: dict[str, str] = {
         "Durable carrier provenance: STRUCTURE -> TIR minimum-structure bridge -> "
         "orientation-role orbit N/S. N/S may be distinct occurrences/roles on one carrier."
     ),
+    "RA0": (
+        "RA0 is imported TIR relational-existence typing, not a theorem derived from A0. "
+        "The TIR canonical proof of A0 already uses Exist(x)->exists R_x; reversing that "
+        "edge in RDSS would be circular. Global recursive generativity is separately "
+        "isolated as RA0_REL_STAR."
+    ),
     "THM_HAMLET_IMAGINARY_GENERATOR": (
         "J=SP and J^2=-I are derived from swap/polarity on the durable N/S role basis; "
         "complex scalars are not an upstream premise."
@@ -96,6 +102,11 @@ CLAIMS: tuple[Claim, ...] = (
         "First Law of Existence (legacy identifier A0): absolute nothingness is not a realizable state because it contains no object, distinction or relation by which it could be established as a state.",
     ),
     Claim(
+        "BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",
+        ClaimKind.BRIDGE,
+        "Imported canonical TIR root typing at commit 9783782570a2ccfa1fc42c99b605dad48e02aa78: Exist(x) implies existence of at least one relation R_x by which x is established relationally. This typing is used in the canonical TIR proof that absolute nothing is non-realizable; therefore it is a sibling root typing of A0, not a theorem derived from RDSS A0. Treating RA0 as A0-derived would be circular.",
+    ),
+    Claim(
         "DEF_EXISTENCE_POTENTIAL",
         ClaimKind.DEFINITION,
         "Existence potential P_E is the modal/admissible possibility remaining after absolute nothingness is excluded by the First Law. P_E is not a material object, energy, force, field, spacetime quantity or Berry/gauge connection.",
@@ -138,8 +149,8 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0",
-        ClaimKind.DERIVATION_GATE,
-        "Strict dynamics gate: derive from primitive existence potential plus indistinction, without adopting the canonical non-degeneracy definition, that both DISPERSION and STRUCTURE are dynamically admissible/non-empty possibilities.",
+        ClaimKind.BRIDGE,
+        "Historical strict-dynamics target retained as an optional downstream bridge: a particular physical/dynamical realization may show that both DISPERSION and STRUCTURE occur from P_E/I_0. The canonical relational foundation does not require this as an upstream proof obligation; its non-degenerate First-Hamlet semantics remains explicitly typed rather than falsely derived from A0.",
         ("DEF_PRIMITIVE_INDISTINCTION", "DEF_DISTINCTION_PERSISTENCE_PREDICATE"),
     ),
     Claim(
@@ -210,8 +221,8 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE",
-        ClaimKind.DERIVATION_GATE,
-        "LEGACY/SUPERSEDED target: directly binding primitive indistinction to a Collatz integer skips the persistent-relation layer and is not canonical after the TIR/RDSS causal audit.",
+        ClaimKind.THEOREM,
+        "Historical gate identifier retained as a supersession theorem: directly binding primitive indistinction to a Collatz integer is non-canonical because it skips the persistent-relation layer. The canonical arithmetic route begins only after the durable relation-role algebra is established.",
         ("DEF_PRIMITIVE_INDISTINCTION", "THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER"),
     ),
     Claim(
@@ -456,14 +467,14 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS",
-        ClaimKind.DERIVATION_GATE,
-        "Legacy/refined inheritance gate: quotient/product/coproduct cardinality semantics now close the divide/multiply/add operation assignment algebraically. The unresolved stronger question is only whether primitive natural dynamics is forced to instantiate that exact relational-cardinality normalization.",
-        ("A0", "THM_STRUCTURE_BRANCH_MINIMAL_RELATION", "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT", "DEF_SOURCE_MINIMAL_PARITY_DYNAMICS_SIGNATURE"),
+        ClaimKind.THEOREM,
+        "Historical gate identifier retained as a conditional theorem: source-minimal parity arithmetic and relation-cardinality semantics already fix the Collatz coefficients and branch form inside the declared law class. The only unresolved stronger issue is represented once, by GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS.",
+        ("THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
     ),
     Claim(
         "GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA",
-        ClaimKind.DERIVATION_GATE,
-        "Refined physical-sector gate: numerical coefficients, quotient/product/identity-repair semantics, and selector-free bipolar tetrahedral operation-role selection are algebraically closed. The remaining burden is only the stronger physical/foundational assertion that primitive natural dynamics instantiates this already-forced relational/tetrahedral normalization.",
+        ClaimKind.THEOREM,
+        "Historical gate identifier retained as a closure theorem: numerical coefficients, quotient/product/identity-repair semantics, parity selection and selector-free bipolar tetrahedral operation-role selection are algebraically closed. Only physical/foundational instantiation of this normalization remains in GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS.",
         ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
     ),
     Claim(
@@ -630,8 +641,8 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY",
-        ClaimKind.DERIVATION_GATE,
-        "Legacy strict-dynamics gate: establish from a physical/dynamical law that primitive existence potential in indistinction actually undergoes a candidate differentiation process. The formal DISPERSION/STRUCTURE partition itself is already exact once persistence is defined; this gate concerns dynamical instantiation, not the algebraic dichotomy.",
+        ClaimKind.BRIDGE,
+        "Legacy optional physical bridge: a concrete dynamics may instantiate differentiation of P_E/I_0, but this is not an upstream canonical-foundation obligation after adoption of the source-clean TIR relational spine. No universal physical differentiation law is claimed here.",
         ("DEF_PRIMITIVE_INDISTINCTION", "DEF_DISTINCTION_PERSISTENCE_PREDICATE"),
     ),
     Claim(
@@ -654,15 +665,15 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",
-        ClaimKind.DERIVATION_GATE,
-        "Legacy strict-dynamics gate: physically instantiate the already-defined first Hamlet DISPERSION/STRUCTURE bifurcation from primitive existence potential. The canonical algebraic Hamlet is THM_FIRST_HAMLET_DISPERSION_STRUCTURE plus THM_FIRST_HAMLET_Z2 and does not require this gate.",
+        ClaimKind.BRIDGE,
+        "Legacy optional bridge for a physical realization of the already-defined DISPERSION/STRUCTURE bifurcation from P_E/I_0. It is not part of the canonical proof spine and does not gate the relational two-role carrier N/S.",
         ("GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY", "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0", "THM_FIRST_HAMLET_Z2"),
     ),
     Claim(
         "GATE_HAMLET_RELATIONAL_BINDING",
-        ClaimKind.DERIVATION_GATE,
-        "Strict relational-binding gate: derive from bare foundational structure, rather than canonical RDSS representation semantics, that DISPERSION and STRUCTURE must be realized as distinct relational occurrence identities. Canonical RDSS may represent them this way definitionally while the universal entailment remains open.",
-        ("THM_FIRST_HAMLET_Z2", "DEF_RELATIONAL_DISTINCTION"),
+        ClaimKind.THEOREM,
+        "Historical gate identifier closed by type separation: DISPERSION/STRUCTURE are persistence outcomes and must not be identified with the durable relational occurrence roles. The canonical non-circular route is STRUCTURE -> minimal persistent relation -> orientation roles {N,S}. Therefore the requested direct binding of DISPERSION and STRUCTURE to durable relation identities is not a missing theorem but an ill-typed target.",
+        ("THM_FIRST_HAMLET_DISPERSION_STRUCTURE", "THM_STRUCTURE_BRANCH_MINIMAL_RELATION", "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT"),
     ),
     Claim(
         "DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION",
@@ -681,6 +692,12 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.THEOREM,
         "Under the canonical RDSS definitions of realized existence and relational-information realization, the minimal realized existence state is binary and its two distinguishable alternatives are represented by two distinct branch-occurrence identities bound relationally to their host. This is a theorem of the chosen semantics, not a proof that bare L1 entails RA0_REL_STAR for every admitted carrier.",
         ("DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE", "DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION", "THM_CANONICAL_REALIZED_EXISTENCE_BINARY", "REF_CANONICAL_HAMLET_RELATIONAL_REALIZATION"),
+    ),
+    Claim(
+        "THM_CANONICAL_ROOT_LOCAL_RA0_REL_STAR",
+        ClaimKind.THEOREM,
+        "The canonical minimal realized-existence root hosts a non-degenerate relationally bound binary distinction with admitted endpoint occurrences. Thus the RA0_REL_STAR property is proved locally at the canonical root. What remains open is only its globalization to every subsequently admitted/generated carrier.",
+        ("THM_CANONICAL_REALIZED_EXISTENCE_RELATIONAL_BINARY",),
     ),
     Claim(
         "THM_BINARY_BRANCH_SWAP_INVOLUTION",
@@ -1049,9 +1066,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RA0",
-        ClaimKind.DERIVATION_GATE,
-        "Relational admissibility target: every admitted observable is incident to at least one primitive relation, as source or target. This is not an additional axiom; its complete derivation from A0 remains an explicit gate in the current kernel.",
-        ("A0",),
+        ClaimKind.BRIDGE,
+        "Canonical relational admissibility imported from the TIR root typing: every admitted existing observable participates in at least one relation by which it is established. RA0 is not derived from A0, because the same relational-existence typing is already a proof parent of the canonical A0 contradiction; the two must not be arranged in a circular dependency.",
+        ("BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",),
     ),
     Claim(
         "DEF_POINT",
@@ -1184,9 +1201,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RR1",
-        ClaimKind.DERIVATION_GATE,
-        "Recursive relational closure target: at every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction, so the rule re-applies at each finite refinement depth. This is not an additional axiom; its complete derivation from A0 remains an explicit gate.",
-        ("A0", "DEF_POINT", "DEF_BINARY_DISTINCTION"),
+        ClaimKind.THEOREM,
+        "Conditional recursive-closure theorem: once RA0_REL_STAR holds globally on admitted/generated carriers, the relationally bound binary rule re-applies at each finite path-labelled occurrence and therefore generates recursive binary refinement to arbitrary finite depth.",
+        ("RA0_REL_STAR",),
     ),
     Claim(
         "THM_RR1_REALIZES_FINITE_WORDS",
@@ -1214,15 +1231,15 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RA0_STAR",
-        ClaimKind.DERIVATION_GATE,
-        "Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers.",
-        ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
+        ClaimKind.THEOREM,
+        "Conditional unbound-generativity theorem: RA0_REL_STAR implies that every admitted carrier hosts a non-degenerate binary distinction after forgetting explicit branch-relation binding.",
+        ("RA0_REL_STAR",),
     ),
     Claim(
         "RA0_REL_STAR",
         ClaimKind.DERIVATION_GATE,
-        "Every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted carriers.",
-        ("DEF_POINT", "DEF_RELATIONAL_DISTINCTION"),
+        "Sole active relational-generativity gate: globalize the already-proved canonical-root property so that every subsequently admitted/generated carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted carriers. Local root closure is THM_CANONICAL_ROOT_LOCAL_RA0_REL_STAR; this gate concerns only universal recursive propagation.",
+        ("THM_CANONICAL_ROOT_LOCAL_RA0_REL_STAR", "DEF_RELATIONAL_DISTINCTION"),
     ),
     Claim(
         "THM_RA0_STAR_FROM_RA0_REL_STAR",
