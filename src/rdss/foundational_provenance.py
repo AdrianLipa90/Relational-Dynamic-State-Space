@@ -62,8 +62,9 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
             "distinction is theorem-level only in the declared non-self-collapsed "
             "non-trivial relational sector. Historical "
             "First-Hamlet/RA0*/RR1/Collatz structural gates are discharged or "
-            "retyped as formation/provenance surfaces. Exactly the continuum-fractal "
-            "limit and physical-binding derivation gates remain open."
+            "retyped as formation/provenance surfaces. The geometric-fractal limit is "
+            "closed by no-go, and physical binding is separately typed EVIDENCE_GATE; "
+            "no structural DERIVATION_GATE remains."
         ),
     ),
     ProvenanceNote(
@@ -79,7 +80,7 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
     ),
     ProvenanceNote(
         surface="First Hamlet persistence dichotomy",
-        role="DEF+THM+GATE",
+        role="DEF+THM+HISTORICAL_GATE",
         claim_ids=(
             "DEF_DISTINCTION_PERSISTENCE_PREDICATE",
             "THM_FIRST_HAMLET_DISPERSION_STRUCTURE",
@@ -88,7 +89,9 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         sources=(CANONICAL_FOUNDATIONAL_CONTRACT,),
         note=(
             "DISPERSION/STRUCTURE classify persistence and are not the durable "
-            "N/S projective carrier. Dynamic non-degeneracy remains explicit."
+            "N/S projective carrier. The historical dynamic-nondegeneracy gate is "
+            "discharged/superseded; canonical non-degeneracy remains an explicit "
+            "semantics choice rather than a theorem of A0 alone."
         ),
     ),
     ProvenanceNote(
@@ -212,7 +215,9 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         note=(
             "The Frobenius-orthonormal basis {I,S,P,J} forms an exact regular "
             "tetrahedron and geometrizes the existing 1+3 / 3n+1 structure. "
-            "This is downstream and does not close the primitive-dynamics gate."
+            "This theorem is downstream and does not itself perform the dynamics "
+            "closure; that historical gate is closed independently by the later "
+            "selector-free relational dynamics chain."
         ),
     ),
     ProvenanceNote(
