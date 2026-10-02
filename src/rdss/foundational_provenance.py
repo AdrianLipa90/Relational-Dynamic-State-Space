@@ -262,6 +262,29 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         ),
     ),
     ProvenanceNote(
+        surface="realization-specific underdetermination boundaries",
+        role="THM+NO_GO",
+        claim_ids=(
+            "THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL",
+            "THM_INDEXED_TENSOR_CONTRACTION_UNDERDETERMINED_BY_FLAT_RANK",
+            "THM_NONSTRICT_MONOIDAL_COHERENCE_UNDERDETERMINED_BY_FLATTENING",
+            "THM_REALIZATION_BOUNDARIES_CLOSED_BY_UNDERDETERMINATION",
+        ),
+        sources=(
+            "docs/SEMANTIC_WEIGHTING_GATE.md",
+            "docs/INDEXED_TENSOR_GATE.md",
+            "docs/MONOIDAL_COHERENCE_GATE.md",
+            "src/rdss/realization_boundaries.py",
+        ),
+        note=(
+            "These historical gate names are closed by exact non-uniqueness or "
+            "information-loss witnesses. The general signature does not uniquely "
+            "select semantic weights, indexed contraction metadata, or non-strict "
+            "coherence morphisms. Concrete realizations may supply those data "
+            "explicitly without creating structural derivation debt."
+        ),
+    ),
+    ProvenanceNote(
         surface="OFHM symbolic-boundary no-go and physical evidence frontier",
         role="DEF+THM+EVIDENCE_GATE",
         claim_ids=(
@@ -357,6 +380,18 @@ IMPLEMENTATION_PROVENANCE: dict[str, tuple[str, ...]] = {
     "alternating_phase_dynamics.canonical_kuramoto_velocity": (
         "THM_MOIRE_KURAMOTO_CLOSURE",
         "THM_PENDULUM_KURAMOTO_COMMON_PARENT",
+    ),
+    "realization_boundaries.semantic_weighting_underdetermination_certificate": (
+        "THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL",
+    ),
+    "realization_boundaries.indexed_tensor_underdetermination_certificate": (
+        "THM_INDEXED_TENSOR_CONTRACTION_UNDERDETERMINED_BY_FLAT_RANK",
+    ),
+    "realization_boundaries.monoidal_coherence_underdetermination_certificate": (
+        "THM_NONSTRICT_MONOIDAL_COHERENCE_UNDERDETERMINED_BY_FLATTENING",
+    ),
+    "realization_boundaries.realization_boundary_no_go_certificate": (
+        "THM_REALIZATION_BOUNDARIES_CLOSED_BY_UNDERDETERMINATION",
     ),
     "orbital_fractal_hilbert_moire.countable_word_rank": (
         "DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",
