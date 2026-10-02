@@ -36,7 +36,7 @@ the recursive \(\CP\) construction is fibre-local rather than one global
 Bloch sphere, and a phase representation of abstract relational holonomy must
 be supplied by a concrete realization before the Zero-Axis lift is used.
 
-The canonical foundation has one foundational law, the \emph{Law of Reality},
+The canonical foundation has one foundational law, the \emph{First Law of Existence},
 with legacy ledger identifier \(A_0\). In RTOFA this name is canonical:
 reality is admissible only through relational distinguishability, while
 absolute nothingness has no realizable representative. The downstream proof
@@ -60,249 +60,216 @@ epistemic role:
 \mathrm{OPEN}.
 }
 \]
-\(\mathrm{LAW}\) is reserved for the Law of Reality. \(\mathrm{DEF}\)
-introduces notation or a typed construction and is never counted as a derived
-fact. \(\mathrm{THM}\) requires explicit hypotheses and a proof from earlier
-LAW/DEF/THM statements. \(\mathrm{BRIDGE}\) imports a separately proved
-result with its provenance and hypotheses. \(\mathrm{OPEN}\) is never used
-as if proved.
+\(\mathrm{LAW}\) is reserved for the \emph{First Law of Existence}.
+\(\mathrm{DEF}\) introduces notation or a typed construction and is never
+counted as a derived fact. \(\mathrm{THM}\) requires explicit hypotheses
+and a proof from earlier LAW/DEF/THM statements. \(\mathrm{BRIDGE}\)
+imports a separately proved result with its provenance and hypotheses.
+\(\mathrm{OPEN}\) is never used as if proved.
 
 A downstream theorem whose dependency cone contains an OPEN statement is
 reported as conditional on that statement. No rhetorical phrase, geometric
 picture, numerical coincidence or successful software test promotes an OPEN
 edge to THM. This is the proof firewall used throughout the monograph.
 
-\section{Law of Reality: canonical causal spine}
+\section{First Law of Existence: canonical causal spine}
 
-The unique foundational law of RTOFA is called the \emph{Law of Reality}.
-The name is part of the theory and is not a provisional label. The historical
-claim-ledger identifier is \(A_0\).
+The unique foundational law of RTOFA is called exactly the \emph{First Law
+of Existence}. The historical claim-ledger identifier is \(A_0\).
+Descriptive phrases about the law's status are not alternative names and
+must not be promoted to aliases.
 
 \subsection{Formal realization language}
 
-For a realizable state \(X\), let \(\Omega_X\) denote its set of admitted
-relational occurrences, let \(C_X\) denote its supporting carrier set, and let
-\[
-\pi_X:\Omega_X\to C_X
-\]
-be the occurrence-to-carrier map. Two occurrences may share one carrier:
+Let \(\operatorname{Adm}(x)\) mean that \(x\) is an admitted carrier in
+an RTOFA model. A relational occurrence is a typed occurrence of a carrier
+inside a declared distinction or relation. Two occurrences may share one
+carrier:
 \[
 \omega_-\neq\omega_+,
 \qquad
-\pi_X(\omega_-)=\pi_X(\omega_+)=a.
+\operatorname{carrier}(\omega_-)
+=
+\operatorname{carrier}(\omega_+)=a.
 \]
-Thus binary distinction is an occurrence-level statement and does not require
-two primitive substances or two different carrier objects.
+Therefore binary distinction is an occurrence-level statement; it does not
+require two primitive substances or two different carrier objects.
 
-Absolute nothingness is denoted metatheoretically by \(\mathcal N\), never by
-an object-language term, and is characterized by
-\[
-\Omega_{\mathcal N}=\varnothing,
-\qquad
-C_{\mathcal N}=\varnothing.
-\]
+Absolute nothingness is used only metatheoretically. It is not assigned an
+object-language term, carrier, relation, zero or set. In particular,
+\(\varnothing\) is an ordinary mathematical object and is not identified
+with absolute nothingness.
 
-\subsection{The Law of Reality}
+\subsection{First Law of Existence}
 
 \begin{center}
 \fbox{\parbox{0.92\linewidth}{
-\textbf{Law of Reality (LR; legacy id \(A_0\)).}
-A realizable state is relationally distinguishable: every realizable state
-admits at least two distinct relational occurrences supported by at least one
-carrier. Absolute nothingness, having no carrier, occurrence, distinction or
-relation, is therefore not a realizable state.
+\textbf{First Law of Existence (legacy id \(A_0\)).}
+Absolute nothingness is not a realizable state because it contains no object,
+distinction or relation by which it could be established as a state.
 }}
 \end{center}
 
-Equivalently, on the admissible model class,
+This is the sole foundational LAW. Importantly, the sentence above is not
+silently strengthened into a theorem asserting two carriers, two occurrences,
+or a primitive relation. Those belong to downstream model formation,
+definitions, theorems or explicit bridges.
+
+\subsection{Model formation and minimum carrier}
+
+The downstream formation rule is
 \[
 \boxed{
-\operatorname{Real}(X)
+\mathrm{META0}:\quad
+\mathfrak M\in\operatorname{Mod}(\mathrm{RTOFA})
 \Longrightarrow
-\exists\,\omega_-,\omega_+\in\Omega_X:
-\omega_-\neq\omega_+.
+\operatorname{Adm}^{\mathfrak M}\neq\varnothing.
 }
-\tag{LR}
 \]
+\(\mathrm{META0}\) is a FORMATION RULE induced by the First Law; it is
+not a second foundational law.
 
-This is the only foundational law. The remaining statements in this section
-are consequences, definitions, or explicitly imported bridge theorems.
-
-\paragraph{Theorem LR.1 (non-vacuity).}
-Every LR-admissible model has non-empty occurrence support and non-empty
-carrier support:
-\[
-\Omega_X\neq\varnothing,
-\qquad
-C_X\neq\varnothing.
-\]
-
-\paragraph{Proof.}
-LR supplies distinct \(\omega_-,\omega_+\in\Omega_X\), hence
-\(\Omega_X\neq\varnothing\). Since \(\pi_X\) is defined on every admitted
-occurrence, \(\pi_X(\omega_-)\in C_X\), hence \(C_X\neq\varnothing\).
-\(\square\)
-
-This is the exact model-theoretic content previously recorded as
-\(\mathrm{META0}\) and \(\mathrm{EX0}\); they are not independent laws.
-
-\paragraph{Theorem LR.2 (singleton support is sufficient).}
-The minimum carrier cardinality compatible with LR is one, while the minimum
-distinction cardinality is two at the occurrence level:
+\paragraph{Theorem E.1 (model non-vacuity).}
+Every admissible model satisfies
 \[
 \boxed{
-\min |C_X|=1,
-\qquad
-\min |\Omega_X|=2.
+\mathrm{EX0}:\quad
+\exists p\,\operatorname{Adm}(p).
 }
 \]
 
 \paragraph{Proof.}
-LR requires at least two distinct occurrences, so
-\(|\Omega_X|\ge2\). A single carrier \(a\) can support both occurrences by
-\[
-\pi_X(\omega_-)=\pi_X(\omega_+)=a,
-\]
-so \(|C_X|=1\) is attainable. No smaller non-empty carrier cardinality
+\(\mathrm{META0}\) states exactly that the admitted carrier domain of
+every admissible model is non-empty. Hence at least one admitted carrier
 exists. \(\square\)
 
-The construction
+The minimum carrier cardinality is therefore
 \[
+\boxed{\min|\operatorname{Adm}|=1.}
+\]
+A singleton witness establishes only carrier non-vacuity. It does not by
+itself create a binary distinction.
+
+\subsection{Minimal relational distinction: carrier versus occurrence}
+
+For one admitted carrier \(a\), define the minimal two-occurrence
+distinction
+\[
+\boxed{
 D(a)=(a_-,a_+),
 \qquad
 a_-\neq a_+,
 \qquad
 \operatorname{carrier}(a_-)
 =
-\operatorname{carrier}(a_+)=a,
+\operatorname{carrier}(a_+)=a.
+}
 \]
-is therefore the minimal relational distinction. This is the precise sense
-in which one singleton may carry ``up'' and ``down'' without introducing a
-second primitive object.
+This is a DEF: it separates occurrence multiplicity from carrier
+multiplicity. One singleton can therefore support the two roles conventionally
+called ``up'' and ``down'' without introducing a second primitive object.
 
 \subsection{Existence potential and primitive indistinction}
 
-The modal remainder after exclusion of \(\mathcal N\) is denoted
+The modal remainder after exclusion of absolute nothingness is denoted
 \[
 \boxed{\mathcal P_E}.
 \]
-It is not a new substance or carrier. It is the metalevel class of
-LR-admissible realization before a persistence outcome has been selected.
-
-Primitive indistinction is therefore
+\(\mathcal P_E\) is a DEF, not a new substance, energy, field or carrier.
+Primitive indistinction is written
 \[
 \boxed{
 \mathcal I_0
 =
-(\mathcal P_E,\ \text{no persistent distinction selected}).
+(\mathcal P_E,\ \text{no persistent distinction established}).
 }
 \]
-The comma is deliberate: no additive operation is being assumed at this
-stage.
+The tuple notation is deliberate: no additive law is assumed at this stage.
 
-\subsection{First Hamlet: the exhaustive persistence dichotomy}
+\subsection{First Hamlet: persistence dichotomy}
 
-Let \(d\) be the minimal relational distinction supplied by LR. Define the
-Boolean predicate \(\operatorname{Persist}(d)\). Classical bivalence gives
-exactly two logical outcomes:
+For a candidate differentiation \(d\), define the Boolean predicate
+\(\operatorname{Persist}(d)\). Set
 \[
 \mathsf{Disp}:=\neg\operatorname{Persist}(d),
 \qquad
 \mathsf{Struct}:=\operatorname{Persist}(d).
 \]
 
-\paragraph{Theorem H.1 (First Hamlet).}
-The persistence outcome alphabet is exactly
+\paragraph{Theorem H.1 (First Hamlet partition schema).}
+The predicate has exactly the Boolean codomain
 \[
-\boxed{
-H_0=\{\mathsf{Disp},\mathsf{Struct}\},
-}
+\boxed{H_0=\{\mathsf{Disp},\mathsf{Struct}\}.}
 \]
-with the two alternatives exhaustive and disjoint.
 
 \paragraph{Proof.}
-For the proposition \(\operatorname{Persist}(d)\), excluded middle gives
-\(\operatorname{Persist}(d)\lor\neg\operatorname{Persist}(d)\), while
-non-contradiction excludes simultaneous truth of both. Therefore the outcome
-alphabet has exactly the two displayed logical branches. \(\square\)
+Classical bivalence gives
+\(\operatorname{Persist}(d)\lor\neg\operatorname{Persist}(d)\), and
+non-contradiction makes the two truth values disjoint. This proves the
+two-class partition schema. \(\square\)
 
-The branches are not the later durable two-state carrier. In particular,
+This theorem does \emph{not} prove that both preimages are non-empty for a
+particular dynamics. That stronger non-degeneracy statement is tracked
+separately as
 \[
-\boxed{
-\mathsf{Disp}\longrightarrow\mathcal I_0
-}
+\boxed{\mathrm{GATE\_FIRST\_HAMLET\_NONDEGENERACY\_FROM\_PE\_I0}.}
 \]
-returns to no persistent distinction. The STRUCTURE branch alone supplies a
-persistent distinction.
+When the explicitly declared canonical non-degenerate realization is used,
+the two-class Hartley value is
+\[
+\boxed{H_{\rm Hartley}(H_0)=\ln2.}
+\]
+No probability distribution and no \(p=\tfrac12\) premise is used.
 
-Because \(H_0\) contains two logical alternatives, its probability-free
-Hartley information is
+The persistence outcomes are not the later durable role carrier. In
+particular,
 \[
-\boxed{
-H_{\rm Hartley}(H_0)=\ln|H_0|=\ln2.
-}
+\boxed{\mathsf{Disp}\longrightarrow\mathcal I_0}
 \]
-No probability distribution and no \(p=\tfrac12\) premise is used here.
+leaves no persistent distinction.
 
 \subsection{Structure branch and the minimal persistent relation}
 
-The source-clean TIR minimum-structure theorem is imported as the explicit
-bridge
+The source-clean TIR minimum-structure result enters as the explicit BRIDGE
 \[
 \boxed{
-\mathrm{TIR}_{\min}:
-\quad
+\mathrm{TIR}_{\min}:\quad
 \min(\text{non-trivial persistent structure})
 =
 \text{relation}.
 }
 \tag{TIR-MIN}
 \]
-It is a bridge theorem, not a second RDSS foundational law.
+It is not a second RDSS foundational law.
 
-Hence
+Thus on the STRUCTURE branch the imported theorem yields
 \[
-\boxed{
-\mathsf{Struct}
-\Longrightarrow
-R:s\to t.
-}
+\boxed{\mathsf{Struct}\Longrightarrow R:s\to t.}
 \]
-The endpoint symbols \(s,t\) denote relational roles/occurrences; they need
-not denote two different primitive carriers. A one-carrier realization may
-have
-\[
-\pi(s)=\pi(t)=a,
-\qquad
-s\neq t
-\]
-at occurrence level.
+The endpoint symbols are relational roles/occurrences and need not denote
+two different primitive carriers.
 
-For a relation that is non-self-collapsed in \emph{role space}, define
+For a persistent relation that is non-self-collapsed in role space, define
 orientation reversal
 \[
 J_R:(s,t;R)\mapsto(t,s;R^{-1}),
 \qquad
 J_R^2=I.
 \]
-Its orbit is
+
+\paragraph{Theorem R.1 (durable binary role orbit).}
+If the relation is not fixed by role reversal, then
 \[
 \boxed{
 \mathcal O_{J_R}=\{N,S\},
+\qquad
+|\mathcal O_{J_R}|=2.
 }
-\qquad
-N=[s\to t],
-\qquad
-S=[t\to s].
 \]
 
-\paragraph{Theorem R.1 (durable binary role orbit).}
-If the persistent relation is not collapsed under role reversal, then
-\(|\mathcal O_{J_R}|=2\).
-
 \paragraph{Proof.}
-Since \(J_R^2=I\), every orbit has size one or two. Non-self-collapse excludes
-a fixed point, hence the orbit has size two. \(\square\)
+An involution has orbits of size one or two. Non-self-collapse excludes a
+fixed point, so the orbit has size two. \(\square\)
 
 Therefore
 \[
@@ -312,10 +279,9 @@ Therefore
 I_R=\ln|\{N,S\}|=\ln2.
 }
 \]
-This second \(\ln2\) is structural and probability-free. It is downstream of
-the persistent relation and independent of the earlier First-Hamlet Hartley
-count.
-
+This structural \(\ln2\) is probability-free and belongs to the durable
+relation-role orbit, not to the transient DISPERSION/STRUCTURE labels.
+\subsection{Gaussian--Bombelli closure from the persistent role algebra}
 \subsection{Gaussian--Bombelli closure from the persistent role algebra}
 
 The persistent relation-role carrier has cardinality two, and its operator
@@ -1109,35 +1075,23 @@ sector:
 }
 \]
 
-\section{Law of Reality and model formation}
+\section{First Law of Existence and model formation}
 
-The canonical name of the unique RTOFA foundational law is the
-\emph{Law of Reality} (LR), retained in the executable claim ledger under the
-legacy identifier \(A_0\). It is a model-formation law: realizability requires
-relational distinguishability.
-
-Absolute nothingness is not represented by an object-language term. The
-mathematical empty set \(\varnothing\) remains an ordinary mathematical
-object and is not identified with absolute nothingness.
+RTOFA begins with the unique foundational law called the \emph{First Law of
+Existence}, retained under the historical claim identifier \(A_0\).
 
 \begin{center}
 \fbox{\parbox{0.92\linewidth}{
-\textbf{Law of Reality (LR; legacy id \(A_0\)).}
-For every realizable state \(X\), there exist distinct admitted relational
-occurrences \(\omega_-\neq\omega_+\) in \(\Omega_X\), supported by the
-carrier map \(\pi_X:\Omega_X\to C_X\). Absolute nothingness has
-\(\Omega_{\mathcal N}=C_{\mathcal N}=\varnothing\), hence it has no
-realizable representative.
+\textbf{First Law of Existence (legacy id \(A_0\)).}
+Absolute nothingness is not a realizable state because it contains no object,
+distinction or relation by which it could be established as a state.
 }}
 \end{center}
 
-The formation rule \(\mathrm{META0}\) is the direct model-theoretic unpacking
-of LR:
+The formation rule \(\mathrm{META0}\) fixes the admissible model class:
 \[
 \boxed{
 \mathfrak M\in\operatorname{Mod}(\mathrm{RTOFA})
-\Longrightarrow
-\Omega^{\mathfrak M}\neq\varnothing
 \Longrightarrow
 \operatorname{Adm}^{\mathfrak M}\neq\varnothing.
 }
@@ -1145,29 +1099,19 @@ of LR:
 Consequently
 \[
 \boxed{
-\mathrm{EX0}:
+\mathrm{EX0}:\quad
 \exists p\,\operatorname{Adm}(p).
 }
 \]
+EX0 is a theorem of model formation, not another object-level law.
 
-\paragraph{Proof.}
-LR provides an admitted occurrence. Every admitted occurrence has carrier
-support under \(\pi\), so at least one admitted carrier exists. This is
-exactly EX0. \(\square\)
+A raw empty mathematical presentation is retained only as a metamathematical
+vacuity witness. It is excluded from the admissible RTOFA model class by
+\(\mathrm{META0}\).
 
-A raw empty mathematical presentation remains available as a metamathematical
-vacuity witness, but it is not an LR-admissible RTOFA model.
+\section{Relational admissibility}
 
-\section{Relational admissibility derived from LR}
-
-Relational admissibility is not an independent intuition and is not a second
-law. It is the object-language projection of the relational witness already
-required by LR.
-
-Let an admitted observable \(x\) be the carrier image of an admitted
-occurrence. Since LR supplies a distinct occurrence in the same minimal
-relational distinction, the two occurrences are joined by the primitive
-distinction relation. Therefore
+The historical relational-admissibility target is
 \[
 \boxed{
 \operatorname{Adm}(x)
@@ -1181,59 +1125,71 @@ distinction relation. Therefore
 }
 \tag{RA0}
 \]
+RA0 remains a DERIVATION GATE in the executable ledger. It is not silently
+promoted merely because relationality motivates the theory.
 
-The endpoint carrier labels may coincide. In the singleton realization,
+Indeed, under primitive \(\operatorname{Adm}\),
 \[
-x=y=a
+P=\{a\},
+\qquad
+\operatorname{Adm}=\{a\},
+\qquad
+R=\varnothing
 \]
-is allowed provided the endpoint occurrences remain distinct. Hence the old
-counterexample
+is non-empty but contains no primitive relation. Hence
 \[
-P=\{a\},\quad \operatorname{Adm}=\{a\},\quad R=\varnothing
+\boxed{\mathrm{META0}\not\Rightarrow\mathrm{RA0}}
 \]
-is non-empty as a raw set presentation but is \emph{not} LR-admissible,
-because it contains no relational distinction witness. It therefore cannot
-serve as a countermodel to RA0 inside the canonical model class.
+in the current primitive-admissibility language.
+
+A relation-aware admissibility predicate may instead be defined by
+\[
+\boxed{
+\operatorname{Adm}_{R}(x)
+:\Longleftrightarrow
+\exists y,r\,
+\left(
+\operatorname{Rel}_{r}(x,y)
+\lor
+\operatorname{Rel}_{r}(y,x)
+\right).
+}
+\]
+Under that DEF, RA0 is true by expansion; this is a semantic refinement, not
+a theorem smuggled into the old language.
 
 A primitive relation is typed as
 \[
 \boxed{r:a\to b.}
 \]
-Higher arity, when required, is an explicit extension or construction.
+The endpoint occurrences may share one carrier even when their occurrence
+identities are distinct.
 
-The absence of an admitted relation is not algebraic zero. For a typed
-additive sector one may have
+The absence of a relation is not algebraic zero. In a typed additive sector
+one may have
 \[
 0_{\sigma,\omega}^{p,q}\in\mathcal A_{\sigma,\omega}^{p,q},
-\]
-with
-\[
+\qquad
 X+0_X=X,
 \qquad
-X-X=0_X.
+X-X=0_X,
 \]
-The typed zero preserves the sector data of \(X\); ``no relation'' is a
-different statement.
+while ``no relation'' remains a separate condition.
 
-\subsection{Formula-level vacuity and canonical model semantics}
+\subsection{Formula-level vacuity versus admissible-model semantics}
 
-Universal formulas can hold vacuously in raw empty presentations. Therefore
-one must distinguish unrestricted formula semantics from the LR-admissible
-model class. The canonical implication is
+RA0 and RR1 are conditional formulas, so an unrestricted raw empty
+presentation can satisfy them vacuously. Therefore
 \[
 \boxed{
-\mathrm{LR}
-\Longrightarrow
-\mathrm{META0}
-\Longrightarrow
-\mathrm{EX0},
+\mathrm{RA0}+\mathrm{RR1}
+\not\vdash
+\mathrm{EX0}.
 }
 \]
-and the relational witness in LR yields RA0 on the admitted carrier
-projection.
-
-No additional ontological axiom is introduced by META0, EX0, or RA0.
-
+This does not contradict META0: the raw empty presentation is not an
+admissible model.
+\section{Minimal carrier and minimal distinction}
 \section{Minimal carrier and minimal distinction}
 
 The minimal carrier of the general algebra is a point
@@ -3220,8 +3176,8 @@ realization; it is not a core coordinate.
 \section{Relational center, Hilbert--Moir\'e carrier and information operator}
 
 This extension is downstream of the existing RTOFA core and does not replace
-the Law of Reality (legacy id \(A_0\)), the META0 formation rule, the
-LR-derived RA0 theorem, the RR1 recursive-closure gate, the occurrence-address
+the First Law of Existence (legacy id \(A_0\)), the META0 formation rule, the
+RA0 derivation gate, the RR1 recursive-closure gate, the occurrence-address
 algebra, the relative Moir\'e operator, the Zero-Axis bridge, or the optional
 \(U(1)\) holonomy representation.
 
@@ -3351,7 +3307,7 @@ N_F=3,
 N_{\rm mix}=3(3^2-1)=24.
 \]
 This \(3\times8\) incidence count is a reference normalization, not yet a
-theorem derived from the Law of Reality \(A_0\).
+theorem derived from the First Law of Existence \(A_0\).
 
 With one normalized half-turn per channel,
 \[
@@ -4314,7 +4270,7 @@ by these definitions. Those remain downstream derivation gates.
 
 The construction adds no second foundational law; the foundational-law
 inventory remains exactly \(\{A_0\}\), where \(A_0\) is the legacy
-claim-ledger identifier of the Law of Reality.
+claim-ledger identifier of the First Law of Existence.
 
 \section{Reference-kernel obligations}
 
