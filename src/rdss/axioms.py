@@ -56,6 +56,12 @@ CANONICAL_PROVENANCE: dict[str, str] = {
         "Gaussian-Bombelli provenance: q=|{N,S}|=2 and J^2=-I give g=q+J=2+J; "
         "L4=2 and L5=N(g)=5; L3=7 uses the separately sourced TIR root-extension bridge."
     ),
+    "THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON": (
+        "Downstream geometric closure: Frobenius-orthonormal operator points {I,S,P,J} "
+        "form a regular tetrahedron. The split is one distinguished identity vertex plus "
+        "three active vertices. This is an exact geometric realization/crosscheck, not a "
+        "non-circular proof of upstream relational binding or physical dynamics."
+    ),
 }
 
 
@@ -747,6 +753,54 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.THEOREM,
         "With normalized Frobenius form (A,B)=Tr(A^T B)/2, the basis {I,S,P,J} is orthonormal. Under A=z_0+S z_1 with z_0,z_1 in C_J, the induced norm is |z_0|^2+|z_1|^2 and right multiplication by exp(phi J) preserves the norm and acts as common U(1) phase on both complex coordinates.",
         ("THM_HAMLET_OPERATOR_ALGEBRA_C2_MODULE", "THM_IMAGINARY_GENERATOR_U1"),
+    ),
+    Claim(
+        "DEF_HAMLET_OPERATOR_BASIS_SIMPLEX",
+        ClaimKind.DEFINITION,
+        "Treat the four already-derived Frobenius-orthonormal operator basis elements {I,S,P,J} as four points in the Euclidean operator space. The identity vertex I is semantically distinguished from the active set A_*={S,P,J}; no new operator or length scale is introduced.",
+        ("THM_HAMLET_OPERATOR_FROBENIUS_NORM", "DEF_DISSOCIATION_AS_ACTIVE_OPERATOR_PRODUCT", "DEF_REPAIR_AS_IDENTITY_RESTORATION"),
+    ),
+    Claim(
+        "THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON",
+        ClaimKind.THEOREM,
+        "For any distinct E_a,E_b in {I,S,P,J}, orthonormality gives ||E_a-E_b||_F^2=||E_a||_F^2+||E_b||_F^2=1+1=2. The four points are affinely independent, hence they form a regular tetrahedron of edge sqrt(2). With centroid C=(I+S+P+J)/4, centered norms are 3/4 and distinct centered inner products are -1/4, so normalized pairwise inner product is -1/3.",
+        ("DEF_HAMLET_OPERATOR_BASIS_SIMPLEX",),
+    ),
+    Claim(
+        "THM_HAMLET_OPERATOR_TETRAHEDRON_VOLUME",
+        ClaimKind.THEOREM,
+        "Using edges S-I, P-I and J-I, the edge Gram matrix is [[2,1,1],[1,2,1],[1,1,2]] with determinant 4. Therefore the induced regular-tetrahedron 3-volume is sqrt(4)/3! = 1/3.",
+        ("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON",),
+    ),
+    Claim(
+        "THM_HAMLET_OPERATOR_TETRAHEDRON_STELLA_ISOMETRY",
+        ClaimKind.THEOREM,
+        "The centered operator tetrahedron has Gram matrix diag(3/4) with off-diagonal -1/4. The existing positive-parity Stella vertices {(1,1,1),(1,-1,-1),(-1,1,-1),(-1,-1,1)}, scaled by 1/2, have the identical Gram matrix. Hence the two tetrahedra are exactly isometric up to vertex permutation.",
+        ("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON",),
+    ),
+    Claim(
+        "THM_TETRAHEDRAL_ONE_PLUS_THREE_SPLIT",
+        ClaimKind.THEOREM,
+        "The regular operator tetrahedron has the exact semantic partition {I} disjoint-union {S,P,J}: one unique identity vertex and three distinguished active vertices. Thus the existing 1+3 operator decomposition receives a minimal regular-simplex realization without introducing new integer coefficients.",
+        ("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON", "DEF_DISSOCIATION_AS_ACTIVE_OPERATOR_PRODUCT", "DEF_REPAIR_AS_IDENTITY_RESTORATION"),
+    ),
+    Claim(
+        "THM_TETRAHEDRAL_COMPLETION_CARDINALITY_3N_PLUS_1",
+        ClaimKind.THEOREM,
+        "For a finite carrier set X, the already-defined active-sector product plus unique global identity restoration has cardinality |X x {S,P,J}| + |{I}| = 3|X|+1. The operator tetrahedron geometrizes this as three active vertices plus one identity vertex; it does not change the underlying cardinality proof.",
+        ("THM_TETRAHEDRAL_ONE_PLUS_THREE_SPLIT", "THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY", "THM_IDENTITY_REPAIR_CARDINALITY"),
+    ),
+    Claim(
+        "THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY",
+        ClaimKind.THEOREM,
+        "Under the existing canonical dissociation-plus-repair semantics, tetrahedral completion of a carrier of cardinality n has cardinality 3n+1, exactly the odd affine Collatz branch. This is an exact downstream geometric realization of the already-derived odd-branch cardinality.",
+        ("THM_TETRAHEDRAL_COMPLETION_CARDINALITY_3N_PLUS_1", "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP"),
+    ),
+    Claim(
+        "THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE",
+        ClaimKind.THEOREM,
+        "The operator tetrahedron depends on the durable relation-role operator algebra and on its Frobenius normalization. Therefore it cannot be used non-circularly to derive the earlier Hamlet-to-relation binding. Likewise, matching 3n+1 does not prove that primitive natural dynamics must instantiate that completion. The tetrahedral route closes a geometric realization/crosscheck of the coefficient structure, while GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS remains open.",
+        ("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON", "THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
     ),
     Claim(
         "THM_HAMLET_OPERATOR_PROJECTIVE_CP1",
