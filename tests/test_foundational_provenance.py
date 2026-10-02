@@ -51,5 +51,7 @@ def test_key_surfaces_are_permanently_cited() -> None:
         "relational_collatz.relational_collatz_step",
         "gaussian_bombelli.minimal_relation_role_gaussian_generator",
         "orbital_fractal_hilbert_moire.idt_phase_dynamics_step",
+        "orbital_fractal_hilbert_moire.phase_coherence_overlap",
+        "orbital_fractal_hilbert_moire.CountableBranchAddress.hilbert_hotel_successor",
     }
     assert required <= set(IMPLEMENTATION_PROVENANCE)
