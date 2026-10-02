@@ -289,3 +289,51 @@ Canonical execution path:
 If local execution cannot proceed because a required local credential,
 checkout or tool is unavailable, report the blocker explicitly rather than
 silently substituting GitHub Actions.
+
+
+## 13. Kappa reference normalization
+
+The project constant
+
+[
+\kappa=\frac{\ln2}{24\pi}
+]
+
+has a typed reference provenance. The (24) incidence count and one half-turn
+per channel define the reference turn measure (Q_{\rm mix}=12). A constant
+coefficient additionally requires the explicit reference condition
+
+[
+\frac{d\mathcal I}{dq}=\text{constant},
+\qquad
+\int_0^{12}d\mathcal I=\ln2.
+]
+
+This condition is claim
+`REF_KAPPA_UNIFORM_INFORMATION_DENSITY`. Without it, only the total integral
+is fixed; a non-uniform information density remains mathematically possible.
+Never present uniform density as a theorem of `A0`.
+
+## 14. OFHM information-loss and enumeration rules
+
+The OFHM Moire cocycle is constructed from sourced phase coordinates. The
+BEES coherence magnitude
+
+[
+C=\left|d^{-1}\sum_j e^{i(\theta_j^X-\theta_j^Y)}\right|
+]
+
+is lossy because of the absolute value and cannot generally reconstruct the
+relative U(1) phase.
+
+The Hilbert-Hotel successor on finite integer words depends on an explicitly
+chosen enumeration
+(ho:\mathbb Z^{<\omega}\leftrightarrow\mathbb N). The executable
+zigzag/Cantor ranking is one declared enumeration, not a unique canonical one.
+No commutation law between Hilbert-Hotel succession and local branch
+refinement is assumed.
+
+The finite-address skeleton is (mathbb Z^{<\omega}); the ideal
+infinite-address space is (mathbb Z^{\mathbb N}). Geometric convergence,
+Hausdorff dimension and a unique continuum measure remain separate derivation
+gates.
