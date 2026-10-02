@@ -2432,6 +2432,7 @@ def test_tetrahedral_operator_binding_is_exact_but_downstream():
     assert claims["THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_OPERATOR_TETRAHEDRON_VOLUME"].kind is ClaimKind.THEOREM
     assert claims["THM_HAMLET_OPERATOR_TETRAHEDRON_STELLA_ISOMETRY"].kind is ClaimKind.THEOREM
+    assert claims["THM_STELLA_TETRAHEDRON_KLEIN_FOUR_123_BINDING"].kind is ClaimKind.THEOREM
     assert claims["THM_TETRAHEDRAL_ONE_PLUS_THREE_SPLIT"].kind is ClaimKind.THEOREM
     assert claims["THM_TETRAHEDRAL_COMPLETION_CARDINALITY_3N_PLUS_1"].kind is ClaimKind.THEOREM
     assert claims["THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY"].kind is ClaimKind.THEOREM
@@ -2444,6 +2445,9 @@ def test_tetrahedral_operator_binding_is_exact_but_downstream():
     odd_closure = dependency_closure("THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY")
     assert "THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY" in odd_closure
     assert "THM_IDENTITY_REPAIR_CARDINALITY" in odd_closure
+
+    v4_closure = dependency_closure("THM_STELLA_TETRAHEDRON_KLEIN_FOUR_123_BINDING")
+    assert "THM_HAMLET_OPERATOR_TETRAHEDRON_STELLA_ISOMETRY" in v4_closure
     assert "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP" in odd_closure
 
     scope = claims["THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE"].statement
