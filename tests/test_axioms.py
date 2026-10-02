@@ -47,6 +47,40 @@ def test_canonical_names_and_provenance_are_locked():
 
 
 
+
+def test_kappa_constant_density_is_explicit_reference_condition():
+    claims = claim_map()
+
+    assert claims["REF_KAPPA_UNIFORM_INFORMATION_DENSITY"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["REF_KAPPA_UNIFORM_INFORMATION_DENSITY"].depends_on == (
+        "REF_KAPPA_MIXING_NORMALIZATION",
+    )
+    assert claims["DER_KAPPA_NORMALIZED_TURN"].depends_on == (
+        "REF_KAPPA_UNIFORM_INFORMATION_DENSITY",
+    )
+    assert "not forced" in claims["REF_KAPPA_UNIFORM_INFORMATION_DENSITY"].statement
+
+
+def test_ofhm_moire_uses_phase_data_not_lossy_coherence_inverse():
+    claims = claim_map()
+
+    assert claims["BRIDGE_OFHM_BEES_PHASE_DATA"].kind is ClaimKind.BRIDGE
+    assert claims["BRIDGE_OFHM_BEES_RELATIVE_PHASE_COHERENCE"].depends_on == (
+        "BRIDGE_OFHM_BEES_PHASE_DATA",
+    )
+    assert claims["DER_OFHM_MOIRE_COCYCLE"].depends_on == (
+        "BRIDGE_OFHM_BEES_PHASE_DATA",
+    )
+    assert "lossy" in claims["BRIDGE_OFHM_BEES_RELATIVE_PHASE_COHERENCE"].statement.lower()
+
+
+def test_ofhm_hilbert_hotel_enumeration_is_not_claimed_unique():
+    claims = claim_map()
+    text = claims["BRIDGE_OFHM_HILBERT_HOTEL_SHIFT"].statement.lower()
+
+    assert "not a unique canonical enumeration" in text
+    assert "no commutation law" in text
+
 def test_monograph_locks_canonical_name_and_basis_wording():
     monograph = Path("monograph/main.tex").read_text(encoding="utf-8")
 
