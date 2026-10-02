@@ -59,8 +59,10 @@ CANONICAL_PROVENANCE: dict[str, str] = {
     "THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON": (
         "Downstream geometric closure: Frobenius-orthonormal operator points {I,S,P,J} "
         "form a regular tetrahedron. The split is one distinguished identity vertex plus "
-        "three active vertices. This is an exact geometric realization/crosscheck, not a "
-        "non-circular proof of upstream relational binding or physical dynamics."
+        "three active vertices. Its positive-parity sign realization is V4: one identity, "
+        "three nonidentity elements, each of order two. This is an exact geometric "
+        "realization/crosscheck, not a non-circular proof of upstream relational binding "
+        "or physical dynamics."
     ),
 }
 
@@ -777,6 +779,12 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.THEOREM,
         "The centered operator tetrahedron has Gram matrix diag(3/4) with off-diagonal -1/4. The existing positive-parity Stella vertices {(1,1,1),(1,-1,-1),(-1,1,-1),(-1,-1,1)}, scaled by 1/2, have the identical Gram matrix. Hence the two tetrahedra are exactly isometric up to vertex permutation.",
         ("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON",),
+    ),
+    Claim(
+        "THM_STELLA_TETRAHEDRON_KLEIN_FOUR_123_BINDING",
+        ClaimKind.THEOREM,
+        "Under componentwise multiplication of sign coordinates, the positive-parity Stella tetrahedron is the Klein four group V4: it has exactly one identity vertex (1,1,1), exactly three non-identity vertices, and every non-identity vertex has order two. This gives an exact geometric/sign realization of the integers 1,2,3. The sign-coordinate group law is not identified with the noncommutative Hamlet operator product, where J^2=-I.",
+        ("THM_HAMLET_OPERATOR_TETRAHEDRON_STELLA_ISOMETRY",),
     ),
     Claim(
         "THM_TETRAHEDRAL_ONE_PLUS_THREE_SPLIT",
