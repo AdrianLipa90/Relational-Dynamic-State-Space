@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from rdss.axioms import (
     CANONICAL_PROVENANCE,
     ClaimKind,
@@ -43,6 +45,17 @@ def test_canonical_names_and_provenance_are_locked():
     assert "L5=N(g)=5" in gaussian
     assert "L3=7" in gaussian
 
+
+
+def test_monograph_locks_canonical_name_and_basis_wording():
+    monograph = Path("monograph/main.tex").read_text(encoding="utf-8")
+
+    assert "First Law of Existence" in monograph
+    assert "Law of Reality" not in monograph
+    assert "complete non-identity operator sector" not in monograph
+    assert "three distinguished non-identity" in monograph
+    assert "V_B=\\mathbb R e_-\\oplus\\mathbb R e_+" not in monograph
+    assert "V_R=\\mathbb R e_N\\oplus\\mathbb R e_S" in monograph
 
 def test_binary_relation_is_explicit_signature_definition():
     claims = claim_map()
