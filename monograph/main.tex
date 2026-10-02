@@ -1016,17 +1016,150 @@ cardinality \(3n+1\).
 
 This result is mathematically exact but its causal scope is important. The
 tetrahedral geometry is downstream of the durable relation-role algebra and
-the Frobenius normalization. It therefore cannot be used non-circularly to
-derive the earlier Hamlet-to-relation binding. Likewise, the exact geometric
-match to \(3n+1\) does not by itself prove that primitive natural dynamics
-must instantiate this completion. It closes a geometric realization and
-crosscheck of the \(1\oplus3\) coefficient structure; the independent
-primitive-dynamics binding gate remains open.
+the Frobenius normalization, so it cannot be used non-circularly to derive the
+earlier Hamlet-to-relation binding.
 
-The executable certificates are
+\subsection{Bipolar face exchange and selector-free operation binding}
+
+The opposite-polarity Stella cell contains
+\[
+T_-=-T_+.
+\]
+A tetrahedron has four triangular faces, four vertices and six edges. Index
+each face by its opposite positive tetrahedral vertex \(v_i\). Then
+\[
+v_i\cdot x=-1
+\quad\text{on }F_i^+,
+\qquad
+v_i\cdot x=+1
+\quad\text{on }F_i^-.
+\]
+Therefore central inversion
+\[
+\iota:x\mapsto-x
+\]
+forces the complete face pairing
+\[
+\boxed{
+F_i^+\longleftrightarrow F_i^-,
+\qquad i=0,1,2,3.
+}
+\]
+No additional face selector is required.
+
+The imported TIR family/flavour representation supplies an abstract transitive
+three-label carrier \(\mathcal F_3\). The directed exchange-incidence set is
+therefore
+\[
+\mathcal C
+=
+\{+,-\}
+\times
+\{F_0,F_1,F_2,F_3\}
+\times
+\mathcal F_3,
+\]
+with
+\[
+\boxed{
+|\mathcal C|
+=
+2\cdot4\cdot3
+=
+24.
+}
+\]
+The free polarity involution pairs opposite orientations, leaving
+\[
+\boxed{
+|\mathcal C/Z_2|
+=
+12
+}
+\]
+undirected face--flavour exchanges.
+
+Polarity exchange, the tetrahedral face action and the flavour three-cycle act
+transitively on the 24 directed incidences. Hence a normalized scalar channel
+weight invariant under the structural exchange symmetry is uniquely uniform:
+\[
+\boxed{
+w_c=\frac1{24}.
+}
+\]
+
+More importantly for the Collatz binding, tetrahedral self-duality transfers
+the operator split
+\[
+\{I\}\sqcup\{S,P,J\}
+\]
+to one identity-dual face and one three-face active orbit. The stabilizer of the
+identity face acts transitively on the active orbit. Its only invariant subsets
+are
+\[
+\varnothing
+\quad\text{and}\quad
+\{S,P,J\}.
+\]
+Therefore any non-trivial exchange rule that introduces no extra selector must
+use all three active faces:
+\[
+\boxed{
+X\longmapsto X\times\{S,P,J\},
+\qquad
+n\longmapsto3n.
+}
+\]
+Minimal closure then restores the unique identity face once,
+\[
+\boxed{
+3n\longmapsto3n+1.
+}
+\]
+The two polarity copies form the free \(Z_2\) association pair, so complete
+association gives
+\[
+\boxed{
+n\longmapsto\frac n2
+}
+\]
+whenever the carrier decomposes into complete polarity pairs.
+
+Thus, inside the already-derived bipolar tetrahedral carrier, the operation
+roles
+\[
+\boxed{
+2:\text{ polarity association},
+\qquad
+3:\text{ full active-face orbit},
+\qquad
+1:\text{ unique identity closure}
+}
+\]
+are selected by symmetry and closure rather than by an affine ansatz.
+
+The remaining open statement is stronger and physical: that a concrete
+primitive natural system realizes this complete bipolar relational carrier.
+That question is distinct from the now-closed selector-free operation-role
+binding.
+
+Finally, the non-trivial \(Z_2\) exchange is the already-derived half-turn
+phase. One half-turn per directed incidence gives
+\[
+\boxed{
+24\cdot\frac12=12
+}
+\]
+normalized turns, equivalently total radian measure \(24\pi\). This
+independently reproduces the incidence and turn measure of the canonical
+\(\kappa\) normalization. It does not yet convert the separate constant
+information-density condition into a theorem.
+
+The executable certificates include
 \claimid{THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON},
-\claimid{THM_HAMLET_OPERATOR_TETRAHEDRON_STELLA_ISOMETRY}, and
-\claimid{THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY}.
+\claimid{THM_HAMLET_OPERATOR_TETRAHEDRON_STELLA_ISOMETRY},
+\claimid{THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING}, and
+\claimid{THM_BIPOLAR_KAPPA_INCIDENCE_COUNT_CROSSCHECK}.
 
 Right multiplication by \(e^{\phi J}\) acts as
 \[
