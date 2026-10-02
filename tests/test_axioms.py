@@ -2558,16 +2558,26 @@ def test_half_time_pendulum_and_moire_kuramoto_are_closed_structurally() -> None
     assert "physical substrate" in historical_gate.statement
 
 
-def test_only_continuum_and_physical_binding_remain_open_gates() -> None:
+def test_only_physical_binding_remains_open_gate() -> None:
     claims = claim_map()
     open_gate_ids = {
         claim.id for claim in claims.values()
         if claim.kind is ClaimKind.DERIVATION_GATE
     }
-    assert open_gate_ids == {
-        "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
-        "GATE_OFHM_PHYSICAL_BINDING",
-    }
+    assert open_gate_ids == {"GATE_OFHM_PHYSICAL_BINDING"}
+
+    assert claims["GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT"].kind is ClaimKind.THEOREM
+    assert "CLOSED BY NO-GO" in claims["GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT"].statement
+    assert claims["DEF_OFHM_IDEAL_BAIRE_BOUNDARY"].kind is ClaimKind.DEFINITION
+    assert claims["THM_OFHM_IDEAL_BOUNDARY_IS_NONCOMPACT_BAIRE_SPACE"].kind is ClaimKind.THEOREM
+    assert claims["THM_OFHM_CONTINUUM_MEASURE_IS_NOT_UNIQUE"].kind is ClaimKind.THEOREM
+    assert claims["THM_OFHM_PREFIX_METRIC_SCALE_IS_NOT_CANONICAL"].kind is ClaimKind.THEOREM
+    assert claims["THM_OFHM_EXTERNAL_GEOMETRIC_LIMIT_REQUIRES_EXTRA_EMBEDDING"].kind is ClaimKind.THEOREM
+    assert claims["THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED"].kind is ClaimKind.THEOREM
+
+    no_go = dependency_closure("GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT")
+    assert "THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED" in no_go
+    assert "GATE_OFHM_PHYSICAL_BINDING" not in no_go
 
     assert claims["RA0"].kind is ClaimKind.THEOREM
     assert claims["RR1"].kind is ClaimKind.FORMATION_RULE
