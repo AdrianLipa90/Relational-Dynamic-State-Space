@@ -54,26 +54,31 @@ A bare non-empty singleton carrier remains possible as a model-formation
 witness. Therefore the theorem does not say that \(A_0\) alone creates a
 binary internal state.
 
-For a non-trivial realized structure, TIR minimum-structure closure gives
+For the non-self-collapsed non-trivial relational sector, TIR
+minimum-structure closure gives
 
 \[
 \min(\text{nontrivial structure})=R,
 \]
 
-and a non-self-collapsed relation supplies the orientation-role orbit
+and the relation supplies the orientation-role orbit
 
 \[
 \boxed{\{N,S\}.}
 \]
 
-Thus
+Thus the theorem-level implication is
 
 \[
 \boxed{
-\text{non-trivial realized existence}
+\text{non-self-collapsed non-trivial relational existence}
 \Longrightarrow
 \text{relational distinction}.
 }
+\]
+
+A bare singleton carrier or an unlabelled self-relation is not promoted to a
+binary state by this theorem.
 \]
 
 ## 2. First-Hamlet gates discharged
