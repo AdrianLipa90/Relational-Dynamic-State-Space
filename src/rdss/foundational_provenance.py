@@ -1,14 +1,12 @@
 """Machine-readable provenance for canonical RDSS/RTOFA results.
 
-This module is intentionally boring and explicit.  It exists so that future
-edits do not depend on chat memory.  Every listed implementation surface has
-an epistemic role, a claim-ledger anchor, and a documentary source.
+This module exists so future edits do not depend on chat memory.
 
 Canonical contract:
     docs/CANONICAL_FOUNDATIONAL_CONTRACT.md
 
-The source of truth for theorem dependency is still src/rdss/axioms.py.
-This file is a citation/provenance index, not a second claim ledger.
+The authoritative theorem dependency graph remains src/rdss/axioms.py.
+This module is a citation/provenance index, not a second claim ledger.
 """
 
 from __future__ import annotations
@@ -30,33 +28,39 @@ class ProvenanceNote:
 
 FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
     ProvenanceNote(
-        surface="Law of Reality / Prawo Rzeczywistosci",
+        surface="First Law of Existence",
         role="FOUNDATIONAL_LAW",
         claim_ids=("A0",),
         sources=(CANONICAL_FOUNDATIONAL_CONTRACT,),
-        note="Canonical public name. A0 is only the legacy executable identifier.",
+        note=(
+            "Canonical author-defined name. A0 is the legacy executable identifier. "
+            "Descriptive phrases such as 'law of reality' are not aliases."
+        ),
     ),
     ProvenanceNote(
-        surface="occurrence/carrier separation",
-        role="DEF+THM",
+        surface="carrier/occurrence separation",
+        role="DEF+REFERENCE",
         claim_ids=(
-            "DEF_LR_OCCURRENCE_CARRIER_SEPARATION",
-            "THM_LR_SINGLETON_CAN_SUPPORT_BINARY_DISTINCTION",
             "DEF_CARRIER_OCCURRENCE_SEPARATION",
+            "DEF_RELATIONAL_DISTINCTION",
+            "REF_META0_SINGLETON_POINT_PRESENTATION",
         ),
         sources=(CANONICAL_FOUNDATIONAL_CONTRACT,),
-        note="Two distinct occurrences may share one singleton carrier.",
+        note="Distinct occurrences may share one singleton carrier.",
     ),
     ProvenanceNote(
         surface="First Hamlet persistence dichotomy",
-        role="DEF+THM",
+        role="DEF+THM+GATE",
         claim_ids=(
             "DEF_DISTINCTION_PERSISTENCE_PREDICATE",
             "THM_FIRST_HAMLET_DISPERSION_STRUCTURE",
-            "THM_FIRST_HAMLET_HARTLEY_LN2",
+            "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0",
         ),
         sources=(CANONICAL_FOUNDATIONAL_CONTRACT,),
-        note="Disp/Struct classify persistence and are not the durable projective carrier.",
+        note=(
+            "DISPERSION/STRUCTURE classify persistence and are not the durable "
+            "N/S projective carrier. Dynamic non-degeneracy remains explicit."
+        ),
     ),
     ProvenanceNote(
         surface="durable relation roles",
@@ -68,7 +72,7 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         ),
         sources=(
             CANONICAL_FOUNDATIONAL_CONTRACT,
-            "TIR: First Distinction / Canonical Derivation Spine",
+            "TIR: minimum non-trivial persistent structure = relation",
         ),
         note="N/S are roles of one persistent relation, not two primitive substances.",
     ),
@@ -81,7 +85,7 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
             "THM_IMAGINARY_GENERATOR_U1",
         ),
         sources=(CANONICAL_FOUNDATIONAL_CONTRACT,),
-        note="J^2=-I is derived on the durable N/S real span; no upstream imaginary scalar.",
+        note="J^2=-I is derived on the durable N/S real span.",
     ),
     ProvenanceNote(
         surface="relational Collatz operations",
@@ -114,7 +118,7 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
 
 
 IMPLEMENTATION_PROVENANCE: dict[str, tuple[str, ...]] = {
-    "existence_chain.LAW_OF_REALITY": ("A0",),
+    "existence_chain.FIRST_LAW_OF_EXISTENCE": ("A0",),
     "existence_chain.relation_roles": ("THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT",),
     "existence_chain.relation_role_hartley_nats": ("THM_RELATION_ROLE_HARTLEY_LN2",),
     "existence_chain.hamlet_complex_structure": ("THM_HAMLET_IMAGINARY_GENERATOR",),
