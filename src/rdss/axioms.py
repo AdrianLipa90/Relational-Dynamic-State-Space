@@ -15,6 +15,7 @@ class ClaimKind(str, Enum):
     THEOREM = "theorem"
     FORMATION_RULE = "formation_rule"
     DERIVATION_GATE = "derivation_gate"
+    EVIDENCE_GATE = "evidence_gate"
 
 
 @dataclass(frozen=True)
@@ -2454,10 +2455,16 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED",),
     ),
     Claim(
+        "THM_OFHM_PHYSICAL_BINDING_REQUIRES_EXTERNAL_EVIDENCE",
+        ClaimKind.THEOREM,
+        "The structural OFHM signature specifies symbolic addresses, relational phase/Hilbert structure and internal dynamics but contains no unique realization map into a named material, quantum, spacetime or measurement substrate and no dimensional calibration data. Therefore selection and calibration of a concrete physical realization cannot be derived from OFHM structure alone and requires external evidence.",
+        ("DER_OFHM_GENERAL_ALGEBRA", "THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED"),
+    ),
+    Claim(
         "GATE_OFHM_PHYSICAL_BINDING",
-        ClaimKind.DERIVATION_GATE,
-        "No specific material, quantum, spacetime or other physical substrate is identified solely by the OFHM algebra or its source bridges; physical binding and parameter calibration remain separate evidence-bearing derivation tasks.",
-        ("DER_OFHM_GENERAL_ALGEBRA",),
+        ClaimKind.EVIDENCE_GATE,
+        "EXTERNAL EVIDENCE FRONTIER. A concrete physical binding requires an explicit realization map, dimensional calibration and empirical evidence. This historical identifier is not an unresolved mathematical derivation gate and must not be counted against structural proof closure.",
+        ("THM_OFHM_PHYSICAL_BINDING_REQUIRES_EXTERNAL_EVIDENCE",),
     ),
 
 )
