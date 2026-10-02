@@ -29,7 +29,14 @@ IDENTITY_DUAL_FACE = "I"
 ACTIVE_DUAL_FACES: tuple[str, ...] = ("S", "P", "J")
 
 POSITIVE_VERTICES: tuple[Vertex3, ...] = TETRAHEDRON_POSITIVE_VERTICES
-NEGATIVE_VERTICES: tuple[Vertex3, ...] = TETRAHEDRON_NEGATIVE_VERTICES
+# Canonical local ordering: negative vertex i is the central inversion of
+# positive vertex i. The underlying negative tetrahedron set is unchanged;
+# this ordering makes face label i map to face label i under x -> -x.
+NEGATIVE_VERTICES: tuple[Vertex3, ...] = tuple(
+    tuple(-value for value in vertex) for vertex in POSITIVE_VERTICES
+)  # type: ignore[assignment]
+if set(NEGATIVE_VERTICES) != set(TETRAHEDRON_NEGATIVE_VERTICES):
+    raise ArithmeticError("central inversion does not reproduce negative tetrahedron")
 
 
 def _dot(left: Vertex3, right: Vertex3) -> int:
