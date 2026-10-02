@@ -1345,3 +1345,62 @@ The historical claim id `GATE_MOIRE_DYNAMICAL_LAW` is retained for
 provenance but is promoted to theorem-level closed status for the structural
 relational phase dynamics. Physical clock/substrate/continuum bindings remain
 separate.
+
+
+## Foundational gate discharge — 2026-10-02
+
+Branch: \`feat/foundational-closure-v0.1\`.
+
+Parent main:
+
+- RDSS \`3fe6ed391d374a09c0b077b8bdedb3aabe16a28e\`.
+
+Frozen TIR foundation source:
+
+- \`9783782570a2ccfa1fc42c99b605dad48e02aa78\`;
+- \`TIR_CANONICAL_DERIVATION_SPINE_V0_1.md\`;
+- \`TIR_FOUNDATION_PROOF_SOURCE_REGISTRY_V0_1.md\`.
+
+The closure pass performs epistemic cleanup rather than adding an unsupported
+new physical law.
+
+Promotions/discharges:
+
+- \`RA0\`: theorem-level closed under canonical TIR relational-existence typing;
+- \`RR1\`: retained as a finite recursive formation rule, not an open gate;
+- \`RA0_STAR\`, \`RA0_REL_STAR\`: retained as optional stronger formation
+  schemas, not foundational obligations;
+- First-Hamlet primitive-dynamics gates: discharged/superseded from the
+  canonical foundation path;
+- Hamlet-to-durable-role binding gate: discharged because
+  DISPERSION/STRUCTURE are not the durable \(N/S\) carrier;
+- structural Collatz gates: theorem-level closed inside the relational
+  cardinality/tetrahedral sector;
+- external physical instantiation moved to the separately retained physical
+  binding frontier.
+
+New theorem surfaces include:
+
+- \`BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING\`;
+- \`THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS\`;
+- \`THM_CANONICAL_NONTRIVIAL_EXISTENCE_FORCES_DISTINCTION\`;
+- \`THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE\`;
+- \`THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED\`.
+
+Static connector audit after claim-ledger editing:
+
+- open \`DERIVATION_GATE\` identifiers: exactly **2**;
+- expected frontier:
+  - \`GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT\`;
+  - \`GATE_OFHM_PHYSICAL_BINDING\`;
+- duplicate claim IDs: **0**;
+- claim-DAG cycles found by connector-side graph audit: **0**;
+- stale tests expecting promoted historical gate IDs to remain
+  \`DERIVATION_GATE\`: **0**.
+
+The remaining two gates are deliberately not promoted. One is a mathematical
+continuum/fractal-limit problem and one is an empirical/physical binding
+problem.
+
+Full local pytest/static-audit/LaTeX execution on the exact final branch head
+must be recorded separately before merge.
