@@ -25,6 +25,39 @@ class Claim:
     depends_on: tuple[str, ...] = ()
 
 
+# Canonical provenance notes are deliberately machine-readable.
+# They prevent descriptive prose from silently renaming or retyping the theory.
+CANONICAL_PROVENANCE: dict[str, str] = {
+    "A0": (
+        "Canonical name: First Law of Existence. Legacy claim id: A0. "
+        "Do not rename this law from descriptive prose; phrases such as "
+        "'law of reality' describe its intended status and are not aliases."
+    ),
+    "THM_FIRST_HAMLET_DISPERSION_STRUCTURE": (
+        "First Hamlet is the persistence dichotomy DISPERSION/STRUCTURE. "
+        "These transient logical outcomes are not the downstream durable role carrier N/S."
+    ),
+    "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT": (
+        "Durable binary carrier provenance: STRUCTURE -> TIR minimum-relation bridge -> "
+        "orientation-role orbit N/S. N/S may be distinct occurrences/roles on one carrier."
+    ),
+    "THM_HAMLET_IMAGINARY_GENERATOR": (
+        "J=SP and J^2=-I are derived from swap/polarity on the durable N/S role basis; "
+        "complex scalars are not an upstream premise."
+    ),
+    "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP": (
+        "Collatz operation provenance: /2 from free Z2 association quotient; "
+        "x3 from the three distinguished non-identity basis directions {S,P,J} of "
+        "{I,S,P,J}; +1 from restoration of the omitted identity direction I. "
+        "The set {S,P,J} is a basis-direction set, not the set of all non-identity operators."
+    ),
+    "THM_L_CONSTANTS_SINGLE_GENERATOR_CLOSURE": (
+        "Gaussian-Bombelli provenance: q=|{N,S}|=2 and J^2=-I give g=q+J=2+J; "
+        "L4=2 and L5=N(g)=5, while L3=7 uses the separately identified TIR root-extension bridge."
+    ),
+}
+
+
 CLAIMS: tuple[Claim, ...] = (
     # Canonical source: docs/CANONICAL_FOUNDATIONAL_CONTRACT.md §1.
     # The public name is Law of Reality / Prawo Rzeczywistości. "A0" is only
