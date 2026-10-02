@@ -2442,7 +2442,7 @@ def test_tetrahedral_operator_binding_is_exact_but_downstream():
 
     scope = claims["THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE"].statement
     assert "cannot be used non-circularly" in scope
-    assert "remains open" in scope
+    assert "closed independently downstream" in scope
 
 
 def test_bipolar_tetrahedral_exchange_forces_selector_free_231_roles() -> None:
