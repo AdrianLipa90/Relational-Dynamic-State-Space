@@ -20,6 +20,10 @@ EDGE_COUNT = 6
 FLAVOR_COUNT = 3
 POLARITY_COUNT = 2
 
+OPERATOR_DUAL_FACE_LABELS: tuple[str, ...] = ("I", "S", "P", "J")
+IDENTITY_DUAL_FACE = "I"
+ACTIVE_DUAL_FACES: tuple[str, ...] = ("S", "P", "J")
+
 POSITIVE_VERTICES: tuple[Vertex3, ...] = TETRAHEDRON_POSITIVE_VERTICES
 NEGATIVE_VERTICES: tuple[Vertex3, ...] = TETRAHEDRON_NEGATIVE_VERTICES
 
@@ -78,6 +82,84 @@ def face_plane_constants() -> tuple[tuple[int, int], ...]:
             raise ArithmeticError("unexpected bipolar tetrahedral face plane")
         result.append((-1, 1))
     return tuple(result)
+
+
+def active_dual_face_cycle(face: str) -> str:
+    """C3 stabilizer action on the three faces dual to S,P,J."""
+
+    if face == "S":
+        return "P"
+    if face == "P":
+        return "J"
+    if face == "J":
+        return "S"
+    if face == "I":
+        return "I"
+    raise ValueError(f"unknown dual-face label: {face!r}")
+
+
+def invariant_active_face_subsets() -> tuple[frozenset[str], ...]:
+    """All subsets of {S,P,J} invariant under the C3 face stabilizer."""
+
+    faces = ACTIVE_DUAL_FACES
+    subsets: list[frozenset[str]] = []
+    for mask in range(1 << len(faces)):
+        subset = frozenset(faces[i] for i in range(len(faces)) if mask & (1 << i))
+        image = frozenset(active_dual_face_cycle(face) for face in subset)
+        if image == subset:
+            subsets.append(subset)
+    return tuple(subsets)
+
+
+def selector_free_active_exchange_faces() -> frozenset[str]:
+    """Unique non-empty C3-invariant active-face selection.
+
+    With no extra selector, non-trivial exchange cannot choose one or two of
+    the three symmetry-related active faces. The unique non-empty invariant
+    subset is the complete active orbit {S,P,J}.
+    """
+
+    nonempty = tuple(subset for subset in invariant_active_face_subsets() if subset)
+    if nonempty != (frozenset(ACTIVE_DUAL_FACES),):
+        raise ArithmeticError("active-face C3 orbit is not uniquely selected")
+    return nonempty[0]
+
+
+def selector_free_active_exchange_cardinality(cardinality: int) -> int:
+    """Complete active exchange duplicates each carrier element across 3 faces."""
+
+    n = int(cardinality)
+    if n < 0 or n != cardinality:
+        raise ValueError("cardinality must be a non-negative integer")
+    return n * len(selector_free_active_exchange_faces())
+
+
+def minimal_identity_face_closure_cardinality(cardinality: int) -> int:
+    """Add the single fixed identity-dual closure face exactly once."""
+
+    n = int(cardinality)
+    if n < 0 or n != cardinality:
+        raise ValueError("cardinality must be a non-negative integer")
+    return n + 1
+
+
+def selector_free_tetrahedral_odd_completion(cardinality: int) -> int:
+    """Forced minimal non-trivial active exchange plus unique identity closure."""
+
+    return minimal_identity_face_closure_cardinality(
+        selector_free_active_exchange_cardinality(cardinality)
+    )
+
+
+def polarity_association_quotient_cardinality(cardinality: int) -> int:
+    """Free bipolar Z2 association quotient, defined only for even cardinality."""
+
+    n = int(cardinality)
+    if n < 0 or n != cardinality:
+        raise ValueError("cardinality must be a non-negative integer")
+    if n % 2:
+        raise ValueError("free polarity pairing requires even cardinality")
+    return n // 2
 
 
 def directed_face_flavor_channels() -> tuple[ExchangeChannel, ...]:
@@ -188,6 +270,8 @@ def bipolar_exchange_counts() -> dict[str, int | bool | tuple[int, int]]:
         "symmetry_orbit_size": len(orbit),
         "symmetry_transitive": len(orbit) == len(directed),
         "invariant_channel_weight": unique_invariant_channel_weight(),
+        "invariant_active_face_subsets": invariant_active_face_subsets(),
+        "selector_free_active_faces": selector_free_active_exchange_faces(),
     }
 
 
