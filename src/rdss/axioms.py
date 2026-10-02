@@ -32,7 +32,7 @@ CANONICAL_PROVENANCE: dict[str, str] = {
     "A0": (
         "Canonical name: First Law of Existence. Legacy claim id: A0. "
         "Descriptive phrases such as 'law of reality' / 'prawo rzeczywistosci' "
-        "describe status only and MUST NOT rename or alias the law."
+        "describe status only and MUST NOT rename or alias the law; they are not aliases."
     ),
     "THM_FIRST_HAMLET_DISPERSION_STRUCTURE": (
         "First Hamlet is the persistence dichotomy DISPERSION/STRUCTURE. "
