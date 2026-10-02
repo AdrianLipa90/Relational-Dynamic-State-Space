@@ -1,75 +1,81 @@
-# Indexed Tensor Gate
+# Indexed Tensor Realization Boundary
+
+Historical filename: `INDEXED_TENSOR_GATE.md`.
 
 ## Status
 
-**OPEN by design.**
+**CLOSED BY UNDERDETERMINATION / INDEXED REALIZATION DATA REQUIRED.**
 
-RTOFA already has:
+RDSS has tensor rank, a typed tensor-product interface, and an explicit
+supplied contraction-rule interface. The flat reference payload does not,
+however, determine a unique indexed realization.
 
-- tensor rank \((p,q)\);
-- a typed tensor-product interface;
-- an explicit contraction-rule interface;
-- tensor-map monoidality diagnostics;
-- contraction naturality diagnostics.
+This is not an open derivation gate.
 
-The current reference element stores a flat component vector and total tensor rank. That is sufficient to test type-level laws, but it is **not sufficient** to derive canonical contraction identities on tensor products.
+## Exact no-go witness
 
-## Missing data
+A flat rank-((1,1)) payload with four components is compatible with several
+ordered slot-dimension assignments, including
 
-A concrete indexed tensor realization needs, at minimum:
+[
+(1,4),
+qquad
+(2,2),
+qquad
+(4,1).
+]
 
-1. an ordered list of tensor slots;
-2. variance of each slot (upper/lower);
-3. dimension or basis domain of each slot;
-4. an explicit pairing rule identifying which upper and lower slots may contract;
-5. where required, the evaluation/metric/bilinear form used by contraction;
-6. a component shape compatible with those slots.
+Thus total rank and flat component count do not determine the slot signature.
 
-Rank alone,
+Even after choosing a (2	imes2) realization, the same diagonal component
+data can be contracted using distinct supplied evaluation forms. For example,
 
-\[
-(p,q),
-\]
+[
+T=operatorname{diag}(1,1)
+]
 
-does not determine these data.
+gives
 
-## Why the gate matters
+[
+operatorname{Contr}_{g_1}(T)=2
+]
 
-Without slot metadata, a statement such as
+for (g_1=operatorname{diag}(1,1)), while
 
-\[
-\operatorname{Contr}(X\otimes Y)
-\]
+[
+operatorname{Contr}_{g_2}(T)=3
+]
 
-does not specify which index of \(X\) is paired with which index of \(Y\), nor which evaluation map performs the pairing. Any automatic formula would therefore smuggle a realization-specific choice into the general algebra.
+for (g_2=operatorname{diag}(1,2)).
 
-RTOFA consequently keeps contraction abstract:
+Therefore
 
-\[
-\operatorname{Contr}_{c}:
-\mathcal A^{p,q}\to\mathcal A^{p-1,q-1},
-\]
+[
+oxed{
+(	ext{rank},	ext{flat payload})
 
-where \(c\) denotes an explicitly supplied contraction rule.
+otRightarrow
+	ext{a unique indexed contraction}.
+}
+]
 
-## Promotion condition
+The theorem-level ledger node is
 
-The contraction/tensor coherence row may be promoted from OPEN only after an indexed realization provides:
+`THM_INDEXED_TENSOR_CONTRACTION_UNDERDETERMINED_BY_FLAT_RANK`.
 
-\[
-\text{slot signature}
-+
-\text{pairing}
-+
-\text{component shape}
-+
-\text{contraction evaluator}
-+
-\text{tests}.
-\]
+The executable witness is
+`indexed_tensor_underdetermination_certificate()`.
 
-At that point one can test identities such as contraction naturality, contractions internal to one tensor factor, and cross-factor contractions without ambiguity.
+## Canonical interpretation
 
-## Non-conclusion
+Concrete indexed tensor realizations may supply:
 
-This gate is not a defect in the abstract algebra. It is a boundary between the general tensor-scalar signature and a concrete indexed tensor realization.
+- ordered tensor slots;
+- slot variance;
+- dimensions/basis domains;
+- admissible pairing rules;
+- evaluation/metric/bilinear forms;
+- compatible component shapes.
+
+These data refine the abstract tensor-scalar signature. Their absence is an
+intentional abstraction boundary, not an unresolved mathematical derivation.
