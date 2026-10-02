@@ -441,8 +441,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA",
         ClaimKind.DERIVATION_GATE,
-        "Refined deterministic gate: numerical coefficients and finite-cardinality operation semantics are now algebraically closed. The remaining burden is the physical/foundational binding asserting that primitive natural dynamics instantiates this relational-cardinality normalization.",
-        ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
+        "Refined physical-sector gate: numerical coefficients, quotient/product/identity-repair semantics, and selector-free bipolar tetrahedral operation-role selection are algebraically closed. The remaining burden is only the stronger physical/foundational assertion that primitive natural dynamics instantiates this already-forced relational/tetrahedral normalization.",
+        ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
     ),
     Claim(
         "REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT",
@@ -809,6 +809,59 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.THEOREM,
         "The operator tetrahedron depends on the durable relation-role operator algebra and on its Frobenius normalization. Therefore it cannot be used non-circularly to derive the earlier Hamlet-to-relation binding. Likewise, matching 3n+1 does not prove that primitive natural dynamics must instantiate that completion. The tetrahedral route closes a geometric realization/crosscheck of the coefficient structure, while GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS remains open.",
         ("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON", "THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
+    ),
+    Claim(
+        "BRIDGE_TIR_THREE_FLAVOUR_C3_LABEL_CARRIER",
+        ClaimKind.BRIDGE,
+        "Imported TIR representation result: the ordered family/flavour label carrier has an exact transitive C3 three-label representation, sourced from TIR/integration/TIR_IDT_MOD6PI_C3_PAULI_CROSSWALK_V0_1.md at TIR main commit 9783782570a2ccfa1fc42c99b605dad48e02aa78. This imports the three-label carrier only; physical temporal-to-flavour sector identity remains outside this RDSS theorem.",
+    ),
+    Claim(
+        "THM_BIPOLAR_STELLA_CENTRAL_INVERSION_PAIRS_ALL_FACES",
+        ClaimKind.THEOREM,
+        "Let T_-=-T_+ be the opposite-polarity Stella tetrahedron. Index each triangular face by its opposite T_+ vertex. For positive vertex v_i, face F_i^+ obeys v_i dot x=-1, while F_i^- obeys v_i dot x=+1. Central inversion x->-x therefore maps every F_i^+ bijectively to F_i^- with the same face label. All four tetrahedral faces are paired; no fifth or omitted face occurs.",
+        ("THM_HAMLET_OPERATOR_TETRAHEDRON_STELLA_ISOMETRY",),
+    ),
+    Claim(
+        "THM_BIPOLAR_THREE_FLAVOUR_FACE_INCIDENCE_24",
+        ClaimKind.THEOREM,
+        "The bipolar tetrahedral exchange incidence set is polarity x face x flavour. With 2 polarities, 4 tetrahedral faces and the imported 3-label flavour carrier, its directed cardinality is exactly 2*4*3=24. Quotienting by the free polarity involution gives exactly 4*3=12 undirected face-flavour exchange pairs.",
+        ("THM_BIPOLAR_STELLA_CENTRAL_INVERSION_PAIRS_ALL_FACES", "BRIDGE_TIR_THREE_FLAVOUR_C3_LABEL_CARRIER"),
+    ),
+    Claim(
+        "THM_BIPOLAR_EXCHANGE_SYMMETRY_IS_TRANSITIVE",
+        ClaimKind.THEOREM,
+        "Polarity Z2, the tetrahedral A4 face action and the flavour C3 action generate a transitive action on the 24 directed polarity-face-flavour incidences. Consequently no single directed channel is structurally distinguished before an additional selector or calibration is supplied.",
+        ("THM_BIPOLAR_THREE_FLAVOUR_FACE_INCIDENCE_24",),
+    ),
+    Claim(
+        "THM_BIPOLAR_UNIQUE_INVARIANT_CHANNEL_WEIGHT",
+        ClaimKind.THEOREM,
+        "On the finite 24-channel bipolar face-flavour incidence orbit, any normalized scalar channel weighting invariant under the transitive exchange symmetry is unique and uniform, with weight 1/24 per directed incidence.",
+        ("THM_BIPOLAR_EXCHANGE_SYMMETRY_IS_TRANSITIVE",),
+    ),
+    Claim(
+        "THM_TETRAHEDRAL_ACTIVE_FACE_ORBIT_FORCES_THREE",
+        ClaimKind.THEOREM,
+        "Under vertex-face duality the distinguished identity vertex fixes one identity-dual face and the remaining three dual faces form one transitive C3 orbit. The only C3-invariant subsets of the active face set are the empty set and the full three-face set. Therefore any non-trivial selector-free active exchange must use all three active faces; selecting only one or two requires extra structure.",
+        ("THM_TETRAHEDRAL_ONE_PLUS_THREE_SPLIT",),
+    ),
+    Claim(
+        "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING",
+        ClaimKind.THEOREM,
+        "Within the already-derived bipolar tetrahedral cell, the operation roles are fixed without a free selector: free polarity association is a Z2 quotient and gives /2 on complete even pairs; non-trivial C3-equivariant active exchange must use the full three-face orbit and gives x3; minimal closure restores the single identity-dual face once and gives +1. Thus the 2,3,1 divide/multiply/repair semantics are selected by bipolar tetrahedral symmetry and closure rather than by an arbitrary affine ansatz.",
+        ("THM_ASSOCIATION_QUOTIENT_CARDINALITY", "THM_TETRAHEDRAL_ACTIVE_FACE_ORBIT_FORCES_THREE", "THM_IDENTITY_REPAIR_CARDINALITY", "THM_BIPOLAR_STELLA_CENTRAL_INVERSION_PAIRS_ALL_FACES"),
+    ),
+    Claim(
+        "THM_BIPOLAR_HALF_TURN_MEASURE_EQUALS_TWELVE",
+        ClaimKind.THEOREM,
+        "Each directed polarity exchange is the non-trivial Z2 channel and therefore carries the already-derived U(1) half-turn class. Across 24 directed face-flavour incidences the total normalized turn measure is 24*(1/2)=12, equivalently total radian measure 24*pi.",
+        ("THM_BIPOLAR_THREE_FLAVOUR_FACE_INCIDENCE_24", "THM_Z2_SIGN_EMBEDS_U1"),
+    ),
+    Claim(
+        "THM_BIPOLAR_KAPPA_INCIDENCE_COUNT_CROSSCHECK",
+        ClaimKind.THEOREM,
+        "The bipolar tetrahedral face-flavour derivation independently reproduces the incidence count 24 and normalized half-turn measure 12 used by REF_KAPPA_MIXING_NORMALIZATION. This closes the geometric count/measure crosscheck. It does not alone identify the total ln(2) information with a constant density on that measure; the information-density binding remains separately typed.",
+        ("THM_BIPOLAR_HALF_TURN_MEASURE_EQUALS_TWELVE", "REF_KAPPA_MIXING_NORMALIZATION"),
     ),
     Claim(
         "THM_HAMLET_OPERATOR_PROJECTIVE_CP1",
