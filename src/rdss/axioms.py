@@ -71,6 +71,21 @@ CANONICAL_PROVENANCE: dict[str, str] = {
         "U(1) half-turn pi. Hence kappa=(ln(2)/24)/pi=ln(2)/(24*pi). "
         "TIR N_F=3 parent: commit 9783782570a2ccfa1fc42c99b605dad48e02aa78."
     ),
+    "THM_BIPOLAR_RELATIVE_PENDULUM": (
+        "Pendulum provenance: TIR half-successor and relational phase-action parents at "
+        "9783782570a2ccfa1fc42c99b605dad48e02aa78; RDSS kappa parent at "
+        "e1d2dda2ffbcbb38392869f94012cea03fffd751. The 24 directed channels form "
+        "12 undirected pairs. Pair information ln(2)/12 together with normalized U(1) "
+        "chordal mismatch (1-cos(delta))/2 forces V_pair=ln(2)/24*(1-cos(delta)) "
+        "=pi*kappa*(1-cos(delta)). Opposite pair gradients sum to zero."
+    ),
+    "THM_MOIRE_KURAMOTO_CLOSURE": (
+        "Moire-Kuramoto provenance: exact Moire mismatch from RDSS plus the TIR "
+        "White-Thread phase-action/Kuramoto parent at commit "
+        "9783782570a2ccfa1fc42c99b605dad48e02aa78. The canonical pair potential "
+        "generates the sine coupling by differentiation; the overdamped reduction is "
+        "therefore downstream of the same potential rather than an independent ansatz."
+    ),
 }
 
 
@@ -2221,10 +2236,76 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_CUBIC_FACE_FRAME_TRANSPORT", "DER_STELLA_SECTOR_TRANSPORT", "DEF_STELLA_RELATIVE_STATE", "DER_MOIRE"),
     ),
     Claim(
-        "GATE_MOIRE_DYNAMICAL_LAW",
-        ClaimKind.DERIVATION_GATE,
-        "A dynamical neighbour-coupling law, interaction energy, continuum field equation, or physical identification of the edge mismatch is not inferred from the geometric Moire edge state and remains an explicit downstream derivation gate.",
+        "BRIDGE_TIR_PRETIME_STELLA_HALF_SUCCESSOR",
+        ClaimKind.BRIDGE,
+        "Imported exact TIR pretime result from TIR_PRESPACETIME_STELLA_HALF_SUCCESSOR_V0_1.md and TIR_STELLA_ALTERNATING_ROTATION_INFERENCE_V0_1.md at commit 9783782570a2ccfa1fc42c99b605dad48e02aa78: H(n,+)=(n,-), H(n,-)=(n+1,+), hence H^2=S. One half occurrence transforms one Stella sector and the next transforms the complementary sector. The structural grade advances by 1/2 per H without assuming a pre-existing metric clock.",
+        ("DEF_DYNAMIC_TETRAHEDRAL_PAIR",),
+    ),
+    Claim(
+        "BRIDGE_TIR_WHITE_THREAD_PHASE_ACTION",
+        ClaimKind.BRIDGE,
+        "Imported exact-scoped TIR phase-action result from TIR_RELATIONAL_PHASE_LAGRANGIAN_CORE_V0_1.md and TIR_WHITE_THREAD_SPIN_LIFT_LYAPUNOV_V0_1.md at commit 9783782570a2ccfa1fc42c99b605dad48e02aa78: U(1) phase has positive inertia, the projected mismatch potential contains K_ij(1-cos Delta_ij), Euler-Lagrange-Rayleigh gives inertial phase equations, and the overdamped limit gives gauge-twisted Kuramoto sine flow. Physical substrate identity remains separate.",
         ("DER_CELL_RELATIVE_STATE_TO_MOIRE",),
+    ),
+    Claim(
+        "THM_FRAME_FUZZY_HALF_SUCCESSOR",
+        ClaimKind.THEOREM,
+        "The Stella occurrence order is frame-like while the phase state remains continuous: the exact half-successor grades are n and n+1/2 with H^2=S, whereas each sector phase remains an arbitrary element of U(1). Thus discreteness belongs to compositional occurrence order and does not discretize the internal phase coordinate.",
+        ("BRIDGE_TIR_PRETIME_STELLA_HALF_SUCCESSOR", "DEF_STELLA_RELATIVE_STATE"),
+    ),
+    Claim(
+        "THM_CANONICAL_PAIR_INFORMATION_POTENTIAL",
+        ClaimKind.THEOREM,
+        "The canonical bipolar orbit has 24 directed incidences and 12 undirected exchange pairs. THM_BIPOLAR_KAPPA_FORCED gives one directed information share ln(2)/24=pi*kappa, hence one paired exchange carries ln(2)/12. The normalized U(1) chordal mismatch c(Delta)=|exp(i Delta)-1|^2/4=(1-cos Delta)/2 is zero at alignment and equals one at the half-turn. Therefore the pair information potential is uniquely normalized as V_pair=(ln(2)/12)c(Delta)=(ln(2)/24)(1-cos Delta)=pi*kappa(1-cos Delta), and V_pair(pi)=ln(2)/12.",
+        ("THM_BIPOLAR_KAPPA_FORCED", "BRIDGE_TIR_WHITE_THREAD_PHASE_ACTION"),
+    ),
+    Claim(
+        "THM_BIPOLAR_PAIR_FORCE_ANTISYMMETRY",
+        ClaimKind.THEOREM,
+        "For Delta=theta_+-theta_--Gamma and V_pair=A(1-cos Delta) with A=ln(2)/24=pi*kappa, the gradients are dV/dtheta_+=A sin Delta and dV/dtheta_-=-A sin Delta. Hence the relational forces F_+=-A sin Delta and F_-=+A sin Delta are exactly opposite and their center-sector sum is zero.",
+        ("THM_CANONICAL_PAIR_INFORMATION_POTENTIAL",),
+    ),
+    Claim(
+        "THM_BIPOLAR_RELATIVE_PENDULUM",
+        ClaimKind.THEOREM,
+        "For equal positive phase inertia I_phi and equal Rayleigh coefficient eta on the two Stella sectors, the opposite pair forces split the equations into a center mode I_phi*c_ddot+eta*c_dot=0 and a relative mode I_phi*Delta_ddot+eta*Delta_dot+2*pi*kappa*sin(Delta)=0. Equivalently with reduced inertia I_phi/2 the relative mode is the standard damped pendulum equation with potential pi*kappa(1-cos Delta). In the conservative core eta=0 the center mode is inertial relative to the relational zero.",
+        ("THM_BIPOLAR_PAIR_FORCE_ANTISYMMETRY", "BRIDGE_TIR_WHITE_THREAD_PHASE_ACTION"),
+    ),
+    Claim(
+        "THM_FRAME_SECOND_DIFFERENCE_UNIQUE",
+        ClaimKind.THEOREM,
+        "Among local linear three-frame operators D2 x_n=a x_{n-1}+b x_n+c x_{n+1}, requiring translation invariance and annihilation of both constant sequences and uniform drift forces c=a and b=-2a. Up to overall scale the unique operator is x_{n+1}-2x_n+x_{n-1}. This is the frame-native inertial second difference on the full successor S=H^2.",
+        ("THM_FRAME_FUZZY_HALF_SUCCESSOR",),
+    ),
+    Claim(
+        "THM_FRAME_PENDULUM_SUCCESSOR",
+        ClaimKind.THEOREM,
+        "On normalized full-successor spacing h, the conservative bipolar pendulum has the exact frame law I_phi(Delta_{n+1}-2 Delta_n+Delta_{n-1})/h^2+2*pi*kappa*sin(Delta_n)=0. This combines discrete successor order with a continuous U(1) phase value; physical clock calibration of h remains downstream.",
+        ("THM_BIPOLAR_RELATIVE_PENDULUM", "THM_FRAME_SECOND_DIFFERENCE_UNIQUE"),
+    ),
+    Claim(
+        "THM_MOIRE_INFORMATION_POTENTIAL",
+        ClaimKind.THEOREM,
+        "For the gauge-reduced Moire edge mismatch Delta_ij, summing the canonical pair potential V_ij=pi*kappa(1-cos Delta_ij) over undirected exchange edges gives a gauge-invariant relational information potential. Differentiation produces edge contributions +/-pi*kappa sin Delta_ij and the total gradient sums to zero over a closed undirected graph.",
+        ("DER_CELL_RELATIVE_STATE_TO_MOIRE", "THM_CANONICAL_PAIR_INFORMATION_POTENTIAL"),
+    ),
+    Claim(
+        "THM_MOIRE_KURAMOTO_CLOSURE",
+        ClaimKind.THEOREM,
+        "The inertial Moire phase dynamics is generated by the same canonical information potential as the bipolar pendulum. Under the TIR Euler-Lagrange-Rayleigh phase action, the overdamped limit eta_i theta_dot_i=-partial V/partial theta_i is exactly a gauge-twisted Kuramoto sine flow with canonical edge amplitude pi*kappa=ln(2)/24. Kuramoto is therefore a dissipative reduction of the same Moire potential, not an independently inserted sine ansatz.",
+        ("THM_MOIRE_INFORMATION_POTENTIAL", "BRIDGE_TIR_WHITE_THREAD_PHASE_ACTION"),
+    ),
+    Claim(
+        "THM_PENDULUM_KURAMOTO_COMMON_PARENT",
+        ClaimKind.THEOREM,
+        "The two-sector pendulum and the network Moire-Kuramoto flow are two regimes of one relational phase potential: retaining phase inertia gives the pendulum/second-order equation, while the overdamped reduction gives Kuramoto first-order flow. The theory therefore does not choose gradient OR inertia; gradient is the local potential force, and inertia belongs to the composed/full successor dynamics.",
+        ("THM_BIPOLAR_RELATIVE_PENDULUM", "THM_MOIRE_KURAMOTO_CLOSURE"),
+    ),
+    Claim(
+        "GATE_MOIRE_DYNAMICAL_LAW",
+        ClaimKind.THEOREM,
+        "Historical gate identifier retained for provenance. The structural relational dynamics gate is CLOSED by THM_MOIRE_INFORMATION_POTENTIAL and THM_MOIRE_KURAMOTO_CLOSURE: interaction energy, sine neighbour coupling and inertial/overdamped phase equations are now derived on the declared RDSS/TIR carrier. A continuum field equation or identification with a particular physical substrate remains a separate downstream physical bridge, not part of this former structural gate.",
+        ("THM_MOIRE_INFORMATION_POTENTIAL", "THM_MOIRE_KURAMOTO_CLOSURE", "THM_FRAME_PENDULUM_SUCCESSOR"),
     ),
 
     Claim(
