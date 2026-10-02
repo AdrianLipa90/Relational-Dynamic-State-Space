@@ -1,3 +1,17 @@
+"""Executable canonical derivation spine.
+
+Canonical naming and assumptions are frozen in
+docs/CANONICAL_FOUNDATIONAL_CONTRACT.md.
+
+Claim-ledger references used by this module live in src/rdss/axioms.py:
+- A0: Law of Reality / Prawo Rzeczywistosci;
+- THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT: durable N/S roles;
+- THM_RELATION_ROLE_HARTLEY_LN2: probability-free structural ln(2);
+- THM_HAMLET_IMAGINARY_GENERATOR: J=SP and J^2=-I.
+
+DISPERSION/STRUCTURE are persistence outcomes and must never be reused as
+the durable N/S projective carrier.
+"""
 from __future__ import annotations
 
 from cmath import exp
@@ -60,20 +74,25 @@ class ExistenceChainStep:
     audit_note: str = ""
 
 
-FIRST_LAW_OF_EXISTENCE = (
-    "Absolute nothingness is not a realizable state because it contains no "
-    "object, distinction or relation by which it could be established as a state."
+LAW_OF_REALITY = (
+    "Law of Reality: absolute nothingness is not a realizable state because it "
+    "has no object, carrier, occurrence, distinction, relation or denotation by "
+    "which it could be established as a state."
 )
+
+# Backward-compatibility alias only. The canonical public name is
+# LAW_OF_REALITY; see docs/CANONICAL_FOUNDATIONAL_CONTRACT.md §1.
+FIRST_LAW_OF_EXISTENCE = LAW_OF_REALITY
 
 
 CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
     ExistenceChainStep(
-        "L1_TO_EXISTENCE_POTENTIAL",
-        "not absolute nothingness",
+        "LR_TO_EXISTENCE_POTENTIAL",
+        "Law of Reality excludes absolute nothingness",
         "existence potential P_E",
         ExistenceChainStatus.DEFINITIONAL,
         "not N -> P_E",
-        "P_E is the modal/admissible complement of absolute nothingness; no physical potential is implied.",
+        "P_E is the modal/admissible remainder after the Law of Reality excludes absolute nothingness; no physical potential is implied.",
     ),
     ExistenceChainStep(
         "POTENTIAL_TO_PRIMITIVE_INDISTINCTION",
@@ -96,14 +115,14 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "Boolean persistence partition schema",
         "first Hamlet with both DISPERSION and STRUCTURE admissible",
         ExistenceChainStatus.DEFINITIONAL,
-        "canonical RDSS first Hamlet := non-degenerate persistence bifurcation",
+        "canonical RDSS first Hamlet := exhaustive Boolean persistence dichotomy",
     ),
     ExistenceChainStep(
-        "STRICT_FIRST_HAMLET_NONDEGENERACY_GATE",
-        "P_E + I_0",
-        "both persistence branches dynamically admissible",
+        "FIRST_HAMLET_DYNAMIC_REALIZATION_GATE",
+        "Law of Reality + a concrete persistence dynamics",
+        "physical/dynamical realization of both logical persistence outcomes",
         ExistenceChainStatus.DERIVATION_GATE,
-        "derive non-empty Dispersion and Structure preimages from dynamics",
+        "derive when a chosen dynamics realizes each logical branch; the Boolean dichotomy itself is already exact",
     ),
     ExistenceChainStep(
         "FIRST_HAMLET_META_Z2",
@@ -141,9 +160,9 @@ CANONICAL_EXISTENCE_CHAIN: tuple[ExistenceChainStep, ...] = (
         "STRUCTURE_TO_PERSISTENT_RELATION",
         "STRUCTURE branch with persistent distinction",
         "minimal persistent non-trivial relation R",
-        ExistenceChainStatus.DEFINITIONAL,
-        "persistent distinction := minimally represented by ordered relation R:s->t",
-        "This is the structural handoff aligned with the canonical TIR distinction between minimum object and minimum non-trivial structure.",
+        ExistenceChainStatus.MODEL_THEOREM,
+        "STRUCTURE + TIR minimum-structure bridge -> ordered relation R:s->t",
+        "This step imports the source-clean TIR minimum-structure theorem and is not a fresh RDSS definition.",
     ),
     ExistenceChainStep(
         "RELATION_TO_ORIENTATION_ROLE_DYAD",
