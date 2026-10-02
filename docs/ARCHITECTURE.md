@@ -242,10 +242,25 @@ not open axiomatic obligations.
 Arbitrary selected finite refinement is supplied by the free finite-word
 occurrence monoid and its right action.
 
-The historical structural Collatz gates are also discharged. Exactly two
-derivation gates remain:
+The historical structural Collatz gates are also discharged.
 
-- \`GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT\`;
+The former geometric-fractal limit gate is closed by a theorem-level no-go:
+the canonical infinite symbolic boundary is Baire space
+\(\mathbb Z^{\mathbb N}\), while measure, metric scale, Hausdorff dimension
+and external geometric embedding are not uniquely selected by the structural
+carrier.
+
+Therefore the current ledger has
+
+\[
+\boxed{
+N_{\rm DERIVATION\_GATE}=0.
+}
+\]
+
+Physical binding is retained separately as the sole external
+\`EVIDENCE_GATE\`:
+
 - \`GATE_OFHM_PHYSICAL_BINDING\`.
 
 See \`docs/FOUNDATIONAL_CLOSURE_FRONTIER.md\`.
