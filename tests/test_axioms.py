@@ -2104,7 +2104,8 @@ def test_structure_branch_defines_realized_information_and_point_is_downstream()
     assert "THM_STRUCTURE_BRANCH_MINIMAL_INFORMATION_POINT" in binary_closure
 
     strict_gate = claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"]
-    assert strict_gate.kind is ClaimKind.DERIVATION_GATE
+    assert strict_gate.kind is ClaimKind.THEOREM
+    assert "SUPERSEDED" in strict_gate.statement
 
 
 def test_canonical_relational_information_realization_does_not_close_strict_binding_gate() -> None:
@@ -2240,7 +2241,8 @@ def test_hartley_ln2_requires_two_nonempty_first_hamlet_branches() -> None:
     assert "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0" not in ln2_closure
 
     strict_gate = claims["GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0"]
-    assert strict_gate.kind is ClaimKind.DERIVATION_GATE
+    assert strict_gate.kind is ClaimKind.THEOREM
+    assert "SUPERSEDED" in strict_gate.statement
 
 def test_existing_potential_and_binary_closure_cannot_be_used_upstream_for_first_hamlet() -> None:
     claims = claim_map()
