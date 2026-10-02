@@ -189,60 +189,118 @@ Any claim that a particular material/natural substrate realizes this exact
 structural normalization belongs to physical binding rather than to the
 mathematical Collatz derivation.
 
-## 5. Remaining frontier
+## 5. Geometric-fractal gate closed by no-go
 
-After the discharge above, the claim ledger contains exactly two
-\`DERIVATION_GATE\` nodes:
+The ideal symbolic boundary is
 
-### A. Geometric fractal limit
+\[
+\boxed{
+\mathbb Z^{\mathbb N}
+}
+\]
+
+with its finite-prefix cylinder topology.
+
+It is Baire space and is noncompact: the first-coordinate cylinders form a
+countable clopen cover with no finite subcover.
+
+The same cylinder topology admits distinct full-support product measures. For
+
+\[
+p_b(k)=\frac{b-1}{b+1}b^{-|k|},
+\qquad b>1,
+\]
+
+one has, for example,
+
+\[
+\mu_2([0])=\frac13,
+\qquad
+\mu_3([0])=\frac12.
+\]
+
+Therefore no unique continuum measure is selected.
+
+Likewise the compatible prefix metrics
+
+\[
+d_\lambda(x,y)=\lambda^{N(x,y)},
+\qquad 0<\lambda<1,
+\]
+
+contain an explicit free scale. On the embedded binary boundary,
+
+\[
+\dim_H=\frac{\ln2}{-\ln\lambda},
+\]
+
+so \(\lambda=1/2\) gives dimension \(1\) while \(\lambda=1/4\) gives
+dimension \(1/2\).
+
+Finally the structural OFHM signature contains no canonical map
+
+\[
+\Phi:\mathbb Z^{\mathbb N}\to X
+\]
+
+into an external metric geometry.
+
+Thus
 
 \`GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT\`
 
-The finite symbolic OFHM algebra does not yet force:
+is theorem-level **CLOSED BY NO-GO**: the symbolic boundary is canonical,
+but a unique compact geometric realization, measure and Hausdorff dimension
+are not determined by OFHM alone.
 
-- convergence of every infinite branch;
-- a unique geometric limit set;
-- a unique continuum measure;
-- a Hausdorff dimension.
+## 6. Physical binding is an evidence frontier
 
-This is a mathematical continuum-limit problem.
+The algebra likewise contains no unique realization map to a named material,
+quantum, spacetime or measurement substrate and no dimensional calibration
+data.
 
-### B. Physical binding
+This is not a missing mathematical derivation.
+
+The historical identifier
 
 \`GATE_OFHM_PHYSICAL_BINDING\`
 
-The algebra does not identify itself, without empirical/source binding, with a
-specific material, quantum, spacetime or other physical substrate.
+is therefore typed
 
-This includes dimensional calibration of the structural successor and measured
-parameter identification.
+\[
+\boxed{\texttt{EVIDENCE\_GATE}}
+\]
 
-## 6. Canonical status
+rather than \`DERIVATION_GATE\`.
 
-The structural/foundational frontier is therefore
+A concrete physical claim requires an explicit realization map, calibration
+and external empirical evidence.
+
+## 7. Canonical status
+
+The structural/foundational derivation frontier is closed:
 
 \[
 \boxed{
-N_{\mathrm{open\ structural\ foundation\ gates}}=0.
+N_{\mathrm{DERIVATION\_GATE}}=0.
 }
 \]
 
-The total retained downstream frontier is
+The external empirical frontier contains one item:
 
 \[
 \boxed{
-N_{\mathrm{DERIVATION\_GATE}}=2,
+N_{\mathrm{EVIDENCE\_GATE}}=1.
 }
 \]
 
-with the two gates being exactly
+That item is exactly
 
 \[
 \boxed{
-\text{continuum/fractal limit}
-\quad\oplus\quad
-\text{physical binding}.
+\texttt{GATE\_OFHM\_PHYSICAL\_BINDING}.
 }
 \]
 
-This status does not convert either remaining gate into a theorem.
+This status does not assert a physical identification. It separates completed
+mathematical derivation from the future evidence-bearing realization task.
