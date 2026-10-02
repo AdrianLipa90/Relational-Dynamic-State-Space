@@ -3900,66 +3900,340 @@ where \(a\in\mathbb Z^{<\omega}\), \(\ell\) is an orbital label,
 and \(\omega\) is the angular-velocity coordinate used by the second-order
 dynamic chart.
 
-The same GREMLIN/BEES phase sector supplies a local sine-coupling current
+\subsection{Alternating half-time and the forced pair potential}
+
+The pre-spacetime Stella parent supplies the exact alternating occurrence law
+\cite{LipaTIRHalfTime2026}
+\[
+H(n,+)=(n,-),
+\qquad
+H(n,-)=(n+1,+),
+\]
+and therefore
+\[
+\boxed{H^2=S.}
+\]
+The corresponding structural grade is
+\[
+\nu(n,+)=n,
+\qquad
+\nu(n,-)=n+\frac12.
+\]
+Thus occurrence order is discrete in half-frames, while the internal phase
+coordinate remains
+\[
+\theta\in\mathbb R/2\pi\mathbb Z.
+\]
+The half-index and the phase half-turn remain separately typed; no semantic
+identification of all occurrences of the number \(1/2\) is used.
+
+The bipolar exchange orbit already contains 24 directed incidences and 12
+undirected pairs. The theorem-level information coefficient gives
+\[
+\kappa=\frac{\ln2}{24\pi}.
+\]
+Hence one directed incidence carries
+\[
+I_{\to}=\frac{\ln2}{24}=\pi\kappa,
+\]
+and one undirected pair carries
+\[
+I_{\leftrightarrow}=\frac{\ln2}{12}=2\pi\kappa.
+\]
+
+For a projected \(U(1)\) mismatch
+\[
+\Delta=\theta_i-\theta_j-\Gamma_{ij},
+\]
+the normalized squared chordal distance is
+\[
+c(\Delta)
+=
+\frac{|e^{i\Delta}-1|^2}{4}
+=
+\frac{1-\cos\Delta}{2}.
+\]
+It satisfies
+\[
+c(0)=0,
+\qquad
+c(\pi)=1.
+\]
+Therefore the pair information budget fixes the canonical mismatch potential:
 \[
 \boxed{
-J_i
+V_{\leftrightarrow}(\Delta)
 =
-\sum_j w_{ij}\sin(\theta_j-\theta_i).
+I_{\leftrightarrow}c(\Delta)
+=
+\frac{\ln2}{24}(1-\cos\Delta)
+=
+\pi\kappa(1-\cos\Delta).
 }
 \]
-Its normalized first-order reduction is the standard Kuramoto-type phase
-coupling form \cite{Kuramoto1984}
+At the half-turn,
 \[
-\dot\theta_i
-=
-K
-\frac{
-\sum_j w_{ij}\sin(\theta_j-\theta_i)
-}{
-\sum_j w_{ij}
-}.
+V_{\leftrightarrow}(\pi)=\frac{\ln2}{12},
 \]
-The IDT source supplies the second-order discrete form
+so twelve maximally mismatched exchange pairs give exactly
 \[
 \boxed{
-\theta_i^{n+1}
-=
-\theta_i^n+\Delta t\,\omega_i^n,
-}
-\]
-\[
-\boxed{
-\omega_i^{n+1}
-=
-\omega_i^n
-+
-\Delta t
-\left(
--\partial_{\theta_i}V
--\eta\omega_i^n
-+KJ_i^n
-+D_i^n
-\right).
+12V_{\leftrightarrow}(\pi)=\ln2.
 }
 \]
 
-The executable domain is explicit:
+This removes the free amplitude from the canonical information-normalized
+pair potential.
+
+\subsection{Opposite gradients and pendulum closure}
+
+Write
 \[
-\Delta t>0,
-\qquad
-K\ge0,
-\qquad
-\eta\ge0,
-\qquad
-w_{ij}\ge0,
-\qquad
-\sum_j w_{ij}>0
+A_*:=\frac{\ln2}{24}=\pi\kappa.
 \]
-whenever a non-empty neighbor set is normalized. All supplied numerical data
-must be finite. If \(\partial_{\theta_i}V\) is interpreted as an actual
-derivative of a symbolic potential, differentiability of \(V\) on the
-relevant domain is an additional mathematical precondition.
+For
+\[
+V=A_*(1-\cos\Delta),
+\qquad
+\Delta=\theta_+-\theta_- -\Gamma,
+\]
+one has
+\[
+\frac{\partial V}{\partial\theta_+}
+=
+A_*\sin\Delta,
+\qquad
+\frac{\partial V}{\partial\theta_-}
+=
+-A_*\sin\Delta.
+\]
+Hence
+\[
+\boxed{
+F_+=-A_*\sin\Delta,
+\qquad
+F_-=+A_*\sin\Delta,
+}
+\]
+and therefore
+\[
+\boxed{
+F_++F_-=0.
+}
+\]
+
+Using the already promoted TIR phase inertia and Rayleigh phase action
+\cite{LipaTIRWhiteThread2026}, define
+\[
+c=\frac{\theta_++\theta_-}{2},
+\qquad
+\Delta=\theta_+-\theta_-.
+\]
+For equal phase inertia \(I_\phi>0\) and equal damping \(\eta\ge0\), the
+two sector equations split exactly into
+\[
+\boxed{
+I_\phi\ddot c+\eta\dot c=0
+}
+\]
+and
+\[
+\boxed{
+I_\phi\ddot\Delta
++
+\eta\dot\Delta
++
+2\pi\kappa\sin\Delta
+=
+0.
+}
+\]
+Equivalently, with
+\[
+\mu=\frac{I_\phi}{2},
+\qquad
+\gamma=\frac{\eta}{2},
+\]
+the relative equation is
+\[
+\boxed{
+\mu\ddot\Delta
++
+\gamma\dot\Delta
++
+\pi\kappa\sin\Delta
+=
+0,
+}
+\]
+the standard damped-pendulum equation on the relative phase coordinate. In
+the conservative core \(\eta=0\), the center mode obeys \(\ddot c=0\):
+the interaction changes the relative phase but does not accelerate the
+relational center.
+
+Thus gradient and inertia are not competing choices. The local force is the
+gradient of the pair potential; inertia belongs to the composed two-sector
+dynamics.
+
+\subsection{Frame-native inertia on the full successor}
+
+Let a local linear three-frame second-order operator be
+\[
+D_2x_n
+=
+a x_{n-1}+b x_n+c x_{n+1}.
+\]
+Annihilation of constants gives
+\[
+a+b+c=0,
+\]
+while annihilation of uniform drift gives
+\[
+c=a.
+\]
+Therefore
+\[
+b=-2a.
+\]
+Up to an overall scale, the unique local second-frame stencil is
+\[
+\boxed{
+D_2x_n=x_{n+1}-2x_n+x_{n-1}.
+}
+\]
+
+On a normalized full-successor spacing \(h\), the conservative relative
+phase law is therefore
+\[
+\boxed{
+I_\phi
+\frac{
+\Delta_{n+1}-2\Delta_n+\Delta_{n-1}
+}{h^2}
++
+2\pi\kappa\sin\Delta_n
+=
+0.
+}
+\]
+The frame index is discrete, while each \(\Delta_n\) remains a continuous
+phase representative. A dimensional calibration of \(h\) in physical
+seconds is downstream and is not assumed here.
+
+\subsection{Moir\'e potential and Kuramoto as the overdamped reduction}
+
+For an undirected Moir\'e graph, sum the same pair potential over edges:
+\[
+\boxed{
+V_{\rm M}
+=
+\pi\kappa
+\sum_{\{i,j\}\in E}
+\left(
+1-\cos\Delta_{ij}
+\right),
+\qquad
+\Delta_{ij}
+=
+\theta_i-\theta_j-\Gamma_{ij}.
+}
+\]
+Each edge contributes
+\[
+\partial_{\theta_i}V_{ij}
+=
+\pi\kappa\sin\Delta_{ij},
+\qquad
+\partial_{\theta_j}V_{ij}
+=
+-\pi\kappa\sin\Delta_{ij}.
+\]
+Thus the sine kernel is generated by differentiation of the same canonical
+information potential; it is not independently inserted from the Kuramoto
+model.
+
+The TIR White-Thread phase-action parent gives
+\cite{LipaTIRWhiteThread2026}
+\[
+I_i\ddot\theta_i
++
+\eta_i\dot\theta_i
++
+\frac{\partial V_{\rm M}}{\partial\theta_i}
+=
+0.
+\]
+This is the inertial network phase dynamics. In the overdamped limit,
+\[
+I_i\ddot\theta_i\to0,
+\]
+and hence
+\[
+\boxed{
+\eta_i\dot\theta_i
+=
+-
+\frac{\partial V_{\rm M}}{\partial\theta_i}.
+}
+\]
+Therefore
+\[
+\boxed{
+\eta_i\dot\theta_i
+=
+-\pi\kappa
+\sum_j
+\sin\Delta_{ij},
+}
+\]
+with edge orientation fixing the displayed sign convention. This is the
+gauge-twisted Kuramoto sine flow \cite{Kuramoto1984}.
+
+For the overdamped subsystem,
+\[
+\dot V_{\rm M}
+=
+-\sum_i
+\frac1{\eta_i}
+\left(
+\frac{\partial V_{\rm M}}{\partial\theta_i}
+\right)^2
+\le0.
+\]
+Thus \(V_{\rm M}\) is a Lyapunov function in the declared static-holonomy
+dissipative sector.
+
+The two central reductions are therefore
+\[
+\boxed{
+\text{pendulum}
+=
+\text{two-sector inertial reduction},
+}
+\]
+and
+\[
+\boxed{
+\text{Kuramoto}
+=
+\text{overdamped network reduction}.
+}
+\]
+Both descend from one relational phase potential.
+
+The historical executable identifier
+\claimid{GATE_MOIRE_DYNAMICAL_LAW}
+is therefore closed at the structural relational-phase level. A continuum
+field equation, physical clock calibration, or identification of the abstract
+Moir\'e graph with a particular material/gravitational/electromagnetic
+substrate remains a separate downstream physical bridge.
+
+The executable closure is recorded by
+\claimid{THM_CANONICAL_PAIR_INFORMATION_POTENTIAL},
+\claimid{THM_BIPOLAR_RELATIVE_PENDULUM},
+\claimid{THM_FRAME_PENDULUM_SUCCESSOR},
+\claimid{THM_MOIRE_INFORMATION_POTENTIAL}, and
+\claimid{THM_MOIRE_KURAMOTO_CLOSURE}.
 
 The resulting source-grounded algebra is therefore
 \[
@@ -4745,6 +5019,22 @@ and \codeid{DEPENDENCY_EXPORT.json}, commit
 \codeid{9783782570a2ccfa1fc42c99b605dad48e02aa78}, 2026. The pinned dependency
 surface records \codeid{THREE_FLAVOUR_CARRIER = CLOSED -> N_F=3} and
 \codeid{TIR.FLAVOUR.STAGE66_SU3F_GENERATION = CLOSED}.
+
+\bibitem{LipaTIRHalfTime2026}
+A. Lipa, ``Pre-Spacetime Stella Half-Successor'' and
+``Stella Alternating-Rotation Inference,'' in \emph{The Fundamental Theory
+of Informational Relations},
+\codeid{TIR/foundations/TIR_PRESPACETIME_STELLA_HALF_SUCCESSOR_V0_1.md} and
+\codeid{TIR/foundations/TIR_STELLA_ALTERNATING_ROTATION_INFERENCE_V0_1.md},
+commit \codeid{9783782570a2ccfa1fc42c99b605dad48e02aa78}, 2026.
+
+\bibitem{LipaTIRWhiteThread2026}
+A. Lipa, ``Relational Phase Lagrangian Core'' and
+``White-Thread Spin-Lift / Euler--Berry--AB Lyapunov Dynamics,'' in
+\emph{The Fundamental Theory of Informational Relations},
+\codeid{TIR/foundations/TIR_RELATIONAL_PHASE_LAGRANGIAN_CORE_V0_1.md} and
+\codeid{TIR/foundations/TIR_WHITE_THREAD_SPIN_LIFT_LYAPUNOV_V0_1.md},
+commit \codeid{9783782570a2ccfa1fc42c99b605dad48e02aa78}, 2026.
 
 \bibitem{LipaInfinities2026}
 A. Lipa, \emph{Infinities}, commit
