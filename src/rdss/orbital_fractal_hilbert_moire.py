@@ -47,7 +47,7 @@ OFHM_RULE_DEPENDENCIES = {
         "hilbert_hotel_shift",
     ),
     "moire_cocycle": (
-        "bees_relative_phase_coherence",
+        "bees_phase_data",
     ),
     "hilbert_transport": (
         "moire_cocycle",
@@ -116,8 +116,10 @@ def countable_word_rank(address: Sequence[int]) -> int:
     """Bijection from finite integer words Z^{<omega} to N.
 
     Provenance: DEF_OFHM_COUNTABLE_BRANCH_ADDRESS and the frozen Infinities
-    Hilbert-Hotel source in SOURCE_REFERENCES. The encoding is an enumeration
-    coordinate only; it does not replace the prefix/tree relation.
+    Hilbert-Hotel source in SOURCE_REFERENCES. The zigzag/Cantor encoding is
+    one explicit enumeration coordinate only; it is not claimed to be the
+    unique canonical enumeration and it does not replace the prefix/tree
+    relation.
     """
     code = 0
     for branch in reversed(tuple(int(x) for x in address)):
@@ -230,7 +232,12 @@ def moire_cocycle_error(theta_i: float, theta_j: float, theta_k: float) -> float
 
 
 def phase_coherence_overlap(left: Sequence[float], right: Sequence[float]) -> float:
-    """BEES/GREMLIN relative-phase coherence generalized to any finite dimension."""
+    """BEES/GREMLIN coherence magnitude for finite phase vectors.
+
+    Provenance: BRIDGE_OFHM_BEES_RELATIVE_PHASE_COHERENCE.
+    This observable is intentionally lossy because of the final absolute
+    value. It must not be inverted to reconstruct a relative U(1) phase.
+    """
     a = tuple(_require_finite(x, name="left phase") for x in left)
     b = tuple(_require_finite(x, name="right phase") for x in right)
     if not a or len(a) != len(b):
@@ -405,6 +412,12 @@ def idt_phase_dynamics_step(
 
     Provenance: BRIDGE_OFHM_BEES_IDT_DYNAMICS plus the frozen GREMLIN and
     IDT sources in SOURCE_REFERENCES.
+
+    Executable domain: finite inputs, dt>0, damping>=0, coupling>=0,
+    non-negative weights with positive total weight when neighbors are
+    present. If potential_gradient is supplied as a derivative of a symbolic
+    potential V, differentiability of V is an external mathematical
+    precondition.
 
     phi_(k+1) = phi_k + dt * omega_k
     omega_(k+1) = omega_k + dt * (-dV/dphi - eta*omega_k + K*J_k + drive)
