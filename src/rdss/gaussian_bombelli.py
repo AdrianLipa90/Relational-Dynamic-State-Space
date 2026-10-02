@@ -1,3 +1,16 @@
+"""Exact Gaussian/Bombelli implementation with canonical provenance.
+
+Canonical contract: docs/CANONICAL_FOUNDATIONAL_CONTRACT.md §§4–7.
+Claim anchors:
+- THM_RELATION_ROLE_GAUSSIAN_INTEGER_LATTICE
+- THM_MINIMAL_RELATION_ROLE_GAUSSIAN_GENERATOR
+- THM_GAUSSIAN_GENERATES_COLLATZ_COEFFICIENTS
+- THM_GAUSSIAN_BOMBELLI_LADDER
+- BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45
+
+The TIR root-extension step is a named BRIDGE. It must not be presented as
+if Bombelli alone proved L3=L4+L5.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -43,9 +56,10 @@ class GaussianPair:
 def minimal_relation_role_gaussian_generator() -> GaussianPair:
     """Minimal positive integral non-real lift of the durable two-role carrier.
 
-    The durable role orbit has cardinality 2. With J^2=-I already derived,
-    the minimal positive nonzero integral coefficient on J is the unit 1.
-    Up to conjugation this gives 2 + J.
+    Provenance: THM_MINIMAL_RELATION_ROLE_GAUSSIAN_GENERATOR.
+    The durable role orbit has q=2 and J^2=-I is already derived. In the
+    derived integral lattice Z[I,J], the least non-zero |J|-coefficient is 1.
+    Up to conjugation this gives g=q+J=2+J.
     """
 
     q = len(relation_roles())
@@ -53,7 +67,10 @@ def minimal_relation_role_gaussian_generator() -> GaussianPair:
 
 
 def bombelli_ladder() -> tuple[GaussianPair, GaussianPair, GaussianPair, GaussianPair]:
-    """First four exact powers of the minimal generator."""
+    """First four exact powers of the minimal generator.
+
+    Provenance: THM_GAUSSIAN_BOMBELLI_LADDER.
+    """
 
     g = minimal_relation_role_gaussian_generator()
     return (g, g**2, g**3, g**4)
@@ -61,6 +78,8 @@ def bombelli_ladder() -> tuple[GaussianPair, GaussianPair, GaussianPair, Gaussia
 
 def collatz_coefficients_from_gaussian_generator() -> tuple[int, int, int]:
     """Return (association divisor, repair unit, dissociation multiplier).
+
+    Provenance: THM_GAUSSIAN_GENERATES_COLLATZ_COEFFICIENTS.
 
     For g=2+J:
       association divisor = Re(g) = 2
@@ -75,6 +94,9 @@ def collatz_coefficients_from_gaussian_generator() -> tuple[int, int, int]:
 
 def l_constants_from_gaussian_and_root_extension() -> tuple[int, int, int]:
     """Return (L3,L4,L5) using Gaussian source plus TIR root-extension closure.
+
+    Provenance: THM_GAUSSIAN_L45_SOURCE +
+    BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45.
 
     L4 = Re(g)
     L5 = N(g)
