@@ -1,6 +1,6 @@
 # Foundational Closure Frontier
 
-Status: STRUCTURAL_FOUNDATION_CLOSED / TWO DOWNSTREAM FRONTIERS OPEN
+Status: STRUCTURAL_FOUNDATION_CLOSED / ONE EXTERNAL EVIDENCE FRONTIER
 
 Branch: \`feat/foundational-closure-v0.1\`
 
@@ -79,7 +79,6 @@ Thus the theorem-level implication is
 
 A bare singleton carrier or an unlabelled self-relation is not promoted to a
 binary state by this theorem.
-\]
 
 ## 2. First-Hamlet gates discharged
 
