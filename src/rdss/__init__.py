@@ -42,6 +42,8 @@ from .tetrahedral_binding import (
     operator_simplex_volume,
     operator_stella_gram_isometry_holds,
     scaled_active_sign_vertex,
+    sign_vertex_product,
+    stella_klein_four_certificate,
     tetrahedral_binding_certificate,
     tetrahedral_completion_cardinality,
 )
