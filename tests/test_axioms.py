@@ -2423,3 +2423,29 @@ def test_collatz_dyadic_phase_is_downstream_of_collatz_and_u1_embedding_is_separ
     grammar = dependency_closure("THM_COLLATZ_ADMISSIBLE_WORD_COUNT_FIBONACCI")
     assert "THM_COLLATZ_PARITY_FORBIDS_11" in grammar
 
+
+
+def test_tetrahedral_operator_binding_is_exact_but_downstream():
+    claims = claim_map()
+
+    assert claims["DEF_HAMLET_OPERATOR_BASIS_SIMPLEX"].kind is ClaimKind.DEFINITION
+    assert claims["THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_OPERATOR_TETRAHEDRON_VOLUME"].kind is ClaimKind.THEOREM
+    assert claims["THM_HAMLET_OPERATOR_TETRAHEDRON_STELLA_ISOMETRY"].kind is ClaimKind.THEOREM
+    assert claims["THM_TETRAHEDRAL_ONE_PLUS_THREE_SPLIT"].kind is ClaimKind.THEOREM
+    assert claims["THM_TETRAHEDRAL_COMPLETION_CARDINALITY_3N_PLUS_1"].kind is ClaimKind.THEOREM
+    assert claims["THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY"].kind is ClaimKind.THEOREM
+    assert claims["THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE"].kind is ClaimKind.THEOREM
+
+    tetra_closure = dependency_closure("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON")
+    assert "THM_HAMLET_OPERATOR_FROBENIUS_NORM" in tetra_closure
+    assert "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT" in tetra_closure
+
+    odd_closure = dependency_closure("THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY")
+    assert "THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY" in odd_closure
+    assert "THM_IDENTITY_REPAIR_CARDINALITY" in odd_closure
+    assert "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP" in odd_closure
+
+    scope = claims["THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE"].statement
+    assert "cannot be used non-circularly" in scope
+    assert "remains open" in scope
