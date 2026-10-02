@@ -114,6 +114,47 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         ),
         note="g=q+J with q=|{N,S}|=2; L3 bridge remains separately sourced.",
     ),
+    ProvenanceNote(
+        surface="kappa reference normalization",
+        role="REFERENCE+DERIVED",
+        claim_ids=(
+            "REF_KAPPA_MIXING_NORMALIZATION",
+            "REF_KAPPA_UNIFORM_INFORMATION_DENSITY",
+            "DER_KAPPA_NORMALIZED_TURN",
+            "DER_KAPPA_RADIAN_CHART",
+        ),
+        sources=(CANONICAL_FOUNDATIONAL_CONTRACT,),
+        note=(
+            "kappa=ln(2)/(24*pi) is derived only inside the declared reference "
+            "normalization including constant information density; total information "
+            "and total turn measure alone do not force a constant density."
+        ),
+    ),
+    ProvenanceNote(
+        surface="OFHM phase/coherence separation",
+        role="BRIDGE+DERIVED",
+        claim_ids=(
+            "BRIDGE_OFHM_BEES_PHASE_DATA",
+            "BRIDGE_OFHM_BEES_RELATIVE_PHASE_COHERENCE",
+            "DER_OFHM_MOIRE_COCYCLE",
+        ),
+        sources=(CANONICAL_FOUNDATIONAL_CONTRACT,),
+        note=(
+            "Relative U(1) phase is built from sourced phase coordinates. "
+            "The coherence magnitude is lossy and is never inverted to recover phase."
+        ),
+    ),
+    ProvenanceNote(
+        surface="OFHM Hilbert-Hotel enumeration",
+        role="BRIDGE",
+        claim_ids=("BRIDGE_OFHM_HILBERT_HOTEL_SHIFT",),
+        sources=(CANONICAL_FOUNDATIONAL_CONTRACT,),
+        note=(
+            "The executable zigzag/Cantor ranking is one explicit enumeration; "
+            "the induced successor is enumeration-dependent and no commutation "
+            "with local refinement is assumed."
+        ),
+    ),
 )
 
 
@@ -139,7 +180,14 @@ IMPLEMENTATION_PROVENANCE: dict[str, tuple[str, ...]] = {
         "BRIDGE_OFHM_EULER_SYMBOLIC_BRANCH_SPACE",
     ),
     "orbital_fractal_hilbert_moire.relative_moire_phase": (
+        "BRIDGE_OFHM_BEES_PHASE_DATA",
         "DER_OFHM_MOIRE_COCYCLE",
+    ),
+    "orbital_fractal_hilbert_moire.phase_coherence_overlap": (
+        "BRIDGE_OFHM_BEES_RELATIVE_PHASE_COHERENCE",
+    ),
+    "orbital_fractal_hilbert_moire.CountableBranchAddress.hilbert_hotel_successor": (
+        "BRIDGE_OFHM_HILBERT_HOTEL_SHIFT",
     ),
     "orbital_fractal_hilbert_moire.moire_transport": (
         "DER_OFHM_HILBERT_TRANSPORT",
