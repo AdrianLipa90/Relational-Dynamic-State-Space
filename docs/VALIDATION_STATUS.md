@@ -1154,3 +1154,101 @@ Final LaTeX execution receipt:
 The compile still reports several pre-existing overfull-box layout warnings.
 They are typographic warnings, not compile failures, and are not silently
 classified as fixed.
+
+
+## Foundational proof-hygiene and local-validation policy — 2026-10-02
+
+This milestone supersedes the execution-policy aspect of the older OFHM
+validation receipts above. Historical GitHub Actions run IDs are retained as
+provenance of what occurred; they are **not** an allowed validation backend for
+this private repository going forward.
+
+Canonical naming was restored and locked:
+
+- foundational law name: **First Law of Existence**;
+- legacy executable claim id: `A0`;
+- descriptive phrases such as "law of reality" / "prawo rzeczywistości" are
+  status descriptions only and must not rename or alias the law;
+- repository-wide scans found no retained `LAW_OF_REALITY`,
+  `DEF_LR_*`, `THM_LR_*` or `LR-admissible` identifiers after repair.
+
+Durable proof provenance is now written into code and contract files rather
+than left to conversational memory:
+
+- `docs/CANONICAL_FOUNDATIONAL_CONTRACT.md`;
+- `src/rdss/axioms.py::CANONICAL_PROVENANCE`;
+- `src/rdss/foundational_provenance.py`;
+- implementation docstrings and `IMPLEMENTATION_PROVENANCE`;
+- regression tests for naming and proof provenance.
+
+Proof-hygiene corrections include:
+
+1. First Hamlet DISPERSION/STRUCTURE is kept separate from durable relation
+   roles (N/S).
+2. (J=SP), (J^2=-I) is attached to the durable (N/S) role basis.
+3. Collatz (\times3) is explicitly the count of the three distinguished
+   non-identity **basis directions** ({S,P,J}), not the cardinality of all
+   non-identity operators in (M_2(\mathbb R)).
+4. (g=2+J), the Bombelli ladder and (L_4=2,L_5=5) carry explicit
+   Gaussian-role provenance; (L_3=7) retains the separate TIR
+   root-extension bridge.
+5. The (kappa) reference now exposes the constant-information-density
+   condition explicitly as `REF_KAPPA_UNIFORM_INFORMATION_DENSITY`.
+   Without that reference condition only the total integral is fixed.
+6. OFHM relative Moiré phase is derived from sourced phase coordinates,
+   not by inverting the lossy BEES coherence magnitude.
+7. The executable Hilbert--Hotel successor is explicitly dependent on the
+   chosen zigzag/Cantor enumeration; no unique canonical enumeration and no
+   commutation law with local refinement is assumed.
+8. IDT/BEES dynamics now state their numerical and differentiability domain
+   conditions explicitly.
+
+### Local checks executed
+
+Fresh NOEMA/AUX guard using the local canonical bundle reported:
+
+- `tether_status=ACTIVE`;
+- `failures=[]`;
+- fail-closed guard schema `noema.aux-tether-guard/v2`.
+
+Local algebraic reverse-checks: **PASS** for
+
+- (S^2=P^2=I);
+- (SP=-PS);
+- (J^2=-I);
+- linear independence / real rank 4 of ({I,S,P,J});
+- (g^2=3+4J);
+- (g^3=2+11J);
+- (g^4=-7+24J);
+- (g\bar g=5);
+- Bombelli cubic (x^3-15x-4=0) at (x=4);
+- local Collatz parity repair for odd (n) on the checked integer range;
+- arithmetic chart transform
+  (kappa_q/(2\pi)=\ln2/(24\pi)).
+
+The page-9 First-Law box was reproduced locally with the same A4 geometry and
+`0.92\linewidth` parbox construction:
+
+- `pdflatex`: **PASS**;
+- overfull hboxes for the reproducer: **0**;
+- underfull hboxes for the reproducer: **0**;
+- visual render stays inside the page margins.
+
+### Current validation boundary
+
+No GitHub Actions workflow is present on the feature branch and no further
+GitHub Actions execution is permitted by the canonical private-repository
+policy.
+
+The local NOEMA/PhaseNav repository client is present, but this runtime reports
+`GITHUB_AUTH_MISSING` for private-repository access and has no complete local
+RDSS checkout. Therefore:
+
+- full repository pytest on the **current exact head**: **NOT RUN locally**;
+- full static audit on the **current exact head**: **NOT RUN locally**;
+- two-pass compilation of the **entire current monograph**: **NOT RUN locally**.
+
+These are explicit pending validations. They must not be replaced by GitHub
+Actions. The next accepted full validation requires a complete local checkout
+or local private-repository credential available to the NOEMA/PhaseNav
+toolchain.
