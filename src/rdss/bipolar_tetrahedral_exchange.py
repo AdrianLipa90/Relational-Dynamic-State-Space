@@ -260,6 +260,10 @@ def unique_invariant_channel_weight() -> tuple[int, int]:
 # REF: Shannon (1948), plus RDSS THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY.
 # REF: RDSS @ d6f80e4539db368f828a064c2ab0fff730ec3490
 #       gives the transitive 24-channel bipolar exchange orbit and half-turn structure.
+# REF: RDSS claim ledger @ 2fb4645a16074280494423f4b27bc7d3ff5bc092
+#       THM_BINARY_Z2_MAXIMUM_ENTROPY_LN2
+#       THM_BIPOLAR_CHANNEL_INFORMATION_UNIFORMIZATION
+#       THM_BIPOLAR_KAPPA_FORCED
 def binary_maximum_entropy_nats() -> float:
     """Maximum Shannon entropy of a binary Z2-invariant source.
 
