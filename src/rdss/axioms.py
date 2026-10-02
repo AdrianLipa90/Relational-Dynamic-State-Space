@@ -394,13 +394,13 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "DEF_DISSOCIATION_AS_ACTIVE_OPERATOR_PRODUCT",
         ClaimKind.DEFINITION,
-        "Canonical dissociation semantics: resolve each carrier element against the complete non-identity operator sector A_*={S,P,J} of the durable two-role algebra. Thus dissociation is the finite product X times A_*, not an anonymous three-element fibre.",
+        "Canonical dissociation semantics: resolve each carrier element against the three distinguished non-identity basis directions A_*={S,P,J} of the durable two-role operator basis {I,S,P,J}. Thus dissociation is the finite product X times A_*, not a claim about the cardinality of all non-identity operators in M_2(R).",
         ("THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R", "DEF_ACTIVE_SEED_AS_NONIDENTITY_OPERATOR_COUNT"),
     ),
     Claim(
         "THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY",
         ClaimKind.THEOREM,
-        "The active operator sector A_*={S,P,J} has cardinality three, hence |X times A_*|=3|X|. Therefore canonical dissociation is n->3n.",
+        "The active basis-direction set A_*={S,P,J} has cardinality three, hence |X times A_*|=3|X|. Therefore canonical dissociation is n->3n.",
         ("DEF_DISSOCIATION_AS_ACTIVE_OPERATOR_PRODUCT", "THM_ACTIVE_SEED_IS_THREE"),
     ),
     Claim(
@@ -430,7 +430,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP",
         ClaimKind.THEOREM,
-        "The durable relation-role algebra fixes all three canonical cardinality operations: free Z2 quotient gives /2, product with the complete non-identity operator sector {S,P,J} gives x3, and restoration of the unique omitted identity direction {I} gives +1. Parity admissibility then selects the unique deterministic update n/2 for even n and 3n+1 for odd n.",
+        "The durable relation-role algebra fixes all three canonical cardinality operations: free Z2 quotient gives /2, product with the three distinguished non-identity basis directions {S,P,J} gives x3, and restoration of the unique omitted identity direction {I} gives +1. Parity admissibility then selects the unique deterministic update n/2 for even n and 3n+1 for odd n.",
         ("THM_ASSOCIATION_QUOTIENT_CARDINALITY", "THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY", "THM_IDENTITY_REPAIR_CARDINALITY", "THM_PARITY_FORCES_COLLATZ_BRANCH_SELECTION"),
     ),
     Claim(
@@ -724,7 +724,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_HAMLET_IMAGINARY_GENERATOR",
         ClaimKind.THEOREM,
-        "The real-linear operator J=SP satisfies J^2=-I. Relative to the ordered branch basis this is the canonical complex-structure generator, unique up to J->-J under reversal of branch orientation; it realizes the algebraic role of i without assuming complex scalars upstream.",
+        "The real-linear operator J=SP satisfies J^2=-I. Relative to the ordered durable relation-role basis (e_N,e_S) this is the canonical complex-structure generator, unique up to J->-J under reversal of role orientation; it realizes the algebraic role of i without assuming complex scalars upstream.",
         ("THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE",),
     ),
     Claim(
@@ -748,7 +748,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_HAMLET_FULL_OPERATOR_ALGEBRA_M2R",
         ClaimKind.THEOREM,
-        "In the ordered Hamlet branch basis, I, swap S, polarity P and J=SP are linearly independent and span the full four-real-dimensional matrix algebra M_2(R). Their multiplication closes with S^2=P^2=I, SP=-PS and J^2=-I.",
+        "In the ordered durable relation-role basis (e_N,e_S), I, swap S, polarity P and J=SP are linearly independent and span the full four-real-dimensional matrix algebra M_2(R). Their multiplication closes with S^2=P^2=I, SP=-PS and J^2=-I.",
         ("THM_HAMLET_SWAP_POLARITY_ANTICOMMUTE", "THM_HAMLET_IMAGINARY_GENERATOR"),
     ),
     Claim(
