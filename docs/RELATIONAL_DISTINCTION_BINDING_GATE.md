@@ -2,9 +2,19 @@
 
 ## Status
 
-**CANDIDATE REDUCTION — executable, not promoted.**
+**HISTORICAL CONDITIONAL SCHEMA — SUPERSEDED AS A CANONICAL PROOF OBLIGATION.**
 
-This gate separates two statements that must not be conflated.
+This historical gate separates two statements that must not be conflated.
+
+Current canonical status: `RA0_REL_STAR` is a `FORMATION_RULE`, not a
+`DERIVATION_GATE`. Canonical relational witnessing is already supplied by
+`BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING` and
+`THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS`. For the non-self-collapsed
+non-trivial relational sector, durable distinction follows through
+`THM_CANONICAL_NONTRIVIAL_EXISTENCE_FORCES_DISTINCTION`.
+
+The countermodels and conditional implications below are retained as exact
+historical results about the stronger optional schema.
 
 The existing candidate
 
@@ -158,9 +168,9 @@ But there is no primitive relation incident to \(a\). Therefore
 Because the admitted domain is non-empty, this is not a vacuity effect.
 
 The historical RA0_REL_STAR strengthening exists precisely to add the missing
-relation binding. In the current ledger it is a derivation gate, not an axiom.
+relation binding. In the current ledger it is a formation rule, not an axiom or derivation gate.
 
-## Historical strengthened derivation gate
+## Historical strengthened formation schema
 
 The strengthened gate is:
 
@@ -282,14 +292,16 @@ It does not replace the current foundation. The current foundation remains
 \[
 \boxed{
 A_0
++
+\text{sourced relational-existence typing}
 \Longrightarrow
-\mathrm{META0}
+\text{relational witness}
 \Longrightarrow
-\text{derived structure / explicit derivation gates}.
+\text{derived structure}.
 }
 \]
 
-RA0_REL_STAR is therefore a strengthened derivation gate, not a second axiom.
+RA0_REL_STAR is therefore a strengthened optional formation schema, not a second foundational law.
 
 ## What has not been proved
 
@@ -494,8 +506,8 @@ RA0_REL_STAR may discharge the historical RA0/RR1 closure package only if the pr
 }
 \]
 
-Until that identification is closed, RA0_REL_STAR remains a derivation gate.
-The canonical foundation remains
+The canonical foundation no longer requires this stronger identification. RA0_REL_STAR remains an optional formation schema for realizations that explicitly request branch-to-relation binding.
+The canonical foundation is now
 
 \[
 \boxed{
