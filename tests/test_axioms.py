@@ -2558,13 +2558,22 @@ def test_half_time_pendulum_and_moire_kuramoto_are_closed_structurally() -> None
     assert "physical substrate" in historical_gate.statement
 
 
-def test_only_physical_binding_remains_open_gate() -> None:
+def test_structural_derivation_gates_are_zero_and_physical_binding_is_evidence_gate() -> None:
     claims = claim_map()
-    open_gate_ids = {
+    derivation_gate_ids = {
         claim.id for claim in claims.values()
         if claim.kind is ClaimKind.DERIVATION_GATE
     }
-    assert open_gate_ids == {"GATE_OFHM_PHYSICAL_BINDING"}
+    evidence_gate_ids = {
+        claim.id for claim in claims.values()
+        if claim.kind is ClaimKind.EVIDENCE_GATE
+    }
+    assert derivation_gate_ids == set()
+    assert evidence_gate_ids == {"GATE_OFHM_PHYSICAL_BINDING"}
+    assert claims["THM_OFHM_PHYSICAL_BINDING_REQUIRES_EXTERNAL_EVIDENCE"].kind is ClaimKind.THEOREM
+    assert claims["GATE_OFHM_PHYSICAL_BINDING"].depends_on == (
+        "THM_OFHM_PHYSICAL_BINDING_REQUIRES_EXTERNAL_EVIDENCE",
+    )
 
     assert claims["GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT"].kind is ClaimKind.THEOREM
     assert "CLOSED BY NO-GO" in claims["GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT"].statement
