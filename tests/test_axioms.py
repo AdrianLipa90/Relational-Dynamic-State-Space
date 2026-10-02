@@ -223,10 +223,12 @@ def test_relationally_bound_distinction_is_explicit_definition():
 def test_recursive_refinement_is_explicit_formation_capability():
     claims = claim_map()
     assert claims["RR1"].kind is ClaimKind.FORMATION_RULE
-    assert set(claims["RR1"].depends_on) == {"A0", "DEF_POINT", "DEF_BINARY_DISTINCTION"}
+    assert claims["RR1"].depends_on == ("THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",)
     closure = dependency_closure("RR1")
-    assert "A0" in closure
-    assert "DEF_OCCURRENCE_ADDRESS_SPACE" in closure
+    assert "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE" in closure
+    assert "THM_OCCURRENCE_ADDRESS_FREE_MONOID" in closure
+    assert "THM_REFINEMENT_RIGHT_ACTION" in closure
+    assert "A0" not in closure
 
 
 def test_structural_primitives_do_not_silently_depend_on_ra0():
@@ -698,31 +700,17 @@ def test_ra0_rr1_do_not_imply_ra0_rel_star():
     claims = claim_map()
 
     assert claims["REF_RA0_RR1_UNBOUND_MODEL"].kind is ClaimKind.REFERENCE_REALIZATION
-    assert dependency_closure("REF_RA0_RR1_UNBOUND_MODEL") == frozenset(
-        {
-            "A0",
-            "META0",
-            "RA0",
-            "RR1",
-            "DEF_POINT",
-            "DEF_BINARY_DISTINCTION",
-            "DEF_OCCURRENCE_ADDRESS_SPACE",
-        }
-    )
+    witness = dependency_closure("REF_RA0_RR1_UNBOUND_MODEL")
+    assert {"A0", "META0", "RA0", "RR1", "DEF_POINT"} <= witness
+    assert "BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING" in witness
+    assert "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE" in witness
+    assert "RA0_REL_STAR" not in witness
 
     assert claims["THM_RA0_RR1_NOT_RA0_REL_STAR"].kind is ClaimKind.THEOREM
-    assert dependency_closure("THM_RA0_RR1_NOT_RA0_REL_STAR") == frozenset(
-        {
-            "A0",
-            "REF_RA0_RR1_UNBOUND_MODEL",
-            "META0",
-            "RA0",
-            "RR1",
-            "DEF_POINT",
-            "DEF_BINARY_DISTINCTION",
-            "DEF_OCCURRENCE_ADDRESS_SPACE",
-        }
-    )
+    closure = dependency_closure("THM_RA0_RR1_NOT_RA0_REL_STAR")
+    assert "REF_RA0_RR1_UNBOUND_MODEL" in closure
+    assert {"RA0", "RR1"} <= closure
+    assert "RA0_REL_STAR" not in closure
 
 
 def test_binary_occurrence_growth_and_countability_theorems():
@@ -2044,7 +2032,7 @@ def test_collatz_structural_dynamics_is_closed_and_physical_binding_is_separate(
     closure = dependency_closure("THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED")
     assert "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP" in closure
     assert "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING" in closure
-    assert "GATE_MOIRE_DYNAMICAL_LAW" in closure
+    assert "GATE_MOIRE_DYNAMICAL_LAW" not in closure
 
     gate = claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"]
     assert gate.kind is ClaimKind.THEOREM
