@@ -147,7 +147,16 @@ def audit_layer_ownership() -> dict[str, int]:
         raise AuditFailure(f"representation/diagnostic leak into algebra core: {leaks}")
 
     exported = package_exports()
-    expected = set().union(*defs.values())
+    export_aliases = {
+        ("alternating_phase_dynamics", "closure_certificate"):
+            "alternating_phase_closure_certificate",
+        ("alternating_phase_dynamics", "phase_mismatch"):
+            "alternating_phase_mismatch",
+    }
+    expected: set[str] = set()
+    for module_name, values in defs.items():
+        for name in values:
+            expected.add(export_aliases.get((module_name, name), name))
     missing = sorted(expected - exported)
     if missing:
         raise AuditFailure(f"public layer definitions missing from package exports: {missing}")
