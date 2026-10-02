@@ -417,6 +417,12 @@ from .orbital_fractal_hilbert_moire import (
     prefix_ultrametric,
     relative_moire_phase,
 )
+from .realization_boundaries import (
+    indexed_tensor_underdetermination_certificate,
+    monoidal_coherence_underdetermination_certificate,
+    realization_boundary_no_go_certificate,
+    semantic_weighting_underdetermination_certificate,
+)
 from .potential import (
     RelationalPotentialProfile,
     relational_attractor_set,
@@ -1069,5 +1075,9 @@ __all__ = [
     "relative_pendulum_residual",
     "second_frame_difference",
     "signed_angle",
+    "indexed_tensor_underdetermination_certificate",
+    "monoidal_coherence_underdetermination_certificate",
+    "realization_boundary_no_go_certificate",
+    "semantic_weighting_underdetermination_certificate",
 
 ]
