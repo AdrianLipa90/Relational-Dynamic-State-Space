@@ -2453,3 +2453,44 @@ def test_tetrahedral_operator_binding_is_exact_but_downstream():
     scope = claims["THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE"].statement
     assert "cannot be used non-circularly" in scope
     assert "remains open" in scope
+
+
+def test_bipolar_tetrahedral_exchange_forces_selector_free_231_roles() -> None:
+    claims = claim_map()
+
+    for claim_id in (
+        "BRIDGE_TIR_THREE_FLAVOUR_C3_LABEL_CARRIER",
+        "THM_BIPOLAR_STELLA_CENTRAL_INVERSION_PAIRS_ALL_FACES",
+        "THM_BIPOLAR_THREE_FLAVOUR_FACE_INCIDENCE_24",
+        "THM_BIPOLAR_EXCHANGE_SYMMETRY_IS_TRANSITIVE",
+        "THM_BIPOLAR_UNIQUE_INVARIANT_CHANNEL_WEIGHT",
+        "THM_TETRAHEDRAL_ACTIVE_FACE_ORBIT_FORCES_THREE",
+        "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING",
+        "THM_BIPOLAR_HALF_TURN_MEASURE_EQUALS_TWELVE",
+        "THM_BIPOLAR_KAPPA_INCIDENCE_COUNT_CROSSCHECK",
+    ):
+        assert claim_id in claims
+
+    assert claims["BRIDGE_TIR_THREE_FLAVOUR_C3_LABEL_CARRIER"].kind is ClaimKind.BRIDGE
+    assert claims["THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING"].kind is ClaimKind.THEOREM
+
+    closure = dependency_closure("THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING")
+    assert "THM_ASSOCIATION_QUOTIENT_CARDINALITY" in closure
+    assert "THM_TETRAHEDRAL_ACTIVE_FACE_ORBIT_FORCES_THREE" in closure
+    assert "THM_IDENTITY_REPAIR_CARDINALITY" in closure
+    assert "THM_BIPOLAR_STELLA_CENTRAL_INVERSION_PAIRS_ALL_FACES" in closure
+
+    kappa_crosscheck = dependency_closure("THM_BIPOLAR_KAPPA_INCIDENCE_COUNT_CROSSCHECK")
+    assert "REF_KAPPA_MIXING_NORMALIZATION" in kappa_crosscheck
+    assert "THM_Z2_SIGN_EMBEDS_U1" in kappa_crosscheck
+
+    gate = claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"]
+    assert "selector-free bipolar tetrahedral operation-role selection" in gate.statement
+    assert "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING" in gate.depends_on
+
+    assert "physical temporal-to-flavour sector identity remains outside" in claims[
+        "BRIDGE_TIR_THREE_FLAVOUR_C3_LABEL_CARRIER"
+    ].statement
+    assert "information-density binding remains separately typed" in claims[
+        "THM_BIPOLAR_KAPPA_INCIDENCE_COUNT_CROSSCHECK"
+    ].statement
