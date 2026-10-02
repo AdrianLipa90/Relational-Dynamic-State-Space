@@ -1,4 +1,5 @@
 from rdss.axioms import (
+    CANONICAL_PROVENANCE,
     ClaimKind,
     claim_map,
     dependency_closure,
@@ -11,6 +12,36 @@ from rdss.axioms import (
 
 def test_dependency_graph_is_acyclic_and_resolved():
     validate_dependency_dag()
+
+
+def test_canonical_names_and_provenance_are_locked():
+    claims = claim_map()
+
+    assert "First Law of Existence" in claims["A0"].statement
+    assert "Canonical name: First Law of Existence" in CANONICAL_PROVENANCE["A0"]
+    assert "law of reality" in CANONICAL_PROVENANCE["A0"].lower()
+    assert "not aliases" in CANONICAL_PROVENANCE["A0"]
+
+    first_hamlet = CANONICAL_PROVENANCE["THM_FIRST_HAMLET_DISPERSION_STRUCTURE"]
+    assert "DISPERSION/STRUCTURE" in first_hamlet
+    assert "not the downstream durable role carrier N/S" in first_hamlet
+
+    roles = CANONICAL_PROVENANCE["THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT"]
+    assert "orientation-role orbit N/S" in roles
+    assert "one carrier" in roles
+
+    collatz = CANONICAL_PROVENANCE["THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP"]
+    assert "/2" in collatz
+    assert "x3" in collatz
+    assert "+1" in collatz
+    assert "basis-direction set" in collatz
+    assert "not the set of all non-identity operators" in collatz
+
+    gaussian = CANONICAL_PROVENANCE["THM_L_CONSTANTS_SINGLE_GENERATOR_CLOSURE"]
+    assert "g=q+J=2+J" in gaussian
+    assert "L4=2" in gaussian
+    assert "L5=N(g)=5" in gaussian
+    assert "L3=7" in gaussian
 
 
 def test_binary_relation_is_explicit_signature_definition():
