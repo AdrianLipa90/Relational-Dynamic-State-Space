@@ -165,6 +165,7 @@ from .closure import (
 from .existence_chain import (
     CANONICAL_EXISTENCE_CHAIN,
     FIRST_LAW_OF_EXISTENCE,
+    LAW_OF_REALITY,
     IMAGINARY_GENERATOR,
     LN2,
     RELATIONAL_ZETA_ZERO,
@@ -468,6 +469,13 @@ from .operations import (
     transport_product_residual,
     typed_refinement_residual,
 )
+from .foundational_provenance import (
+    CANONICAL_FOUNDATIONAL_CONTRACT,
+    FOUNDATIONAL_PROVENANCE,
+    IMPLEMENTATION_PROVENANCE,
+    ProvenanceNote,
+    provenance_for_surface,
+)
 from .provenance import (
     ClaimDependencyEdge,
     ClaimDependencyGraph,
@@ -632,6 +640,7 @@ __all__ = [
     "refinement_residual",
     "CANONICAL_EXISTENCE_CHAIN",
     "FIRST_LAW_OF_EXISTENCE",
+    "LAW_OF_REALITY",
     "IMAGINARY_GENERATOR",
     "LN2",
     "RELATIONAL_ZETA_ZERO",
@@ -926,6 +935,11 @@ __all__ = [
     "RelationalPotentialProfile",
     "relational_attractor_set",
     "semantic_potential_shift",
+    "CANONICAL_FOUNDATIONAL_CONTRACT",
+    "FOUNDATIONAL_PROVENANCE",
+    "IMPLEMENTATION_PROVENANCE",
+    "ProvenanceNote",
+    "provenance_for_surface",
     "HILBERT_HOTEL_FREDHOLM_INDEX",
     "OFHM_SOURCE_REFERENCES",
     "CountableBranchAddress",
