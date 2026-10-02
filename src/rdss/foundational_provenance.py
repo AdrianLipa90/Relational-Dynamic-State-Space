@@ -255,7 +255,7 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
             "force and the relative pendulum; the same network potential gives "
             "Kuramoto in the overdamped limit."
         ),
-    ),,
+    ),
     ProvenanceNote(
         surface="OFHM symbolic-boundary no-go and physical evidence frontier",
         role="DEF+THM+EVIDENCE_GATE",
