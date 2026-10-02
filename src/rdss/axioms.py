@@ -449,7 +449,7 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_ASSOCIATION_QUOTIENT_CARDINALITY", "THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY", "THM_IDENTITY_REPAIR_CARDINALITY", "THM_PARITY_FORCES_COLLATZ_BRANCH_SELECTION"),
     ),
     Claim(
-        "THM_COLLatz_STRUCTURAL_DYNAMICS_CLOSED",
+        "THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED",
         ClaimKind.THEOREM,
         "Within the canonical relational carrier, the Collatz operation roles and branch selection are structurally closed: free Z2 association gives /2, the selector-free three-face active orbit gives x3, unique identity repair gives +1, and parity admissibility selects n/2 versus 3n+1. The separate question whether a particular external physical substrate instantiates this structural normalization belongs to physical binding, not to the RDSS structural derivation.",
         ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING", "GATE_MOIRE_DYNAMICAL_LAW"),
@@ -458,19 +458,19 @@ CLAIMS: tuple[Claim, ...] = (
         "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS",
         ClaimKind.THEOREM,
         "HISTORICAL STRUCTURAL GATE CLOSED. RDSS now derives the relational-cardinality Collatz dynamics internally. Any stronger assertion that a particular natural/material system instantiates this map is explicitly delegated to GATE_OFHM_PHYSICAL_BINDING rather than left as a structural mathematics gate.",
-        ("THM_COLLatz_STRUCTURAL_DYNAMICS_CLOSED", "GATE_OFHM_PHYSICAL_BINDING"),
+        ("THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED", "GATE_OFHM_PHYSICAL_BINDING"),
     ),
     Claim(
         "GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS",
         ClaimKind.THEOREM,
         "HISTORICAL GATE CLOSED / SUPERSEDED. Source-minimal arithmetic, Gaussian/Bombelli provenance, operator-dimension provenance and selector-free tetrahedral semantics independently agree on 2,3,1. No further structural minimality premise is needed; external physical realization is separately typed.",
-        ("THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING", "THM_COLLatz_STRUCTURAL_DYNAMICS_CLOSED"),
+        ("THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING", "THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED"),
     ),
     Claim(
         "GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA",
         ClaimKind.THEOREM,
         "HISTORICAL GATE CLOSED. The branch maps and their selector-free relational provenance are theorem-level results inside RDSS. Physical instantiation is not part of this historical structural gate.",
-        ("THM_COLLatz_STRUCTURAL_DYNAMICS_CLOSED",),
+        ("THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED",),
     ),
     Claim(
         "REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT",
