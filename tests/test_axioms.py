@@ -220,11 +220,14 @@ def test_relationally_bound_distinction_is_explicit_definition():
         }
     )
 
-def test_recursive_refinement_is_explicit_derivation_gate():
+def test_recursive_refinement_is_explicit_formation_capability():
     claims = claim_map()
-    assert claims["RR1"].kind is ClaimKind.DERIVATION_GATE
-    assert "RA0" not in dependency_closure("RR1")
-    assert set(claims["RR1"].depends_on) == {"A0", "DEF_POINT", "DEF_BINARY_DISTINCTION"}
+    assert claims["RR1"].kind is ClaimKind.FORMATION_RULE
+    assert claims["RR1"].depends_on == ("THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",)
+    closure = dependency_closure("RR1")
+    assert "THM_OCCURRENCE_ADDRESS_FREE_MONOID" in closure
+    assert "THM_REFINEMENT_RIGHT_ACTION" in closure
+    assert "A0" not in closure
 
 
 def test_structural_primitives_do_not_silently_depend_on_ra0():
@@ -355,52 +358,32 @@ def test_foundational_law_set_is_small_and_explicit():
 
 
 
-def test_ra0_star_is_candidate_not_silent_replacement():
+def test_ra0_star_is_optional_formation_schema_not_foundational_gate():
     claims = claim_map()
 
-    assert claims["RA0_STAR"].kind is ClaimKind.DERIVATION_GATE
-    assert set(claims["RA0_STAR"].depends_on) == {"DEF_POINT", "DEF_BINARY_DISTINCTION"}
+    assert claims["RA0_STAR"].kind is ClaimKind.FORMATION_RULE
+    assert "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE" in claims["RA0_STAR"].depends_on
     assert claims["THM_RR1_FROM_RA0_STAR"].kind is ClaimKind.THEOREM
-    assert dependency_closure("THM_RR1_FROM_RA0_STAR") == frozenset(
-        {
-            "RA0_STAR",
-            "DEF_POINT",
-            "DEF_BINARY_DISTINCTION",
-            "DEF_OCCURRENCE_ADDRESS_SPACE",
-        }
-    )
+    closure = dependency_closure("THM_RR1_FROM_RA0_STAR")
+    assert "RA0_STAR" in closure
+    assert "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE" in closure
 
 
-def test_ra0_rel_star_is_candidate_with_two_explicit_theorems():
+def test_ra0_rel_star_is_optional_relational_formation_schema():
     claims = claim_map()
 
-    assert claims["RA0_REL_STAR"].kind is ClaimKind.DERIVATION_GATE
-    assert set(claims["RA0_REL_STAR"].depends_on) == {
-        "DEF_POINT",
-        "DEF_RELATIONAL_DISTINCTION",
-    }
+    assert claims["RA0_REL_STAR"].kind is ClaimKind.FORMATION_RULE
+    assert "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE" in claims["RA0_REL_STAR"].depends_on
 
-    base = frozenset(
-        {
-            "RA0_REL_STAR",
-            "DEF_RELATIONAL_DISTINCTION",
-            "DEF_BINARY_DISTINCTION",
-            "DEF_RELATION_OCCURRENCE",
-            "DEF_BINARY_REL",
-            "DEF_CARRIER_OCCURRENCE_SEPARATION",
-            "DEF_OCCURRENCE_ADDRESS_SPACE",
-            "DEF_POINT",
-        }
-    )
-
-    assert claims["THM_RA0_STAR_FROM_RA0_REL_STAR"].kind is ClaimKind.THEOREM
-    assert dependency_closure("THM_RA0_STAR_FROM_RA0_REL_STAR") == base
-
-    assert claims["THM_RA0_FROM_RA0_REL_STAR"].kind is ClaimKind.THEOREM
-    assert dependency_closure("THM_RA0_FROM_RA0_REL_STAR") == base
-
-    assert claims["THM_RR1_FROM_RA0_REL_STAR"].kind is ClaimKind.THEOREM
-    assert dependency_closure("THM_RR1_FROM_RA0_REL_STAR") == base
+    for theorem_id in (
+        "THM_RA0_STAR_FROM_RA0_REL_STAR",
+        "THM_RA0_FROM_RA0_REL_STAR",
+        "THM_RR1_FROM_RA0_REL_STAR",
+    ):
+        assert claims[theorem_id].kind is ClaimKind.THEOREM
+        closure = dependency_closure(theorem_id)
+        assert "RA0_REL_STAR" in closure
+        assert "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE" in closure
 
 
 def test_bare_meta0_minimal_point_cardinality_is_exact():
@@ -1743,7 +1726,7 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_FIRST_HAMLET_DISPERSION_STRUCTURE"].kind is ClaimKind.THEOREM
     assert claims["DEF_CANONICAL_FIRST_HAMLET_NONDEGENERATE"].kind is ClaimKind.DEFINITION
     assert claims["THM_CANONICAL_FIRST_HAMLET_TWO_BRANCHES"].kind is ClaimKind.THEOREM
-    assert claims["GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0"].kind is ClaimKind.THEOREM
     assert claims["THM_RELATIONAL_DEFORMATION_POTENTIAL_IS_DOWNSTREAM"].kind is ClaimKind.THEOREM
     assert claims["THM_BINARY_CLOSURE_MODEL_IS_DOWNSTREAM"].kind is ClaimKind.THEOREM
     assert claims["DEF_REFERENCE_DISTINCTION_AMPLITUDE"].kind is ClaimKind.DEFINITION
@@ -1755,14 +1738,14 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_COLLATZ_ASSOCIATION_BALANCE"].kind is ClaimKind.THEOREM
     assert claims["REF_COLLATZ_DERIVED_PERSISTENCE_CONTROL"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES"].kind is ClaimKind.THEOREM
-    assert claims["GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE"].kind is ClaimKind.THEOREM
     assert claims["DEF_SOURCE_MINIMAL_PARITY_DYNAMICS_SIGNATURE"].kind is ClaimKind.FORMATION_RULE
     assert claims["THM_DYAD_FORCES_ASSOCIATION_DIVISOR_TWO"].kind is ClaimKind.THEOREM
     assert claims["THM_MINIMAL_ODD_DISSOCIATION_MULTIPLIER_THREE"].kind is ClaimKind.THEOREM
     assert claims["THM_MINIMAL_POSITIVE_ODD_REPAIR_ONE"].kind is ClaimKind.THEOREM
     assert claims["THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ"].kind is ClaimKind.THEOREM
-    assert claims["GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS"].kind is ClaimKind.DERIVATION_GATE
-    assert claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS"].kind is ClaimKind.THEOREM
+    assert claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"].kind is ClaimKind.THEOREM
     assert claims["REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["THM_COLLATZ_BRANCH_SIGNED_LOG_JACOBIANS"].kind is ClaimKind.THEOREM
     assert claims["THM_FIRST_HAMLET_Z2"].kind is ClaimKind.THEOREM
@@ -1777,12 +1760,12 @@ def test_pre_audit_existence_chain_claims_are_explicitly_typed() -> None:
     assert claims["THM_RELATION_ORIENTATION_Z2"].kind is ClaimKind.THEOREM
     assert claims["THM_RELATION_ROLE_HARTLEY_LN2"].kind is ClaimKind.THEOREM
     assert claims["THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER"].kind is ClaimKind.THEOREM
-    assert claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"].kind is ClaimKind.THEOREM
     assert claims["THM_MINIMAL_INFORMATION_STATE_BINARY"].kind is ClaimKind.THEOREM
     assert claims["THM_TWO_STATE_AUTOMORPHISM_Z2"].kind is ClaimKind.THEOREM
     assert claims["THM_Z2_UNIQUE_NONTRIVIAL_REAL_CHARACTER"].kind is ClaimKind.THEOREM
-    assert claims["GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY"].kind is ClaimKind.DERIVATION_GATE
-    assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY"].kind is ClaimKind.THEOREM
+    assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.THEOREM
     assert claims["THM_CANONICAL_REALIZED_EXISTENCE_RELATIONAL_BINARY"].kind is ClaimKind.THEOREM
     assert claims["THM_BINARY_BRANCH_SWAP_INVOLUTION"].kind is ClaimKind.THEOREM
     assert claims["THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY"].kind is ClaimKind.THEOREM
@@ -1865,8 +1848,8 @@ def test_first_hamlet_selects_persistence_then_structure_yields_durable_relation
     assert "THM_DISPERSION_RETURNS_INDISTINCTION" in no_carrier
     assert "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT" in no_carrier
 
-    assert claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"].kind is ClaimKind.DERIVATION_GATE
-    assert claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY"].kind is ClaimKind.THEOREM
+    assert claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"].kind is ClaimKind.THEOREM
 
 
 def test_half_half_is_downstream_of_first_hamlet_not_foundation_for_ln2() -> None:
@@ -1903,7 +1886,7 @@ def test_first_hamlet_does_not_silently_assume_relational_binding() -> None:
     assert "RA0_REL_STAR" not in abstract_closure
     assert "DEF_RELATIONAL_DISTINCTION" not in abstract_closure
 
-    assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.THEOREM
     binding_closure = dependency_closure("GATE_HAMLET_RELATIONAL_BINDING")
     assert "THM_FIRST_HAMLET_Z2" in binding_closure
     assert "DEF_RELATIONAL_DISTINCTION" in binding_closure
@@ -2051,21 +2034,29 @@ def test_l_constants_have_single_gaussian_generator_closure() -> None:
     assert "BRIDGE_TIR_ROOT_EXTENSION_L3_FROM_GAUSSIAN_L45" in closure
 
 
-def test_collatz_is_downstream_of_relation_roles_but_branch_derivation_remains_open() -> None:
+def test_collatz_structural_dynamics_is_closed_and_physical_binding_is_separate() -> None:
     claims = claim_map()
 
+    structural = claims["THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED"]
+    assert structural.kind is ClaimKind.THEOREM
+    closure = dependency_closure("THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED")
+    assert "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP" in closure
+    assert "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING" in closure
+    assert "GATE_MOIRE_DYNAMICAL_LAW" in closure
+
     gate = claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"]
-    assert gate.kind is ClaimKind.DERIVATION_GATE
-    gate_closure = dependency_closure("GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA")
-    assert "THM_RELATION_ORIENTATION_Z2" in gate_closure
-    assert "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP" in gate_closure
-    assert "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ" in gate_closure
-    assert "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS" in gate_closure
-    assert "THM_RELATION_ROLE_HARTLEY_LN2" not in gate_closure
+    assert gate.kind is ClaimKind.THEOREM
+    assert "HISTORICAL GATE CLOSED" in gate.statement
+
+    physical = claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"]
+    assert physical.kind is ClaimKind.THEOREM
+    physical_closure = dependency_closure(
+        "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"
+    )
+    assert "GATE_OFHM_PHYSICAL_BINDING" in physical_closure
 
     psl2 = dependency_closure("REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT")
     assert "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE" in psl2
-    assert "GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA" not in psl2
 
     sig = dependency_closure("THM_COLLATZ_BRANCH_SIGNED_LOG_JACOBIANS")
     assert "DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE" in sig
@@ -2123,7 +2114,7 @@ def test_canonical_relational_information_realization_does_not_close_strict_bind
     assert "DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION" in ref_closure
     assert "DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE" in ref_closure
 
-    assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.THEOREM
     assert "GATE_HAMLET_RELATIONAL_BINDING" not in ref_closure
 
 def test_canonical_relational_binary_is_semantic_theorem_not_strict_ra0_rel_star_proof() -> None:
@@ -2140,7 +2131,7 @@ def test_canonical_relational_binary_is_semantic_theorem_not_strict_ra0_rel_star
 
     assert "RA0_REL_STAR" not in closure
     assert claims["RA0_REL_STAR"].kind is ClaimKind.DERIVATION_GATE
-    assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_HAMLET_RELATIONAL_BINDING"].kind is ClaimKind.THEOREM
 
 def test_canonical_cp1_uses_full_hamlet_operator_algebra_without_binary_duplication() -> None:
     claims = claim_map()
@@ -2298,8 +2289,8 @@ def test_collatz_balance_is_downstream_and_operation_semantics_remain_the_gate()
     assert claims["REF_COLLATZ_DERIVED_PERSISTENCE_CONTROL"].kind is ClaimKind.REFERENCE_REALIZATION
     assert claims["THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES"].kind is ClaimKind.THEOREM
     assert claims["THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ"].kind is ClaimKind.THEOREM
-    assert claims["GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS"].kind is ClaimKind.DERIVATION_GATE
-    assert claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS"].kind is ClaimKind.THEOREM
+    assert claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"].kind is ClaimKind.THEOREM
 
     balance_closure = dependency_closure("THM_COLLATZ_BALANCE_MATCHES_HAMLET_REGIMES")
     assert "THM_COLLATZ_ASSOCIATION_BALANCE" in balance_closure
@@ -2566,3 +2557,23 @@ def test_half_time_pendulum_and_moire_kuramoto_are_closed_structurally() -> None
     historical_gate = claims["GATE_MOIRE_DYNAMICAL_LAW"]
     assert "CLOSED" in historical_gate.statement
     assert "physical substrate" in historical_gate.statement
+
+
+def test_only_continuum_and_physical_binding_remain_open_gates() -> None:
+    claims = claim_map()
+    open_gate_ids = {
+        claim.id for claim in claims.values()
+        if claim.kind is ClaimKind.DERIVATION_GATE
+    }
+    assert open_gate_ids == {
+        "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
+        "GATE_OFHM_PHYSICAL_BINDING",
+    }
+
+    assert claims["RA0"].kind is ClaimKind.THEOREM
+    assert claims["RR1"].kind is ClaimKind.FORMATION_RULE
+    assert claims["RA0_STAR"].kind is ClaimKind.FORMATION_RULE
+    assert claims["RA0_REL_STAR"].kind is ClaimKind.FORMATION_RULE
+    assert claims["THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS"].kind is ClaimKind.THEOREM
+    assert claims["THM_CANONICAL_NONTRIVIAL_EXISTENCE_FORCES_DISTINCTION"].kind is ClaimKind.THEOREM
+    assert claims["THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE"].kind is ClaimKind.THEOREM
