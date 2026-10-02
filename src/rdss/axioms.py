@@ -476,7 +476,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT",
         ClaimKind.REFERENCE_REALIZATION,
-        "Once the Collatz branches are admitted, E(x)=x/2 and O(x)=3x+1 have projective matrices diag(1,2) and [[3,1],[0,1]]. Determinant-one normalization places both in SL(2,R), hence their projective actions lie in PSL(2,R). This is downstream of the open branch-derivation gate.",
+        "For the theorem-level Collatz branches, E(x)=x/2 and O(x)=3x+1 have projective matrices diag(1,2) and [[3,1],[0,1]]. Determinant-one normalization places both in SL(2,R), hence their projective actions lie in PSL(2,R). The historical branch-derivation gate is closed; this remains a downstream projective realization of the derived branches.",
         ("DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE", "THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ"),
     ),
     Claim(
@@ -854,7 +854,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE",
         ClaimKind.THEOREM,
-        "The operator tetrahedron depends on the durable relation-role operator algebra and on its Frobenius normalization. Therefore it cannot be used non-circularly to derive the earlier Hamlet-to-relation binding. Likewise, matching 3n+1 does not prove that primitive natural dynamics must instantiate that completion. The tetrahedral route closes a geometric realization/crosscheck of the coefficient structure, while GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS remains open.",
+        "The operator tetrahedron depends on the durable relation-role operator algebra and on its Frobenius normalization. Therefore it cannot be used non-circularly to derive the earlier Hamlet-to-relation binding. Likewise, matching 3n+1 does not by itself close the structural dynamics. The tetrahedral route is a geometric realization/crosscheck; the historical primitive-dynamics gate is closed independently downstream by THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED.",
         ("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON", "THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
     ),
     Claim(
@@ -1683,7 +1683,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "BRIDGE_ORBITAL_COMPLEX_STRUCTURE",
         ClaimKind.BRIDGE,
-        "If an oriented two-dimensional real inner-product carrier with compatible K satisfying K^2=-I is supplied, exp(phi K) realizes SO(2) congruent to U(1); derivation of that carrier structure from the minimal RDSS foundation remains open.",
+        "If an oriented two-dimensional real inner-product carrier with compatible K satisfying K^2=-I is supplied, exp(phi K) realizes SO(2) congruent to U(1). This generic PRIM_ORBIT bridge is conditional on the supplied carrier and introduces no foundational proof debt; the canonical durable relation-role route derives its own U(1) generator separately through THM_IMAGINARY_GENERATOR_U1.",
         ("PRIM_ORBIT",),
     ),
     Claim(
