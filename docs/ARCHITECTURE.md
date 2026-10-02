@@ -185,6 +185,51 @@ the algebra to a physical substrate without a separate binding derivation.
 
 See `docs/GENERAL_ORBITAL_FRACTAL_HILBERT_MOIRE_ALGEBRA.md`.
 
+### Alternating half-time phase dynamics
+
+`src/rdss/alternating_phase_dynamics.py`
+
+The OFHM dynamical layer is now refined by the exact TIR Stella half-successor
+
+[
+H(n,+)=(n,-),qquad H(n,-)=(n+1,+),qquad H^2=S.
+]
+
+Occurrence order is discrete in half-frames while the internal state remains a
+continuous (U(1)) phase.
+
+The closed bipolar channel normalization gives 24 directed incidences and 12
+undirected exchange pairs. One undirected pair therefore carries information
+budget (ln2/12). Normalized (U(1)) chordal mismatch fixes the pair
+potential
+
+[
+V_{ij}
+=
+pikappa
+left(1-cosDelta_{ij}ight),
+qquad
+kappa=rac{ln2}{24pi}.
+]
+
+Its two endpoint gradients are equal and opposite. For a bipolar pair this
+splits into an inertial center mode and a relative pendulum equation. On a
+network, the same potential gives the Moiré sine coupling; the overdamped
+Euler--Lagrange--Rayleigh reduction is gauge-twisted Kuramoto flow.
+
+The frame-native inertial operator on the full successor is the unique local
+three-frame stencil, up to scale,
+
+[
+x_{n+1}-2x_n+x_{n-1}.
+]
+
+This closes the historical structural
+`GATE_MOIRE_DYNAMICAL_LAW`. Physical clock calibration, continuum-field
+realization and substrate identification remain downstream bridges.
+
+See `docs/ALTERNATING_HALF_TIME_PENDULUM_MOIRE_KURAMOTO.md`.
+
 ## Layer 6 — Zero Axis bridge
 
 \`src/rdss/zero_axis.py\`
