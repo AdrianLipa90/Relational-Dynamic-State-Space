@@ -117,21 +117,28 @@ V_R.
 
 \`src/rdss/axioms.py\`, \`src/rdss/closure.py\`, \`src/rdss/witnesses.py\`
 
-Separates the unique axiom, definitions, structural primitives, derived constructions, reference realizations, bridges, derivation gates, and theorems.
+Separates the unique foundational law, definitions, structural primitives,
+formation rules, derived constructions, reference realizations, bridges,
+theorems, historical gate identifiers, and external evidence gates.
 
 The current canonical foundational stratification is
 
 \[
 A_0
+\; + \;
+\text{sourced TIR relational-existence typing}
 \Longrightarrow
-\mathrm{META0}
+\text{relational witness / durable relation roles}
 \Longrightarrow
-\text{derived structure / explicit derivation gates}.
+\text{derived structure}.
 \]
 
-\(\mathrm{RA0}\), \(\mathrm{RR1}\), \(\mathrm{RA0}^{*}\) and
-\(\mathrm{RA0}^{\mathrm{rel}*}\) are downstream derivation gates, not
-additional axioms.
+\(\mathrm{RA0}\) is theorem-level closed under the sourced relational-existence
+typing. Historical \(\mathrm{RR1}\), \(\mathrm{RA0}^{*}\) and
+\(\mathrm{RA0}^{\mathrm{rel}*}\) are retained as formation schemas rather
+than universal proof obligations. The structural ledger has
+\(N_{\mathrm{DERIVATION\_GATE}}=0\); concrete OFHM physical binding is
+separately typed as one \(\mathrm{EVIDENCE\_GATE}\).
 
 ## Layer 4 — Generic phase representation
 
