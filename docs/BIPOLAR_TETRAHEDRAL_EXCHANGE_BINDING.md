@@ -282,3 +282,20 @@ Still separate:
 - `src/rdss/bipolar_tetrahedral_exchange.py`
 - `tests/test_bipolar_tetrahedral_exchange.py`
 - `src/rdss/axioms.py`
+
+
+## Provenance
+
+Code comments use inline `# REF:` anchors.
+
+- TIR three-flavour parent:
+  commit `9783782570a2ccfa1fc42c99b605dad48e02aa78`,
+  `TIR/foundations/TIR_COEFFICIENT_MAGNITUDE_PARENT_EVALUATION_V0_1.md`
+  and `DEPENDENCY_EXPORT.json`.
+- RDSS selector-free bipolar binding:
+  commit `d6f80e4539db368f828a064c2ab0fff730ec3490`.
+- RDSS corrected closed-flavour import:
+  commit `7e947fee4b85192b35605a91bc35530891d88289`.
+- RDSS theorem-level kappa claim ledger:
+  commit `2fb4645a16074280494423f4b27bc7d3ff5bc092`.
+- Shannon entropy source: C. E. Shannon, 1948.
