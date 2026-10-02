@@ -58,7 +58,9 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         ),
         note=(
             "TIR relational existence typing supplies Exist(x)->exists R_x and is "
-            "imported explicitly rather than attributed to A0 alone. Historical "
+            "imported explicitly rather than attributed to A0 alone. Relational "
+            "distinction is theorem-level only in the declared non-self-collapsed "
+            "non-trivial relational sector. Historical "
             "First-Hamlet/RA0*/RR1/Collatz structural gates are discharged or "
             "retyped as formation/provenance surfaces. Exactly the continuum-fractal "
             "limit and physical-binding derivation gates remain open."
