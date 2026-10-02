@@ -1444,6 +1444,30 @@ CLAIMS: tuple[Claim, ...] = (
         ("PRIM_TENSOR_PRODUCT", "PRIM_MODULE"),
     ),
     Claim(
+        "THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL",
+        ClaimKind.THEOREM,
+        "The current semantic-scale label plus fixed residual signature does not determine a unique weighting profile. Explicitly, the same scale, residual names and p=1 admit positive profiles (1,1) and (2,1), which evaluate the same residual vector (1,1) to 2 and 3 respectively. Therefore a unique W_sigma cannot be derived from the present structural signature; any concrete semantic weighting law is realization-specific extra data.",
+        ("PRIM_SEMANTIC_WEIGHTING", "DEF_RELATIONAL_POTENTIAL"),
+    ),
+    Claim(
+        "THM_INDEXED_TENSOR_CONTRACTION_UNDERDETERMINED_BY_FLAT_RANK",
+        ClaimKind.THEOREM,
+        "Tensor rank and flat component count do not determine indexed slot structure or contraction. A rank-(1,1) four-component payload admits multiple ordered slot-dimension factorizations (1,4), (2,2), and (4,1); even after selecting a 2x2 realization, distinct supplied evaluation forms can give distinct contractions on the same components. Hence canonical indexed contraction requires explicit slot, pairing and evaluator data beyond the abstract tensor-scalar signature.",
+        ("PRIM_TENSOR_PRODUCT", "PRIM_CONTRACTION"),
+    ),
+    Claim(
+        "THM_NONSTRICT_MONOIDAL_COHERENCE_UNDERDETERMINED_BY_FLATTENING",
+        ClaimKind.THEOREM,
+        "The flat TensorScalarElement representation forgets tensor parenthesization: distinct syntax trees such as (((W tensor X) tensor Y) tensor Z) and W tensor (X tensor (Y tensor Z)) project to the same ordered leaf payload. This flattening is non-injective, so associator paths and the non-strict pentagon/hexagon data cannot be reconstructed from the current flat representation alone. A non-strict braided monoidal realization must therefore supply explicit parenthesized objects and coherence isomorphisms.",
+        ("DEF_TENSOR_MONOIDAL_COHERENCE", "PRIM_TENSOR_PRODUCT"),
+    ),
+    Claim(
+        "THM_REALIZATION_BOUNDARIES_CLOSED_BY_UNDERDETERMINATION",
+        ClaimKind.THEOREM,
+        "The historical semantic-weighting, indexed-tensor and non-strict-monoidal derivation gates are closed as underdetermination no-go results. Their missing outputs are not uniquely derivable from the general RDSS signature; concrete realizations may supply semantic weighting laws, indexed slot/contraction data, or associator/braiding data explicitly without creating new foundational laws or structural derivation gates.",
+        ("THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL", "THM_INDEXED_TENSOR_CONTRACTION_UNDERDETERMINED_BY_FLAT_RANK", "THM_NONSTRICT_MONOIDAL_COHERENCE_UNDERDETERMINED_BY_FLATTENING"),
+    ),
+    Claim(
         "DEF_CONTRACTION_MAP_COHERENCE",
         ClaimKind.DEFINITION,
         "Contraction-map residual measures failure of contraction naturality under a supplied typed map.",
