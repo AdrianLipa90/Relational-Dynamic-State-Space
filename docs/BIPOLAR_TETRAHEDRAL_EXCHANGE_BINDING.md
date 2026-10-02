@@ -64,9 +64,16 @@ exchange carrier without adding a boundary or another external carrier.
 
 ## Three flavours
 
-TIR already contains an exact three-label (C_3) family/flavour
-representation crosswalk. RDSS imports only that abstract three-label carrier,
-not the stronger physical temporal-to-flavour identification.
+TIR already closes the three-flavour carrier itself:
+[
+oxed{N_F=3}.
+]
+Its dependency surfaces explicitly record `THREE_FLAVOUR_CARRIER = CLOSED -> N_F=3`
+and `TIR.FLAVOUR.STAGE66_SU3F_GENERATION = CLOSED`. RDSS therefore imports
+three as a sourced TIR result, not as an abstract cardinality placeholder.
+The distinct downstream `TIR.FLAVOUR.PHYSICAL_BINDING` gate concerns the
+stronger physical sector/readout identification and is not required for the
+face--flavour incidence count below.
 
 Let
 
@@ -247,8 +254,7 @@ PASS:
 
 - (T_-=-T_+) opposite polarity;
 - all four faces paired by central inversion;
-- three-label structural flavour carrier imported from the existing TIR
-  (C_3) representation;
+- three-flavour carrier (N_F=3) imported as a CLOSED TIR result;
 - 12 undirected face-flavour exchanges;
 - 24 directed polarity-face-flavour incidences;
 - transitivity of the structural channel symmetry;
