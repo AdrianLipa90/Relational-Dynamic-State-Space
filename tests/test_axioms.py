@@ -2494,3 +2494,34 @@ def test_bipolar_tetrahedral_exchange_forces_selector_free_231_roles() -> None:
     assert "information-density binding remains separately typed" in claims[
         "THM_BIPOLAR_KAPPA_INCIDENCE_COUNT_CROSSCHECK"
     ].statement
+
+
+def test_kappa_is_theorem_derived_from_entropy_and_bipolar_symmetry() -> None:
+    claims = claim_map()
+
+    assert claims["THM_BINARY_Z2_MAXIMUM_ENTROPY_LN2"].kind is ClaimKind.THEOREM
+    assert claims["THM_BIPOLAR_CHANNEL_INFORMATION_UNIFORMIZATION"].kind is ClaimKind.THEOREM
+    assert claims["THM_BIPOLAR_KAPPA_FORCED"].kind is ClaimKind.THEOREM
+
+    entropy_closure = dependency_closure("THM_BINARY_Z2_MAXIMUM_ENTROPY_LN2")
+    assert "THM_Z2_UNIQUE_SWAP_INVARIANT_PROBABILITY" in entropy_closure
+    assert "THM_RELATION_ROLE_HARTLEY_LN2" in entropy_closure
+
+    kappa_closure = dependency_closure("THM_BIPOLAR_KAPPA_FORCED")
+    assert "THM_BIPOLAR_UNIQUE_INVARIANT_CHANNEL_WEIGHT" in kappa_closure
+    assert "THM_BIPOLAR_EXCHANGE_SYMMETRY_IS_TRANSITIVE" in kappa_closure
+    assert "THM_BIPOLAR_THREE_FLAVOUR_FACE_INCIDENCE_24" in kappa_closure
+    assert "BRIDGE_TIR_THREE_FLAVOUR_C3_LABEL_CARRIER" in kappa_closure
+    assert "THM_BIPOLAR_HALF_TURN_MEASURE_EQUALS_TWELVE" in kappa_closure
+    assert "THM_Z2_SIGN_EMBEDS_U1" in kappa_closure
+
+    assert claims["REF_KAPPA_UNIFORM_INFORMATION_DENSITY"].kind is ClaimKind.REFERENCE_REALIZATION
+    assert claims["REF_KAPPA_UNIFORM_INFORMATION_DENSITY"].depends_on == (
+        "THM_BIPOLAR_CHANNEL_INFORMATION_UNIFORMIZATION",
+    )
+    assert claims["DER_KAPPA_NORMALIZED_TURN"].depends_on == ("THM_BIPOLAR_KAPPA_FORCED",)
+    assert claims["DER_KAPPA_RADIAN_CHART"].depends_on == ("THM_BIPOLAR_KAPPA_FORCED",)
+
+    statement = claims["THM_BIPOLAR_KAPPA_FORCED"].statement
+    assert "ln(2)/(24*pi)" in statement
+    assert "No free channel weighting or fitted normalization" in statement
