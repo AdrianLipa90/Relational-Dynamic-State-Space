@@ -185,7 +185,17 @@ def audit_claim_graph() -> dict[str, int]:
 
 def audit_test_imports() -> None:
     module_defs = {
-        "rdss.alternating_phase_dynamics": public_defs(SRC / "rdss" / "alternating_phase_dynamics.py"),
+        "rdss.alternating_phase_dynamics": public_defs(
+            SRC / "rdss" / "alternating_phase_dynamics.py"
+        ) | {
+            "BINARY_INFORMATION_NATS",
+            "CANONICAL_PAIR_POTENTIAL_AMPLITUDE",
+            "DIRECTED_CHANNEL_COUNT",
+            "DIRECTED_CHANNEL_INFORMATION_NATS",
+            "KAPPA",
+            "UNDIRECTED_EXCHANGE_PAIR_COUNT",
+            "UNDIRECTED_PAIR_INFORMATION_NATS",
+        },
         "rdss.algebraic_geometry_cell": public_defs(SRC / "rdss" / "algebraic_geometry_cell.py") | {
             "CUBE_FACE_COUNT",
             "CUBE_VERTEX_COUNT",
