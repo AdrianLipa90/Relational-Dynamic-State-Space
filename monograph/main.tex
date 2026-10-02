@@ -709,47 +709,89 @@ H_{\rm Shannon}(1/2,1/2)
 \]
 but the probability-free Hartley value is causally prior.
 
-\subsection{Hamlet algebra and the imaginary generator}
+\subsection{Durable-role algebra and the imaginary generator}
 
+The downstream linear carrier is built from the durable relation roles, not
+from the transient persistence outcomes \(\mathsf{Disp}/\mathsf{Struct}\).
 Let
 \[
-V_B=\mathbb R e_-\oplus\mathbb R e_+
+\boxed{
+V_R=\mathbb R e_N\oplus\mathbb R e_S
+}
 \]
-be the free real span of the two Hamlet branches. Define branch swap and
-polarity by
+be the free real linearization of the ordered role set \(\{N,S\}\). This
+linearization is an explicit representation functor; it does not introduce a
+new ontological object.
+
+Define role swap and polarity by
 \[
-S e_b=e_{-b},
+S e_N=e_S,
 \qquad
-P e_b=b\,e_b.
+S e_S=e_N,
 \]
-Then
+\[
+P e_N=-e_N,
+\qquad
+P e_S=+e_S.
+\]
+In the ordered basis \((e_N,e_S)\),
+\[
+S=
+\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix},
+\qquad
+P=
+\begin{pmatrix}
+-1&0\\
+0&1
+\end{pmatrix}.
+\]
+Hence
 \[
 S^2=P^2=I,
 \qquad
 SP=-PS.
 \]
-Consequently
-\[
-\boxed{
-J:=SP,
-\qquad
-J^2=-I.
-}
-\]
-The imaginary generator is therefore realized as a real-linear complex
-structure downstream of the binary branch algebra, unique up to
-\(J\mapsto-J\).
 
-Exponentiation gives
+Define
+\[
+\boxed{J:=SP.}
+\]
+Then
+\[
+J^2
+=
+SPSP
+=
+-S^2P^2
+=
+-I.
+\]
+Therefore
+\[
+\boxed{J^2=-I.}
+\]
+
+This proves the complex-structure relation without assuming an upstream
+imaginary scalar. Reversing the chosen orientation of the ordered role basis
+sends \(J\mapsto-J\); this is the only sign ambiguity in the construction.
+
+Exponentiation follows from the even/odd power series:
 \[
 e^{\phi J}
 =
-\cos\phi\,I+\sin\phi\,J,
+\sum_{n=0}^{\infty}\frac{\phi^{2n}J^{2n}}{(2n)!}
++
+\sum_{n=0}^{\infty}\frac{\phi^{2n+1}J^{2n+1}}{(2n+1)!}
+=
+\cos\phi\,I+\sin\phi\,J.
 \]
-and hence
+Thus the generated one-parameter subgroup is the standard real rotation group,
 \[
 \boxed{
-SO(2)\simeq U(1).
+\{e^{\phi J}\}\cong SO(2)\cong U(1).
 }
 \]
 
@@ -1042,45 +1084,40 @@ sector:
 }
 \]
 
-\section{First Law of Existence and model formation}
+\section{Law of Reality and model formation}
 
-RTOFA begins with the unique foundational law, retained under the historical
-identifier \(A_0\), and then fixes the class of admissible models through a
-downstream formation rule.
+The canonical name of the unique RTOFA foundational law is the
+\emph{Law of Reality} (LR), retained in the executable claim ledger under the
+legacy identifier \(A_0\). It is a model-formation law: realizability requires
+relational distinguishability.
 
-Absolute nothingness is not assigned a term, carrier, state, value, relation,
-zero, or set inside the object language. In particular, the mathematical
-empty set \(\varnothing\) is not identified with absolute nothingness:
-\(\varnothing\) is already a mathematical object.
+Absolute nothingness is not represented by an object-language term. The
+mathematical empty set \(\varnothing\) remains an ordinary mathematical
+object and is not identified with absolute nothingness.
 
-The First Law of Existence is
+\begin{center}
+\fbox{\parbox{0.92\linewidth}{
+\textbf{Law of Reality (LR; legacy id \(A_0\)).}
+For every realizable state \(X\), there exist distinct admitted relational
+occurrences \(\omega_-\neq\omega_+\) in \(\Omega_X\), supported by the
+carrier map \(\pi_X:\Omega_X\to C_X\). Absolute nothingness has
+\(\Omega_{\mathcal N}=C_{\mathcal N}=\varnothing\), hence it has no
+realizable representative.
+}}
+\end{center}
+
+The formation rule \(\mathrm{META0}\) is the direct model-theoretic unpacking
+of LR:
 \[
 \boxed{
-L_1\;(\text{legacy id }A_0):\quad
-\text{absolute nothingness is not a realizable state because it contains no
-object, distinction or relation by which it could be established as a state.}
-}
-\]
-Its model-formation consequence is recorded as
-
-\[
-\boxed{
-\mathrm{META0}:
-\begin{cases}
-\text{absolute nothingness has no denotation in the RTOFA object language},\\[1mm]
 \mathfrak M\in\operatorname{Mod}(\mathrm{RTOFA})
-\Rightarrow
+\Longrightarrow
+\Omega^{\mathfrak M}\neq\varnothing
+\Longrightarrow
 \operatorname{Adm}^{\mathfrak M}\neq\varnothing.
-\end{cases}
 }
 \]
-
-META0 is not another foundational law and is not a proposition about an
-object called ``nothing.'' It records the admissible-model consequence of the
-First Law.
-
-Consequently every admissible model satisfies
-
+Consequently
 \[
 \boxed{
 \mathrm{EX0}:
@@ -1088,32 +1125,24 @@ Consequently every admissible model satisfies
 }
 \]
 
-Thus
+\paragraph{Proof.}
+LR provides an admitted occurrence. Every admitted occurrence has carrier
+support under \(\pi\), so at least one admitted carrier exists. This is
+exactly EX0. \(\square\)
 
-\[
-\boxed{
-\mathrm{META0}\models\mathrm{EX0}.
-}
-\]
+A raw empty mathematical presentation remains available as a metamathematical
+vacuity witness, but it is not an LR-admissible RTOFA model.
 
-EX0 is classified as a theorem of model-formation semantics rather than an
-additional object-level ontological axiom.
+\section{Relational admissibility derived from LR}
 
-A raw empty mathematical presentation remains useful as a metamathematical
-vacuity witness. Universal formulas may hold there vacuously, but that raw
-presentation is excluded from \(\operatorname{Mod}(\mathrm{RTOFA})\).
+Relational admissibility is not an independent intuition and is not a second
+law. It is the object-language projection of the relational witness already
+required by LR.
 
-\section{Relational admissibility}
-
-The motivating relational intuition is: if absolutely nothing is admitted,
-there is no admitted term that can stand in relation to another and therefore
-no admitted observation can be formed. The formal kernel does not quantify
-over a metaphysical object called ``nothing.'' It records only the operational
-consequence relevant to the algebra: anything admitted as an observable is
-not independent of relation.
-
-Accordingly, the historical relational-admissibility statement is retained
-as an explicit derivation gate:
+Let an admitted observable \(x\) be the carrier image of an admitted
+occurrence. Since LR supplies a distinct occurrence in the same minimal
+relational distinction, the two occurrences are joined by the primitive
+distinction relation. Therefore
 \[
 \boxed{
 \operatorname{Adm}(x)
@@ -1127,127 +1156,58 @@ as an explicit derivation gate:
 }
 \tag{RA0}
 \]
-An admissible observable is therefore not defined as an isolated object.
-The statement is intentionally weaker and cleaner than a physical claim: it
-does not assign a spacetime, energy, length, or dynamics.
 
-\subsection{Relational-admissibility reduction gate}
-
-META0 does not by itself imply RA0 when \(\operatorname{Adm}\) is treated as
-a primitive predicate. The finite presentation
+The endpoint carrier labels may coincide. In the singleton realization,
 \[
-P=\{a\},
-\qquad
-\operatorname{Adm}=\{a\},
-\qquad
-R=\varnothing
+x=y=a
 \]
-is non-empty but leaves \(a\) incident to no primitive relation. Hence
+is allowed provided the endpoint occurrences remain distinct. Hence the old
+counterexample
 \[
-\boxed{
-\mathrm{META0}\not\Rightarrow\mathrm{RA0}
-}
+P=\{a\},\quad \operatorname{Adm}=\{a\},\quad R=\varnothing
 \]
-under the current primitive-admissibility language.
+is non-empty as a raw set presentation but is \emph{not} LR-admissible,
+because it contains no relational distinction witness. It therefore cannot
+serve as a countermodel to RA0 inside the canonical model class.
 
-There is a possible definitional reduction. One may instead define
-\[
-\boxed{
-\operatorname{Adm}_{R}(x)
-:\Longleftrightarrow
-\exists y,r\,
-\left(
-\operatorname{Rel}_{r}(x,y)
-\lor
-\operatorname{Rel}_{r}(y,x)
-\right).
-}
-\]
-Under this definition RA0 becomes true by definitional expansion. In the
-one-law ledger RA0 is not independent in either case; until the complete
-route from the First Law is fixed, it remains a derivation gate.
-
-This is not a theorem from the old language. It changes the semantics of
-admissibility: isolated carriers become inadmissible by definition. The
-current kernel therefore keeps primitive \(\operatorname{Adm}\) and RA0 as
-an explicit derivation gate until that definitional reduction is promoted.
-
-A primitive relation is typed as a binary arrow
+A primitive relation is typed as
 \[
 \boxed{r:a\to b.}
 \]
-This is a definition of the primitive relational signature, not a theorem of
-RA0. Higher-arity relations may be constructed separately from binary
-relations or introduced by an explicit extension of the signature.
+Higher arity, when required, is an explicit extension or construction.
 
-The absence of an admitted relation is not identified with algebraic zero.
-For every typed sector there may be a zero element
+The absence of an admitted relation is not algebraic zero. For a typed
+additive sector one may have
 \[
 0_{\sigma,\omega}^{p,q}\in\mathcal A_{\sigma,\omega}^{p,q},
 \]
-while ``no relation'' is a separate condition.
-In the additive reference sector this zero is executable as the identity
+with
 \[
 X+0_X=X,
 \qquad
 X-X=0_X.
 \]
-The zero \(0_X\) is sector-exact: it carries the same tensor rank, exact
-relational carrier, semantic scale, and component dimension as \(X\).
-Its refinement level is derived from that carrier and does not by itself
-identify the additive sector.
-The executable reference zero of an element preserves its rank, carrier,
-semantic scale, and component dimension.
+The typed zero preserves the sector data of \(X\); ``no relation'' is a
+different statement.
 
-\subsection{Formula-level vacuity versus admissible-model semantics}
+\subsection{Formula-level vacuity and canonical model semantics}
 
-RA0 is conditional on an observable being admitted, and RR1 is conditional on
-a relational occurrence being available to refine. Therefore, if those
-formulas are evaluated over unrestricted raw presentations, the empty
-presentation satisfies them vacuously.
-
-Accordingly, at the formula level,
-
+Universal formulas can hold vacuously in raw empty presentations. Therefore
+one must distinguish unrestricted formula semantics from the LR-admissible
+model class. The canonical implication is
 \[
 \boxed{
-\mathrm{RA0}+\mathrm{RR1}
-\not\vdash
+\mathrm{LR}
+\Longrightarrow
+\mathrm{META0}
+\Longrightarrow
 \mathrm{EX0},
 }
 \]
+and the relational witness in LR yields RA0 on the admitted carrier
+projection.
 
-and likewise
-
-\[
-\boxed{
-\mathrm{RA0}^{*}
-\not\vdash
-\mathrm{EX0}.
-}
-\]
-
-This does not contradict META0. The empty presentation is a mathematical
-object used to audit vacuous truth; it is not an admissible RTOFA model.
-
-Within the intended model class,
-
-\[
-\boxed{
-\mathrm{META0}\models\mathrm{EX0}.
-}
-\]
-
-Hence the foundational stratification is
-
-\[
-\boxed{
-\mathrm{META0}
-\;\triangleright\;
-(\mathrm{RA0}+\mathrm{RR1}),
-}
-\]
-
-with EX0 derived from model formation.
+No additional ontological axiom is introduced by META0, EX0, or RA0.
 
 \section{Minimal carrier and minimal distinction}
 
