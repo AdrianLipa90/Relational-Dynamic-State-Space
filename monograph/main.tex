@@ -8,7 +8,7 @@
 \title{Relational Tensor--Scalar Orbital--Fractal Algebra\\
 \large Core Signature, Coherence Residuals, and Reference Realizations}
 \author{Adrian Lipa}
-\date{29 September 2026}
+\date{2 October 2026}
 
 \newcommand{\Arel}{\mathfrak A_{\rm rel}}
 \newcommand{\CP}{\mathbb{CP}^{1}}
@@ -36,117 +36,260 @@ the recursive \(\CP\) construction is fibre-local rather than one global
 Bloch sphere, and a phase representation of abstract relational holonomy must
 be supplied by a concrete realization before the Zero-Axis lift is used.
 
-The canonical foundation has one foundational law, the First Law of
-Existence, retained under the historical identifier \(A_0\). The
-model-formation rule \(\mathrm{META0}\) is downstream of that law, while
-the historical \(\mathrm{RA0}\), \(\mathrm{RR1}\), and strengthened
-closure statements are retained as explicit derivation gates rather than
-additional foundational premises. No Planck scale, Minkowski structure, gravitational law, exact
+The canonical foundation has one foundational law, the \emph{Law of Reality},
+with legacy ledger identifier \(A_0\). In RTOFA this name is canonical:
+reality is admissible only through relational distinguishability, while
+absolute nothingness has no realizable representative. The downstream proof
+chain separates the Law itself from definitions, theorems, imported bridges
+and genuinely open physical identifications; no additional premise is hidden
+inside prose. No Planck scale, Minkowski structure, gravitational law, exact
 self-similarity, or physical identification is assumed by the general
 algebra.
 \end{abstract}
 
-\section{Pre-audit existence causal skeleton}
+\section{Law of Reality: canonical causal spine}
 
-The logical-causal mega-audit distinguishes strict entailment from canonical
-RDSS semantics. These two tracks must not be conflated.
+The unique foundational law of RTOFA is called the \emph{Law of Reality}.
+The name is part of the theory and is not a provisional label. The historical
+claim-ledger identifier is \(A_0\).
+
+\subsection{Formal realization language}
+
+For a realizable state \(X\), let \(\Omega_X\) denote its set of admitted
+relational occurrences, let \(C_X\) denote its supporting carrier set, and let
+\[
+\pi_X:\Omega_X\to C_X
+\]
+be the occurrence-to-carrier map. Two occurrences may share one carrier:
+\[
+\omega_-\neq\omega_+,
+\qquad
+\pi_X(\omega_-)=\pi_X(\omega_+)=a.
+\]
+Thus binary distinction is an occurrence-level statement and does not require
+two primitive substances or two different carrier objects.
+
+Absolute nothingness is denoted metatheoretically by \(\mathcal N\), never by
+an object-language term, and is characterized by
+\[
+\Omega_{\mathcal N}=\varnothing,
+\qquad
+C_{\mathcal N}=\varnothing.
+\]
+
+\subsection{The Law of Reality}
+
+\begin{center}
+\fbox{\parbox{0.92\linewidth}{
+\textbf{Law of Reality (LR; legacy id \(A_0\)).}
+A realizable state is relationally distinguishable: every realizable state
+admits at least two distinct relational occurrences supported by at least one
+carrier. Absolute nothingness, having no carrier, occurrence, distinction or
+relation, is therefore not a realizable state.
+}}
+\end{center}
+
+Equivalently, on the admissible model class,
+\[
+\boxed{
+\operatorname{Real}(X)
+\Longrightarrow
+\exists\,\omega_-,\omega_+\in\Omega_X:
+\omega_-\neq\omega_+.
+}
+\tag{LR}
+\]
+
+This is the only foundational law. The remaining statements in this section
+are consequences, definitions, or explicitly imported bridge theorems.
+
+\paragraph{Theorem LR.1 (non-vacuity).}
+Every LR-admissible model has non-empty occurrence support and non-empty
+carrier support:
+\[
+\Omega_X\neq\varnothing,
+\qquad
+C_X\neq\varnothing.
+\]
+
+\paragraph{Proof.}
+LR supplies distinct \(\omega_-,\omega_+\in\Omega_X\), hence
+\(\Omega_X\neq\varnothing\). Since \(\pi_X\) is defined on every admitted
+occurrence, \(\pi_X(\omega_-)\in C_X\), hence \(C_X\neq\varnothing\).
+\(\square\)
+
+This is the exact model-theoretic content previously recorded as
+\(\mathrm{META0}\) and \(\mathrm{EX0}\); they are not independent laws.
+
+\paragraph{Theorem LR.2 (singleton support is sufficient).}
+The minimum carrier cardinality compatible with LR is one, while the minimum
+distinction cardinality is two at the occurrence level:
+\[
+\boxed{
+\min |C_X|=1,
+\qquad
+\min |\Omega_X|=2.
+}
+\]
+
+\paragraph{Proof.}
+LR requires at least two distinct occurrences, so
+\(|\Omega_X|\ge2\). A single carrier \(a\) can support both occurrences by
+\[
+\pi_X(\omega_-)=\pi_X(\omega_+)=a,
+\]
+so \(|C_X|=1\) is attainable. No smaller non-empty carrier cardinality
+exists. \(\square\)
+
+The construction
+\[
+D(a)=(a_-,a_+),
+\qquad
+a_-\neq a_+,
+\qquad
+\operatorname{carrier}(a_-)
+=
+\operatorname{carrier}(a_+)=a,
+\]
+is therefore the minimal relational distinction. This is the precise sense
+in which one singleton may carry ``up'' and ``down'' without introducing a
+second primitive object.
 
 \subsection{Existence potential and primitive indistinction}
 
-The First Law excludes absolute nothingness. The primitive modal remainder is
-the existence potential
+The modal remainder after exclusion of \(\mathcal N\) is denoted
 \[
 \boxed{\mathcal P_E}.
 \]
+It is not a new substance or carrier. It is the metalevel class of
+LR-admissible realization before a persistence outcome has been selected.
 
-Before any persistent distinction has been established, define primitive
-indistinction
+Primitive indistinction is therefore
 \[
 \boxed{
 \mathcal I_0
 =
-\mathcal P_E+\text{no persistent distinction}.
+(\mathcal P_E,\ \text{no persistent distinction selected}).
 }
 \]
-This is not absolute nothingness: \(\mathcal P_E\) is already present.
+The comma is deliberate: no additive operation is being assumed at this
+stage.
 
-The independent model-formation theorem
+\subsection{First Hamlet: the exhaustive persistence dichotomy}
+
+Let \(d\) be the minimal relational distinction supplied by LR. Define the
+Boolean predicate \(\operatorname{Persist}(d)\). Classical bivalence gives
+exactly two logical outcomes:
 \[
-\min|\operatorname{Adm}|=1
-\]
-is retained only as a cardinality fact. Its bare singleton witness is not
-placed upstream of the first Hamlet.
-
-\subsection{First Hamlet: persistence only}
-
-Define the Boolean persistence predicate \(\operatorname{Persist}\) on a
-candidate differentiation:
-\[
-\mathsf{Disp}=\neg\operatorname{Persist},
+\mathsf{Disp}:=\neg\operatorname{Persist}(d),
 \qquad
-\mathsf{Struct}=\operatorname{Persist}.
+\mathsf{Struct}:=\operatorname{Persist}(d).
 \]
 
-The two labels are exhaustive and disjoint. Canonical RDSS uses the
-non-degenerate case in which both classes are admissible. Their complement is
-a valid meta-\(\mathbb Z_2\), and their two-class Hartley count is a valid
-conditional meta value \(\ln2\).
-
-However,
+\paragraph{Theorem H.1 (First Hamlet).}
+The persistence outcome alphabet is exactly
 \[
 \boxed{
-\mathsf{Disp}\rightarrow\mathcal I_0
+H_0=\{\mathsf{Disp},\mathsf{Struct}\},
 }
 \]
-leaves no persistent distinction. Therefore
-\(\{\mathsf{Disp},\mathsf{Struct}\}\) is not the internal two-state carrier
-used for the downstream projective geometry.
+with the two alternatives exhaustive and disjoint.
+
+\paragraph{Proof.}
+For the proposition \(\operatorname{Persist}(d)\), excluded middle gives
+\(\operatorname{Persist}(d)\lor\neg\operatorname{Persist}(d)\), while
+non-contradiction excludes simultaneous truth of both. Therefore the outcome
+alphabet has exactly the two displayed logical branches. \(\square\)
+
+The branches are not the later durable two-state carrier. In particular,
+\[
+\boxed{
+\mathsf{Disp}\longrightarrow\mathcal I_0
+}
+\]
+returns to no persistent distinction. The STRUCTURE branch alone supplies a
+persistent distinction.
+
+Because \(H_0\) contains two logical alternatives, its probability-free
+Hartley information is
+\[
+\boxed{
+H_{\rm Hartley}(H_0)=\ln|H_0|=\ln2.
+}
+\]
+No probability distribution and no \(p=\tfrac12\) premise is used here.
 
 \subsection{Structure branch and the minimal persistent relation}
 
-The independent one-carrier result remains
-\[
-\min|\operatorname{Adm}|=1.
-\]
-It is a statement about minimum object support only.
-
-On the STRUCTURE branch a distinction persists. Canonical relational typing
-therefore uses the minimal non-trivial persistent structure
+The source-clean TIR minimum-structure theorem is imported as the explicit
+bridge
 \[
 \boxed{
-\mathsf{Struct}\rightarrow R:s\to t.
+\mathrm{TIR}_{\min}:
+\quad
+\min(\text{non-trivial persistent structure})
+=
+\text{relation}.
+}
+\tag{TIR-MIN}
+\]
+It is a bridge theorem, not a second RDSS foundational law.
+
+Hence
+\[
+\boxed{
+\mathsf{Struct}
+\Longrightarrow
+R:s\to t.
 }
 \]
+The endpoint symbols \(s,t\) denote relational roles/occurrences; they need
+not denote two different primitive carriers. A one-carrier realization may
+have
+\[
+\pi(s)=\pi(t)=a,
+\qquad
+s\neq t
+\]
+at occurrence level.
 
-For a non-self-collapsed relation define orientation reversal
+For a relation that is non-self-collapsed in \emph{role space}, define
+orientation reversal
 \[
 J_R:(s,t;R)\mapsto(t,s;R^{-1}),
 \qquad
 J_R^2=I.
 \]
-
-Its orbit is exactly
+Its orbit is
 \[
 \boxed{
-\mathcal O_{J_R}=\{N,S\}.
+\mathcal O_{J_R}=\{N,S\},
 }
+\qquad
+N=[s\to t],
+\qquad
+S=[t\to s].
 \]
 
-These are the durable two roles used by the downstream algebra. They are not
-the persistence outcomes DISPERSION and STRUCTURE.
+\paragraph{Theorem R.1 (durable binary role orbit).}
+If the persistent relation is not collapsed under role reversal, then
+\(|\mathcal O_{J_R}|=2\).
 
-The identity and reversal form
+\paragraph{Proof.}
+Since \(J_R^2=I\), every orbit has size one or two. Non-self-collapse excludes
+a fixed point, hence the orbit has size two. \(\square\)
+
+Therefore
 \[
 \boxed{
 \{I,J_R\}\cong\mathbb Z_2,
-}
-\]
-and probability-free Hartley counting gives
-\[
-\boxed{
+\qquad
 I_R=\ln|\{N,S\}|=\ln2.
 }
 \]
+This second \(\ln2\) is structural and probability-free. It is downstream of
+the persistent relation and independent of the earlier First-Hamlet Hartley
+count.
 
 \subsection{Gaussian--Bombelli closure from the persistent role algebra}
 
