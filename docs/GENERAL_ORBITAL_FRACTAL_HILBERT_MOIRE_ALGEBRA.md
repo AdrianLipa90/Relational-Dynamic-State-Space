@@ -1,459 +1,671 @@
-# General orbital-fractal Hilbert-Moiré algebra
+# General Orbital-Fractal Hilbert-Moiré Algebra
 
-Status: **RDSS SYNTHESIS / SOURCE-GROUNDED GENERAL RULES / NO NEW FOUNDATIONAL LAW**
+Status: STRUCTURAL ALGEBRA CLOSED / PHYSICAL REALIZATION EXTERNAL
 
-Date: 2026-10-01
+This document specifies the finite symbolic and relational phase layer of RDSS.
+It adds no foundational law.
 
-This document introduces a general algebraic layer into RDSS by treating existing repositories as read-only source bodies and importing only explicitly supported structures.
+## 1. Frozen source provenance
 
-The source repositories are not modified by this work.
+The executable layer keeps the following source parents pinned:
 
-## Source provenance
+- Infinities:
+  \`339d6c58f3e7d86c67a4f758cd7416692f8f8280\`;
+- GREMLIN:
+  \`b0000828238e0cd244f5eb1fb679155315df372f\`;
+- Informational Dynamics of Metatime:
+  \`31f1a74d65aeb5e107840fa9971b335c7f339504\`;
+- TIR foundation/dynamics parent used by the later closure:
+  \`9783782570a2ccfa1fc42c99b605dad48e02aa78\`.
 
-Frozen source commits:
+The executable source is
+\`src/rdss/orbital_fractal_hilbert_moire.py\`.
 
-- `AdrianLipa90/Infinities` — `339d6c58f3e7d86c67a4f758cd7416692f8f8280`
-  - `research/EULERS_INFINITY_V0_1.md`
-  - `research/TIR_E6_FOURIER_HILBERT_HOTEL_CORE_V0_1.md`
-- `AdrianLipa90/GREMLIN` — `b0000828238e0cd244f5eb1fb679155315df372f`
-  - `spec/GREMLIN_HOLOGRAPHIC_ORBITAL_MEMORY_V0_1.md`
-- `AdrianLipa90/Informational-Dynamics-of-Metatime` — `31f1a74d65aeb5e107840fa9971b335c7f339504`
-  - `CIEL-_SOT_Agent-main/docs/science/RELATIONAL_SEED_ORBIT_SOLVER_V0.md`
+## 2. Finite countable branch carrier
 
-The RDSS target base is `main@6c9083726fe22e72f9f09c5beab6976be5febdef`.
-
-## Purpose
-
-The objective is not to invent another parallel formalism. It is to expose one general structure already distributed across the source repositories:
-
-[
-oxed{
-	ext{symbolic refinement}
-	o
-	ext{countable shift}
-	o
-	ext{local relative phase}
-	o
-	ext{Hilbert transport}
-	o
-	ext{relational phase dynamics}.
-}
-]
-
-RDSS names the resulting structure the **orbital-fractal Hilbert-Moiré algebra**.
-
-The algebra is structural. It does not by itself assert a physical substrate.
-
-## Rule OFHM-1 — Euler symbolic branch space
-
-The Infinities source defines
-
-[
-mathcal E(z)=e^{ipi z}
-]
-
-with inverse branches, on a declared logarithm branch,
-
-[
-oxed{
-mathcal E_k^{-1}(w)
-=
-2k-rac{i}{pi}Log w,
-qquad kinmathbb Z.
-}
-]
-
-Finite inverse compositions therefore carry finite integer addresses
-
-[
-(k_1,ldots,k_n)inmathbb Z^n.
-]
-
-RDSS generalizes this to the finite symbolic carrier
-
-[
-oxed{
-mathcal A_{m F}
-=
-mathbb Z^{<omega}.
-}
-]
-
-An address is a symbolic refinement coordinate. It is not automatically a convergent geometric point.
-
-Combining the Euler branch carrier with the Hilbert-Hotel countable shift gives the RDSS symbolic fractal-boundary algebra
+The OFHM symbolic refinement carrier is
 
 \[
 \boxed{
-\mathcal B_{\rm F}
+\mathcal A_{\rm F}
 =
-(\mathbb Z^{<\omega},R_k,S_{\rm HH}).
+\mathbb Z^{<\omega}.
 }
 \]
 
-Here "boundary" is symbolic/operator language; it does not assert that every infinite address has a geometric limit.
+An element is a finite integer word
 
-The binary RDSS occurrence carrier
+\[
+a=(k_1,\ldots,k_n).
+\]
 
-[
-{-1,+1}^{<omega}
-]
+The binary RDSS occurrence carrier embeds by preserving branch labels:
 
-embeds exactly into (mathcal A_{m F}).
+\[
+\{-1,+1\}^{<\omega}
+\hookrightarrow
+\mathbb Z^{<\omega}.
+\]
 
-### Firewall
+This is a symbolic address. It is not automatically a geometric point.
 
-Imported exactly:
+## 3. Euler branch realization
 
-- countably many Euler inverse branches;
-- arbitrarily deep finite branch words;
-- infinite symbolic addresses as a symbolic space.
+On the declared complex logarithm branch,
 
-Not promoted:
+\[
+\mathcal E(z)=e^{i\pi z}
+\]
 
-- convergence of every infinite address;
-- a universal geometric fractal limit;
-- a Hausdorff dimension;
-- a physical interpretation.
+has inverse branches
 
-## Rule OFHM-2 — Hilbert-Hotel countable shift
-
-RDSS equips (mathcal A_{m F}) with an explicit bijective enumeration
-
-[
-ho:mathbb Z^{<omega}leftrightarrowmathbb N.
-]
-
-The Hilbert-Hotel successor is
-
-[
-oxed{
-S_{m HH}(a)
+\[
+\boxed{
+\mathcal E_k^{-1}(w)
 =
-ho^{-1}(ho(a)+1).
+2k-\frac{i}{\pi}\operatorname{Log}(w),
+\qquad
+k\in\mathbb Z.
 }
-]
+\]
 
-This is the countable self-embedding/stabilization operation.
+Finite inverse compositions therefore carry finite integer branch addresses.
 
-It is deliberately distinct from local refinement
+This supplies symbolic branching. It does not by itself supply an external
+metric fractal.
 
-[
-amapsto arown k.
-]
+## 4. Hilbert-Hotel enumeration
 
-The Infinities Hilbert-Hotel source supplies the stable index-one Fredholm class used as provenance for this shift sector:
+An explicit bijection
 
-[
-oxed{
-operatorname{ind}_{m HH}=+1.
-}
-]
+\[
+\rho:\mathbb Z^{<\omega}\leftrightarrow\mathbb N
+\]
 
-RDSS does not re-identify every refinement edge with a Fredholm operator. The imported index belongs to the Hilbert-Hotel stabilization bridge.
+provides a Hilbert-Hotel successor
 
-## Rule OFHM-3 — BEES local relative-phase coherence
-
-GREMLIN memory uses finite phase cells and compares them through relative phase.
-
-RDSS promotes the dimension-independent form
-
-[
-oxed{
-C(X,Y)
+\[
+\boxed{
+S_{\rm HH}(a)
 =
-left|
-rac1d
-sum_{j=1}^{d}
-e^{i(	heta_j^X-	heta_j^Y)}
-ight|
+\rho^{-1}(\rho(a)+1).
 }
-]
+\]
 
-for equal-length finite phase vectors.
+The executable zigzag/Cantor ranking is one declared enumeration coordinate.
+It is not claimed to be the unique canonical enumeration.
 
-This quantity is invariant under a common phase shift:
+Local refinement
 
-[
-C(X+alpha,Y+alpha)=C(X,Y).
-]
+\[
+R_k(a)=a\frown k
+\]
 
-For scalar orbital phases define
+and Hilbert-Hotel shift are distinct operations:
 
-[
-oxed{
+\[
+\boxed{
+R_k\neq S_{\rm HH}.
+}
+\]
+
+No commutation law between them is silently assumed.
+
+## 5. Relative phase and Moiré cocycle
+
+For scalar phase coordinates,
+
+\[
+U_i=e^{i\theta_i},
+\]
+
+define
+
+\[
+\boxed{
 M_{ij}
 =
 U_iU_j^{-1}
 =
-e^{i(	heta_i-	heta_j)}.
+e^{i(\theta_i-\theta_j)}.
 }
-]
+\]
 
 Then
 
-[
-oxed{
+\[
+\boxed{
 M_{ij}M_{jk}=M_{ik},
-qquad
+\qquad
 M_{ii}=1,
-qquad
+\qquad
 M_{ji}=M_{ij}^{-1}.
 }
-]
+\]
 
-Thus the existing Moiré relation is a compositional relative-phase cocycle.
+This is the exact finite Moiré phase cocycle.
 
-BEES coherence remains evidence about compatibility, not truth or canon authority.
+The BEES coherence magnitude
 
-## Rule OFHM-4 — Hilbert transport follows from the Moiré cocycle
+\[
+C(X,Y)
+=
+\left|
+\frac1d
+\sum_{r=1}^{d}
+e^{i(\theta_r^X-\theta_r^Y)}
+\right|
+\]
 
-Let (vinmathcal H_j) be a finite Hilbert-fibre vector.
+is a lossy diagnostic because of the final absolute value. It is never used
+to reconstruct the signed/complex relative phase.
 
-Define transport from chart (j) to chart (i) by
+## 6. Hilbert-fibre transport
 
-[
-oxed{
+For a finite Hilbert vector \(v\), define
+
+\[
+\boxed{
 T_{ij}v=M_{ij}v.
 }
-]
+\]
 
-Because (M_{ij}in U(1)),
+Since \(M_{ij}\in U(1)\),
 
-[
-oxed{
-|T_{ij}v|=|v|.
-}
-]
+\[
+\|T_{ij}v\|=\|v\|,
+\]
 
-Because the relative phase is a cocycle,
+and cocycle composition gives
 
-[
-oxed{
+\[
+\boxed{
 T_{ij}T_{jk}=T_{ik}.
 }
-]
+\]
 
-Therefore the Hilbert transport law is not an additional independent assumption once the relative Moiré phase is admitted.
+Thus Hilbert transport is downstream of the Moiré cocycle and adds no
+independent phase law.
 
-The executable finite carrier is
+## 7. Finite OFHM state
 
-[
-oxed{
-Psi=(a,ell,	heta,v,omega),
+The finite executable state is
+
+\[
+\boxed{
+\Psi=(a,\ell,\theta,v,\omega),
 }
-]
+\]
 
 where
 
-- (ainmathbb Z^{<omega}) is the symbolic refinement address;
-- (ell) is an orbital label;
-- (	hetainmathbb R/2pimathbb Z) is phase;
-- (v
-eq0) is a finite Hilbert vector;
-- (omegainmathbb R) is angular velocity for the second-order dynamic chart.
+- \(a\in\mathbb Z^{<\omega}\) is the finite symbolic address;
+- \(\ell\) is an orbital label;
+- \(\theta\in\mathbb R/2\pi\mathbb Z\) is phase;
+- \(v\neq0\) is a finite Hilbert vector;
+- \(\omega\) is the angular-velocity coordinate used by the second-order chart.
 
-This extends, rather than replaces, the existing `HilbertMoireFibreState`.
+## 8. Alternating half-time dynamics
 
-## Rule OFHM-5 — BEES + IDT dynamics
+The exact Stella half-successor is
 
-GREMLIN supplies a local sine-coupling relaxation law. IDT supplies the second-order relational phase update.
+\[
+H(n,+)=(n,-),
+\qquad
+H(n,-)=(n+1,+),
+\]
 
-For one state (i), define the weighted local coupling current
+so
 
-[
-oxed{
-J_i
+\[
+\boxed{H^2=S.}
+\]
+
+Occurrence order is discrete in half-frames while the internal phase remains
+continuous on \(U(1)\).
+
+The bipolar exchange orbit contains 24 directed incidences and 12 undirected
+exchange pairs. With
+
+\[
+\kappa=\frac{\ln2}{24\pi},
+\]
+
+one directed channel carries
+
+\[
+\frac{\ln2}{24}
 =
-sum_j w_{ij}sin(	heta_j-	heta_i).
+\pi\kappa,
+\]
+
+and one undirected pair carries
+
+\[
+\frac{\ln2}{12}.
+\]
+
+## 9. Canonical pair potential
+
+For projected mismatch
+
+\[
+\Delta_{ij}
+=
+\theta_i-\theta_j-\Gamma_{ij},
+\]
+
+the normalized squared chordal mismatch is
+
+\[
+c(\Delta)
+=
+\frac{|e^{i\Delta}-1|^2}{4}
+=
+\frac{1-\cos\Delta}{2}.
+\]
+
+It obeys
+
+\[
+c(0)=0,
+\qquad
+c(\pi)=1.
+\]
+
+Hence the pair information budget fixes
+
+\[
+\boxed{
+V_{ij}
+=
+\pi\kappa
+\left(1-\cos\Delta_{ij}\right)
+=
+\frac{\ln2}{24}
+\left(1-\cos\Delta_{ij}\right).
 }
-]
+\]
 
-The normalized BEES/GREMLIN overdamped reduction is
+At the half-turn,
 
-[
-oxed{
-dot	heta_i
-=
-K
-rac{
-sum_j w_{ij}sin(	heta_j-	heta_i)
-}{
-sum_j w_{ij}
-}.
+\[
+V_{ij}(\pi)=\frac{\ln2}{12}.
+\]
+
+Twelve maximally mismatched pairs therefore saturate the binary budget:
+
+\[
+\boxed{
+12V_{ij}(\pi)=\ln2.
 }
-]
+\]
 
-The IDT discrete second-order form is
+## 10. Pendulum and relational zero
 
-[
-oxed{
-	heta_i^{n+1}
+For a bipolar pair,
+
+\[
+F_+
 =
-	heta_i^n+Delta t,omega_i^n,
+-\pi\kappa\sin\Delta,
+\qquad
+F_-
+=
++\pi\kappa\sin\Delta,
+\]
+
+so
+
+\[
+\boxed{
+F_++F_-=0.
 }
-]
+\]
 
-[
-oxed{
-omega_i^{n+1}
-=
-omega_i^n
+With equal phase inertia \(I_\phi>0\) and damping \(\eta\ge0\),
+
+\[
+\boxed{
+I_\phi\ddot c+\eta\dot c=0
+}
+\]
+
+for the center coordinate and
+
+\[
+\boxed{
+I_\phi\ddot\Delta
 +
-Delta t
-left(
--partial_{	heta_i}V
--etaomega_i^n
-+KJ_i^n
-+D_i^n
-ight).
-}
-]
-
-The overdamped BEES rule is therefore a first-order reduction of the same local relative-phase coupling sector; the IDT form retains inertia, damping, potential-gradient and external-drive terms explicitly.
-
-RDSS imports this as a general relational phase-dynamics bridge, not as a claim of experimentally established physical dynamics.
-
-## Combined algebra
-
-The source-grounded general object is
-
-[
-oxed{
-mathfrak A_{m OFHM}
-=
-(
-mathcal A_{m F},
-ho,
-S_{m HH},
-R_k,
-M,
-mathcal H,
-T,
-J,
-mathcal D
-).
-}
-]
-
-Here:
-
-- (mathcal A_{m F}=mathbb Z^{<omega}) is finite symbolic refinement;
-- (ho) is countable ranking;
-- (S_{m HH}) is the Hilbert-Hotel successor;
-- (R_k:amapsto arown k) is local refinement;
-- (M_{ij}) is relative Moiré phase;
-- (mathcal H) is the Hilbert-fibre carrier;
-- (T_{ij}) is norm-preserving phase transport;
-- (J_i) is local BEES/IDT coupling current;
-- (mathcal D) is the selected first- or second-order phase update.
-
-The important structural separation is
-
-[
-oxed{
-S_{m HH}
-eq R_k.
-}
-]
-
-Hilbert-Hotel shift enumerates the countable address space; refinement extends one branch history.
-
-## Exact dependency chain
-
-The integration can now be written as
-
-[
-oxed{
-	ext{Euler inverse branches}
-Rightarrow
-mathbb Z^{<omega}
-}
-]
-
-[
-oxed{
-mathbb Z^{<omega}
+\eta\dot\Delta
 +
-	ext{Hilbert-Hotel countability}
-Rightarrow
-S_{m HH}
+2\pi\kappa\sin\Delta
+=
+0
 }
-]
+\]
 
-[
-oxed{
-	ext{BEES relative phase}
-Rightarrow
-M_{ij}
-Rightarrow
-T_{ij}
+for the relative coordinate.
+
+The local force is a potential gradient; inertia belongs to the composed
+two-sector/full-successor dynamics.
+
+## 11. Frame-native second difference
+
+The unique local linear three-frame stencil, up to overall scale, that
+annihilates constants and uniform drift is
+
+\[
+\boxed{
+D_2x_n
+=
+x_{n+1}-2x_n+x_{n-1}.
 }
-]
+\]
+
+Therefore the conservative full-frame relative equation is
+
+\[
+\boxed{
+I_\phi
+\frac{
+\Delta_{n+1}-2\Delta_n+\Delta_{n-1}
+}{h^2}
++
+2\pi\kappa\sin\Delta_n
+=
+0.
+}
+\]
+
+The structural successor scale \(h\) is dimensionless until a physical clock
+calibration is supplied.
+
+## 12. Moiré-Kuramoto closure
+
+For an undirected phase graph,
+
+\[
+\boxed{
+V_{\rm M}
+=
+\pi\kappa
+\sum_{\{i,j\}\in E}
+\left(1-\cos\Delta_{ij}\right).
+}
+\]
+
+Differentiation produces the sine interaction kernel.
+
+The inertial equation is
+
+\[
+I_i\ddot\theta_i
++
+\eta_i\dot\theta_i
++
+\frac{\partial V_{\rm M}}{\partial\theta_i}
+=
+0.
+\]
+
+In the overdamped limit,
+
+\[
+\boxed{
+\eta_i\dot\theta_i
+=
+-
+\frac{\partial V_{\rm M}}{\partial\theta_i},
+}
+\]
+
+which is the gauge-twisted Kuramoto flow generated by the same potential.
+
+Thus
+
+\[
+\boxed{
+\text{pendulum}
+=
+\text{two-sector inertial reduction},
+}
+\]
 
 and
 
-[
-oxed{
-	ext{BEES local coupling}
-+
-	ext{IDT phase update}
-Rightarrow
-mathcal D.
+\[
+\boxed{
+\text{Kuramoto}
+=
+\text{overdamped network reduction}.
 }
-]
+\]
 
-This is the dependency correction: Hilbert transport is downstream of the Moiré cocycle, and the dynamical generator is downstream of local BEES coupling plus the IDT update law.
+## 13. Canonical symbolic infinite boundary
 
-## Relation to existing RDSS structures
+The finite prefix carrier determines the ideal symbolic boundary
 
-The new layer reuses rather than replaces:
+\[
+\boxed{
+\partial_{\rm sym}\mathcal A_{\rm F}
+=
+\mathbb Z^{\mathbb N}
+}
+\]
 
-- `OccurrenceAddress`;
-- recursive occurrence trees;
-- CP1/Fubini-Study reference fibres;
-- `HilbertMoireFibreState`;
-- U(1) phase and holonomy;
-- Moiré edge states;
-- bridge/rewrite/provenance infrastructure;
-- canonical information normalization (kappa=ln2/(24pi)).
+with the finite-prefix cylinder topology.
 
-No second (kappa) is introduced.
+Because \(\mathbb Z\) is countably infinite and discrete,
+\(\mathbb Z^{\mathbb N}\) is Baire space up to a fixed bijection
+\(\mathbb Z\leftrightarrow\mathbb N\).
 
-## Validation requirements
+The first-symbol cylinders
 
-The executable module must verify at least:
+\[
+C_k=\{x:x_0=k\},
+\qquad k\in\mathbb Z,
+\]
 
-1. countable-word rank/unrank round trip;
-2. exact binary occurrence embedding;
-3. Hilbert-Hotel rank successor/predecessor;
-4. Euler fixed-point and inverse-branch identities in the declared complex-Log chart;
-5. Moiré cocycle composition;
-6. Hilbert-norm preservation and transport composition;
-7. common-phase invariance of BEES coherence;
-8. separation of refinement and Hilbert-Hotel shift;
-9. zero BEES current at phase alignment;
-10. IDT discrete update against its declared equation.
+form a countable clopen cover with no finite subcover. Hence
 
-## Open gates
+\[
+\boxed{
+\mathbb Z^{\mathbb N}
+\text{ is not compact}.
+}
+\]
 
-The following remain explicit gates rather than hidden assumptions:
+The canonical boundary is therefore symbolic/topological, not a forced compact
+geometric fractal.
 
-1. geometric convergence of arbitrary infinite Euler/refinement addresses;
-2. a canonical Hausdorff dimension for the resulting geometric limit set;
-3. uniqueness of a continuum measure on an infinite fibre bundle;
-4. physical identification of the algebra with a specific material system;
-5. calibration of IDT dynamical coefficients for any concrete physical or computational application.
+## 14. Geometric-limit no-go theorem
 
-These gates do not block the finite symbolic/operator algebra defined here.
+### 14.1 Measure non-uniqueness
 
-## Claim discipline
+For every \(b>1\),
 
-This synthesis adds no foundational law.
+\[
+p_b(k)
+=
+\frac{b-1}{b+1}
+b^{-|k|}
+\]
 
-Its provenance classes are:
+is a normalized full-support probability distribution on \(\mathbb Z\).
 
-- definitions for the generalized address and state carriers;
-- bridges for imported Euler/Hilbert-Hotel, BEES and IDT structures;
-- derived results for the Moiré cocycle and Hilbert transport;
-- derivation gates for geometric-limit and physical-binding claims.
+Its product measure \(\mu_b\) lives on the same cylinder topology.
+
+But
+
+\[
+\mu_2([0])=\frac13,
+\qquad
+\mu_3([0])=\frac12.
+\]
+
+Therefore
+
+\[
+\boxed{
+\text{OFHM prefix structure does not select a unique continuum measure}.
+}
+\]
+
+### 14.2 Metric scale non-uniqueness
+
+For \(0<\lambda<1\), define the compatible prefix ultrametric
+
+\[
+d_\lambda(x,y)
+=
+\lambda^{N(x,y)}
+\]
+
+for \(x\neq y\), where \(N(x,y)\) is common-prefix length.
+
+The finite symbolic algebra does not select \(\lambda\).
+
+On the embedded binary boundary \(\{-1,+1\}^{\mathbb N}\),
+
+\[
+\dim_H
+=
+\frac{\ln2}{-\ln\lambda}.
+\]
+
+Thus
+
+\[
+\lambda=\frac12
+\Rightarrow
+\dim_H=1,
+\]
+
+while
+
+\[
+\lambda=\frac14
+\Rightarrow
+\dim_H=\frac12.
+\]
+
+Hence
+
+\[
+\boxed{
+\text{prefix topology alone does not select a canonical Hausdorff dimension}.
+}
+\]
+
+### 14.3 External geometric convergence
+
+The OFHM structural signature contains no canonical map
+
+\[
+\Phi:\mathbb Z^{\mathbb N}\to X
+\]
+
+into a metric geometric space \(X\), and no contraction system selecting such
+a map.
+
+Therefore convergence of an infinite symbolic address to an external
+geometric point is not a well-typed intrinsic statement until a geometric
+realization is supplied.
+
+The historical
+\`GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT\`
+is therefore closed by no-go:
+
+\[
+\boxed{
+\text{canonical symbolic boundary exists}
+\quad\land\quad
+\text{unique geometric fractal realization is underdetermined}.
+}
+\]
+
+## 15. Physical realization is an evidence frontier
+
+The structural algebra contains no unique map to a named material, quantum,
+spacetime or measurement substrate and contains no dimensional calibration
+data.
+
+Therefore physical substrate selection is not another mathematical theorem to
+derive from OFHM alone.
+
+The historical identifier
+
+\`GATE_OFHM_PHYSICAL_BINDING\`
+
+has status
+
+\[
+\boxed{
+\texttt{EVIDENCE\_GATE},
+}
+\]
+
+not \`DERIVATION_GATE\`.
+
+A physical claim requires:
+
+1. an explicit realization map;
+2. dimensional calibration;
+3. empirical or independently sourced evidence;
+4. falsifiable comparison with observation.
+
+## 16. Closure status
+
+Internal structural derivation gates:
+
+\[
+\boxed{
+N_{\rm DERIVATION\_GATE}=0.
+}
+\]
+
+External empirical frontier:
+
+\[
+\boxed{
+N_{\rm EVIDENCE\_GATE}=1.
+}
+\]
+
+The remaining evidence gate is exactly
+
+\[
+\boxed{
+\texttt{GATE\_OFHM\_PHYSICAL\_BINDING}.
+}
+\]
+
+This is not counted as an unresolved mathematical proof obligation.
+
+## 17. Executable surfaces
+
+- \`src/rdss/orbital_fractal_hilbert_moire.py\`
+- \`src/rdss/alternating_phase_dynamics.py\`
+- \`tests/test_orbital_fractal_hilbert_moire.py\`
+- \`tests/test_alternating_phase_dynamics.py\`
+- \`src/rdss/axioms.py\`
+
+The geometric-limit no-go receipt is
+
+\`ofhm_geometric_limit_no_go_certificate()\`.
+
+The pendulum/Moiré-Kuramoto receipt is
+
+\`alternating_phase_closure_certificate()\`.
+
+## 18. Proof discipline
+
+No specific compact fractal, measure, dimension or physical substrate is
+silently inserted.
+
+A chosen geometric realization may be added later as a separately typed
+reference/bridge structure.
+
+A chosen physical realization requires evidence and remains external to
+structural proof closure.
