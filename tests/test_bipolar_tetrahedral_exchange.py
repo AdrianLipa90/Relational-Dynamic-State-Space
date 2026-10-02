@@ -4,16 +4,22 @@ from rdss.bipolar_tetrahedral_exchange import (
     FLAVOR_COUNT,
     POLARITY_COUNT,
     ACTIVE_DUAL_FACES,
+    binary_maximum_entropy_nats,
     bipolar_exchange_counts,
     directed_face_flavor_channels,
     exchange_symmetry_orbit,
     face_plane_constants,
+    forced_kappa_certificate,
+    forced_kappa_closed_form,
+    forced_kappa_from_bipolar_exchange,
     invariant_active_face_subsets,
+    invariant_channel_information_nats,
     minimal_identity_face_closure_cardinality,
     polarity_association_quotient_cardinality,
     half_turn_normalized_measure,
     polarity_exchange,
     polarity_face_pairing,
+    polarity_half_turn_radians,
     selector_free_active_exchange_cardinality,
     selector_free_active_exchange_faces,
     selector_free_tetrahedral_odd_completion,
@@ -96,3 +102,34 @@ def test_bipolar_exchange_receipt() -> None:
         frozenset(ACTIVE_DUAL_FACES),
     )
     assert receipt["selector_free_active_faces"] == frozenset(ACTIVE_DUAL_FACES)
+
+
+def test_binary_max_entropy_forces_ln2() -> None:
+    from math import log
+
+    assert abs(binary_maximum_entropy_nats() - log(2.0)) <= 1e-15
+
+
+def test_transitive_24_channel_orbit_forces_equal_information_share() -> None:
+    from math import log
+
+    assert unique_invariant_channel_weight() == (1, 24)
+    assert abs(invariant_channel_information_nats() - log(2.0) / 24.0) <= 1e-15
+
+
+def test_half_turn_and_uniform_channel_share_force_kappa() -> None:
+    from math import log, pi
+
+    assert abs(polarity_half_turn_radians() - pi) <= 1e-15
+    assert abs(forced_kappa_from_bipolar_exchange() - log(2.0) / (24.0 * pi)) <= 1e-15
+    assert abs(forced_kappa_from_bipolar_exchange() - forced_kappa_closed_form()) <= 1e-15
+
+    receipt = forced_kappa_certificate()
+    assert receipt["binary_source_states"] == 2
+    assert abs(receipt["binary_max_entropy_nats"] - log(2.0)) <= 1e-15
+    assert receipt["directed_channels"] == 24
+    assert receipt["invariant_channel_weight"] == (1, 24)
+    assert abs(receipt["information_per_channel_nats"] - log(2.0) / 24.0) <= 1e-15
+    assert abs(receipt["half_turn_radians"] - pi) <= 1e-15
+    assert abs(receipt["total_phase_measure_radians"] - 24.0 * pi) <= 1e-15
+    assert receipt["matches_closed_form"] is True
