@@ -1234,7 +1234,7 @@ CLAIMS: tuple[Claim, ...] = (
         "REF_CP1_REFINEMENT",
         ClaimKind.REFERENCE_REALIZATION,
         "Recursive refinement may be realized as a tree of local CP^1/Fubini-Study fibres indexed by relational carriers.",
-        ("REF_CP1", "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE"),
+        ("REF_CP1", "RR1"),
     ),
     Claim(
         "REF_SINGLETON_CP1_OCCURRENCE_REALIZATION",
@@ -1246,13 +1246,13 @@ CLAIMS: tuple[Claim, ...] = (
         "RA0_STAR",
         ClaimKind.FORMATION_RULE,
         "Legacy strong closure condition retained only as an optional formation schema: when complete binary hosting is requested, every admitted carrier may be equipped with a non-degenerate binary distinction whose endpoint occurrences are admitted carriers. It is not a universal consequence required by the canonical foundation.",
-        ("DEF_POINT", "DEF_BINARY_DISTINCTION", "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE"),
+        ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "RA0_REL_STAR",
         ClaimKind.FORMATION_RULE,
         "Legacy strong relational closure condition retained only as an optional formation schema: when complete relational binary hosting is requested, every admitted carrier may be equipped with a relationally bound binary distinction. It is not a universal consequence needed for the canonical TIR/RDSS foundation.",
-        ("DEF_POINT", "DEF_RELATIONAL_DISTINCTION", "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE"),
+        ("DEF_POINT", "DEF_RELATIONAL_DISTINCTION"),
     ),
     Claim(
         "THM_RA0_STAR_FROM_RA0_REL_STAR",
@@ -1358,7 +1358,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_BINARY_OCCURRENCE_COUNT",
         ClaimKind.THEOREM,
         "A complete binary occurrence unfolding through finite depth N contains exactly 2^(N+1)-1 path-labelled occurrences.",
-        ("THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE", "DEF_BINARY_DISTINCTION"),
+        ("RR1", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "THM_FINITE_WORD_OCCURRENCE_COUNTABILITY",
@@ -1388,7 +1388,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_RR1_REALIZES_BOUNDARY_PREFIX_CHAINS",
         ClaimKind.THEOREM,
         "Historical RR1 identifier: finite-refinement availability ensures that every infinite binary boundary sequence determines a coherent formal chain whose every finite prefix is constructible as a path-labelled occurrence. No infinite limit carrier and no universal physical branching are thereby asserted.",
-        ("THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE", "DEF_OCCURRENCE_BOUNDARY"),
+        ("RR1", "DEF_OCCURRENCE_BOUNDARY"),
     ),
     Claim(
         "THM_RR1_FROM_RA0_STAR",
