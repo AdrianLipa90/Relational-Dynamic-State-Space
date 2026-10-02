@@ -3,7 +3,6 @@ from math import isclose, log
 from rdss.existence_chain import (
     CANONICAL_EXISTENCE_CHAIN,
     FIRST_LAW_OF_EXISTENCE,
-    LAW_OF_REALITY,
     IMAGINARY_GENERATOR,
     LN2,
     RELATIONAL_ZETA_ZERO,
@@ -55,10 +54,8 @@ from rdss.existence_chain import (
 )
 
 
-def test_law_of_reality_is_canonical_and_does_not_reify_nothingness() -> None:
-    text = LAW_OF_REALITY.lower()
-    assert text == FIRST_LAW_OF_EXISTENCE.lower()  # legacy alias only
-    assert "law of reality" in text
+def test_first_law_does_not_reify_nothingness() -> None:
+    text = FIRST_LAW_OF_EXISTENCE.lower()
     assert "not a realizable state" in text
     assert "object" in text
     assert "relation" in text
@@ -67,11 +64,11 @@ def test_law_of_reality_is_canonical_and_does_not_reify_nothingness() -> None:
 def test_pre_audit_chain_keeps_open_causal_arrows_explicit() -> None:
     by_id = {step.id: step for step in CANONICAL_EXISTENCE_CHAIN}
 
-    assert by_id["LR_TO_EXISTENCE_POTENTIAL"].status is ExistenceChainStatus.DEFINITIONAL
+    assert by_id["L1_TO_EXISTENCE_POTENTIAL"].status is ExistenceChainStatus.DEFINITIONAL
     assert by_id["POTENTIAL_TO_PRIMITIVE_INDISTINCTION"].status is ExistenceChainStatus.DEFINITIONAL
     assert by_id["INDISTINCTION_TO_FIRST_HAMLET"].status is ExistenceChainStatus.EXACT_IDENTITY
     assert by_id["CANONICAL_FIRST_HAMLET_NONDEGENERATE"].status is ExistenceChainStatus.DEFINITIONAL
-    assert by_id["FIRST_HAMLET_DYNAMIC_REALIZATION_GATE"].status is ExistenceChainStatus.DERIVATION_GATE
+    assert by_id["STRICT_FIRST_HAMLET_NONDEGENERACY_GATE"].status is ExistenceChainStatus.DERIVATION_GATE
     assert by_id["FIRST_HAMLET_META_Z2"].status is ExistenceChainStatus.CONDITIONAL_EXACT
     assert by_id["FIRST_HAMLET_META_LN2"].status is ExistenceChainStatus.CONDITIONAL_EXACT
     assert by_id["DISPERSION_TO_INDISTINCTION"].status is ExistenceChainStatus.DEFINITIONAL
