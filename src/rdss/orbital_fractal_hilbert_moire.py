@@ -1,3 +1,12 @@
+"""General orbital-fractal Hilbert-Moire executable layer.
+
+In-repo proof status: docs/GENERAL_ORBITAL_FRACTAL_HILBERT_MOIRE_ALGEBRA.md
+and src/rdss/axioms.py claim IDs DEF_OFHM_*, BRIDGE_OFHM_*, DER_OFHM_*.
+
+External frozen sources are listed in SOURCE_REFERENCES below. The source
+commit and path are part of the executable provenance contract; do not
+replace them with uncited recollection.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -106,8 +115,9 @@ def cantor_unpair(code: int) -> tuple[int, int]:
 def countable_word_rank(address: Sequence[int]) -> int:
     """Bijection from finite integer words Z^{<omega} to N.
 
-    The encoding is an enumeration coordinate only. It does not replace the
-    prefix/tree relation carried by the address itself.
+    Provenance: DEF_OFHM_COUNTABLE_BRANCH_ADDRESS and the frozen Infinities
+    Hilbert-Hotel source in SOURCE_REFERENCES. The encoding is an enumeration
+    coordinate only; it does not replace the prefix/tree relation.
     """
     code = 0
     for branch in reversed(tuple(int(x) for x in address)):
@@ -173,7 +183,9 @@ def euler_phase(z: complex) -> complex:
 def euler_inverse_branch(w: complex, branch: int) -> complex:
     """One Euler inverse branch using Python's principal complex Log.
 
-    This is the declared-Log-branch realization of
+    Provenance: BRIDGE_OFHM_EULER_SYMBOLIC_BRANCH_SPACE and the frozen
+    Infinities Euler source in SOURCE_REFERENCES. This is the declared-Log-
+    branch realization of
     E_k^{-1}(w) = 2k - (i/pi) Log(w).
     """
     value = complex(w)
@@ -200,7 +212,11 @@ def euler_branch_preimage(
 
 
 def relative_moire_phase(theta_i: float, theta_j: float) -> complex:
-    """U(1) relative phase M_ij = U_i U_j^{-1}."""
+    """U(1) relative phase M_ij = U_i U_j^{-1}.
+
+    Provenance: DER_OFHM_MOIRE_COCYCLE. The phase data, not the scalar
+    coherence magnitude alone, determines this U(1) cocycle.
+    """
     return cmath.exp(1j * circular_delta(theta_i, theta_j))
 
 
@@ -243,6 +259,7 @@ def moire_transport(
 ) -> tuple[complex, ...]:
     """Transport a fibre vector from source chart to target chart.
 
+    Provenance: DER_OFHM_HILBERT_TRANSPORT.
     T_ij v = M_ij v, with M_ij=U_i U_j^{-1}.
     """
     values = tuple(complex(v) for v in vector)
@@ -385,6 +402,9 @@ def idt_phase_dynamics_step(
     coupling: float = 1.0,
 ) -> OrbitalFractalHilbertMoireState:
     """One explicit IDT-style second-order phase update.
+
+    Provenance: BRIDGE_OFHM_BEES_IDT_DYNAMICS plus the frozen GREMLIN and
+    IDT sources in SOURCE_REFERENCES.
 
     phi_(k+1) = phi_k + dt * omega_k
     omega_(k+1) = omega_k + dt * (-dV/dphi - eta*omega_k + K*J_k + drive)
