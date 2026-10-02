@@ -138,9 +138,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0",
-        ClaimKind.DERIVATION_GATE,
-        "Strict dynamics gate: derive from primitive existence potential plus indistinction, without adopting the canonical non-degeneracy definition, that both DISPERSION and STRUCTURE are dynamically admissible/non-empty possibilities.",
-        ("DEF_PRIMITIVE_INDISTINCTION", "DEF_DISTINCTION_PERSISTENCE_PREDICATE"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE DISCHARGED / SUPERSEDED. Canonical RDSS no longer requires a theorem that P_E plus I_0 forces both persistence branches as an upstream foundation. The Boolean partition is exact, canonical non-degeneracy is an explicit semantics choice, and one source-clean reference flow realizes both regimes consistently. No claim is made that A0 alone dynamically forces both preimages.",
+        ("THM_FIRST_HAMLET_DISPERSION_STRUCTURE", "DEF_CANONICAL_FIRST_HAMLET_NONDEGENERATE", "THM_REF_PERSISTENCE_FLOW_REALIZES_BOTH_HAMLET_REGIMES"),
     ),
     Claim(
         "THM_RELATIONAL_DEFORMATION_POTENTIAL_IS_DOWNSTREAM",
@@ -210,9 +210,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE",
-        ClaimKind.DERIVATION_GATE,
-        "LEGACY/SUPERSEDED target: directly binding primitive indistinction to a Collatz integer skips the persistent-relation layer and is not canonical after the TIR/RDSS causal audit.",
-        ("DEF_PRIMITIVE_INDISTINCTION", "THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE DISCHARGED / SUPERSEDED. Direct primitive-indistinction-to-integer binding is non-canonical because it skips the persistent relation layer. Collatz enters only downstream of the durable relation-role algebra and relational-cardinality normalization.",
+        ("THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER", "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP"),
     ),
     Claim(
         "DEF_SOURCE_MINIMAL_PARITY_DYNAMICS_SIGNATURE",
@@ -449,22 +449,28 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_ASSOCIATION_QUOTIENT_CARDINALITY", "THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY", "THM_IDENTITY_REPAIR_CARDINALITY", "THM_PARITY_FORCES_COLLATZ_BRANCH_SELECTION"),
     ),
     Claim(
+        "THM_COLLatz_STRUCTURAL_DYNAMICS_CLOSED",
+        ClaimKind.THEOREM,
+        "Within the canonical relational carrier, the Collatz operation roles and branch selection are structurally closed: free Z2 association gives /2, the selector-free three-face active orbit gives x3, unique identity repair gives +1, and parity admissibility selects n/2 versus 3n+1. The separate question whether a particular external physical substrate instantiates this structural normalization belongs to physical binding, not to the RDSS structural derivation.",
+        ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING", "GATE_MOIRE_DYNAMICAL_LAW"),
+    ),
+    Claim(
         "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS",
-        ClaimKind.DERIVATION_GATE,
-        "Remaining foundational/physical bridge: establish that the primitive dynamics of the intended natural system is instantiated by this finite relational-cardinality normalization rather than merely admitting it as an exact algebraic realization.",
-        ("THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ", "A0"),
+        ClaimKind.THEOREM,
+        "HISTORICAL STRUCTURAL GATE CLOSED. RDSS now derives the relational-cardinality Collatz dynamics internally. Any stronger assertion that a particular natural/material system instantiates this map is explicitly delegated to GATE_OFHM_PHYSICAL_BINDING rather than left as a structural mathematics gate.",
+        ("THM_COLLatz_STRUCTURAL_DYNAMICS_CLOSED", "GATE_OFHM_PHYSICAL_BINDING"),
     ),
     Claim(
         "GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS",
-        ClaimKind.DERIVATION_GATE,
-        "Legacy/refined inheritance gate: quotient/product/coproduct cardinality semantics now close the divide/multiply/add operation assignment algebraically. The unresolved stronger question is only whether primitive natural dynamics is forced to instantiate that exact relational-cardinality normalization.",
-        ("A0", "THM_STRUCTURE_BRANCH_MINIMAL_RELATION", "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT", "DEF_SOURCE_MINIMAL_PARITY_DYNAMICS_SIGNATURE"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE CLOSED / SUPERSEDED. Source-minimal arithmetic, Gaussian/Bombelli provenance, operator-dimension provenance and selector-free tetrahedral semantics independently agree on 2,3,1. No further structural minimality premise is needed; external physical realization is separately typed.",
+        ("THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING", "THM_COLLatz_STRUCTURAL_DYNAMICS_CLOSED"),
     ),
     Claim(
         "GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA",
-        ClaimKind.DERIVATION_GATE,
-        "Refined physical-sector gate: numerical coefficients, quotient/product/identity-repair semantics, and selector-free bipolar tetrahedral operation-role selection are algebraically closed. The remaining burden is only the stronger physical/foundational assertion that primitive natural dynamics instantiates this already-forced relational/tetrahedral normalization.",
-        ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE CLOSED. The branch maps and their selector-free relational provenance are theorem-level results inside RDSS. Physical instantiation is not part of this historical structural gate.",
+        ("THM_COLLatz_STRUCTURAL_DYNAMICS_CLOSED",),
     ),
     Claim(
         "REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT",
@@ -575,6 +581,24 @@ CLAIMS: tuple[Claim, ...] = (
         ("A0",),
     ),
     Claim(
+        "BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",
+        ClaimKind.BRIDGE,
+        "Imported canonical TIR existence typing from TIR_CANONICAL_DERIVATION_SPINE_V0_1.md at commit 9783782570a2ccfa1fc42c99b605dad48e02aa78: Exist(x) implies the existence of at least one relational witness R_x. This is a sourced typing rule and must not be misreported as a theorem of A0 alone.",
+        ("A0",),
+    ),
+    Claim(
+        "THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS",
+        ClaimKind.THEOREM,
+        "Within the canonical TIR/RDSS existence typing, every admitted realized existent has at least one relational witness. A bare non-empty carrier may still be a singleton point with no internal binary structure; the forced conclusion is relational incidence for realized existence, not that A0 alone creates a two-state carrier.",
+        ("BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING", "THM_FIRST_LAW_NONEMPTY_NOT_BINARY"),
+    ),
+    Claim(
+        "THM_CANONICAL_NONTRIVIAL_EXISTENCE_FORCES_DISTINCTION",
+        ClaimKind.THEOREM,
+        "For any admitted realized state that is non-trivial structurally, relational existence supplies a relation witness, TIR minimality selects a relation as the minimum non-trivial structure, and a non-self-collapsed relation carries the two orientation roles {N,S}. Thus non-trivial realized existence entails relational distinction in the canonical TIR/RDSS typing without identifying a bare singleton carrier with a binary state.",
+        ("THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS", "BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION", "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT"),
+    ),
+    Claim(
         "DEF_STRUCTURE_AS_PERSISTENT_RELATION",
         ClaimKind.DEFINITION,
         "Legacy/local alias for the bridged TIR result: a persistent non-trivial distinction is represented by an admitted relation R with ordered source and target roles.",
@@ -630,9 +654,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY",
-        ClaimKind.DERIVATION_GATE,
-        "Legacy strict-dynamics gate: establish from a physical/dynamical law that primitive existence potential in indistinction actually undergoes a candidate differentiation process. The formal DISPERSION/STRUCTURE partition itself is already exact once persistence is defined; this gate concerns dynamical instantiation, not the algebraic dichotomy.",
-        ("DEF_PRIMITIVE_INDISTINCTION", "DEF_DISTINCTION_PERSISTENCE_PREDICATE"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE DISCHARGED / SUPERSEDED. The canonical foundational route no longer requires an unsourced dynamical transition P_E->candidate differentiation. Realized existence is typed relationally through BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING, while the first-Hamlet persistence classifier remains a separate optional semantic/dynamical layer.",
+        ("THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS", "THM_FIRST_HAMLET_DISPERSION_STRUCTURE"),
     ),
     Claim(
         "THM_MINIMAL_INFORMATION_STATE_BINARY",
@@ -654,15 +678,15 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",
-        ClaimKind.DERIVATION_GATE,
-        "Legacy strict-dynamics gate: physically instantiate the already-defined first Hamlet DISPERSION/STRUCTURE bifurcation from primitive existence potential. The canonical algebraic Hamlet is THM_FIRST_HAMLET_DISPERSION_STRUCTURE plus THM_FIRST_HAMLET_Z2 and does not require this gate.",
-        ("GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY", "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0", "THM_FIRST_HAMLET_Z2"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE DISCHARGED / SUPERSEDED. The persistence Hamlet is retained as an exact two-class classifier/reference realization, but it is not the source of the durable N/S carrier and is not required to be physically generated from P_E in the canonical foundation chain.",
+        ("GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY", "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0", "THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER"),
     ),
     Claim(
         "GATE_HAMLET_RELATIONAL_BINDING",
-        ClaimKind.DERIVATION_GATE,
-        "Strict relational-binding gate: derive from bare foundational structure, rather than canonical RDSS representation semantics, that DISPERSION and STRUCTURE must be realized as distinct relational occurrence identities. Canonical RDSS may represent them this way definitionally while the universal entailment remains open.",
-        ("THM_FIRST_HAMLET_Z2", "DEF_RELATIONAL_DISTINCTION"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE DISCHARGED / SUPERSEDED. DISPERSION/STRUCTURE are persistence outcomes and must not be promoted into the durable projective carrier. The canonical durable binary roles arise instead from the minimum non-trivial relation and its orientation orbit {N,S}. Therefore a universal Hamlet-to-relation occurrence binding is neither required nor canonical.",
+        ("THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER", "THM_CANONICAL_NONTRIVIAL_EXISTENCE_FORCES_DISTINCTION"),
     ),
     Claim(
         "DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION",
@@ -1049,9 +1073,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RA0",
-        ClaimKind.DERIVATION_GATE,
-        "Relational admissibility target: every admitted observable is incident to at least one primitive relation, as source or target. This is not an additional axiom; its complete derivation from A0 remains an explicit gate in the current kernel.",
-        ("A0",),
+        ClaimKind.THEOREM,
+        "Historical RA0 identifier, now CLOSED under the canonical TIR relational-existence typing: every admitted realized observable has at least one relational witness. Minimum non-trivial structural realization is a relation. This closure is sourced from TIR typing and is not misreported as a theorem of A0 alone.",
+        ("THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS", "BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION"),
     ),
     Claim(
         "DEF_POINT",
@@ -1086,6 +1110,12 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.THEOREM,
         "Appending finite binary words to OccurrenceAddress values defines the regular right action of B*: omega·empty=omega and (omega·u)·v=omega·(uv).",
         ("DEF_OCCURRENCE_ADDRESS_SPACE",),
+    ),
+    Claim(
+        "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+        ClaimKind.THEOREM,
+        "For every admitted occurrence address omega and every finite binary word u in B*, the right action produces the finite refined occurrence omega·u. Hence arbitrary finite relational refinement depth is available constructively. This is a formation capability and does not assert that every physical carrier must spontaneously realize every branch.",
+        ("THM_OCCURRENCE_ADDRESS_FREE_MONOID", "THM_REFINEMENT_RIGHT_ACTION"),
     ),
     Claim(
         "THM_REFINEMENT_LEVEL_GRADING",
@@ -1184,9 +1214,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RR1",
-        ClaimKind.DERIVATION_GATE,
-        "Recursive relational closure target: at every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction, so the rule re-applies at each finite refinement depth. This is not an additional axiom; its complete derivation from A0 remains an explicit gate.",
-        ("A0", "DEF_POINT", "DEF_BINARY_DISTINCTION"),
+        ClaimKind.FORMATION_RULE,
+        "Historical RR1 universal gate is superseded by the weaker canonical formation rule: any admitted occurrence may be extended by either binary branch to any selected finite depth through the B* right action. RDSS does not assert that every physical carrier must realize every branch automatically.",
+        ("THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",),
     ),
     Claim(
         "THM_RR1_REALIZES_FINITE_WORDS",
@@ -1204,7 +1234,7 @@ CLAIMS: tuple[Claim, ...] = (
         "REF_CP1_REFINEMENT",
         ClaimKind.REFERENCE_REALIZATION,
         "Recursive refinement may be realized as a tree of local CP^1/Fubini-Study fibres indexed by relational carriers.",
-        ("REF_CP1", "RR1"),
+        ("REF_CP1", "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE"),
     ),
     Claim(
         "REF_SINGLETON_CP1_OCCURRENCE_REALIZATION",
@@ -1214,15 +1244,15 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RA0_STAR",
-        ClaimKind.DERIVATION_GATE,
-        "Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers.",
-        ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
+        ClaimKind.FORMATION_RULE,
+        "Legacy strong closure condition retained only as an optional formation schema: when complete binary hosting is requested, every admitted carrier may be equipped with a non-degenerate binary distinction whose endpoint occurrences are admitted carriers. It is not a universal consequence required by the canonical foundation.",
+        ("DEF_POINT", "DEF_BINARY_DISTINCTION", "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE"),
     ),
     Claim(
         "RA0_REL_STAR",
-        ClaimKind.DERIVATION_GATE,
-        "Every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted carriers.",
-        ("DEF_POINT", "DEF_RELATIONAL_DISTINCTION"),
+        ClaimKind.FORMATION_RULE,
+        "Legacy strong relational closure condition retained only as an optional formation schema: when complete relational binary hosting is requested, every admitted carrier may be equipped with a relationally bound binary distinction. It is not a universal consequence needed for the canonical TIR/RDSS foundation.",
+        ("DEF_POINT", "DEF_RELATIONAL_DISTINCTION", "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE"),
     ),
     Claim(
         "THM_RA0_STAR_FROM_RA0_REL_STAR",
@@ -1328,7 +1358,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_BINARY_OCCURRENCE_COUNT",
         ClaimKind.THEOREM,
         "A complete binary occurrence unfolding through finite depth N contains exactly 2^(N+1)-1 path-labelled occurrences.",
-        ("RR1", "DEF_BINARY_DISTINCTION"),
+        ("THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "THM_FINITE_WORD_OCCURRENCE_COUNTABILITY",
@@ -1357,8 +1387,8 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_RR1_REALIZES_BOUNDARY_PREFIX_CHAINS",
         ClaimKind.THEOREM,
-        "Under RR1, every infinite binary boundary sequence determines a coherent chain whose every finite prefix is realized by a path-labelled occurrence; no limit carrier is thereby asserted.",
-        ("RR1", "DEF_OCCURRENCE_BOUNDARY"),
+        "Historical RR1 identifier: finite-refinement availability ensures that every infinite binary boundary sequence determines a coherent formal chain whose every finite prefix is constructible as a path-labelled occurrence. No infinite limit carrier and no universal physical branching are thereby asserted.",
+        ("THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE", "DEF_OCCURRENCE_BOUNDARY"),
     ),
     Claim(
         "THM_RR1_FROM_RA0_STAR",
