@@ -48,14 +48,14 @@ a persistent relation or two distinct primitive substances.
 The canonical TIR foundation uses the relational existence typing
 
 \[
-operatorname{Exist}(x)Longrightarrow exists R_x.
+\operatorname{Exist}(x)\Longrightarrow exists R_x.
 \]
 
 This typing is a proof parent of the First Law contradiction for absolute
 nothing. Therefore RDSS must **not** claim the reverse dependency
 
 \[
-A0Longrightarrow RA0,
+A0\Longrightarrow RA0,
 \]
 
 because that would make the proof graph circular.
@@ -243,13 +243,13 @@ RR1.
 The ledger already proves
 
 \[
-RA0_{mathrm{REL}}^*Longrightarrow RA0^*,
+RA0_{mathrm{REL}}^*\Longrightarrow RA0^*,
 \]
 
 and
 
 \[
-RA0_{mathrm{REL}}^*Longrightarrow RR1.
+RA0_{mathrm{REL}}^*\Longrightarrow RR1.
 \]
 
 Hence the three raw gate IDs represent only **one independent mathematical
