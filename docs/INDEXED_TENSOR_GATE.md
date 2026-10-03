@@ -1,6 +1,6 @@
 # Indexed Tensor Realization Boundary
 
-Historical filename: `INDEXED_TENSOR_GATE.md`.
+Historical filename: \`INDEXED_TENSOR_GATE.md\`.
 
 ## Status
 
@@ -14,57 +14,56 @@ This is not an open derivation gate.
 
 ## Exact no-go witness
 
-A flat rank-((1,1)) payload with four components is compatible with several
+A flat rank-\((1,1)\) payload with four components is compatible with several
 ordered slot-dimension assignments, including
 
 \[
 (1,4),
-qquad
+\qquad
 (2,2),
-qquad
+\qquad
 (4,1).
 \]
 
 Thus total rank and flat component count do not determine the slot signature.
 
-Even after choosing a (2\times2) realization, the same diagonal component
+Even after choosing a \(2\times2\) realization, the same diagonal component
 data can be contracted using distinct supplied evaluation forms. For example,
 
 \[
-T=operatorname{diag}(1,1)
+T=\operatorname{diag}(1,1)
 \]
 
 gives
 
 \[
-operatorname{Contr}_{g_1}(T)=2
+\operatorname{Contr}_{g_1}(T)=2
 \]
 
-for (g_1=operatorname{diag}(1,1)), while
+for \(g_1=\operatorname{diag}(1,1)\), while
 
 \[
-operatorname{Contr}_{g_2}(T)=3
+\operatorname{Contr}_{g_2}(T)=3
 \]
 
-for (g_2=operatorname{diag}(1,2)).
+for \(g_2=\operatorname{diag}(1,2)\).
 
 Therefore
 
 \[
 \boxed{
 (\text{rank},\text{flat payload})
-
-otRightarrow
+\not\Rightarrow
 \text{a unique indexed contraction}.
 }
 \]
 
 The theorem-level ledger node is
 
-`THM_INDEXED_TENSOR_CONTRACTION_UNDERDETERMINED_BY_FLAT_RANK`.
+\`THM_INDEXED_TENSOR_CONTRACTION_UNDERDETERMINED_BY_FLAT_RANK\`.
 
 The executable witness is
-`indexed_tensor_underdetermination_certificate()`.
+\`indexed_tensor_underdetermination_certificate()\`.
 
 ## Canonical interpretation
 
