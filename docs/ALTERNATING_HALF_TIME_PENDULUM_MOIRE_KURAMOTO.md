@@ -21,52 +21,52 @@ TIR source surfaces:
 
 The TIR pretime carrier is
 
-[
-mathcal X=mathbb N_0	imes{+,-}
-]
+\[
+mathcal X=mathbb N_0\times{+,-}
+\]
 
 with
 
-[
+\[
 H(n,+)=(n,-),
 qquad
 H(n,-)=(n+1,+).
-]
+\]
 
 Therefore
 
-[
-oxed{H^2=S}.
-]
+\[
+\boxed{H^2=S}.
+\]
 
 The normalized occurrence grade is
 
-[
+\[
 
 u(n,+)=n,
 qquad
 
-u(n,-)=n+rac12.
-]
+u(n,-)=n+\frac12.
+\]
 
 Hence one application of (H) advances the structural order by (1/2),
 while two complementary applications give one full successor.
 
 The internal phase state is not discretized by this statement:
 
-[
-	hetainmathbb R/2pimathbb Z.
-]
+\[
+\thetainmathbb R/2pimathbb Z.
+\]
 
 Thus the exact structural split is
 
-[
-oxed{
-	ext{occurrence order: discrete half-frames}
+\[
+\boxed{
+\text{occurrence order: discrete half-frames}
 qquad
-	ext{phase state: continuous }U(1).
+\text{phase state: continuous }U(1).
 }
-]
+\]
 
 This is the precise meaning of frame-like but fuzzy phase time at the present
 layer.
@@ -79,139 +79,139 @@ identification.
 
 The closed bipolar channel orbit contains
 
-[
-N_{	o}=24
-]
+\[
+N_{\to}=24
+\]
 
 directed incidences and
 
-[
+\[
 N_{leftrightarrow}=12
-]
+\]
 
 undirected exchange pairs.
 
 The total binary source information is
 
-[
+\[
 I_*=ln2.
-]
+\]
 
 Therefore one directed incidence carries the invariant information share
 
-[
-oxed{
-I_{	o}=rac{ln2}{24}.
+\[
+\boxed{
+I_{\to}=\frac{ln2}{24}.
 }
-]
+\]
 
 Because
 
-[
-kappa=rac{ln2}{24pi},
-]
+\[
+kappa=\frac{ln2}{24pi},
+\]
 
 this is equivalently
 
-[
-oxed{
-I_{	o}=pikappa.
+\[
+\boxed{
+I_{\to}=pikappa.
 }
-]
+\]
 
 One undirected pair contains the two opposite directed incidences, hence
 
-[
-oxed{
+\[
+\boxed{
 I_{leftrightarrow}
 =
-2I_{	o}
+2I_{\to}
 =
-rac{ln2}{12}
+\frac{ln2}{12}
 =
 2pikappa.
 }
-]
+\]
 
 ## 3. Canonical chordal mismatch fixes the pair potential
 
 For a projected (U(1)) mismatch
 
-[
-Delta=	heta_i-	heta_j-Gamma_{ij},
-]
+\[
+Delta=\theta_i-\theta_j-Gamma_{ij},
+\]
 
 the squared chordal distance on the unit circle is
 
-[
+\[
 |e^{iDelta}-1|^2
 =
 2-2cosDelta.
-]
+\]
 
 Normalize it to the interval ([0,1]):
 
-[
-oxed{
+\[
+\boxed{
 c(Delta)
 =
-rac{|e^{iDelta}-1|^2}{4}
+\frac{|e^{iDelta}-1|^2}{4}
 =
-rac{1-cosDelta}{2}.
+\frac{1-cosDelta}{2}.
 }
-]
+\]
 
 Then
 
-[
+\[
 c(0)=0,
 qquad
 c(pi)=1.
-]
+\]
 
 Thus the half-turn exactly saturates the paired exchange mismatch scale.
 
 Multiplying by the already fixed information budget of one undirected pair
 gives
 
-[
+\[
 V_{leftrightarrow}(Delta)
 =
 I_{leftrightarrow}c(Delta).
-]
+\]
 
 Therefore
 
-[
-oxed{
+\[
+\boxed{
 V_{leftrightarrow}(Delta)
 =
-rac{ln2}{24}(1-cosDelta)
+\frac{ln2}{24}(1-cosDelta)
 =
 pikappa(1-cosDelta).
 }
-]
+\]
 
 No free coupling amplitude remains in this canonical information-normalized
 pair potential.
 
 At the half-turn,
 
-[
-oxed{
+\[
+\boxed{
 V_{leftrightarrow}(pi)
 =
-rac{ln2}{12}.
+\frac{ln2}{12}.
 }
-]
+\]
 
 Consequently twelve maximally mismatched exchange pairs give
 
-[
+\[
 12V_{leftrightarrow}(pi)
 =
-oxed{ln2}.
-]
+\boxed{ln2}.
+\]
 
 This is an independent normalization closure check.
 
@@ -219,40 +219,40 @@ This is an independent normalization closure check.
 
 Write
 
-[
-Delta=	heta_+-	heta_- - Gamma.
-]
+\[
+Delta=\theta_+-\theta_- - Gamma.
+\]
 
 Let
 
-[
-A_*=rac{ln2}{24}=pikappa.
-]
+\[
+A_*=\frac{ln2}{24}=pikappa.
+\]
 
 Then
 
-[
+\[
 V=A_*(1-cosDelta).
-]
+\]
 
 The gradients are
 
-[
-rac{partial V}{partial	heta_+}
+\[
+\frac{partial V}{partial\theta_+}
 =
 A_*sinDelta,
-]
+\]
 
-[
-rac{partial V}{partial	heta_-}
+\[
+\frac{partial V}{partial\theta_-}
 =
 -A_*sinDelta.
-]
+\]
 
 The relational forces are therefore
 
-[
-oxed{
+\[
+\boxed{
 F_+
 =
 -A_*sinDelta,
@@ -261,15 +261,15 @@ F_-
 =
 +A_*sinDelta.
 }
-]
+\]
 
 Hence
 
-[
-oxed{
+\[
+\boxed{
 F_++F_-=0.
 }
-]
+\]
 
 The interaction can change the relative coordinate but cannot accelerate the
 center mode.
@@ -284,24 +284,24 @@ equal Rayleigh coefficient (etage0) on each of the two sectors.
 
 Define center and relative coordinates
 
-[
-c=rac{	heta_++	heta_-}{2},
+\[
+c=\frac{\theta_++\theta_-}{2},
 qquad
-Delta=	heta_+-	heta_-.
-]
+Delta=\theta_+-\theta_-.
+\]
 
 Adding the two sector equations gives
 
-[
-oxed{
+\[
+\boxed{
 I_phiddot c+etadot c=0.
 }
-]
+\]
 
 Subtracting gives
 
-[
-oxed{
+\[
+\boxed{
 I_phiddotDelta
 +
 etadotDelta
@@ -310,12 +310,12 @@ etadotDelta
 =
 0.
 }
-]
+\]
 
 Since (A_*=pikappa),
 
-[
-oxed{
+\[
+\boxed{
 I_phiddotDelta
 +
 etadotDelta
@@ -324,20 +324,20 @@ etadotDelta
 =
 0.
 }
-]
+\]
 
 Equivalently, with reduced inertia and damping
 
-[
-mu=rac{I_phi}{2},
+\[
+mu=\frac{I_phi}{2},
 qquad
-gamma=rac{eta}{2},
-]
+gamma=\frac{eta}{2},
+\]
 
 the same equation is
 
-[
-oxed{
+\[
+\boxed{
 muddotDelta
 +
 gammadotDelta
@@ -346,15 +346,15 @@ pikappasinDelta
 =
 0.
 }
-]
+\]
 
 This is the standard pendulum equation on the relative phase coordinate.
 
 The conservative core (eta=0) has
 
-[
+\[
 ddot c=0,
-]
+\]
 
 so the center is inertial while the relative phase oscillates in the forced
 periodic potential.
@@ -363,52 +363,52 @@ periodic potential.
 
 The full successor is
 
-[
+\[
 S=H^2.
-]
+\]
 
 Consider a local linear three-frame inertial operator
 
-[
+\[
 D_2x_n
 =
 a x_{n-1}+b x_n+c x_{n+1}.
-]
+\]
 
 Requiring it to annihilate constants gives
 
-[
+\[
 a+b+c=0.
-]
+\]
 
-Requiring it also to annihilate uniform drift (x_n=alpha n+eta) gives
+Requiring it also to annihilate uniform drift (x_n=alpha n+\beta) gives
 
-[
+\[
 c=a.
-]
+\]
 
 Therefore
 
-[
+\[
 b=-2a.
-]
+\]
 
 Up to one overall scale, the unique local operator is
 
-[
-oxed{
+\[
+\boxed{
 D_2x_n
 =
 x_{n+1}-2x_n+x_{n-1}.
 }
-]
+\]
 
 Thus on a normalized full-successor spacing (h),
 
-[
-oxed{
+\[
+\boxed{
 I_phi
-rac{
+\frac{
 Delta_{n+1}-2Delta_n+Delta_{n-1}
 }{h^2}
 +
@@ -416,7 +416,7 @@ Delta_{n+1}-2Delta_n+Delta_{n-1}
 =
 0.
 }
-]
+\]
 
 The occurrence index is discrete; (Delta_n) is still a continuous phase
 representative. Physical seconds are not assumed. A dimensional clock
@@ -426,93 +426,93 @@ calibration of (h) remains downstream.
 
 For an undirected Moire graph with gauge-reduced edge mismatch
 
-[
+\[
 Delta_{ij}
 =
-	heta_i-	heta_j-Gamma_{ij},
-]
+\theta_i-\theta_j-Gamma_{ij},
+\]
 
 define the canonical information potential
 
-[
-oxed{
-V_{m M}
+\[
+\boxed{
+V_{\rm M}
 =
 pikappa
 sum_{{i,j}in E}
 left(
 1-cosDelta_{ij}
-ight).
+\right).
 }
-]
+\]
 
 For each edge,
 
-[
-partial_{	heta_i}V_{ij}
+\[
+partial_{\theta_i}V_{ij}
 =
 pikappasinDelta_{ij},
 qquad
-partial_{	heta_j}V_{ij}
+partial_{\theta_j}V_{ij}
 =
 -pikappasinDelta_{ij}.
-]
+\]
 
 Thus the network force is automatically a sine-coupling force. No independent
 Kuramoto sine ansatz is required.
 
 A common phase shift
 
-[
-	heta_imapsto	heta_i+alpha
-]
+\[
+\theta_imapsto\theta_i+alpha
+\]
 
-leaves every (Delta_{ij}) and therefore (V_{m M}) unchanged.
+leaves every (Delta_{ij}) and therefore (V_{\rm M}) unchanged.
 
 ## 8. Inertial and overdamped regimes are one dynamics
 
 The TIR phase-action parent supplies the Euler--Lagrange--Rayleigh form
 
-[
-I_iddot	heta_i
+\[
+I_iddot\theta_i
 +
-eta_idot	heta_i
+eta_idot\theta_i
 +
-rac{partial V_{m M}}{partial	heta_i}
+\frac{partial V_{\rm M}}{partial\theta_i}
 =
 0.
-]
+\]
 
 This is the inertial network phase dynamics.
 
 In the overdamped limit,
 
-[
-I_iddot	heta_i	o0,
-]
+\[
+I_iddot\theta_i\to0,
+\]
 
 so
 
-[
-oxed{
-eta_idot	heta_i
+\[
+\boxed{
+eta_idot\theta_i
 =
 -
-rac{partial V_{m M}}{partial	heta_i}.
+\frac{partial V_{\rm M}}{partial\theta_i}.
 }
-]
+\]
 
 Therefore
 
-[
-oxed{
-eta_idot	heta_i
+\[
+\boxed{
+eta_idot\theta_i
 =
 -pikappa
 sum_j
 sinDelta_{ij}
 }
-]
+\]
 
 with the edge orientation fixing the displayed sign convention.
 
@@ -520,23 +520,23 @@ This is gauge-twisted Kuramoto flow.
 
 Hence
 
-[
-oxed{
-	ext{pendulum}
+\[
+\boxed{
+\text{pendulum}
 =
-	ext{two-sector inertial reduction},
+\text{two-sector inertial reduction},
 }
-]
+\]
 
 while
 
-[
-oxed{
-	ext{Kuramoto}
+\[
+\boxed{
+\text{Kuramoto}
 =
-	ext{overdamped network reduction}.
+\text{overdamped network reduction}.
 }
-]
+\]
 
 They are not competing laws.
 
@@ -546,36 +546,36 @@ Both descend from the same relational phase potential.
 
 For the overdamped system,
 
-[
-dot	heta_i
+\[
+dot\theta_i
 =
--rac1{eta_i}
-rac{partial V_{m M}}{partial	heta_i}.
-]
+-\frac1{eta_i}
+\frac{partial V_{\rm M}}{partial\theta_i}.
+\]
 
 Therefore
 
-[
-dot V_{m M}
+\[
+dot V_{\rm M}
 =
 sum_i
-rac{partial V_{m M}}{partial	heta_i}
-dot	heta_i
+\frac{partial V_{\rm M}}{partial\theta_i}
+dot\theta_i
 =
 -sum_i
-rac1{eta_i}
+\frac1{eta_i}
 left(
-rac{partial V_{m M}}{partial	heta_i}
-ight)^2.
-]
+\frac{partial V_{\rm M}}{partial\theta_i}
+\right)^2.
+\]
 
 Hence
 
-[
-oxed{
-dot V_{m M}le0.
+\[
+\boxed{
+dot V_{\rm M}le0.
 }
-]
+\]
 
 This reproduces the exact conditional TIR White-Thread Lyapunov result on the
 canonical RDSS information normalization.
@@ -591,9 +591,9 @@ PASS:
 - directed information share (ln2/24);
 - paired information budget (ln2/12);
 - canonical pair potential
-  [
+  \[
   V_{leftrightarrow}=pikappa(1-cosDelta);
-  ]
+  \]
 - exact opposite pair gradients and zero net center force;
 - relative pendulum equation;
 - unique local symmetric second-frame difference;
