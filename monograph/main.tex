@@ -51,28 +51,34 @@ algebra.
 
 \section*{Proof-closure discipline}
 
-Every promoted statement in the foundational chain carries exactly one
-epistemic role:
+Every promoted statement in the foundational chain carries an explicit
+epistemic role. Mathematical proof debt and empirical evidence debt are kept
+separate:
 \[
 \boxed{
 \mathrm{LAW},\quad
+\mathrm{FORMATION},\quad
 \mathrm{DEF},\quad
 \mathrm{THM},\quad
 \mathrm{BRIDGE},\quad
-\mathrm{OPEN}.
+\mathrm{REFERENCE},\quad
+\mathrm{DERIVATION\_GATE},\quad
+\mathrm{EVIDENCE\_GATE}.
 }
 \]
 \(\mathrm{LAW}\) is reserved for the \emph{First Law of Existence}.
-\(\mathrm{DEF}\) introduces notation or a typed construction and is never
+\(\mathrm{FORMATION}\) specifies admissible construction rules.
+\(\mathrm{DEF}\) introduces notation or typed construction and is not
 counted as a derived fact. \(\mathrm{THM}\) requires explicit hypotheses
-and a proof from earlier LAW/DEF/THM statements. \(\mathrm{BRIDGE}\)
-imports a separately proved result with its provenance and hypotheses.
-\(\mathrm{OPEN}\) is never used as if proved.
+and a proof from earlier admitted statements. \(\mathrm{BRIDGE}\) imports
+a separately proved result with provenance and hypotheses.
+\(\mathrm{DERIVATION\_GATE}\) denotes unresolved mathematical proof debt,
+whereas \(\mathrm{EVIDENCE\_GATE}\) denotes a claim that cannot be settled
+by the structural algebra alone and requires external empirical binding.
 
-A downstream theorem whose dependency cone contains an OPEN statement is
-reported as conditional on that statement. No rhetorical phrase, geometric
-picture, numerical coincidence or successful software test promotes an OPEN
-edge to THM. This is the proof firewall used throughout the monograph.
+No rhetorical phrase, geometric picture, numerical coincidence or successful
+software test promotes either kind of gate to THM. This is the proof firewall
+used throughout the monograph.
 
 \section*{Metatheoretic environment}
 
@@ -1532,31 +1538,57 @@ The consolidated theorem is
 material or natural substrate realizes this exact structural normalization
 belong to physical binding and are not premises of the theorem.
 
-The remaining OFHM frontier has now been separated by type.
-The geometric-fractal question is theorem-level closed by the no-go result
-\claimid{THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED}: the canonical
-symbolic boundary is Baire space \(\mathbb Z^{\mathbb N}\), but finite OFHM
-does not select a unique compact geometric embedding, continuum measure or
-Hausdorff dimension. Accordingly
+The geometric-fractal limit question is closed by an
+underdetermination theorem rather than by selecting an arbitrary fractal
+realization. The ideal symbolic boundary is
+\[
+\boxed{\mathbb Z^{\mathbb N}}
+\]
+with finite-prefix cylinder topology. It is Baire space and is noncompact.
+The same topology supports distinct full-support product measures; compatible
+prefix metrics contain an unfixed scale; and the structural OFHM signature
+contains no canonical map into an external metric geometry.
+
+On the embedded binary boundary,
+\[
+\dim_H
+=
+\frac{\ln2}{-\ln\lambda},
+\qquad 0<\lambda<1,
+\]
+so the compatible choices \(\lambda=1/2\) and \(\lambda=1/4\) already give
+dimensions \(1\) and \(1/2\). Therefore the symbolic carrier does not select
+a unique Hausdorff dimension or continuum measure.
+
+Accordingly
 \claimid{GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT}
-is retained only as a historical gate identifier with theorem-level
-\emph{closed-by-no-go} status.
+is theorem-level \emph{closed by no-go}. The canonical symbolic boundary is
+fixed; a unique compact geometric realization is not.
 
-Concrete physical realization is a different kind of problem. The historical
-identifier
+Physical realization is a different epistemic task. Claim
+\claimid{THM_OFHM_PHYSICAL_BINDING_REQUIRES_EXTERNAL_EVIDENCE}
+shows that the structural algebra contains neither a unique realization map
+into a named physical substrate nor dimensional calibration data. Hence
+\[
+\boxed{
 \claimid{GATE_OFHM_PHYSICAL_BINDING}
-is typed \texttt{EVIDENCE\_GATE}: it requires an explicit realization map,
-dimensional calibration and external empirical evidence rather than another
-internal mathematical derivation.
+:
+\mathrm{EVIDENCE\_GATE}.
+}
+\]
 
-Hence the current ledger status is
+The resulting structural status is
 \[
 \boxed{
 N_{\mathrm{DERIVATION\_GATE}}=0,
+}
 \qquad
+\boxed{
 N_{\mathrm{EVIDENCE\_GATE}}=1.
 }
 \]
+This does not assert a physical identification. It separates completed
+mathematical derivation from the future evidence-bearing realization task.
 
 Physical identification of the resulting projective representation with
 measured angular momentum spin remains part of the separate empirical binding
@@ -1623,7 +1655,7 @@ vacuity witness. It is excluded from the admissible RTOFA model class by
 
 \section{Relational admissibility}
 
-The historical relational-admissibility target is
+The historical relational-admissibility formula is
 \[
 \boxed{
 \operatorname{Adm}(x)
@@ -1637,45 +1669,33 @@ The historical relational-admissibility target is
 }
 \tag{RA0}
 \]
-RA0 remains a DERIVATION GATE in the executable ledger. It is not silently
-promoted merely because relationality motivates the theory.
 
-Indeed, under primitive \(\operatorname{Adm}\),
+Model non-vacuity alone does not imply this formula: a raw primitive
+presentation with one admitted carrier and no relation is a countermodel to
 \[
-P=\{a\},
-\qquad
-\operatorname{Adm}=\{a\},
-\qquad
-R=\varnothing
+\mathrm{META0}\Rightarrow\mathrm{RA0}.
 \]
-is non-empty but contains no primitive relation. Hence
-\[
-\boxed{\mathrm{META0}\not\Rightarrow\mathrm{RA0}}
-\]
-in the current primitive-admissibility language.
+This independence witness is retained because it proves that relationality is
+not being smuggled out of META0.
 
-A relation-aware admissibility predicate may instead be defined by
+The current canonical route imports the separately sourced TIR
+relational-existence typing
 \[
 \boxed{
-\operatorname{Adm}_{R}(x)
-:\Longleftrightarrow
-\exists y,r\,
-\left(
-\operatorname{Rel}_{r}(x,y)
-\lor
-\operatorname{Rel}_{r}(y,x)
-\right).
+\operatorname{Exist}(x)
+\Longrightarrow
+\exists R_x,
 }
 \]
-Under that DEF, RA0 is true by expansion; this is a semantic refinement, not
-a theorem smuggled into the old language.
+under
+\claimid{BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING}.
+Within that declared TIR/RDSS typing, the historical
+\claimid{RA0} identifier is theorem-level closed.
 
-A primitive relation is typed as
-\[
-\boxed{r:a\to b.}
-\]
-The endpoint occurrences may share one carrier even when their occurrence
-identities are distinct.
+This does not turn every bare mathematical singleton into an internally binary
+object. Carrier identity and occurrence identity remain separately typed, and
+the durable orientation-role distinction \(\{N,S\}\) requires a
+non-self-collapsed relational witness.
 
 The absence of a relation is not algebraic zero. In a typed additive sector
 one may have
@@ -1686,21 +1706,15 @@ X+0_X=X,
 \qquad
 X-X=0_X,
 \]
-while ``no relation'' remains a separate condition.
+while the absence of a relation remains a separate condition.
 
-\subsection{Formula-level vacuity versus admissible-model semantics}
+\subsection{Historical independence witness}
 
-RA0 and RR1 are conditional formulas, so an unrestricted raw empty
-presentation can satisfy them vacuously. Therefore
-\[
-\boxed{
-\mathrm{RA0}+\mathrm{RR1}
-\not\vdash
-\mathrm{EX0}.
-}
-\]
-This does not contradict META0: the raw empty presentation is not an
-admissible model.
+The old primitive-language countermodel remains a provenance result:
+META0 by itself does not prove relational incidence. The current theorem-level
+RA0 status therefore comes from the explicit TIR existence-typing bridge,
+not from silently strengthening the First Law.
+
 \section{Minimal carrier and minimal distinction}
 
 The minimal carrier of the general algebra is a point
@@ -1761,53 +1775,42 @@ complex binary distinction. It is not claimed to follow from RA0 alone.
 
 \section{Recursive relational refinement}
 
-A selected relational point may itself become the carrier of another
-minimal distinction. Let
-\[
-V_n=\{-1,+1\}^{n}.
-\]
-For \(\omega\in V_n\), define the binary refinement
+Finite occurrence addresses form the free binary-word monoid
 \[
 \boxed{
-p_\omega\longmapsto
-\{p_{\omega-},p_{\omega+}\}.
+B^*=\{-1,+1\}^{<\omega}.
 }
-\tag{RR1}
 \]
-The two children are non-degenerate as \emph{occurrences}: their path
-addresses \(\omega-\) and \(\omega+\) are distinct. This does not require
-their underlying carrier labels to be different. In particular, the
-singleton presentation
+For every occurrence address \(\omega\) and every finite word \(u\), the
+right action
 \[
-D(a)=(a,a)
+\boxed{
+\omega\cdot u\in B^*
+}
 \]
-is permitted: \(a_-\) and \(a_+\) are different relational occurrences
-even though
+is defined and associative. Therefore arbitrary selected finite refinement
+depth is constructively available:
 \[
-\operatorname{carrier}(a_-)
-=
-\operatorname{carrier}(a_+)
-=
-a.
+\boxed{
+\forall\omega,u\in B^*:\quad \omega\cdot u\in B^*.
+}
 \]
-The historical RR1 universal gate is no longer a foundational proof debt.
-The occurrence-address free monoid and its right action give the theorem
-\claimid{THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE}: for every admitted
-occurrence address and every selected finite binary word, the corresponding
-finite refinement address exists constructively. RR1 is therefore retained as
-a formation-rule identifier for requested complete recursive hosting, not as a
-universal law saying that every physical carrier must spontaneously realize
-every branch. No second foundational law is introduced. The construction may
-therefore realize the finite prefixes of the tower
-\[
-p\to\{p_-,p_+\}
-\to\{p_{--},p_{-+},p_{+-},p_{++}\}
-\to\cdots
-\]
-to any selected finite depth.
+This is
+\claimid{THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE}.
 
-Fractality means compatibility across refinement levels, not a requirement of
-perfect geometric self-similarity. For a branch
+The historical identifier \claimid{RR1} is retained as a FORMATION RULE for
+constructions that request recursive binary hosting. It is not an unresolved
+foundational derivation gate, and RDSS does not assert that every physical
+carrier must spontaneously realize every branch.
+
+The stronger historical schemas
+\claimid{RA0_STAR} and \claimid{RA0_REL_STAR} are likewise retained as
+optional formation rules. Their implication and independence witnesses remain
+valid within those declared schemas, but they are not additional foundational
+laws.
+
+Fractality means compatibility across selected refinement levels, not exact
+geometric self-similarity. For a branch
 \(\epsilon\in\{-1,+1\}\), use the typed refinement
 \[
 \boxed{
@@ -1817,9 +1820,7 @@ F_{\epsilon}:
 \mathcal A_{\tau,\omega\epsilon}^{p,q}.
 }
 \]
-The target semantic scale \(\tau\) is explicit; the reference realization
-preserves tensor rank and advances the relational carrier by exactly one
-branch. For a relational product \(\star\), define
+For a relational product \(\star\), define the residual
 \[
 \boxed{
 \Delta_{F_{\epsilon}}(X,Y)
@@ -1829,8 +1830,8 @@ F_{\epsilon}(X\star Y)
 F_{\epsilon}(X)\star F_{\epsilon}(Y).
 }
 \]
-Exact self-similarity is the special case \(\Delta_F=0\). Non-zero residuals
-remain legitimate algebraic information.
+Exact self-similarity is the special case \(\Delta_F=0\); non-zero
+residuals remain legitimate algebraic information.
 
 \subsection{Reference CP1 fibre realization of refinement}
 
@@ -2815,6 +2816,10 @@ dependency is silently promoted to a theorem.
 
 \section{Historical closure-compression candidate}
 
+This section is retained for provenance. Its RA0*, RA0\(^{\mathrm{rel}*}\)
+and independence arguments describe stronger optional formation schemas in a
+legacy language; they are not the live foundational gate structure.
+
 The historical pre-\(A_0\) compression programme treated RA0 and RR1 as
 two object-level derivation gates under the prior model-formation rule META0.
 In the current canonical stratification they are not foundational axioms:
@@ -2831,7 +2836,7 @@ force recursive refinement:
 \boxed{\mathrm{RA0}\not\Rightarrow\mathrm{RR1}.}
 \]
 
-A stronger candidate foundational statement is therefore introduced:
+A stronger historical formation schema was therefore introduced:
 \[
 \boxed{
 \mathrm{RA0}^{*}:
@@ -3005,11 +3010,12 @@ orientation-neutral RA0, and recursive RR1, but it does not satisfy
 \mathrm{RA0}^{\mathrm{rel}*}.
 }
 \]
-The proposed one-object-level-axiom reduction is therefore a strict
-strengthening/compression: one axiom replaces two only after additional
-relational binding data are made constitutive.
+This historical one-rule reduction is a strict strengthening/compression:
+one formation schema replaces two legacy obligations only after additional
+relational binding data are made constitutive. It is not promoted to a new
+foundational law.
 
-Together with META0 this yields the candidate reduced stratification
+In the historical language this yielded the candidate reduced stratification
 \[
 \boxed{
 \mathrm{META0}
