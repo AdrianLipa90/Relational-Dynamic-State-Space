@@ -255,17 +255,22 @@ RA0_{mathrm{REL}}^*Longrightarrow RR1.
 Hence the three raw gate IDs represent only **one independent mathematical
 burden**.
 
-After the current consolidation the six raw `DERIVATION_GATE` IDs reduce to
-four independent burdens:
+After separating empirical realization from mathematical derivation, the
+current ledger has four raw `DERIVATION_GATE` IDs but only two independent
+mathematical burdens:
 
 1. global relational generativity `RA0_REL_STAR`;
-2. binding the closed relational Collatz normalization to primitive natural
-   dynamics;
-3. OFHM geometric/infinite-fractal limit;
-4. OFHM physical substrate/parameter binding.
+2. OFHM geometric/infinite-fractal completion.
 
-The raw gate count must not be reported as six independent unresolved
-problems.
+The weaker raw identifiers `RA0_STAR` and `RR1` are already consequences
+of `RA0_REL_STAR` if that stronger target is closed.
+
+The historical Collatz-natural-system binding and OFHM substrate/parameter
+binding are retained as explicit `BRIDGE` claims. They are open empirical
+realization questions, not missing theorems of the algebra.
+
+Neither the raw gate count nor the number of open physical bridges should be
+reported as the number of independent mathematical gaps.
 
 ## 8. Collatz operation provenance
 
