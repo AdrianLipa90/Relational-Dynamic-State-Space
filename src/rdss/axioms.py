@@ -1201,9 +1201,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RR1",
-        ClaimKind.THEOREM,
-        "Within the relational-generative model class selected by formation rule RA0_REL_STAR, every admitted path-labelled occurrence recursively carries a further non-degenerate binary distinction to arbitrary finite depth.",
-        ("RA0_REL_STAR",),
+        ClaimKind.FORMATION_RULE,
+        "Recursive-refinement model-formation rule: every admitted path-labelled occurrence may recursively carry a further non-degenerate binary distinction, so the rule re-applies at each finite refinement depth. RR1 is not a theorem of A0; it is a model-class condition. THM_RR1_FROM_RA0_REL_STAR proves that the stronger relational-generative formation rule implies it.",
+        ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "THM_RR1_REALIZES_FINITE_WORDS",
@@ -1231,9 +1231,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RA0_STAR",
-        ClaimKind.THEOREM,
-        "Within the relational-generative model class selected by RA0_REL_STAR, forgetting explicit branch-relation labels leaves every admitted carrier with an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers.",
-        ("RA0_REL_STAR",),
+        ClaimKind.FORMATION_RULE,
+        "Hosted-binary model-formation rule: every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers. RA0_STAR is a model-class restriction rather than a theorem of A0. THM_RA0_STAR_FROM_RA0_REL_STAR proves that the stronger relational-generative formation rule implies it.",
+        ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "RA0_REL_STAR",
