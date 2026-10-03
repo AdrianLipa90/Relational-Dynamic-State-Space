@@ -294,6 +294,15 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
             "THM_OFHM_PREFIX_METRIC_SCALE_IS_NOT_CANONICAL",
             "THM_OFHM_EXTERNAL_GEOMETRIC_LIMIT_REQUIRES_EXTRA_EMBEDDING",
             "THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED",
+            "DEF_OFHM_PREFIX_ULTRAMETRIC",
+            "THM_OFHM_PREFIX_ULTRAMETRIC",
+            "THM_OFHM_PREFIX_CHAIN_CAUCHY",
+            "THM_OFHM_SYMBOLIC_COMPLETION_BAIRE_BOUNDARY",
+            "THM_OFHM_PREFIX_COMPLETION_NONCOMPACT",
+            "THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION",
+            "THM_OFHM_NO_UNIFORM_COUNTABLE_BRANCH_PROBABILITY",
+            "THM_OFHM_NO_UNIQUE_CONTINUUM_MEASURE",
+            "BRIDGE_OFHM_GEOMETRIC_EMBEDDING",
             "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
             "THM_OFHM_PHYSICAL_BINDING_REQUIRES_EXTERNAL_EVIDENCE",
             "GATE_OFHM_PHYSICAL_BINDING",
@@ -301,6 +310,8 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         sources=(
             CANONICAL_FOUNDATIONAL_CONTRACT,
             "docs/GENERAL_ORBITAL_FRACTAL_HILBERT_MOIRE_ALGEBRA.md",
+            "docs/OFHM_PREFIX_COMPLETION.md",
+            "src/rdss/ofhm_prefix_completion.py",
             "docs/FOUNDATIONAL_CLOSURE_FRONTIER.md",
         ),
         note=(
@@ -392,6 +403,33 @@ IMPLEMENTATION_PROVENANCE: dict[str, tuple[str, ...]] = {
     ),
     "realization_boundaries.realization_boundary_no_go_certificate": (
         "THM_REALIZATION_BOUNDARIES_CLOSED_BY_UNDERDETERMINATION",
+    ),
+    "ofhm_prefix_completion.prefix_ultrametric": (
+        "DEF_OFHM_PREFIX_ULTRAMETRIC",
+        "THM_OFHM_PREFIX_ULTRAMETRIC",
+    ),
+    "ofhm_prefix_completion.prefix_chain_cauchy_bound": (
+        "THM_OFHM_PREFIX_CHAIN_CAUCHY",
+    ),
+    "ofhm_prefix_completion.countable_prefix_completion_is_totally_bounded": (
+        "THM_OFHM_PREFIX_COMPLETION_NONCOMPACT",
+    ),
+    "ofhm_prefix_completion.finite_alphabet_boundary_dimension": (
+        "THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION",
+    ),
+    "ofhm_prefix_completion.countable_boundary_dimension_is_infinite": (
+        "THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION",
+    ),
+    "ofhm_prefix_completion.uniform_countable_branch_probability_exists": (
+        "THM_OFHM_NO_UNIFORM_COUNTABLE_BRANCH_PROBABILITY",
+        "THM_OFHM_NO_UNIQUE_CONTINUUM_MEASURE",
+    ),
+    "ofhm_prefix_completion.symbolic_completion_certificate": (
+        "THM_OFHM_SYMBOLIC_COMPLETION_BAIRE_BOUNDARY",
+        "THM_OFHM_PREFIX_COMPLETION_NONCOMPACT",
+        "THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION",
+        "THM_OFHM_NO_UNIQUE_CONTINUUM_MEASURE",
+        "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
     ),
     "orbital_fractal_hilbert_moire.countable_word_rank": (
         "DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",
