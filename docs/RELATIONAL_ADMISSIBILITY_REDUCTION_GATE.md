@@ -6,10 +6,10 @@
 
 The historical countermodel in this document remains valid:
 
-[
+\[
 mathrm{META0}
 otRightarrowmathrm{RA0}.
-]
+\]
 
 That fact is still important. Non-vacuity alone does not imply relational
 incidence.
@@ -18,11 +18,11 @@ The current canonical RDSS foundation, however, no longer attempts to derive
 RA0 from META0 alone. It explicitly imports the canonical TIR
 relational-existence typing
 
-[
-oxed{
+\[
+\boxed{
 operatorname{Exist}(x)Longrightarrowexists R_x
 }
-]
+\]
 
 through `BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING`.
 
@@ -33,23 +33,23 @@ foundation chain and is not an open derivation gate.
 
 Take
 
-[
+\[
 P={a},
 qquad
 operatorname{Adm}={a},
 qquad
-R=arnothing.
-]
+R=\varnothing.
+\]
 
 The admitted carrier domain is non-empty, so the non-vacuity component of
 META0 is satisfied, but (a) is incident to no primitive relation. Hence
 
-[
-oxed{
+\[
+\boxed{
 mathrm{META0}
 otRightarrowmathrm{RA0}.
 }
-]
+\]
 
 The current theory retains this as an independence result. It prevents the
 sourced relational-existence rule from being misreported as a theorem of
@@ -59,17 +59,17 @@ META0 or (A_0) alone.
 
 The active dependency is
 
-[
-oxed{
+\[
+\boxed{
 A_0
 +
-	ext{sourced TIR relational-existence typing}
+\text{sourced TIR relational-existence typing}
 Longrightarrow
-	ext{relational witness}
+\text{relational witness}
 Longrightarrow
 mathrm{RA0}.
 }
-]
+\]
 
 The ledger nodes are:
 
@@ -90,16 +90,16 @@ This route preserves proof hygiene:
 
 One may alternatively define
 
-[
+\[
 operatorname{Adm}_{R}(x)
 :Longleftrightarrow
 exists y,r,
-igl(
+\bigl(
 operatorname{Rel}_r(x,y)
 lor
 operatorname{Rel}_r(y,x)
-igr).
-]
+\bigr).
+\]
 
 Under that different language RA0 follows by definitional expansion. RDSS does
 not need this reduction for its current canonical closure; it is retained as a
@@ -109,13 +109,13 @@ historical semantic option.
 
 The old independence statements
 
-[
+\[
 mathrm{RA0}
 otRightarrowmathrm{RR1},
 qquad
 mathrm{RR1}
 otRightarrowmathrm{RA0}
-]
+\]
 
 remain valid for the historical schemas. The current canonical theory does not
 need a universal RR1 law: arbitrary selected finite refinement depth is
