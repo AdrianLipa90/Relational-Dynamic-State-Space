@@ -238,6 +238,38 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         ),
     ),
     ProvenanceNote(
+        surface="OFHM prefix-ultrametric symbolic completion",
+        role="DEF+THM+BRIDGE+NO_GO",
+        claim_ids=(
+            "DEF_OFHM_PREFIX_ULTRAMETRIC",
+            "THM_OFHM_PREFIX_ULTRAMETRIC",
+            "THM_OFHM_PREFIX_CHAIN_CAUCHY",
+            "THM_OFHM_SYMBOLIC_COMPLETION_BAIRE_BOUNDARY",
+            "THM_OFHM_PREFIX_COMPLETION_NONCOMPACT",
+            "THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION",
+            "THM_OFHM_NO_UNIFORM_COUNTABLE_BRANCH_PROBABILITY",
+            "THM_OFHM_NO_UNIQUE_CONTINUUM_MEASURE",
+            "BRIDGE_OFHM_GEOMETRIC_EMBEDDING",
+            "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
+        ),
+        sources=(
+            CANONICAL_FOUNDATIONAL_CONTRACT,
+            "docs/OFHM_PREFIX_COMPLETION.md",
+            "src/rdss/ofhm_prefix_completion.py",
+            "RDSS_OFHM_PARENT_MAIN@3fe6ed391d374a09c0b077b8bdedb3aabe16a28e",
+            "Infinities@339d6c58f3e7d86c67a4f758cd7416692f8f8280:research/EULERS_INFINITY_V0_1.md",
+            "Infinities@339d6c58f3e7d86c67a4f758cd7416692f8f8280:research/TIR_E6_FOURIER_HILBERT_HOTEL_CORE_V0_1.md",
+        ),
+        note=(
+            "The canonical completion uses only the countably branching prefix tree: "
+            "d_beta(a,b)=beta^{-LCP(a,b)} for beta>1. Its metric completion adds "
+            "Z^omega, is noncompact, and has infinite Hausdorff dimension in this "
+            "declared prefix-ultrametric family. No uniform countable branch "
+            "probability or unique continuum measure is forced. Any Euclidean, "
+            "complex, manifold or physical image is a separately typed bridge."
+        ),
+    ),
+    ProvenanceNote(
         surface="operator tetrahedral binding",
         role="THM+CROSSCHECK",
         claim_ids=(
