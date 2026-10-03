@@ -1,12 +1,12 @@
 # Non-Strict Monoidal Coherence Realization Boundary
 
-Historical filename: `MONOIDAL_COHERENCE_GATE.md`.
+Historical filename: \`MONOIDAL_COHERENCE_GATE.md\`.
 
 ## Status
 
 **CLOSED BY INFORMATION-LOSS NO-GO / COHERENCE DATA REQUIRED FOR NON-STRICT REALIZATIONS.**
 
-The current flat `TensorScalarElement` supports a strict reference subclass
+The current flat \`TensorScalarElement\` supports a strict reference subclass
 and residual diagnostics. It does not retain the syntax tree needed to recover
 a non-strict associator.
 
@@ -17,13 +17,13 @@ This is not an open derivation gate.
 The parenthesized tensor expressions
 
 \[
-(((Wotimes X)otimes Y)otimes Z)
+(((W\otimes X)\otimes Y)\otimes Z)
 \]
 
 and
 
 \[
-Wotimes(Xotimes(Yotimes Z))
+W\otimes(X\otimes(Y\otimes Z))
 \]
 
 are distinct syntax trees, but flattening retains only the same ordered leaf
@@ -38,30 +38,30 @@ Hence the flattening map is non-injective:
 \[
 \boxed{
 \text{parenthesized tensor tree}
-longrightarrow
+\longrightarrow
 \text{flat payload}
 }
 \]
 
-loses exactly the information required to reconstruct an associator path.
+and loses exactly the information required to reconstruct an associator path.
 
 Therefore the flat payload alone cannot force explicit maps
 
 \[
-alpha_{X,Y,Z}:
-(Xotimes Y)otimes Z
+\alpha_{X,Y,Z}:
+(X\otimes Y)\otimes Z
 \to
-Xotimes(Yotimes Z)
+X\otimes(Y\otimes Z)
 \]
 
 or the associated pentagon/hexagon data.
 
 The theorem-level ledger node is
 
-`THM_NONSTRICT_MONOIDAL_COHERENCE_UNDERDETERMINED_BY_FLATTENING`.
+\`THM_NONSTRICT_MONOIDAL_COHERENCE_UNDERDETERMINED_BY_FLATTENING\`.
 
 The executable witness is
-`monoidal_coherence_underdetermination_certificate()`.
+\`monoidal_coherence_underdetermination_certificate()\`.
 
 ## Canonical interpretation
 
