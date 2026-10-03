@@ -461,26 +461,26 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS",
-        ClaimKind.DERIVATION_GATE,
-        "Remaining foundational/physical bridge: establish that the primitive dynamics of the intended natural system is instantiated by this finite relational-cardinality normalization rather than merely admitting it as an exact algebraic realization.",
-        ("THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ", "A0"),
+        ClaimKind.BRIDGE,
+        "Open physical binding retained under its historical gate identifier: test whether a particular natural system instantiates the already-closed finite relational-cardinality Collatz normalization. This is an evidence-bearing realization bridge, not a missing algebraic derivation.",
+        ("THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ",),
     ),
     Claim(
         "GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS",
         ClaimKind.THEOREM,
         "Historical gate identifier retained as a conditional theorem: source-minimal parity arithmetic and relation-cardinality semantics already fix the Collatz coefficients and branch form inside the declared law class. The only unresolved stronger issue is represented once, by GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS.",
-        ("THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
+        ("THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ",),
     ),
     Claim(
         "GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA",
         ClaimKind.THEOREM,
         "Historical gate identifier retained as a closure theorem: numerical coefficients, quotient/product/identity-repair semantics, parity selection and selector-free bipolar tetrahedral operation-role selection are algebraically closed. Only physical/foundational instantiation of this normalization remains in GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS.",
-        ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
+        ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING"),
     ),
     Claim(
         "REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT",
         ClaimKind.REFERENCE_REALIZATION,
-        "Once the Collatz branches are admitted, E(x)=x/2 and O(x)=3x+1 have projective matrices diag(1,2) and [[3,1],[0,1]]. Determinant-one normalization places both in SL(2,R), hence their projective actions lie in PSL(2,R). This is downstream of the open branch-derivation gate.",
+        "For the already-derived Collatz branches E(x)=x/2 and O(x)=3x+1, the projective matrices are diag(1,2) and [[3,1],[0,1]]. Determinant-one normalization places both in SL(2,R), hence their projective actions lie in PSL(2,R). This realization is downstream of the closed algebraic branch theorem and does not require the separate physical-binding bridge.",
         ("DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE", "THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ"),
     ),
     Claim(
@@ -847,7 +847,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE",
         ClaimKind.THEOREM,
         "The operator tetrahedron depends on the durable relation-role operator algebra and on its Frobenius normalization. Therefore it cannot be used non-circularly to derive the earlier Hamlet-to-relation binding. Likewise, matching 3n+1 does not prove that primitive natural dynamics must instantiate that completion. The tetrahedral route closes a geometric realization/crosscheck of the coefficient structure, while GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS remains open.",
-        ("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON", "THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
+        ("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON", "THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY"),
     ),
     Claim(
         "BRIDGE_TIR_THREE_FLAVOUR_C3_LABEL_CARRIER",
@@ -2406,8 +2406,8 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_OFHM_PHYSICAL_BINDING",
-        ClaimKind.DERIVATION_GATE,
-        "No specific material, quantum, spacetime or other physical substrate is identified solely by the OFHM algebra or its source bridges; physical binding and parameter calibration remain separate evidence-bearing derivation tasks.",
+        ClaimKind.BRIDGE,
+        "Open physical realization bridge retained under its historical gate identifier: the finite OFHM algebra alone does not identify a specific material, quantum, spacetime or other physical substrate. Substrate identification and parameter calibration require separate empirical evidence and do not constitute a missing theorem of the algebra.",
         ("DER_OFHM_GENERAL_ALGEBRA",),
     ),
 
