@@ -19,8 +19,10 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
 TESTS = ROOT / "tests"
 MONOGRAPH = ROOT / "monograph" / "main.tex"
+CONTRACT = ROOT / "docs" / "CANONICAL_FOUNDATIONAL_CONTRACT.md"
 
 AUDITED_DOCS = (
+    CONTRACT,
     ROOT / "docs" / "ALGEBRAIC_GEOMETRIC_CELL_MAP.md",
     ROOT / "README.md",
     ROOT / "docs" / "ARCHITECTURE.md",
@@ -180,6 +182,101 @@ def audit_claim_graph() -> dict[str, int]:
         if len(ids) != len(set(ids)):
             raise AuditFailure("duplicate claim ids")
         return {"claims": len(ids)}
+    finally:
+        try:
+            sys.path.remove(str(SRC))
+        except ValueError:
+            pass
+
+
+def audit_foundational_contract() -> dict[str, object]:
+    """Fail closed if the canonical contract drifts from the live claim ledger."""
+
+    text = CONTRACT.read_text(encoding="utf-8")
+    sys.path.insert(0, str(SRC))
+    try:
+        axioms = importlib.import_module("rdss.axioms")
+        provenance = importlib.import_module("rdss.foundational_provenance")
+        claims = tuple(axioms.CLAIMS)
+        claim_ids = {claim.id for claim in claims}
+
+        declared = re.search(
+            r"\\boxed\{([0-9]+)\\\s+\\text\{claims\}\}",
+            text,
+        )
+        if declared is None:
+            raise AuditFailure("canonical contract does not declare the live claim count")
+        declared_count = int(declared.group(1))
+        if declared_count != len(claims):
+            raise AuditFailure(
+                "canonical contract claim-count drift: "
+                f"declared={declared_count}, live={len(claims)}"
+            )
+
+        derivation_gates = sorted(
+            claim.id
+            for claim in claims
+            if claim.kind is axioms.ClaimKind.DERIVATION_GATE
+        )
+        if derivation_gates:
+            raise AuditFailure(
+                f"algebra closure regression: DERIVATION_GATE={derivation_gates}"
+            )
+
+        evidence_gates = sorted(
+            claim.id
+            for claim in claims
+            if claim.kind is axioms.ClaimKind.EVIDENCE_GATE
+        )
+        expected_evidence = ["GATE_OFHM_PHYSICAL_BINDING"]
+        if evidence_gates != expected_evidence:
+            raise AuditFailure(
+                "evidence-frontier drift: "
+                f"expected={expected_evidence}, observed={evidence_gates}"
+            )
+
+        if (
+            "`GATE_OFHM_PHYSICAL_BINDING` is an `EVIDENCE_GATE`"
+            not in text
+        ):
+            raise AuditFailure(
+                "canonical contract misstates GATE_OFHM_PHYSICAL_BINDING kind"
+            )
+
+        for note in provenance.FOUNDATIONAL_PROVENANCE:
+            if not note.claim_ids:
+                raise AuditFailure(
+                    f"empty foundational provenance note: {note.surface}"
+                )
+            missing = sorted(set(note.claim_ids) - claim_ids)
+            if missing:
+                raise AuditFailure(
+                    f"foundational provenance broken refs at {note.surface}: {missing}"
+                )
+
+        for surface, ids in provenance.IMPLEMENTATION_PROVENANCE.items():
+            if not surface or not ids:
+                raise AuditFailure(
+                    f"invalid implementation provenance surface: {surface!r}"
+                )
+            missing = sorted(set(ids) - claim_ids)
+            if missing:
+                raise AuditFailure(
+                    f"implementation provenance broken refs at {surface}: {missing}"
+                )
+
+        return {
+            "declared_claims": declared_count,
+            "live_claims": len(claims),
+            "derivation_gates": derivation_gates,
+            "evidence_gates": evidence_gates,
+            "foundational_provenance_notes": len(
+                provenance.FOUNDATIONAL_PROVENANCE
+            ),
+            "implementation_surfaces": len(
+                provenance.IMPLEMENTATION_PROVENANCE
+            ),
+        }
     finally:
         try:
             sys.path.remove(str(SRC))
@@ -355,6 +452,7 @@ def main() -> int:
     try:
         layers = audit_layer_ownership()
         claims = audit_claim_graph()
+        foundational_contract = audit_foundational_contract()
         audit_test_imports()
         inventory = test_inventory()
         audit_markdown()
@@ -367,6 +465,7 @@ def main() -> int:
         "status": "PASS",
         "layers": layers,
         "claims": claims,
+        "foundational_contract": foundational_contract,
         "tests": {
             "files": inventory,
             "total": sum(inventory.values()),

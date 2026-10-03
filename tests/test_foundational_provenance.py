@@ -1,3 +1,4 @@
+from rdss.axioms import CLAIMS, ClaimKind
 from pathlib import Path
 
 from rdss import (
@@ -22,6 +23,21 @@ def test_canonical_foundational_contract_is_present_and_named() -> None:
     assert "0_R" in text
     assert "J^2=-I" in text or "J^2 = -I" in text
     assert "Do not use GitHub Actions" in text
+
+
+def test_canonical_contract_matches_live_claim_ledger() -> None:
+    root = Path(__file__).resolve().parents[1]
+    contract = root / CANONICAL_FOUNDATIONAL_CONTRACT
+    text = contract.read_text(encoding="utf-8")
+
+    assert f"\\boxed{{{len(CLAIMS)}\\ \\text{{claims}}}}" in text
+    assert not [
+        claim.id for claim in CLAIMS if claim.kind is ClaimKind.DERIVATION_GATE
+    ]
+    assert [
+        claim.id for claim in CLAIMS if claim.kind is ClaimKind.EVIDENCE_GATE
+    ] == ["GATE_OFHM_PHYSICAL_BINDING"]
+    assert "`GATE_OFHM_PHYSICAL_BINDING` is an `EVIDENCE_GATE`" in text
 
 
 def test_foundational_provenance_claim_ids_are_real() -> None:
@@ -53,5 +69,6 @@ def test_key_surfaces_are_permanently_cited() -> None:
         "orbital_fractal_hilbert_moire.idt_phase_dynamics_step",
         "orbital_fractal_hilbert_moire.phase_coherence_overlap",
         "orbital_fractal_hilbert_moire.CountableBranchAddress.hilbert_hotel_successor",
+        "ofhm_prefix_completion.symbolic_completion_certificate",
     }
     assert required <= set(IMPLEMENTATION_PROVENANCE)
