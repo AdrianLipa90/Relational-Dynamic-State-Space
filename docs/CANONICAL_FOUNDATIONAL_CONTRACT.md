@@ -30,7 +30,7 @@ relational zero is not absolute nothingness:
 
 The First Law of Existence is the unique foundational law. Everything
 downstream must be typed as definition, formation rule, theorem, bridge,
-reference realization or open derivation gate.
+reference realization, evidence gate or open derivation gate.
 
 ## 2. Model formation and carrier non-vacuity
 
@@ -241,7 +241,7 @@ from `A0`.
 The canonical ledger at this revision contains
 
 \[
-\boxed{392\ \text{claims}}
+\boxed{407\ \text{claims}}
 \]
 
 with
@@ -252,7 +252,9 @@ with
 
 Historical identifiers that once named open gates may remain in the ledger for
 provenance, but no current claim is typed as a derivation gate and each current
-`ClaimKind` is authoritative.
+`ClaimKind` is authoritative. The declared claim count and gate-kind summary are
+machine-checked by `scripts/static_audit.py` against the live ledger so this
+contract cannot silently drift again.
 
 The foundational provenance order is therefore
 
@@ -269,8 +271,10 @@ for durable relation roles, \(J^2=-I\), \(U(1)\), projective geometry,
 tetrahedral/Collatz structure, \(\kappa\), half-time dynamics,
 Moiré--Kuramoto dynamics and the symbolic OFHM completion.
 
-Physical/substrate identification remains separately typed as bridge work. It
-must not be reported as a missing mathematical derivation gate.
+Geometric/substrate realization remains separately typed as bridge work, while
+selection and calibration of a concrete physical realization is the explicit
+`GATE_OFHM_PHYSICAL_BINDING` `EVIDENCE_GATE`. Neither is a missing mathematical
+derivation gate.
 ## 8. Collatz operation provenance
 
 Association is the free durable-dyad quotient:
@@ -366,6 +370,7 @@ Allowed epistemic roles are:
 - definition / formation rule;
 - theorem / derived result;
 - bridge / reference realization;
+- evidence gate;
 - open derivation gate.
 
 A theorem with an open ancestor must be labeled conditional unless that edge
@@ -464,7 +469,7 @@ Accordingly the historical identifier
 `GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT` is theorem-level **CLOSED**. What remains
 separate is `BRIDGE_OFHM_GEOMETRIC_EMBEDDING`: any Euclidean, complex,
 manifold or substrate-specific image requires an additional realization map.
-`GATE_OFHM_PHYSICAL_BINDING` is likewise a bridge, not an open derivation gate.
+`GATE_OFHM_PHYSICAL_BINDING` is an `EVIDENCE_GATE`, not a bridge and not an open derivation gate.
 
 
 ### 14.1 Independent On-Primes refinement crosscheck
