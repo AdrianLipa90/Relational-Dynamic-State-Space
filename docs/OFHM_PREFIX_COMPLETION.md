@@ -6,9 +6,9 @@ Status: SYMBOLIC_COMPLETION_CLOSED / EUCLIDEAN_EMBEDDING_SEPARATE
 
 The finite OFHM address carrier is
 
-[
+\[
 mathcal A_F=mathbb Z^{<omega}.
-]
+\]
 
 The Hilbert-Hotel rank is an explicit enumeration coordinate and is not used
 to define geometry. The intrinsic combinatorial relation is prefix extension.
@@ -16,47 +16,47 @@ to define geometry. The intrinsic combinatorial relation is prefix extension.
 ## Prefix ultrametric
 
 For finite words (a,b), let (L(a,b)) be maximal common-prefix length.
-For any fixed (eta>1), define
+For any fixed (\beta>1), define
 
-[
-d_eta(a,b)=
-egin{cases}
+\[
+d_\beta(a,b)=
+\begin{cases}
 0,&a=b,\\
-eta^{-L(a,b)},&a
+\beta^{-L(a,b)},&a
 e b.
 end{cases}
-]
+\]
 
 This is an ultrametric because
 
-[
+\[
 L(x,z)gemin{L(x,y),L(y,z)},
-]
+\]
 
 hence
 
-[
-d_eta(x,z)
+\[
+d_\beta(x,z)
 le
-max{d_eta(x,y),d_eta(y,z)}.
-]
+max{d_\beta(x,y),d_\beta(y,z)}.
+\]
 
-The topology is independent of the particular finite (eta>1): it is the
+The topology is independent of the particular finite (\beta>1): it is the
 standard prefix/cylinder topology.
 
 ## Completion
 
 For an infinite integer branch
 
-[
+\[
 a=(a_1,a_2,ldots)inmathbb Z^omega,
-]
+\]
 
 let (a|_n) be its length-(n) prefix. For (m,nge N),
 
-[
-d_eta(a|_m,a|_n)leeta^{-N},
-]
+\[
+d_\beta(a|_m,a|_n)le\beta^{-N},
+\]
 
 so prefixes form a Cauchy sequence.
 
@@ -66,21 +66,21 @@ compatible prefixes determine one unique element of (mathbb Z^omega).
 
 Therefore the metric completion adds exactly the infinite branches:
 
-[
-oxed{
+\[
+\boxed{
 widehat{mathbb Z^{<omega}}
 =
 mathbb Z^{<omega}
 sqcup
 mathbb Z^omega.
 }
-]
+\]
 
 The added boundary is the countable-alphabet Baire space
 
-[
-oxed{partialmathcal A_F=mathbb Z^omega.}
-]
+\[
+\boxed{partialmathcal A_F=mathbb Z^omega.}
+\]
 
 This is a symbolic/topological completion. It is not a Euclidean embedding.
 
@@ -88,9 +88,9 @@ This is a symbolic/topological completion. It is not a Euclidean embedding.
 
 Distinct first-level children
 
-[
+\[
 (k),qquad kinmathbb Z,
-]
+\]
 
 have pairwise distance one. Thus for any radius below one, infinitely many
 balls are required to cover them. The completion is not totally bounded and
@@ -101,19 +101,19 @@ therefore is not compact.
 For every finite (mge2), restrict the alphabet to an (m)-element subset.
 The resulting full-shift boundary is an isometric subspace with
 
-[
+\[
 dim_H
 =
-rac{ln m}{lneta}.
-]
+\frac{ln m}{ln\beta}.
+\]
 
-Because these lower bounds are unbounded as (m	oinfty),
+Because these lower bounds are unbounded as (m\toinfty),
 
-[
-oxed{
-dim_H(mathbb Z^omega,d_eta)=infty.
+\[
+\boxed{
+dim_H(mathbb Z^omega,d_\beta)=infty.
 }
-]
+\]
 
 Thus OFHM does have an exact Hausdorff-dimension statement for its intrinsic
 prefix metric: the dimension is infinite, not an unspecified fitted finite
@@ -127,11 +127,11 @@ that is invariant under every branch-label permutation would assign one mass
 
 If (p=0), total mass is zero. If (p>0), the sum diverges. Hence
 
-[
-oxed{
-	ext{no uniform permutation-invariant branch probability exists}.
+\[
+\boxed{
+\text{no uniform permutation-invariant branch probability exists}.
 }
-]
+\]
 
 Non-uniform product, Markov or Gibbs measures can be introduced only after
 supplying extra weights/dynamics. Therefore the symbolic algebra does not
@@ -141,9 +141,9 @@ force a unique continuum probability measure.
 
 Any map
 
-[
-E:mathbb Z^omega	o X
-]
+\[
+E:mathbb Z^omega\to X
+\]
 
 into a Euclidean, complex, manifold, Hilbert or other geometric target is an
 additional realization. Convergence, compactness and image dimension depend
