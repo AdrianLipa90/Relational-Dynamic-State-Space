@@ -132,6 +132,42 @@ sentence above is not silently strengthened into a theorem asserting two
 carriers, two occurrences, or a primitive relation. Those belong to downstream model formation,
 definitions, theorems or explicit bridges.
 
+\subsection{Non-circular relational root typing}
+
+The canonical TIR source spine \cite{LipaTIR2026} uses the relational
+existence typing
+\[
+\boxed{
+\operatorname{Exist}(x)
+\Longrightarrow
+\exists R_x.
+}
+\]
+This typing is already a proof parent of the contradiction excluding
+realizable absolute nothing. Consequently RDSS must not reverse the edge and
+claim
+\[
+A_0\Longrightarrow\mathrm{RA0},
+\]
+because that would make the foundation circular.
+
+The executable claim
+\claimid{BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING}
+therefore imports the relational-existence typing as a sibling root bridge.
+Historical \claimid{RA0} is attached to that bridge and is not presented as
+a theorem derived from \(A_0\).
+
+The dependency picture is
+\[
+\boxed{
+\text{relational existence typing}
+\quad\parallel\quad
+A_0,
+}
+\]
+followed by downstream model formation, minimum non-trivial structure and
+relation-role geometry.
+
 \subsection{Model formation and minimum carrier}
 
 The downstream formation rule is
@@ -2631,23 +2667,46 @@ The formal dependency audit separates nine claim classes:
 }
 \]
 
-The canonical foundational stratification is
+The canonical foundational stratification is non-circular:
 \[
 \boxed{
+\bigl(
+\text{TIR relational-existence typing}
+\parallel
 A_0
+\bigr)
 \Longrightarrow
 \mathrm{META0}
 \Longrightarrow
-\text{derived structure and explicit derivation gates}.
+\text{derived structure and explicit downstream obligations}.
 }
 \]
-\(A_0\) is the only axiom. META0 is a model-formation rule; RA0 and RR1 are
-historical identifiers for derivation gates; EX0 is a theorem of META0.
+\(A_0\) remains the only RDSS foundational law. META0 is a model-formation
+rule; \claimid{RA0} is now explicitly an imported root bridge because the
+same relational typing participates in the canonical proof of \(A_0\).
+Treating RA0 as derived from \(A_0\) would be circular.
+
+The stronger global generativity targets remain separately typed:
+\claimid{RA0_STAR}, \claimid{RR1}, and
+\claimid{RA0_REL_STAR}. The last is strongest: the ledger proves
+\[
+\boxed{
+\mathrm{RA0}^{\mathrm{rel}*}
+\Longrightarrow
+\mathrm{RA0}^{*}
+\quad\text{and}\quad
+\mathrm{RA0}^{\mathrm{rel}*}
+\Longrightarrow
+\mathrm{RR1}.
+}
+\]
+Thus these three raw gate identifiers represent one independent generativity
+burden, not three.
+
 The additive \(\mathbb K\)-module structure, relational product, semantic
-scale, and orbital action are independent structural ingredients of the
-algebraic signature rather than consequences of RA0. The complex
-\(\CP\)/Fubini--Study layer is a reference realization, and Zero Axis is an
-imported bridge.
+scale, and orbital action remain independent structural ingredients of the
+algebraic signature. The complex \(\CP\)/Fubini--Study layer is a reference
+realization, and Zero Axis is an imported bridge.
 
 Finite witness models establish, in the current formal language,
 \[
@@ -2667,17 +2726,12 @@ dependency is silently promoted to a theorem.
 \section{Historical closure-compression candidate}
 
 The historical pre-\(A_0\) compression programme treated RA0 and RR1 as
-two object-level derivation gates under the prior model-formation rule META0.
-In the current canonical stratification they are not foundational axioms:
-\[
-\boxed{
-\mathrm{META0}
-\;\triangleright\;
-(\mathrm{RA0}+\mathrm{RR1}).
-}
-\]
-The finite independence witnesses show that the original RA0 is too weak to
-force recursive refinement:
+two object-level derivation gates. The current source audit corrects that
+classification: RA0 is imported relational-existence typing and must not be
+derived from \(A_0\), whereas RR1 remains a recursive-generativity target.
+The finite independence witnesses are retained because they still show that
+orientation-neutral relational incidence alone is too weak to force recursive
+refinement:
 \[
 \boxed{\mathrm{RA0}\not\Rightarrow\mathrm{RR1}.}
 \]
@@ -4991,6 +5045,28 @@ The initial executable kernel therefore tests the axiom dependency DAG, finite i
 typed algebraic zero, semantic coarse-graining, relative Moir\'e rotation,
 Zero-Axis unit-circle projection, derived winding, associator/commutator
 diagnostics, and refinement residuals.
+
+\section*{Current independent closure frontier}
+
+The claim ledger contains six raw \texttt{DERIVATION\_GATE} identifiers, but
+two are strictly weaker consequences of one stronger target. The independent
+frontier therefore contains four burdens:
+\[
+\boxed{
+\begin{array}{ll}
+1.& \mathrm{RA0}^{\mathrm{rel}*}\text{ global generativity},\\
+2.& \text{primitive-natural-dynamics binding of the closed Collatz normalization},\\
+3.& \text{OFHM geometric/infinite-fractal limit},\\
+4.& \text{OFHM physical substrate and parameter binding}.
+\end{array}
+}
+\]
+The raw \claimid{RA0_STAR} and \claimid{RR1} identifiers remain visible for
+historical and countermodel provenance, but they are discharged automatically
+if \claimid{RA0_REL_STAR} is closed.
+
+This count distinguishes mathematical structural closure from empirical or
+continuum extensions; it must not be read as four equally upstream axioms.
 
 \section*{Source provenance}
 Internal bridge references are pinned by repository commit and source path so
