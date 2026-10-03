@@ -43,6 +43,41 @@ carrier cardinality is one.
 A bare singleton proves carrier non-vacuity only. It does not by itself prove
 a persistent relation or two distinct primitive substances.
 
+## 2.1 Non-circular relational root typing
+
+The canonical TIR foundation uses the relational existence typing
+
+[
+operatorname{Exist}(x)Longrightarrow exists R_x.
+]
+
+This typing is a proof parent of the First Law contradiction for absolute
+nothing. Therefore RDSS must **not** claim the reverse dependency
+
+[
+A0Longrightarrow RA0,
+]
+
+because that would make the proof graph circular.
+
+The executable claim
+`BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING` records the imported root typing,
+and historical `RA0` is retained as a bridge to that typing rather than as a
+derivation gate from `A0`.
+
+The non-circular foundation order is therefore
+
+[
+oxed{
+	ext{relational existence typing}
+quadparallelquad
+A0
+}
+]
+
+followed downstream by minimum non-trivial structure, relation orientation,
+phase and geometry.
+
 ## 3. Carrier identity is not occurrence identity
 
 A binary distinction does not require two primitive carrier substances.
@@ -100,8 +135,10 @@ The First Hamlet is the persistence dichotomy
 ({\mathsf{Disp},\mathsf{Struct}}).
 
 This proves the exhaustive Boolean partition schema. It does **not** by itself
-prove that both preimages are dynamically non-empty. The strict non-degeneracy
-step remains explicit unless separately proved.
+prove that both preimages occur in a particular physical dynamics. Canonical
+RDSS keeps the non-degenerate two-class realization explicitly typed; any
+physical realization of both regimes is a downstream bridge rather than an
+upstream foundational proof obligation.
 
 The First Hamlet is **not** the durable projective two-state carrier.
 
@@ -171,6 +208,69 @@ The three active non-identity **basis directions** are
 
 This is not a claim that (M_2(\mathbb R)) has only three non-identity
 operators.
+
+## 7.1 Relational-generativity boundary
+
+The canonical root already has an exact local relational-binary realization:
+
+[
+oxed{
+	ext{THM\_CANONICAL\_ROOT\_LOCAL\_RA0\_REL\_STAR}.
+}
+]
+
+The remaining generativity question is global:
+
+[
+oxed{
+RA0_{mathrm{REL}}^*:
+	ext{ every admitted/generated carrier hosts a relationally bound binary distinction.}
+}
+]
+
+This is stronger than both historical targets
+
+[
+RA0^*
+]
+
+and
+
+[
+RR1.
+]
+
+The ledger already proves
+
+[
+RA0_{mathrm{REL}}^*Longrightarrow RA0^*,
+]
+
+and
+
+[
+RA0_{mathrm{REL}}^*Longrightarrow RR1.
+]
+
+Hence the three raw gate IDs represent only **one independent mathematical
+burden**.
+
+After separating empirical realization from mathematical derivation, the
+current ledger has four raw `DERIVATION_GATE` IDs but only two independent
+mathematical burdens:
+
+1. global relational generativity `RA0_REL_STAR`;
+2. OFHM geometric/infinite-fractal completion.
+
+The weaker raw identifiers `RA0_STAR` and `RR1` are already consequences
+of `RA0_REL_STAR` if that stronger target is closed.
+
+The historical Collatz-natural-system binding and OFHM substrate/parameter
+binding are retained as explicit `BRIDGE` claims. They are open empirical
+realization questions, not missing theorems of the algebra.
+
+Neither the raw gate count nor the number of open physical bridges should be
+reported as the number of independent mathematical gaps.
 
 ## 8. Collatz operation provenance
 
