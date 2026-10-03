@@ -389,6 +389,16 @@ from .orbital_information import (
     phase_from_normalized_turn,
     radian_information_operator,
 )
+from .ofhm_prefix_completion import (
+    common_prefix_length,
+    countable_boundary_dimension_is_infinite,
+    countable_prefix_completion_is_totally_bounded,
+    finite_alphabet_boundary_dimension,
+    prefix_chain_cauchy_bound,
+    prefix_ultrametric,
+    symbolic_completion_certificate as ofhm_symbolic_completion_certificate,
+    uniform_countable_branch_probability_exists,
+)
 from .orbital_fractal_hilbert_moire import (
     HILBERT_HOTEL_FREDHOLM_INDEX,
     OFHM_RULE_DEPENDENCIES,
@@ -1057,5 +1067,13 @@ __all__ = [
     "relative_pendulum_residual",
     "second_frame_difference",
     "signed_angle",
+    "common_prefix_length",
+    "countable_boundary_dimension_is_infinite",
+    "countable_prefix_completion_is_totally_bounded",
+    "finite_alphabet_boundary_dimension",
+    "prefix_chain_cauchy_bound",
+    "prefix_ultrametric",
+    "ofhm_symbolic_completion_certificate",
+    "uniform_countable_branch_probability_exists",
 
 ]
