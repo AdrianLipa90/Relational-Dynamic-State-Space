@@ -1201,9 +1201,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RR1",
-        ClaimKind.DERIVATION_GATE,
-        "Recursive relational closure target: at every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction, so the rule re-applies at each finite refinement depth. This weaker gate is not independent of the stronger RA0_REL_STAR target, because THM_RR1_FROM_RA0_REL_STAR already proves that RA0_REL_STAR discharges RR1.",
-        ("A0", "DEF_POINT", "DEF_BINARY_DISTINCTION"),
+        ClaimKind.THEOREM,
+        "Within the relational-generative model class selected by formation rule RA0_REL_STAR, every admitted path-labelled occurrence recursively carries a further non-degenerate binary distinction to arbitrary finite depth.",
+        ("RA0_REL_STAR",),
     ),
     Claim(
         "THM_RR1_REALIZES_FINITE_WORDS",
@@ -1231,14 +1231,14 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RA0_STAR",
-        ClaimKind.DERIVATION_GATE,
-        "Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers. This weaker gate is subsumed by RA0_REL_STAR via THM_RA0_STAR_FROM_RA0_REL_STAR and is therefore not an independent unresolved burden.",
-        ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
+        ClaimKind.THEOREM,
+        "Within the relational-generative model class selected by RA0_REL_STAR, forgetting explicit branch-relation labels leaves every admitted carrier with an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers.",
+        ("RA0_REL_STAR",),
     ),
     Claim(
         "RA0_REL_STAR",
-        ClaimKind.DERIVATION_GATE,
-        "Strongest active relational-generativity gate: every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted carriers. THM_CANONICAL_ROOT_LOCAL_RA0_REL_STAR proves this property at the canonical root; the unresolved burden is its globalization. If closed, it also discharges the weaker RA0_STAR and RR1 gates.",
+        ClaimKind.FORMATION_RULE,
+        "Relational-generative model-formation rule: in the recursively generative RDSS sector, every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted carriers. This is not claimed as a theorem of A0: THM_RA0_RR1_NOT_RA0_REL_STAR supplies an explicit countermodel to derivation from the weaker foundation. The rule selects the relational-generative model class without adding a second foundational law.",
         ("DEF_POINT", "DEF_RELATIONAL_DISTINCTION"),
     ),
     Claim(
@@ -1294,6 +1294,12 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.THEOREM,
         "The explicit unbound singleton countermodel shows that RA0 plus RR1 does not imply RA0_REL_STAR.",
         ("REF_RA0_RR1_UNBOUND_MODEL",),
+    ),
+    Claim(
+        "THM_RA0_REL_STAR_INDEPENDENT_FORMATION_RULE",
+        ClaimKind.THEOREM,
+        "Because an admissible countermodel satisfies A0/META0, imported RA0 and recursive RR1 while failing explicit branch-slot relation binding, RA0_REL_STAR is not derivable from the weaker canonical foundation. If the recursively relational sector is desired globally, RA0_REL_STAR must therefore be typed as a model-formation rule (or an equivalent additional restriction), not mislabeled as an unfinished theorem.",
+        ("THM_RA0_RR1_NOT_RA0_REL_STAR",),
     ),
     Claim(
         "THM_SINGLETON_FOUNDATION_MINIMALITY",
