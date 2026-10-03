@@ -37,7 +37,7 @@ space. For distinct basis points (E_a,E_b),
 \]
 
 This is the exact Pythagorean step proposed in the audit. All six edges have
-the same length (sqrt2), and the three edge vectors from any vertex are
+the same length \(\sqrt{2}\), and the three edge vectors from any vertex are
 linearly independent. Therefore the four points form a regular tetrahedron.
 
 For centroid
