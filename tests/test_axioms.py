@@ -730,6 +730,7 @@ def test_ra0_rr1_do_not_imply_ra0_rel_star():
     assert dependency_closure("THM_RA0_RR1_NOT_RA0_REL_STAR") == frozenset(
         {
             "A0",
+            "BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",
             "REF_RA0_RR1_UNBOUND_MODEL",
             "META0",
             "RA0",
@@ -2396,7 +2397,7 @@ def test_relational_cardinality_semantics_closes_collatz_operations_not_physical
     assert "THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED" not in closure
 
     gate = claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"]
-    assert gate.kind is ClaimKind.THEOREM
+    assert gate.kind is ClaimKind.DERIVATION_GATE
     gate_closure = dependency_closure("GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS")
     assert "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ" in gate_closure
     assert "A0" in gate_closure
@@ -2594,10 +2595,10 @@ def test_active_derivation_gates_have_four_independent_burdens() -> None:
 
     # RA0_REL_STAR is strictly stronger than the two legacy/weaker
     # generativity obligations and discharges both if proved globally.
-    assert "RA0_STAR" in claims["THM_RA0_STAR_FROM_RA0_REL_STAR"].statement
-    assert "RR1" in claims["THM_RR1_FROM_RA0_REL_STAR"].id
     assert claims["THM_RA0_STAR_FROM_RA0_REL_STAR"].depends_on == ("RA0_REL_STAR",)
     assert claims["THM_RR1_FROM_RA0_REL_STAR"].depends_on == ("RA0_REL_STAR",)
+    assert "RA0_STAR" in claims["THM_RA0_STAR_FROM_RA0_REL_STAR"].statement
+    assert "recursive binary refinement" in claims["THM_RR1_FROM_RA0_REL_STAR"].statement
 
     independent = {
         "RA0_REL_STAR",
