@@ -24,9 +24,9 @@ Canonical statement:
 Absolute nothingness is not an object of the object language. Algebraic or
 relational zero is not absolute nothingness:
 
-\[
+[
 0_R \neq \mathcal N.
-\]
+]
 
 The First Law of Existence is the unique foundational law. Everything
 downstream must be typed as definition, formation rule, theorem, bridge,
@@ -47,16 +47,16 @@ a persistent relation or two distinct primitive substances.
 
 The canonical TIR foundation uses the relational existence typing
 
-\[
-\operatorname{Exist}(x)\Longrightarrow exists R_x.
-\]
+[
+operatorname{Exist}(x)Longrightarrow exists R_x.
+]
 
 This typing is a proof parent of the First Law contradiction for absolute
 nothing. Therefore RDSS must **not** claim the reverse dependency
 
-\[
-A0\Longrightarrow RA0,
-\]
+[
+A0Longrightarrow RA0,
+]
 
 because that would make the proof graph circular.
 
@@ -67,13 +67,13 @@ derivation gate from `A0`.
 
 The non-circular foundation order is therefore
 
-\[
+[
 \boxed{
 \text{relational existence typing}
 quadparallelquad
 A0
 }
-\]
+]
 
 followed downstream by minimum non-trivial structure, relation orientation,
 phase and geometry.
@@ -83,13 +83,13 @@ phase and geometry.
 A binary distinction does not require two primitive carrier substances.
 A single carrier may support two distinct relational occurrences/roles:
 
-\[
+[
 \omega_- \neq \omega_+,
 \qquad
 \operatorname{carrier}(\omega_-)
 =
 \operatorname{carrier}(\omega_+)=a.
-\]
+]
 
 Equivalently, a singleton may carry the two slots conventionally called
 up/down. Carrier identity and occurrence identity are distinct sorts.
@@ -102,9 +102,9 @@ Canonical claim anchors include:
 
 ## 4. Existence potential and primitive indistinction
 
-\[
+[
 \mathcal P_E
-\]
+]
 
 is the modal/admissible possibility remaining after absolute nothingness is
 excluded by the First Law. It is not a material object, field, energy,
@@ -113,11 +113,11 @@ spacetime quantity or Berry/gauge potential.
 Primitive indistinction is the condition in which this existence potential is
 present but no persistent internal distinction has yet been established:
 
-\[
+[
 \mathcal I_0
 =
 (\mathcal P_E,\ \text{no persistent distinction established}).
-\]
+]
 
 This notation must not smuggle in an additive operation.
 
@@ -125,11 +125,11 @@ This notation must not smuggle in an additive operation.
 
 For a candidate differentiation (d), persistence is Boolean:
 
-\[
+[
 \mathsf{Disp}:=\neg\operatorname{Persist}(d),
 \qquad
 \mathsf{Struct}:=\operatorname{Persist}(d).
-\]
+]
 
 The First Hamlet is the persistence dichotomy
 ({\mathsf{Disp},\mathsf{Struct}}).
@@ -151,27 +151,27 @@ Shannon (p=1/2) is downstream.
 The STRUCTURE branch uses the independently established TIR minimum-structure
 bridge:
 
-\[
+[
 \min(\text{non-trivial persistent structure})=\text{relation}.
-\]
+]
 
 For a non-self-collapsed persistent relation, the durable orientation-role
 orbit is
 
-\[
+[
 N=[s\to t],
 \qquad
 S=[t\to s].
-\]
+]
 
 These are roles/occurrences of one relation and need not be two primitive
 substances.
 
 The structural Hartley value
 
-\[
+[
 \ln |\{N,S\}|=\ln2
-\]
+]
 
 is distinct in provenance from the earlier First-Hamlet Hartley count.
 
@@ -182,7 +182,7 @@ DISPERSION/STRUCTURE.
 
 On the ordered role basis:
 
-\[
+[
 S^2=P^2=I,
 \qquad
 SP=-PS,
@@ -190,26 +190,26 @@ SP=-PS,
 J:=SP,
 \qquad
 J^2=-I.
-\]
+]
 
 Thus the imaginary generator is derived rather than assumed upstream.
 
 The distinguished operator basis is
 
-\[
+[
 \{I,S,P,J\}.
-\]
+]
 
 The three active non-identity **basis directions** are
 
-\[
+[
 \{S,P,J\}.
-\]
+]
 
 This is not a claim that (M_2(\mathbb R)) has only three non-identity
 operators.
 
-## 7.1 Relational-generativity boundary
+## 7.1 Relational-generativity model class
 
 The canonical root already has an exact local relational-binary realization:
 
@@ -219,80 +219,79 @@ The canonical root already has an exact local relational-binary realization:
 }
 \]
 
-The remaining generativity question is global:
+Global recursive generativity is now typed explicitly as **model formation**,
+not as an unproved theorem of \(A_0\). The relevant formation rules are
 
 \[
 \boxed{
-RA0_{mathrm{REL}}^*:
-\text{ every admitted/generated carrier hosts a relationally bound binary distinction.}
+\texttt{META0},\quad
+\texttt{RR1},\quad
+\texttt{RA0\_STAR},\quad
+\texttt{RA0\_REL\_STAR}.
 }
 \]
 
-This is stronger than both historical targets
+`RA0_REL_STAR` selects the relational-generative model class: every admitted
+carrier in that sector hosts an admitted relationally bound binary distinction.
+`RA0_STAR` and `RR1` are weaker formation rules, and the ledger contains
+theorems showing that the stronger relational-generative rule implies those
+weaker conditions. None of these rules is represented as a theorem derived
+from `A0`.
+
+The canonical ledger at this revision contains
 
 \[
-RA0^*
+\boxed{392\ \text{claims}}
 \]
 
-and
+with
 
 \[
-RR1.
+\boxed{0\ \texttt{DERIVATION\_GATE}}.
 \]
 
-The ledger already proves
+Historical identifiers that once named open gates may remain in the ledger for
+provenance, but no current claim is typed as a derivation gate and each current
+`ClaimKind` is authoritative.
+
+The foundational provenance order is therefore
 
 \[
-RA0_{mathrm{REL}}^*\Longrightarrow RA0^*,
+\boxed{
+\text{TIR relational existence typing}
+\parallel
+A_0
+}
 \]
 
-and
+followed by explicit model-class formation rules and then theorem/bridge chains
+for durable relation roles, \(J^2=-I\), \(U(1)\), projective geometry,
+tetrahedral/Collatz structure, \(\kappa\), half-time dynamics,
+Moiré--Kuramoto dynamics and the symbolic OFHM completion.
 
-\[
-RA0_{mathrm{REL}}^*\Longrightarrow RR1.
-\]
-
-Hence the three raw gate IDs represent only **one independent mathematical
-burden**.
-
-After separating empirical realization from mathematical derivation, the
-current ledger has four raw `DERIVATION_GATE` IDs but only two independent
-mathematical burdens:
-
-1. global relational generativity `RA0_REL_STAR`;
-2. OFHM geometric/infinite-fractal completion.
-
-The weaker raw identifiers `RA0_STAR` and `RR1` are already consequences
-of `RA0_REL_STAR` if that stronger target is closed.
-
-The historical Collatz-natural-system binding and OFHM substrate/parameter
-binding are retained as explicit `BRIDGE` claims. They are open empirical
-realization questions, not missing theorems of the algebra.
-
-Neither the raw gate count nor the number of open physical bridges should be
-reported as the number of independent mathematical gaps.
-
+Physical/substrate identification remains separately typed as bridge work. It
+must not be reported as a missing mathematical derivation gate.
 ## 8. Collatz operation provenance
 
 Association is the free durable-dyad quotient:
 
-\[
+[
 n\mapsto n/2
-\]
+]
 
 when admissible.
 
 Dissociation is the finite product with the three active basis directions:
 
-\[
+[
 n\mapsto3n.
-\]
+]
 
 Repair restores the unique omitted identity direction:
 
-\[
+[
 3n\mapsto3n+1.
-\]
+]
 
 Hence the canonical relational-cardinality update is the unreduced Collatz
 map inside the declared operation semantics. Identification with a particular
@@ -307,22 +306,22 @@ Never describe (2,3,1) as unsourced coefficients:
 
 Let
 
-\[
+[
 q=|\{N,S\}|=2.
-\]
+]
 
 With the derived complex structure (J^2=-I), the canonical primitive
 Gaussian generator is
 
-\[
+[
 g=q+J=2+J,
 \qquad
 \bar g=2-J.
-\]
+]
 
 Exact identities include
 
-\[
+[
 g^2=3+4J,
 \qquad
 g^3=2+11J,
@@ -330,25 +329,25 @@ g^3=2+11J,
 g^4=-7+24J,
 \qquad
 g\bar g=5.
-\]
+]
 
 Thus the numerical Collatz/Bombelli closure has explicit provenance from the
 same durable-role algebra.
 
 For the L constants:
 
-\[
+[
 L_4=2,
 \qquad
 L_5=5,
-\]
+]
 
 while (L_3=7) uses the separately sourced TIR root-extension bridge
 (L_3=L_4+L_5). Do not erase that bridge provenance.
 
 ## 10. Projective geometry and spin
 
-Complex structure, \(U(1)\), \(\mathbb C_J^2\), \(\mathbb{CP}^1\),
+Complex structure, (U(1)), (mathbb C_J^2), (mathbb{CP}^1),
 Fubini--Study geometry, (SU(2)), the (j=1/2) representation and Berry/Euler
 closure are downstream constructions.
 
@@ -395,28 +394,28 @@ silently substituting GitHub Actions.
 
 The project constant
 
-\[
+[
 \kappa=\frac{\ln2}{24\pi}
-\]
+]
 
 has a typed reference provenance. The (24) incidence count and one half-turn
 per channel define the reference turn measure (Q_{\rm mix}=12). A constant
 coefficient additionally requires the explicit reference condition
 
-\[
+[
 \frac{d\mathcal I}{dq}=\text{constant},
 \qquad
 \int_0^{12}d\mathcal I=\ln2.
-\]
+]
 
 This condition is claim
 `REF_KAPPA_UNIFORM_INFORMATION_DENSITY`. Without it, only the total integral
 is fixed; a non-uniform information density remains mathematically possible.
 Never present uniform density as a theorem of `A0`.
 
-## 14. OFHM information-loss and enumeration rules
+## 14. OFHM information-loss, enumeration and symbolic completion
 
-The OFHM Moire cocycle is constructed from sourced phase coordinates. The
+The OFHM Moiré cocycle is constructed from sourced phase coordinates. The
 BEES coherence magnitude
 
 \[
@@ -424,16 +423,76 @@ C=\left|d^{-1}\sum_j e^{i(\theta_j^X-\theta_j^Y)}\right|
 \]
 
 is lossy because of the absolute value and cannot generally reconstruct the
-relative U(1) phase.
+relative \(U(1)\) phase.
 
 The Hilbert-Hotel successor on finite integer words depends on an explicitly
 chosen enumeration
-(\rho:\mathbb Z^{<\omega}\leftrightarrow\mathbb N). The executable
+\(\rho:\mathbb Z^{<\omega}\leftrightarrow\mathbb N\). The executable
 zigzag/Cantor ranking is one declared enumeration, not a unique canonical one.
 No commutation law between Hilbert-Hotel succession and local branch
 refinement is assumed.
 
-The finite-address skeleton is \(\mathbb Z^{<\omega}\); the ideal
-infinite-address space is \(\mathbb Z^{\mathbb N}\). Geometric convergence,
-Hausdorff dimension and a unique continuum measure remain separate derivation
-gates.
+The finite symbolic address carrier is \(\mathbb Z^{<\omega}\). For any
+declared scale base \(\beta>1\), the prefix metric
+
+\[
+d_\beta(a,b)=
+\begin{cases}
+0,&a=b,\\
+\beta^{-\operatorname{LCP}(a,b)},&a\neq b
+\end{cases}
+\]
+
+depends only on the prefix tree and not on Hilbert-Hotel rank. Its metric
+completion adds exactly the infinite integer sequences
+
+\[
+\boxed{\mathbb Z^\omega}.
+\]
+
+Hence `THM_OFHM_SYMBOLIC_COMPLETION_BAIRE_BOUNDARY` closes the symbolic
+completion theorem. In the declared prefix-ultrametric family the completion is
+noncompact, and the full countably branching boundary has infinite Hausdorff
+dimension because it contains finite-alphabet full-shift sub-boundaries of
+dimension \(\ln m/\ln\beta\) for arbitrarily large finite \(m\).
+
+Full branch-label symmetry does not force a probability law: a uniform
+probability on a countably infinite first-level alphabet does not exist, and no
+unique continuum measure follows without extra weights or dynamics.
+
+Accordingly the historical identifier
+`GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT` is theorem-level **CLOSED**. What remains
+separate is `BRIDGE_OFHM_GEOMETRIC_EMBEDDING`: any Euclidean, complex,
+manifold or substrate-specific image requires an additional realization map.
+`GATE_OFHM_PHYSICAL_BINDING` is likewise a bridge, not an open derivation gate.
+
+
+### 14.1 Independent On-Primes refinement crosscheck
+
+`On-Primes@372125962a42e1b225337bf31416233da4ca436b` supplies an
+independent arithmetic refinement construction. Its ARPL phase tower uses
+
+\[
+L_N=\operatorname{lcm}(e_1,\ldots,e_N),
+\qquad
+b_N=\frac{L_{N+1}}{L_N},
+\]
+
+with inverse-limit phase hull
+
+\[
+K_h\cong\varprojlim_N \mathbb Z/L_N\mathbb Z.
+\]
+
+For the canonical arithmetic ultrametric on that procyclic hull, the ARPL
+construction is compact and has Hausdorff dimension one.
+
+This is deliberately **not** identified with the OFHM boundary. OFHM uses the
+countably branching carrier \(\mathbb Z^\omega\), is noncompact under its
+declared prefix topology, and has infinite Hausdorff dimension for every fixed
+exponential prefix-metric base \(\beta>1\).
+
+The contrast is an independent provenance crosscheck, not a proof-parent edge:
+compactness, measure and Hausdorff dimension belong to the declared refinement
+system and metric and cannot be transferred between the ARPL and OFHM carriers
+without an explicit bridge.
