@@ -241,10 +241,17 @@ from `A0`.
 The canonical ledger at this revision contains
 
 \[
-\boxed{0\ \texttt{DERIVATION\_GATE}}
+\boxed{392\ \text{claims}}
 \]
 
-claims. Historical identifiers that once named open gates may remain in the
+with
+
+\[
+\boxed{0\ \texttt{DERIVATION\_GATE}}.
+\]
+
+Historical identifiers may remain for provenance, but no current claim is
+typed as a derivation gate. Historical identifiers that once named open gates may remain in the
 ledger for provenance, but their current `ClaimKind` is authoritative.
 
 The foundational provenance order is therefore
@@ -458,3 +465,34 @@ Accordingly the historical identifier
 separate is `BRIDGE_OFHM_GEOMETRIC_EMBEDDING`: any Euclidean, complex,
 manifold or substrate-specific image requires an additional realization map.
 `GATE_OFHM_PHYSICAL_BINDING` is likewise a bridge, not an open derivation gate.
+
+
+### 14.1 Independent On-Primes refinement crosscheck
+
+`On-Primes@372125962a42e1b225337bf31416233da4ca436b` supplies an
+independent arithmetic refinement construction. Its ARPL phase tower uses
+
+\[
+L_N=\operatorname{lcm}(e_1,\ldots,e_N),
+\qquad
+b_N=\frac{L_{N+1}}{L_N},
+\]
+
+with inverse-limit phase hull
+
+\[
+K_h\cong\varprojlim_N \mathbb Z/L_N\mathbb Z.
+\]
+
+For the canonical arithmetic ultrametric on that procyclic hull, the ARPL
+construction is compact and has Hausdorff dimension one.
+
+This is deliberately **not** identified with the OFHM boundary. OFHM uses the
+countably branching carrier \(\mathbb Z^\omega\), is noncompact under its
+declared prefix topology, and has infinite Hausdorff dimension for every fixed
+exponential prefix-metric base \(\beta>1\).
+
+The contrast is an independent provenance crosscheck, not a proof-parent edge:
+compactness, measure and Hausdorff dimension belong to the declared refinement
+system and metric and cannot be transferred between the ARPL and OFHM carriers
+without an explicit bridge.
