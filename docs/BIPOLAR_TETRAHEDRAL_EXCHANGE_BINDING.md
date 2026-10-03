@@ -105,7 +105,7 @@ Hence
 }
 \]
 
-Polarity reversal acts freely on (mathcal C), so the undirected exchange
+Polarity reversal acts freely on \(\mathcal C\), so the undirected exchange
 quotient has
 
 \[
