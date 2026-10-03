@@ -17,47 +17,47 @@ This is not an open derivation gate.
 A flat rank-((1,1)) payload with four components is compatible with several
 ordered slot-dimension assignments, including
 
-[
+\[
 (1,4),
 qquad
 (2,2),
 qquad
 (4,1).
-]
+\]
 
 Thus total rank and flat component count do not determine the slot signature.
 
-Even after choosing a (2	imes2) realization, the same diagonal component
+Even after choosing a (2\times2) realization, the same diagonal component
 data can be contracted using distinct supplied evaluation forms. For example,
 
-[
+\[
 T=operatorname{diag}(1,1)
-]
+\]
 
 gives
 
-[
+\[
 operatorname{Contr}_{g_1}(T)=2
-]
+\]
 
 for (g_1=operatorname{diag}(1,1)), while
 
-[
+\[
 operatorname{Contr}_{g_2}(T)=3
-]
+\]
 
 for (g_2=operatorname{diag}(1,2)).
 
 Therefore
 
-[
-oxed{
-(	ext{rank},	ext{flat payload})
+\[
+\boxed{
+(\text{rank},\text{flat payload})
 
 otRightarrow
-	ext{a unique indexed contraction}.
+\text{a unique indexed contraction}.
 }
-]
+\]
 
 The theorem-level ledger node is
 
