@@ -38,6 +38,36 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         ),
     ),
     ProvenanceNote(
+        surface="canonical relational-existence foundation closure",
+        role="BRIDGE+THM",
+        claim_ids=(
+            "BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",
+            "THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS",
+            "THM_CANONICAL_NONTRIVIAL_EXISTENCE_FORCES_DISTINCTION",
+            "RA0",
+            "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+            "THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED",
+        ),
+        sources=(
+            CANONICAL_FOUNDATIONAL_CONTRACT,
+            "docs/FOUNDATIONAL_CLOSURE_FRONTIER.md",
+            "TIR@9783782570a2ccfa1fc42c99b605dad48e02aa78:"
+            "TIR/foundations/TIR_CANONICAL_DERIVATION_SPINE_V0_1.md",
+            "TIR@9783782570a2ccfa1fc42c99b605dad48e02aa78:"
+            "TIR/provenance/TIR_FOUNDATION_PROOF_SOURCE_REGISTRY_V0_1.md",
+        ),
+        note=(
+            "TIR relational existence typing supplies Exist(x)->exists R_x and is "
+            "imported explicitly rather than attributed to A0 alone. Relational "
+            "distinction is theorem-level only in the declared non-self-collapsed "
+            "non-trivial relational sector. Historical "
+            "First-Hamlet/RA0*/RR1/Collatz structural gates are discharged or "
+            "retyped as formation/provenance surfaces. The geometric-fractal limit is "
+            "closed by no-go, and physical binding is separately typed EVIDENCE_GATE; "
+            "no structural DERIVATION_GATE remains."
+        ),
+    ),
+    ProvenanceNote(
         surface="carrier/occurrence separation",
         role="DEF+REFERENCE",
         claim_ids=(
@@ -50,7 +80,7 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
     ),
     ProvenanceNote(
         surface="First Hamlet persistence dichotomy",
-        role="DEF+THM+GATE",
+        role="DEF+THM+HISTORICAL_GATE",
         claim_ids=(
             "DEF_DISTINCTION_PERSISTENCE_PREDICATE",
             "THM_FIRST_HAMLET_DISPERSION_STRUCTURE",
@@ -59,7 +89,9 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         sources=(CANONICAL_FOUNDATIONAL_CONTRACT,),
         note=(
             "DISPERSION/STRUCTURE classify persistence and are not the durable "
-            "N/S projective carrier. Dynamic non-degeneracy remains explicit."
+            "N/S projective carrier. The historical dynamic-nondegeneracy gate is "
+            "discharged/superseded; canonical non-degeneracy remains an explicit "
+            "semantics choice rather than a theorem of A0 alone."
         ),
     ),
     ProvenanceNote(
@@ -183,7 +215,9 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         note=(
             "The Frobenius-orthonormal basis {I,S,P,J} forms an exact regular "
             "tetrahedron and geometrizes the existing 1+3 / 3n+1 structure. "
-            "This is downstream and does not close the primitive-dynamics gate."
+            "This theorem is downstream and does not itself perform the dynamics "
+            "closure; that historical gate is closed independently by the later "
+            "selector-free relational dynamics chain."
         ),
     ),
     ProvenanceNote(
@@ -227,6 +261,57 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
             "Kuramoto in the overdamped limit."
         ),
     ),
+    ProvenanceNote(
+        surface="realization-specific underdetermination boundaries",
+        role="THM+NO_GO",
+        claim_ids=(
+            "THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL",
+            "THM_INDEXED_TENSOR_CONTRACTION_UNDERDETERMINED_BY_FLAT_RANK",
+            "THM_NONSTRICT_MONOIDAL_COHERENCE_UNDERDETERMINED_BY_FLATTENING",
+            "THM_REALIZATION_BOUNDARIES_CLOSED_BY_UNDERDETERMINATION",
+        ),
+        sources=(
+            "docs/SEMANTIC_WEIGHTING_GATE.md",
+            "docs/INDEXED_TENSOR_GATE.md",
+            "docs/MONOIDAL_COHERENCE_GATE.md",
+            "src/rdss/realization_boundaries.py",
+        ),
+        note=(
+            "These historical gate names are closed by exact non-uniqueness or "
+            "information-loss witnesses. The general signature does not uniquely "
+            "select semantic weights, indexed contraction metadata, or non-strict "
+            "coherence morphisms. Concrete realizations may supply those data "
+            "explicitly without creating structural derivation debt."
+        ),
+    ),
+    ProvenanceNote(
+        surface="OFHM symbolic-boundary no-go and physical evidence frontier",
+        role="DEF+THM+EVIDENCE_GATE",
+        claim_ids=(
+            "DEF_OFHM_IDEAL_BAIRE_BOUNDARY",
+            "THM_OFHM_IDEAL_BOUNDARY_IS_NONCOMPACT_BAIRE_SPACE",
+            "THM_OFHM_CONTINUUM_MEASURE_IS_NOT_UNIQUE",
+            "THM_OFHM_PREFIX_METRIC_SCALE_IS_NOT_CANONICAL",
+            "THM_OFHM_EXTERNAL_GEOMETRIC_LIMIT_REQUIRES_EXTRA_EMBEDDING",
+            "THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED",
+            "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
+            "THM_OFHM_PHYSICAL_BINDING_REQUIRES_EXTERNAL_EVIDENCE",
+            "GATE_OFHM_PHYSICAL_BINDING",
+        ),
+        sources=(
+            CANONICAL_FOUNDATIONAL_CONTRACT,
+            "docs/GENERAL_ORBITAL_FRACTAL_HILBERT_MOIRE_ALGEBRA.md",
+            "docs/FOUNDATIONAL_CLOSURE_FRONTIER.md",
+        ),
+        note=(
+            "The ideal symbolic boundary is Z^N with cylinder topology. It is Baire "
+            "space and noncompact. Explicit full-support product measures and compatible "
+            "prefix metrics witness that neither measure nor Hausdorff dimension is "
+            "selected by the symbolic carrier. External geometric embedding and concrete "
+            "physical realization require extra structure/evidence. Structural "
+            "DERIVATION_GATE count is zero; physical binding is typed EVIDENCE_GATE."
+        ),
+    )
 )
 
 
@@ -296,8 +381,31 @@ IMPLEMENTATION_PROVENANCE: dict[str, tuple[str, ...]] = {
         "THM_MOIRE_KURAMOTO_CLOSURE",
         "THM_PENDULUM_KURAMOTO_COMMON_PARENT",
     ),
+    "realization_boundaries.semantic_weighting_underdetermination_certificate": (
+        "THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL",
+    ),
+    "realization_boundaries.indexed_tensor_underdetermination_certificate": (
+        "THM_INDEXED_TENSOR_CONTRACTION_UNDERDETERMINED_BY_FLAT_RANK",
+    ),
+    "realization_boundaries.monoidal_coherence_underdetermination_certificate": (
+        "THM_NONSTRICT_MONOIDAL_COHERENCE_UNDERDETERMINED_BY_FLATTENING",
+    ),
+    "realization_boundaries.realization_boundary_no_go_certificate": (
+        "THM_REALIZATION_BOUNDARIES_CLOSED_BY_UNDERDETERMINATION",
+    ),
     "orbital_fractal_hilbert_moire.countable_word_rank": (
         "DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",
+    ),
+    "orbital_fractal_hilbert_moire.prefix_ultrametric": (
+        "DEF_OFHM_IDEAL_BAIRE_BOUNDARY",
+        "THM_OFHM_PREFIX_METRIC_SCALE_IS_NOT_CANONICAL",
+    ),
+    "orbital_fractal_hilbert_moire.cylinder_product_measure": (
+        "THM_OFHM_CONTINUUM_MEASURE_IS_NOT_UNIQUE",
+    ),
+    "orbital_fractal_hilbert_moire.ofhm_geometric_limit_no_go_certificate": (
+        "THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED",
+        "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
     ),
     "orbital_fractal_hilbert_moire.euler_inverse_branch": (
         "BRIDGE_OFHM_EULER_SYMBOLIC_BRANCH_SPACE",

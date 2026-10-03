@@ -1,81 +1,73 @@
-# Non-Strict Monoidal Coherence Gate
+# Non-Strict Monoidal Coherence Realization Boundary
+
+Historical filename: `MONOIDAL_COHERENCE_GATE.md`.
 
 ## Status
 
-**OPEN by design.**
+**CLOSED BY INFORMATION-LOSS NO-GO / COHERENCE DATA REQUIRED FOR NON-STRICT REALIZATIONS.**
 
-The current RTOFA tensor layer can test a strict reference subclass:
+The current flat `TensorScalarElement` supports a strict reference subclass
+and residual diagnostics. It does not retain the syntax tree needed to recover
+a non-strict associator.
 
-\[
-(X\otimes Y)\otimes Z
-=
-X\otimes(Y\otimes Z),
-\]
+This is not an open derivation gate.
 
-explicit left/right units, and a supplied two-factor braiding candidate.
+## Exact no-go witness
 
-That is not yet a general non-strict monoidal structure.
+The parenthesized tensor expressions
 
-## Missing structure
+[
+(((Wotimes X)otimes Y)otimes Z)
+]
 
-To state the pentagon and hexagon laws without ambiguity, a concrete realization must retain parenthesization and expose explicit isomorphisms
+and
 
-\[
-\alpha_{X,Y,Z}:
-(X\otimes Y)\otimes Z
-\longrightarrow
-X\otimes(Y\otimes Z),
-\]
+[
+Wotimes(Xotimes(Yotimes Z))
+]
 
-together with a braiding
+are distinct syntax trees, but flattening retains only the same ordered leaf
+payload
 
-\[
-\beta_{X,Y}:
-X\otimes Y
-\longrightarrow
-Y\otimes X.
-\]
+[
+(W,X,Y,Z).
+]
 
-The current flattened \`TensorScalarElement\` does not remember the expression tree
+Hence the flattening map is non-injective:
 
-\[
-((X\otimes Y)\otimes Z)
-\quad\text{versus}\quad
-(X\otimes(Y\otimes Z)),
-\]
+[
+oxed{
+	ext{parenthesized tensor tree}
+longrightarrow
+	ext{flat payload}
+}
+]
 
-because both are represented only by the resulting typed element.
+loses exactly the information required to reconstruct an associator path.
 
-## Pentagon gate
+Therefore the flat payload alone cannot force explicit maps
 
-A non-strict associator must make the two canonical maps from
+[
+alpha_{X,Y,Z}:
+(Xotimes Y)otimes Z
+	o
+Xotimes(Yotimes Z)
+]
 
-\[
-(((W\otimes X)\otimes Y)\otimes Z)
-\]
+or the associated pentagon/hexagon data.
 
-to
+The theorem-level ledger node is
 
-\[
-W\otimes(X\otimes(Y\otimes Z))
-\]
+`THM_NONSTRICT_MONOIDAL_COHERENCE_UNDERDETERMINED_BY_FLATTENING`.
 
-agree. The corresponding pentagon residual cannot be defined faithfully until the five parenthesized tensor objects and the relevant \(\alpha\)-maps are explicit.
+The executable witness is
+`monoidal_coherence_underdetermination_certificate()`.
 
-## Hexagon gate
+## Canonical interpretation
 
-For a braided realization, the associator and braiding must satisfy the two hexagon coherence diagrams. Again, this requires explicit parenthesized source and target objects; a flat component tuple is insufficient.
+A non-strict braided monoidal realization may supply parenthesized objects,
+associator and braiding isomorphisms, typed composition, and pentagon/hexagon
+tests. The strict reference subclass remains valid without them.
 
-## Promotion condition
-
-This gate may be promoted only after the repository contains:
-
-1. a parenthesized tensor-expression object;
-2. explicit associator isomorphisms;
-3. explicit braiding isomorphisms;
-4. typed composition of those isomorphisms;
-5. pentagon and hexagon residuals;
-6. exact and broken finite witnesses;
-7. synchronized LaTeX statements.
-
-Until then, the implemented tensor sector is correctly described as a strict reference subclass with residual diagnostics, not a completed braided monoidal category.
+Thus non-strict coherence is a realization extension, not a missing theorem
+of the general RDSS algebra.

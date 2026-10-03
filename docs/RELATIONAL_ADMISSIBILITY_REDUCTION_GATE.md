@@ -1,204 +1,130 @@
-# Relational Admissibility Reduction Gate
+# Relational Admissibility — Historical Reduction Gate
 
 ## Status
 
-**OPEN by design.**
+**RESOLVED / SUPERSEDED AS A CANONICAL DERIVATION GATE.**
 
-Historically this gate treated
+The historical countermodel in this document remains valid:
 
-\[
-\operatorname{Adm}
-\]
+[
+mathrm{META0}
+otRightarrowmathrm{RA0}.
+]
 
-as a primitive predicate and kept RA0 as a separate object-level assumption.
-The current claim ledger instead has exactly one axiom, \(A_0\), and
-classifies RA0 as a derivation gate. META0 is the downstream model-formation
-rule. The countermodel below is retained because it still proves that META0
-alone does not force relational incidence.
+That fact is still important. Non-vacuity alone does not imply relational
+incidence.
 
-## Countermodel: META0 non-vacuity without RA0
+The current canonical RDSS foundation, however, no longer attempts to derive
+RA0 from META0 alone. It explicitly imports the canonical TIR
+relational-existence typing
 
-Take a finite raw presentation with one carrier
-
-\[
-P=\{a\},
-\qquad
-\operatorname{Adm}=\{a\},
-\qquad
-R=\varnothing.
-\]
-
-The admitted carrier domain is non-empty, so the executable non-vacuity component of META0 is satisfied.
-
-But
-
-\[
-a
-\]
-
-is incident to no primitive relation. Hence RA0 fails.
-
-Therefore, when \(\operatorname{Adm}\) is primitive,
-
-\[
-\boxed{
-\mathrm{META0}
-\not\Rightarrow
-\mathrm{RA0}.
+[
+oxed{
+operatorname{Exist}(x)Longrightarrowexists R_x
 }
-\]
+]
 
-This is an important independence result: non-vacuity is not relationality.
+through `BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING`.
 
-## Historical route A — primitive admissibility
+Consequently `RA0` is theorem-level closed under the sourced TIR/RDSS
+foundation chain and is not an open derivation gate.
 
-Keep
+## Historical countermodel: META0 without relational incidence
 
-\[
-\operatorname{Adm}(x)
-\]
+Take
 
-primitive and retain
+[
+P={a},
+qquad
+operatorname{Adm}={a},
+qquad
+R=arnothing.
+]
 
-\[
-\boxed{
-\mathrm{RA0}:
-\operatorname{Adm}(x)
-\Rightarrow
-\exists y,r\,
-\left(
-\operatorname{Rel}_r(x,y)
-\lor
-\operatorname{Rel}_r(y,x)
-\right)
+The admitted carrier domain is non-empty, so the non-vacuity component of
+META0 is satisfied, but (a) is incident to no primitive relation. Hence
+
+[
+oxed{
+mathrm{META0}
+otRightarrowmathrm{RA0}.
 }
-\]
+]
 
-as a primitive relational-admissibility derivation gate.
+The current theory retains this as an independence result. It prevents the
+sourced relational-existence rule from being misreported as a theorem of
+META0 or (A_0) alone.
 
-In the current ledger this route does not alter the unique foundation:
+## Canonical resolution
 
-\[
-\boxed{
+The active dependency is
+
+[
+oxed{
 A_0
-\Longrightarrow
-\mathrm{META0}
-\Longrightarrow
-\text{explicit derivation gates}.
++
+	ext{sourced TIR relational-existence typing}
+Longrightarrow
+	ext{relational witness}
+Longrightarrow
+mathrm{RA0}.
 }
-\]
+]
 
-This route preserves the ability to talk about admitted carriers before imposing relational incidence.
+The ledger nodes are:
 
-## Alternative route B — define admissibility relationally
+- `BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING`;
+- `THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS`;
+- historical id `RA0`, now theorem-level closed.
 
-Instead define a relational admissibility predicate by
+This route preserves proof hygiene:
 
-\[
-\boxed{
-\operatorname{Adm}_{R}(x)
-:\Longleftrightarrow
-\exists y,r\,
-\left(
-\operatorname{Rel}_r(x,y)
-\lor
-\operatorname{Rel}_r(y,x)
-\right).
-}
-\]
+- (A_0) remains the unique foundational law;
+- META0 remains a model-formation rule;
+- the relational-existence implication is explicitly sourced rather than
+  silently attributed to non-vacuity;
+- a bare singleton mathematical presentation remains a useful countermodel to
+  the stronger unsourced implication.
 
-Under this definition,
+## Historical alternative: relationally defined admissibility
 
-\[
-\operatorname{Adm}_{R}(x)
-\Rightarrow
-\exists y,r\,
-\left(
-\operatorname{Rel}_r(x,y)
-\lor
-\operatorname{Rel}_r(y,x)
-\right)
-\]
+One may alternatively define
 
-is true by definitional expansion. RA0 would no longer be an independent axiom.
+[
+operatorname{Adm}_{R}(x)
+:Longleftrightarrow
+exists y,r,
+igl(
+operatorname{Rel}_r(x,y)
+lor
+operatorname{Rel}_r(y,x)
+igr).
+]
 
-This can discharge the RA0 derivation gate by definition. It does not change
-the axiom count: \(A_0\) remains the unique axiom, while RR1/RA0* remain
-downstream derivation targets.
+Under that different language RA0 follows by definitional expansion. RDSS does
+not need this reduction for its current canonical closure; it is retained as a
+historical semantic option.
 
-## Cost of route B
+## Recursive refinement remains separate
 
-Route B is not a free theorem. It changes the meaning of the language.
+The old independence statements
 
-It makes the following statement constitutive:
+[
+mathrm{RA0}
+otRightarrowmathrm{RR1},
+qquad
+mathrm{RR1}
+otRightarrowmathrm{RA0}
+]
 
-\[
-\boxed{
-\text{to be admitted}
-=
-\text{to be relationally incident}.
-}
-\]
+remain valid for the historical schemas. The current canonical theory does not
+need a universal RR1 law: arbitrary selected finite refinement depth is
+constructively available through
 
-Consequently:
+`THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE`,
 
-- an isolated carrier cannot be admitted by definition;
-- admissibility can no longer vary independently of the relation graph;
-- the orientation of primitive arrows remains irrelevant to objecthood because incidence uses source **or** target;
-- any later semantics requiring admitted but temporarily relation-free carriers would need a different predicate.
+while `RR1` is retained as a formation-rule identifier for stronger complete
+recursive hosting.
 
-Thus route B is a genuine definitional reduction, not a proof of old RA0 from META0.
-
-## Derivation-closing condition
-
-Historically this section determined whether RA0 could be demoted from AXIOM.
-That classification is superseded. RA0 is now an explicit derivation gate
-downstream of the unique axiom \(A_0\).
-
-If relationally defined admissibility is accepted and justified as the intended
-semantics of \(\operatorname{Adm}\), then the RA0 gate closes by definitional
-expansion. This does not create or remove an axiom.
-
-The canonical foundation remains
-
-\[
-\boxed{
-A_0
-\Longrightarrow
-\mathrm{META0}
-\Longrightarrow
-\text{derived structure / explicit derivation gates}.
-}
-\]
-
-## Why this matters
-
-The reduction programme now separates three logically distinct claims:
-
-\[
-\text{non-vacuity},
-\qquad
-\text{relational admissibility},
-\qquad
-\text{recursive closure}.
-\]
-
-They must not be merged by rhetoric.
-
-The current executable witnesses establish:
-
-\[
-\mathrm{META0}\not\Rightarrow\mathrm{RA0},
-\]
-
-\[
-\mathrm{RA0}\not\Rightarrow\mathrm{RR1},
-\]
-
-and
-
-\[
-\mathrm{RR1}\not\Rightarrow\mathrm{RA0}.
-\]
-
-Only an explicit definitional or strengthened-axiom change may collapse those layers.
+Thus this historical gate is closed without conflating non-vacuity,
+relationality and recursive refinement.

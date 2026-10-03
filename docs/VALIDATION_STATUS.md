@@ -1,178 +1,74 @@
 # RTOFA Validation Status
 
-Date: 2026-09-30  
-Branch: feat/canonical-normal-form-v0.1
+Date: 2026-10-02  
+Branch: feat/foundational-closure-v0.1
 
-This file distinguishes repository inventory, targeted execution, full static
-audit, full pytest execution, and LaTeX compilation. No category is promoted
-from evidence belonging to another category.
+This file separates structural proof status from execution evidence.
+Historical dated milestones are retained below; the current status in this
+header supersedes their old "current" labels.
 
 ## CURRENT RESULT
 
-\[
-\boxed{
-\text{TARGETED CANONICAL VALIDATION: PASS}
-}
-\]
+Structural claim status:
 
 \[
 \boxed{
-\text{FULL REPOSITORY VALIDATION: NOT YET RUN ON THIS HEAD}
+N_{\rm DERIVATION\_GATE}=0
 }
 \]
 
-The working branch does not modify main.
-
-## Branch inventory
-
-Observed public definitions on the branch:
-
-- core algebra: 10;
-- canonical reduction layer: 17;
-- structural operations: 38;
-- generic phase: 3;
-- relational potential: 3;
-- reference realizations: 11;
-- Zero Axis bridge: 2;
-- package-root public exports: 124;
-- duplicate package exports: 0.
-
-The claim ledger contains 105 Claim entries.
-
-The Python test inventory contains 226 test functions:
-
-| File | Test functions |
-|---|---:|
-| tests/test_algebra.py | 21 |
-| tests/test_axioms.py | 48 |
-| tests/test_canonical.py | 12 |
-| tests/test_closure.py | 38 |
-| tests/test_independence_witnesses.py | 13 |
-| tests/test_layering.py | 4 |
-| tests/test_operations.py | 46 |
-| tests/test_phase.py | 3 |
-| tests/test_potential.py | 13 |
-| tests/test_realizations.py | 24 |
-| tests/test_zero_axis.py | 4 |
-| **Total** | **226** |
-
-These counts are source inventory, not a claim that all 226 tests executed.
-
-## Targeted local execution
-
-The canonical reducer was exercised in the current tool runtime in two
-independent targeted runs.
-
-First run:
-
-- strict-normal-form idempotence;
-- representation type separation;
-- explicit inverse requirement for LOSSLESS rules;
-- isomorphism round trip;
-- lossless comparison across an explicit isomorphism;
-- explicit opt-in requirement for lossy projection comparison;
-- ambiguous-rule fail-closed behavior;
-- cycle rejection;
-- non-finite-value rejection.
-
-The initial core run executed 8 tests and passed 8/8. One additional
-representation-tag case was added to the repository test file after that run,
-so the repository canonical test inventory is larger than this first runtime
-set.
-
-Second run used a minimal RDSS-compatible carrier/occurrence/path harness and
-executed:
-
-- carrier versus occurrence strict-sort separation;
-- relation-occurrence to relation-value LOSSY projection;
-- occurrence-path to relation-path LOSSY projection preserving relation order.
-
-Result: 3/3 PASS.
-
-Therefore the executed targeted total in this environment is:
-
-\[
-8+3=11\quad\text{PASS}.
-\]
-
-This is not a substitute for executing the repository's full 226-test suite.
-
-## Canonical reduction invariants under test
-
-The branch currently enforces:
-
-\[
-\mathcal N_0(\mathcal N_0(X))=\mathcal N_0(X),
-\]
-
-explicit separation of concrete representation types, explicit semantic
-reduction kind, explicit information effect, an inverse requirement for
-LOSSLESS reductions, ambiguity rejection, cycle rejection, and provenance
-capture.
-
-The first RDSS-specific rules are exactly the previously defined
-occurrence-to-value forgetful projections:
-
-\[
-\operatorname{RelationOccurrence}\to\operatorname{TypedRelation},
-\]
-
-\[
-\operatorname{OccurrenceRelationPath}\to\operatorname{RelationPath}.
-\]
-
-Both are declared FORGETFUL_PROJECTION + LOSSY. Default equivalence comparison
-rejects their traces unless lossy comparison is explicitly enabled.
-
-## Full static audit
-
-NOT YET RUN on the complete current branch checkout.
-
-The branch updates scripts/static_audit.py so that the new canonical module and
-docs/CANONICAL_REDUCTION_GATE.md are part of the audited layer surface.
-However, editing the audit script is not evidence that the audit itself passed.
-
-## Full pytest
-
-NOT YET RUN on the complete current branch checkout.
-
-Targeted tests described above are current execution evidence only for the
-canonical slice.
-
-## LaTeX
-
-monograph/main.tex has been updated with the canonical normalization section.
-
-Full LaTeX compilation has NOT YET been run on the current branch head.
-
-## Foundational status
-
-The foundational stratification remains
+and
 
 \[
 \boxed{
-\mathrm{META0}
-\triangleright
-(\mathrm{RA0}+\mathrm{RR1}).
+N_{\rm EVIDENCE\_GATE}=1.
 }
 \]
 
-The canonical layer introduces definitions and one idempotence theorem; it adds
-no foundational axiom and performs no promotion of CP1, Hilbert--Moire, Zero
-Axis, or physical interpretation.
+The sole evidence frontier is
 
-## Open canonical gates
+\`GATE_OFHM_PHYSICAL_BINDING\`.
 
-1. explicit RDSS signature extraction for carrier, occurrence, relation, rank,
-   semantic scale, phase, representation and provenance;
-2. typed registry of proven isomorphisms/reference representations;
-3. well-founded reduction ordering;
-4. confluence analysis on compatible rule subsets;
-5. executable invariant-preservation checks;
-6. explicit quotient policies such as any future U(1) modulo-one reduction.
+The historical geometric-fractal gate is theorem-level closed by a no-go:
+the canonical symbolic boundary is \(\mathbb Z^{\mathbb N}\) with cylinder
+topology, while unique measure, metric scale, Hausdorff dimension and external
+geometric embedding are not selected by OFHM alone.
 
-Until those gates are discharged, the engine must not infer them.
+Execution status on the exact final branch head is tracked separately below.
+No GitHub Actions execution is permitted for this private repository.
 
+## Current proof inventory
+
+Current canonical changes include:
+
+- theorem-level TIR relational-existence bridge;
+- discharged/superseded First-Hamlet strict-dynamics gates;
+- theorem-level \`RA0\`;
+- formation-rule status for \`RR1\`, \`RA0_STAR\`, \`RA0_REL_STAR\`;
+- structural Collatz closure;
+- alternating half-time pendulum / Moiré-Kuramoto closure;
+- Baire-boundary geometric-limit no-go;
+- physical binding retyped as external \`EVIDENCE_GATE\`.
+
+The remaining empirical frontier is not counted as an unresolved mathematical
+derivation.
+
+## Current validation boundary
+
+Prior local validation on the immediately preceding merged dynamics branch
+reported:
+
+- full pytest with new dynamics tests: **573/573 PASS**;
+- \`scripts/static_audit.py\`: **PASS**;
+- Python compileall: **PASS**;
+- two-pass LaTeX on the supplied main checkout: **PASS**;
+- numerical/property checks for Moiré gradients, gauge invariance, orientation
+  reversal and Lyapunov sign: **PASS**.
+
+The current foundational-closure branch adds claim retyping, finite-refinement
+proof cleanup, Baire-boundary no-go code/tests, documentation and LaTeX
+updates. Exact-head local execution must be recorded before merge; connector
+graph audit is not a substitute for pytest or pdflatex.
 
 ## Canonical signature update — 2026-09-30
 
@@ -1256,92 +1152,173 @@ toolchain.
 
 ## Alternating half-time pendulum / Moiré-Kuramoto closure — 2026-10-02
 
-Branch: `feat/alternating-halfstep-pendulum-moire-kuramoto-v0.1`.
+Branch: \`feat/alternating-halfstep-pendulum-moire-kuramoto-v0.1\`.
 
-Parent main:
+Parent RDSS main at the start of that milestone:
 
-- RDSS `e1d2dda2ffbcbb38392869f94012cea03fffd751`.
+- \`e1d2dda2ffbcbb38392869f94012cea03fffd751\`.
 
 Frozen TIR parent:
 
-- `9783782570a2ccfa1fc42c99b605dad48e02aa78`;
-- `TIR_PRESPACETIME_STELLA_HALF_SUCCESSOR_V0_1.md`;
-- `TIR_STELLA_ALTERNATING_ROTATION_INFERENCE_V0_1.md`;
-- `TIR_RELATIONAL_PHASE_LAGRANGIAN_CORE_V0_1.md`;
-- `TIR_WHITE_THREAD_SPIN_LIFT_LYAPUNOV_V0_1.md`;
-- `TIR_KAPPA_FLAVOUR_MIXING_NORMALIZATION_V0_1.md`.
+- \`9783782570a2ccfa1fc42c99b605dad48e02aa78\`.
 
-Added:
+The milestone added:
 
-- `src/rdss/alternating_phase_dynamics.py`;
-- `tests/test_alternating_phase_dynamics.py`;
-- `docs/ALTERNATING_HALF_TIME_PENDULUM_MOIRE_KURAMOTO.md`;
-- theorem-level pendulum, frame-inertia and Moiré-Kuramoto claims;
-- monograph integration and pinned bibliography entries;
-- public API and implementation provenance.
+- exact structural half-successor \(H^2=S\);
+- canonical pair potential
+  \[
+  V_{\leftrightarrow}
+  =
+  \pi\kappa(1-\cos\Delta);
+  \]
+- opposite pair gradients and zero center force;
+- relative pendulum equation;
+- unique local second-frame stencil \((1,-2,1)\);
+- canonical Moiré information potential;
+- Kuramoto as the overdamped reduction of the same potential;
+- theorem-level closure of the historical \`GATE_MOIRE_DYNAMICAL_LAW\`.
 
-Exact structural closures encoded:
+Local repair/validation on the uploaded checkout plus the new dynamics tests
+reported **573/573 pytest PASS**, static-audit PASS and numerical property
+checks PASS. Those receipts belong to that immediately preceding milestone and
+are not silently reused as exact-head evidence for later foundational edits.
 
-[
-H^2=S,
-]
+## Foundational and geometric closure — 2026-10-02
 
-[
-V_{leftrightarrow}
-=
-pikappa(1-cosDelta)
-=
-rac{ln2}{24}(1-cosDelta),
-]
+Branch: \`feat/foundational-closure-v0.1\`.
 
-[
-F_++F_-=0,
-]
+Parent main:
 
-[
-I_phiddotDelta+etadotDelta+2pikappasinDelta=0,
-]
+- RDSS \`3fe6ed391d374a09c0b077b8bdedb3aabe16a28e\`.
 
-[
-D_2x_n=x_{n+1}-2x_n+x_{n-1},
-]
+Frozen TIR foundation source:
 
-and
+- \`9783782570a2ccfa1fc42c99b605dad48e02aa78\`;
+- \`TIR_CANONICAL_DERIVATION_SPINE_V0_1.md\`;
+- \`TIR_FOUNDATION_PROOF_SOURCE_REGISTRY_V0_1.md\`.
 
-[
-eta_idot	heta_i
-=
--partial_{	heta_i}V_{m M},
-]
+Foundational cleanup:
 
-which is the gauge-twisted Kuramoto reduction of the same Moiré potential.
+- \`RA0\` is theorem-level closed under the explicitly imported TIR
+  relational-existence typing;
+- \`RR1\`, \`RA0_STAR\`, \`RA0_REL_STAR\` are formation schemas, not
+  foundational proof debts;
+- First-Hamlet strict-dynamics and Hamlet-to-durable-role gates are
+  discharged/superseded;
+- structural Collatz gates are theorem-level closed;
+- \`THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE\` supplies arbitrary selected
+  finite refinement depth.
 
-Static connector audit on the branch after integration:
+Geometric-limit no-go:
 
-- claim IDs: **380**;
+- ideal symbolic boundary:
+  \[
+  \mathbb Z^{\mathbb N};
+  \]
+- product topology: Baire, noncompact;
+- multiple explicit full-support product measures exist;
+- compatible prefix metric scale is not unique;
+- embedded binary Hausdorff dimension varies with that scale;
+- no external geometric embedding is selected by the OFHM structural
+  signature.
+
+Therefore
+
+\`GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT\`
+
+is theorem-level **CLOSED BY NO-GO**.
+
+Physical realization is separately typed:
+
+\[
+\boxed{
+\texttt{GATE\_OFHM\_PHYSICAL\_BINDING}
+:
+\texttt{EVIDENCE\_GATE}.
+}
+\]
+
+Final structural ledger target:
+
+- \`DERIVATION_GATE\`: **0**;
+- \`EVIDENCE_GATE\`: **1**.
+
+Required exact-head validation before merge:
+
+- claim-DAG audit;
+- full pytest;
+- \`scripts/static_audit.py\`;
+- Python compileall;
+- two-pass LaTeX compilation;
+- no unresolved citations/references;
+- no hidden malformed control characters in maintained docs.
+
+
+## Foundational closure continuation audit — 2026-10-02
+
+Branch: `feat/foundational-closure-v0.1`.
+
+This continuation resumed the already-existing foundational-closure branch
+rather than creating a new line of work.
+
+Current connector-level exact-head structural audit:
+
+- claim entries: **392**;
+- `DERIVATION_GATE`: **0**;
+- `EVIDENCE_GATE`: **1**;
+- sole evidence gate: `GATE_OFHM_PHYSICAL_BINDING`;
 - duplicate claim IDs: **0**;
 - missing claim dependencies: **0**;
-- claim DAG cycles: **0**;
-- required new public exports missing: **0**;
-- pinned TIR/RDSS REF hashes missing from the implementation: **0**;
-- required LaTeX closure sections/citations missing: **0**.
+- claim-DAG cycles: **0**;
+- stale current-status phrases asserting closed gates remain open: **0**.
 
-Mathematical spot checks executed in-session:
+Narrative/provenance drift repaired:
 
-- (pikappa=ln2/24): **PASS**;
-- one pair half-turn potential (V(pi)=ln2/12): **PASS**;
-- twelve pair half-turn budgets sum to (ln2): **PASS**;
-- opposite pair gradients sum to zero: **PASS**;
-- relative pendulum residual on constructed solution: **PASS**.
+- tetrahedral crosscheck no longer says the historical primitive-dynamics gate
+  remains open;
+- the Collatz PSL(2,R) lift no longer points to an open branch-derivation gate;
+- the generic orbital-complex bridge is explicitly conditional rather than
+  reported as a foundational proof debt;
+- foundational provenance now records zero structural derivation gates;
+- Layer 3 architecture now types RA0 as theorem-level, RR1/RA0*/RA0_REL* as
+  formation schemas, and physical binding as `EVIDENCE_GATE`;
+- the frontier document status is
+  `STRUCTURAL_FOUNDATION_CLOSED / ONE EXTERNAL EVIDENCE FRONTIER`;
+- one stray unmatched Markdown display terminator in
+  `docs/FOUNDATIONAL_CLOSURE_FRONTIER.md` was removed;
+- the monograph was synchronized with the current RA0/RR1, kappa,
+  Moiré-Kuramoto and evidence-frontier status.
 
-Validation boundary:
+Exact-head connector audit of `monograph/main.tex` after synchronization:
 
-- full repository pytest on this exact branch head: **NOT RUN**;
-- local `scripts/static_audit.py` on a complete checkout: **NOT RUN**;
-- two-pass full monograph compilation on this exact branch head: **NOT RUN**;
-- GitHub Actions were **not** used and remain disallowed by the private-repository policy.
+- display-math delimiters: **502 open / 502 close**;
+- brace count: **1573 open / 1573 close**;
+- missing bibliography citation keys: **0**;
+- missing `\\claimid{...}` targets: **0**;
+- hidden control characters in maintained closure documents: **0**.
 
-The historical claim id `GATE_MOIRE_DYNAMICAL_LAW` is retained for
-provenance but is promoted to theorem-level closed status for the structural
-relational phase dynamics. Physical clock/substrate/continuum bindings remain
-separate.
+Independent executable no-go checks on the new OFHM symbolic-boundary
+implementation:
+
+- (p_b(k)=((b-1)/(b+1))b^{-|k|}) normalized numerically to **1.0** for
+  (b=1.1,1.5,2,3,10) on a symmetric 2001-point truncation;
+- (mu_2([0])=1/3): **PASS**;
+- (mu_3([0])=1/2): **PASS**;
+- binary prefix dimension at (lambda=1/2): **1**;
+- binary prefix dimension at (lambda=1/4): **1/2**;
+- 20,000 randomized prefix-ultrametric triangle checks: maximum violation
+  **0.0**;
+- invalid metric-scale domain checks: **12/12 rejected**.
+
+Validation boundary remains explicit:
+
+- full repository pytest on a complete checkout of this exact current branch
+  head: **NOT RUN**;
+- actual `python scripts/static_audit.py` on a complete exact-head checkout:
+  **NOT RUN**;
+- Python compileall on the complete exact-head checkout: **NOT RUN**;
+- two-pass LaTeX compilation of the complete exact-head monograph:
+  **NOT RUN**.
+
+The connector-level structural and document audits above are not silently
+reported as substitutes for those pending full local execution checks.

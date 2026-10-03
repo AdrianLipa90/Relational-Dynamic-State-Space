@@ -99,7 +99,7 @@ Contains the scalar diagnostic layer built from explicit residual signatures and
 - \`semantic_potential_shift\`;
 - \`relational_attractor_set\`.
 
-The weighting profile is structural input. It is not inferred automatically from a semantic scale label. Automatic derivation of weights from a semantic graph/context remains the explicit gate documented in `docs/SEMANTIC_WEIGHTING_GATE.md`.
+The weighting profile is structural input. It is not inferred automatically from a semantic scale label. `THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL` proves by explicit counterexample that the current structural signature does not select a unique profile. `docs/SEMANTIC_WEIGHTING_GATE.md` is therefore a historical filename for a closed realization boundary, not an open derivation gate.
 
 The core statement is
 
@@ -117,21 +117,39 @@ V_R.
 
 \`src/rdss/axioms.py\`, \`src/rdss/closure.py\`, \`src/rdss/witnesses.py\`
 
-Separates the unique axiom, definitions, structural primitives, derived constructions, reference realizations, bridges, derivation gates, and theorems.
+Separates the unique foundational law, definitions, structural primitives,
+formation rules, derived constructions, reference realizations, bridges,
+theorems, historical gate identifiers, and external evidence gates.
 
 The current canonical foundational stratification is
 
 \[
 A_0
+\; + \;
+\text{sourced TIR relational-existence typing}
 \Longrightarrow
-\mathrm{META0}
+\text{relational witness / durable relation roles}
 \Longrightarrow
-\text{derived structure / explicit derivation gates}.
+\text{derived structure}.
 \]
 
-\(\mathrm{RA0}\), \(\mathrm{RR1}\), \(\mathrm{RA0}^{*}\) and
-\(\mathrm{RA0}^{\mathrm{rel}*}\) are downstream derivation gates, not
-additional axioms.
+\(\mathrm{RA0}\) is theorem-level closed under the sourced relational-existence
+typing. Historical \(\mathrm{RR1}\), \(\mathrm{RA0}^{*}\) and
+\(\mathrm{RA0}^{\mathrm{rel}*}\) are retained as formation schemas rather
+than universal proof obligations. The structural ledger has
+\(N_{\mathrm{DERIVATION\_GATE}}=0\); concrete OFHM physical binding is
+separately typed as one \(\mathrm{EVIDENCE\_GATE}\).
+
+Three older realization-specific documents are likewise closed by exact
+underdetermination rather than by hidden defaults:
+
+- semantic weights are not unique from a scale label/signature;
+- indexed contraction is not unique from total rank plus a flat payload;
+- non-strict associator/braiding data cannot be reconstructed after
+  parenthesization has been flattened.
+
+These are realization-input boundaries, not structural derivation gates. See
+`THM_REALIZATION_BOUNDARIES_CLOSED_BY_UNDERDETERMINATION`.
 
 ## Layer 4 — Generic phase representation
 
@@ -187,48 +205,83 @@ See `docs/GENERAL_ORBITAL_FRACTAL_HILBERT_MOIRE_ALGEBRA.md`.
 
 ### Alternating half-time phase dynamics
 
-`src/rdss/alternating_phase_dynamics.py`
+\`src/rdss/alternating_phase_dynamics.py\`
 
-The OFHM dynamical layer is now refined by the exact TIR Stella half-successor
+The OFHM dynamical layer is refined by the exact TIR Stella half-successor
 
-[
-H(n,+)=(n,-),qquad H(n,-)=(n+1,+),qquad H^2=S.
-]
+\[
+H(n,+)=(n,-),\qquad
+H(n,-)=(n+1,+),\qquad
+H^2=S.
+\]
 
 Occurrence order is discrete in half-frames while the internal state remains a
-continuous (U(1)) phase.
+continuous \(U(1)\) phase.
 
 The closed bipolar channel normalization gives 24 directed incidences and 12
-undirected exchange pairs. One undirected pair therefore carries information
-budget (ln2/12). Normalized (U(1)) chordal mismatch fixes the pair
-potential
+undirected exchange pairs. One undirected pair carries information budget
+\(\ln2/12\). Normalized \(U(1)\) chordal mismatch fixes
 
-[
+\[
 V_{ij}
 =
-pikappa
-left(1-cosDelta_{ij}ight),
-qquad
-kappa=rac{ln2}{24pi}.
-]
+\pi\kappa
+\left(1-\cos\Delta_{ij}\right),
+\qquad
+\kappa=\frac{\ln2}{24\pi}.
+\]
 
-Its two endpoint gradients are equal and opposite. For a bipolar pair this
-splits into an inertial center mode and a relative pendulum equation. On a
-network, the same potential gives the Moiré sine coupling; the overdamped
+Its endpoint gradients are equal and opposite. For a bipolar pair this splits
+into an inertial center mode and a relative pendulum equation. On a network,
+the same potential gives the Moiré sine coupling; the overdamped
 Euler--Lagrange--Rayleigh reduction is gauge-twisted Kuramoto flow.
 
 The frame-native inertial operator on the full successor is the unique local
 three-frame stencil, up to scale,
 
-[
+\[
 x_{n+1}-2x_n+x_{n-1}.
-]
+\]
 
-This closes the historical structural
-`GATE_MOIRE_DYNAMICAL_LAW`. Physical clock calibration, continuum-field
-realization and substrate identification remain downstream bridges.
+This closes the historical structural \`GATE_MOIRE_DYNAMICAL_LAW\`.
+Physical clock calibration, continuum-field realization and substrate
+identification remain downstream bridges.
 
-See `docs/ALTERNATING_HALF_TIME_PENDULUM_MOIRE_KURAMOTO.md`.
+See \`docs/ALTERNATING_HALF_TIME_PENDULUM_MOIRE_KURAMOTO.md\`.
+
+### Foundational closure frontier
+
+The canonical TIR relational-existence typing is imported explicitly rather
+than attributed to \(A_0\) alone. Historical First-Hamlet dynamical gates are
+discharged as non-foundational/superseded; \`RA0\` is theorem-level closed;
+\`RR1\`, \`RA0_STAR\` and \`RA0_REL_STAR\` are retained as formation schemas,
+not open axiomatic obligations.
+
+Arbitrary selected finite refinement is supplied by the free finite-word
+occurrence monoid and its right action.
+
+The historical structural Collatz gates are also discharged.
+
+The former geometric-fractal limit gate is closed by a theorem-level no-go:
+the canonical infinite symbolic boundary is Baire space
+\(\mathbb Z^{\mathbb N}\), while measure, metric scale, Hausdorff dimension
+and external geometric embedding are not uniquely selected by the structural
+carrier.
+
+Therefore the current ledger has
+
+\[
+\boxed{
+N_{\rm DERIVATION\_GATE}=0.
+}
+\]
+
+Physical binding is retained separately as the sole external
+\`EVIDENCE_GATE\`:
+
+- \`GATE_OFHM_PHYSICAL_BINDING\`.
+
+See \`docs/FOUNDATIONAL_CLOSURE_FRONTIER.md\`.
 
 ## Layer 6 — Zero Axis bridge
 

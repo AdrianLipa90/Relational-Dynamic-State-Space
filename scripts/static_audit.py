@@ -122,6 +122,7 @@ def audit_layer_ownership() -> dict[str, int]:
         "operations": SRC / "rdss" / "operations.py",
         "phase": SRC / "rdss" / "phase.py",
         "potential": SRC / "rdss" / "potential.py",
+        "realization_boundaries": SRC / "rdss" / "realization_boundaries.py",
         "provenance": SRC / "rdss" / "provenance.py",
         "realizations": SRC / "rdss" / "realizations.py",
         "reduction_certificate": SRC / "rdss" / "reduction_certificate.py",
@@ -228,6 +229,9 @@ def audit_test_imports() -> None:
         "rdss.operations": public_defs(SRC / "rdss" / "operations.py"),
         "rdss.phase": public_defs(SRC / "rdss" / "phase.py"),
         "rdss.potential": public_defs(SRC / "rdss" / "potential.py"),
+        "rdss.realization_boundaries": public_defs(
+            SRC / "rdss" / "realization_boundaries.py"
+        ),
         "rdss.provenance": public_defs(SRC / "rdss" / "provenance.py"),
         "rdss.realizations": public_defs(SRC / "rdss" / "realizations.py"),
         "rdss.reduction_certificate": public_defs(SRC / "rdss" / "reduction_certificate.py"),

@@ -15,6 +15,7 @@ class ClaimKind(str, Enum):
     THEOREM = "theorem"
     FORMATION_RULE = "formation_rule"
     DERIVATION_GATE = "derivation_gate"
+    EVIDENCE_GATE = "evidence_gate"
 
 
 @dataclass(frozen=True)
@@ -138,9 +139,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0",
-        ClaimKind.DERIVATION_GATE,
-        "Strict dynamics gate: derive from primitive existence potential plus indistinction, without adopting the canonical non-degeneracy definition, that both DISPERSION and STRUCTURE are dynamically admissible/non-empty possibilities.",
-        ("DEF_PRIMITIVE_INDISTINCTION", "DEF_DISTINCTION_PERSISTENCE_PREDICATE"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE DISCHARGED / SUPERSEDED. Canonical RDSS no longer requires a theorem that P_E plus I_0 forces both persistence branches as an upstream foundation. The Boolean partition is exact, canonical non-degeneracy is an explicit semantics choice, and one source-clean reference flow realizes both regimes consistently. No claim is made that A0 alone dynamically forces both preimages.",
+        ("THM_FIRST_HAMLET_DISPERSION_STRUCTURE", "DEF_CANONICAL_FIRST_HAMLET_NONDEGENERATE", "THM_REF_PERSISTENCE_FLOW_REALIZES_BOTH_HAMLET_REGIMES"),
     ),
     Claim(
         "THM_RELATIONAL_DEFORMATION_POTENTIAL_IS_DOWNSTREAM",
@@ -210,9 +211,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_BIND_PRIMITIVE_INDISTINCTION_TO_COLLATZ_STATE",
-        ClaimKind.DERIVATION_GATE,
-        "LEGACY/SUPERSEDED target: directly binding primitive indistinction to a Collatz integer skips the persistent-relation layer and is not canonical after the TIR/RDSS causal audit.",
-        ("DEF_PRIMITIVE_INDISTINCTION", "THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE DISCHARGED / SUPERSEDED. Direct primitive-indistinction-to-integer binding is non-canonical because it skips the persistent relation layer. Collatz enters only downstream of the durable relation-role algebra and relational-cardinality normalization.",
+        ("THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER", "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP"),
     ),
     Claim(
         "DEF_SOURCE_MINIMAL_PARITY_DYNAMICS_SIGNATURE",
@@ -449,27 +450,33 @@ CLAIMS: tuple[Claim, ...] = (
         ("THM_ASSOCIATION_QUOTIENT_CARDINALITY", "THM_ACTIVE_OPERATOR_PRODUCT_CARDINALITY", "THM_IDENTITY_REPAIR_CARDINALITY", "THM_PARITY_FORCES_COLLATZ_BRANCH_SELECTION"),
     ),
     Claim(
+        "THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED",
+        ClaimKind.THEOREM,
+        "Within the canonical relational carrier, the Collatz operation roles and branch selection are structurally closed: free Z2 association gives /2, the selector-free three-face active orbit gives x3, unique identity repair gives +1, and parity admissibility selects n/2 versus 3n+1. The separate question whether a particular external physical substrate instantiates this structural normalization belongs to physical binding, not to the RDSS structural derivation.",
+        ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING"),
+    ),
+    Claim(
         "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS",
-        ClaimKind.DERIVATION_GATE,
-        "Remaining foundational/physical bridge: establish that the primitive dynamics of the intended natural system is instantiated by this finite relational-cardinality normalization rather than merely admitting it as an exact algebraic realization.",
-        ("THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ", "A0"),
+        ClaimKind.THEOREM,
+        "HISTORICAL STRUCTURAL GATE CLOSED. RDSS now derives the relational-cardinality Collatz dynamics internally. Any stronger assertion that a particular natural/material system instantiates this map is explicitly delegated to the separate GATE_OFHM_PHYSICAL_BINDING frontier and is not a premise of this theorem.",
+        ("THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED",),
     ),
     Claim(
         "GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS",
-        ClaimKind.DERIVATION_GATE,
-        "Legacy/refined inheritance gate: quotient/product/coproduct cardinality semantics now close the divide/multiply/add operation assignment algebraically. The unresolved stronger question is only whether primitive natural dynamics is forced to instantiate that exact relational-cardinality normalization.",
-        ("A0", "THM_STRUCTURE_BRANCH_MINIMAL_RELATION", "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT", "DEF_SOURCE_MINIMAL_PARITY_DYNAMICS_SIGNATURE"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE CLOSED / SUPERSEDED. Source-minimal arithmetic, Gaussian/Bombelli provenance, operator-dimension provenance and selector-free tetrahedral semantics independently agree on 2,3,1. No further structural minimality premise is needed; external physical realization is separately typed.",
+        ("THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING", "THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED"),
     ),
     Claim(
         "GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA",
-        ClaimKind.DERIVATION_GATE,
-        "Refined physical-sector gate: numerical coefficients, quotient/product/identity-repair semantics, and selector-free bipolar tetrahedral operation-role selection are algebraically closed. The remaining burden is only the stronger physical/foundational assertion that primitive natural dynamics instantiates this already-forced relational/tetrahedral normalization.",
-        ("THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP", "THM_BIPOLAR_SELECTOR_FREE_231_OPERATION_BINDING", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE CLOSED. The branch maps and their selector-free relational provenance are theorem-level results inside RDSS. Physical instantiation is not part of this historical structural gate.",
+        ("THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED",),
     ),
     Claim(
         "REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT",
         ClaimKind.REFERENCE_REALIZATION,
-        "Once the Collatz branches are admitted, E(x)=x/2 and O(x)=3x+1 have projective matrices diag(1,2) and [[3,1],[0,1]]. Determinant-one normalization places both in SL(2,R), hence their projective actions lie in PSL(2,R). This is downstream of the open branch-derivation gate.",
+        "For the theorem-level Collatz branches, E(x)=x/2 and O(x)=3x+1 have projective matrices diag(1,2) and [[3,1],[0,1]]. Determinant-one normalization places both in SL(2,R), hence their projective actions lie in PSL(2,R). The historical branch-derivation gate is closed; this remains a downstream projective realization of the derived branches.",
         ("DEF_COLLATZ_ASSOCIATION_DISSOCIATION_CYCLE", "THM_SOURCE_MINIMAL_AFFINE_PARITY_DYNAMICS_IS_COLLATZ"),
     ),
     Claim(
@@ -575,6 +582,24 @@ CLAIMS: tuple[Claim, ...] = (
         ("A0",),
     ),
     Claim(
+        "BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",
+        ClaimKind.BRIDGE,
+        "Imported canonical TIR existence typing from TIR_CANONICAL_DERIVATION_SPINE_V0_1.md at commit 9783782570a2ccfa1fc42c99b605dad48e02aa78: Exist(x) implies the existence of at least one relational witness R_x. This is a sourced typing rule and must not be misreported as a theorem of A0 alone.",
+        ("A0",),
+    ),
+    Claim(
+        "THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS",
+        ClaimKind.THEOREM,
+        "Within the canonical TIR/RDSS existence typing, every admitted realized existent has at least one relational witness. A bare non-empty carrier may still be a singleton point with no internal binary structure; the forced conclusion is relational incidence for realized existence, not that A0 alone creates a two-state carrier.",
+        ("BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING", "THM_FIRST_LAW_NONEMPTY_NOT_BINARY"),
+    ),
+    Claim(
+        "THM_CANONICAL_NONTRIVIAL_EXISTENCE_FORCES_DISTINCTION",
+        ClaimKind.THEOREM,
+        "For an admitted realized state whose minimal non-trivial relational witness is non-self-collapsed, TIR minimality selects a relation as the minimum non-trivial structure and the relation carries the two orientation roles {N,S}. Thus this canonical non-self-collapsed relational sector entails a relational distinction. The theorem does not claim that a bare singleton carrier or an unlabelled self-relation is automatically binary.",
+        ("THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS", "BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION", "THM_RELATION_ORIENTATION_TWO_ROLE_ORBIT"),
+    ),
+    Claim(
         "DEF_STRUCTURE_AS_PERSISTENT_RELATION",
         ClaimKind.DEFINITION,
         "Legacy/local alias for the bridged TIR result: a persistent non-trivial distinction is represented by an admitted relation R with ordered source and target roles.",
@@ -630,9 +655,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY",
-        ClaimKind.DERIVATION_GATE,
-        "Legacy strict-dynamics gate: establish from a physical/dynamical law that primitive existence potential in indistinction actually undergoes a candidate differentiation process. The formal DISPERSION/STRUCTURE partition itself is already exact once persistence is defined; this gate concerns dynamical instantiation, not the algebraic dichotomy.",
-        ("DEF_PRIMITIVE_INDISTINCTION", "DEF_DISTINCTION_PERSISTENCE_PREDICATE"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE DISCHARGED / SUPERSEDED. The canonical foundational route no longer requires an unsourced dynamical transition P_E->candidate differentiation. Realized existence is typed relationally through BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING, while the first-Hamlet persistence classifier remains a separate optional semantic/dynamical layer.",
+        ("THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS", "THM_FIRST_HAMLET_DISPERSION_STRUCTURE"),
     ),
     Claim(
         "THM_MINIMAL_INFORMATION_STATE_BINARY",
@@ -654,15 +679,15 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "GATE_EXISTENCE_POTENTIAL_HAMLET_BINARY",
-        ClaimKind.DERIVATION_GATE,
-        "Legacy strict-dynamics gate: physically instantiate the already-defined first Hamlet DISPERSION/STRUCTURE bifurcation from primitive existence potential. The canonical algebraic Hamlet is THM_FIRST_HAMLET_DISPERSION_STRUCTURE plus THM_FIRST_HAMLET_Z2 and does not require this gate.",
-        ("GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY", "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0", "THM_FIRST_HAMLET_Z2"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE DISCHARGED / SUPERSEDED. The persistence Hamlet is retained as an exact two-class classifier/reference realization, but it is not the source of the durable N/S carrier and is not required to be physically generated from P_E in the canonical foundation chain.",
+        ("GATE_EXISTENCE_POTENTIAL_INFORMATIONALITY", "GATE_FIRST_HAMLET_NONDEGENERACY_FROM_PE_I0", "THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER"),
     ),
     Claim(
         "GATE_HAMLET_RELATIONAL_BINDING",
-        ClaimKind.DERIVATION_GATE,
-        "Strict relational-binding gate: derive from bare foundational structure, rather than canonical RDSS representation semantics, that DISPERSION and STRUCTURE must be realized as distinct relational occurrence identities. Canonical RDSS may represent them this way definitionally while the universal entailment remains open.",
-        ("THM_FIRST_HAMLET_Z2", "DEF_RELATIONAL_DISTINCTION"),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE DISCHARGED / SUPERSEDED. DISPERSION/STRUCTURE are persistence outcomes and must not be promoted into the durable projective carrier. The canonical durable binary roles arise instead from the minimum non-trivial relation and its orientation orbit {N,S}. Therefore a universal Hamlet-to-relation occurrence binding is neither required nor canonical.",
+        ("THM_FIRST_HAMLET_NOT_PROJECTIVE_BINARY_CARRIER", "THM_CANONICAL_NONTRIVIAL_EXISTENCE_FORCES_DISTINCTION"),
     ),
     Claim(
         "DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION",
@@ -829,7 +854,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE",
         ClaimKind.THEOREM,
-        "The operator tetrahedron depends on the durable relation-role operator algebra and on its Frobenius normalization. Therefore it cannot be used non-circularly to derive the earlier Hamlet-to-relation binding. Likewise, matching 3n+1 does not prove that primitive natural dynamics must instantiate that completion. The tetrahedral route closes a geometric realization/crosscheck of the coefficient structure, while GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS remains open.",
+        "The operator tetrahedron depends on the durable relation-role operator algebra and on its Frobenius normalization. Therefore it cannot be used non-circularly to derive the earlier Hamlet-to-relation binding. Likewise, matching 3n+1 does not by itself close the structural dynamics. The tetrahedral route is a geometric realization/crosscheck; the historical primitive-dynamics gate is closed independently downstream by THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED.",
         ("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON", "THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
     ),
     Claim(
@@ -1049,9 +1074,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RA0",
-        ClaimKind.DERIVATION_GATE,
-        "Relational admissibility target: every admitted observable is incident to at least one primitive relation, as source or target. This is not an additional axiom; its complete derivation from A0 remains an explicit gate in the current kernel.",
-        ("A0",),
+        ClaimKind.THEOREM,
+        "Historical RA0 identifier, now CLOSED under the canonical TIR relational-existence typing: every admitted realized observable has at least one relational witness. Minimum non-trivial structural realization is a relation. This closure is sourced from TIR typing and is not misreported as a theorem of A0 alone.",
+        ("THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS", "BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION"),
     ),
     Claim(
         "DEF_POINT",
@@ -1086,6 +1111,12 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.THEOREM,
         "Appending finite binary words to OccurrenceAddress values defines the regular right action of B*: omega·empty=omega and (omega·u)·v=omega·(uv).",
         ("DEF_OCCURRENCE_ADDRESS_SPACE",),
+    ),
+    Claim(
+        "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",
+        ClaimKind.THEOREM,
+        "For every admitted occurrence address omega and every finite binary word u in B*, the right action produces the finite refined occurrence omega·u. Hence arbitrary finite relational refinement depth is available constructively. This is a formation capability and does not assert that every physical carrier must spontaneously realize every branch.",
+        ("THM_OCCURRENCE_ADDRESS_FREE_MONOID", "THM_REFINEMENT_RIGHT_ACTION"),
     ),
     Claim(
         "THM_REFINEMENT_LEVEL_GRADING",
@@ -1184,9 +1215,9 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RR1",
-        ClaimKind.DERIVATION_GATE,
-        "Recursive relational closure target: at every admitted path-labelled occurrence, a selected endpoint may itself carry a further non-degenerate binary distinction, so the rule re-applies at each finite refinement depth. This is not an additional axiom; its complete derivation from A0 remains an explicit gate.",
-        ("A0", "DEF_POINT", "DEF_BINARY_DISTINCTION"),
+        ClaimKind.FORMATION_RULE,
+        "Historical RR1 universal gate is superseded by the weaker canonical formation rule: any admitted occurrence may be extended by either binary branch to any selected finite depth through the B* right action. RDSS does not assert that every physical carrier must realize every branch automatically.",
+        ("THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE",),
     ),
     Claim(
         "THM_RR1_REALIZES_FINITE_WORDS",
@@ -1214,14 +1245,14 @@ CLAIMS: tuple[Claim, ...] = (
     ),
     Claim(
         "RA0_STAR",
-        ClaimKind.DERIVATION_GATE,
-        "Every admitted carrier hosts an admitted non-degenerate binary distinction whose endpoint occurrences are admitted carriers.",
+        ClaimKind.FORMATION_RULE,
+        "Legacy strong closure condition retained only as an optional formation schema: when complete binary hosting is requested, every admitted carrier may be equipped with a non-degenerate binary distinction whose endpoint occurrences are admitted carriers. It is not a universal consequence required by the canonical foundation.",
         ("DEF_POINT", "DEF_BINARY_DISTINCTION"),
     ),
     Claim(
         "RA0_REL_STAR",
-        ClaimKind.DERIVATION_GATE,
-        "Every admitted carrier hosts at least one admitted relationally bound binary distinction whose endpoint occurrences are admitted carriers.",
+        ClaimKind.FORMATION_RULE,
+        "Legacy strong relational closure condition retained only as an optional formation schema: when complete relational binary hosting is requested, every admitted carrier may be equipped with a relationally bound binary distinction. It is not a universal consequence needed for the canonical TIR/RDSS foundation.",
         ("DEF_POINT", "DEF_RELATIONAL_DISTINCTION"),
     ),
     Claim(
@@ -1357,7 +1388,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "THM_RR1_REALIZES_BOUNDARY_PREFIX_CHAINS",
         ClaimKind.THEOREM,
-        "Under RR1, every infinite binary boundary sequence determines a coherent chain whose every finite prefix is realized by a path-labelled occurrence; no limit carrier is thereby asserted.",
+        "Historical RR1 identifier: finite-refinement availability ensures that every infinite binary boundary sequence determines a coherent formal chain whose every finite prefix is constructible as a path-labelled occurrence. No infinite limit carrier and no universal physical branching are thereby asserted.",
         ("RR1", "DEF_OCCURRENCE_BOUNDARY"),
     ),
     Claim(
@@ -1411,6 +1442,30 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.DEFINITION,
         "Strict tensor associativity, explicit unit, and supplied braiding are tested by residuals rather than assumed.",
         ("PRIM_TENSOR_PRODUCT", "PRIM_MODULE"),
+    ),
+    Claim(
+        "THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL",
+        ClaimKind.THEOREM,
+        "The current semantic-scale label plus fixed residual signature does not determine a unique weighting profile. Explicitly, the same scale, residual names and p=1 admit positive profiles (1,1) and (2,1), which evaluate the same residual vector (1,1) to 2 and 3 respectively. Therefore a unique W_sigma cannot be derived from the present structural signature; any concrete semantic weighting law is realization-specific extra data.",
+        ("PRIM_SEMANTIC_WEIGHTING", "DEF_RELATIONAL_POTENTIAL"),
+    ),
+    Claim(
+        "THM_INDEXED_TENSOR_CONTRACTION_UNDERDETERMINED_BY_FLAT_RANK",
+        ClaimKind.THEOREM,
+        "Tensor rank and flat component count do not determine indexed slot structure or contraction. A rank-(1,1) four-component payload admits multiple ordered slot-dimension factorizations (1,4), (2,2), and (4,1); even after selecting a 2x2 realization, distinct supplied evaluation forms can give distinct contractions on the same components. Hence canonical indexed contraction requires explicit slot, pairing and evaluator data beyond the abstract tensor-scalar signature.",
+        ("PRIM_TENSOR_PRODUCT", "PRIM_CONTRACTION"),
+    ),
+    Claim(
+        "THM_NONSTRICT_MONOIDAL_COHERENCE_UNDERDETERMINED_BY_FLATTENING",
+        ClaimKind.THEOREM,
+        "The flat TensorScalarElement representation forgets tensor parenthesization: distinct syntax trees such as (((W tensor X) tensor Y) tensor Z) and W tensor (X tensor (Y tensor Z)) project to the same ordered leaf payload. This flattening is non-injective, so associator paths and the non-strict pentagon/hexagon data cannot be reconstructed from the current flat representation alone. A non-strict braided monoidal realization must therefore supply explicit parenthesized objects and coherence isomorphisms.",
+        ("DEF_TENSOR_MONOIDAL_COHERENCE", "PRIM_TENSOR_PRODUCT"),
+    ),
+    Claim(
+        "THM_REALIZATION_BOUNDARIES_CLOSED_BY_UNDERDETERMINATION",
+        ClaimKind.THEOREM,
+        "The historical semantic-weighting, indexed-tensor and non-strict-monoidal derivation gates are closed as underdetermination no-go results. Their missing outputs are not uniquely derivable from the general RDSS signature; concrete realizations may supply semantic weighting laws, indexed slot/contraction data, or associator/braiding data explicitly without creating new foundational laws or structural derivation gates.",
+        ("THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL", "THM_INDEXED_TENSOR_CONTRACTION_UNDERDETERMINED_BY_FLAT_RANK", "THM_NONSTRICT_MONOIDAL_COHERENCE_UNDERDETERMINED_BY_FLATTENING"),
     ),
     Claim(
         "DEF_CONTRACTION_MAP_COHERENCE",
@@ -1652,7 +1707,7 @@ CLAIMS: tuple[Claim, ...] = (
     Claim(
         "BRIDGE_ORBITAL_COMPLEX_STRUCTURE",
         ClaimKind.BRIDGE,
-        "If an oriented two-dimensional real inner-product carrier with compatible K satisfying K^2=-I is supplied, exp(phi K) realizes SO(2) congruent to U(1); derivation of that carrier structure from the minimal RDSS foundation remains open.",
+        "If an oriented two-dimensional real inner-product carrier with compatible K satisfying K^2=-I is supplied, exp(phi K) realizes SO(2) congruent to U(1). This generic PRIM_ORBIT bridge is conditional on the supplied carrier and introduces no foundational proof debt; the canonical durable relation-role route derives its own U(1) generator separately through THM_IMAGINARY_GENERATOR_U1.",
         ("PRIM_ORBIT",),
     ),
     Claim(
@@ -2382,16 +2437,58 @@ CLAIMS: tuple[Claim, ...] = (
         ),
     ),
     Claim(
+        "DEF_OFHM_IDEAL_BAIRE_BOUNDARY",
+        ClaimKind.DEFINITION,
+        "The ideal infinite symbolic boundary of the finite integer-word carrier Z^{<omega} is Z^N equipped with its finite-prefix cylinder topology. This is a symbolic inverse-limit/product boundary and does not by itself introduce an external geometric embedding.",
+        ("DEF_OFHM_COUNTABLE_BRANCH_ADDRESS",),
+    ),
+    Claim(
+        "THM_OFHM_IDEAL_BOUNDARY_IS_NONCOMPACT_BAIRE_SPACE",
+        ClaimKind.THEOREM,
+        "Because Z is countably infinite and discrete, Z^N with the cylinder topology is Baire space up to a fixed bijection Z<->N. The first-symbol cylinders C_k={x:x_0=k}, k in Z, form a countable clopen cover with no finite subcover. Therefore the ideal OFHM symbolic boundary is not compact in its canonical product topology.",
+        ("DEF_OFHM_IDEAL_BAIRE_BOUNDARY",),
+    ),
+    Claim(
+        "THM_OFHM_CONTINUUM_MEASURE_IS_NOT_UNIQUE",
+        ClaimKind.THEOREM,
+        "For every real b>1, p_b(k)=((b-1)/(b+1))*b^{-|k|} is a normalized full-support probability mass on Z. The i.i.d. product measure mu_b on Z^N is therefore a full-support Borel probability measure on the same cylinder topology. For example mu_2([0])=1/3 while mu_3([0])=1/2, so the symbolic OFHM structure does not select a unique continuum measure.",
+        ("DEF_OFHM_IDEAL_BAIRE_BOUNDARY",),
+    ),
+    Claim(
+        "THM_OFHM_PREFIX_METRIC_SCALE_IS_NOT_CANONICAL",
+        ClaimKind.THEOREM,
+        "For every lambda in (0,1), d_lambda(x,y)=lambda^{N(x,y)} for distinct infinite addresses, where N is common-prefix length, is a compatible prefix ultrametric. The finite OFHM algebra does not select lambda. On the embedded binary boundary {-1,+1}^N its Hausdorff dimension is ln(2)/(-ln(lambda)); lambda=1/2 gives dimension 1 while lambda=1/4 gives dimension 1/2. Hence prefix topology alone does not determine a canonical Hausdorff dimension.",
+        ("DEF_OFHM_IDEAL_BAIRE_BOUNDARY", "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE"),
+    ),
+    Claim(
+        "THM_OFHM_EXTERNAL_GEOMETRIC_LIMIT_REQUIRES_EXTRA_EMBEDDING",
+        ClaimKind.THEOREM,
+        "The symbolic OFHM signature contains finite integer addresses, refinement, enumeration/shift and phase/Hilbert data but no canonical map Phi:Z^N->X into a metric geometric space X and no contraction system selecting such a map. Therefore convergence of an infinite symbolic branch to an external geometric point is not a well-typed statement until an additional geometric realization is supplied.",
+        ("DER_OFHM_GENERAL_ALGEBRA", "DEF_OFHM_IDEAL_BAIRE_BOUNDARY"),
+    ),
+    Claim(
+        "THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED",
+        ClaimKind.THEOREM,
+        "The canonical infinite OFHM completion is symbolic Baire space Z^N. It is noncompact; its cylinder topology admits multiple distinct full-support probability measures; compatible prefix metrics are not uniquely scaled and already give different Hausdorff dimensions on the embedded binary subspace; and no external geometric embedding is selected. Therefore a unique compact geometric fractal limit, unique continuum measure or canonical Hausdorff dimension is not derivable from finite OFHM alone.",
+        ("THM_OFHM_IDEAL_BOUNDARY_IS_NONCOMPACT_BAIRE_SPACE", "THM_OFHM_CONTINUUM_MEASURE_IS_NOT_UNIQUE", "THM_OFHM_PREFIX_METRIC_SCALE_IS_NOT_CANONICAL", "THM_OFHM_EXTERNAL_GEOMETRIC_LIMIT_REQUIRES_EXTRA_EMBEDDING"),
+    ),
+    Claim(
         "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
-        ClaimKind.DERIVATION_GATE,
-        "The finite symbolic OFHM algebra does not imply convergence of every infinite branch address, a canonical geometric limit set, a Hausdorff dimension or a unique continuum measure. Each stronger geometric-fractal statement requires a separate derivation.",
-        ("DER_OFHM_GENERAL_ALGEBRA",),
+        ClaimKind.THEOREM,
+        "HISTORICAL GATE CLOSED BY NO-GO. The finite/symbolic OFHM carrier has a canonical symbolic Baire boundary, but it provably does not select a unique compact geometric realization, continuum measure or Hausdorff dimension. Any specific geometric fractal is therefore a separately typed realization rather than a missing theorem of the structural algebra.",
+        ("THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED",),
+    ),
+    Claim(
+        "THM_OFHM_PHYSICAL_BINDING_REQUIRES_EXTERNAL_EVIDENCE",
+        ClaimKind.THEOREM,
+        "The structural OFHM signature specifies symbolic addresses, relational phase/Hilbert structure and internal dynamics but contains no unique realization map into a named material, quantum, spacetime or measurement substrate and no dimensional calibration data. Therefore selection and calibration of a concrete physical realization cannot be derived from OFHM structure alone and requires external evidence.",
+        ("DER_OFHM_GENERAL_ALGEBRA", "THM_OFHM_GEOMETRIC_FRACTAL_LIMIT_UNDERDETERMINED"),
     ),
     Claim(
         "GATE_OFHM_PHYSICAL_BINDING",
-        ClaimKind.DERIVATION_GATE,
-        "No specific material, quantum, spacetime or other physical substrate is identified solely by the OFHM algebra or its source bridges; physical binding and parameter calibration remain separate evidence-bearing derivation tasks.",
-        ("DER_OFHM_GENERAL_ALGEBRA",),
+        ClaimKind.EVIDENCE_GATE,
+        "EXTERNAL EVIDENCE FRONTIER. A concrete physical binding requires an explicit realization map, dimensional calibration and empirical evidence. This historical identifier is not an unresolved mathematical derivation gate and must not be counted against structural proof closure.",
+        ("THM_OFHM_PHYSICAL_BINDING_REQUIRES_EXTERNAL_EVIDENCE",),
     ),
 
 )

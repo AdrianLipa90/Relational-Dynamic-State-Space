@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import cmath
-from math import atan2, cos, isfinite, pi, sin, sqrt
+from math import atan2, cos, isfinite, log, pi, prod, sin, sqrt
 from typing import Sequence
 
 
@@ -173,6 +173,110 @@ def binary_occurrence_to_countable(address: Sequence[int]) -> CountableBranchAdd
     if any(x not in (-1, 1) for x in word):
         raise ValueError("binary RDSS occurrence branches must be -1 or +1")
     return CountableBranchAddress(word)
+
+
+# REF: OFHM symbolic-boundary closure on the current RDSS claim ledger.
+#       The finite carrier Z^{<omega} determines the cylinder/prefix topology
+#       of the ideal boundary Z^N, but not an external geometric embedding,
+#       metric normalization, or unique continuum probability measure.
+def common_prefix_length(left: Sequence[int], right: Sequence[int]) -> int:
+    """Length of the common finite prefix of two integer words."""
+
+    a = tuple(int(x) for x in left)
+    b = tuple(int(x) for x in right)
+    n = 0
+    for x, y in zip(a, b):
+        if x != y:
+            break
+        n += 1
+    return n
+
+
+def prefix_ultrametric(
+    left: Sequence[int],
+    right: Sequence[int],
+    *,
+    contraction: float = 0.5,
+) -> float:
+    """One compatible prefix ultrametric.
+
+    Distinct words at common-prefix length n have distance lambda**n.
+    The free parameter lambda in (0,1) is deliberately explicit: the symbolic
+    prefix topology does not select a unique geometric scale.
+    """
+
+    lam = float(contraction)
+    if not 0.0 < lam < 1.0:
+        raise ValueError("contraction must lie strictly between 0 and 1")
+    a = tuple(int(x) for x in left)
+    b = tuple(int(x) for x in right)
+    if a == b:
+        return 0.0
+    return lam ** common_prefix_length(a, b)
+
+
+def geometric_symbol_probability(branch: int, *, base: float = 2.0) -> float:
+    """Full-support probability mass on the integer branch alphabet.
+
+    p_b(k)=((b-1)/(b+1))*b^(-|k|), b>1. The closed-form normalization over
+    all k in Z equals one. Different b give distinct equally admissible
+    product measures on the same cylinder topology.
+    """
+
+    b = float(base)
+    if not b > 1.0 or not isfinite(b):
+        raise ValueError("base must be finite and greater than 1")
+    return ((b - 1.0) / (b + 1.0)) * b ** (-abs(int(branch)))
+
+
+def cylinder_product_measure(prefix: Sequence[int], *, base: float = 2.0) -> float:
+    """Cylinder probability for the i.i.d. full-support product measure."""
+
+    return prod(
+        geometric_symbol_probability(branch, base=base)
+        for branch in tuple(int(x) for x in prefix)
+    )
+
+
+def binary_prefix_hausdorff_dimension(*, contraction: float = 0.5) -> float:
+    """Hausdorff dimension of the embedded binary prefix boundary.
+
+    For the binary subspace {-1,+1}^N with d_lambda=lambda^n, the similarity
+    equation 2*lambda^s=1 gives s=ln(2)/(-ln(lambda)). This executable
+    witness demonstrates that prefix topology alone does not select a unique
+    metric dimension because lambda is not fixed by the symbolic OFHM carrier.
+    """
+
+    lam = float(contraction)
+    if not 0.0 < lam < 1.0:
+        raise ValueError("contraction must lie strictly between 0 and 1")
+    return log(2.0) / (-log(lam))
+
+
+def ofhm_geometric_limit_no_go_certificate() -> dict[str, object]:
+    """Machine receipt for the geometric-limit underdetermination theorem."""
+
+    p2_zero = geometric_symbol_probability(0, base=2.0)
+    p3_zero = geometric_symbol_probability(0, base=3.0)
+    d_half = binary_prefix_hausdorff_dimension(contraction=0.5)
+    d_quarter = binary_prefix_hausdorff_dimension(contraction=0.25)
+    return {
+        "symbolic_boundary": "Z^N (Baire space)",
+        "first_coordinate_cylinder_cover_countable": True,
+        "first_coordinate_cover_has_finite_subcover": False,
+        "product_topology_compact": False,
+        "metric_selected_by_finite_ofhm": False,
+        "geometric_embedding_selected_by_finite_ofhm": False,
+        "measure_base_2_zero_cylinder": p2_zero,
+        "measure_base_3_zero_cylinder": p3_zero,
+        "distinct_full_support_product_measures": abs(p2_zero - p3_zero) > 0.0,
+        "binary_dimension_lambda_half": d_half,
+        "binary_dimension_lambda_quarter": d_quarter,
+        "prefix_metric_dimension_not_unique": abs(d_half - d_quarter) > 0.0,
+        "unique_geometric_limit_forced": False,
+        "unique_continuum_measure_forced": False,
+        "unique_hausdorff_dimension_forced": False,
+    }
 
 
 def euler_phase(z: complex) -> complex:
