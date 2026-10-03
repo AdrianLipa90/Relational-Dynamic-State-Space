@@ -593,12 +593,6 @@ CLAIMS: tuple[Claim, ...] = (
         ("A0",),
     ),
     Claim(
-        "BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",
-        ClaimKind.BRIDGE,
-        "Imported canonical TIR existence typing from TIR_CANONICAL_DERIVATION_SPINE_V0_1.md at commit 9783782570a2ccfa1fc42c99b605dad48e02aa78: Exist(x) implies the existence of at least one relational witness R_x. This is a sourced typing rule and must not be misreported as a theorem of A0 alone.",
-        ("A0",),
-    ),
-    Claim(
         "THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS",
         ClaimKind.THEOREM,
         "Within the canonical TIR/RDSS existence typing, every admitted realized existent has at least one relational witness. A bare non-empty carrier may still be a singleton point with no internal binary structure; the forced conclusion is relational incidence for realized existence, not that A0 alone creates a two-state carrier.",
