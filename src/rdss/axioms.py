@@ -43,6 +43,12 @@ CANONICAL_PROVENANCE: dict[str, str] = {
         "Durable carrier provenance: STRUCTURE -> TIR minimum-structure bridge -> "
         "orientation-role orbit N/S. N/S may be distinct occurrences/roles on one carrier."
     ),
+    "RA0": (
+        "RA0 is imported TIR relational-existence typing, not a theorem derived from A0. "
+        "The TIR canonical proof of A0 already uses Exist(x)->exists R_x; reversing that "
+        "edge in RDSS would be circular. Global recursive generativity is separately "
+        "isolated as RA0_REL_STAR."
+    ),
     "THM_HAMLET_IMAGINARY_GENERATOR": (
         "J=SP and J^2=-I are derived from swap/polarity on the durable N/S role basis; "
         "complex scalars are not an upstream premise."
@@ -95,6 +101,11 @@ CLAIMS: tuple[Claim, ...] = (
         "A0",
         ClaimKind.FOUNDATIONAL_LAW,
         "First Law of Existence (legacy identifier A0): absolute nothingness is not a realizable state because it contains no object, distinction or relation by which it could be established as a state.",
+    ),
+    Claim(
+        "BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",
+        ClaimKind.BRIDGE,
+        "Imported canonical TIR root typing at commit 9783782570a2ccfa1fc42c99b605dad48e02aa78: Exist(x) implies existence of at least one relation R_x by which x is established relationally. This typing is used in the canonical TIR proof that absolute nothing is non-realizable; therefore it is a sibling root typing of A0, not a theorem derived from RDSS A0. Treating RA0 as A0-derived would be circular.",
     ),
     Claim(
         "DEF_EXISTENCE_POTENTIAL",
@@ -708,6 +719,12 @@ CLAIMS: tuple[Claim, ...] = (
         ("DEF_RDSS_REALIZED_EXISTENCE_INFORMATION_STATE", "DEF_RDSS_RELATIONAL_INFORMATION_REALIZATION", "THM_CANONICAL_REALIZED_EXISTENCE_BINARY", "REF_CANONICAL_HAMLET_RELATIONAL_REALIZATION"),
     ),
     Claim(
+        "THM_CANONICAL_ROOT_LOCAL_RA0_REL_STAR",
+        ClaimKind.THEOREM,
+        "The canonical minimal realized-existence root hosts a non-degenerate relationally bound binary distinction with admitted endpoint occurrences. Thus the RA0_REL_STAR property is proved locally at the canonical root. What remains open is only its globalization to every subsequently admitted/generated carrier.",
+        ("THM_CANONICAL_REALIZED_EXISTENCE_RELATIONAL_BINARY",),
+    ),
+    Claim(
         "THM_BINARY_BRANCH_SWAP_INVOLUTION",
         ClaimKind.THEOREM,
         "On the primitive branch alphabet B={-1,+1}, sigma(b)=-b is the unique non-trivial involution. It extends letterwise to an involutive automorphism of the finite-word address space B* and exchanges the two depth-one Hamlet branches.",
@@ -1308,6 +1325,12 @@ CLAIMS: tuple[Claim, ...] = (
         ClaimKind.THEOREM,
         "The explicit unbound singleton countermodel shows that RA0 plus RR1 does not imply RA0_REL_STAR.",
         ("REF_RA0_RR1_UNBOUND_MODEL",),
+    ),
+    Claim(
+        "THM_RA0_REL_STAR_INDEPENDENT_FORMATION_RULE",
+        ClaimKind.THEOREM,
+        "Because an admissible countermodel satisfies A0/META0, imported RA0 and recursive RR1 while failing explicit branch-slot relation binding, RA0_REL_STAR is not derivable from the weaker canonical foundation. If the recursively relational sector is desired globally, RA0_REL_STAR must therefore be typed as a model-formation rule (or an equivalent additional restriction), not mislabeled as an unfinished theorem.",
+        ("THM_RA0_RR1_NOT_RA0_REL_STAR",),
     ),
     Claim(
         "THM_SINGLETON_FOUNDATION_MINIMALITY",
