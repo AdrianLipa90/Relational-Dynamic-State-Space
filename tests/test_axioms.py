@@ -686,6 +686,9 @@ def test_meta0_is_model_formation_rule_not_object_level_nothing():
     assert set(claim.id for claim in formation_rules()) == {
         "META0",
         "DEF_SOURCE_MINIMAL_PARITY_DYNAMICS_SIGNATURE",
+        "RR1",
+        "RA0_STAR",
+        "RA0_REL_STAR",
     }
 
 
@@ -2556,6 +2559,78 @@ def test_half_time_pendulum_and_moire_kuramoto_are_closed_structurally() -> None
     historical_gate = claims["GATE_MOIRE_DYNAMICAL_LAW"]
     assert "CLOSED" in historical_gate.statement
     assert "physical substrate" in historical_gate.statement
+
+
+def test_no_unresolved_derivation_gates_remain_after_model_class_typing() -> None:
+    claims = claim_map()
+    raw = {claim.id for claim in claims.values() if claim.kind is ClaimKind.DERIVATION_GATE}
+    assert raw == set()
+
+    assert claims["RR1"].kind is ClaimKind.FORMATION_RULE
+    assert claims["RA0_STAR"].kind is ClaimKind.FORMATION_RULE
+    assert claims["RA0_REL_STAR"].kind is ClaimKind.FORMATION_RULE
+
+    assert claims["THM_RA0_STAR_FROM_RA0_REL_STAR"].depends_on == ("RA0_REL_STAR",)
+    assert claims["THM_RR1_FROM_RA0_REL_STAR"].depends_on == ("RA0_REL_STAR",)
+    assert claims["THM_RA0_REL_STAR_INDEPENDENT_FORMATION_RULE"].kind is ClaimKind.THEOREM
+
+    assert claims["GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT"].kind is ClaimKind.THEOREM
+    assert claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"].kind is ClaimKind.BRIDGE
+    assert claims["GATE_OFHM_PHYSICAL_BINDING"].kind is ClaimKind.BRIDGE
+
+
+def test_ra0_is_non_circular_imported_root_typing() -> None:
+    claims = claim_map()
+    assert claims["BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING"].kind is ClaimKind.BRIDGE
+    assert claims["BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING"].depends_on == ()
+    assert claims["RA0"].kind is ClaimKind.BRIDGE
+    assert claims["RA0"].depends_on == ("BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",)
+    assert "A0" not in dependency_closure("RA0")
+    assert "circular" in claims["RA0"].statement.lower()
+
+
+def test_closed_collatz_theorems_do_not_depend_on_physical_binding_bridge() -> None:
+    for claim_id in (
+        "GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS",
+        "GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA",
+        "THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE",
+    ):
+        closure = dependency_closure(claim_id)
+        assert "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS" not in closure
+
+
+def test_ofhm_symbolic_completion_closes_geometric_limit_gate() -> None:
+    claims = claim_map()
+
+    for claim_id in (
+        "DEF_OFHM_PREFIX_ULTRAMETRIC",
+        "THM_OFHM_PREFIX_ULTRAMETRIC",
+        "THM_OFHM_PREFIX_CHAIN_CAUCHY",
+        "THM_OFHM_SYMBOLIC_COMPLETION_BAIRE_BOUNDARY",
+        "THM_OFHM_PREFIX_COMPLETION_NONCOMPACT",
+        "THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION",
+        "THM_OFHM_NO_UNIFORM_COUNTABLE_BRANCH_PROBABILITY",
+        "THM_OFHM_NO_UNIQUE_CONTINUUM_MEASURE",
+        "BRIDGE_OFHM_GEOMETRIC_EMBEDDING",
+        "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
+    ):
+        assert claim_id in claims
+
+    assert claims["DEF_OFHM_PREFIX_ULTRAMETRIC"].kind is ClaimKind.DEFINITION
+    assert claims["THM_OFHM_SYMBOLIC_COMPLETION_BAIRE_BOUNDARY"].kind is ClaimKind.THEOREM
+    assert claims["THM_OFHM_PREFIX_COMPLETION_NONCOMPACT"].kind is ClaimKind.THEOREM
+    assert claims["THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION"].kind is ClaimKind.THEOREM
+    assert claims["THM_OFHM_NO_UNIQUE_CONTINUUM_MEASURE"].kind is ClaimKind.THEOREM
+    assert claims["BRIDGE_OFHM_GEOMETRIC_EMBEDDING"].kind is ClaimKind.BRIDGE
+    assert claims["GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT"].kind is ClaimKind.THEOREM
+
+    closure = dependency_closure("GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT")
+    assert "THM_OFHM_SYMBOLIC_COMPLETION_BAIRE_BOUNDARY" in closure
+    assert "THM_OFHM_PREFIX_COMPLETION_NONCOMPACT" in closure
+    assert "THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION" in closure
+    assert "THM_OFHM_NO_UNIQUE_CONTINUUM_MEASURE" in closure
+    assert "BRIDGE_OFHM_GEOMETRIC_EMBEDDING" in closure
+    assert "GATE_OFHM_PHYSICAL_BINDING" not in closure
 
 
 def test_structural_derivation_gates_are_zero_and_physical_binding_is_evidence_gate() -> None:
