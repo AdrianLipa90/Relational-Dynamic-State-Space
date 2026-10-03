@@ -7,16 +7,16 @@ Status: exact downstream geometric closure; upstream/physical binding not closed
 The already-derived durable-role operator algebra has Frobenius-orthonormal
 basis
 
-[
-mathcal B_H={I,S,P,J},
-qquad J=SP,
-]
+\[
+\mathcal B_H={I,S,P,J},
+\qquad J=SP,
+\]
 
 with semantic split
 
-[
-mathcal B_H={I}sqcup{S,P,J}.
-]
+\[
+\mathcal B_H={I}\sqcup{S,P,J}.
+\]
 
 No new operator, integer coefficient or length scale is introduced.
 
@@ -25,7 +25,7 @@ No new operator, integer coefficient or length scale is introduced.
 Treat the four orthonormal basis elements as four points in the real operator
 space. For distinct basis points (E_a,E_b),
 
-[
+\[
 |E_a-E_b|_F^2
 =
 |E_a|_F^2+|E_b|_F^2
@@ -34,65 +34,65 @@ space. For distinct basis points (E_a,E_b),
 1+1
 =
 2.
-]
+\]
 
 This is the exact Pythagorean step proposed in the audit. All six edges have
-the same length (sqrt2), and the three edge vectors from any vertex are
+the same length \(\sqrt{2}\), and the three edge vectors from any vertex are
 linearly independent. Therefore the four points form a regular tetrahedron.
 
 For centroid
 
-[
-C=rac{I+S+P+J}{4},
-]
+\[
+C=\frac{I+S+P+J}{4},
+\]
 
 the centered Gram matrix is
 
-[
+\[
 G_C=
-egin{pmatrix}
+\begin{pmatrix}
 3/4&-1/4&-1/4&-1/4\
 -1/4&3/4&-1/4&-1/4\
 -1/4&-1/4&3/4&-1/4\
 -1/4&-1/4&-1/4&3/4
 end{pmatrix}.
-]
+\]
 
 Hence normalized distinct vertices satisfy
 
-[
-widehat v_icdotwidehat v_j=-rac13.
-]
+\[
+\widehat v_icdotwidehat v_j=-\frac13.
+\]
 
 The edge Gram matrix from the identity vertex is
 
-[
+\[
 G_E=
-egin{pmatrix}
+\begin{pmatrix}
 2&1&1\
 1&2&1\
 1&1&2
 end{pmatrix},
-qquad
+\qquad
 det G_E=4.
-]
+\]
 
 Thus the exact induced tetrahedral volume is
 
-[
-V=rac{sqrt{det G_E}}{3!}=rac13.
-]
+\[
+V=\frac{\sqrt{det G_E}}{3!}=\frac13.
+\]
 
 ## Exact Stella isometry
 
 The existing positive-parity Stella tetrahedron uses
 
-[
+\[
 (1,1,1),quad
 (1,-1,-1),quad
 (-1,1,-1),quad
 (-1,-1,1).
-]
+\]
 
 After scaling by (1/2), its Gram matrix is exactly (G_C). Therefore the
 centered operator tetrahedron and the existing Stella tetrahedron are
@@ -106,20 +106,20 @@ The positive-parity Stella vertices are closed under componentwise sign
 multiplication. The vertex ((1,1,1)) is the unique identity and the other
 three vertices square to it. Therefore the sign-coordinate tetrahedron is
 
-[
-T_+cong V_4congmathbb Z_2	imesmathbb Z_2.
-]
+\[
+T_+cong V_4congmathbb Z_2\timesmathbb Z_2.
+\]
 
 It carries the exact signature
 
-[
-1 	ext{identity},
-qquad
-3 	ext{non-identity elements},
-qquad
-operatorname{ord}(g)=2 	ext{for every }g
+\[
+1 \text{identity},
+\qquad
+3 \text{non-identity elements},
+\qquad
+\operatorname{ord}(g)=2 \text{for every }g
 e e.
-]
+\]
 
 This is a genuine (1,2,3) geometric/sign binding. It must not be confused
 with an algebra isomorphism to the Hamlet operator product: in the operator
@@ -130,28 +130,28 @@ algebra (J^2=-I), whereas every non-identity element of the sign-coordinate
 
 The tetrahedron carries the already-derived semantic partition
 
-[
-{I}sqcup{S,P,J}.
-]
+\[
+{I}\sqcup{S,P,J}.
+\]
 
 Therefore for a finite carrier set (X),
 
-[
-left|
-(X	imes{S,P,J})sqcup{I}
-ight|
+\[
+\left|
+(X\times{S,P,J})\sqcup{I}
+\right|
 =
 3|X|+1.
-]
+\]
 
 Under the existing canonical dissociation-plus-repair semantics, this is
 exactly the odd affine Collatz cardinality.
 
 The tetrahedral calculation therefore gives an exact geometric realization of
 
-[
-1oplus3
-]
+\[
+1\oplus3
+\]
 
 and of the already-derived (3n+1) count.
 
@@ -174,9 +174,9 @@ Hamlet-to-relation binding would be circular.
 
 Likewise, the equality
 
-[
-|(X	imes{S,P,J})sqcup{I}|=3|X|+1
-]
+\[
+|(X\times{S,P,J})\sqcup{I}|=3|X|+1
+\]
 
 does not by itself prove that primitive natural dynamics must instantiate this
 completion. It geometrizes the already-derived operation semantics but does
