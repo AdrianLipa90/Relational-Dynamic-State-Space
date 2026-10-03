@@ -2575,18 +2575,26 @@ def test_no_unresolved_derivation_gates_remain_after_model_class_typing() -> Non
     assert claims["THM_RA0_REL_STAR_INDEPENDENT_FORMATION_RULE"].kind is ClaimKind.THEOREM
 
     assert claims["GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT"].kind is ClaimKind.THEOREM
-    assert claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"].kind is ClaimKind.BRIDGE
-    assert claims["GATE_OFHM_PHYSICAL_BINDING"].kind is ClaimKind.BRIDGE
+    assert claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"].kind is ClaimKind.THEOREM
+    assert claims["GATE_OFHM_PHYSICAL_BINDING"].kind is ClaimKind.EVIDENCE_GATE
 
 
 def test_ra0_is_non_circular_imported_root_typing() -> None:
     claims = claim_map()
     assert claims["BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING"].kind is ClaimKind.BRIDGE
     assert claims["BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING"].depends_on == ()
-    assert claims["RA0"].kind is ClaimKind.BRIDGE
-    assert claims["RA0"].depends_on == ("BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",)
-    assert "A0" not in dependency_closure("RA0")
-    assert "circular" in claims["RA0"].statement.lower()
+    assert claims["RA0"].kind is ClaimKind.THEOREM
+    assert claims["RA0"].depends_on == (
+        "THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS",
+        "BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION",
+    )
+
+    closure = dependency_closure("RA0")
+    assert "BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING" in closure
+    assert "THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS" in closure
+    assert "BRIDGE_TIR_MIN_NONTRIVIAL_STRUCTURE_IS_RELATION" in closure
+    assert claims["RA0"].depends_on != ("A0",)
+    assert "not misreported as a theorem of A0 alone" in claims["RA0"].statement
 
 
 def test_closed_collatz_theorems_do_not_depend_on_physical_binding_bridge() -> None:
