@@ -68,8 +68,8 @@ derivation gate from `A0`.
 The non-circular foundation order is therefore
 
 [
-oxed{
-	ext{relational existence typing}
+\boxed{
+\text{relational existence typing}
 quadparallelquad
 A0
 }
@@ -209,69 +209,61 @@ The three active non-identity **basis directions** are
 This is not a claim that (M_2(\mathbb R)) has only three non-identity
 operators.
 
-## 7.1 Relational-generativity boundary
+## 7.1 Relational-generativity model class
 
 The canonical root already has an exact local relational-binary realization:
 
-[
-oxed{
-	ext{THM\_CANONICAL\_ROOT\_LOCAL\_RA0\_REL\_STAR}.
+\[
+\boxed{
+\text{THM\_CANONICAL\_ROOT\_LOCAL\_RA0\_REL\_STAR}.
 }
-]
+\]
 
-The remaining generativity question is global:
+Global recursive generativity is now typed explicitly as **model formation**,
+not as an unproved theorem of \(A_0\). The relevant formation rules are
 
-[
-oxed{
-RA0_{mathrm{REL}}^*:
-	ext{ every admitted/generated carrier hosts a relationally bound binary distinction.}
+\[
+\boxed{
+\texttt{META0},\quad
+\texttt{RR1},\quad
+\texttt{RA0\_STAR},\quad
+\texttt{RA0\_REL\_STAR}.
 }
-]
+\]
 
-This is stronger than both historical targets
+`RA0_REL_STAR` selects the relational-generative model class: every admitted
+carrier in that sector hosts an admitted relationally bound binary distinction.
+`RA0_STAR` and `RR1` are weaker formation rules, and the ledger contains
+theorems showing that the stronger relational-generative rule implies those
+weaker conditions. None of these rules is represented as a theorem derived
+from `A0`.
 
-[
-RA0^*
-]
+The canonical ledger at this revision contains
 
-and
+\[
+\boxed{0\ \texttt{DERIVATION\_GATE}}
+\]
 
-[
-RR1.
-]
+claims. Historical identifiers that once named open gates may remain in the
+ledger for provenance, but their current `ClaimKind` is authoritative.
 
-The ledger already proves
+The foundational provenance order is therefore
 
-[
-RA0_{mathrm{REL}}^*Longrightarrow RA0^*,
-]
+\[
+\boxed{
+\text{TIR relational existence typing}
+\parallel
+A_0
+}
+\]
 
-and
+followed by explicit model-class formation rules and then theorem/bridge chains
+for durable relation roles, \(J^2=-I\), \(U(1)\), projective geometry,
+tetrahedral/Collatz structure, \(\kappa\), half-time dynamics,
+Moiré--Kuramoto dynamics and the symbolic OFHM completion.
 
-[
-RA0_{mathrm{REL}}^*Longrightarrow RR1.
-]
-
-Hence the three raw gate IDs represent only **one independent mathematical
-burden**.
-
-After separating empirical realization from mathematical derivation, the
-current ledger has four raw `DERIVATION_GATE` IDs but only two independent
-mathematical burdens:
-
-1. global relational generativity `RA0_REL_STAR`;
-2. OFHM geometric/infinite-fractal completion.
-
-The weaker raw identifiers `RA0_STAR` and `RR1` are already consequences
-of `RA0_REL_STAR` if that stronger target is closed.
-
-The historical Collatz-natural-system binding and OFHM substrate/parameter
-binding are retained as explicit `BRIDGE` claims. They are open empirical
-realization questions, not missing theorems of the algebra.
-
-Neither the raw gate count nor the number of open physical bridges should be
-reported as the number of independent mathematical gaps.
-
+Physical/substrate identification remains separately typed as bridge work. It
+must not be reported as a missing mathematical derivation gate.
 ## 8. Collatz operation provenance
 
 Association is the free durable-dyad quotient:
@@ -414,26 +406,55 @@ This condition is claim
 is fixed; a non-uniform information density remains mathematically possible.
 Never present uniform density as a theorem of `A0`.
 
-## 14. OFHM information-loss and enumeration rules
+## 14. OFHM information-loss, enumeration and symbolic completion
 
-The OFHM Moire cocycle is constructed from sourced phase coordinates. The
+The OFHM Moiré cocycle is constructed from sourced phase coordinates. The
 BEES coherence magnitude
 
-[
+\[
 C=\left|d^{-1}\sum_j e^{i(\theta_j^X-\theta_j^Y)}\right|
-]
+\]
 
 is lossy because of the absolute value and cannot generally reconstruct the
-relative U(1) phase.
+relative \(U(1)\) phase.
 
 The Hilbert-Hotel successor on finite integer words depends on an explicitly
 chosen enumeration
-(ho:\mathbb Z^{<\omega}\leftrightarrow\mathbb N). The executable
+\(\rho:\mathbb Z^{<\omega}\leftrightarrow\mathbb N\). The executable
 zigzag/Cantor ranking is one declared enumeration, not a unique canonical one.
 No commutation law between Hilbert-Hotel succession and local branch
 refinement is assumed.
 
-The finite-address skeleton is (mathbb Z^{<\omega}); the ideal
-infinite-address space is (mathbb Z^{\mathbb N}). Geometric convergence,
-Hausdorff dimension and a unique continuum measure remain separate derivation
-gates.
+The finite symbolic address carrier is \(\mathbb Z^{<\omega}\). For any
+declared scale base \(\beta>1\), the prefix metric
+
+\[
+d_\beta(a,b)=
+\begin{cases}
+0,&a=b,\\
+\beta^{-\operatorname{LCP}(a,b)},&a\neq b
+\end{cases}
+\]
+
+depends only on the prefix tree and not on Hilbert-Hotel rank. Its metric
+completion adds exactly the infinite integer sequences
+
+\[
+\boxed{\mathbb Z^\omega}.
+\]
+
+Hence `THM_OFHM_SYMBOLIC_COMPLETION_BAIRE_BOUNDARY` closes the symbolic
+completion theorem. In the declared prefix-ultrametric family the completion is
+noncompact, and the full countably branching boundary has infinite Hausdorff
+dimension because it contains finite-alphabet full-shift sub-boundaries of
+dimension \(\ln m/\ln\beta\) for arbitrarily large finite \(m\).
+
+Full branch-label symmetry does not force a probability law: a uniform
+probability on a countably infinite first-level alphabet does not exist, and no
+unique continuum measure follows without extra weights or dynamics.
+
+Accordingly the historical identifier
+`GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT` is theorem-level **CLOSED**. What remains
+separate is `BRIDGE_OFHM_GEOMETRIC_EMBEDDING`: any Euclidean, complex,
+manifold or substrate-specific image requires an additional realization map.
+`GATE_OFHM_PHYSICAL_BINDING` is likewise a bridge, not an open derivation gate.
