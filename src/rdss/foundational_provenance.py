@@ -50,7 +50,7 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
     ),
     ProvenanceNote(
         surface="First Hamlet persistence dichotomy",
-        role="DEF+THM+GATE",
+        role="DEF+THM+BRIDGE",
         claim_ids=(
             "DEF_DISTINCTION_PERSISTENCE_PREDICATE",
             "THM_FIRST_HAMLET_DISPERSION_STRUCTURE",
@@ -59,7 +59,44 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         sources=(CANONICAL_FOUNDATIONAL_CONTRACT,),
         note=(
             "DISPERSION/STRUCTURE classify persistence and are not the durable "
-            "N/S projective carrier. Dynamic non-degeneracy remains explicit."
+            "N/S projective carrier. Physical realization of both regimes is an "
+            "optional downstream bridge, not an upstream foundational gate."
+        ),
+    ),
+    ProvenanceNote(
+        surface="non-circular relational root typing",
+        role="BRIDGE+PROOF_HYGIENE",
+        claim_ids=(
+            "BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",
+            "RA0",
+        ),
+        sources=(
+            CANONICAL_FOUNDATIONAL_CONTRACT,
+            "TIR@9783782570a2ccfa1fc42c99b605dad48e02aa78:"
+            "TIR/foundations/TIR_CANONICAL_DERIVATION_SPINE_V0_1.md",
+        ),
+        note=(
+            "TIR relational existence typing Exist(x)->exists R_x is a proof parent "
+            "of the First Law contradiction. RA0 is therefore imported as root typing "
+            "rather than derived from A0, avoiding a circular dependency."
+        ),
+    ),
+    ProvenanceNote(
+        surface="relational generativity gate basis",
+        role="THM+GATE",
+        claim_ids=(
+            "THM_CANONICAL_ROOT_LOCAL_RA0_REL_STAR",
+            "RA0_REL_STAR",
+            "THM_RA0_STAR_FROM_RA0_REL_STAR",
+            "THM_RR1_FROM_RA0_REL_STAR",
+            "RA0_STAR",
+            "RR1",
+        ),
+        sources=(CANONICAL_FOUNDATIONAL_CONTRACT,),
+        note=(
+            "Local RA0_REL_STAR is closed at the canonical root. Global RA0_REL_STAR "
+            "is the strongest unresolved generativity target and, if closed, discharges "
+            "the weaker RA0_STAR and RR1 obligations."
         ),
     ),
     ProvenanceNote(
