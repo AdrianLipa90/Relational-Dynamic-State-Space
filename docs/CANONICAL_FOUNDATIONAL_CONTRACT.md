@@ -250,9 +250,9 @@ with
 \boxed{0\ \texttt{DERIVATION\_GATE}}.
 \]
 
-Historical identifiers may remain for provenance, but no current claim is
-typed as a derivation gate. Historical identifiers that once named open gates may remain in the
-ledger for provenance, but their current `ClaimKind` is authoritative.
+Historical identifiers that once named open gates may remain in the ledger for
+provenance, but no current claim is typed as a derivation gate and each current
+`ClaimKind` is authoritative.
 
 The foundational provenance order is therefore
 
