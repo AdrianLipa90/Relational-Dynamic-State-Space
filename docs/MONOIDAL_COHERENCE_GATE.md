@@ -16,43 +16,43 @@ This is not an open derivation gate.
 
 The parenthesized tensor expressions
 
-[
+\[
 (((Wotimes X)otimes Y)otimes Z)
-]
+\]
 
 and
 
-[
+\[
 Wotimes(Xotimes(Yotimes Z))
-]
+\]
 
 are distinct syntax trees, but flattening retains only the same ordered leaf
 payload
 
-[
+\[
 (W,X,Y,Z).
-]
+\]
 
 Hence the flattening map is non-injective:
 
-[
-oxed{
-	ext{parenthesized tensor tree}
+\[
+\boxed{
+\text{parenthesized tensor tree}
 longrightarrow
-	ext{flat payload}
+\text{flat payload}
 }
-]
+\]
 
 loses exactly the information required to reconstruct an associator path.
 
 Therefore the flat payload alone cannot force explicit maps
 
-[
+\[
 alpha_{X,Y,Z}:
 (Xotimes Y)otimes Z
-	o
+\to
 Xotimes(Yotimes Z)
-]
+\]
 
 or the associated pentagon/hexagon data.
 
