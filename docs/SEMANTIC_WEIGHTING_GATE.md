@@ -1,6 +1,6 @@
 # Semantic Weighting Realization Boundary
 
-Historical filename: `SEMANTIC_WEIGHTING_GATE.md`.
+Historical filename: \`SEMANTIC_WEIGHTING_GATE.md\`.
 
 ## Status
 
@@ -10,7 +10,7 @@ The general RDSS potential layer evaluates an explicitly supplied semantic
 weighting profile
 
 \[
-W_sigma={w_{sigma i}}_{iin I},
+W_\sigma=\{w_{\sigma i}\}_{i\in I},
 \]
 
 but the current structural signature does not select a unique such profile.
@@ -19,8 +19,8 @@ This is no longer counted as an open derivation gate.
 
 ## Exact no-go witness
 
-Fix the same semantic scale label, the same residual signature ((a,b)), the
-same order (p=1), and the same residual vector
+Fix the same semantic scale label, the same residual signature \((a,b)\), the
+same order \(p=1\), and the same residual vector
 
 \[
 D=(1,1).
@@ -30,7 +30,7 @@ Both positive profiles
 
 \[
 W^{(1)}=(1,1),
-qquad
+\qquad
 W^{(2)}=(2,1)
 \]
 
@@ -38,7 +38,7 @@ satisfy the existing structural requirements, but
 
 \[
 V_{W^{(1)}}(D)=2,
-qquad
+\qquad
 V_{W^{(2)}}(D)=3.
 \]
 
@@ -46,20 +46,19 @@ Therefore
 
 \[
 \boxed{
-(sigma,I,D,p)
-
-otRightarrow
-\text{a unique }W_sigma.
+(\sigma,I,D,p)
+\not\Rightarrow
+\text{a unique }W_\sigma.
 }
 \]
 
 The theorem-level ledger node is
 
-`THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL`.
+\`THM_SEMANTIC_WEIGHTING_UNDERDETERMINED_BY_SCALE_LABEL\`.
 
 The executable witness is
-`semantic_weighting_underdetermination_certificate()` in
-`src/rdss/realization_boundaries.py`.
+\`semantic_weighting_underdetermination_certificate()\` in
+\`src/rdss/realization_boundaries.py\`.
 
 ## Canonical interpretation
 
@@ -67,17 +66,17 @@ The implemented direction remains
 
 \[
 \boxed{
-(D,W_sigma,p)longmapsto V_R^{(p)}.
+(D,W_\sigma,p)\longmapsto V_R^{(p)}.
 }
 \]
 
 A concrete realization may additionally supply a typed law
 
 \[
-mathcal W:
-(sigma,I,Gamma_{\rm sem},C)
-longrightarrow
-mathbb R_{ge0}^{I},
+\mathcal W:
+(\sigma,I,\Gamma_{\rm sem},C)
+\longrightarrow
+\mathbb R_{\ge 0}^{I},
 \]
 
 together with its own equivariance, normalization and fail-closed rules.
