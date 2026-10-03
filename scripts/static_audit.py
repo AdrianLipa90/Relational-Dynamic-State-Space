@@ -104,6 +104,7 @@ def audit_layer_ownership() -> dict[str, int]:
     module_paths = {
         "algebraic_geometry_cell": SRC / "rdss" / "algebraic_geometry_cell.py",
         "alternating_phase_dynamics": SRC / "rdss" / "alternating_phase_dynamics.py",
+        "ofhm_prefix_completion": SRC / "rdss" / "ofhm_prefix_completion.py",
         "core": SRC / "rdss" / "algebra.py",
         "canonical": SRC / "rdss" / "canonical.py",
         "certificate_scan": SRC / "rdss" / "certificate_scan.py",
@@ -153,6 +154,8 @@ def audit_layer_ownership() -> dict[str, int]:
             "alternating_phase_closure_certificate",
         ("alternating_phase_dynamics", "phase_mismatch"):
             "alternating_phase_mismatch",
+        ("ofhm_prefix_completion", "symbolic_completion_certificate"):
+            "ofhm_symbolic_completion_certificate",
     }
     expected: set[str] = set()
     for module_name, values in defs.items():
@@ -186,6 +189,9 @@ def audit_claim_graph() -> dict[str, int]:
 
 def audit_test_imports() -> None:
     module_defs = {
+        "rdss.ofhm_prefix_completion": public_defs(
+            SRC / "rdss" / "ofhm_prefix_completion.py"
+        ),
         "rdss.alternating_phase_dynamics": public_defs(
             SRC / "rdss" / "alternating_phase_dynamics.py"
         ) | {
