@@ -348,7 +348,7 @@ while (L_3=7) uses the separately sourced TIR root-extension bridge
 
 ## 10. Projective geometry and spin
 
-Complex structure, (U(1)), (mathbb C_J^2), (mathbb{CP}^1),
+Complex structure, \(U(1)\), \(\mathbb C_J^2\), \(\mathbb{CP}^1\),
 Fubini--Study geometry, (SU(2)), the (j=1/2) representation and Berry/Euler
 closure are downstream constructions.
 
@@ -433,7 +433,7 @@ zigzag/Cantor ranking is one declared enumeration, not a unique canonical one.
 No commutation law between Hilbert-Hotel succession and local branch
 refinement is assumed.
 
-The finite-address skeleton is (mathbb Z^{<\omega}); the ideal
-infinite-address space is (mathbb Z^{\mathbb N}). Geometric convergence,
+The finite-address skeleton is \(\mathbb Z^{<\omega}\); the ideal
+infinite-address space is \(\mathbb Z^{\mathbb N}\). Geometric convergence,
 Hausdorff dimension and a unique continuum measure remain separate derivation
 gates.
