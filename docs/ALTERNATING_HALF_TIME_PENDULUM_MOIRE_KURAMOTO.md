@@ -312,7 +312,7 @@ I_phi\ddot\Delta
 }
 \]
 
-Since (A_*=pikappa),
+Since \(A_*=\pi\kappa\),
 
 \[
 \boxed{
