@@ -24,9 +24,9 @@ Canonical statement:
 Absolute nothingness is not an object of the object language. Algebraic or
 relational zero is not absolute nothingness:
 
-[
+\[
 0_R \neq \mathcal N.
-]
+\]
 
 The First Law of Existence is the unique foundational law. Everything
 downstream must be typed as definition, formation rule, theorem, bridge,
@@ -47,16 +47,16 @@ a persistent relation or two distinct primitive substances.
 
 The canonical TIR foundation uses the relational existence typing
 
-[
+\[
 operatorname{Exist}(x)Longrightarrow exists R_x.
-]
+\]
 
 This typing is a proof parent of the First Law contradiction for absolute
 nothing. Therefore RDSS must **not** claim the reverse dependency
 
-[
+\[
 A0Longrightarrow RA0,
-]
+\]
 
 because that would make the proof graph circular.
 
@@ -67,13 +67,13 @@ derivation gate from `A0`.
 
 The non-circular foundation order is therefore
 
-[
-oxed{
-	ext{relational existence typing}
+\[
+\boxed{
+\text{relational existence typing}
 quadparallelquad
 A0
 }
-]
+\]
 
 followed downstream by minimum non-trivial structure, relation orientation,
 phase and geometry.
@@ -83,13 +83,13 @@ phase and geometry.
 A binary distinction does not require two primitive carrier substances.
 A single carrier may support two distinct relational occurrences/roles:
 
-[
+\[
 \omega_- \neq \omega_+,
 \qquad
 \operatorname{carrier}(\omega_-)
 =
 \operatorname{carrier}(\omega_+)=a.
-]
+\]
 
 Equivalently, a singleton may carry the two slots conventionally called
 up/down. Carrier identity and occurrence identity are distinct sorts.
@@ -102,9 +102,9 @@ Canonical claim anchors include:
 
 ## 4. Existence potential and primitive indistinction
 
-[
+\[
 \mathcal P_E
-]
+\]
 
 is the modal/admissible possibility remaining after absolute nothingness is
 excluded by the First Law. It is not a material object, field, energy,
@@ -113,11 +113,11 @@ spacetime quantity or Berry/gauge potential.
 Primitive indistinction is the condition in which this existence potential is
 present but no persistent internal distinction has yet been established:
 
-[
+\[
 \mathcal I_0
 =
 (\mathcal P_E,\ \text{no persistent distinction established}).
-]
+\]
 
 This notation must not smuggle in an additive operation.
 
@@ -125,11 +125,11 @@ This notation must not smuggle in an additive operation.
 
 For a candidate differentiation (d), persistence is Boolean:
 
-[
+\[
 \mathsf{Disp}:=\neg\operatorname{Persist}(d),
 \qquad
 \mathsf{Struct}:=\operatorname{Persist}(d).
-]
+\]
 
 The First Hamlet is the persistence dichotomy
 ({\mathsf{Disp},\mathsf{Struct}}).
@@ -151,27 +151,27 @@ Shannon (p=1/2) is downstream.
 The STRUCTURE branch uses the independently established TIR minimum-structure
 bridge:
 
-[
+\[
 \min(\text{non-trivial persistent structure})=\text{relation}.
-]
+\]
 
 For a non-self-collapsed persistent relation, the durable orientation-role
 orbit is
 
-[
+\[
 N=[s\to t],
 \qquad
 S=[t\to s].
-]
+\]
 
 These are roles/occurrences of one relation and need not be two primitive
 substances.
 
 The structural Hartley value
 
-[
+\[
 \ln |\{N,S\}|=\ln2
-]
+\]
 
 is distinct in provenance from the earlier First-Hamlet Hartley count.
 
@@ -182,7 +182,7 @@ DISPERSION/STRUCTURE.
 
 On the ordered role basis:
 
-[
+\[
 S^2=P^2=I,
 \qquad
 SP=-PS,
@@ -190,21 +190,21 @@ SP=-PS,
 J:=SP,
 \qquad
 J^2=-I.
-]
+\]
 
 Thus the imaginary generator is derived rather than assumed upstream.
 
 The distinguished operator basis is
 
-[
+\[
 \{I,S,P,J\}.
-]
+\]
 
 The three active non-identity **basis directions** are
 
-[
+\[
 \{S,P,J\}.
-]
+\]
 
 This is not a claim that (M_2(\mathbb R)) has only three non-identity
 operators.
@@ -213,44 +213,44 @@ operators.
 
 The canonical root already has an exact local relational-binary realization:
 
-[
-oxed{
-	ext{THM\_CANONICAL\_ROOT\_LOCAL\_RA0\_REL\_STAR}.
+\[
+\boxed{
+\text{THM\_CANONICAL\_ROOT\_LOCAL\_RA0\_REL\_STAR}.
 }
-]
+\]
 
 The remaining generativity question is global:
 
-[
-oxed{
+\[
+\boxed{
 RA0_{mathrm{REL}}^*:
-	ext{ every admitted/generated carrier hosts a relationally bound binary distinction.}
+\text{ every admitted/generated carrier hosts a relationally bound binary distinction.}
 }
-]
+\]
 
 This is stronger than both historical targets
 
-[
+\[
 RA0^*
-]
+\]
 
 and
 
-[
+\[
 RR1.
-]
+\]
 
 The ledger already proves
 
-[
+\[
 RA0_{mathrm{REL}}^*Longrightarrow RA0^*,
-]
+\]
 
 and
 
-[
+\[
 RA0_{mathrm{REL}}^*Longrightarrow RR1.
-]
+\]
 
 Hence the three raw gate IDs represent only **one independent mathematical
 burden**.
@@ -276,23 +276,23 @@ reported as the number of independent mathematical gaps.
 
 Association is the free durable-dyad quotient:
 
-[
+\[
 n\mapsto n/2
-]
+\]
 
 when admissible.
 
 Dissociation is the finite product with the three active basis directions:
 
-[
+\[
 n\mapsto3n.
-]
+\]
 
 Repair restores the unique omitted identity direction:
 
-[
+\[
 3n\mapsto3n+1.
-]
+\]
 
 Hence the canonical relational-cardinality update is the unreduced Collatz
 map inside the declared operation semantics. Identification with a particular
@@ -307,22 +307,22 @@ Never describe (2,3,1) as unsourced coefficients:
 
 Let
 
-[
+\[
 q=|\{N,S\}|=2.
-]
+\]
 
 With the derived complex structure (J^2=-I), the canonical primitive
 Gaussian generator is
 
-[
+\[
 g=q+J=2+J,
 \qquad
 \bar g=2-J.
-]
+\]
 
 Exact identities include
 
-[
+\[
 g^2=3+4J,
 \qquad
 g^3=2+11J,
@@ -330,18 +330,18 @@ g^3=2+11J,
 g^4=-7+24J,
 \qquad
 g\bar g=5.
-]
+\]
 
 Thus the numerical Collatz/Bombelli closure has explicit provenance from the
 same durable-role algebra.
 
 For the L constants:
 
-[
+\[
 L_4=2,
 \qquad
 L_5=5,
-]
+\]
 
 while (L_3=7) uses the separately sourced TIR root-extension bridge
 (L_3=L_4+L_5). Do not erase that bridge provenance.
@@ -395,19 +395,19 @@ silently substituting GitHub Actions.
 
 The project constant
 
-[
+\[
 \kappa=\frac{\ln2}{24\pi}
-]
+\]
 
 has a typed reference provenance. The (24) incidence count and one half-turn
 per channel define the reference turn measure (Q_{\rm mix}=12). A constant
 coefficient additionally requires the explicit reference condition
 
-[
+\[
 \frac{d\mathcal I}{dq}=\text{constant},
 \qquad
 \int_0^{12}d\mathcal I=\ln2.
-]
+\]
 
 This condition is claim
 `REF_KAPPA_UNIFORM_INFORMATION_DENSITY`. Without it, only the total integral
@@ -419,16 +419,16 @@ Never present uniform density as a theorem of `A0`.
 The OFHM Moire cocycle is constructed from sourced phase coordinates. The
 BEES coherence magnitude
 
-[
+\[
 C=\left|d^{-1}\sum_j e^{i(\theta_j^X-\theta_j^Y)}\right|
-]
+\]
 
 is lossy because of the absolute value and cannot generally reconstruct the
 relative U(1) phase.
 
 The Hilbert-Hotel successor on finite integer words depends on an explicitly
 chosen enumeration
-(ho:\mathbb Z^{<\omega}\leftrightarrow\mathbb N). The executable
+(\rho:\mathbb Z^{<\omega}\leftrightarrow\mathbb N). The executable
 zigzag/Cantor ranking is one declared enumeration, not a unique canonical one.
 No commutation law between Hilbert-Hotel succession and local branch
 refinement is assumed.
