@@ -7,8 +7,9 @@
 The historical countermodel in this document remains valid:
 
 \[
-mathrm{META0}
-otRightarrowmathrm{RA0}.
+\mathrm{META0}
+\not\Rightarrow
+\mathrm{RA0}.
 \]
 
 That fact is still important. Non-vacuity alone does not imply relational
@@ -20,13 +21,13 @@ relational-existence typing
 
 \[
 \boxed{
-operatorname{Exist}(x)Longrightarrowexists R_x
+\operatorname{Exist}(x)\Longrightarrow\exists R_x
 }
 \]
 
-through `BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING`.
+through \`BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING\`.
 
-Consequently `RA0` is theorem-level closed under the sourced TIR/RDSS
+Consequently \`RA0\` is theorem-level closed under the sourced TIR/RDSS
 foundation chain and is not an open derivation gate.
 
 ## Historical countermodel: META0 without relational incidence
@@ -34,26 +35,27 @@ foundation chain and is not an open derivation gate.
 Take
 
 \[
-P={a},
-qquad
-operatorname{Adm}={a},
-qquad
+P=\{a\},
+\qquad
+\operatorname{Adm}=\{a\},
+\qquad
 R=\varnothing.
 \]
 
 The admitted carrier domain is non-empty, so the non-vacuity component of
-META0 is satisfied, but (a) is incident to no primitive relation. Hence
+META0 is satisfied, but \(a\) is incident to no primitive relation. Hence
 
 \[
 \boxed{
-mathrm{META0}
-otRightarrowmathrm{RA0}.
+\mathrm{META0}
+\not\Rightarrow
+\mathrm{RA0}.
 }
 \]
 
 The current theory retains this as an independence result. It prevents the
 sourced relational-existence rule from being misreported as a theorem of
-META0 or (A_0) alone.
+META0 or \(A_0\) alone.
 
 ## Canonical resolution
 
@@ -64,22 +66,22 @@ The active dependency is
 A_0
 +
 \text{sourced TIR relational-existence typing}
-Longrightarrow
+\Longrightarrow
 \text{relational witness}
-Longrightarrow
-mathrm{RA0}.
+\Longrightarrow
+\mathrm{RA0}.
 }
 \]
 
 The ledger nodes are:
 
-- `BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING`;
-- `THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS`;
-- historical id `RA0`, now theorem-level closed.
+- \`BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING\`;
+- \`THM_CANONICAL_EXISTENCE_FORCES_RELATIONAL_WITNESS\`;
+- historical id \`RA0\`, now theorem-level closed.
 
 This route preserves proof hygiene:
 
-- (A_0) remains the unique foundational law;
+- \(A_0\) remains the unique foundational law;
 - META0 remains a model-formation rule;
 - the relational-existence implication is explicitly sourced rather than
   silently attributed to non-vacuity;
@@ -91,13 +93,13 @@ This route preserves proof hygiene:
 One may alternatively define
 
 \[
-operatorname{Adm}_{R}(x)
-:Longleftrightarrow
-exists y,r,
+\operatorname{Adm}_{R}(x)
+:\Longleftrightarrow
+\exists y,r\,
 \bigl(
-operatorname{Rel}_r(x,y)
-lor
-operatorname{Rel}_r(y,x)
+\operatorname{Rel}_r(x,y)
+\lor
+\operatorname{Rel}_r(y,x)
 \bigr).
 \]
 
@@ -110,20 +112,22 @@ historical semantic option.
 The old independence statements
 
 \[
-mathrm{RA0}
-otRightarrowmathrm{RR1},
-qquad
-mathrm{RR1}
-otRightarrowmathrm{RA0}
+\mathrm{RA0}
+\not\Rightarrow
+\mathrm{RR1},
+\qquad
+\mathrm{RR1}
+\not\Rightarrow
+\mathrm{RA0}
 \]
 
 remain valid for the historical schemas. The current canonical theory does not
 need a universal RR1 law: arbitrary selected finite refinement depth is
 constructively available through
 
-`THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE`,
+\`THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE\`,
 
-while `RR1` is retained as a formation-rule identifier for stronger complete
+while \`RR1\` is retained as a formation-rule identifier for stronger complete
 recursive hosting.
 
 Thus this historical gate is closed without conflating non-vacuity,
