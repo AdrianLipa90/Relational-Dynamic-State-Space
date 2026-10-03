@@ -2064,12 +2064,12 @@ def test_collatz_is_downstream_of_relation_roles_but_branch_derivation_remains_o
 
     gate = claims["GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA"]
     assert gate.kind is ClaimKind.THEOREM
-    assert claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"].kind is ClaimKind.BRIDGE
     gate_closure = dependency_closure("GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA")
     assert "THM_RELATION_ORIENTATION_Z2" in gate_closure
     assert "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP" in gate_closure
     assert "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ" in gate_closure
-    assert "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS" in gate_closure
+    assert "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS" not in gate_closure
     assert "THM_RELATION_ROLE_HARTLEY_LN2" not in gate_closure
 
     psl2 = dependency_closure("REF_COLLATZ_BRANCH_MOBIUS_PSL2_LIFT")
@@ -2317,11 +2317,11 @@ def test_collatz_balance_is_downstream_and_operation_semantics_remain_the_gate()
     assert "THM_COLLATZ_ASSOCIATION_BALANCE" in balance_closure
     assert "REF_PRIMITIVE_PERSISTENCE_GRADIENT_FLOW" in balance_closure
 
-    assert claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"].kind is ClaimKind.BRIDGE
     gate_closure = dependency_closure("GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA")
     assert "THM_RELATION_ALGEBRA_DETERMINISTICALLY_GENERATES_COLLATZ_MAP" in gate_closure
     assert "THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ" in gate_closure
-    assert "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS" in gate_closure
+    assert "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS" not in gate_closure
     assert "THM_COLLATZ_COEFFICIENT_PROVENANCE_TRIPLE_CLOSED" not in gate_closure
 
 
@@ -2352,7 +2352,7 @@ def test_gaussian_bombelli_route_is_independent_of_collatz_and_recovers_l_consta
     assert claims["THM_SINGLETON_REPAIR_CARDINALITY"].kind is ClaimKind.THEOREM
     assert claims["THM_PARITY_FORCES_COLLATZ_BRANCH_SELECTION"].kind is ClaimKind.THEOREM
     assert claims["THM_RELATIONAL_CARDINALITY_NORMALIZATION_IS_COLLATZ"].kind is ClaimKind.THEOREM
-    assert claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"].kind is ClaimKind.DERIVATION_GATE
+    assert claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"].kind is ClaimKind.BRIDGE
 
     gaussian_closure = dependency_closure("THM_GAUSSIAN_GENERATES_COLLATZ_COEFFICIENTS")
     assert "THM_HAMLET_IMAGINARY_GENERATOR" in gaussian_closure
@@ -2581,32 +2581,32 @@ def test_half_time_pendulum_and_moire_kuramoto_are_closed_structurally() -> None
     assert "physical substrate" in historical_gate.statement
 
 
-def test_active_derivation_gates_have_four_independent_burdens() -> None:
+def test_active_derivation_gates_reduce_to_two_independent_mathematical_burdens() -> None:
     claims = claim_map()
     raw = {claim.id for claim in claims.values() if claim.kind is ClaimKind.DERIVATION_GATE}
     assert raw == {
-        "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS",
         "RR1",
         "RA0_STAR",
         "RA0_REL_STAR",
         "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
-        "GATE_OFHM_PHYSICAL_BINDING",
     }
 
-    # RA0_REL_STAR is strictly stronger than the two legacy/weaker
+    # RA0_REL_STAR is strictly stronger than the two weaker historical
     # generativity obligations and discharges both if proved globally.
     assert claims["THM_RA0_STAR_FROM_RA0_REL_STAR"].depends_on == ("RA0_REL_STAR",)
     assert claims["THM_RR1_FROM_RA0_REL_STAR"].depends_on == ("RA0_REL_STAR",)
     assert "RA0_STAR" in claims["THM_RA0_STAR_FROM_RA0_REL_STAR"].statement
     assert "recursive binary refinement" in claims["THM_RR1_FROM_RA0_REL_STAR"].statement
 
-    independent = {
+    independent_mathematical = {
         "RA0_REL_STAR",
-        "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS",
         "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
-        "GATE_OFHM_PHYSICAL_BINDING",
     }
-    assert len(independent) == 4
+    assert len(independent_mathematical) == 2
+
+    # Physical realization questions are bridges, not holes in the theorem DAG.
+    assert claims["GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"].kind is ClaimKind.BRIDGE
+    assert claims["GATE_OFHM_PHYSICAL_BINDING"].kind is ClaimKind.BRIDGE
 
 
 def test_ra0_is_non_circular_imported_root_typing() -> None:
@@ -2617,3 +2617,13 @@ def test_ra0_is_non_circular_imported_root_typing() -> None:
     assert claims["RA0"].depends_on == ("BRIDGE_TIR_RELATIONAL_EXISTENCE_TYPING",)
     assert "A0" not in dependency_closure("RA0")
     assert "circular" in claims["RA0"].statement.lower()
+
+
+def test_closed_collatz_theorems_do_not_depend_on_physical_binding_bridge() -> None:
+    for claim_id in (
+        "GATE_SOURCE_MINIMALITY_APPLIES_TO_PRIMITIVE_DYNAMICS",
+        "GATE_DERIVE_COLLATZ_BRANCHES_FROM_RELATION_ALGEBRA",
+        "THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE",
+    ):
+        closure = dependency_closure(claim_id)
+        assert "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS" not in closure
