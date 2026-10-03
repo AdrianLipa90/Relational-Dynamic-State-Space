@@ -22,14 +22,14 @@ TIR source surfaces:
 The TIR pretime carrier is
 
 \[
-mathcal X=mathbb N_0\times{+,-}
+\mathcal X=\mathbb N_0\times{+,-}
 \]
 
 with
 
 \[
 H(n,+)=(n,-),
-qquad
+\qquad
 H(n,-)=(n+1,+).
 \]
 
@@ -44,7 +44,7 @@ The normalized occurrence grade is
 \[
 
 u(n,+)=n,
-qquad
+\qquad
 
 u(n,-)=n+\frac12.
 \]
@@ -63,7 +63,7 @@ Thus the exact structural split is
 \[
 \boxed{
 \text{occurrence order: discrete half-frames}
-qquad
+\qquad
 \text{phase state: continuous }U(1).
 }
 \]
@@ -86,7 +86,7 @@ N_{\to}=24
 directed incidences and
 
 \[
-N_{leftrightarrow}=12
+N_{\leftrightarrow}=12
 \]
 
 undirected exchange pairs.
@@ -94,28 +94,28 @@ undirected exchange pairs.
 The total binary source information is
 
 \[
-I_*=ln2.
+I_*=\ln2.
 \]
 
 Therefore one directed incidence carries the invariant information share
 
 \[
 \boxed{
-I_{\to}=\frac{ln2}{24}.
+I_{\to}=\frac{\ln2}{24}.
 }
 \]
 
 Because
 
 \[
-kappa=\frac{ln2}{24pi},
+\kappa=\frac{\ln2}{24\pi},
 \]
 
 this is equivalently
 
 \[
 \boxed{
-I_{\to}=pikappa.
+I_{\to}=\pi\kappa.
 }
 \]
 
@@ -123,13 +123,13 @@ One undirected pair contains the two opposite directed incidences, hence
 
 \[
 \boxed{
-I_{leftrightarrow}
+I_{\leftrightarrow}
 =
 2I_{\to}
 =
-\frac{ln2}{12}
+\frac{\ln2}{12}
 =
-2pikappa.
+2\pi\kappa.
 }
 \]
 
@@ -138,7 +138,7 @@ I_{leftrightarrow}
 For a projected (U(1)) mismatch
 
 \[
-Delta=\theta_i-\theta_j-Gamma_{ij},
+\Delta=\theta_i-\theta_j-\Gamma_{ij},
 \]
 
 the squared chordal distance on the unit circle is
@@ -146,18 +146,18 @@ the squared chordal distance on the unit circle is
 \[
 |e^{iDelta}-1|^2
 =
-2-2cosDelta.
+2-2\cos\Delta.
 \]
 
 Normalize it to the interval ([0,1]):
 
 \[
 \boxed{
-c(Delta)
+c(\Delta)
 =
 \frac{|e^{iDelta}-1|^2}{4}
 =
-\frac{1-cosDelta}{2}.
+\frac{1-\cos\Delta}{2}.
 }
 \]
 
@@ -165,8 +165,8 @@ Then
 
 \[
 c(0)=0,
-qquad
-c(pi)=1.
+\qquad
+c(\pi)=1.
 \]
 
 Thus the half-turn exactly saturates the paired exchange mismatch scale.
@@ -175,20 +175,20 @@ Multiplying by the already fixed information budget of one undirected pair
 gives
 
 \[
-V_{leftrightarrow}(Delta)
+V_{\leftrightarrow}(\Delta)
 =
-I_{leftrightarrow}c(Delta).
+I_{\leftrightarrow}c(\Delta).
 \]
 
 Therefore
 
 \[
 \boxed{
-V_{leftrightarrow}(Delta)
+V_{\leftrightarrow}(\Delta)
 =
-\frac{ln2}{24}(1-cosDelta)
+\frac{\ln2}{24}(1-\cos\Delta)
 =
-pikappa(1-cosDelta).
+\pi\kappa(1-\cos\Delta).
 }
 \]
 
@@ -199,18 +199,18 @@ At the half-turn,
 
 \[
 \boxed{
-V_{leftrightarrow}(pi)
+V_{\leftrightarrow}(\pi)
 =
-\frac{ln2}{12}.
+\frac{\ln2}{12}.
 }
 \]
 
 Consequently twelve maximally mismatched exchange pairs give
 
 \[
-12V_{leftrightarrow}(pi)
+12V_{\leftrightarrow}(\pi)
 =
-\boxed{ln2}.
+\boxed{\ln2}.
 \]
 
 This is an independent normalization closure check.
@@ -220,33 +220,33 @@ This is an independent normalization closure check.
 Write
 
 \[
-Delta=\theta_+-\theta_- - Gamma.
+\Delta=\theta_+-\theta_- - \Gamma.
 \]
 
 Let
 
 \[
-A_*=\frac{ln2}{24}=pikappa.
+A_*=\frac{\ln2}{24}=\pi\kappa.
 \]
 
 Then
 
 \[
-V=A_*(1-cosDelta).
+V=A_*(1-\cos\Delta).
 \]
 
 The gradients are
 
 \[
-\frac{partial V}{partial\theta_+}
+\frac{\partial V}{\partial\theta_+}
 =
-A_*sinDelta,
+A_*\sin\Delta,
 \]
 
 \[
-\frac{partial V}{partial\theta_-}
+\frac{\partial V}{\partial\theta_-}
 =
--A_*sinDelta.
+-A_*\sin\Delta.
 \]
 
 The relational forces are therefore
@@ -255,11 +255,11 @@ The relational forces are therefore
 \boxed{
 F_+
 =
--A_*sinDelta,
-qquad
+-A_*\sin\Delta,
+\qquad
 F_-
 =
-+A_*sinDelta.
++A_*\sin\Delta.
 }
 \]
 
@@ -286,8 +286,8 @@ Define center and relative coordinates
 
 \[
 c=\frac{\theta_++\theta_-}{2},
-qquad
-Delta=\theta_+-\theta_-.
+\qquad
+\Delta=\theta_+-\theta_-.
 \]
 
 Adding the two sector equations gives
@@ -302,11 +302,11 @@ Subtracting gives
 
 \[
 \boxed{
-I_phiddotDelta
+I_phi\ddot\Delta
 +
-etadotDelta
+\eta\dot\Delta
 +
-2A_*sinDelta
+2A_*\sin\Delta
 =
 0.
 }
@@ -316,11 +316,11 @@ Since (A_*=pikappa),
 
 \[
 \boxed{
-I_phiddotDelta
+I_phi\ddot\Delta
 +
-etadotDelta
+\eta\dot\Delta
 +
-2pikappasinDelta
+2\pi\kappa\sin\Delta
 =
 0.
 }
@@ -329,20 +329,20 @@ etadotDelta
 Equivalently, with reduced inertia and damping
 
 \[
-mu=\frac{I_phi}{2},
-qquad
-gamma=\frac{eta}{2},
+\mu=\frac{I_phi}{2},
+\qquad
+\gamma=\frac{\eta}{2},
 \]
 
 the same equation is
 
 \[
 \boxed{
-muddotDelta
+\mu\ddot\Delta
 +
-gammadotDelta
+\gamma\dot\Delta
 +
-pikappasinDelta
+\pi\kappa\sin\Delta
 =
 0.
 }
@@ -353,7 +353,7 @@ This is the standard pendulum equation on the relative phase coordinate.
 The conservative core (eta=0) has
 
 \[
-ddot c=0,
+\ddot c=0,
 \]
 
 so the center is inertial while the relative phase oscillates in the forced
@@ -409,10 +409,10 @@ Thus on a normalized full-successor spacing (h),
 \boxed{
 I_phi
 \frac{
-Delta_{n+1}-2Delta_n+Delta_{n-1}
+\Delta_{n+1}-2\Delta_n+\Delta_{n-1}
 }{h^2}
 +
-2pikappasinDelta_n
+2\pi\kappa\sin\Delta_n
 =
 0.
 }
@@ -427,9 +427,9 @@ calibration of (h) remains downstream.
 For an undirected Moire graph with gauge-reduced edge mismatch
 
 \[
-Delta_{ij}
+\Delta_{ij}
 =
-\theta_i-\theta_j-Gamma_{ij},
+\theta_i-\theta_j-\Gamma_{ij},
 \]
 
 define the canonical information potential
@@ -438,10 +438,10 @@ define the canonical information potential
 \boxed{
 V_{\rm M}
 =
-pikappa
-sum_{{i,j}in E}
-left(
-1-cosDelta_{ij}
+\pi\kappa
+\sum_{{i,j}in E}
+\left(
+1-\cos\Delta_{ij}
 \right).
 }
 \]
@@ -449,13 +449,13 @@ left(
 For each edge,
 
 \[
-partial_{\theta_i}V_{ij}
+\partial_{\theta_i}V_{ij}
 =
-pikappasinDelta_{ij},
-qquad
-partial_{\theta_j}V_{ij}
+\pi\kappa\sin\Delta_{ij},
+\qquad
+\partial_{\theta_j}V_{ij}
 =
--pikappasinDelta_{ij}.
+-\pi\kappa\sin\Delta_{ij}.
 \]
 
 Thus the network force is automatically a sine-coupling force. No independent
@@ -464,7 +464,7 @@ Kuramoto sine ansatz is required.
 A common phase shift
 
 \[
-\theta_imapsto\theta_i+alpha
+\theta_imapsto\theta_i+\alpha
 \]
 
 leaves every (Delta_{ij}) and therefore (V_{\rm M}) unchanged.
@@ -476,9 +476,9 @@ The TIR phase-action parent supplies the Euler--Lagrange--Rayleigh form
 \[
 I_iddot\theta_i
 +
-eta_idot\theta_i
+\eta_idot\theta_i
 +
-\frac{partial V_{\rm M}}{partial\theta_i}
+\frac{\partial V_{\rm M}}{\partial\theta_i}
 =
 0.
 \]
@@ -495,10 +495,10 @@ so
 
 \[
 \boxed{
-eta_idot\theta_i
+\eta_idot\theta_i
 =
 -
-\frac{partial V_{\rm M}}{partial\theta_i}.
+\frac{\partial V_{\rm M}}{\partial\theta_i}.
 }
 \]
 
@@ -506,11 +506,11 @@ Therefore
 
 \[
 \boxed{
-eta_idot\theta_i
+\eta_idot\theta_i
 =
--pikappa
-sum_j
-sinDelta_{ij}
+-\pi\kappa
+\sum_j
+\sin\Delta_{ij}
 }
 \]
 
@@ -547,25 +547,25 @@ Both descend from the same relational phase potential.
 For the overdamped system,
 
 \[
-dot\theta_i
+\dot\theta_i
 =
--\frac1{eta_i}
-\frac{partial V_{\rm M}}{partial\theta_i}.
+-\frac1{\eta_i}
+\frac{\partial V_{\rm M}}{\partial\theta_i}.
 \]
 
 Therefore
 
 \[
-dot V_{\rm M}
+\dot V_{\rm M}
 =
-sum_i
-\frac{partial V_{\rm M}}{partial\theta_i}
-dot\theta_i
+\sum_i
+\frac{\partial V_{\rm M}}{\partial\theta_i}
+\dot\theta_i
 =
--sum_i
-\frac1{eta_i}
-left(
-\frac{partial V_{\rm M}}{partial\theta_i}
+-\sum_i
+\frac1{\eta_i}
+\left(
+\frac{\partial V_{\rm M}}{\partial\theta_i}
 \right)^2.
 \]
 
@@ -573,7 +573,7 @@ Hence
 
 \[
 \boxed{
-dot V_{\rm M}le0.
+\dot V_{\rm M}\le0.
 }
 \]
 
@@ -592,7 +592,7 @@ PASS:
 - paired information budget (ln2/12);
 - canonical pair potential
   \[
-  V_{leftrightarrow}=pikappa(1-cosDelta);
+  V_{\leftrightarrow}=\pi\kappa(1-\cos\Delta);
   \]
 - exact opposite pair gradients and zero net center force;
 - relative pendulum equation;
