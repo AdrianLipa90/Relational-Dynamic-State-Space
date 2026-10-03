@@ -203,43 +203,8 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         ),
     ),
     ProvenanceNote(
-        surface="OFHM symbolic prefix completion",
-        role="THM+CROSSCHECK",
-        claim_ids=(
-            "DEF_OFHM_PREFIX_ULTRAMETRIC",
-            "THM_OFHM_PREFIX_ULTRAMETRIC",
-            "THM_OFHM_PREFIX_CHAIN_CAUCHY",
-            "THM_OFHM_SYMBOLIC_COMPLETION_BAIRE_BOUNDARY",
-            "THM_OFHM_PREFIX_COMPLETION_NONCOMPACT",
-            "THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION",
-            "THM_OFHM_NO_UNIFORM_COUNTABLE_BRANCH_PROBABILITY",
-            "THM_OFHM_NO_UNIQUE_CONTINUUM_MEASURE",
-            "BRIDGE_OFHM_GEOMETRIC_EMBEDDING",
-            "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
-        ),
-        sources=(
-            CANONICAL_FOUNDATIONAL_CONTRACT,
-            "docs/OFHM_PREFIX_COMPLETION.md",
-            "src/rdss/ofhm_prefix_completion.py",
-            "On-Primes@372125962a42e1b225337bf31416233da4ca436b:"
-            "proofs/ARPL_PROCYCLIC_PHASE_REFINEMENT_TOWER_V0_1.md",
-            "On-Primes@372125962a42e1b225337bf31416233da4ca436b:"
-            "proofs/ARPL_CANONICAL_PHASE_ULTRAMETRIC_DIMENSION_V0_1.md",
-        ),
-        note=(
-            "The OFHM completion is proved from the countably branching prefix tree "
-            "Z^{<omega}: its boundary is Z^omega, noncompact, and has infinite "
-            "Hausdorff dimension for every fixed exponential prefix metric base beta>1. "
-            "On-Primes supplies an independent arithmetic refinement crosscheck: its "
-            "procyclic inverse-limit phase hull is compact and 1-dimensional in its "
-            "canonical arithmetic ultrametric. The contrast is deliberate evidence "
-            "that compactness/dimension belong to the declared refinement system and "
-            "metric; On-Primes is not a proof parent of the OFHM claims."
-        ),
-    ),
-    ProvenanceNote(
         surface="OFHM prefix-ultrametric symbolic completion",
-        role="DEF+THM+BRIDGE+NO_GO",
+        role="DEF+THM+BRIDGE+NO_GO+CROSSCHECK",
         claim_ids=(
             "DEF_OFHM_PREFIX_ULTRAMETRIC",
             "THM_OFHM_PREFIX_ULTRAMETRIC",
@@ -257,16 +222,25 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
             "docs/OFHM_PREFIX_COMPLETION.md",
             "src/rdss/ofhm_prefix_completion.py",
             "RDSS_OFHM_PARENT_MAIN@3fe6ed391d374a09c0b077b8bdedb3aabe16a28e",
-            "Infinities@339d6c58f3e7d86c67a4f758cd7416692f8f8280:research/EULERS_INFINITY_V0_1.md",
-            "Infinities@339d6c58f3e7d86c67a4f758cd7416692f8f8280:research/TIR_E6_FOURIER_HILBERT_HOTEL_CORE_V0_1.md",
+            "Infinities@339d6c58f3e7d86c67a4f758cd7416692f8f8280:"
+            "research/EULERS_INFINITY_V0_1.md",
+            "Infinities@339d6c58f3e7d86c67a4f758cd7416692f8f8280:"
+            "research/TIR_E6_FOURIER_HILBERT_HOTEL_CORE_V0_1.md",
+            "On-Primes@372125962a42e1b225337bf31416233da4ca436b:"
+            "proofs/ARPL_PROCYCLIC_PHASE_REFINEMENT_TOWER_V0_1.md",
+            "On-Primes@372125962a42e1b225337bf31416233da4ca436b:"
+            "proofs/ARPL_CANONICAL_PHASE_ULTRAMETRIC_DIMENSION_V0_1.md",
         ),
         note=(
-            "The canonical completion uses only the countably branching prefix tree: "
-            "d_beta(a,b)=beta^{-LCP(a,b)} for beta>1. Its metric completion adds "
-            "Z^omega, is noncompact, and has infinite Hausdorff dimension in this "
-            "declared prefix-ultrametric family. No uniform countable branch "
-            "probability or unique continuum measure is forced. Any Euclidean, "
-            "complex, manifold or physical image is a separately typed bridge."
+            "The canonical OFHM completion uses only the countably branching prefix "
+            "tree Z^{<omega}: d_beta(a,b)=beta^{-LCP(a,b)} for beta>1. Its metric "
+            "completion adds Z^omega, is noncompact, and has infinite Hausdorff "
+            "dimension in this declared prefix-ultrametric family. No uniform "
+            "countable branch probability or unique continuum measure is forced. "
+            "Any Euclidean, complex, manifold or physical image is a separately "
+            "typed bridge. On-Primes is retained only as an independent refinement "
+            "crosscheck: its compact procyclic phase hull has dimension one in its "
+            "own canonical arithmetic ultrametric and is not a proof parent of OFHM."
         ),
     ),
     ProvenanceNote(
