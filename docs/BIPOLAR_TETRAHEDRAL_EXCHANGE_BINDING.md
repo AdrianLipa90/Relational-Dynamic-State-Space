@@ -54,8 +54,8 @@ forces the face pairing
 
 \[
 \boxed{
-F_i^+longleftrightarrow F_i^-,
-qquad i=0,1,2,3.
+F_i^+\longleftrightarrow F_i^-,
+\qquad i=0,1,2,3.
 }
 \]
 
@@ -78,28 +78,28 @@ face--flavour incidence count below.
 Let
 
 \[
-mathcal F_3={f_0,f_1,f_2}.
+\mathcal F_3={f_0,f_1,f_2}.
 \]
 
 Then the directed exchange-incidence set is
 
 \[
-mathcal C
+\mathcal C
 =
 {+,-}
 \times
 {F_0,F_1,F_2,F_3}
 \times
-mathcal F_3.
+\mathcal F_3.
 \]
 
 Hence
 
 \[
 \boxed{
-|mathcal C|
+|\mathcal C|
 =
-2cdot4cdot3
+2\cdot4\cdot3
 =
 24.
 }
@@ -110,7 +110,7 @@ quotient has
 
 \[
 \boxed{
-|mathcal C/Z_2|
+|\mathcal C/Z_2|
 =
 12.
 }
@@ -143,7 +143,7 @@ The operator tetrahedron carries the exact split
 {I,S,P,J}
 =
 {I}
-sqcup
+\sqcup
 {S,P,J}.
 \]
 
@@ -163,8 +163,8 @@ faces. It must use all three:
 \[
 \boxed{
 Xlongmapsto X\times{S,P,J},
-qquad
-|X|longmapsto3|X|.
+\qquad
+|X|\longmapsto3|X|.
 }
 \]
 
@@ -179,8 +179,8 @@ orbit. Minimal closure restores this unique identity channel once:
 \[
 \boxed{
 X\times{S,P,J}
-longmapsto
-(X\times{S,P,J})sqcup{I}.
+\longmapsto
+(X\times{S,P,J})\sqcup{I}.
 }
 \]
 
@@ -213,9 +213,9 @@ The selector-free operation roles are consequently
 \[
 \boxed{
 2;:;\text{bipolar }Z_2\text{ association},
-qquad
+\qquad
 3;:;\text{complete active }C_3\text{ face orbit},
-qquad
+\qquad
 1;:;\text{unique identity closure}.
 }
 \]
@@ -236,7 +236,7 @@ normalized turns, equivalently
 
 \[
 \boxed{
-Phi_{\rm total}=24pi.
+\Phi_{\rm total}=24\pi.
 }
 \]
 
