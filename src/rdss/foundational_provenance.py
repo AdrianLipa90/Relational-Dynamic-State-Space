@@ -203,6 +203,41 @@ FOUNDATIONAL_PROVENANCE: tuple[ProvenanceNote, ...] = (
         ),
     ),
     ProvenanceNote(
+        surface="OFHM symbolic prefix completion",
+        role="THM+CROSSCHECK",
+        claim_ids=(
+            "DEF_OFHM_PREFIX_ULTRAMETRIC",
+            "THM_OFHM_PREFIX_ULTRAMETRIC",
+            "THM_OFHM_PREFIX_CHAIN_CAUCHY",
+            "THM_OFHM_SYMBOLIC_COMPLETION_BAIRE_BOUNDARY",
+            "THM_OFHM_PREFIX_COMPLETION_NONCOMPACT",
+            "THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION",
+            "THM_OFHM_NO_UNIFORM_COUNTABLE_BRANCH_PROBABILITY",
+            "THM_OFHM_NO_UNIQUE_CONTINUUM_MEASURE",
+            "BRIDGE_OFHM_GEOMETRIC_EMBEDDING",
+            "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
+        ),
+        sources=(
+            CANONICAL_FOUNDATIONAL_CONTRACT,
+            "docs/OFHM_PREFIX_COMPLETION.md",
+            "src/rdss/ofhm_prefix_completion.py",
+            "On-Primes@372125962a42e1b225337bf31416233da4ca436b:"
+            "proofs/ARPL_PROCYCLIC_PHASE_REFINEMENT_TOWER_V0_1.md",
+            "On-Primes@372125962a42e1b225337bf31416233da4ca436b:"
+            "proofs/ARPL_CANONICAL_PHASE_ULTRAMETRIC_DIMENSION_V0_1.md",
+        ),
+        note=(
+            "The OFHM completion is proved from the countably branching prefix tree "
+            "Z^{<omega}: its boundary is Z^omega, noncompact, and has infinite "
+            "Hausdorff dimension for every fixed exponential prefix metric base beta>1. "
+            "On-Primes supplies an independent arithmetic refinement crosscheck: its "
+            "procyclic inverse-limit phase hull is compact and 1-dimensional in its "
+            "canonical arithmetic ultrametric. The contrast is deliberate evidence "
+            "that compactness/dimension belong to the declared refinement system and "
+            "metric; On-Primes is not a proof parent of the OFHM claims."
+        ),
+    ),
+    ProvenanceNote(
         surface="operator tetrahedral binding",
         role="THM+CROSSCHECK",
         claim_ids=(
@@ -348,6 +383,36 @@ IMPLEMENTATION_PROVENANCE: dict[str, tuple[str, ...]] = {
     ),
     "orbital_fractal_hilbert_moire.CountableBranchAddress.hilbert_hotel_successor": (
         "BRIDGE_OFHM_HILBERT_HOTEL_SHIFT",
+    ),
+    "ofhm_prefix_completion.common_prefix_length": (
+        "DEF_OFHM_PREFIX_ULTRAMETRIC",
+    ),
+    "ofhm_prefix_completion.prefix_ultrametric": (
+        "DEF_OFHM_PREFIX_ULTRAMETRIC",
+        "THM_OFHM_PREFIX_ULTRAMETRIC",
+    ),
+    "ofhm_prefix_completion.prefix_chain_cauchy_bound": (
+        "THM_OFHM_PREFIX_CHAIN_CAUCHY",
+    ),
+    "ofhm_prefix_completion.finite_alphabet_boundary_dimension": (
+        "THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION",
+    ),
+    "ofhm_prefix_completion.countable_boundary_dimension_is_infinite": (
+        "THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION",
+    ),
+    "ofhm_prefix_completion.countable_prefix_completion_is_totally_bounded": (
+        "THM_OFHM_PREFIX_COMPLETION_NONCOMPACT",
+    ),
+    "ofhm_prefix_completion.uniform_countable_branch_probability_exists": (
+        "THM_OFHM_NO_UNIFORM_COUNTABLE_BRANCH_PROBABILITY",
+        "THM_OFHM_NO_UNIQUE_CONTINUUM_MEASURE",
+    ),
+    "ofhm_prefix_completion.symbolic_completion_certificate": (
+        "THM_OFHM_SYMBOLIC_COMPLETION_BAIRE_BOUNDARY",
+        "THM_OFHM_PREFIX_COMPLETION_NONCOMPACT",
+        "THM_OFHM_PREFIX_BOUNDARY_INFINITE_HAUSDORFF_DIMENSION",
+        "THM_OFHM_NO_UNIQUE_CONTINUUM_MEASURE",
+        "GATE_OFHM_GEOMETRIC_FRACTAL_LIMIT",
     ),
     "orbital_fractal_hilbert_moire.moire_transport": (
         "DER_OFHM_HILBERT_TRANSPORT",
