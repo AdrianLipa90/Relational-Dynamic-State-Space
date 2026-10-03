@@ -8,14 +8,14 @@ The already-derived durable-role operator algebra has Frobenius-orthonormal
 basis
 
 \[
-mathcal B_H={I,S,P,J},
-qquad J=SP,
+\mathcal B_H={I,S,P,J},
+\qquad J=SP,
 \]
 
 with semantic split
 
 \[
-mathcal B_H={I}sqcup{S,P,J}.
+\mathcal B_H={I}\sqcup{S,P,J}.
 \]
 
 No new operator, integer coefficient or length scale is introduced.
@@ -61,7 +61,7 @@ end{pmatrix}.
 Hence normalized distinct vertices satisfy
 
 \[
-widehat v_icdotwidehat v_j=-\frac13.
+\widehat v_icdotwidehat v_j=-\frac13.
 \]
 
 The edge Gram matrix from the identity vertex is
@@ -73,14 +73,14 @@ G_E=
 1&2&1\
 1&1&2
 end{pmatrix},
-qquad
+\qquad
 det G_E=4.
 \]
 
 Thus the exact induced tetrahedral volume is
 
 \[
-V=\frac{sqrt{det G_E}}{3!}=\frac13.
+V=\frac{\sqrt{det G_E}}{3!}=\frac13.
 \]
 
 ## Exact Stella isometry
@@ -114,10 +114,10 @@ It carries the exact signature
 
 \[
 1 \text{identity},
-qquad
+\qquad
 3 \text{non-identity elements},
-qquad
-operatorname{ord}(g)=2 \text{for every }g
+\qquad
+\operatorname{ord}(g)=2 \text{for every }g
 e e.
 \]
 
@@ -131,14 +131,14 @@ algebra (J^2=-I), whereas every non-identity element of the sign-coordinate
 The tetrahedron carries the already-derived semantic partition
 
 \[
-{I}sqcup{S,P,J}.
+{I}\sqcup{S,P,J}.
 \]
 
 Therefore for a finite carrier set (X),
 
 \[
-left|
-(X\times{S,P,J})sqcup{I}
+\left|
+(X\times{S,P,J})\sqcup{I}
 \right|
 =
 3|X|+1.
@@ -150,7 +150,7 @@ exactly the odd affine Collatz cardinality.
 The tetrahedral calculation therefore gives an exact geometric realization of
 
 \[
-1oplus3
+1\oplus3
 \]
 
 and of the already-derived (3n+1) count.
@@ -175,7 +175,7 @@ Hamlet-to-relation binding would be circular.
 Likewise, the equality
 
 \[
-|(X\times{S,P,J})sqcup{I}|=3|X|+1
+|(X\times{S,P,J})\sqcup{I}|=3|X|+1
 \]
 
 does not by itself prove that primitive natural dynamics must instantiate this
