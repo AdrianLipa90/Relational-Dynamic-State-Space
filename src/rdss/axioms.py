@@ -866,7 +866,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_TETRAHEDRAL_BINDING_IS_DOWNSTREAM_NOT_UPSTREAM_CLOSURE",
         ClaimKind.THEOREM,
         "The operator tetrahedron depends on the durable relation-role operator algebra and on its Frobenius normalization. Therefore it cannot be used non-circularly to derive the earlier Hamlet-to-relation binding. Likewise, matching 3n+1 does not by itself close the structural dynamics. The tetrahedral route is a geometric realization/crosscheck; the historical primitive-dynamics gate is closed independently downstream by THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED.",
-        ("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON", "THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY", "GATE_BIND_RELATIONAL_CARDINALITY_NORMALIZATION_TO_PRIMITIVE_NATURAL_DYNAMICS"),
+        ("THM_HAMLET_OPERATOR_BASIS_REGULAR_TETRAHEDRON", "THM_TETRAHEDRAL_GEOMETRY_MATCHES_COLLATZ_ODD_CARDINALITY", "THM_COLLATZ_STRUCTURAL_DYNAMICS_CLOSED"),
     ),
     Claim(
         "BRIDGE_TIR_THREE_FLAVOUR_C3_LABEL_CARRIER",
@@ -1412,7 +1412,7 @@ CLAIMS: tuple[Claim, ...] = (
         "THM_RR1_FROM_RA0_STAR",
         ClaimKind.THEOREM,
         "RA0* generates recursive binary refinement to arbitrary finite depth by induction on path-labelled occurrences.",
-        ("RA0_STAR",),
+        ("RA0_STAR", "THM_FINITE_RELATIONAL_REFINEMENT_AVAILABLE"),
     ),
     Claim(
         "PRIM_MODULE",
