@@ -1,0 +1,18 @@
+PNV 1
+EPISTEMIC CHYBA
+MODE READ_ONLY
+# RDSS supports carrier, occurrence, relations, rank, scale, orbit, dimension,
+# phase, state with representation+provenance separate; signature != full state.
+OP PNAML10.RDSS.FULL SOURCE rdss_exact_full_relational_state
+OP PNAML10.RDSS.SIGNATURE SOURCE rdss_typed_signature_all_axes
+OP PNAML10.RDSS.OCCURRENCE SOURCE rdss_exact_typed_relational_occurrence
+OP PNAML10.RDSS.BRAID SOURCE rdss_ordered_braid_word_and_sector
+OP PNAML10.RDSS.TIME.ORDER ORDER braid_generator_before braid_generator_after
+OP PNAML10.RDSS.CONTEXT COMPOSITION PNAML10.RDSS.FULL PNAML10.RDSS.SIGNATURE PNAML10.RDSS.OCCURRENCE
+OP PNAML10.RDSS.ORDERED COMPOSITION PNAML10.RDSS.TIME.ORDER PNAML10.RDSS.BRAID
+OP PNAML10.RDSS.ROUTE COMPOSITION PNAML10.RDSS.CONTEXT PNAML10.RDSS.ORDERED
+ASSERT PNAML10.RDSS.FULL
+ASSERT PNAML10.RDSS.OCCURRENCE
+EMIT PNAML10.RDSS.ROUTE
+# CONTRACT No braiding-monoidal coherence claims without pentagon/hexagon proof.
+# CONTRACT No lossless claim for a projected signature.
